@@ -1,14 +1,20 @@
 package com.sky.controller;
 
+import com.sky.core.controller.BaseController;
+import com.sky.model.SystemUser;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by ThinkPad on 2018/10/6.
  */
 @Controller
-public class IndexController {
+public class IndexController{
 
     @RequestMapping("/")
     public String login(){
@@ -16,8 +22,20 @@ public class IndexController {
     }
 
     @RequestMapping("/index")
-    public String index(){
+    public String index(HttpServletRequest request, Model model){
+        SystemUser systemUser = (SystemUser)  request.getSession().getAttribute("systemUser");
+        System.out.println(systemUser.toString());
+        if (systemUser == null) {
+            return "login";
+        }
+        model.addAttribute("realName" , systemUser.getRealName());
         return "index";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().removeAttribute("systemUser");
+        return "redirect:/";
     }
 
     @RequestMapping("/home")

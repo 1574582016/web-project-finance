@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
 @MapperScan(basePackages={"com.sky.mapper"})
-public class WebProjectWebApplication {
+public class WebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebProjectWebApplication.class, args);
+		SpringApplication.run(WebApplication.class, args);
 	}
 }

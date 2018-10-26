@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="libs/bootstrap-3.3.7/css/bootstrap.min.css">
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
 	<style>
 		html,body{
 			margin: 0;
@@ -16,7 +17,7 @@
 		}
        .login-box{
 			width: 500px;
-		    height: 280px;
+		    height: 290px;
 		    background: #e9ecef;
 		    position: absolute;
 		    top: calc(50% - 180px);
@@ -29,7 +30,6 @@
        	    /*padding-top: 50px;*/
        }
        .login-box .login-button{
-       	    padding-top: 25px;
             text-align: center;
        }
        .login-title{
@@ -68,6 +68,14 @@
         </div>
 	    </div>
 	  </div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label"></label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<span style="color: red;" id="error-alert">&nbsp;</span>
+			</div>
+		</div>
+	</div>
 	  <div class="form-group login-button">
 	    <div class="col-sm-12">
 	      <button type="submit" id="login-button" class="btn btn-primary col-sm-9 col-sm-offset-2">登录</button>
@@ -75,20 +83,5 @@
 	  </div>
 	</form>
 </div>
-<script>
-	$(function(){
-        $("#login-button").click(function () {
-			var userName = $("#userName").val().trim();
-			var password = $("#password").val().trim();
-			if(userName.left == 0 || password == 0){
-				alert("用户名或密码不能为空！");
-			}else{
-				window.location.href="/index";
-			}
-
-		});
-
-	});
-</script>
 </body>
 </html>
