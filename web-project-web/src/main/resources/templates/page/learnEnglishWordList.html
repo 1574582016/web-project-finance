@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+
+    <div class="panel panel-default search-list-panel">
+        <div class="panel-heading">查询条件
+            <button type="button" class="btn btn-default collapse-button"   data-toggle="collapse" data-parent="#accordion"  href="#collapseBox"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <button type="button" id="searchDataButton" class="btn btn-default btn-sm search-button">查询</button>
+        </div>
+        <div id="collapseBox" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <form id="formSearch" class="form-horizontal">
+                    <div class="form-group" style="margin-top:15px">
+                        <label class="control-label col-sm-1">英文：</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="s_english" name="english">
+                        </div>
+                        <label class="control-label col-sm-1">中文：</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="s_chinese" name="chinese">
+                        </div>
+                        <label class="control-label col-sm-1">级别：</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="s_level" name="level">
+                                <option value="">请选择</option>
+                                <option value="A">A级</option>
+                                <option value="B">B级</option>
+                                <option value="C">C级</option>
+                                <option value="D">D级</option>
+                                <option value="E">E级</option>
+                            </select>
+                        </div>
+                        <label class="control-label col-sm-1">掌握：</label>
+                        <div class="col-sm-2">
+                            <select class="form-control"  id="s_master" name="master">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-1">日期：</label>
+                        <div class="input-group col-sm-4" style="padding-left: 15px;padding-right: 15px;">
+                            <input type="text" class="form-control" id="s_start" readonly>
+                            <div class="input-group-addon">至</div>
+                            <input type="text" class="form-control" id="s_end" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toolbar" class="btn-group">
+        <button id="addDataButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+    </div>
+    <table id="tableList"></table>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title" id="myModalLabel">修改单词</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <input type="hidden" class="form-control" id="id" >
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">英文：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="english" placeholder="英文">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">音标：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="pronunciation" placeholder="音标">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">中文：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="chinese" placeholder="中文">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">级别：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="level" name="level">
+                                    <option value="A">A级</option>
+                                    <option value="B">B级</option>
+                                    <option value="C">C级</option>
+                                    <option value="D">D级</option>
+                                    <option value="E">E级</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">例句：</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" rows="3" id="sentence"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">掌握：</label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="master" value="1" checked> 是
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="master" value="0"> 否
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="submitDataButton">提交</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/englishWord.js" th:src="@{/js/page/englishWord.js}"></script>
+</th:block>
+</html>

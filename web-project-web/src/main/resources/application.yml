@@ -1,0 +1,61 @@
+server:
+    port: 8090
+
+# mysql 的数据库配置
+spring:
+  application:
+    name: system-server
+  datasource:
+    url: jdbc:mysql://localhost:3306/stock_data?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+
+
+mybatis-plus:
+    mapper-locations: classpath:/com/sky/mapping/*Mapper.xml
+    typeAliasesPackage: com.sky.model
+    global-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: 0
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      field-strategy: 2
+      #驼峰下划线转换
+      db-column-underline: false
+      #刷新mapper 调试神器
+      refresh-mapper: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #序列接口实现类配置
+      #key-generator: com.baomidou.springboot.xxx
+      #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      #自定义填充策略接口实现
+      #meta-object-handler: com.baomidou.springboot.xxx
+      #自定义SQL注入器
+      #sql-injector: com.qiaodit.framework.hcxz.AutoSqlInjector
+    configuration:
+      map-underscore-to-camel-case: false
+      cache-enabled: true
+
+      #性能sql分析插件
+    performance:
+      max-time: 15000
+      format-enabled: false
+      write-in-log-enabled: false
+
+      #执行sql分析插件
+    sqlexplain:
+      stop-proceed-enabled: true
+
+system:
+  files:
+    diary-text-path: D:/files/diary/
+

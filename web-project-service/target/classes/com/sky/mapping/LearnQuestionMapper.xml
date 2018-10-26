@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.LearnQuestionMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.LearnQuestion">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="question_code" property="questionCode"/>
+        <result column="question_content" property="questionContent"/>
+        <result column="question_type" property="questionType"/>
+        <result column="question_answer" property="questionAnswer"/>
+    </resultMap>
+
+    <select id="getLearnQuestionList" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        learn_question.`id`,
+        learn_question.`isvalid` ,
+        learn_question.`version` ,
+        learn_question.`create_time`,
+        learn_question.`create_user` ,
+        learn_question.`update_time`,
+        learn_question.`update_user`,
+        learn_question.`question_code`,
+        learn_question.`question_content`,
+        learn_question.`question_answer`,
+        (SELECT a.param_name FROM system_param a LEFT JOIN system_param b ON a.parent_code = b.param_code WHERE a.`param_identity` = learn_question.`question_type` AND b.param_identity = 'questionType') AS question_type
+        FROM learn_question
+        <where>
+            <if test="content != null and content != '' ">
+                learn_question.question_content REGEXP #{content}
+            </if>
+            <if test="type != null and type != '' ">
+                AND learn_question.question_type = #{type}
+            </if>
+            <if test="startDate != null and startDate != '' ">
+                AND learn_question.create_time &gt;= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != '' ">
+                AND learn_question.create_time &lt; date_add(#{endDate}, interval 1 day)
+            </if>
+        </where>
+    </select>
+</mapper>

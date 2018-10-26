@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.SystemUserMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.SystemUser">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="user_code" property="userCode"/>
+        <result column="user_name" property="userName"/>
+        <result column="real_name" property="realName"/>
+        <result column="password" property="password"/>
+        <result column="head_picture" property="headPicture"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+
+        <result column="role_name" property="roleName"/>
+    </resultMap>
+
+    <select id="getSystemUserList" resultMap="BaseResultMap" resultType="java.lang.String">
+        SELECT
+        system_user.`id`,
+        system_user.`user_code`,
+        system_user.`real_name`,
+        system_user.`user_name`,
+        system_user.`phone`,
+        system_user.`email`,
+        system_user.`isvalid`,
+        (SELECT GROUP_CONCAT(sr.`role_name`) FROM system_role sr
+        LEFT JOIN system_user_role sur ON sr.`role_code` = sur.`role_code`
+        WHERE sur.`user_code` = system_user.`user_code` ) AS role_name
+        FROM system_user
+        LEFT JOIN system_user_role ON system_user.`user_code` = system_user_role.`user_code`
+        LEFT JOIN system_role ON system_role.`role_code` = system_user_role.`role_code` AND system_role.`isvalid` = 1
+        <where>
+            <if test="userName !='' and userName != null">
+                AND system_user.`user_name` REGEXP #{userName}
+            </if>
+            <if test="roleName !='' and roleName != null">
+                AND system_user.`real_name` REGEXP #{roleName}
+            </if>
+            <if test="roleCode !='' and roleCode != null">
+                AND system_user_role.`role_code` =#{roleCode}
+            </if>
+        </where>
+        GROUP BY system_user.`id`
+    </select>
+</mapper>

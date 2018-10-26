@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.SystemRoleMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.SystemRole">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="role_code" property="roleCode"/>
+        <result column="role_name" property="roleName"/>
+        <result column="describe" property="describe"/>
+    </resultMap>
+
+    <select id="getSystemRoleList" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        system_role.`id`,
+        system_role.`role_code` ,
+        system_role.`role_name` ,
+        system_role.`describe`
+        FROM system_role
+        LEFT JOIN system_user_role ON system_role.`role_code` = system_user_role.`role_code`
+        LEFT JOIN system_role_menu ON system_user_role.`role_code` = system_role_menu.`role_code`
+        <where>
+            <if test="userCode !='' and userCode != null">
+                system_user_role.`user_code` = #{userCode}
+            </if>
+            <if test="menuCode !='' and menuCode != null">
+                AND system_role_menu.`menu_code` = #{menuCode}
+            </if>
+        </where>
+        GROUP BY system_role.`id`
+    </select>
+
+
+</mapper>

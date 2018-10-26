@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-treeview/css/bootstrap-treeview.css">
+    <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
+    <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<nav class="sy-navbar navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">后台管理</a>
+        </div>
+
+        <div class="dropdown navbar-right">
+            <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">主题
+                <!-- <span class="caret"></span> -->
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">修改密码</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">退出</a>
+                </li>
+            </ul>
+        </div>
+        <div class="message-alert navbar-right">
+            <span class="glyphicon glyphicon-envelope"></span>
+        </div>
+        <div class="message-alert navbar-right">
+            <span class="glyphicon glyphicon-bell"></span>
+        </div>
+     </div>
+</nav>
+
+<div class="sy-body">
+    <div class="body-menu">
+        <ul class="menu-first-ul">
+        </ul>
+    </div>
+    <div class="body-container">
+        <ol class="breadcrumb">
+            <li><a href="#">首页</a></li>
+        </ol>
+        <div class="sroll-container">
+            <div layout:fragment="content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框（Modal）1 -->
+<div class="modal fade" id="showAlertModel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="margin:30px 0;text-align: center;font-size:24px;">
+                    <span id="showIconType"></span><span id="showAlertInfo" style="margin:0 10px">操作成功</span>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal）2 -->
+<div class="modal fade" id="showDialogModel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"  style="margin:0 100px ;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h2 class="modal-title" id="showDialogTitle">
+                    提示框
+                </h2>
+            </div>
+            <div class="modal-body">
+                <div style="margin:25px 0;text-align: center;">
+                    <span id="showDialogInfo" style="font-size:18px;margin:0 10px">您确定要xxx</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary confirmButton">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<!--<script type="text/javascript" src="/js/common.js"></script>-->
+<th:block layout:fragment = "bodyAssets"></th:block>
+</html>

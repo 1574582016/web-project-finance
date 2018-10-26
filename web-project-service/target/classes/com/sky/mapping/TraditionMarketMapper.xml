@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.TraditionMarketMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.TraditionMarket">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="market_code" property="marketCode"/>
+        <result column="market_name" property="marketName"/>
+        <result column="market_type" property="marketType"/>
+        <result column="describe" property="describe"/>
+    </resultMap>
+
+    <select id="getTraditionMarketList" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        tradition_market.`id`,
+        tradition_market.`market_code`,
+        tradition_market.`market_name`,
+        (SELECT a.param_name FROM system_param a LEFT JOIN system_param b ON a.parent_code = b.param_code WHERE a.`param_identity` = tradition_market.`market_type` AND b.param_identity = 'bankType') AS market_type ,
+        tradition_market.`describe`
+        FROM tradition_market
+        <where>
+            <if test="marketName != null and marketName != '' ">
+                tradition_market.market_name REGEXP #{marketName}
+            </if>
+            <if test="marketType != null and marketType != '' ">
+                AND tradition_market.market_type = #{marketType}
+            </if>
+        </where>
+    </select>
+</mapper>

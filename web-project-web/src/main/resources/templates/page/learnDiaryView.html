@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style>
+    #content table,#content table tr th, #content table tr td { border:1px solid #0094ff; }
+    #content table{
+        width: 100%;
+    }
+</style>
+    <input type="hidden" class="form-control" id="id" th:value="${id}">
+    <div class="container">
+        <h3 style="text-align: center" id="name"></h3>
+        <h4 id="summary"></h4>
+        <h4 id="content" style="margin-top: 25px;"></h4>
+        <div class="col-sm-12" style="text-align: center;">
+            <button type="button" class="btn btn-primary" id="resetFormButton" style="width: 20%;">返    回</button>
+        </div>
+    </div>
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/learnDiaryView.js" th:src="@{/js/page/learnDiaryView.js}"></script>
+</th:block>
+</html>

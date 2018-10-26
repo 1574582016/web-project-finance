@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/web-project-api/web-project-api.iml" filepath="$PROJECT_DIR$/web-project-api/web-project-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-project-core/web-project-core.iml" filepath="$PROJECT_DIR$/web-project-core/web-project-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-project-finance.iml" filepath="$PROJECT_DIR$/web-project-finance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-project-service/web-project-service.iml" filepath="$PROJECT_DIR$/web-project-service/web-project-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-project-web/web-project-web.iml" filepath="$PROJECT_DIR$/web-project-web/web-project-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.SystemMenuMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.SystemMenu">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="menu_code" property="menuCode"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="parent_code" property="parentCode"/>
+        <result column="menu_address" property="menuAddress"/>
+        <result column="menu_url" property="menuUrl"/>
+        <result column="menu_icon" property="menuIcon"/>
+        <result column="order_num" property="orderNum"/>
+    </resultMap>
+
+    <resultMap id="MenuListMap" type="com.sky.vo.SystemMenu_VO">
+        <result property="menuCode" column="menu_code"/>
+        <result property="menuName" column="menu_name"/>
+        <result property="menuAddress" column="menu_address"/>
+        <result property="menuUrl" column="menu_url"/>
+        <result property="menuIcon" column="menu_icon"/>
+        <collection property="childMenu" ofType="com.sky.vo.SystemMenu_VO" javaType="ArrayList">
+            <result property="menuCode" column="s_menu_code"/>
+            <result property="menuName" column="s_menu_name"/>
+            <result property="menuAddress" column="s_menu_address"/>
+            <result property="menuUrl" column="s_menu_url"/>
+        </collection>
+    </resultMap>
+
+    <select id="getMenuList" resultMap="MenuListMap">
+       SELECT
+        a.`menu_code` ,
+        a.`menu_name` ,
+        a.`menu_address` ,
+        a.`menu_url` ,
+        a.`menu_icon` ,
+        b.`menu_code` AS s_menu_code,
+        b.`menu_name` AS s_menu_name,
+        b.`menu_address` AS s_menu_address ,
+        b.`menu_url` AS s_menu_url
+        FROM system_menu a ,system_menu b
+        WHERE a.`menu_code` = b.`parent_code`
+        AND a.isvalid = 1
+        AND b.`isvalid` = 1
+        ORDER BY a.order_num
+    </select>
+
+
+</mapper>

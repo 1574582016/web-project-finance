@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.SystemRoleMenuMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.SystemRoleMenu">
+        <id column="id" property="id"/>
+        <result column="menu_code" property="menuCode"/>
+        <result column="role_code" property="roleCode"/>
+    </resultMap>
+
+
+</mapper>
