@@ -73,7 +73,7 @@ public class SystemUserApiController extends AbstractController {
     public Object login(String userName ,String password){
         SystemUser systemUser = systemUserService.selectOne(new EntityWrapper<SystemUser>().where("user_name = {0}" ,userName).and("password = {0} " , password));
         if (systemUser == null){
-            return ResponseEntity.ok(MapError("用户不存在，请检查账目密码是否正确！"));
+            return ResponseEntity.ok(MapError("用户不存在，请检查账号和密码是否正确！"));
         }
         this.getSession().setAttribute("systemUser" , systemUser);
         return ResponseEntity.ok(MapSuccess("登陆成功成功"));
