@@ -21,7 +21,7 @@
         </div>
 
         <div class="dropdown navbar-right">
-            <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">主题
+            <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" th:text="${realName}">主题
                 <!-- <span class="caret"></span> -->
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -30,7 +30,7 @@
                 </li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">退出</a>
+                    <a role="menuitem" tabindex="-1" id="logout-button" href="javascript:">退出</a>
                 </li>
             </ul>
         </div>

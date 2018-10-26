@@ -1,10 +1,13 @@
 $(function(){
-    // window.localStorage.removeItem("menuName");
-    // window.localStorage.removeItem("menuUrl");
+    var menuNameJust = window.localStorage.getItem("menuName");
+    if(typeof menuNameJust == "undefined" || menuNameJust == null || menuNameJust == ""){
+        window.location.href="/home";
+        window.localStorage.setItem("menuName" , "false");
+    }
 
     $.APIPost("/api/menu/getMenuList",function (data) {
         var listr = "";
-        console.log(data);
+        // console.log(data);
         $.each(data.data.result, function (i, v) {
             listr += '<li><span class="menu-title"><span class="'+ v.menuIcon +'"></span>&nbsp;'+ v.menuName +'</span>';
             if(i == 0){
@@ -22,16 +25,13 @@ $(function(){
 
             $('.menu-second-ul').on('click','li',function(){
                 window.localStorage.setItem("menuName",$(this).text());
-                var str = '<li><a id="home" href="/home">首页</a></li><li class="active" href="'+ $(this).find("a").attr("href") +'">'+ $(this).text() +'</li>';
+                var str = '<li><a id="home" onclick="javascript:homeClick()" href="javascript:">首页</a></li><li class="active" href="'+ $(this).find("a").attr("href") +'">'+ $(this).text() +'</li>';
                 // console.log(str);
                 window.localStorage.setItem("breadcrumbInfo",str);
             });
-            $("#home").click(function () {
-                $(".breadcrumb").html('<li class="active"><a id="home" href="#">首页</a></li>');
-            });
-
+            
             var menuName = window.localStorage.getItem("menuName");
-            if(typeof menuName != "undefined" && menuName != null && menuName != ""){
+            if(typeof menuName != "undefined" && menuName != null && menuName != "" && menuName != 'false'){
                 $('.menu-second-ul li').each(function(){
                     $(this).parent().removeClass("current");
                     var name = $(this).text();
@@ -78,20 +78,35 @@ $(function(){
             $(this).children().addClass("glyphicon-chevron-down");
         }
     });
+    
+    $("#logout-button").click(function () {
+        showDialog("系统提示" ,"您是否要退出系统？",function () {
+            window.location.href="/logout";
+            return false;
+        })
+    });
+
 
 });
 
 function addNextBread(title) {
     var href = $(".breadcrumb .active").attr("href");
     var name = $(".breadcrumb .active").text();
-    var str = '<li><a id="home" href="/home">首页</a></li><li><a id="lastStepUrl" href="'+ href +'" onclick="javascript:backLastBread();">'+ name +'</a></li><li class="active">'+ title +'</li>';
+    var str = '<li><a id="home" onclick="javascript:homeClick()" href="javascript:">首页</a></li><li><a id="lastStepUrl" href="'+ href +'" onclick="javascript:backLastBread();">'+ name +'</a></li><li class="active">'+ title +'</li>';
     window.localStorage.setItem("breadcrumbInfo",str);
 }
 
 function backLastBread() {
     var href = $(".breadcrumb #lastStepUrl").attr("href");
     var name = $(".breadcrumb #lastStepUrl").text();
-    var str = '<li><a id="home" href="/home">首页</a></li><li class="active"  href="'+ href +'">'+ name +'</li>';
+    var str = '<li><a id="home" onclick="javascript:homeClick()" href="javascript:">首页</a></li><li class="active"  href="'+ href +'">'+ name +'</li>';
     window.localStorage.setItem("breadcrumbInfo",str);
     return href;
+}
+
+function homeClick() {
+    var str = '<li class="active"><a id="home" onclick="javascript:homeClick()" href="javascript:">首页</a></li>';
+    window.localStorage.setItem("breadcrumbInfo",str);
+    window.location.href="/home";
+    return false;
 }

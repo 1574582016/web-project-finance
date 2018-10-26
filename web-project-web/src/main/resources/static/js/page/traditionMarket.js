@@ -1,7 +1,7 @@
 
 $(function () {
 
-    $.APIPost("/api/index/getSelectOption?indetity=bankType" ,function (data) {
+    $.APIPost("/api/param/getParamListByIndetity?indetity=bankType" ,function (data) {
         var str = ""
         $.each(data.data.result ,function (index ,value) {
             str +='<option value="'+ value.paramIdentity +'">' + value.paramName + '</option>'
