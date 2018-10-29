@@ -20,7 +20,8 @@
         system_role.`id`,
         system_role.`role_code` ,
         system_role.`role_name` ,
-        system_role.`describe`
+        system_role.`describe`,
+        system_role.`isvalid`
         FROM system_role
         LEFT JOIN system_user_role ON system_role.`role_code` = system_user_role.`role_code`
         LEFT JOIN system_role_menu ON system_user_role.`role_code` = system_role_menu.`role_code`

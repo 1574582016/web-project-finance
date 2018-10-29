@@ -6,6 +6,7 @@ import com.sky.api.AbstractController;
 import com.sky.model.SystemMenu;
 import com.sky.model.SystemRole;
 import com.sky.model.SystemRoleMenu;
+import com.sky.model.SystemUser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +25,13 @@ public class SystemMenuApiController extends AbstractController {
 
     @PostMapping("/getMenuTree")
     public Object getMenuTree(){
-        return ResponseEntity.ok(MapSuccess("查询成功！",systemMenuService.getMenuTree()));
+        return ResponseEntity.ok(MapSuccess("查询成功！",systemMenuService.getMenuTree(null)));
     }
 
     @PostMapping("/getMenuList")
     public Object getMenuList(){
-        return ResponseEntity.ok(MapSuccess("查询成功！",systemMenuService.getMenuList()));
+        SystemUser systemUser = (SystemUser)this.getSession().getAttribute("systemUser");
+        return ResponseEntity.ok(MapSuccess("查询成功！",systemMenuService.getMenuList(systemUser.getUserCode())));
     }
 
     @PostMapping("/getMenuInfo")

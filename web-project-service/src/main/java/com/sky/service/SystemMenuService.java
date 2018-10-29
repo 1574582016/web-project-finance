@@ -13,8 +13,8 @@ import java.util.List;
  */
 public interface SystemMenuService extends IService<SystemMenu> {
 
-    List<TreeNode> getMenuTree();
+    List<TreeNode> getMenuTree(String roleCode);
 
-    List<SystemMenu_VO> getMenuList();
+    List<SystemMenu_VO> getMenuList(String userCode);
 
 }

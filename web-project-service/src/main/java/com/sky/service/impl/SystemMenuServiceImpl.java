@@ -19,8 +19,8 @@ import java.util.*;
 public class SystemMenuServiceImpl extends ServiceImpl<SystemMenuMapper ,SystemMenu> implements SystemMenuService {
 
     @Override
-    public List<TreeNode> getMenuTree() {
-        List<SystemMenu> menuList = baseMapper.selectList(null);
+    public List<TreeNode> getMenuTree(String roleCode) {
+        List<SystemMenu> menuList = baseMapper.getMenuTreeList(roleCode);
         List<TreeNode> firstList = new ArrayList<>();
         for(SystemMenu systemMenu : menuList){
             if(systemMenu.getParentCode().equals("1048460137181315074")){
@@ -53,8 +53,8 @@ public class SystemMenuServiceImpl extends ServiceImpl<SystemMenuMapper ,SystemM
     }
 
     @Override
-    public List<SystemMenu_VO> getMenuList() {
-        return baseMapper.getMenuList();
+    public List<SystemMenu_VO> getMenuList(String userCode) {
+        return baseMapper.getMenuList(userCode);
     }
 
 

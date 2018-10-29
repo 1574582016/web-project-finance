@@ -24,7 +24,7 @@ public class IndexController{
     @RequestMapping("/index")
     public String index(HttpServletRequest request, Model model){
         SystemUser systemUser = (SystemUser)  request.getSession().getAttribute("systemUser");
-        System.out.println(systemUser.toString());
+//        System.out.println(systemUser.toString());
         if (systemUser == null) {
             return "login";
         }

@@ -18,7 +18,7 @@ html,body{
 	border-radius: 0;
 	background: #575e63;
 	color: #fff;
-	text-shadow: 0 1px 1px #000;
+	/*text-shadow: 0 1px 1px #000;*/
 	letter-spacing: 0.09em;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#575e63), to(#3f4347));
 	background: -webkit-linear-gradient(top, #575e63, #3f4347);

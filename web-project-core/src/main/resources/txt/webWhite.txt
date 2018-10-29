@@ -1,0 +1,10 @@
+#war
+/img
+/css
+/js
+/font
+/json
+/libs
+/resource
+/index
+/login

@@ -25,12 +25,12 @@
                 <!-- <span class="caret"></span> -->
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">修改密码</a>
+                <li role="presentation"  data-toggle="modal" data-target="#myChangePassword">
+                    <a role="menuitem" tabindex="-1" href="javascript:">修改密码</a>
                 </li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation">
-                    <a role="menuitem" tabindex="-1" id="logout-button" href="javascript:">退出</a>
+                <li role="presentation" id="logout-button">
+                    <a role="menuitem" tabindex="-1" href="javascript:">退出</a>
                 </li>
             </ul>
         </div>
@@ -58,6 +58,38 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="myChangePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title" id="myModalLabel">修改密码</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">原密码：</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="o_password" maxlength="20" placeholder="原密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">新密码：</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="n_password" maxlength="20" placeholder="新密码">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="addDataButton">提交</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 模态框（Modal）1 -->
 <div class="modal fade" id="showAlertModel" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -67,8 +99,8 @@
                     <span id="showIconType"></span><span id="showAlertInfo" style="margin:0 10px">操作成功</span>
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
+        </div>
+    </div>
 </div>
 
 <!-- 模态框（Modal）2 -->
@@ -89,15 +121,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
+                <button type="button" class="btn btn-primary confirmButton">确定</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-primary confirmButton">
-                    确定
-                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
+        </div>
+    </div>
 </div>
 </body>
 <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>

@@ -34,7 +34,7 @@
     </resultMap>
 
     <select id="getMenuList" resultMap="MenuListMap">
-       SELECT
+        SELECT
         a.`menu_code` ,
         a.`menu_name` ,
         a.`menu_address` ,
@@ -44,12 +44,35 @@
         b.`menu_name` AS s_menu_name,
         b.`menu_address` AS s_menu_address ,
         b.`menu_url` AS s_menu_url
-        FROM system_menu a ,system_menu b
-        WHERE a.`menu_code` = b.`parent_code`
-        AND a.isvalid = 1
-        AND b.`isvalid` = 1
+        FROM system_menu a
+        LEFT JOIN system_menu b ON a.`menu_code` = b.`parent_code`
+        LEFT JOIN system_role_menu AS rm ON a.menu_code = rm.menu_code OR b.menu_code = rm.menu_code
+        LEFT JOIN system_role AS r ON r.role_code = rm.role_code
+        LEFT JOIN system_user_role AS ur ON ur.role_code = r.role_code
+        LEFT JOIN SYSTEM_USER AS u ON ur.user_code = u.user_code
+        WHERE b.isvalid = 1
+        AND a.`isvalid` = 1
+        AND r.isvalid = 1
+        AND u.isvalid = 1
+        AND u.`user_code` = #{userCode}
+        GROUP BY a.id,b.`id`
         ORDER BY a.order_num
     </select>
 
+    <select id="getMenuTreeList" resultMap="BaseResultMap">
+        SELECT
+        m.`menu_code`,
+        m.`parent_code`,
+        m.`menu_name`,
+        m.`menu_icon`,
+        (CASE WHEN r.id IS NULL THEN '0' ELSE '1' END) AS isvalid
+        FROM system_menu m
+        LEFT JOIN system_role_menu rm ON m.`menu_code` = rm.`menu_code`
+        LEFT JOIN system_role r ON r.`role_code` = rm.`role_code`
+        <if test="roleCode != null and roleCode != ''">
+            AND r.`role_code` = #{roleCode}
+        </if>
+        GROUP BY m.`menu_code`
+    </select>
 
 </mapper>
