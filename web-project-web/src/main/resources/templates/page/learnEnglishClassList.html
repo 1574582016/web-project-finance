@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style>
+    .english-word-talbe{
+        width: 100%;
+        margin-top: 15px;
+        border-radius: 5px;
+        /*border: 1px solid #000000;*/
+    }
+    .english-word-talbe th,td{
+        text-align: left;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<div class="panel panel-default search-list-panel">
+    <div class="panel-heading">查询条件
+        <button type="button" class="btn btn-default collapse-button"   data-toggle="collapse" data-parent="#accordion"  href="#collapseBox"><span class="glyphicon glyphicon-chevron-down"></span></button>
+        <button type="button" id="searchDataButton" class="btn btn-default btn-sm search-button">查询</button>
+    </div>
+    <div id="collapseBox" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <form id="formSearch" class="form-horizontal">
+                <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1">片段：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="s_fragment" name="fragment">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<table class="english-word-talbe">
+    <thead>
+      <th style="text-align: center;color:#3e505e;">片段</th>
+      <th style="text-align: center;color:#3e505e;">英文</th>
+      <th style="text-align: center;color:#3e505e;">音标</th>
+      <th style="text-align: center;color:#3e505e;">中文</th>
+    </thead>
+    <tbody id="englishClassBody">
+
+    </tbody>
+</table>
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/englishWord.js" th:src="@{/js/page/englishClass.js}"></script>
+</th:block>
+</html>

@@ -5,9 +5,12 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
 import com.sky.api.AbstractController;
+import com.sky.model.LearnEnglishClass;
 import com.sky.model.LearnEnglishWord;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 /**
@@ -67,5 +70,15 @@ public class LearnEnglishWordApiController extends AbstractController {
         body.setType(body.getEnglish().substring(0,1).toUpperCase());
         learnEnglishWordService.insertOrUpdate(body);
         return ResponseEntity.ok(MapSuccess("保存成功！"));
+    }
+
+    @PostMapping("/getEnglishClassList")
+    public Object getEnglishClassList(String fragment ){
+        Wrapper<LearnEnglishClass> wrapper = new EntityWrapper<LearnEnglishClass>();
+        if (!StringUtils.isEmpty(fragment)) {
+            wrapper.where("fragment REGEXP {0}", fragment);
+        }
+        List<LearnEnglishClass> list = learnEnglishClassService.selectList(wrapper);
+        return ResponseEntity.ok(MapSuccess("查询成功！",list));
     }
 }

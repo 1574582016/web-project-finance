@@ -1,6 +1,7 @@
 package com.sky.api;
 
 import com.sky.core.controller.BaseController;
+import com.sky.model.LearnEnglishClass;
 import com.sky.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,5 +50,8 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected TraditionMarketService traditionMarketService ;
+
+    @Autowired
+    protected LearnEnglishClassService learnEnglishClassService ;
 
 }

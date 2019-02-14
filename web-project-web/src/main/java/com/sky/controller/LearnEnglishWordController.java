@@ -14,4 +14,9 @@ public class LearnEnglishWordController {
     public String learnEnglishWordList(){
         return "page/learnEnglishWordList";
     }
+
+    @RequestMapping("/learnEnglishClassList")
+    public String learnEnglishClassList(){
+        return "page/learnEnglishClassList";
+    }
 }
