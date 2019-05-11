@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StatisticsDayNewsMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StatisticsDayNews">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="menu_code" property="menuCode"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="parent_code" property="parentCode"/>
+        <result column="menu_address" property="menuAddress"/>
+        <result column="menu_url" property="menuUrl"/>
+        <result column="menu_icon" property="menuIcon"/>
+        <result column="order_num" property="orderNum"/>
+    </resultMap>
+
+</mapper>

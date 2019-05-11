@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style type="text/css">
+    .form-title{
+        background-color: #575e63;
+        color: white;
+        text-align: center;
+        border-color: #33373d;
+        padding: 8px;
+        margin-left: 60px;
+    }
+</style>
+<div class="container">
+    <form id="formSearch" class="form-horizontal">
+        <input type="hidden" class="form-control" id="id" th:value="${id}">
+        <div class="alert alert-info form-title">市场信息</div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">市场编码：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listCode" placeholder="市场编码">
+            </div>
+            <label class="control-label col-sm-2">市场名称：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listName" placeholder="市场名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">所属市场：</label>
+            <div class="col-sm-4">
+                <select class="form-control" id="listMarket">
+                    <option value="1">上海证券交易所</option>
+                    <option value="2">证券交易所</option>
+                </select>
+            </div>
+            <label class="control-label col-sm-2">所属板块：</label>
+            <div class="col-sm-4">
+                <select class="form-control" id="listSector">
+                    <option value="1">主板</option>
+                    <option value="2">中小板</option>
+                    <option value="3">创业板</option>
+                    <option value="4">风险警示板</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">上市时间：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listTime" placeholder="上市时间" readonly>
+            </div>
+            <label class="control-label col-sm-2">发行总量：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listNumber" placeholder="发行总量">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">发行价格：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listPrice" placeholder="发行价格">
+            </div>
+            <label class="control-label col-sm-2">发行市值：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listMoney" placeholder="发行市值">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">市场行业：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listIndustry" placeholder="市场行业">
+            </div>
+            <label class="control-label col-sm-2">市值排名：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="listOrder" placeholder="市值排名">
+            </div>
+        </div>
+
+        <div class="alert alert-info form-title">公司信息</div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">公司名称：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="companyName" placeholder="公司名称">
+            </div>
+            <label class="control-label col-sm-2">所属区域：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="companyRegion" placeholder="所属区域">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">成立时间：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="establishTime" placeholder="成立时间" readonly>
+            </div>
+            <label class="control-label col-sm-2">注册资本：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="registerMoney" placeholder="注册资本">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">所属行业：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="companyIndustry" placeholder="所属行业">
+            </div>
+            <label class="control-label col-sm-2">行业细分：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="companyIndustryDetail" placeholder="行业细分">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">运营地区：</label>
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="businessArea" value="1"> 华中地区
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="businessArea" value="2"> 华东地区
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="businessArea" value="3"> 华北地区
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="businessArea" value="4"> 华南地区
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="businessArea" value="5"> 东北地区
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="businessArea" value="6"> 西北地区
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="businessArea" value="7"> 西南地区
+                </label>
+            </div>
+        </div>
+        <div class="alert alert-info form-title">涉及行业</div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">主营行业：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="mainRelateIndustry" placeholder="主营行业">
+            </div>
+            <label class="control-label col-sm-2">副营行业-1：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceRelateIndustryOne" placeholder="副营行业">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">副营行业-2：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceRelateIndustryTwo" placeholder="副营行业">
+            </div>
+            <label class="control-label col-sm-2">副营行业-3：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceRelateIndustryThree" placeholder="副营行业">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">副营行业-4：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceRelateIndustryFour" placeholder="副营行业">
+            </div>
+            <label class="control-label col-sm-2">副营行业-5：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceRelateIndustryFive" placeholder="副营行业">
+            </div>
+        </div>
+        <div class="alert alert-info form-title">涉及产品</div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">主营产品：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="mainProduceProduct" placeholder="主营产品">
+            </div>
+            <label class="control-label col-sm-2">副营产品-1：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceProduceProductOne" placeholder="副营产品">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">副营产品-2：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceProduceProductTwo" placeholder="副营产品">
+            </div>
+            <label class="control-label col-sm-2">副营产品-3：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceProduceProductThree" placeholder="副营产品">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">副营产品-4：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceProduceProductFour" placeholder="副营产品">
+            </div>
+            <label class="control-label col-sm-2">副营产品-5：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceProduceProductFive" placeholder="副营产品">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">副营产品-6：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceProduceProductSix" placeholder="副营产品">
+            </div>
+            <label class="control-label col-sm-2">副营产品-7：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="viceProduceProductSeven" placeholder="副营产品">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12" style="text-align: center;">
+                <button type="button" class="btn btn-primary" id="submitFormButton">保存</button>
+                <button type="button" class="btn btn-default" id="resetFormButton">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/companyInformationEdit.js" th:src="@{/js/page/companyInformationEdit.js}"></script>
+</th:block>
+</html>

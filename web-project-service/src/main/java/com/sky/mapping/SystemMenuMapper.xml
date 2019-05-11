@@ -49,7 +49,7 @@
         LEFT JOIN system_role_menu AS rm ON a.menu_code = rm.menu_code OR b.menu_code = rm.menu_code
         LEFT JOIN system_role AS r ON r.role_code = rm.role_code
         LEFT JOIN system_user_role AS ur ON ur.role_code = r.role_code
-        LEFT JOIN SYSTEM_USER AS u ON ur.user_code = u.user_code
+        LEFT JOIN system_user AS u ON ur.user_code = u.user_code
         WHERE b.isvalid = 1
         AND a.`isvalid` = 1
         AND r.isvalid = 1

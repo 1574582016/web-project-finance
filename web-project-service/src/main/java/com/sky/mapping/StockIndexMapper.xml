@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockIndexMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockIndex">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="data_time" property="dataTime"/>
+        <result column="data_sign" property="dataSign"/>
+        <result column="index_type" property="indexType"/>
+        <result column="time_type" property="timeType"/>
+        <result column="start_point" property="startPoint"/>
+        <result column="end_point" property="endPoint"/>
+        <result column="high_point" property="highPoint"/>
+        <result column="low_point" property="lowPoint"/>
+
+        <result column="deal_number" property="dealNumber"/>
+        <result column="deal_money" property="dealMoney"/>
+        <result column="amplitude" property="amplitude"/>
+    </resultMap>
+
+    <resultMap id="CommonResultMap" type="com.sky.vo.StockStatisticsEchart_VO">
+        <result column="data_sign" property="DateTime"/>
+        <result column="point_change" property="DateType"/>
+        <result column="count_num" property="countNum"/>
+    </resultMap>
+
+    <select id="getStockStatisticsByParame" parameterType="java.lang.String" resultMap="CommonResultMap">
+        SELECT
+        data_sign,
+        point_change,
+        CASE WHEN point_change = 1 THEN COUNT(1) ELSE COUNT(1) * -1 END count_num
+        FROM stock_index
+        WHERE index_type = 1
+        AND time_type = 1
+        GROUP BY data_sign,point_change
+        ORDER BY data_sign DESC
+    </select>
+
+</mapper>
