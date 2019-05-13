@@ -2,6 +2,7 @@ package com.sky.api.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.SystemRole;
 import com.sky.model.SystemRoleMenu;
@@ -25,12 +26,13 @@ import java.util.Map;
 @RequestMapping("/api/role")
 public class SystemRoleApiController extends AbstractController {
 
-
+    @LogRecord(name = "getRoleList" ,description = "根据用户编码查询角色列表")
     @PostMapping("/getRoleList")
     public Object getRoleList(String userCode){
         return ResponseEntity.ok(MapSuccess("查询成功！",systemRoleService.getSystemRoleList(userCode , null)));
     }
 
+    @LogRecord(name = "getRoleInfo" ,description = "根据角色编码查询角色信息")
     @PostMapping("/getRoleInfo")
     public Object getRoleInfo(String roleCode){
         SystemRole systemRole = systemRoleService.selectOne(new EntityWrapper<SystemRole>().where("role_code = {0}",roleCode));
@@ -41,6 +43,7 @@ public class SystemRoleApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功！",map));
     }
 
+    @LogRecord(name = "checkRoleName" ,description = "校验角色是否已存在")
     @PostMapping("/checkRoleName")
     public Object checkRoleName(String menuName ,String roleCode){
         SystemRole systemRole = systemRoleService.selectOne(new EntityWrapper<SystemRole>().where("role_name = {0}",menuName));
@@ -50,6 +53,7 @@ public class SystemRoleApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功！",systemRole != null ? true : false));
     }
 
+    @LogRecord(name = "editRole" ,description = "编辑角色信息")
     @PostMapping("/editRole")
     public Object editRole(@RequestBody SystemRole body){
         if(StringUtils.isNotBlank(body.getRoleCode())){
@@ -61,6 +65,7 @@ public class SystemRoleApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("保存成功！", body.getRoleCode()));
     }
 
+    @LogRecord(name = "authRole" ,description = "为角色授权")
     @PostMapping("/authRole")
     public Object authRole(String roleCode ,String menuCodes){
         systemRoleMenuService.delete(new EntityWrapper<SystemRoleMenu>().where("role_code = {0}" , roleCode));

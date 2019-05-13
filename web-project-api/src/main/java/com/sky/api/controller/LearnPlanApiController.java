@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.LearnTask;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/task")
 public class LearnPlanApiController extends AbstractController {
 
+    @LogRecord(name = "getPlanTaskList" ,description = "查询计划任务列表")
     @PostMapping("/getPlanTaskList")
     public Object getPlanTaskList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                     @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
@@ -42,6 +44,7 @@ public class LearnPlanApiController extends AbstractController {
         return PageData(selectedPage);
     }
 
+    @LogRecord(name = "editPlanTask" ,description = "编辑计划任务信息")
     @PostMapping("/editPlanTask")
     public Object editPlanTask(@RequestBody LearnTask body){
         if(body.getId() == null){
@@ -51,6 +54,7 @@ public class LearnPlanApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("保存成功！"));
     }
 
+    @LogRecord(name = "getPlanTaskInfo" ,description = "根据ID获取计划任务信息")
     @PostMapping("/getPlanTaskInfo")
     public Object getPlanTaskInfo(String id){
         LearnTask planTask = learnTaskService.selectById(id);

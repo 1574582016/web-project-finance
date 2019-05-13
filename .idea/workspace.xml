@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="公司统计">
+    <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecord.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/DateUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/RequestUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/StringUtils.java" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/config/WebConfig.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemMenuApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemMenuApiController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/config/WebConfig.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/config/WebConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/FinanceMarketApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/FinanceMarketApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnDiaryApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnDiaryApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnEnglishWordApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnEnglishWordApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnPlanApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnPlanApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnQuestionApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnQuestionApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemParamApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemParamApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemRoleApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemRoleApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/TraditionMarketApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/TraditionMarketApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/logback.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/config/WebConfig.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/WebConfig.java" />
     </list>
     <ignored path="web-project-finance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,52 +52,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WebConfig.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/config/WebConfig.java">
+      <file leaf-file-name="LogRecordAspect.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccessInterceptor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/AccessInterceptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SystemUserApiController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
-              <folding />
+            <state relative-caret-position="309">
+              <caret line="39" column="124" selection-start-line="39" selection-start-column="124" selection-end-line="39" selection-end-column="124" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,40 +87,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/LearnEnglishClassMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/learnEnglishClassList.html" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnEnglishWordApiController.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/englishClass.js" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SystemMenuMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/dayNewsStatistics.js" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StatisticsDayNews.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StatisticsDayNewsMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StatisticsDayNews.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StatisticsDayNewsService.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StatisticsDayNewsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/WebProjectWebApplicationTests.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/HttpUtil.java" />
-        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/SpiderUtils.java" />
-        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/consts/SpiderUrlConst.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessStockIndexTest.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockIndex.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/StockStatisticsEchart_VO.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockIndexMapper.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockIndexService.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockIndexServiceImpl.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockIndexMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/CompanyBaseInformationMapper.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/CompanyBaseInformationServiceImpl.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/CompanyBaseInformationService.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationList.html" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/dayNewsStatisticsList.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyBaseInformation.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyOperateInformation.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/CompanyOperateInformationMapper.xml" />
@@ -150,11 +111,33 @@
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationEdit.html" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationEdit.js" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationList.js" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyAllInfomationStatictis.js" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyAllInfomationStatictis.html" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/interceptor/WebConfig.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/logback.xml" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/RequestUtil.java" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/DateUtils.java" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/StringUtils.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/config/WebConfig.java" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/annotation/LogRecord.java" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/annotation/LogRecordAspect.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/WebConfig.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnPlanApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/FinanceMarketApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnDiaryApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnEnglishWordApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnQuestionApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemParamApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemRoleApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/TraditionMarketApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java" />
       </list>
     </option>
   </component>
@@ -250,6 +233,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="transaction-logs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShadowNoFileLockStore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaultStore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recovery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -277,36 +290,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -395,12 +378,380 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="interceptor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annotation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,11 +778,11 @@
       <recent name="com.sky.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WebProgram\project\web-project-finance\web-project-core\src\main\java\com\sky\core\utils" />
       <recent name="D:\WebProgram\project\web-project-finance\web-project-web\src\main\resources\static\libs\echarts-2.2.7" />
       <recent name="D:\WebProgram\project\web-project-finance\web-project-web\src\main\resources" />
       <recent name="D:\WebProgram\project\web-project-finance\web-project-core\src\main\java\com\sky\core" />
       <recent name="D:\WebProgram\project\web-project-finance\web-project-api\src\main\java" />
-      <recent name="D:\WebProgram\project\web-project-finance\web-project-core\src\main\resources\txt" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebApplication">
@@ -1048,7 +1399,7 @@
       <workItem from="1557406600052" duration="139000" />
       <workItem from="1557474358697" duration="17532000" />
       <workItem from="1557541462723" duration="19946000" />
-      <workItem from="1557739293947" duration="1126000" />
+      <workItem from="1557739293947" duration="12385000" />
     </task>
     <task id="LOCAL-00001" summary="首页调整">
       <created>1540551511444</created>
@@ -1078,7 +1429,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557739330010</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="拦截器">
+      <created>1557740462774</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1557740462774</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1114,7 +1472,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135903000" />
+    <option name="totallyTimeSpent" value="147162000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1128,7 +1486,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5313316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5313316" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1183,7 +1541,8 @@
     <MESSAGE value="权限管理调整" />
     <MESSAGE value="公司统计" />
     <MESSAGE value="登陆拦截" />
-    <option name="LAST_COMMIT_MESSAGE" value="登陆拦截" />
+    <MESSAGE value="拦截器" />
+    <option name="LAST_COMMIT_MESSAGE" value="拦截器" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1196,157 +1555,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SystemRoleMenuMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/learnDiaryEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="48" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/systemMenuList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/englishClass.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/financeMarket.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3590">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/common-model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1771">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1106">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemParam.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3534">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3880">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnTask.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2683">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnQuestion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2360">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnDiaryView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnDiaryList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1448">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="119" column="1" selection-start-line="119" selection-start-column="1" selection-end-line="119" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnEnglishWordApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="59" column="65" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnDiaryApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnDiaryEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnEnglishWord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="59" column="34" selection-start-line="3" selection-start-column="8" selection-end-line="59" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/dayNewsStatisticsList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
@@ -1365,6 +1573,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
           <caret line="96" column="34" selection-start-line="92" selection-start-column="4" selection-end-line="96" selection-end-column="34" />
+          <folding>
+            <element signature="e#9769#9770#0" expanded="false" />
+            <element signature="e#9817#9818#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1372,6 +1584,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1379,6 +1592,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1411,6 +1625,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="11" column="126" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="126" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,6 +1640,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="24" column="24" selection-start-line="21" selection-start-column="8" selection-end-line="24" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1432,6 +1648,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="172" selection-start-line="17" selection-start-column="172" selection-end-line="17" selection-end-column="172" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#873#900#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1477,16 +1697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
@@ -1544,20 +1754,118 @@
         <state relative-caret-position="413">
           <caret line="235" column="44" selection-start-line="235" selection-start-column="44" selection-end-line="236" selection-end-column="79" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+        <state relative-caret-position="114">
+          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="23" column="124" selection-start-line="23" selection-start-column="124" selection-end-line="23" selection-end-column="124" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/logback.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/Tools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2223">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2141">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-266">
+          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+          <folding>
+            <marker date="1557747729927" expanded="true" signature="522:528" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/DateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="285" column="17" selection-start-line="285" selection-start-column="17" selection-end-line="285" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/HttpUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="22" column="56" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="56" />
+          <folding>
+            <element signature="e#703#704#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/RequestUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="17" column="66" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1276#1292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="51" column="85" selection-start-line="51" selection-start-column="85" selection-end-line="51" selection-end-column="85" />
           <folding />
         </state>
       </provider>
@@ -1570,27 +1878,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/login.html">
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/WebConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="399">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="2" selection-end-line="31" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/config/WebConfig.java">
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="26" column="61" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="61" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="89" column="79" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/FinanceMarketApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="23" column="72" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnDiaryApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="20" column="68" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnEnglishWordApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="78" column="72" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnPlanApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="56" column="70" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnQuestionApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="39" column="75" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="19" column="75" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemParamApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="83" column="77" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemRoleApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="67" column="56" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="75" column="54" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/TraditionMarketApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="37" column="75" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="39" column="124" selection-start-line="39" selection-start-column="124" selection-end-line="39" selection-end-column="124" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

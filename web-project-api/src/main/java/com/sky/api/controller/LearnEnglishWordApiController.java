@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.LearnEnglishClass;
 import com.sky.model.LearnEnglishWord;
@@ -20,6 +21,7 @@ import java.util.List;
 @RequestMapping("/api/english")
 public class LearnEnglishWordApiController extends AbstractController {
 
+    @LogRecord(name = "getEnglishWordList" ,description = "查询英语单词列表")
     @PostMapping("/getEnglishWordList")
     public Object getEnglishWordList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                      @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
@@ -54,12 +56,14 @@ public class LearnEnglishWordApiController extends AbstractController {
         return PageData(selectedPage);
     }
 
+    @LogRecord(name = "getEnglishWordInfo" ,description = "根据ID查询英语单词信息")
     @PostMapping("/getEnglishWordInfo")
     public Object getEnglishWordInfo(String id){
         LearnEnglishWord englishWord = learnEnglishWordService.selectById(id);
         return ResponseEntity.ok(MapSuccess("查询成功",englishWord));
     }
 
+    @LogRecord(name = "editEnglishWord" ,description = "编辑英语单词信息")
     @PostMapping("/editEnglishWord")
     public Object editEnglishWord(@RequestBody LearnEnglishWord body){
         System.out.println(body.toString());
@@ -72,6 +76,7 @@ public class LearnEnglishWordApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("保存成功！"));
     }
 
+    @LogRecord(name = "getEnglishClassList" ,description = "查询英语单词分类列表")
     @PostMapping("/getEnglishClassList")
     public Object getEnglishClassList(String fragment ){
         Wrapper<LearnEnglishClass> wrapper = new EntityWrapper<LearnEnglishClass>();

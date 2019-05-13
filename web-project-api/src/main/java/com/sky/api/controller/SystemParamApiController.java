@@ -3,6 +3,7 @@ package com.sky.api.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.SystemParam;
 import com.sky.model.SystemUser;
@@ -20,6 +21,7 @@ import java.util.List;
 @RequestMapping("/api/param")
 public class SystemParamApiController extends AbstractController {
 
+    @LogRecord(name = "getSystemParamList" ,description = "查询系统参数列表")
     @PostMapping("/getSystemParamList")
     public Object getSystemParamList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                     @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
@@ -29,6 +31,7 @@ public class SystemParamApiController extends AbstractController {
         return PageData(selectedPage);
     }
 
+    @LogRecord(name = "editSystemParam" ,description = "编辑系统参数列表")
     @PostMapping("/editSystemParam")
     public Object editSystemParam(@RequestBody SystemParam body){
         int num = systemParamService.selectCount(new EntityWrapper<SystemParam>().where("param_identity = {0}",body.getParamIdentity()));
@@ -69,6 +72,7 @@ public class SystemParamApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("保存成功！"));
     }
 
+    @LogRecord(name = "getSystemParamInfo" ,description = "根据ID查询系统参数信息")
     @PostMapping("/getSystemParamInfo")
     public Object getSystemParamInfo(String id){
         SystemParam systemParam = systemParamService.selectById(id);
@@ -77,6 +81,7 @@ public class SystemParamApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功",systemParam));
     }
 
+    @LogRecord(name = "getParamListByIndetity" ,description = "根据标识查询指定参数列表")
     @PostMapping("/getParamListByIndetity")
     public Object getParamListByIndetity(String indetity){
         return ResponseEntity.ok(MapSuccess("查询成功",systemParamService.getParamListByIdentity(indetity)));

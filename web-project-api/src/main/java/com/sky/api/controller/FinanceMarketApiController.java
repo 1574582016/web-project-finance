@@ -1,5 +1,6 @@
 package com.sky.api.controller;
 
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.core.model.TreeNode;
 import com.sky.model.FinanceMarket;
@@ -20,6 +21,7 @@ import java.util.List;
 @RequestMapping("/api/finance")
 public class FinanceMarketApiController extends AbstractController {
 
+    @LogRecord(name = "getFinanceMarketTree" ,description = "查询金融市场树状图")
     @PostMapping("/getFinanceMarketTree")
     public Object getFinanceMarketTree(){
         List<FinanceMarket> list = financeMarketService.selectList(null);

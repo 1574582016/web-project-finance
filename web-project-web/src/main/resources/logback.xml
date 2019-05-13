@@ -24,7 +24,7 @@
   <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <!-- 保存日志文件的路径 -->
     <!--     <file>D:/logs/admin_info.log</file> -->
-    <file>/opt/soft/tomcat/logs/info.log</file>
+    <file>/finance/logs/info.log</file>
     <!-- 日志格式 -->
     <encoder>
       <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] - %m%n</pattern>
@@ -41,7 +41,7 @@
     <!-- 循环政策：基于时间创建日志文件 -->
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <!-- 日志文件名格式 -->
-      <fileNamePattern>/opt/soft/tomcat/logs/admin_info.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>/finance/logs/admin_info.%d{yyyy-MM-dd}.log</fileNamePattern>
       <!-- 最大保存时间：30天-->
       <maxHistory>30</maxHistory>
     </rollingPolicy>
@@ -51,7 +51,7 @@
   <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <!-- 保存日志文件的路径 -->
     <!--     <file>D:/logs/admin_error.log</file> -->
-    <file>/opt/soft/tomcat/logs/error.log</file>
+    <file>/finance/logs/error.log</file>
     <!-- 日志格式 -->
     <encoder>
       <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] - %m%n</pattern>
@@ -69,7 +69,7 @@
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <!-- 日志文件名格式 -->
       <!--       <fileNamePattern>e:/logs/admin_error.%d{yyyy-MM-dd}.log</fileNamePattern> -->
-      <fileNamePattern>/opt/soft/tomcat/logs/admin_error.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>/finance/logs/admin_error.%d{yyyy-MM-dd}.log</fileNamePattern>
       <!-- 最大保存时间：30天-->
       <maxHistory>30</maxHistory>
     </rollingPolicy>

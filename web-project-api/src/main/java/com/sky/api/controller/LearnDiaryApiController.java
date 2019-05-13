@@ -3,6 +3,7 @@ package com.sky.api.controller;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.LearnDiary;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.io.*;
 @RequestMapping("/api/diary")
 public class LearnDiaryApiController extends AbstractController {
 
+    @LogRecord(name = "getLearnDiaryList" ,description = "查询学习日记列表")
     @PostMapping("/getLearnDiaryList")
     public Object getLearnDiaryList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                      @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
@@ -28,6 +30,7 @@ public class LearnDiaryApiController extends AbstractController {
         return PageData(selectedPage);
     }
 
+    @LogRecord(name = "editLearnDiary" ,description = "编辑学习日记信息")
     @PostMapping("/editLearnDiary")
     public Object editLearnDiary(@RequestBody LearnDiary body){
         if(body.getId() == null){
@@ -59,6 +62,7 @@ public class LearnDiaryApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("保存成功"));
     }
 
+    @LogRecord(name = "getLearnDiaryInfo" ,description = "根据ID查询学习日记信息")
     @PostMapping("/getLearnDiaryInfo")
     public Object getLearnDiaryInfo(String id){
         LearnDiary body = learnDiaryService.selectById(id);

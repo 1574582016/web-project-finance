@@ -3,6 +3,7 @@ package com.sky.api.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.sky.api.AbstractController;
+import com.sky.annotation.LogRecord;
 import com.sky.model.SystemMenu;
 import com.sky.model.SystemRole;
 import com.sky.model.SystemRoleMenu;
@@ -23,17 +24,20 @@ import java.util.Map;
 @RequestMapping("/api/menu")
 public class SystemMenuApiController extends AbstractController {
 
+    @LogRecord(name = "getMenuTree" ,description = "查询菜单树状图")
     @PostMapping("/getMenuTree")
     public Object getMenuTree(){
         return ResponseEntity.ok(MapSuccess("查询成功！",systemMenuService.getMenuTree(null)));
     }
 
+//    @LogRecord(name = "getMenuList" ,description = "查询首页菜单列表")
     @PostMapping("/getMenuList")
     public Object getMenuList(){
         SystemUser systemUser = (SystemUser)this.getSession().getAttribute("systemUser");
         return ResponseEntity.ok(MapSuccess("查询成功！",systemMenuService.getMenuList(systemUser.getUserCode())));
     }
 
+    @LogRecord(name = "getMenuInfo" ,description = "查询菜单信息")
     @PostMapping("/getMenuInfo")
     public Object getMenuInfo(String menuCode){
         SystemMenu systemMenu = systemMenuService.selectOne(new EntityWrapper<SystemMenu>().where("menu_code = {0}",menuCode));
@@ -44,6 +48,7 @@ public class SystemMenuApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功！",map));
     }
 
+    @LogRecord(name = "checkMenuName" ,description = "校验菜单是否已存在")
     @PostMapping("/checkMenuName")
     public Object checkMenuName(String parentCode , String menuName ,String menuCode){
         SystemMenu systemMenu = systemMenuService.selectOne(new EntityWrapper<SystemMenu>().where("menu_name = {0}",menuName).and("parent_code = {0}",parentCode));
@@ -53,6 +58,7 @@ public class SystemMenuApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功！",systemMenu != null ? true : false));
     }
 
+    @LogRecord(name = "editMenu" ,description = "编辑菜单信息")
     @PostMapping("/editMenu")
     public Object editMenu(@RequestBody SystemMenu body ,String roleId){
         String[] roleIds = {};

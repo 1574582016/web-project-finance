@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.SystemUser;
 import com.sky.model.SystemUserRole;
@@ -20,7 +21,7 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class SystemUserApiController extends AbstractController {
 
-
+    @LogRecord(name = "getSystemUserList" ,description = "查询系统用户列表")
     @PostMapping("/getSystemUserList")
     public Object getSystemUserList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                      @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
@@ -31,12 +32,14 @@ public class SystemUserApiController extends AbstractController {
         return PageData(selectedPage);
     }
 
+    @LogRecord(name = "getSystemUserInfo" ,description = "根据ID查询系统用户信息")
     @PostMapping("/getSystemUserInfo")
     public Object getSystemUserInfo(String id){
         SystemUser systemUser = systemUserService.selectById(id);
         return ResponseEntity.ok(MapSuccess("查询成功",systemUser));
     }
 
+    @LogRecord(name = "editSystemUser" ,description = "编辑系统用户信息")
     @PostMapping("/editSystemUser")
     public Object editSystemUser(@RequestBody SystemUser body){
         int num = systemUserService.selectCount(new EntityWrapper<SystemUser>().where("user_name = {0}",body.getUserName()));
@@ -50,6 +53,7 @@ public class SystemUserApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("保存成功！"));
     }
 
+    @LogRecord(name = "linkUserRole" ,description = "为用户赋予角色")
     @PostMapping("/linkUserRole")
     public Object linkUserRole(String userCode , String roleId){
            if(StringUtils.isNotEmpty(roleId)){
@@ -69,6 +73,7 @@ public class SystemUserApiController extends AbstractController {
            }
     }
 
+    @LogRecord(name = "login" ,description = "用户登录接口")
     @PostMapping("/login")
     public Object login(String userName ,String password){
         SystemUser systemUser = systemUserService.selectOne(new EntityWrapper<SystemUser>().where("user_name = {0}" ,userName).and("password = {0} " , password));

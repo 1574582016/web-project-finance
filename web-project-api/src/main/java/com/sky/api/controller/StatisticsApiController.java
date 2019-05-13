@@ -1,5 +1,6 @@
 package com.sky.api.controller;
 
+import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.vo.StockStatisticsEchart_VO;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import java.util.*;
 @RequestMapping("/api/statistics")
 public class StatisticsApiController extends AbstractController {
 
+    @LogRecord(name = "getStockStatisticsData" ,description = "查询股票信息统计数据")
     @PostMapping("/getStockStatisticsData")
     public Object getLearnQuestionList(){
         List<StockStatisticsEchart_VO> list = stockIndexService.getStockStatisticsByParame();
