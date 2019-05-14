@@ -34,7 +34,7 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
      * 注册资本(万元)
      */
     @TableField("register_money")
-    private BigDecimal registerMoney ;
+    private String registerMoney ;
 
     /**
      * 公司行业
@@ -88,7 +88,7 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
      * 发现量(万股)
      */
     @TableField("list_number")
-    private BigDecimal listNumber ;
+    private String listNumber ;
 
     /**
      * 发行价
@@ -100,13 +100,13 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
      * 发现市值(亿)
      */
     @TableField("list_money")
-    private BigDecimal listMoney ;
+    private String listMoney ;
 
     /**
      * 市值排名
      */
     @TableField("list_order")
-    private BigDecimal listOrder ;
+    private Integer listOrder ;
 
     /**
      * 发现市值(亿)
@@ -198,7 +198,6 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
     @TableField("vice_produce_product_seven")
     private String viceProduceProductSeven ;
 
-
     public String getCompanyName() {
         return companyName;
     }
@@ -223,11 +222,11 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
         this.establishTime = establishTime;
     }
 
-    public BigDecimal getRegisterMoney() {
+    public String getRegisterMoney() {
         return registerMoney;
     }
 
-    public void setRegisterMoney(BigDecimal registerMoney) {
+    public void setRegisterMoney(String registerMoney) {
         this.registerMoney = registerMoney;
     }
 
@@ -245,6 +244,14 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
 
     public void setCompanyIndustryDetail(String companyIndustryDetail) {
         this.companyIndustryDetail = companyIndustryDetail;
+    }
+
+    public String getBusinessArea() {
+        return businessArea;
+    }
+
+    public void setBusinessArea(String businessArea) {
+        this.businessArea = businessArea;
     }
 
     public String getListCode() {
@@ -287,11 +294,11 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
         this.listSector = listSector;
     }
 
-    public BigDecimal getListNumber() {
+    public String getListNumber() {
         return listNumber;
     }
 
-    public void setListNumber(BigDecimal listNumber) {
+    public void setListNumber(String listNumber) {
         this.listNumber = listNumber;
     }
 
@@ -303,12 +310,28 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
         this.listPrice = listPrice;
     }
 
-    public BigDecimal getListMoney() {
+    public String getListMoney() {
         return listMoney;
     }
 
-    public void setListMoney(BigDecimal listMoney) {
+    public void setListMoney(String listMoney) {
         this.listMoney = listMoney;
+    }
+
+    public Integer getListOrder() {
+        return listOrder;
+    }
+
+    public void setListOrder(Integer listOrder) {
+        this.listOrder = listOrder;
+    }
+
+    public String getListIndustry() {
+        return listIndustry;
+    }
+
+    public void setListIndustry(String listIndustry) {
+        this.listIndustry = listIndustry;
     }
 
     public String getMainRelateIndustry() {
@@ -421,29 +444,5 @@ public class CompanyBaseInformation extends BaseModel<CompanyBaseInformation> {
 
     public void setViceProduceProductSeven(String viceProduceProductSeven) {
         this.viceProduceProductSeven = viceProduceProductSeven;
-    }
-
-    public BigDecimal getListOrder() {
-        return listOrder;
-    }
-
-    public void setListOrder(BigDecimal listOrder) {
-        this.listOrder = listOrder;
-    }
-
-    public String getListIndustry() {
-        return listIndustry;
-    }
-
-    public void setListIndustry(String listIndustry) {
-        this.listIndustry = listIndustry;
-    }
-
-    public String getBusinessArea() {
-        return businessArea;
-    }
-
-    public void setBusinessArea(String businessArea) {
-        this.businessArea = businessArea;
     }
 }

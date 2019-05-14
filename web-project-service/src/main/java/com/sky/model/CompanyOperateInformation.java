@@ -40,7 +40,7 @@ public class CompanyOperateInformation extends BaseModel<CompanyOperateInformati
      * 主营收入
      */
     @TableField("operate_revenue")
-    private BigDecimal operateRevenue ;
+    private String operateRevenue ;
 
     /**
      * 主营收入率
@@ -52,7 +52,7 @@ public class CompanyOperateInformation extends BaseModel<CompanyOperateInformati
      * 主营成本
      */
     @TableField("operate_cost")
-    private BigDecimal operateCost ;
+    private String operateCost ;
 
     /**
      * 主营成本率
@@ -64,7 +64,7 @@ public class CompanyOperateInformation extends BaseModel<CompanyOperateInformati
      * 主营利润
      */
     @TableField("operate_profit")
-    private BigDecimal operateProfit ;
+    private String operateProfit ;
 
     /**
      * 主营利润率
@@ -104,11 +104,11 @@ public class CompanyOperateInformation extends BaseModel<CompanyOperateInformati
         this.typeName = typeName;
     }
 
-    public BigDecimal getOperateRevenue() {
+    public String getOperateRevenue() {
         return operateRevenue;
     }
 
-    public void setOperateRevenue(BigDecimal operateRevenue) {
+    public void setOperateRevenue(String operateRevenue) {
         this.operateRevenue = operateRevenue;
     }
 
@@ -120,11 +120,11 @@ public class CompanyOperateInformation extends BaseModel<CompanyOperateInformati
         this.operateRevenueRate = operateRevenueRate;
     }
 
-    public BigDecimal getOperateCost() {
+    public String getOperateCost() {
         return operateCost;
     }
 
-    public void setOperateCost(BigDecimal operateCost) {
+    public void setOperateCost(String operateCost) {
         this.operateCost = operateCost;
     }
 
@@ -136,11 +136,11 @@ public class CompanyOperateInformation extends BaseModel<CompanyOperateInformati
         this.operateCostRate = operateCostRate;
     }
 
-    public BigDecimal getOperateProfit() {
+    public String getOperateProfit() {
         return operateProfit;
     }
 
-    public void setOperateProfit(BigDecimal operateProfit) {
+    public void setOperateProfit(String operateProfit) {
         this.operateProfit = operateProfit;
     }
 

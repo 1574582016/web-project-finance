@@ -131,7 +131,7 @@ $(function () {
                 valign: 'middle',
                 width: 160, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
-                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\')">查看</button>&nbsp;'
+                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\',\'' + row.listCode  + '\')">查看</button>&nbsp;'
                         + '<button class="btn btn-primary btn-xs" onclick="edit(\'' + row.id + '\')">修改</button>';
                 }
             }
@@ -156,7 +156,7 @@ function edit(id) {
     location.href="/company/companyInformationEdit?id="+id;
 }
 
-function view(id) {
+function view(id , listCode) {
     addNextBread("查看公司信息");
-    location.href="/company/companyAllInfomationStatictis?id="+id;
+    location.href="/company/companyAllInfomationStatictis?id="+id + "&listCode=" + listCode;
 }

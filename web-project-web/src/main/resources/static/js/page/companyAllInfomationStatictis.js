@@ -1,9 +1,17 @@
 
 $(function () {
     var id = $("#id").val();
+    var listCode = $("#a_listCode").val();
+
+    $('#p_publishDate').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'zh-CN',
+        clearBtn: true ,
+        autoclose: true
+    });
+
     if(!isEmpty(id)){
         $.APIPost("/api/company/getCompanyBaseInformationById?id="+id ,function (response) {
-            console.log(response);
             $("#companyName").html(response.data.result.companyName);
             $("#companyRegion").html(response.data.result.companyRegion);
             $("#establishTime").html(response.data.result.establishTime);
@@ -147,192 +155,9 @@ $(function () {
         })
     }
 
-    var pieChart = echarts.init(document.getElementById('companyProductPie'));
-    pieOption = {
-        title : {
-            text: '南丁格尔玫瑰图',
-            subtext: '纯属虚构',
-            x:'center'
-        },
-        tooltip : {
-            trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        legend: {
-            x : 'center',
-            y : 'bottom',
-            data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
-        },
-        toolbox: {
-            show : true,
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                magicType : {
-                    show: true,
-                    type: ['pie', 'funnel']
-                },
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
-        },
-        calculable : true,
-        series : [
-            {
-                name:'面积模式',
-                type:'pie',
-                radius : [30, 110],
-                center : ['15%', 200],
-                roseType : 'area',
-                // x: '50%',               // for funnel
-                max: 40,                // for funnel
-                sort : 'ascending',     // for funnel
-                data:[
-                    {value:10, name:'rose1'},
-                    {value:5, name:'rose2'},
-                    {value:15, name:'rose3'},
-                    {value:25, name:'rose4'},
-                    {value:20, name:'rose5'},
-                    {value:35, name:'rose6'},
-                    {value:30, name:'rose7'},
-                    {value:40, name:'rose8'}
-                ]
-            },
-            {
-                name:'面积模式',
-                type:'pie',
-                radius : [30, 110],
-                center : ['50%', 200],
-                roseType : 'area',
-                x: '50%',               // for funnel
-                max: 40,                // for funnel
-                sort : 'ascending',     // for funnel
-                data:[
-                    {value:10, name:'rose1'},
-                    {value:5, name:'rose2'},
-                    {value:15, name:'rose3'},
-                    {value:25, name:'rose4'},
-                    {value:20, name:'rose5'},
-                    {value:35, name:'rose6'},
-                    {value:30, name:'rose7'},
-                    {value:40, name:'rose8'}
-                ]
-            },
-            {
-                name:'面积模式',
-                type:'pie',
-                radius : [30, 110],
-                center : ['85%', 200],
-                roseType : 'area',
-                x: '50%',               // for funnel
-                max: 40,                // for funnel
-                sort : 'ascending',     // for funnel
-                data:[
-                    {value:10, name:'rose1'},
-                    {value:5, name:'rose2'},
-                    {value:15, name:'rose3'},
-                    {value:25, name:'rose4'},
-                    {value:20, name:'rose5'},
-                    {value:35, name:'rose6'},
-                    {value:30, name:'rose7'},
-                    {value:40, name:'rose8'}
-                ]
-            }
-        ]
-    };
-    pieChart.setOption(pieOption);
+    createCompanyOpratePie(listCode);
 
-    var barChart = echarts.init(document.getElementById('companyProductBar'));
-    barOption = {
-        title : {
-            text: 'ECharts2 vs ECharts1',
-            subtext: 'Chrome下测试数据'
-        },
-        tooltip : {
-            trigger: 'axis'
-        },
-        legend: {
-            data:[
-                'ECharts1 - 2k数据','ECharts1 - 2w数据','ECharts1 - 20w数据','',
-                'ECharts2 - 2k数据','ECharts2 - 2w数据','ECharts2 - 20w数据'
-            ]
-        },
-        toolbox: {
-            show : true,
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                magicType : {show: true, type: ['line', 'bar']},
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
-        },
-        calculable : true,
-        grid: {y: 70, y2:30, x2:20},
-        xAxis : [
-            {
-                type : 'category',
-                data : ['Line','Bar','Scatter','K','Map']
-            },
-            {
-                type : 'category',
-                axisLine: {show:false},
-                axisTick: {show:false},
-                axisLabel: {show:false},
-                splitArea: {show:false},
-                splitLine: {show:false},
-                data : ['Line','Bar','Scatter','K','Map']
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                axisLabel:{formatter:'{value} ms'}
-            }
-        ],
-        series : [
-            {
-                name:'ECharts2 - 2k数据',
-                type:'bar',
-                itemStyle: {normal: {color:'rgba(193,35,43,1)', label:{show:true}}},
-                data:[40,155,95,75, 0]
-            },
-            {
-                name:'ECharts2 - 2w数据',
-                type:'bar',
-                itemStyle: {normal: {color:'rgba(181,195,52,1)', label:{show:true,textStyle:{color:'#27727B'}}}},
-                data:[100,200,105,100,156]
-            },
-            {
-                name:'ECharts2 - 20w数据',
-                type:'bar',
-                itemStyle: {normal: {color:'rgba(252,206,16,1)', label:{show:true,textStyle:{color:'#E87C25'}}}},
-                data:[906,911,908,778,0]
-            },
-            {
-                name:'ECharts1 - 2k数据',
-                type:'bar',
-                xAxisIndex:1,
-                itemStyle: {normal: {color:'rgba(193,35,43,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'\n'):'';}}}},
-                data:[96,224,164,124,0]
-            },
-            {
-                name:'ECharts1 - 2w数据',
-                type:'bar',
-                xAxisIndex:1,
-                itemStyle: {normal: {color:'rgba(181,195,52,0.5)', label:{show:true}}},
-                data:[491,2035,389,955,347]
-            },
-            {
-                name:'ECharts1 - 20w数据',
-                type:'bar',
-                xAxisIndex:1,
-                itemStyle: {normal: {color:'rgba(252,206,16,0.5)', label:{show:true,formatter:function(p){return p.value > 0 ? (p.value +'+'):'';}}}},
-                data:[3000,3000,2817,3000,0]
-            }
-        ]
-    };
-    barChart.setOption(barOption);
+    createCompanyOprateBar(listCode);
 
     $('#companyProductTable').bootstrapTable('destroy').bootstrapTable({
         url: '/api/company/getCompanyOperateInformationList',         //请求后台的URL（*）
@@ -348,10 +173,7 @@ $(function () {
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 size: params.limit,   //页面大小
                 page: params.offset/params.limit + 1,  //页码
-                name: $("#s_name").val(),
-                type: $("#s_type").val(),
-                startDate: $("#s_start").val(),
-                endDate: $("#s_end").val()
+                listCode: listCode
             };
             return temp;
         },
@@ -373,64 +195,58 @@ $(function () {
         columns: [
             {
                 field: 'operateType',
-                title: '股票编码',
-                align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'listName',
-                title: '股票名称',
-                align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'listIndustry',
-                title: '行业板块',
-                align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'listMarket',
-                title: '交易所',
+                title: '营运分类',
                 align: 'center',
                 valign: 'middle',
                 formatter: function (value, row, index) {
                     if(value == 1){
-                        return "上交所";
+                        return "按行业分类";
                     }
                     if(value == 2){
-                        return "深交所";
-                    }
-                }
-            }, {
-                field: 'listSector',
-                title: '市场板块',
-                align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    if(value == 1){
-                        return "主板";
-                    }
-                    if(value == 2){
-                        return "中小板";
+                        return "按产品分类";
                     }
                     if(value == 3){
-                        return "创业板";
-                    }
-                    if(value == 4){
-                        return "风险警示板";
+                        return "按地域分类";
                     }
                 }
             }, {
-                field: 'companyRegion',
-                title: '所属区域',
+                field: 'publishDate',
+                title: '发布日期',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'companyIndustry',
-                title: '公司行业',
+                field: 'typeName',
+                title: '主营构成',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'companyIndustryDetail',
-                title: '行业细分',
+                field: 'operateRevenue',
+                title: '主营收入',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'operateRevenueRate',
+                title: '主营收入率(%)',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'operateCost',
+                title: '主营成本',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'operateCostRate',
+                title: '主营成本率(%)',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'operateProfit',
+                title: '主营利润',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'operateProfitRate',
+                title: '主营利润率(%)',
                 align: 'center',
                 valign: 'middle'
             }, {
@@ -439,8 +255,7 @@ $(function () {
                 valign: 'middle',
                 width: 160, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
-                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\')">查看</button>&nbsp;'
-                        + '<button class="btn btn-primary btn-xs" onclick="edit(\'' + row.id + '\')">修改</button>';
+                    return '<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#companyProductModal" onclick="editOperate(\'' + row.id + '\')">修改</button>';
                 }
             }
         ]
@@ -448,14 +263,240 @@ $(function () {
 
     $("#addCompanyProductData").click(function () {
         $('#companyProductModal').on('show.bs.modal',function() {
-            // $("#id").val("");
-            // $("#english").val("");
-            // $("#pronunciation").val("");
-            // $("#chinese").val("");
-            // $("#level").val("A");
-            // $("#sentence").val("");
-            // $("[name='master']").removeAttr("checked");
-            // $("[name='master'][value='1']").attr("checked", true);
+            $("#p_id").val("");
+            $("#p_operateType").val("1");
+            $("#p_typeName").val("");
+            $("#p_publishDate").val("");
+            $("#p_operateRevenue").val("");
+            $("#p_operateRevenueRate").val("");
+            $("#p_operateCost").val("");
+            $("#p_operateCostRate").val("");
+            $("#p_operateProfit").val("");
+            $("#p_operateProfitRate").val("");
         });
     });
+
+    $("#p_submitDataButton").click(function () {
+        var p_id = $("#p_id").val();
+        var operateType = $("#p_operateType").val();
+        var typeName = $("#p_typeName").val();
+        if(isEmpty(typeName)){
+            showFailedAlert("主营构成不能为空！");
+            return ;
+        }
+        var publishDate = $("#p_publishDate").val();
+        if(isEmpty(publishDate)){
+            showFailedAlert("发布日期不能为空！");
+            return ;
+        }
+        var operateRevenue = $("#p_operateRevenue").val();
+        if(isEmpty(operateRevenue)){
+            showFailedAlert("主营收入不能为空！");
+            return ;
+        }
+        var operateRevenueRate = $("#p_operateRevenueRate").val();
+        if(isEmpty(operateRevenueRate)){
+            showFailedAlert("主营收入率不能为空！");
+            return ;
+        }
+        var operateCost = $("#p_operateCost").val();
+        if(isEmpty(operateCost)){
+            showFailedAlert("主营成本不能为空！");
+            return ;
+        }
+        var operateCostRate = $("#p_operateCostRate").val();
+        if(isEmpty(operateCostRate)){
+            showFailedAlert("主营成本率不能为空！");
+            return ;
+        }
+        var operateProfit = $("#p_operateProfit").val();
+        if(isEmpty(operateProfit)){
+            showFailedAlert("主营利润不能为空！");
+            return ;
+        }
+        var operateProfitRate = $("#p_operateProfitRate").val();
+        if(isEmpty(operateProfitRate)){
+            showFailedAlert("主营利润率不能为空！");
+            return ;
+        }
+
+        $.APIPost("/api/company/editCompanyOperateInformation",JSON.stringify({
+            id : p_id ,
+            listCode: listCode ,
+            operateType :operateType ,
+            typeName: typeName,
+            publishDate:publishDate ,
+            operateRevenue:operateRevenue ,
+            operateRevenueRate:operateRevenueRate ,
+            operateCost:operateCost ,
+            operateCostRate:operateCostRate ,
+            operateProfit:operateProfit ,
+            operateProfitRate:operateProfitRate
+        }),function (data) {
+            if(data.success){
+                hideModal("companyProductModal");
+                showSuccessAlert(data.message,function () {
+                    $('#companyProductTable').bootstrapTable('refresh');
+                });
+            }else{
+                showFailedAlert(data.message);
+            }
+        })
+    });
 });
+
+function editOperate(id) {
+    $('#companyProductModal').on('show.bs.modal',function() {
+        $.APIPost("/api/company/getCompanyOperateInformationById?id="+id ,function (response) {
+            $("#p_id").val(response.data.result.id);
+            $("#p_operateType").val(response.data.result.operateType);
+            $("#p_typeName").val(response.data.result.typeName);
+            $("#p_publishDate").val(response.data.result.publishDate);
+            $("#p_operateRevenue").val(response.data.result.operateRevenue);
+            $("#p_operateRevenueRate").val(response.data.result.operateRevenueRate);
+            $("#p_operateCost").val(response.data.result.operateCost);
+            $("#p_operateCostRate").val(response.data.result.operateCostRate);
+            $("#p_operateProfit").val(response.data.result.operateProfit);
+            $("#p_operateProfitRate").val(response.data.result.operateProfitRate);
+        });
+    });
+}
+
+
+function createCompanyOpratePie(listCode){
+    $.APIPost("/api/company/getCompanyOpratePieData?listCode="+listCode ,function (response) {
+        var pieChart = echarts.init(document.getElementById('companyProductPie'));
+        pieOption = {
+            title : {
+                text: '营运产品构成图',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                x : 'center',
+                y : 'bottom',
+                data:response.data.titles
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: false},
+                    dataView : {show: false, readOnly: false},
+                    magicType : {
+                        show: false,
+                        type: ['pie', 'funnel']
+                    },
+                    restore : {show: false},
+                    saveAsImage : {show: false}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'收入构成',
+                    type:'pie',
+                    radius : [30, 90],
+                    center : ['15%', 200],
+                    roseType : 'area',
+                    // x: '50%',               // for funnel
+                    max: 40,                // for funnel
+                    sort : 'ascending',     // for funnel
+                    data:response.data.revenue
+                },
+                {
+                    name:'成本构成',
+                    type:'pie',
+                    radius : [30, 90],
+                    center : ['50%', 200],
+                    roseType : 'area',
+                    x: '50%',               // for funnel
+                    max: 40,                // for funnel
+                    sort : 'ascending',     // for funnel
+                    data:response.data.cost
+                },
+                {
+                    name:'利润构成',
+                    type:'pie',
+                    radius : [30, 90],
+                    center : ['85%', 200],
+                    roseType : 'area',
+                    x: '50%',               // for funnel
+                    max: 40,                // for funnel
+                    sort : 'ascending',     // for funnel
+                    data:response.data.profit
+                }
+            ]
+        };
+        pieChart.setOption(pieOption);
+    })
+}
+
+function createCompanyOprateBar(listCode){
+    $.APIPost("/api/company/getCompanyOprateBarData?listCode="+listCode ,function (response) {
+        var barChart = echarts.init(document.getElementById('companyProductBar'));
+        barOption = {
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['收入','成本','利润','毛利']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataZoom : {show: true},
+                    dataView : {show: true},
+                    magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            dataZoom : {
+                show : true,
+                realtime : true,
+                start : 20,
+                end : 80
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data : response.data.titles
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'收入',
+                    type:'line',
+                    data:response.data.revenue
+                },
+                {
+                    name:'成本',
+                    type:'line',
+                    data:response.data.cost
+                },
+                {
+                    name:'利润',
+                    type:'line',
+                    data:response.data.profit
+                },
+                {
+                    name:'毛利率',
+                    type:'line',
+                    data:response.data.gross
+                }
+            ]
+        };
+        barChart.setOption(barOption);
+    })
+}

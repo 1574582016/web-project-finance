@@ -23,8 +23,9 @@ public class CompanyController {
     }
 
     @RequestMapping("/companyAllInfomationStatictis")
-    public String companyAllInfomationStatictis(Integer id , Model model){
+    public String companyAllInfomationStatictis(Integer id , String listCode, Model model){
         model.addAttribute("id",id);
+        model.addAttribute("listCode",listCode);
         return "page/companyAllInfomationStatictis";
     }
 }
