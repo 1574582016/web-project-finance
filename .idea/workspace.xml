@@ -2,23 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/FinanceMarketApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/FinanceMarketApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnDiaryApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnDiaryApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnEnglishWordApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnEnglishWordApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnPlanApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnPlanApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnQuestionApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/LearnQuestionApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemParamApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemParamApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemRoleApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemRoleApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemUserApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemUserApiController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/TraditionMarketApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/TraditionMarketApiController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsInfluenceMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsStatictisMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsInfluenceMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsStatictisMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsInfluence.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyNewsInfluenceService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyNewsStatictisService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsInfluenceServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsStatictisServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsEdit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsView.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsEdit.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsView.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyBaseInformation.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyBaseInformation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyOperateInformation.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyOperateInformation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/CompanyController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/CompanyController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyAllInfomationStatictis.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyAllInfomationStatictis.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationList.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyAllInfomationStatictis.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyAllInfomationStatictis.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/dayNewsStatistics.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatistics.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/dayNewsStatisticsList.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsList.html" />
     </list>
     <ignored path="web-project-finance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,23 +50,96 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CompanyApiController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java">
+      <file leaf-file-name="economyNewsStatisticsEdit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="149" column="14" selection-start-line="149" selection-start-column="14" selection-end-line="150" selection-end-column="40" />
+            <state relative-caret-position="228">
+              <caret line="91" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="91" selection-end-column="5" />
+              <folding>
+                <element signature="e#237#5590#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EconomyStatisticsApiController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1037">
+              <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+              <folding>
+                <element signature="e#2757#2779#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="economyNewsStatisticsView.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="56" column="71" selection-start-line="56" selection-start-column="71" selection-end-line="56" selection-end-column="71" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="economyNewsStatisticsView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="companyAllInfomationStatictis.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyAllInfomationStatictis.html">
+      <file leaf-file-name="EconomyStatisticsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="145" column="24" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
+            <state relative-caret-position="437">
+              <caret line="27" column="48" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="economyNewsStatisticsEdit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsEdit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="114" column="11" selection-start-line="21" selection-start-column="4" selection-end-line="114" selection-end-column="11" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#5;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EconomyNewsStatictis.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="19" column="27" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="economyNewsStatistics.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatistics.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="684">
+              <caret line="126" column="86" selection-start-line="126" selection-start-column="86" selection-end-line="126" selection-end-column="86" />
+              <folding>
+                <marker date="1557892605664" expanded="true" signature="3918:3924" ph="&amp;nbsp;" />
               </folding>
             </state>
           </provider>
@@ -70,8 +148,8 @@
       <file leaf-file-name="companyAllInfomationStatictis.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyAllInfomationStatictis.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="495" column="44" selection-start-line="495" selection-start-column="44" selection-end-line="495" selection-end-column="44" />
+            <state relative-caret-position="319">
+              <caret line="475" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
               <folding>
                 <element signature="e#355#7092#0" expanded="false" />
                 <element signature="e#7250#11215#0" expanded="false" />
@@ -83,26 +161,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="companyInformationList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="7" selection-start-line="3" selection-start-column="4" selection-end-line="8" selection-end-column="7" />
-              <folding>
-                <marker date="1557804270282" expanded="true" signature="4974:4980" ph="&amp;nbsp;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -118,27 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/StockStatisticsEchart_VO.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockIndexMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockIndexService.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockIndexServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockIndexMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/CompanyBaseInformationMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/CompanyBaseInformationServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/CompanyBaseInformationService.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationList.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/dayNewsStatisticsList.html" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/CompanyOperateInformationMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/CompanyBaseInformationMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/CompanyOperateInformationMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/CompanyOperateInformationService.java" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/CompanyOperateInformationServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationEdit.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationEdit.js" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/interceptor/WebConfig.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/RequestUtil.java" />
         <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/DateUtils.java" />
@@ -169,6 +214,27 @@
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyAllInfomationStatictis.html" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyAllInfomationStatictis.js" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/dayNewsStatisticsList.html" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsInfluence.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsInfluenceMapper.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsInfluenceMapper.xml" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyNewsInfluenceService.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsInfluenceServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyNewsStatictisService.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsStatictisMapper.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsStatictisServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsStatictisMapper.xml" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsList.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsEdit.html" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsEdit.js" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatistics.js" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsView.js" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsView.html" />
       </list>
     </option>
   </component>
@@ -217,6 +283,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -482,15 +549,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="sky" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -513,6 +576,18 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -792,7 +867,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1395,6 +1469,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="" />
@@ -1437,7 +1514,8 @@
       <workItem from="1557541462723" duration="19946000" />
       <workItem from="1557739293947" duration="12456000" />
       <workItem from="1557795314247" duration="198000" />
-      <workItem from="1557797325965" duration="18340000" />
+      <workItem from="1557797325965" duration="32730000" />
+      <workItem from="1557887638316" duration="6093000" />
     </task>
     <task id="LOCAL-00001" summary="首页调整">
       <created>1540551511444</created>
@@ -1481,7 +1559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557752979896</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="公司统计">
+      <created>1557820480058</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1557820480058</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1517,7 +1602,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165771000" />
+    <option name="totallyTimeSpent" value="186254000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1530,8 +1615,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23107049" sideWeight="0.5025" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51044387" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29503918" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1584,11 +1669,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="首页调整" />
     <MESSAGE value="权限管理调整" />
-    <MESSAGE value="公司统计" />
     <MESSAGE value="登陆拦截" />
     <MESSAGE value="拦截器" />
     <MESSAGE value="日志注解" />
-    <option name="LAST_COMMIT_MESSAGE" value="日志注解" />
+    <MESSAGE value="公司统计" />
+    <option name="LAST_COMMIT_MESSAGE" value="公司统计" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1601,276 +1686,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/CompanyBaseInformationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="11" column="126" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/CompanyOperateInformationMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="68" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/CompanyBaseInformationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="24" column="24" selection-start-line="21" selection-start-column="8" selection-end-line="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/CompanyOperateInformationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="172" selection-start-line="17" selection-start-column="172" selection-end-line="17" selection-end-column="172" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="59" column="75" selection-start-line="59" selection-start-column="75" selection-end-line="59" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/CompanyOperateInformationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/learnEnglishClassList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/englishWord.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2223">
-          <caret line="117" column="7" selection-start-line="106" selection-start-column="4" selection-end-line="117" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/learnEnglishWordList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="60" column="115" selection-start-line="60" selection-start-column="72" selection-end-line="60" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/Tools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2223">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/StringUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2141">
-          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-266">
-          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/DateUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="285" column="17" selection-start-line="285" selection-start-column="17" selection-end-line="285" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/HttpUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="22" column="56" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/RequestUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="17" column="66" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1276#1292#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/AccessInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/WebConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="2" selection-end-line="31" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="89" column="79" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/FinanceMarketApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="23" column="72" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnEnglishWordApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="78" column="72" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnPlanApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="56" column="70" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/LearnQuestionApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="39" column="75" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="19" column="75" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemParamApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="83" column="77" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemRoleApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="67" column="56" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="75" column="54" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/TraditionMarketApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="37" column="75" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="63" column="38" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemRole.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2436">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/systemRoleList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
           <caret line="93" column="98" selection-start-line="93" selection-start-column="77" selection-end-line="93" selection-end-column="98" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1894,7 +1713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="23" column="124" selection-start-line="23" selection-start-column="124" selection-end-line="23" selection-end-column="124" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1902,7 +1720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
           <caret line="274" column="1" selection-start-line="274" selection-start-column="1" selection-end-line="274" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2016,7 +1833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="237" column="66" selection-start-line="237" selection-start-column="66" selection-end-line="237" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2049,54 +1865,250 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyOperateInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="66" column="32" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="32" />
+        <state relative-caret-position="266">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsInfluenceMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="43" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsInfluenceMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="69" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyNewsInfluenceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="82" selection-start-line="8" selection-start-column="82" selection-end-line="8" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="64" column="14" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsInfluenceServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/CompanyOperateInformationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="11" column="114" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyNewsStatictisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="86" selection-start-line="11" selection-start-column="86" selection-end-line="11" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/CompanyOperateInformationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="24" column="24" selection-start-line="21" selection-start-column="8" selection-end-line="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/CompanyOperateInformationMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="14" column="122" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/CompanyOperateInformationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="13" selection-start-line="25" selection-start-column="4" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsStatictisMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="59" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsStatictisMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding>
+            <marker date="1557828177312" expanded="true" signature="1291:1375" ph="SELECT i.* F... economy_news_statictis" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsStatictisServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="62" column="20" selection-start-line="61" selection-start-column="12" selection-end-line="62" selection-end-column="20" />
+        <state relative-caret-position="380">
+          <caret line="68" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="22" column="69" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/systemParamList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-798">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemParamApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="46" column="9" selection-start-line="40" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnTask.js">
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1401">
-          <caret line="168" column="1" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
+        <state relative-caret-position="475">
+          <caret line="50" column="5" selection-start-line="40" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsInfluence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
           <folding>
-            <marker date="1540369700615" expanded="true" signature="3986:3992" ph="&amp;nbsp;" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="-1102">
           <caret line="8" column="7" selection-start-line="3" selection-start-column="4" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/financeMarket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2052">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1197">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/traditionMarket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-855">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-536">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnTask.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2262">
+          <caret line="168" column="1" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnQuestion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="72" column="17" selection-start-line="69" selection-start-column="32" selection-end-line="72" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemParam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3686">
+          <caret line="194" column="127" selection-start-line="194" selection-start-column="95" selection-end-line="194" selection-end-column="127" />
           <folding>
-            <marker date="1557804270282" expanded="true" signature="4974:4980" ph="&amp;nbsp;" />
+            <marker date="1540369704575" expanded="true" signature="2546:2559" ph="..." />
+            <marker date="1540369704575" expanded="true" signature="2604:2617" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyAllInfomationStatictis.html">
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="145" column="24" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
+        <state relative-caret-position="1037">
+          <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#2757#2779#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyAllInfomationStatictis.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="495" column="44" selection-start-line="495" selection-start-column="44" selection-end-line="495" selection-end-column="44" />
+        <state relative-caret-position="319">
+          <caret line="475" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
           <folding>
             <element signature="e#355#7092#0" expanded="false" />
             <element signature="e#7250#11215#0" expanded="false" />
@@ -2107,11 +2119,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="149" column="14" selection-start-line="149" selection-start-column="14" selection-end-line="150" selection-end-column="40" />
+        <state relative-caret-position="437">
+          <caret line="27" column="48" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="91" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="e#237#5590#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsEdit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="114" column="11" selection-start-line="21" selection-start-column="4" selection-end-line="114" selection-end-column="11" />
+          <folding>
+            <element signature="n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="126" column="86" selection-start-line="126" selection-start-column="86" selection-end-line="126" selection-end-column="86" />
+          <folding>
+            <marker date="1557892605664" expanded="true" signature="3918:3924" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyAllInfomationStatictis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="36" column="56" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="56" column="71" selection-start-line="56" selection-start-column="71" selection-end-line="56" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

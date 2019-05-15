@@ -62,4 +62,10 @@ public class AbstractController extends BaseController {
     @Autowired
     protected CompanyOperateInformationService companyOperateInformationService ;
 
+    @Autowired
+    protected EconomyNewsInfluenceService economyNewsInfluenceService ;
+
+    @Autowired
+    protected EconomyNewsStatictisService economyNewsStatictisService ;
+
 }

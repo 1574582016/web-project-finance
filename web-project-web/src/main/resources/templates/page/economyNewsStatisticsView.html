@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style type="text/css">
+    .form-title{
+        background-color: #575e63;
+        color: white;
+        text-align: center;
+        border-color: #33373d;
+        padding: 8px;
+        margin-left: 60px;
+    }
+    .form-input-show{
+        padding-top: 7px;
+        border-bottom: 1px dashed #000;
+    }
+</style>
+<div class="container">
+    <input type="hidden" class="form-control" id="id" th:value="${id}">
+    <input type="hidden" class="form-control" id="newsCode" th:value="${newsCode}">
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#economyNewsInfo" data-toggle="tab">基本信息</a></li>
+        <li><a href="#companyFinance" data-toggle="tab">拓展</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content" style="padding-top: 15px;">
+        <div class="tab-pane fade in active" id="economyNewsInfo">
+            <form id="formSearch" class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">新闻标题：</label>
+                    <div class="col-sm-8 form-input-show" id="newsTitle"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">所属区域：</label>
+                    <div class="col-sm-3 form-input-show" id="newsRegion"></div>
+                    <label class="control-label col-sm-2">所属国家：</label>
+                    <div class="col-sm-3 form-input-show" id="newsContry"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">时间：</label>
+                    <div class="col-sm-3 form-input-show" id="newsTime"></div>
+                    <label class="control-label col-sm-2">类型：</label>
+                    <div class="col-sm-3 form-input-show" id="newsType"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">关键词：</label>
+                    <div class="col-sm-8 form-input-show" id="newsKeyWord"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">新闻内容：</label>
+                    <div class="col-sm-8 form-input-show"id="newsContent"></div>
+                </div>
+                <div class="form-group" style="color: red">&nbsp;</div>
+                <div id="influenceBox">
+
+                </div>
+
+            </form>
+        </div>
+        <div class="tab-pane fade" id="companyFinance">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    不带 title 的面板标题
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/companyInformationEdit.js" th:src="@{/js/page/economyNewsStatisticsView.js}"></script>
+</th:block>
+</html>

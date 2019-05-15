@@ -27,7 +27,7 @@ $(function () {
     });
 
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
-        url: '/api/diary/getLearnDiaryList',         //请求后台的URL（*）
+        url: '/api/economy/getEconomyNewsStatisticsList',         //请求后台的URL（*）
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -64,7 +64,7 @@ $(function () {
         detailView: false,                   //是否显示父子表
         columns: [
             {
-                field: 'createTime', // 返回json数据中的name
+                field: 'newsTime', // 返回json数据中的name
                 title: '日期', // 表格表头显示文字
                 align: 'center', // 左右居中
                 valign: 'middle',
@@ -72,18 +72,23 @@ $(function () {
                     return value.substr(0,10);
                 }
             }, {
-                field: 'name',
-                title: '名称',
+                field: 'newsTitle',
+                title: '标题',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'type',
-                title: '类型',
+                field: 'newsRegion',
+                title: '区域',
                 align: 'left',
                 valign: 'middle'
             }, {
-                field: 'summary',
-                title: '摘要',
+                field: 'newsContry',
+                title: '国家',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'newsType',
+                title: '类型',
                 align: 'center',
                 valign: 'middle'
             }, {
@@ -92,7 +97,7 @@ $(function () {
                 valign: 'middle',
                 width: 160, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
-                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\')">查看</button>&nbsp;'
+                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\',\'' + row.newsCode + '\')">查看</button>&nbsp;'
                         + '<button class="btn btn-primary btn-xs" onclick="edit(\'' + row.id + '\')">修改</button>';
                 }
             }
@@ -104,20 +109,20 @@ $(function () {
     });
 
 
-    $("#submitDataButton").click(function () {
-        addNextBread("添加笔记");
-        location.href="/diary/learnDiaryEdit?type="+$("#x_type").val();
+    $("#addDataButton").click(function () {
+        addNextBread("添加新闻");
+        location.href="/economy/economyNewsStatisticsEdit";
     })
 
 
 });
 
 function edit(id) {
-    addNextBread("修改笔记");
-    location.href="/diary/learnDiaryEdit?id="+id;
+    addNextBread("修改新闻");
+    location.href="/economy/economyNewsStatisticsEdit?id="+id;
 }
 
-function view(id) {
-    addNextBread("查看笔记");
-    location.href="/diary/learnDiaryView?id="+id;
+function view(id , newsCode) {
+    addNextBread("查看新闻");
+    location.href="/economy/economyNewsStatisticsView?id="+id +"&newsCode=" + newsCode;
 }

@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/statistics")
 public class StatisticsController {
 
-    @RequestMapping("/dayNewsStatisticsList")
-    public String learnTaskList(){
-        return "page/dayNewsStatisticsList";
-    }
-
     @RequestMapping("/stockCycleStatisticsList")
     public String stockCycleStatisticsList(){
         return "page/stockCycleStatisticsList";

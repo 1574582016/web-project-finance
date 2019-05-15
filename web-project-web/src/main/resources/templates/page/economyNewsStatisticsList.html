@@ -40,44 +40,14 @@
 </div>
 
 <div id="toolbar" class="btn-group">
-    <button type="button" class="btn btn-default"  id="addDataButton" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-default"  id="addDataButton">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
     </button>
 </div>
 <table id="tableList"></table>
 
-
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h2 class="modal-title" id="myModalLabel">添加笔记</h2>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form">
-                    <input type="hidden" id="userCode">
-                    <div class="form-group" id="p_roleBox" style="margin: 10px 20px;text-align: center;">
-                        <label class="control-label col-sm-3">笔记类型：</label>
-                        <div class="col-sm-7">
-                            <select class="form-control" id="x_type">
-
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="submitDataButton">提交</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 </body>
 <th:block layout:fragment = "bodyAssets">
-    <script type="text/javascript" src = "/js/page/dayNewsStatistics.js" th:src="@{/js/page/dayNewsStatistics.js}"></script>
+    <script type="text/javascript" src = "/js/page/economyNewsStatistics.js" th:src="@{/js/page/economyNewsStatistics.js}"></script>
 </th:block>
 </html>

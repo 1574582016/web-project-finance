@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style type="text/css">
+    .form-title{
+        background-color: #575e63;
+        color: white;
+        text-align: center;
+        border-color: #33373d;
+        padding: 6px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 0px;
+    }
+</style>
+<div class="container">
+    <form id="formSearch" class="form-horizontal">
+        <input type="hidden" class="form-control" id="id" th:value="${id}">
+        <div class="form-group">
+            <label class="control-label col-sm-2">新闻标题：</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="newsTitle" placeholder="新闻标题">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">所属区域：</label>
+            <div class="col-sm-3">
+                <select class="form-control" id="newsRegion">
+                    <option value="1">美元区</option>
+                    <option value="2">欧元区</option>
+                    <option value="3">英镑区</option>
+                    <option value="4">亚太区</option>
+                    <option value="5">澳洲区</option>
+                </select>
+            </div>
+            <label class="control-label col-sm-2">所属国家：</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="newsContry" placeholder="所属国家">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">时间：</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="newsTime" placeholder="时间" readonly>
+            </div>
+            <label class="control-label col-sm-2">类型：</label>
+            <div class="col-sm-3">
+                <select class="form-control" id="newsType">
+                    <option value="1">地域政治</option>
+                    <option value="2">经济增长</option>
+                    <option value="3">英镑区</option>
+                    <option value="4">亚太区</option>
+                    <option value="5">澳洲区</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">关键词：</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="newsKeyWord" placeholder="关键词">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">新闻内容：</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" rows="5" id="newsContent" placeholder="内容"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-sm-8 col-md-offset-2" style="padding: 0;">
+                <div class="alert alert-info form-title">新闻影响</div>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary"  id="addInfluenceButton"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加</button>
+            </div>
+         </div>
+        <div id="influenceBox">
+            <div class="form-group">
+                <label class="control-label col-sm-2">影响范围：</label>
+                <div class="col-sm-8">
+                    <input type="hidden" class="form-control" name="influenceId">
+                    <input type="hidden" class="form-control" name="influenceCode">
+                    <input type="text" class="form-control" name="influenceScope" placeholder="影响范围">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">影响时间：</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" name="influenceTime" placeholder="影响时间">
+                </div>
+                <label class="control-label col-sm-2">影响深度：</label>
+                <div class="col-sm-3">
+                    <select class="form-control" name="influenceDegree">
+                        <option value="1">严重影响</option>
+                        <option value="2">比较影响</option>
+                        <option value="3">一般影响</option>
+                        <option value="4">较弱影响</option>
+                        <option value="5">无影响</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">影响内容：</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" rows="5" name="influenceContent" placeholder="影响内容"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <div class="form-group">
+        <div class="col-sm-12" style="text-align: center;">
+            <button type="button" class="btn btn-primary" id="submitFormButton">保存</button>
+            <button type="button" class="btn btn-default" id="resetFormButton">取消</button>
+        </div>
+    </div>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/companyInformationEdit.js" th:src="@{/js/page/economyNewsStatisticsEdit.js}"></script>
+</th:block>
+</html>
