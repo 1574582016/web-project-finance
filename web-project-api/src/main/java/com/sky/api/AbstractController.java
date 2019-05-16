@@ -68,4 +68,16 @@ public class AbstractController extends BaseController {
     @Autowired
     protected EconomyNewsStatictisService economyNewsStatictisService ;
 
+    @Autowired
+    protected InvestForexReplayService investForexReplayService ;
+
+    @Autowired
+    protected InvestStockReplayService investStockReplayService ;
+
+    @Autowired
+    protected InvestForexReplayDetailService investForexReplayDetailService ;
+
+    @Autowired
+    protected InvestStockReplayDetailService investStockReplayDetailService ;
+
 }

@@ -45,7 +45,6 @@ public class EconomyStatisticsApiController extends AbstractController {
     @LogRecord(name = "editEconomyNewsStatistics" ,description = "编辑新闻基本信息")
     @PostMapping("/editEconomyNewsStatistics")
     public Object editEconomyNewsStatistics(@RequestBody EconomyNewsStatictis body){
-        System.out.println(body.toString());
         if(body.getId() == null){
             String newsCode  = IdWorker.getIdStr();
             body.setNewsCode(newsCode);

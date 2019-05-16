@@ -15,7 +15,10 @@ $(function () {
             $("#newsType").html(response.data.result.newsType);
             var strBox = "";
             $.each(response.data.result.influencelist ,function (index ,value) {
-                strBox +='<div><div class="form-group">'
+                var influenceDegree = value.influenceDegree ;
+                strBox +='<div><div class="form-group" style="text-align: center">'
+                strBox += '<span class="glyphicon glyphicon-flag"></span> 影响' + (index + 1);
+                strBox +='</div><div class="form-group">'
                     +'<label class="control-label col-sm-2">影响范围：</label>'
                     +'<div class="col-sm-8 form-input-show">'+ value.influenceScope +'</div>'
                     +'</div>'
@@ -24,21 +27,9 @@ $(function () {
                     +'<div class="col-sm-3 form-input-show">'+ value.influenceTime +'</div>'
                     +'<label class="control-label col-sm-2">影响深度：</label>'
                     +'<div class="col-sm-3 form-input-show">';
-                if(value.influenceDegree == 1){
-                    strBox += '严重影响';
-                }
-                if(value.influenceDegree == 2){
-                    strBox += '比较影响';
-                }
-                if(value.influenceDegree == 3){
-                    strBox += '一般影响';
-                }
-                if(value.influenceDegree == 4){
-                    strBox += '较弱影响';
-                }
-                if(value.influenceDegree == 5){
-                    strBox += '无影响';
-                }
+                    for(var i = 0 ; i < 6 - influenceDegree ; i ++){
+                        strBox += '<span class="glyphicon glyphicon-star-empty"></span>&nbsp;';
+                    }
                 strBox += '</div>'
                     +'</div>'
                     +'<div class="form-group">'

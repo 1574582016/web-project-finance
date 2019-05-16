@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style type="text/css">
+    .form-title{
+        background-color: #575e63;
+        color: white;
+        text-align: center;
+        border-color: #33373d;
+        padding: 8px;
+        margin-left: 60px;
+    }
+    .text-center{
+        text-align: center;
+    }
+    .line-input-left{
+        padding-right: 5px;
+    }
+    .line-input-right{
+        padding-left: 5px;
+    }
+    .line-input-center{
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+</style>
+<div class="container">
+    <input type="hidden" class="form-control" id="id" th:value="${id}">
+    <input type="hidden" class="form-control" id="replayCode" th:value="${replayCode}">
+    <form id="formSearch" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-1">时间：</label>
+            <div class="col-sm-2 form-input-show" id="replayTime"></div>
+            <label class="control-label col-sm-1">策略：</label>
+            <div class="col-sm-2 form-input-show" id="investStrategy"></div>
+            <label class="control-label col-sm-1">货币对：</label>
+            <div class="col-sm-2 form-input-show" id="currencyPairs"></div>
+            <label class="control-label col-sm-1">周期：</label>
+            <div class="col-sm-2 form-input-show" id="timeCycle"></div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;">
+            <label class="control-label col-sm-1" style="text-align: center;">序号</label>
+            <label class="control-label col-sm-1" style="text-align: center;">方向</label>
+            <label class="control-label col-sm-2" style="text-align: center;">开始时间</label>
+            <label class="control-label col-sm-2" style="text-align: center;">结束时间</label>
+            <label class="control-label col-sm-1" style="text-align: center;">k线</label>
+            <label class="control-label col-sm-1" style="text-align: center;">点数</label>
+            <label class="control-label col-sm-4" style="text-align: center;">备注</label>
+        </div>
+        <div id="lineGroupBox">
+            <div class="form-group">
+                <div class="col-sm-1 line-input-left" style="text-align: center;">
+                    1
+                </div>
+                <div class="col-sm-1 line-input-center">
+                    <select class="form-control" name="investType">
+                        <option value="1">做多</option>
+                        <option value="2">做空</option>
+                    </select>
+                </div>
+                <div class="col-sm-2 line-input-center">
+                    <input type="text" class="form-control" name="startTime">
+                </div>
+                <div class="col-sm-2 line-input-center">
+                    <input type="text" class="form-control" name="endTime">
+                </div>
+                <div class="col-sm-1 line-input-center">
+                    <input type="number" class="form-control" name="lineNumber">
+                </div>
+                <div class="col-sm-1 line-input-center">
+                    <input type="number" class="form-control" name="gainPoint">
+                </div>
+                <div class="col-sm-4 line-input-right">
+                    <input type="text" class="form-control" name="remark">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top: 50px;">
+            <div class="col-sm-12" style="text-align: center;">
+                <button type="button" class="btn btn-primary" id="submitFormButton">保存</button>
+                <button type="button" class="btn btn-default" id="resetFormButton">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/investForexReplayView.js" th:src="@{/js/page/investForexReplayView.js}"></script>
+</th:block>
+</html>

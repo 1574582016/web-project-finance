@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style type="text/css">
+    .form-title{
+        background-color: #575e63;
+        color: white;
+        text-align: center;
+        border-color: #33373d;
+        padding: 8px;
+        margin-left: 60px;
+    }
+    .line-input-left{
+        padding-right: 5px;
+    }
+    .line-input-right{
+        padding-left: 5px;
+    }
+    .line-input-center{
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+</style>
+<div class="container">
+    <form id="formSearch" class="form-horizontal">
+        <div class="form-group" style="margin-top: 15px">
+            <label class="control-label col-sm-2">时间：</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="replayTime" placeholder="时间" readonly>
+            </div>
+            <label class="control-label col-sm-2">策略：</label>
+            <div class="col-sm-3">
+                <select class="form-control" id="investStrategy">
+                    <option value="策略一">策略一</option>
+                    <option value="策略二">策略二</option>
+                    <option value="策略三">策略三</option>
+                    <option value="策略四">策略四</option>
+                    <option value="策略五">策略五</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">货币对：</label>
+            <div class="col-sm-3">
+                <select class="form-control" id="currencyPairs">
+                    <option value="USD/JSD">USD/JSD</option>
+                    <option value="2">做空</option>
+                    <option value="3">做空</option>
+                    <option value="4">做空</option>
+                    <option value="5">做空</option>
+                    <option value="6">做空</option>
+                    <option value="7">做空</option>
+                    <option value="8">做空</option>
+                </select>
+            </div>
+            <label class="control-label col-sm-2">周期：</label>
+            <div class="col-sm-3">
+                <select class="form-control" id="timeCycle">
+                    <option value="1分钟">1分钟</option>
+                    <option value="5分钟">5分钟</option>
+                    <option value="15分钟">15分钟</option>
+                    <option value="30分钟">30分钟</option>
+                    <option value="1小时">1小时</option>
+                    <option value="4小时">4小时</option>
+                    <option value="12小时">12小时</option>
+                    <option value="24小时">24小时</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;">
+            <label class="control-label col-sm-1" style="text-align: center;">序号</label>
+            <label class="control-label col-sm-1" style="text-align: center;">方向</label>
+            <label class="control-label col-sm-2" style="text-align: center;">开始时间</label>
+            <label class="control-label col-sm-2" style="text-align: center;">结束时间</label>
+            <label class="control-label col-sm-1" style="text-align: center;">k线</label>
+            <label class="control-label col-sm-1" style="text-align: center;">点数</label>
+            <label class="control-label col-sm-4" style="text-align: center;">备注</label>
+        </div>
+        <div id="lineGroupBox">
+            <div class="form-group">
+                <div class="col-sm-1 line-input-left" style="text-align: center;">
+                    1
+                </div>
+                <div class="col-sm-1 line-input-center">
+                    <select class="form-control" name="investType">
+                        <option value="1">做多</option>
+                        <option value="2">做空</option>
+                    </select>
+                </div>
+                <div class="col-sm-2 line-input-center">
+                    <input type="text" class="form-control" name="startTime">
+                </div>
+                <div class="col-sm-2 line-input-center">
+                    <input type="text" class="form-control" name="endTime">
+                </div>
+                <div class="col-sm-1 line-input-center">
+                    <input type="number" class="form-control" name="lineNumber">
+                </div>
+                <div class="col-sm-1 line-input-center">
+                    <input type="number" class="form-control" name="gainPoint">
+                </div>
+                <div class="col-sm-4 line-input-right">
+                    <input type="text" class="form-control" name="remark">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top: 50px;">
+            <div class="col-sm-12" style="text-align: center;">
+                <button type="button" class="btn btn-primary" id="submitFormButton">保存</button>
+                <button type="button" class="btn btn-default" id="resetFormButton">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/investForexReplayEdit.js" th:src="@{/js/page/investForexReplayEdit.js}"></script>
+</th:block>
+</html>

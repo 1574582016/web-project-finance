@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.InvestForexReplayMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.InvestForexReplay">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="replay_code" property="replayCode"/>
+        <result column="replay_time" property="replayTime"/>
+        <result column="invest_strategy" property="investStrategy"/>
+        <result column="currency_pairs" property="currencyPairs"/>
+        <result column="time_cycle" property="timeCycle"/>
+        <result column="seccuss_rate" property="seccussRate"/>
+        <result column="fail_rate" property="failRate"/>
+        <result column="earn_point" property="earnPoint"/>
+        <result column="lose_point" property="losePoint"/>
+        <result column="flat_rate" property="flatRate"/>
+    </resultMap>
+
+    <select id="getInvestForexReplayList" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        i.*
+        FROM invest_forex_replay i
+        where i.isvalid = 1
+        <if test="startDate != null and startDate != '' ">
+            AND i.replay_time &gt;= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != '' ">
+            AND i.replay_time &lt;= #{endDate}
+        </if>
+        <if test="investStrategy != null and investStrategy != '' ">
+            AND i.invest_strategy = #{investStrategy}
+        </if>
+        <if test="userId != null and userId != '' ">
+            AND i.create_user = #{userId}
+        </if>
+
+    </select>
+</mapper>
