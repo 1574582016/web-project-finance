@@ -1,5 +1,6 @@
 package com.sky.controller;
 
+import com.sky.core.consts.SystemConst;
 import com.sky.core.controller.BaseController;
 import com.sky.model.SystemUser;
 import org.springframework.http.HttpRequest;
@@ -23,7 +24,7 @@ public class IndexController{
 
     @RequestMapping("/index")
     public String index(HttpServletRequest request, Model model){
-        SystemUser systemUser = (SystemUser)  request.getSession().getAttribute("systemUser");
+        SystemUser systemUser = (SystemUser)  request.getSession().getAttribute(SystemConst.SYSTEMUSER);
 //        System.out.println(systemUser.toString());
         if (systemUser == null) {
             return "login";
@@ -34,7 +35,7 @@ public class IndexController{
 
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request){
-        request.getSession().removeAttribute("systemUser");
+        request.getSession().removeAttribute(SystemConst.SYSTEMUSER);
         return "redirect:/";
     }
 

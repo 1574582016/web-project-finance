@@ -1,5 +1,6 @@
 package com.sky.interceptor;
 
+import com.sky.core.consts.SystemConst;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.RequestUtil;
 import com.sky.model.SystemUser;
@@ -79,7 +80,7 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
         reqInfo.append(" 来源IP=" + RequestUtil.getIpAddrByRequest(request));
         String userName = "";
         try {
-            SystemUser sysUser = (SystemUser) request.getSession().getAttribute("systemUser");
+            SystemUser sysUser = (SystemUser) request.getSession().getAttribute(SystemConst.SYSTEMUSER);
             if (sysUser != null) {
                 userName = sysUser.getUserName();
             }

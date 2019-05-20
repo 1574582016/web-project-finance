@@ -1,5 +1,6 @@
 package com.sky.tools;
 
+import com.sky.core.consts.SystemConst;
 import com.sky.model.SystemUser;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class UserUtil {
 
     public static SystemUser getCurrentUser(){
-        return (SystemUser) getSession().getAttribute("systemUser");
+        return (SystemUser) getSession().getAttribute(SystemConst.SYSTEMUSER);
     }
 
     private static HttpSession getSession() {

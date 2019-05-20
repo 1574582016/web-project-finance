@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.core.consts.SystemConst;
 import com.sky.model.SystemUser;
 import com.sky.model.SystemUserRole;
 import org.springframework.http.ResponseEntity;
@@ -80,7 +81,7 @@ public class SystemUserApiController extends AbstractController {
         if (systemUser == null){
             return ResponseEntity.ok(MapError("用户不存在，请检查账号和密码是否正确！"));
         }
-        this.getSession().setAttribute("systemUser" , systemUser);
+        this.getSession().setAttribute(SystemConst.SYSTEMUSER , systemUser);
         return ResponseEntity.ok(MapSuccess("登陆成功成功"));
     }
 }

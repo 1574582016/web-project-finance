@@ -2,6 +2,7 @@ package com.sky.annotation;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.sky.core.consts.SystemConst;
 import com.sky.core.utils.RequestUtil;
 import com.sky.model.SystemUser;
 import org.aspectj.lang.JoinPoint;
@@ -90,7 +91,7 @@ public class LogRecordAspect {
         String urlPath = urlPathHelper.getLookupPathForRequest(request);
         String userName = "";
         try {
-            SystemUser sysUser = (SystemUser) request.getSession().getAttribute("systemUser");
+            SystemUser sysUser = (SystemUser) request.getSession().getAttribute(SystemConst.SYSTEMUSER);
             if (sysUser != null) {
                 userName = sysUser.getUserName();
             }

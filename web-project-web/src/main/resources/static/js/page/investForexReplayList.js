@@ -15,17 +15,6 @@ $(function () {
         autoclose: true
     });
 
-    $.APIPost("/api/param/getParamListByIndetity?indetity=diaryType" ,function (data) {
-        var str = ""
-        $.each(data.data.result ,function (index ,value) {
-            str +='<option value="'+ value.paramIdentity +'">' + value.paramName + '</option>'
-        });
-        var str2 = '<option value="">请选择</option>' + str;
-        $("#s_type").html(str2);
-        $("#x_type").html(str);
-
-    });
-
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
         url: '/api/invest/getInvestForexReplayList',         //请求后台的URL（*）
         method: 'post',

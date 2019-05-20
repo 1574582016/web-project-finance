@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.core.consts.SystemConst;
 import com.sky.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,8 @@ public class InvestApiController extends AbstractController {
                                            String investStrategy ,
                                            String startDate ,
                                            String endDate ){
-        Page selectedPage = investForexReplayService.getInvestForexReplayList( page , size , investStrategy, startDate, endDate , null);
+        SystemUser systemUser = (SystemUser)getSession().getAttribute(SystemConst.SYSTEMUSER);
+        Page selectedPage = investForexReplayService.getInvestForexReplayList( page , size , investStrategy, startDate, endDate , systemUser.getUserName());
         return PageData(selectedPage);
     }
 
@@ -81,5 +83,26 @@ public class InvestApiController extends AbstractController {
             body.setDetailList(list);
         }
         return ResponseEntity.ok(MapSuccess("查询成功",body));
+    }
+
+    @LogRecord(name = "getInvestForexOperateList" ,description = "查询外汇操盘信息列表")
+    @PostMapping("/getInvestForexOperateList")
+    public Object getInvestForexOperateList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
+                                           @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
+                                           String investStrategy ,
+                                           String startDate ,
+                                           String endDate ){
+        SystemUser systemUser = (SystemUser)getSession().getAttribute(SystemConst.SYSTEMUSER);
+        Page selectedPage = investForexOperateService.getInvestForexOperateList( page , size , investStrategy, startDate, endDate , systemUser.getUserName());
+        return PageData(selectedPage);
+    }
+
+    @LogRecord(name = "editInvestForexOperate" ,description = "编辑外汇复盘信息")
+    @PostMapping("/editInvestForexOperate")
+    public Object editInvestForexOperate(@RequestBody InvestForexOperate body){
+        String replayCode  = IdWorker.getIdStr();
+        body.setOperateCode(replayCode);
+        investForexOperateService.insert(body);
+        return ResponseEntity.ok(MapSuccess("保存成功！"));
     }
 }

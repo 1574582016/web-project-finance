@@ -4,10 +4,50 @@
     <bookmark url="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayEdit.js" line="86" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="复盘统计">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/SqlInjectInterceptor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/tools/UserUtil.java" />
+    <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/Uploader.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/image.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/progress.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/success.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_5_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_aspectj_1_2_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_2_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_ehcache_1_2_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_2_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_2_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_13.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/consts/SystemConst.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestForexOperateMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexOperateMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexOperate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexOperateService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexOperateServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexOperateList.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/webuploader.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/webuploader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/webuploader.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexOperateList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemMenuApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemMenuApiController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemUserApiController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/controller/SystemUserApiController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/InvestApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/InvestApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/AccessInterceptor.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/AccessInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/tools/UserUtil.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/tools/UserUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayMapper.xml" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/IndexController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/IndexController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/InvestController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/InvestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayList.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investStockReplayList.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investStockReplayList.html" />
     </list>
     <ignored path="web-project-finance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,27 +74,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SqlInjectInterceptor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/SqlInjectInterceptor.java">
+      <file leaf-file-name="investForexOperateList.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexOperateList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="698">
-              <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1016#1046#0" expanded="true" />
-                <element signature="e#3092#3093#0" expanded="true" />
-                <element signature="e#3140#3141#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="2623">
+              <caret line="419" column="30" selection-start-line="408" selection-start-column="27" selection-end-line="419" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemMenuApiController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-475">
+              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="investForexOperateList.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexOperateList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="671">
+              <caret line="149" column="34" selection-start-line="149" selection-start-column="34" selection-end-line="149" selection-end-column="34" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#8;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,8 +121,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -82,28 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsStatictisMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsStatictisServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsStatictisMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsList.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsEdit.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsEdit.js" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatistics.js" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplay.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestStockReplayMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestStockReplayService.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestStockReplayServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investStockReplayList.html" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestForexReplayMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexReplayServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexReplayService.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexReplayList.html" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestForexReplayDetailMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestStockReplayMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestStockReplayDetailMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexReplayDetailService.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestStockReplayDetailService.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexReplayDetailServiceImpl.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestStockReplayDetailServiceImpl.java" />
@@ -111,14 +146,9 @@
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestStockReplayDetailMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplayDetail.java" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayList.js" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/InvestApiController.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsView.html" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/css/index.css" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexReplayView.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/InvestController.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplay.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexReplayEdit.html" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplayDetail.java" />
@@ -130,9 +160,36 @@
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/IAutoSqlInjector.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/UserUtil.java" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/tools/UserUtil.java" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/OpeInfoInterceptor.java" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/SqlInjectInterceptor.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investStockReplayList.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexOperationList.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/InvestController.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexOperate.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexOperateService.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexReplayServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestForexOperateMapper.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexOperateServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayMapper.xml" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexOperateMapper.xml" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/consts/SystemConst.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/IndexController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/AccessInterceptor.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/tools/UserUtil.java" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/model/SystemModel.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayList.js" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexOperationList.js" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/controller/BaseController.java" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/InvestApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexOperateList.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexOperateList.js" />
       </list>
     </option>
   </component>
@@ -181,7 +238,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -280,25 +336,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -312,47 +354,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -364,25 +366,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-core" />
+              <option name="myItemId" value="page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -396,47 +388,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-core" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -448,15 +400,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webuploader-0.1.5" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -470,7 +426,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-core" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -482,15 +438,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,7 +460,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-core" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -516,25 +472,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -548,47 +494,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -600,49 +506,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="interceptor" />
+              <option name="myItemId" value="page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -656,7 +532,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -668,11 +544,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -686,7 +562,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -695,62 +571,13 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -772,11 +599,11 @@
       <recent name="com.sky.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WebProgram\project\web-project-finance\web-project-web\src\main\resources\static\libs\webuploader-0.1.5" />
+      <recent name="D:\WebProgram\project\web-project-finance\web-project-web\src\main\resources\static\libs" />
       <recent name="D:\WebProgram\project\web-project-finance\web-project-core\src\main\java\com\sky\core\utils" />
       <recent name="D:\WebProgram\project\web-project-finance\web-project-web\src\main\resources\static\libs\echarts-2.2.7" />
       <recent name="D:\WebProgram\project\web-project-finance\web-project-web\src\main\resources" />
-      <recent name="D:\WebProgram\project\web-project-finance\web-project-core\src\main\java\com\sky\core" />
-      <recent name="D:\WebProgram\project\web-project-finance\web-project-api\src\main\java" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebApplication">
@@ -1403,7 +1230,9 @@
       <workItem from="1557908785408" duration="619000" />
       <workItem from="1557983747199" duration="24069000" />
       <workItem from="1558078260962" duration="491000" />
-      <workItem from="1558162162846" duration="13562000" />
+      <workItem from="1558162162846" duration="13863000" />
+      <workItem from="1558337136036" duration="8159000" />
+      <workItem from="1558350091958" duration="867000" />
     </task>
     <task id="LOCAL-00001" summary="首页调整">
       <created>1540551511444</created>
@@ -1468,7 +1297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558011725385</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="sql注入数据添加和修改者">
+      <created>1558176374624</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558176374624</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1504,7 +1340,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228123000" />
+    <option name="totallyTimeSpent" value="237450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1517,26 +1353,26 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23107049" sideWeight="0.5025" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51044387" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2775" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1577,7 +1413,8 @@
     <MESSAGE value="公司统计" />
     <MESSAGE value="新闻统计" />
     <MESSAGE value="复盘统计" />
-    <option name="LAST_COMMIT_MESSAGE" value="复盘统计" />
+    <MESSAGE value="sql注入数据添加和修改者" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql注入数据添加和修改者" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1590,337 +1427,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestStockReplayDetailServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="86" selection-start-line="14" selection-start-column="86" selection-end-line="14" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestStockReplayMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayDetailMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="51" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/bootstrap-datepicker/js/bootstrap-datepicker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="215" column="53" selection-start-line="215" selection-start-column="53" selection-end-line="215" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplayDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestStockReplayDetailMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="60" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/CompanyApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1406">
-          <caret line="50" column="5" selection-start-line="40" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1457">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="150" column="51" selection-start-line="150" selection-start-column="51" selection-end-line="150" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="60" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="77" column="75" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-703">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexReplayList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="42" column="5" selection-start-line="33" selection-start-column="4" selection-end-line="42" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/LearnPlanController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/CompanyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="25" column="83" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/SystemMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/InvestApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="79" column="28" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="269" column="23" selection-start-line="269" selection-start-column="23" selection-end-line="269" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/InvestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="29" column="85" selection-start-line="29" selection-start-column="85" selection-end-line="29" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="115" column="35" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexReplayEdit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="5" selection-start-line="17" selection-start-column="4" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#1;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#2;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#3;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#4;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#5;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#6;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#4;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="56" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexReplayView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#1;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#2;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#3;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#4;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#5;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#label#6;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplayDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
-          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1198#1199#0" expanded="false" />
-            <element signature="e#1242#1243#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2413">
-          <caret line="127" column="31" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
-          <folding>
-            <marker date="1558011430613" expanded="true" signature="3742:3761" ph="..." />
-            <marker date="1558011430613" expanded="true" signature="3771:3777" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2204">
-          <caret line="116" column="16" selection-start-line="116" selection-start-column="16" selection-end-line="116" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatisticsView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/companyInformationList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3002">
-          <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
-          <folding>
-            <marker date="1557804270282" expanded="true" signature="4974:4980" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding>
-            <marker date="1558011624207" expanded="true" signature="692:711" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="731:737" ph="&amp;nbsp;" />
-            <marker date="1558011624207" expanded="true" signature="831:850" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="968:987" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="1119:1138" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="1268:1287" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="1405:1424" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="1540:1559" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="2033:2052" ph="..." />
-            <marker date="1558011624207" expanded="true" signature="2062:2068" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-support/2.2.0/mybatis-plus-support-2.2.0.jar!/com/baomidou/mybatisplus/enums/SqlMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-support/2.2.0/mybatis-plus-support-2.2.0.jar!/com/baomidou/mybatisplus/mapper/AutoSqlInjector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/WebApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#578#579#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/IAutoSqlInjector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="42" column="56" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1928,7 +1438,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1936,10 +1445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="479" column="23" selection-start-line="479" selection-start-column="23" selection-end-line="479" selection-end-column="23" />
-          <folding>
-            <element signature="e#15939#15940#0" expanded="true" />
-            <element signature="e#15998#15999#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1947,19 +1452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/tools/UserUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#401#402#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1967,7 +1459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1975,7 +1466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="17" column="70" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1983,7 +1473,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="46" column="28" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1991,7 +1480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1999,7 +1487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2007,31 +1494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="21" column="75" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/AccessInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2039,12 +1501,286 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="698">
           <caret line="44" column="61" selection-start-line="44" selection-start-column="61" selection-end-line="44" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexReplayList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="39" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayDetailMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="51" selection-start-line="12" selection-start-column="8" selection-end-line="19" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplayDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexReplayDetailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestForexReplayMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="14" column="222" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="222" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexReplayServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexReplayService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexOperateMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/InvestForexOperateMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexOperateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexReplayMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="41" column="13" selection-start-line="24" selection-start-column="4" selection-end-line="41" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="31" column="26" selection-start-line="10" selection-start-column="23" selection-end-line="31" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/consts/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/consts/HttpConst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="41" selection-start-line="8" selection-start-column="4" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/consts/SystemConst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/LogInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemUserApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="83" column="61" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/annotation/LogRecordAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="93" column="102" selection-start-line="93" selection-start-column="102" selection-end-line="93" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="36" column="97" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/AccessInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/tools/UserUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="16" column="76" selection-start-line="16" selection-start-column="76" selection-end-line="16" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexReplayList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-498">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/model/SystemUser.java" />
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/englishWord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="142" column="7" selection-start-line="106" selection-start-column="4" selection-end-line="142" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexOperate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="67" column="32" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexOperateServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/InvestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/learnEnglishWordList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="132" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investStockReplayList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/InvestApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="100" column="41" selection-start-line="100" selection-start-column="19" selection-end-line="100" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/webuploader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/webuploader-0.1.5/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/investForexOperateList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="149" column="34" selection-start-line="149" selection-start-column="34" selection-end-line="149" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1016#1046#0" expanded="true" />
-            <element signature="e#3092#3093#0" expanded="true" />
-            <element signature="e#3140#3141#0" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#8;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/investForexOperateList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2623">
+          <caret line="419" column="30" selection-start-line="408" selection-start-column="27" selection-end-line="419" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

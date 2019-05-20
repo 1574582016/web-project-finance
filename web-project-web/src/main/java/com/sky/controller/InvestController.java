@@ -16,11 +16,6 @@ public class InvestController {
         return "page/investForexReplayList";
     }
 
-    @RequestMapping("/investStockReplayList")
-    public String investStockReplayList(){
-        return "page/investStockReplayList";
-    }
-
     @RequestMapping("/investForexReplayEdit")
     public String investForexReplayEdit(){
         return "page/investForexReplayEdit";
@@ -31,5 +26,15 @@ public class InvestController {
         model.addAttribute("id" , id);
         model.addAttribute("replayCode" , replayCode);
         return "page/investForexReplayView";
+    }
+
+    @RequestMapping("/investStockReplayList")
+    public String investStockReplayList(){
+        return "page/investStockReplayList";
+    }
+
+    @RequestMapping("/investForexOperateList")
+    public String investForexOperateList(){
+        return "page/investForexOperateList";
     }
 }

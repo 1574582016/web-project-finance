@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.sky.api.AbstractController;
 import com.sky.annotation.LogRecord;
+import com.sky.core.consts.SystemConst;
 import com.sky.model.SystemMenu;
 import com.sky.model.SystemRole;
 import com.sky.model.SystemRoleMenu;
@@ -33,7 +34,7 @@ public class SystemMenuApiController extends AbstractController {
 //    @LogRecord(name = "getMenuList" ,description = "查询首页菜单列表")
     @PostMapping("/getMenuList")
     public Object getMenuList(){
-        SystemUser systemUser = (SystemUser)this.getSession().getAttribute("systemUser");
+        SystemUser systemUser = (SystemUser)this.getSession().getAttribute(SystemConst.SYSTEMUSER);
         return ResponseEntity.ok(MapSuccess("查询成功！",systemMenuService.getMenuList(systemUser.getUserCode())));
     }
 
