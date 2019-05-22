@@ -28,4 +28,9 @@ public class EconomyStatisticsController {
         model.addAttribute("newsCode" , newsCode);
         return "page/economyNewsStatisticsView";
     }
+
+    @RequestMapping("/economyMarketStatisticsList")
+    public String economyMarketStatisticsList(){
+        return "page/economyMarketStatisticsList";
+    }
 }

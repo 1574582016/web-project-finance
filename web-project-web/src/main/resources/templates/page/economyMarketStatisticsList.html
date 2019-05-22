@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style type="text/css">
+    .table-td-title{
+        width: 90px;
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#synthType" data-toggle="tab">人文分类</a></li>
+        <li><a href="#industryType" data-toggle="tab">产业分类</a></li>
+        <li><a href="#humanType" data-toggle="tab">人文分类</a></li>
+        <button class="btn btn-primary btn-sm pull-right" id="addMarketData"  data-toggle="modal" data-target="#marketDataModal">添加</button>
+    </ul>
+    <div id="myTabContent" class="tab-content" style="padding-top: 15px;">
+        <div class="tab-pane fade in active" id="synthType">
+            <form class="form-horizontal">
+                <table class="table table-bordered" style="text-align: center;">
+                    <tr>
+                        <td rowspan="2"></td>
+                        <td colspan="2">采集业</td>
+                        <td colspan="2">制造业</td>
+                        <td colspan="2">批发业</td>
+                        <td colspan="2">零售业</td>
+                    </tr>
+                    <tr>
+                        <td>人工培育</td>
+                        <td>自然形成</td>
+                        <td>半成品加工</td>
+                        <td>成品加工</td>
+                        <td>批发业</td>
+                        <td>运输业</td>
+                        <td>商品零售</td>
+                        <td>服务销售</td>
+                    </tr>
+
+                    <tr>
+                        <td>衣着</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>食品</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>居住</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>交通</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>医疗保健</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>文化娱乐</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>家庭设备</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>能源</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>通信</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="tab-pane fade in" id="industryType">
+            <form class="form-horizontal">
+                <div style="padding-left: 15%;padding-right: 15%;">
+                    <table class="table table-bordered" style="border: 0px;">
+                        <tr>
+                            <td rowspan="2" class="table-td-title">采集业</td>
+                            <td style="border-top: 0px;"></td>
+                            <td rowspan="2" class="table-td-title">制造业</td>
+                            <td style="border-top: 0px;"></td>
+                            <td rowspan="2" class="table-td-title">批发业</td>
+                            <td style="border-top: 0px;"></td>
+                            <td rowspan="2" class="table-td-title">零售业</td>
+                        </tr>
+                        <tr>
+                            <td style="border-bottom: 0px;"></td>
+                            <td style="border-bottom: 0px;"></td>
+                            <td style="border-bottom: 0px;"></td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade in" id="humanType">
+            <form class="form-horizontal">
+                <table class="table table-bordered" style="border: 0px;">
+                    <tr>
+                        <td rowspan="2" class="table-td-title">衣着</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">食品</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">居住</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">交通</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">医疗</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">文娱</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">设备</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">能源</td>
+                        <td style="border-top: 0px;"></td>
+                        <td rowspan="2" class="table-td-title">通信</td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom: 0px;"></td>
+                        <td style="border-bottom: 0px;"></td>
+                        <td style="border-bottom: 0px;"></td>
+                        <td style="border-bottom: 0px;"></td>
+                        <td style="border-bottom: 0px;"></td>
+                        <td style="border-bottom: 0px;"></td>
+                        <td style="border-bottom: 0px;"></td>
+                        <td style="border-bottom: 0px;"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- 模态框（添加经营数据） -->
+<div class="modal fade" id="marketDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title" id="myModalLabel">编辑市场信息</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <input type="hidden" class="form-control" id="p_id">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">市场维度：</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="marketType">
+                                <option value="1">产业</option>
+                                <option value="2">人文</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">上级市场：</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="parentCode">
+                                <option value="1">按行业分类</option>
+                                <option value="2">按产品分类</option>
+                                <option value="3">按地域分类</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">市场名称：</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="marketName" placeholder="市场名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">市场分析：</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="6" id="marketAnalysis"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="p_submitDataButton">提交</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/economyMarketStatisticsList.js" th:src="@{/js/page/economyMarketStatisticsList.js}"></script>
+</th:block>
+</html>

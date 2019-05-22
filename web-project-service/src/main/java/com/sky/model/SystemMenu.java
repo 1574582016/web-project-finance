@@ -19,9 +19,6 @@ public class SystemMenu extends BaseModel<SystemMenu> {
     @TableField("parent_code")
     private String parentCode ;
 
-    @TableField("menu_address")
-    private String menuAddress ;
-
     @TableField("menu_url")
     private String menuUrl ;
 
@@ -30,6 +27,9 @@ public class SystemMenu extends BaseModel<SystemMenu> {
 
     @TableField("order_num")
     private String orderNum ;
+
+    @TableField(exist = false)
+    private Integer menuLevel ;
 
     public String getMenuCode() {
         return menuCode;
@@ -55,14 +55,6 @@ public class SystemMenu extends BaseModel<SystemMenu> {
         this.parentCode = parentCode;
     }
 
-    public String getMenuAddress() {
-        return menuAddress;
-    }
-
-    public void setMenuAddress(String menuAddress) {
-        this.menuAddress = menuAddress;
-    }
-
     public String getMenuUrl() {
         return menuUrl;
     }
@@ -85,5 +77,13 @@ public class SystemMenu extends BaseModel<SystemMenu> {
 
     public void setOrderNum(String orderNum) {
         this.orderNum = orderNum;
+    }
+
+    public Integer getMenuLevel() {
+        return menuLevel;
+    }
+
+    public void setMenuLevel(Integer menuLevel) {
+        this.menuLevel = menuLevel;
     }
 }

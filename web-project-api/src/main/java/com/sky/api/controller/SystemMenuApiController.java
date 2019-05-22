@@ -42,6 +42,11 @@ public class SystemMenuApiController extends AbstractController {
     @PostMapping("/getMenuInfo")
     public Object getMenuInfo(String menuCode){
         SystemMenu systemMenu = systemMenuService.selectOne(new EntityWrapper<SystemMenu>().where("menu_code = {0}",menuCode));
+        if(systemMenu.getParentCode().equals("1048460137181315074")){
+            systemMenu.setMenuLevel(1);
+        }else{
+            systemMenu.setMenuLevel(2);
+        }
         List<SystemRole> list = systemRoleService.getSystemRoleList(null ,menuCode);
         Map<String ,Object> map = new HashMap<String ,Object>();
         map.put("result" , systemMenu);

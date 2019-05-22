@@ -31,9 +31,23 @@ $(function(){
             $("#editMenuForm").find("select").removeAttr("disabled");
             $("#editMenuForm").find("#editDataButton").removeAttr("disabled");
             $("#cancelButton").html("取消");
+            var menuLevel = $("#p_menuLevel").val();
+            if(menuLevel == 2){
+                $("#p_menuIcon").attr("disabled",true);
+            }else{
+                $("#p_menuIcon").removeAttr("disabled");
+            }
         }else{
             changeFormState();
             $("#cancelButton").html("修改");
+        }
+    });
+
+    $("#d_parentCode").change(function(){
+        if($(this).val() != '1048460137181315074'){
+            $("#d_menuIcon").attr("disabled",true);
+        }else{
+            $("#d_menuIcon").removeAttr("disabled");
         }
     });
     
@@ -42,7 +56,6 @@ $(function(){
         var parentCode = $("#d_parentCode").val();
         var menuName = $("#d_menuName").val();
         var menuIcon = $("#d_menuIcon").val();
-        var menuAddress = $("#d_menuAddress").val();
         var menuUrl = $("#d_menuUrl").val();
         var orderNum =  $("#d_orderNum").val();
 
@@ -51,7 +64,7 @@ $(function(){
             id_array.push($(this).val());
         });
         var roleId=id_array.join(',');
-        editMenuInfo(null , parentCode, menuName , menuIcon, menuAddress, menuUrl, orderNum, roleId , null);
+        editMenuInfo(null , parentCode, menuName , menuIcon, menuUrl, orderNum, roleId , null);
     });
     
     $("#editDataButton").click(function () {
@@ -59,7 +72,6 @@ $(function(){
         var parentCode = $("#p_parentCode").val();
         var menuName = $("#p_menuName").val();
         var menuIcon = $("#p_menuIcon").val();
-        var menuAddress = $("#p_menuAddress").val();
         var menuUrl = $("#p_menuUrl").val();
         var orderNum =  $("#p_orderNum").val();
         var isvalid =  $('input[name="p_isvalid"]:checked').val();
@@ -69,15 +81,15 @@ $(function(){
             id_array.push($(this).val());
         });
         var roleId=id_array.join(',');
-        editMenuInfo(menuCode , parentCode, menuName , menuIcon, menuAddress ,menuUrl, orderNum, roleId , isvalid);
+        editMenuInfo(menuCode , parentCode, menuName , menuIcon ,menuUrl, orderNum, roleId , isvalid);
     });
     
-    function editMenuInfo(menuCode , parentCode, menuName , menuIcon, menuAddress, menuUrl, orderNum, roleId , isvalid) {
+    function editMenuInfo(menuCode , parentCode, menuName , menuIcon, menuUrl, orderNum, roleId , isvalid) {
         $.APIPost("/api/menu/checkMenuName?menuName=" + menuName + "&parentCode="+ parentCode +"&menuCode=" + menuCode,function (data) {
             if(data.data.result){
                 alert("菜单已存在");
             }else{
-                $.APIPost("/api/menu/editMenu?roleId="+roleId,JSON.stringify({menuCode:menuCode , parentCode:parentCode , menuName:menuName ,menuIcon:menuIcon , menuAddress:menuAddress , menuUrl:menuUrl ,orderNum:orderNum ,isvalid:isvalid}),function (data) {
+                $.APIPost("/api/menu/editMenu?roleId="+roleId,JSON.stringify({menuCode:menuCode , parentCode:parentCode , menuName:menuName ,menuIcon:menuIcon , menuUrl:menuUrl ,orderNum:orderNum ,isvalid:isvalid}),function (data) {
                     if(data.success){
                         hideModal("myModal");
                         showSuccessAlert(data.message,function () {
@@ -102,7 +114,7 @@ $(function(){
             $("#p_menuIcon").val(data.data.result.menuIcon);
             $("#p_menuUrl").val(data.data.result.menuUrl);
             $("#p_orderNum").val(data.data.result.orderNum);
-            $("#p_menuAddress").val(data.data.result.menuAddress);
+            $("#p_menuLevel").val(data.data.result.menuLevel);
             $("input[name='p_isvalid']").removeAttr("checked");
             $("input[name='p_isvalid'][value='"+ data.data.result.isvalid +"']").attr("checked", true);
             $("input[name='p_role']").removeAttr("checked");

@@ -14,7 +14,6 @@ public class SystemMenu_VO extends VoModel {
 
     private String menuName ;
 
-    private String menuAddress ;
 
     private String menuUrl ;
 
@@ -38,15 +37,6 @@ public class SystemMenu_VO extends VoModel {
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
-    }
-
-
-    public String getMenuAddress() {
-        return menuAddress;
-    }
-
-    public void setMenuAddress(String menuAddress) {
-        this.menuAddress = menuAddress;
     }
 
     public String getMenuUrl() {
