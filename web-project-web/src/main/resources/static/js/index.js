@@ -85,6 +85,28 @@ $(function(){
             return false;
         })
     });
+    
+    
+    $("#addDataButton").click(function () {
+        var o_password = $("#o_password").val();
+        var n_password = $("#n_password").val();
+        if(isEmpty(o_password)){
+            showWarningAlert("原密码不能为空");
+            return ;
+        }
+        if(isEmpty(n_password)){
+            showWarningAlert("新密码不能为空");
+            return ;
+        }
+        $.APIPost("/api/user/changeUserPassword?oldPassword=" + o_password + "&newPassword=" + n_password,function (data) {
+            if(data.success){
+                hideModal("myChangePassword");
+                showSuccessAlert(data.message);
+            }else{
+                showFailedAlert(data.message);
+            }
+        });
+    });
 
 
 });

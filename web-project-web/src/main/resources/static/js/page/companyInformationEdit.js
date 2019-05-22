@@ -59,79 +59,79 @@ $(function () {
         var id = $("#id").val();
         var companyName = $("#companyName").val();
         if(isEmpty(companyName)){
-            showFailedAlert("公司名称不能为空！");
+            showWarningAlert("公司名称不能为空！");
             return ;
         }
         var companyRegion = $("#companyRegion").val();
         if(isEmpty(companyRegion)){
-            showFailedAlert("所属区域不能为空！");
+            showWarningAlert("所属区域不能为空！");
             return ;
         }
         var establishTime = $("#establishTime").val();
         if(isEmpty(establishTime)){
-            showFailedAlert("成立时间不能为空！");
+            showWarningAlert("成立时间不能为空！");
             return ;
         }
         var registerMoney = $("#registerMoney").val();
         if(isEmpty(registerMoney)){
-            showFailedAlert("注册资本不能为空！");
+            showWarningAlert("注册资本不能为空！");
             return ;
         }
         var companyIndustry = $("#companyIndustry").val();
         if(isEmpty(companyIndustry)){
-            showFailedAlert("所属行业不能为空！");
+            showWarningAlert("所属行业不能为空！");
             return ;
         }
         var companyIndustryDetail = $("#companyIndustryDetail").val();
         if(isEmpty(companyIndustryDetail)){
-            showFailedAlert("行业细分不能为空！");
+            showWarningAlert("行业细分不能为空！");
             return ;
         }
         var listCode = $("#listCode").val();
         if(isEmpty(listCode)){
-            showFailedAlert("市场编码不能为空！");
+            showWarningAlert("市场编码不能为空！");
             return ;
         }
         var listName = $("#listName").val();
         if(isEmpty(listName)){
-            showFailedAlert("市场名称不能为空！");
+            showWarningAlert("市场名称不能为空！");
             return ;
         }
         var listTime = $("#listTime").val();
         if(isEmpty(listTime)){
-            showFailedAlert("上市时间不能为空！");
+            showWarningAlert("上市时间不能为空！");
             return ;
         }
         var listMarket = $("#listMarket").val();
         var listSector = $("#listSector").val();
         var listNumber = $("#listNumber").val();
         if(isEmpty(listNumber)){
-            showFailedAlert("发行总量不能为空！");
+            showWarningAlert("发行总量不能为空！");
             return ;
         }
         var listPrice = $("#listPrice").val();
         if(isEmpty(listPrice)){
-            showFailedAlert("发行价格不能为空！");
+            showWarningAlert("发行价格不能为空！");
             return ;
         }
         var listMoney = $("#listMoney").val();
         if(isEmpty(listMoney)){
-            showFailedAlert("发行市值不能为空！");
+            showWarningAlert("发行市值不能为空！");
             return ;
         }
         var listIndustry = $("#listIndustry").val();
         if(isEmpty(listIndustry)){
-            showFailedAlert("市场行业不能为空！");
+            showWarningAlert("市场行业不能为空！");
             return ;
         }
         var listOrder = $("#listOrder").val();
         if(isEmpty(listOrder)){
-            showFailedAlert("市值排名不能为空！");
+            showWarningAlert("市值排名不能为空！");
             return ;
         }
         var mainRelateIndustry = $("#mainRelateIndustry").val();
         if(isEmpty(mainRelateIndustry)){
-            showFailedAlert("主营行业不能为空！");
+            showWarningAlert("主营行业不能为空！");
             return ;
         }
         var viceRelateIndustryOne = $("#viceRelateIndustryOne").val();
@@ -141,7 +141,7 @@ $(function () {
         var viceRelateIndustryFive = $("#viceRelateIndustryFive").val();
         var mainProduceProduct = $("#mainProduceProduct").val();
         if(isEmpty(mainProduceProduct)){
-            showFailedAlert("主营产品不能为空！");
+            showWarningAlert("主营产品不能为空！");
             return ;
         }
         var viceProduceProductOne = $("#viceProduceProductOne").val();
@@ -156,7 +156,7 @@ $(function () {
             businessArea +=  $(this).val() + ',';
         });
         if(isEmpty(businessArea)){
-            showFailedAlert("运营地区不能为空！");
+            showWarningAlert("运营地区不能为空！");
             return ;
         }
         $.APIPost("/api/company/editCompanyBaseInformation",JSON.stringify({

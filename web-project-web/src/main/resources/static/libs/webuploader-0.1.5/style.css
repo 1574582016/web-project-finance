@@ -17,9 +17,9 @@
     background-color: #FFF;
 }
 
-#uploader .queueList {
-    margin: 20px;
-}
+/*#uploader .queueList {*/
+    /*margin: 20px;*/
+/*}*/
 
 .element-invisible {
     position: absolute !important;
@@ -29,10 +29,10 @@
 
 #uploader .placeholder {
     border: 3px dashed #e6e6e6;
-    min-height: 238px;
-    padding-top: 158px;
+    min-height: 138px;
+    padding-top: 100px;
     text-align: center;
-    background: url(./image.png) center 93px no-repeat;
+    background: url(./image.png) center 43px no-repeat;
     color: #cccccc;
     font-size: 18px;
     position: relative;
@@ -47,6 +47,7 @@
     color: #fff;
     display: inline-block;
     margin: 20px auto;
+    margin-bottom: 10px;
     cursor: pointer;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }

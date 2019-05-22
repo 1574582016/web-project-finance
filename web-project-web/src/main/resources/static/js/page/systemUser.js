@@ -159,7 +159,7 @@ $(function () {
                 }
             });
         }else {
-            showFailedAlert("请选择角色！");
+            showWarningAlert("请选择角色！");
         }
 
 

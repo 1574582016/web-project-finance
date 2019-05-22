@@ -57,20 +57,8 @@
             <div class="modal-body">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">投资策略：</label>
-                        <div class="col-sm-8">
-                            <select class="form-control" id="investStrategy">
-                                <option value="策略一">策略一</option>
-                                <option value="策略二">策略二</option>
-                                <option value="策略三">策略三</option>
-                                <option value="策略四">策略四</option>
-                                <option value="策略五">策略五</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">货币对：</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">货币：</label>
+                        <div class="col-sm-3">
                             <select class="form-control" id="currencyPairs">
                                 <option value="策略一">策略一</option>
                                 <option value="策略二">策略二</option>
@@ -79,10 +67,8 @@
                                 <option value="策略五">策略五</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">时间周期：</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">周期：</label>
+                        <div class="col-sm-3">
                             <select class="form-control" id="timeCycle">
                                 <option value="1分钟">1分钟</option>
                                 <option value="5分钟">5分钟</option>
@@ -96,8 +82,18 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">投资类型：</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">策略：</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="investStrategy">
+                                <option value="策略一">策略一</option>
+                                <option value="策略二">策略二</option>
+                                <option value="策略三">策略三</option>
+                                <option value="策略四">策略四</option>
+                                <option value="策略五">策略五</option>
+                            </select>
+                        </div>
+                        <label class="col-sm-2 control-label">类型：</label>
+                        <div class="col-sm-3">
                             <select class="form-control" id="investType">
                                 <option value="做多">做多</option>
                                 <option value="做空">做空</option>
@@ -105,31 +101,27 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">开始时间：</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">开始：</label>
+                        <div class="col-sm-3">
                             <input type="text" class="form-control" id="startTime" readonly>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">结束时间：</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">结束：</label>
+                        <div class="col-sm-3">
                             <input type="text" class="form-control" id="endTime" readonly>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">K线数量：</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">K线：</label>
+                        <div class="col-sm-3">
                             <input type="number" class="form-control" id="lineNumber">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">获取点数：</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">点数：</label>
+                        <div class="col-sm-3">
                             <input type="number" class="form-control" id="gainPoint">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">上传图片：</label>
+                        <label class="col-sm-2 control-label">图片：</label>
                         <div class="col-sm-8">
                             <div id="uploader">
                                 <div class="queueList">
@@ -150,6 +142,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">备注：</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" rows="4" id="sentence"></textarea>
+                        </div>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">

@@ -26,7 +26,7 @@ $(function () {
     $("#submitFormButton").click(function () {
         var replayTime = $("#replayTime").val();
         if(isEmpty(replayTime)){
-            showFailedAlert("时间不能为空！");
+            showWarningAlert("时间不能为空！");
             return ;
         }
         var investStrategy = $("#investStrategy").val();
@@ -69,22 +69,22 @@ $(function () {
             var startTime = startArray[i];
             var row = i + 1 ;
             if(isEmpty(startTime)){
-                showFailedAlert("第"+ row +"行开始时间不能为空！");
+                showWarningAlert("第"+ row +"行开始时间不能为空！");
                 return ;
             }
             var endTime = endArray[i];
             if(isEmpty(endTime)){
-                showFailedAlert("第"+ row +"行结束时间不能为空！");
+                showWarningAlert("第"+ row +"行结束时间不能为空！");
                 return ;
             }
             var lineNumber = lineArray[i];
             if(isEmpty(lineNumber)){
-                showFailedAlert("第"+ row +"行k线不能为空！");
+                showWarningAlert("第"+ row +"行k线不能为空！");
                 return ;
             }
             var gainPoint = pointArray[i];
             if(isEmpty(gainPoint)){
-                showFailedAlert("第"+ row +"行点数不能为空！");
+                showWarningAlert("第"+ row +"行点数不能为空！");
                 return ;
             }
             var remark = remarkArray[i];

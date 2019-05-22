@@ -3,6 +3,9 @@ function showSuccessAlert(content,callback,showTime){
 	showAlertModel({content:content,icon:'succeed',showTime:showTime,callback:callback});
 }
 
+function showWarningAlert(content,callback,showTime){
+    showAlertModel({content:content,icon:'warning',showTime:showTime,callback:callback});
+}
 
 function showFailedAlert(content,callback,showTime){
 	showAlertModel({content:content,icon:'failed',showTime:showTime,callback:callback});
@@ -50,12 +53,15 @@ function showAlertModel(setting){
         callback: _self.IsNull(setting.callback) ? _self.DefautlSetting.callback : setting.callback
     };
     if(_self.Setting.icon == "succeed"){
-    	  $("#showIconType").attr('class',"glyphicon glyphicon-ok");
+    	  $("#showIconType").attr('class',"glyphicon glyphicon-ok-circle");
     	  $("#showIconType").css("color","#73a839");
   	}else if(_self.Setting.icon == "failed"){
-  	    $("#showIconType").attr('class',"glyphicon glyphicon-remove");
+  	    $("#showIconType").attr('class',"glyphicon glyphicon-remove-circle");
     	  $("#showIconType").css("color","red");
-  	}else{
+  	}else if(_self.Setting.icon == "warning"){
+        $("#showIconType").attr('class',"glyphicon glyphicon-ban-circle");
+        $("#showIconType").css("color","#eaea10");
+    }else{
   		  $("#showIconType").attr('class',"");
     	  $("#showIconType").css("color","");
   	};

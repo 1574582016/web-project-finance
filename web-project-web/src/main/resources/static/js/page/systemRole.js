@@ -62,7 +62,7 @@ $(function(){
                 });
             })
         }else{
-            showFailedAlert("请选择授权菜单！");
+            showWarningAlert("请选择授权菜单！");
         }
 
     });

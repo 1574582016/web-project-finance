@@ -7,8 +7,10 @@ import com.baomidou.mybatisplus.toolkit.StringUtils;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.core.consts.SystemConst;
+import com.sky.core.utils.SaltUtils;
 import com.sky.model.SystemUser;
 import com.sky.model.SystemUserRole;
+import org.apache.catalina.startup.UserConfig;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +49,9 @@ public class SystemUserApiController extends AbstractController {
         if(num == 1 && body.getId() == null){//添加时
             return ResponseEntity.ok(MapError("该用户已存在！"));
         }
+        if(com.sky.core.utils.StringUtils.isNotEmpty(body.getPassword())){
+            body.setPassword(SaltUtils.getMD5Password(body.getPassword()));
+        }
         if(body.getId() == null){
             body.setUserCode(IdWorker.getIdStr());
         }
@@ -77,11 +82,27 @@ public class SystemUserApiController extends AbstractController {
     @LogRecord(name = "login" ,description = "用户登录接口")
     @PostMapping("/login")
     public Object login(String userName ,String password){
+        password = SaltUtils.getMD5Password(password);
         SystemUser systemUser = systemUserService.selectOne(new EntityWrapper<SystemUser>().where("user_name = {0}" ,userName).and("password = {0} " , password));
         if (systemUser == null){
             return ResponseEntity.ok(MapError("用户不存在，请检查账号和密码是否正确！"));
         }
         this.getSession().setAttribute(SystemConst.SYSTEMUSER , systemUser);
         return ResponseEntity.ok(MapSuccess("登陆成功成功"));
+    }
+
+    @LogRecord(name = "changeUserPassword" ,description = "用户修改密码")
+    @PostMapping("/changeUserPassword")
+    public Object changeUserPassword(String oldPassword , String newPassword){
+        SystemUser systemUser = (SystemUser)this.getSession().getAttribute(SystemConst.SYSTEMUSER);
+        oldPassword = SaltUtils.getMD5Password(oldPassword);
+        SystemUser oldUser = systemUserService.selectOne(new EntityWrapper<SystemUser>().where("user_name = {0}" ,systemUser.getUserName()).and("password = {0} " , oldPassword));
+        if (oldUser == null){
+            return ResponseEntity.ok(MapError("用户原始密码错误，请检查！"));
+        }
+        oldUser.setPassword(SaltUtils.getMD5Password(newPassword));
+        systemUserService.updateById(oldUser);
+        this.getSession().setAttribute(SystemConst.SYSTEMUSER , oldUser);
+        return ResponseEntity.ok(MapSuccess("修改成功",systemUser));
     }
 }

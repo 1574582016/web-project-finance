@@ -95,27 +95,27 @@ $(function () {
         var id = $("#id").val();
         var newsTitle = $("#newsTitle").val();
         if(isEmpty(newsTitle)){
-            showFailedAlert("新闻标题不能为空！");
+            showWarningAlert("新闻标题不能为空！");
             return ;
         }
         var newsContry = $("#newsContry").val();
         if(isEmpty(newsContry)){
-            showFailedAlert("所属国家不能为空！");
+            showWarningAlert("所属国家不能为空！");
             return ;
         }
         var newsTime = $("#newsTime").val();
         if(isEmpty(newsTime)){
-            showFailedAlert("时间不能为空！");
+            showWarningAlert("时间不能为空！");
             return ;
         }
         var newsKeyWord = $("#newsKeyWord").val();
         if(isEmpty(newsKeyWord)){
-            showFailedAlert("关键词不能为空！");
+            showWarningAlert("关键词不能为空！");
             return ;
         }
         var newsContent = $("#newsContent").val();
         if(isEmpty(newsContent)){
-            showFailedAlert("新闻内容不能为空！");
+            showWarningAlert("新闻内容不能为空！");
             return ;
         }
 
