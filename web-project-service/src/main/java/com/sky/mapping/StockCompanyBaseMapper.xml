@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockCompanyBaseMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockCompanyBase">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="company_name" property="companyName"/>
+        <result column="english_name" property="englishName"/>
+        <result column="last_name" property="lastName"/>
+        <result column="stock_a_code" property="stockACode"/>
+        <result column="stock_a_name" property="stockAName"/>
+        <result column="stock_b_code" property="stockBCode"/>
+        <result column="stock_b_name" property="stockBName"/>
+        <result column="stock_h_code" property="stockHCode"/>
+        <result column="stock_h_name" property="stockHName"/>
+        <result column="stock_plate" property="stockPlate"/>
+        <result column="stock_sector" property="stockSector"/>
+        <result column="contry_sector" property="contrySector"/>
+        <result column="stock_exchange" property="stockExchange"/>
+        <result column="company_manager" property="companyManager"/>
+        <result column="company_legal_person" property="companyLegalPerson"/>
+        <result column="company_chairman_secretary" property="companyChairmanSecretary"/>
+        <result column="company_chairman" property="companyChairman"/>
+        <result column="company_stock_represent" property="companyStockRepresent"/>
+        <result column="company_independent_director" property="companyIndependentDirector"/>
+        <result column="company_telephone" property="companyTelephone"/>
+        <result column="company_email" property="companyEmail"/>
+        <result column="company_fax" property="companyFax"/>
+        <result column="company_post_code" property="companyPostCode"/>
+        <result column="company_website" property="companyWebsite"/>
+        <result column="company_address" property="companyAddress"/>
+        <result column="company_regist_address" property="companyRegistAddress"/>
+        <result column="company_region" property="companyRegion"/>
+        <result column="company_regist_money" property="companyRegistMoney"/>
+        <result column="industry_commerce_code" property="industryCommerceCode"/>
+        <result column="company_employee" property="companyEmployee"/>
+        <result column="company_employer" property="companyEmployer"/>
+        <result column="law_firm" property="lawFirm"/>
+        <result column="accounting_firm" property="accountingFirm"/>
+        <result column="establish_date" property="establishDate"/>
+        <result column="publish_date" property="publishDate"/>
+        <result column="publish_pe_ratio" property="publishPERatio"/>
+        <result column="web_publish_date" property="webPublishDate"/>
+        <result column="publish_type" property="publishType"/>
+        <result column="publish_face_value" property="publishFaceValue"/>
+        <result column="publish_amount" property="publishAmount"/>
+        <result column="publish_price" property="publishPrice"/>
+        <result column="publish_cost" property="publishCost"/>
+        <result column="publish_market_value" property="publishMarketValue"/>
+        <result column="publish_raise_fund" property="publishRaiseFund"/>
+        <result column="first_start_price" property="firstStartPrice"/>
+        <result column="first_close_price" property="firstClosePrice"/>
+        <result column="first_turnover_rate" property="firstTurnoverRate"/>
+        <result column="first_high_price" property="firstHighPrice"/>
+        <result column="off_line_distribute_rate" property="offLineDistributeRate"/>
+        <result column="price_win_rate" property="priceWinRate"/>
+        <result column="company_business_scope" property="companyBusinessScope"/>
+        <result column="company_subject_matter" property="companySubjectMatter"/>
+    </resultMap>
+</mapper>
