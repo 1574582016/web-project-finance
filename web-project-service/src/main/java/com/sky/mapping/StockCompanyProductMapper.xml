@@ -22,4 +22,15 @@
         <result column="product_profit_rate" property="productProfitRate"/>
         <result column="product_gross_rate" property="productGrossRate"/>
     </resultMap>
+    
+    <select id="getStockCompanyConstruct" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        p.`pruduct_type`,
+        p.`product_name` ,
+        p.`product_revenue`
+        FROM stock_company_product p
+        WHERE p.`stock_code` =  #{stockCode}
+        AND p.isvalid = 1
+        AND DATE_FORMAT(p.`publish_date`,'%Y-%m') > DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 6 MONTH),'%Y-%m')
+    </select>
 </mapper>

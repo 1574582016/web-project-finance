@@ -83,4 +83,13 @@ public class AbstractController extends BaseController {
     @Autowired
     protected InvestForexOperateService investForexOperateService ;
 
+    @Autowired
+    protected StockCompanyProductService stockCompanyProductService;
+
+    @Autowired
+    protected StockCompanyBaseService stockCompanyBaseService ;
+
+    @Autowired
+    protected StockCompanyAnalyseService stockCompanyAnalyseService ;
+
 }

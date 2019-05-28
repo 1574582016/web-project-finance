@@ -27,7 +27,7 @@ $(function () {
     });
 
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
-        url: '/api/company/getCompanyBaseInformationList',         //请求后台的URL（*）
+        url: '/api/stock/getStockCompanyBaseList',         //请求后台的URL（*）
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -40,10 +40,12 @@ $(function () {
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 size: params.limit,   //页面大小
                 page: params.offset/params.limit + 1,  //页码
-                name: $("#s_name").val(),
-                type: $("#s_type").val(),
-                startDate: $("#s_start").val(),
-                endDate: $("#s_end").val()
+                stockCode: $("#s_stockCode").val(),
+                stockName: $("#s_stockName").val(),
+                stockSector: $("#s_stockSector").val(),
+                stockExchange: $("#s_stockExchange").val(),
+                startDay: $("#s_start").val(),
+                endDay: $("#s_end").val(),
             };
             return temp;
         },
@@ -64,75 +66,62 @@ $(function () {
         detailView: false,                   //是否显示父子表
         columns: [
             {
-                field: 'listCode',
+                field: 'stockACode',
                 title: '股票编码',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'listName',
+                field: 'stockAName',
                 title: '股票名称',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'listIndustry',
+                field: 'stockSector',
+                title: '市场板块',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'contrySector',
                 title: '行业板块',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'listMarket',
+                field: 'companyRegion',
+                title: '地区',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'stockExchange',
                 title: '交易所',
                 align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    if(value == 1){
-                       return "上交所";
-                    }
-                    if(value == 2){
-                        return "深交所";
-                    }
-                }
+                valign: 'middle'
             }, {
-                field: 'listSector',
-                title: '市场板块',
-                align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    if(value == 1){
-                        return "主板";
-                    }
-                    if(value == 2){
-                        return "中小板";
-                    }
-                    if(value == 3){
-                        return "创业板";
-                    }
-                    if(value == 4){
-                        return "风险警示板";
-                    }
-                }
-            }, {
-                field: 'companyRegion',
-                title: '所属区域',
+                field: 'stockPlate',
+                title: '板块',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'companyIndustry',
-                title: '公司行业',
+                field: 'publishDate',
+                title: '上市日期',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'companyIndustryDetail',
-                title: '行业细分',
+                field: 'companyRegistMoney',
+                title: '注册资本',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'publishAmount',
+                title: '发行量',
                 align: 'center',
                 valign: 'middle'
             }, {
                 title: "操作",
                 align: 'center',
                 valign: 'middle',
-                width: 160, // 定义列的宽度，单位为像素px
+                width: 80, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
-                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\',\'' + row.listCode  + '\')">查看</button>&nbsp;'
-                        + '<button class="btn btn-primary btn-xs" onclick="edit(\'' + row.id + '\')">修改</button>';
+                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\',\'' + row.stockACode  + '\')">查看</button>&nbsp;';
                 }
             }
         ]
@@ -143,20 +132,20 @@ $(function () {
     });
 
 
-    $("#addDataButton").click(function () {
-        addNextBread("新增公司信息");
-        location.href="/company/companyInformationEdit";
-    })
+    // $("#addDataButton").click(function () {
+    //     addNextBread("新增公司信息");
+    //     location.href="/company/companyInformationEdit";
+    // })
 
 
 });
 
-function edit(id) {
-    addNextBread("修改公司信息");
-    location.href="/company/companyInformationEdit?id="+id;
-}
+// function edit(id) {
+//     addNextBread("修改公司信息");
+//     location.href="/company/companyInformationEdit?id="+id;
+// }
 
-function view(id , listCode) {
+function view(id , stockCode) {
     addNextBread("查看公司信息");
-    location.href="/company/companyAllInfomationStatictis?id="+id + "&listCode=" + listCode;
+    location.href="/stock/stockCompanyStatictis?id="+id + "&stockCode=" + stockCode;
 }

@@ -1,5 +1,6 @@
 package com.sky.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.StockCompanyBase;
 
@@ -8,5 +9,8 @@ import com.sky.model.StockCompanyBase;
  */
 public interface StockCompanyBaseService extends IService<StockCompanyBase> {
 
-    void spiderStockCompanyBase(String url ,String sector);
+    void spiderStockCompanyBase(String sector);
+
+    Page<StockCompanyBase> getStockCompanyBaseList(Integer page, Integer size, String stockCode, String stockName , String stockSector ,String stockExchange , String startDay ,String endDay);
+
 }

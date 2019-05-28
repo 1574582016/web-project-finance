@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockCodeMapper;
@@ -40,7 +41,7 @@ public class StockCompanyBaseServiceImpl extends ServiceImpl<StockCompanyBaseMap
     private StockCompanyProductService stockCompanyProductService ;
 
     @Override
-    public void spiderStockCompanyBase(String url ,String sector) {
+    public void spiderStockCompanyBase(String sector) {
         EntityWrapper<StockCode> entityWrapper = new EntityWrapper();
         entityWrapper.where("stock_sector = {0}" , sector);
         List<StockCode> codeList = stockCodeService.selectList(entityWrapper);
@@ -196,5 +197,13 @@ public class StockCompanyBaseServiceImpl extends ServiceImpl<StockCompanyBaseMap
         stockCompanyAnalyseService.insertBatch(analyseList);
         System.out.println("=======================" + productList.toString());
         stockCompanyProductService.insertBatch(productList);
+    }
+
+    @Override
+    public Page<StockCompanyBase> getStockCompanyBaseList(Integer page, Integer size, String stockCode, String stockName, String stockSector,String stockExchange , String startDay ,String endDay) {
+        Page<StockCompanyBase> pageInfo = new Page<StockCompanyBase>(page, size);
+        List<StockCompanyBase> list = baseMapper.getStockCompanyBaseList( pageInfo,stockCode, stockName , stockSector, stockExchange , startDay , endDay);
+        pageInfo.setRecords(list);
+        return pageInfo;
     }
 }

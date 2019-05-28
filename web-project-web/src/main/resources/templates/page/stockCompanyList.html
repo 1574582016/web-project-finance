@@ -16,17 +16,31 @@
         <div class="panel-body">
             <form id="formSearch" class="form-horizontal">
                 <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1">编码：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="s_stockCode">
+                    </div>
                     <label class="control-label col-sm-1">名称：</label>
                     <div class="col-sm-2">
-                        <input type="text" class="form-control" id="s_name">
+                        <input type="text" class="form-control" id="s_stockName">
                     </div>
-                    <label class="control-label col-sm-1">类型：</label>
+                    <label class="control-label col-sm-1">行业：</label>
                     <div class="col-sm-2">
-                        <select class="form-control" id="s_type">
+                        <select class="form-control" id="s_stockSector">
                             <option value="">请选择</option>
 
                         </select>
                     </div>
+                    <label class="control-label col-sm-1">交易所：</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="s_stockExchange">
+                            <option value="">请选择</option>
+                            <option value="深圳证券交易所">深圳证券交易所</option>
+                            <option value="上海证券交易所">上海证券交易所</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:15px">
                     <label class="control-label col-sm-1">日期：</label>
                     <div class="input-group date col-sm-4">
                         <input type="text" class="form-control" id="s_start" readonly>
@@ -40,15 +54,15 @@
 </div>
 
 <div id="toolbar" class="btn-group">
-    <button type="button" class="btn btn-default"  id="addDataButton" data-toggle="modal" data-target="#myModal">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-    </button>
+    <!--<button type="button" class="btn btn-default"  id="addDataButton" data-toggle="modal" data-target="#myModal">-->
+        <!--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增-->
+    <!--</button>-->
 </div>
 <table id="tableList"></table>
 
 
 </body>
 <th:block layout:fragment = "bodyAssets">
-    <script type="text/javascript" src = "/js/page/companyInformationList.js" th:src="@{/js/page/companyInformationList.js}"></script>
+    <script type="text/javascript" src = "/js/page/stockCompanyList.js" th:src="@{/js/page/stockCompanyList.js}"></script>
 </th:block>
 </html>

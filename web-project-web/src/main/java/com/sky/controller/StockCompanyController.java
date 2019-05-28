@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by ThinkPad on 2019/5/10.
  */
 @Controller
-@RequestMapping("/company")
-public class CompanyController {
+@RequestMapping("/stock")
+public class StockCompanyController {
 
-    @RequestMapping("/companyInformationList")
+    @RequestMapping("/stockCompanyList")
     public String companyInformationList(){
-        return "page/companyInformationList";
+        return "page/stockCompanyList";
     }
 
     @RequestMapping("/companyInformationEdit")
@@ -22,10 +22,10 @@ public class CompanyController {
         return "page/companyInformationEdit";
     }
 
-    @RequestMapping("/companyAllInfomationStatictis")
-    public String companyAllInfomationStatictis(Integer id , String listCode, Model model){
+    @RequestMapping("/stockCompanyStatictis")
+    public String stockCompanyStatictis(Integer id , String stockCode, Model model){
         model.addAttribute("id",id);
-        model.addAttribute("listCode",listCode);
-        return "page/companyAllInfomationStatictis";
+        model.addAttribute("stockCode",stockCode);
+        return "page/stockCompanyStatictis";
     }
 }

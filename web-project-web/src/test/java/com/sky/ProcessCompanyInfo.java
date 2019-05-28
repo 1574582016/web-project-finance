@@ -30,7 +30,6 @@ public class ProcessCompanyInfo {
 
     @Test
     public void processStockCompanyBace(){
-        String url = "http://f10.eastmoney.com/CompanySurvey/CompanySurveyAjax?code=sz000524";
-        stockCompanyBaseService.spiderStockCompanyBase(url ,"食品饮料");
+        stockCompanyBaseService.spiderStockCompanyBase("食品饮料");
     }
 }

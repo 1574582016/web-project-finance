@@ -63,4 +63,39 @@
         <result column="company_business_scope" property="companyBusinessScope"/>
         <result column="company_subject_matter" property="companySubjectMatter"/>
     </resultMap>
+
+    <select id="getStockCompanyBaseList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        b.id,
+        b.`stock_a_code` ,
+        b.`stock_a_name` ,
+        b.`stock_sector` ,
+        b.`contry_sector`,
+        b.`company_region` ,
+        CASE WHEN b.`stock_exchange` = '深圳证券交易所' THEN '深交所' ELSE '上交所' END AS stock_exchange,
+        SUBSTR(b.`stock_plate`,4) stock_plate,
+        b.`publish_date` ,
+        b.`company_regist_money` ,
+        b.`publish_amount`
+        FROM stock_company_base b
+        WHERE b.`isvalid` = 1
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND b.`stock_a_code` REGEXP #{stockCode}
+        </if>
+        <if test="stockName != null and stockName != '' and stockName != 'undefined'">
+            AND b.`stock_a_name` REGEXP #{stockName}
+        </if>
+        <if test="stockSector != null and stockSector != '' and stockSector != 'undefined'">
+            AND b.`stock_sector` = #{stockSector}
+        </if>
+        <if test="stockExchange != null and stockExchange != '' and stockExchange != 'undefined'">
+            AND b.`stock_exchange` = #{stockExchange}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND b.`publish_date` >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND b.`publish_date` &lt;= #{endDay}
+        </if>
+    </select>
 </mapper>
