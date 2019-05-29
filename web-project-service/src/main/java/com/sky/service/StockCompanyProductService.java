@@ -11,4 +11,6 @@ import java.util.List;
 public interface StockCompanyProductService extends IService<StockCompanyProduct> {
 
     List<StockCompanyProduct> getStockCompanyConstruct(String stockCode);
+
+    void spiderStockCompanyProduct(String market ,String skuCode);
 }
