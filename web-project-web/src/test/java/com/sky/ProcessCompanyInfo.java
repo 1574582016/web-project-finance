@@ -24,7 +24,7 @@ import java.util.List;
 @SpringBootTest
 public class ProcessCompanyInfo {
 
-    private static final String sector = "珠宝首饰";
+    private static final String sector = "综合行业";
 
     private static final long  sleep = 300;
 
@@ -45,7 +45,7 @@ public class ProcessCompanyInfo {
     @Autowired
     private StockMarketClassService stockMarketClassService ;
 
-    @Test
+//    @Test
     public void processStockCode(){
         String url = "http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?cb=jQuery112402481894141903367_1559101505431&type=CT&token=4f1862fc3b5e77c150a2b985b12db0fd&sty=FCOIATC&js=(%7Bdata%3A%5B(x)%5D%2CrecordsFiltered%3A(tot)%7D)&cmd=C."+ sectorCode +"&st=(ChangePercent)&sr=-1&p=1&ps=20000&_=1559101505641";
         stockCodeService.spiderStockCode(url ,sector);
@@ -75,6 +75,15 @@ public class ProcessCompanyInfo {
     }
 
     @Test
+    public void processStockCompanyProduct2() throws InterruptedException {
+        List<StockCode> codeList = stockCodeService.getEmptyStockProdectList(sector);
+        for (StockCode stockCode : codeList) {
+            stockCompanyProductService.spiderStockCompanyProduct(stockCode.getStockMarket() , stockCode.getStockCode());
+            Thread.sleep(sleep);
+        }
+    }
+
+    @Test
     public void processStockCompanyAnalyse() throws InterruptedException {
         EntityWrapper<StockCode> entityWrapper = new EntityWrapper();
         entityWrapper.where("stock_sector = {0}", sector);
@@ -86,6 +95,15 @@ public class ProcessCompanyInfo {
     }
 
     @Test
+    public void processStockCompanyAnalyse2() throws InterruptedException {
+        List<StockCode> codeList = stockCodeService.getEmptyStockAnalyseList(sector);
+        for (StockCode stockCode : codeList) {
+            stockCompanyAnalyseService.spiderStockCompanyAnalyse(stockCode.getStockMarket() , stockCode.getStockCode());
+            Thread.sleep(sleep);
+        }
+    }
+
+//    @Test
     public void processMenu(){
         stockMarketClassService.spiderStockMarketClass();
     }

@@ -5,6 +5,7 @@ import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockCodeMapper;
 import com.sky.model.StockCode;
 import com.sky.service.StockCodeService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +48,15 @@ public class StockCodeServiceImpl extends ServiceImpl<StockCodeMapper,StockCode>
             list.add(stockCode);
         }
         insertBatch(list);
+    }
+
+    @Override
+    public List<StockCode> getEmptyStockProdectList(@Param("stockSector") String stockSector) {
+        return baseMapper.getEmptyStockProdectList(stockSector);
+    }
+
+    @Override
+    public List<StockCode> getEmptyStockAnalyseList(@Param("stockSector") String stockSector) {
+        return baseMapper.getEmptyStockAnalyseList(stockSector);
     }
 }

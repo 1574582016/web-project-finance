@@ -30,7 +30,7 @@ public class StockCompanyAnalyseServiceImpl extends ServiceImpl<StockCompanyAnal
         JSONObject subjectObject = JSON.parseObject(subjectString);
         JSONArray subjectArray = subjectObject.getJSONArray("hxtc");
         List<StockCompanyAnalyse> list = new ArrayList<StockCompanyAnalyse>();
-        for(int i = 1 ; i < subjectArray.size() ; i ++){
+        for(int i = 2 ; i < subjectArray.size() ; i ++){
             JSONObject analyseObject = subjectArray.getJSONObject(i);
             StockCompanyAnalyse stockCompanyAnalyse = new StockCompanyAnalyse();
             stockCompanyAnalyse.setStockCode(skuCode);
@@ -38,6 +38,8 @@ public class StockCompanyAnalyseServiceImpl extends ServiceImpl<StockCompanyAnal
             stockCompanyAnalyse.setPointAnalyse(analyseObject.getString("ydnr"));
             list.add(stockCompanyAnalyse);
         }
-        insertBatch(list);
+        if(list.size()>0){
+            insertBatch(list);
+        }
     }
 }

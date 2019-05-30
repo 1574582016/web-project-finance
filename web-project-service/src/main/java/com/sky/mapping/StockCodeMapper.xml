@@ -14,4 +14,22 @@
         <result column="stock_name" property="stockName"/>
         <result column="stock_market" property="stockMarket"/>
     </resultMap>
+
+    <select id="getEmptyStockProdectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        c.*
+        FROM stock_code c
+        LEFT JOIN stock_company_product p ON c.`stock_code` = p.`stock_code`
+        WHERE c.`stock_sector` = #{stockSector}
+        AND p.`id` IS NULL
+    </select>
+
+    <select id="getEmptyStockAnalyseList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        c.*
+        FROM stock_code c
+        LEFT JOIN stock_company_analyse a ON c.`stock_code` = a.`stock_code`
+        WHERE c.`stock_sector` = #{stockSector}
+        AND a.`id` IS NULL
+    </select>
 </mapper>
