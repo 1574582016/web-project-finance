@@ -40,18 +40,6 @@ public class StockCompanyApiController extends AbstractController {
         return PageData(selectedPage);
     }
 
-    @LogRecord(name = "editCompanyBaseInformation" ,description = "编辑公司基本信息")
-    @PostMapping("/editCompanyBaseInformation")
-    public Object editCompanyBaseInformation(@RequestBody CompanyBaseInformation body){
-        System.out.println(body.toString());
-        int num = companyBaseInformationService.selectCount(new EntityWrapper<CompanyBaseInformation>().where("list_code = {0}",body.getListCode()));
-        if(num == 1 && body.getId() == null){//添加时
-            return ResponseEntity.ok(MapError("该公司已存在！"));
-        }
-        companyBaseInformationService.insertOrUpdate(body);
-        return ResponseEntity.ok(MapSuccess("保存成功！"));
-    }
-
     @LogRecord(name = "getStockCompanyBaseById" ,description = "根据ID获取公司基本信息")
     @PostMapping("/getStockCompanyBaseById")
     public Object getStockCompanyBaseById(String id){
@@ -81,44 +69,22 @@ public class StockCompanyApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功",map));
     }
 
-    @LogRecord(name = "getCompanyOperateInformationList" ,description = "查询公司经营分析信息列表")
-    @PostMapping("/getCompanyOperateInformationList")
-    public Object getCompanyOperateInformationList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
-                                                @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
-                                                String listCode ){
-        Page selectedPage = companyOperateInformationService.getCompanyOperateInformationList( page , size , listCode);
-        return PageData(selectedPage);
-    }
 
-    @LogRecord(name = "editCompanyOperateInformation" ,description = "编辑公司营运数据信息")
-    @PostMapping("/editCompanyOperateInformation")
-    public Object editCompanyOperateInformation(@RequestBody CompanyOperateInformation body){
-        companyOperateInformationService.insertOrUpdate(body);
-        return ResponseEntity.ok(MapSuccess("保存成功！"));
-    }
-
-    @LogRecord(name = "getCompanyOperateInformationById" ,description = "根据ID获取公司营运数据信息")
-    @PostMapping("/getCompanyOperateInformationById")
-    public Object getCompanyOperateInformationById(String id){
-        CompanyOperateInformation operateInfo = companyOperateInformationService.selectById(id);
-        return ResponseEntity.ok(MapSuccess("查询成功",operateInfo));
-    }
-
-    @LogRecord(name = "getCompanyOpratePieData" ,description = "查询公司运营构成数据")
-    @PostMapping("/getCompanyOpratePieData")
-    public Object getCompanyOpratePieData(String listCode){
-        EntityWrapper<CompanyOperateInformation> entityWrapper = new EntityWrapper();
-        entityWrapper.where("list_code = {0}" , listCode);
-        List<CompanyOperateInformation> list = companyOperateInformationService.selectList(entityWrapper);
+    @LogRecord(name = "getStockCompanyProductPieData" ,description = "查询公司运营构成数据")
+    @PostMapping("/getStockCompanyProductPieData")
+    public Object getStockCompanyProductPieData(String stockCode){
+        EntityWrapper<StockCompanyProduct> entityWrapper = new EntityWrapper();
+        entityWrapper.where("stock_code = {0}" , stockCode).and("publish_date = '2018-12-31'").and("pruduct_type = '产品分类'");
+        List<StockCompanyProduct> list = stockCompanyProductService.selectList(entityWrapper);
         JSONArray titleArray = new JSONArray();
         JSONArray revenueArray = new JSONArray();
         JSONArray costArray = new JSONArray();
         JSONArray profitArray = new JSONArray();
-        for(CompanyOperateInformation operateInfo : list){
-            String typeName = operateInfo.getTypeName() ;
-            String operateRevenue = operateInfo.getOperateRevenue() ;
-            String operateCost = operateInfo.getOperateCost() ;
-            String operateProfit = operateInfo.getOperateProfit() ;
+        for(StockCompanyProduct product : list){
+            String typeName = product.getProductName() ;
+            String operateRevenue = product.getProductRevenue() ;
+            String operateCost = product.getProductCost() ;
+            String operateProfit = product.getProductProfit() ;
 
             titleArray.add(typeName);
 
@@ -145,24 +111,24 @@ public class StockCompanyApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功",map));
     }
 
-    @LogRecord(name = "getCompanyOprateBarData" ,description = "查询公司运营构成增长数据")
-    @PostMapping("/getCompanyOprateBarData")
-    public Object getCompanyOprateBarData(String listCode){
-        EntityWrapper<CompanyOperateInformation> entityWrapper = new EntityWrapper();
-        entityWrapper.where("list_code = {0}" , listCode);
-        entityWrapper.where("type_name = {0}" , "销售");
+    @LogRecord(name = "getStockCompanyProductBarData" ,description = "查询公司运营构成增长数据")
+    @PostMapping("/getStockCompanyProductBarData")
+    public Object getStockCompanyProductBarData(String stockCode){
+        EntityWrapper<StockCompanyProduct> entityWrapper = new EntityWrapper();
+        entityWrapper.where("stock_code = {0}" , stockCode);
+        entityWrapper.where("product_name = {0}" , "销售");
         entityWrapper.orderBy("publish_date desc");
-        List<CompanyOperateInformation> list = companyOperateInformationService.selectList(entityWrapper);
+        List<StockCompanyProduct> list = stockCompanyProductService.selectList(entityWrapper);
         JSONArray titleArray = new JSONArray();
         JSONArray revenueArray = new JSONArray();
         JSONArray costArray = new JSONArray();
         JSONArray profitArray = new JSONArray();
         JSONArray grossArray = new JSONArray();
-        for(CompanyOperateInformation operateInfo : list){
-            String publishDate = operateInfo.getPublishDate() ;
-            String operateRevenue = operateInfo.getOperateRevenue() ;
-            String operateCost = operateInfo.getOperateCost() ;
-            String operateProfit = operateInfo.getOperateProfit() ;
+        for(StockCompanyProduct product : list){
+            String publishDate = product.getPublishDate() ;
+            String operateRevenue = product.getProductRevenue() ;
+            String operateCost = product.getProductCost() ;
+            String operateProfit = product.getProductProfit() ;
 
             titleArray.add(publishDate);
             revenueArray.add(operateRevenue.substring(0,operateRevenue.length()-1));
@@ -182,4 +148,15 @@ public class StockCompanyApiController extends AbstractController {
         map.put("gross" , grossArray);
         return ResponseEntity.ok(MapSuccess("查询成功",map));
     }
+
+    @LogRecord(name = "getStockMarketClassList" ,description = "查询股票板块分类数据")
+    @PostMapping("/getStockMarketClassList")
+    public Object getStockMarketClassList(String classType){
+        EntityWrapper<StockMarketClass> entityWrapper = new EntityWrapper();
+        entityWrapper.where("class_type = {0}" , classType).and("isvalid = 1");
+        List<StockMarketClass> list = stockMarketClassService.selectList(entityWrapper);
+        return ResponseEntity.ok(MapSuccess("查询成功",list));
+    }
+
+
 }

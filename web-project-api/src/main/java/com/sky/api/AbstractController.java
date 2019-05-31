@@ -57,12 +57,6 @@ public class AbstractController extends BaseController {
     protected StockIndexService stockIndexService ;
 
     @Autowired
-    protected CompanyBaseInformationService companyBaseInformationService ;
-
-    @Autowired
-    protected CompanyOperateInformationService companyOperateInformationService ;
-
-    @Autowired
     protected EconomyNewsInfluenceService economyNewsInfluenceService ;
 
     @Autowired
@@ -91,5 +85,8 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected StockCompanyAnalyseService stockCompanyAnalyseService ;
+
+    @Autowired
+    protected StockMarketClassService stockMarketClassService ;
 
 }

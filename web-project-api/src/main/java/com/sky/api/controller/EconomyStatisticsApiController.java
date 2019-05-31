@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.IdWorker;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
-import com.sky.model.CompanyBaseInformation;
 import com.sky.model.EconomyNewsInfluence;
 import com.sky.model.EconomyNewsStatictis;
 import org.springframework.http.ResponseEntity;

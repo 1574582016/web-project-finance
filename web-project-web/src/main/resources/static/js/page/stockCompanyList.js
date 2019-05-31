@@ -15,14 +15,13 @@ $(function () {
         autoclose: true
     });
 
-    $.APIPost("/api/param/getParamListByIndetity?indetity=diaryType" ,function (data) {
+    $.APIPost("/api/stock/getStockMarketClassList?classType=行业板块" ,function (data) {
         var str = ""
         $.each(data.data.result ,function (index ,value) {
-            str +='<option value="'+ value.paramIdentity +'">' + value.paramName + '</option>'
+            str +='<option value="'+ value.className +'">' + value.className + '</option>'
         });
         var str2 = '<option value="">请选择</option>' + str;
-        $("#s_type").html(str2);
-        $("#x_type").html(str);
+        $("#s_stockSector").html(str2);
 
     });
 

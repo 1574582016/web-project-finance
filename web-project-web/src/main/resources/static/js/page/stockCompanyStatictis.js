@@ -41,9 +41,9 @@ $(function () {
         })
     }
 
-    createCompanyOpratePie(listCode);
+    createCompanyProductPie(stockCode);
 
-    createCompanyOprateBar(listCode);
+    createCompanyProductBar(stockCode);
 
     $('#companyProductTable').bootstrapTable('destroy').bootstrapTable({
         url: '/api/company/getCompanyOperateInformationList',         //请求后台的URL（*）
@@ -249,8 +249,8 @@ function editOperate(id) {
 }
 
 
-function createCompanyOpratePie(listCode){
-    $.APIPost("/api/company/getCompanyOpratePieData?listCode="+listCode ,function (response) {
+function createCompanyProductPie(stockCode){
+    $.APIPost("/api/stock/getStockCompanyProductPieData?stockCode="+stockCode ,function (response) {
         var pieChart = echarts.init(document.getElementById('companyProductPie'));
         pieOption = {
             title : {
@@ -320,8 +320,8 @@ function createCompanyOpratePie(listCode){
     })
 }
 
-function createCompanyOprateBar(listCode){
-    $.APIPost("/api/company/getCompanyOprateBarData?listCode="+listCode ,function (response) {
+function createCompanyProductBar(stockCode){
+    $.APIPost("/api/stock/getStockCompanyProductBarData?stockCode="+stockCode ,function (response) {
         var barChart = echarts.init(document.getElementById('companyProductBar'));
         barOption = {
             tooltip : {
