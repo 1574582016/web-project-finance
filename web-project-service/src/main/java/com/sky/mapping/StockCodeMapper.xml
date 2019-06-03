@@ -20,8 +20,10 @@
         c.*
         FROM stock_code c
         LEFT JOIN stock_company_product p ON c.`stock_code` = p.`stock_code`
-        WHERE c.`stock_sector` = #{stockSector}
-        AND p.`id` IS NULL
+        WHERE p.`id` IS NULL
+        <if test="stockSector != null and stockSector != '' and stockSector != 'undefined'">
+            AND c.`stock_sector` = #{stockSector}
+        </if>
     </select>
 
     <select id="getEmptyStockAnalyseList" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -29,7 +31,20 @@
         c.*
         FROM stock_code c
         LEFT JOIN stock_company_analyse a ON c.`stock_code` = a.`stock_code`
-        WHERE c.`stock_sector` = #{stockSector}
-        AND a.`id` IS NULL
+        WHERE  a.`id` IS NULL
+        <if test="stockSector != null and stockSector != '' and stockSector != 'undefined'">
+            AND c.`stock_sector` = #{stockSector}
+        </if>
+    </select>
+
+    <select id="getEmptyStockCompanyList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        c.*
+        FROM stock_code c
+        LEFT JOIN stock_company_base b ON c.`stock_code` = b.`stock_a_code`  OR c.`stock_code` = b.`stock_b_code` OR c.`stock_code` = b.`stock_h_code`
+        WHERE b.`id` IS NULL
+        <if test="stockSector != null and stockSector != '' and stockSector != 'undefined'">
+            AND c.`stock_sector` = #{stockSector}
+        </if>
     </select>
 </mapper>

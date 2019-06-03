@@ -14,4 +14,6 @@ public interface StockCodeMapper extends BaseMapper<StockCode> {
     List<StockCode> getEmptyStockProdectList(@Param("stockSector") String stockSector);
 
     List<StockCode> getEmptyStockAnalyseList(@Param("stockSector") String stockSector);
+
+    List<StockCode> getEmptyStockCompanyList(@Param("stockSector") String stockSector);
 }

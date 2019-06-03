@@ -59,4 +59,9 @@ public class StockCodeServiceImpl extends ServiceImpl<StockCodeMapper,StockCode>
     public List<StockCode> getEmptyStockAnalyseList(@Param("stockSector") String stockSector) {
         return baseMapper.getEmptyStockAnalyseList(stockSector);
     }
+
+    @Override
+    public List<StockCode> getEmptyStockCompanyList(@Param("stockSector") String stockSector) {
+        return baseMapper.getEmptyStockCompanyList(stockSector);
+    }
 }
