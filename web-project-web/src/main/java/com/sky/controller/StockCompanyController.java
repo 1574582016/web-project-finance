@@ -28,4 +28,9 @@ public class StockCompanyController {
         model.addAttribute("stockCode",stockCode);
         return "page/stockCompanyStatictis";
     }
+
+    @RequestMapping("/stockPoolList")
+    public String stockPoolList(){
+        return  "page/stockPoolList";
+    }
 }

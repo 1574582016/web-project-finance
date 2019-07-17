@@ -5,7 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyStatictis.js" line="37" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="">
+    <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="功能调整">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_0.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_0.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_0.xml" />
@@ -15,13 +15,30 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_0.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_0.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/ForexIndexTypeMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesMarketProductMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/ForexIndexTypeMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesMarketProductMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexIndexType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesMarketProduct.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexIndexTypeService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesMarketProductService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexIndexTypeServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesMarketProductServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockPoolList.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/json/industryRelated.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockPoolList.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessForexIndexTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCodeMapper.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCodeMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCodeMapper.xml" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCodeMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCodeService.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCodeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCodeServiceImpl.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCodeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/application.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/web-project-api.iml" afterPath="$PROJECT_DIR$/web-project-api/web-project-api.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/SpiderUtils.java" afterPath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/SpiderUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-core/web-project-core.iml" afterPath="$PROJECT_DIR$/web-project-core/web-project-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-finance.iml" afterPath="$PROJECT_DIR$/web-project-finance.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/web-project-service.iml" afterPath="$PROJECT_DIR$/web-project-service/web-project-service.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessStockIndexTest.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessStockIndexTest.java" />
     </list>
     <ignored path="web-project-finance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,43 +64,35 @@
     <favorites_list name="web-project-finance" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProcessCompanyInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java">
+    <leaf>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StockCodeMapper.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCodeMapper.xml">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="43" column="150" selection-start-line="43" selection-start-column="150" selection-end-line="43" selection-end-column="150" />
+            <state relative-caret-position="-513">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StockMarketClassServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockMarketClassServiceImpl.java">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StockMarketClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockMarketClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="-2089">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1558502115104" expanded="true" signature="522:528" ph="&amp;nbsp;" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,24 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemUser.js" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/SystemMenu_VO.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SystemMenuMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemMenu.java" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/systemMenuList.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemMenu.js" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyMarketStatictisMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyMarketStatictisMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyMarketStatictis.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyMarketStatictisService.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyMarketStatictisServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/WebProjectWebApplicationTests.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyMarketStatisticsList.html" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCode.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyBase.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyAnalyse.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyAnalyseMapper.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyAnalyseMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyProduct.java" />
@@ -152,7 +143,6 @@
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyAnalyseServiceImpl.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyStatictis.js" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCompanyStatictis.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StockCompanyApiController.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyList.js" />
@@ -162,6 +152,25 @@
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCodeServiceImpl.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCodeMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockPoolTree.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockPoolList.js" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockPoolList.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/json/industryRelated.json" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesMarketProduct.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesMarketProductMapper.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesMarketProductMapper.xml" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesMarketProductService.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessStockIndexTest.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesMarketProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexIndexType.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/ForexIndexTypeMapper.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/ForexIndexTypeMapper.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/SpiderUtils.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexIndexTypeService.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessForexIndexTest.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexIndexTypeServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -235,8 +244,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -346,18 +356,12 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -371,47 +375,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -423,11 +387,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -441,7 +405,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
+              <option name="myItemId" value="web-project-web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -453,21 +417,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -498,8 +483,8 @@
       <recent name="D:\WebProgram\project\web-project-finance\web-project-web\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProcessCompanyInfo.processStockCompanyAnalyse2">
-    <configuration default="false" name="ProcessCompanyInfo.processStockCompanyProduct2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.WebApplication">
+    <configuration default="false" name="ProcessStockIndexTest.processqihuo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.sky.*" />
@@ -510,8 +495,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessCompanyInfo" />
-      <option name="METHOD_NAME" value="processStockCompanyProduct2" />
+      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessStockIndexTest" />
+      <option name="METHOD_NAME" value="processqihuo" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -525,7 +510,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="ProcessCompanyInfo.processStockCompanyAnalyse2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ProcessForexIndexTest.processForexIndexType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.sky.*" />
@@ -536,8 +521,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessCompanyInfo" />
-      <option name="METHOD_NAME" value="processStockCompanyAnalyse2" />
+      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessForexIndexTest" />
+      <option name="METHOD_NAME" value="processForexIndexType" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -551,7 +536,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="ProcessCompanyInfo.processMenu" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ProcessForexIndexTest.spiderLastYearForexIndexType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.sky.*" />
@@ -562,60 +547,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessCompanyInfo" />
-      <option name="METHOD_NAME" value="processMenu" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ProcessCompanyInfo.processStockCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.sky.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="web-project-web" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessCompanyInfo" />
-      <option name="METHOD_NAME" value="processStockCode" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ProcessCompanyInfo.processStockCompanyBace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.sky.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="web-project-web" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessCompanyInfo" />
-      <option name="METHOD_NAME" value="processStockCompanyBace" />
+      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessForexIndexTest" />
+      <option name="METHOD_NAME" value="spiderLastYearForexIndexType" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1051,21 +984,17 @@
       <envs />
       <method />
     </configuration>
-    <list size="6">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.WebApplication" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCompanyProduct2" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCompanyAnalyse2" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processMenu" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCode" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCompanyBace" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ProcessStockIndexTest.processqihuo" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.processForexIndexType" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.spiderLastYearForexIndexType" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCompanyAnalyse2" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCompanyProduct2" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCompanyBace" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCode" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processMenu" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.spiderLastYearForexIndexType" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.processForexIndexType" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ProcessStockIndexTest.processqihuo" />
       </list>
     </recent_temporary>
   </component>
@@ -1141,7 +1070,16 @@
       <workItem from="1559376533418" duration="786000" />
       <workItem from="1559474000147" duration="298000" />
       <workItem from="1559476336593" duration="6338000" />
-      <workItem from="1559564201098" duration="324000" />
+      <workItem from="1559564201098" duration="976000" />
+      <workItem from="1561001594494" duration="78000" />
+      <workItem from="1561010287433" duration="1299000" />
+      <workItem from="1561085373087" duration="7542000" />
+      <workItem from="1561424948158" duration="2398000" />
+      <workItem from="1561516095416" duration="1096000" />
+      <workItem from="1562544773691" duration="6330000" />
+      <workItem from="1562632533856" duration="9565000" />
+      <workItem from="1563260465771" duration="661000" />
+      <workItem from="1563330938509" duration="663000" />
     </task>
     <task id="LOCAL-00001" summary="首页调整">
       <created>1540551511444</created>
@@ -1269,43 +1207,50 @@
       <option name="project" value="LOCAL" />
       <updated>1559291501317</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="功能调整">
+      <created>1559564547436</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1559564547436</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProcessCompanyInfo_processMenu - 2019.06.02 at 19h 56m 05s.xml">
-      <configuration name="ProcessCompanyInfo.processMenu" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 10h 51m 17s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCode - 2019.06.02 at 20h 00m 40s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCode" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 11m 51s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyAnalyse2 - 2019.06.02 at 22h 25m 11s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyAnalyse2" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 17m 45s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyBace - 2019.06.02 at 20h 59m 50s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyBace" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 43m 45s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyBace - 2019.06.02 at 21h 04m 35s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyBace" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 46m 17s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyBace - 2019.06.02 at 21h 06m 57s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyBace" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 49m 34s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyProduct2 - 2019.05.30 at 21h 00m 46s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyProduct2" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 54m 49s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyProduct2 - 2019.05.30 at 21h 09m 24s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyProduct2" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 56m 54s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyProduct2 - 2019.05.30 at 21h 19m 54s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyProduct2" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 11h 58m 14s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProcessCompanyInfo_processStockCompanyProduct2 - 2019.06.02 at 22h 33m 06s.xml">
-      <configuration name="ProcessCompanyInfo.processStockCompanyProduct2" configurationId="JUnit" />
+    <history-entry file="ProcessForexIndexTest_spiderLastYearForexIndexType - 2019.07.09 at 12h 45m 00s.xml">
+      <configuration name="ProcessForexIndexTest.spiderLastYearForexIndexType" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="379401000" />
+    <option name="totallyTimeSpent" value="409685000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1313,12 +1258,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23107049" sideWeight="0.5025" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5248042" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5248042" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1335,7 +1281,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1398,247 +1343,284 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/CompanyOperateInformation.java" />
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyAnalyseMapper.xml">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCodeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="9" />
+        <state relative-caret-position="145">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockIndexServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="28" column="95" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="95" />
+        <state relative-caret-position="969">
+          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/WebApplication.java">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCodeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="43" column="150" selection-start-line="43" selection-start-column="150" selection-end-line="43" selection-end-column="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
-          <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-          <folding />
+          <caret line="6" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/CompanyBaseInformationMapper.java" />
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/CompanyBaseInformationService.java" />
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyBaseMapper.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/systemMenuList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnDiaryList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="117" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyBaseMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyProductMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyProductMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/learnDiaryEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemParam.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-227">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="557">
+          <caret line="142" column="98" selection-start-line="142" selection-start-column="77" selection-end-line="142" selection-end-column="98" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="17" column="11" selection-start-line="14" selection-start-column="8" selection-end-line="17" selection-end-column="11" />
+        <state relative-caret-position="-2071">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyBase.java">
+    <entry file="jar://$PROJECT_DIR$/../../java/jdk1.8.0_131/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="322" column="39" selection-start-line="322" selection-start-column="19" selection-end-line="322" selection-end-column="39" />
+        <state relative-caret-position="264">
+          <caret line="111" column="23" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyAnalyse.java">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SystemMenuMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="31" />
+        <state relative-caret-position="1064">
+          <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/TreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1121">
+          <caret line="81" column="10" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockPoolList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1558">
+          <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockPoolList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/json/industryRelated.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockIndexServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="27" column="66" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexOperate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="13" column="71" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FinanceMarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="31" selection-start-line="12" selection-start-column="4" selection-end-line="13" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FinanceMarketMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="8" column="72" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/InvestForexOperateMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="68" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/InvestForexOperateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="9" column="81" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FinanceMarketServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/InvestForexOperateServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="17" column="146" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="146" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/WebProjectWebApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/systemParam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="168" column="20" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/ForexIndexTypeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesMarketProductMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="8" column="86" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesMarketProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="32" selection-start-line="12" selection-start-column="4" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesMarketProductMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexIndexType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/ForexIndexTypeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyBaseService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="11" column="46" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="46" />
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyProductService.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="66" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="66" />
+        <state relative-caret-position="456">
+          <caret line="186" column="21" selection-start-line="186" selection-start-column="21" selection-end-line="186" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyProductServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1539">
-          <caret line="99" column="19" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyAnalyseService.java">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesMarketProductService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <caret line="8" column="85" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="85" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemMenu.java">
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/SpiderUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="13" column="29" selection-start-line="12" selection-start-column="4" selection-end-line="13" selection-end-column="29" />
+        <state relative-caret-position="646">
+          <caret line="52" column="39" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/SystemMenuMapper.java">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesMarketProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="12" column="66" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="66" />
+        <state relative-caret-position="171">
+          <caret line="14" column="154" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="154" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockMarketClassMapper.java">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyBaseServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="75" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+        <state relative-caret-position="418">
+          <caret line="44" column="70" selection-start-line="44" selection-start-column="70" selection-end-line="44" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SystemMenuMapper.xml">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockMarketClassServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockIndexService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="11" column="65" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="65" />
+        <state relative-caret-position="532">
+          <caret line="40" column="39" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/SystemMenuServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="18" column="115" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="115" />
+        <state relative-caret-position="323">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockMarketClassMapper.xml">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/SystemParamServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="70" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="70" />
+        <state relative-caret-position="171">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockMarketClassService.java">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyMarketStatictisServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyAnalyseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyMarketStatictisService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="86" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/CompanyBaseInformationServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/companyInformationEdit.html" />
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="89" column="61" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCompanyStatictis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="125" column="18" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCompanyList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="65" column="110" selection-start-line="65" selection-start-column="83" selection-end-line="65" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1649,90 +1631,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/EconomyStatisticsController.java">
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/SystemMenuApiController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        <state relative-caret-position="1121">
+          <caret line="77" column="48" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyStatictis.js">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.6/commons-lang3-3.6.jar!/org/apache/commons/lang3/time/DateUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="317" column="10" selection-start-line="317" selection-start-column="10" selection-end-line="317" selection-end-column="10" />
+        <state relative-caret-position="587">
+          <caret line="140" column="23" selection-start-line="140" selection-start-column="23" selection-end-line="140" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/DateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="59" column="23" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessStockIndexTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexIndexTypeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessForexIndexTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
           <folding>
-            <element signature="e#2320#6285#0" expanded="false" />
-            <element signature="e#6896#9211#0" expanded="false" />
-            <marker date="1559289056006" expanded="true" signature="1952:1969" ph="..." />
-            <marker date="1559289056006" expanded="true" signature="2010:2016" ph="&amp;nbsp;" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexIndexTypeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="767">
+          <caret line="98" column="9" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockMarketClassServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockMarketClass.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        <state relative-caret-position="-513">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCodeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="64" column="62" selection-start-line="64" selection-start-column="62" selection-end-line="64" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCodeMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCodeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyBaseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
-          <caret line="51" column="73" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCodeMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="43" column="150" selection-start-line="43" selection-start-column="150" selection-end-line="43" selection-end-column="150" />
-          <folding />
+        <state relative-caret-position="-2089">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1558502115104" expanded="true" signature="522:528" ph="&amp;nbsp;" />
+          </folding>
         </state>
       </provider>
     </entry>

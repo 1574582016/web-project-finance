@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<div class="row">
+    <div class="col-md-3">
+        <div id="tree"></div>
+    </div>
+    <div class="col-md-5">
+
+    </div>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/systemMenu.js" th:src="@{/js/page/stockPoolList.js}"></script>
+</th:block>
+</html>

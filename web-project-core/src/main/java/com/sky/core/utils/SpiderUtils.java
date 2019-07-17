@@ -11,6 +11,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.net.URI;
@@ -44,5 +47,17 @@ public class SpiderUtils {
             e.printStackTrace();
         }
         return jsonString;
+    }
+
+
+    public static Document HtmlJsoupGet(String url){
+        Connection con = Jsoup.connect(url).userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31");
+        Document doc = null;
+        try {
+            doc = con.get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return doc;
     }
 }

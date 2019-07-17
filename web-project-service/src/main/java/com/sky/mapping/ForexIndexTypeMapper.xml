@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.ForexIndexTypeMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.ForexIndexType">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="type_code" property="typeCode"/>
+        <result column="parent_code" property="parentCode"/>
+        <result column="type_name" property="typeName"/>
+        <result column="release_contry" property="releaseContry"/>
+        <result column="release_dapartment" property="releaseDapartment"/>
+        <result column="release_frequency" property="releaseFrequency"/>
+        <result column="index_explain" property="indexExplain"/>
+        <result column="index_focus_reason" property="indexFocusReason"/>
+    </resultMap>
+</mapper>
