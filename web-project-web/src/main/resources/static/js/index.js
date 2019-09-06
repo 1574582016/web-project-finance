@@ -129,7 +129,7 @@ function backLastBread() {
 function homeClick() {
     var str = '<li class="active"><a id="home" onclick="javascript:homeClick()" href="javascript:">首页</a></li>';
     window.localStorage.setItem("breadcrumbInfo",str);
-    window.location.href="/home";
+    // window.location.href="/home";
     return false;
 }
 

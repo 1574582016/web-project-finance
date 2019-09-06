@@ -21,6 +21,8 @@
         <result column="stock_h_name" property="stockHName"/>
         <result column="stock_plate" property="stockPlate"/>
         <result column="stock_sector" property="stockSector"/>
+        <result column="big_contry_sector" property="bigContrySector"/>
+        <result column="middle_contry_sector" property="middleContrySector"/>
         <result column="contry_sector" property="contrySector"/>
         <result column="stock_exchange" property="stockExchange"/>
         <result column="company_manager" property="companyManager"/>
@@ -97,5 +99,11 @@
         <if test="endDay != null and endDay != '' and endDay != 'undefined'">
             AND b.`publish_date` &lt;= #{endDay}
         </if>
+        <if test="middleContrySector != null and middleContrySector != '' and middleContrySector != 'undefined'">
+            AND b.`middle_contry_sector` REGEXP #{middleContrySector}
+        </if>
+        AND b.stock_plate_class = 'A'
+        AND b.stock_plate_level &lt;= 2
+        ORDER BY b.stock_plate_level ASC ,b.stock_plate_class,b.`company_region`
     </select>
 </mapper>

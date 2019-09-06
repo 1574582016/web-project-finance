@@ -17,5 +17,6 @@ public interface StockCompanyBaseMapper extends BaseMapper<StockCompanyBase> {
                                                                     @Param("stockSector") String stockSector,
                                                                     @Param("stockExchange") String stockExchange ,
                                                                     @Param("startDay")  String startDay ,
-                                                                    @Param("endDay") String endDay);
+                                                                    @Param("endDay") String endDay ,
+                                                                    @Param("middleContrySector") String middleContrySector);
 }

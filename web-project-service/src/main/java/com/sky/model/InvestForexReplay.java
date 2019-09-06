@@ -3,6 +3,7 @@ package com.sky.model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.sky.core.model.BaseModel;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by ThinkPad on 2019/5/16.
  */
+@Data
 @TableName("invest_forex_replay")
 public class InvestForexReplay extends BaseModel<InvestForexReplay> {
 
@@ -77,91 +79,4 @@ public class InvestForexReplay extends BaseModel<InvestForexReplay> {
     @TableField(exist = false)
     List<InvestForexReplayDetail> detailList ;
 
-    public String getReplayCode() {
-        return replayCode;
-    }
-
-    public void setReplayCode(String replayCode) {
-        this.replayCode = replayCode;
-    }
-
-    public String getReplayTime() {
-        return replayTime;
-    }
-
-    public void setReplayTime(String replayTime) {
-        this.replayTime = replayTime;
-    }
-
-    public String getInvestStrategy() {
-        return investStrategy;
-    }
-
-    public void setInvestStrategy(String investStrategy) {
-        this.investStrategy = investStrategy;
-    }
-
-    public String getCurrencyPairs() {
-        return currencyPairs;
-    }
-
-    public void setCurrencyPairs(String currencyPairs) {
-        this.currencyPairs = currencyPairs;
-    }
-
-    public String getTimeCycle() {
-        return timeCycle;
-    }
-
-    public void setTimeCycle(String timeCycle) {
-        this.timeCycle = timeCycle;
-    }
-
-    public BigDecimal getSeccussRate() {
-        return seccussRate;
-    }
-
-    public void setSeccussRate(BigDecimal seccussRate) {
-        this.seccussRate = seccussRate;
-    }
-
-    public BigDecimal getFailRate() {
-        return failRate;
-    }
-
-    public void setFailRate(BigDecimal failRate) {
-        this.failRate = failRate;
-    }
-
-    public BigDecimal getFlatRate() {
-        return flatRate;
-    }
-
-    public void setFlatRate(BigDecimal flatRate) {
-        this.flatRate = flatRate;
-    }
-
-    public BigDecimal getEarnPoint() {
-        return earnPoint;
-    }
-
-    public void setEarnPoint(BigDecimal earnPoint) {
-        this.earnPoint = earnPoint;
-    }
-
-    public BigDecimal getLosePoint() {
-        return losePoint;
-    }
-
-    public void setLosePoint(BigDecimal losePoint) {
-        this.losePoint = losePoint;
-    }
-
-    public List<InvestForexReplayDetail> getDetailList() {
-        return detailList;
-    }
-
-    public void setDetailList(List<InvestForexReplayDetail> detailList) {
-        this.detailList = detailList;
-    }
 }

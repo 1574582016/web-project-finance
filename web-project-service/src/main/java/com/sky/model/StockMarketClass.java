@@ -3,10 +3,12 @@ package com.sky.model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.sky.core.model.BaseModel;
+import lombok.Data;
 
 /**
  * Created by ThinkPad on 2019/5/29.
  */
+@Data
 @TableName("stock_market_class")
 public class StockMarketClass extends BaseModel<StockMarketClass> {
 
@@ -28,27 +30,4 @@ public class StockMarketClass extends BaseModel<StockMarketClass> {
     @TableField("class_type")
     private String classType ;
 
-    public String getClassCode() {
-        return classCode;
-    }
-
-    public void setClassCode(String classCode) {
-        this.classCode = classCode;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public String getClassType() {
-        return classType;
-    }
-
-    public void setClassType(String classType) {
-        this.classType = classType;
-    }
 }

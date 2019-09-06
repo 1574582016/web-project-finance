@@ -23,13 +23,13 @@ public class IndexController{
     }
 
     @RequestMapping("/index")
-    public String index(HttpServletRequest request, Model model){
+    public String index(HttpServletRequest request){
         SystemUser systemUser = (SystemUser)  request.getSession().getAttribute(SystemConst.SYSTEMUSER);
 //        System.out.println(systemUser.toString());
         if (systemUser == null) {
             return "login";
         }
-        model.addAttribute("realName" , systemUser.getRealName());
+        request.getSession().setAttribute("realName" ,systemUser.getRealName());
         return "index";
     }
 

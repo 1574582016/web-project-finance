@@ -89,4 +89,16 @@ public class AbstractController extends BaseController {
     @Autowired
     protected StockMarketClassService stockMarketClassService ;
 
+    @Autowired
+    protected StockPoolClassService stockPoolClassService ;
+
+    @Autowired
+    protected StockPoolSecondClassService stockPoolSecondClassService ;
+
+    @Autowired
+    protected StockCompanyNoticeClassService stockCompanyNoticeClassService ;
+
+    @Autowired
+    protected StockCompanyNoticeService stockCompanyNoticeService ;
+
 }

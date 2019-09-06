@@ -3,6 +3,7 @@ package com.sky.model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.sky.core.model.BaseModel;
+import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by ThinkPad on 2019/5/14.
  */
+@Data
 @TableName("economy_news_statictis")
 public class EconomyNewsStatictis extends BaseModel<EconomyNewsStatictis> {
 

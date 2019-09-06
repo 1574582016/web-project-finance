@@ -35,8 +35,9 @@ public class StockCompanyApiController extends AbstractController {
                                           String stockSector ,
                                           String stockExchange ,
                                           String startDay ,
-                                          String endDay){
-        Page selectedPage = stockCompanyBaseService.getStockCompanyBaseList( page , size , stockCode, stockName ,stockSector ,stockExchange ,startDay ,endDay );
+                                          String endDay ,
+                                          String middleContrySector ){
+        Page selectedPage = stockCompanyBaseService.getStockCompanyBaseList( page , size , stockCode, stockName ,stockSector ,stockExchange ,startDay ,endDay ,middleContrySector );
         return PageData(selectedPage);
     }
 

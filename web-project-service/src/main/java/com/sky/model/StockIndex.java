@@ -3,10 +3,12 @@ package com.sky.model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.sky.core.model.BaseModel;
+import lombok.Data;
 
 /**
  * Created by ThinkPad on 2019/5/5.
  */
+@Data
 @TableName("stock_index")
 public class StockIndex extends BaseModel<StockIndex> {
 
@@ -76,83 +78,4 @@ public class StockIndex extends BaseModel<StockIndex> {
     @TableField("amplitude")
     private String amplitude ;
 
-    public String getDataTime() {
-        return dataTime;
-    }
-
-    public void setDataTime(String dataTime) {
-        this.dataTime = dataTime;
-    }
-
-    public Integer getIndexType() {
-        return indexType;
-    }
-
-    public void setIndexType(Integer indexType) {
-        this.indexType = indexType;
-    }
-
-    public Integer getTimeType() {
-        return timeType;
-    }
-
-    public void setTimeType(Integer timeType) {
-        this.timeType = timeType;
-    }
-
-    public String getStartPoint() {
-        return startPoint;
-    }
-
-    public void setStartPoint(String startPoint) {
-        this.startPoint = startPoint;
-    }
-
-    public String getEndPoint() {
-        return endPoint;
-    }
-
-    public void setEndPoint(String endPoint) {
-        this.endPoint = endPoint;
-    }
-
-    public String getHighPoint() {
-        return highPoint;
-    }
-
-    public void setHighPoint(String highPoint) {
-        this.highPoint = highPoint;
-    }
-
-    public String getLowPoint() {
-        return lowPoint;
-    }
-
-    public void setLowPoint(String lowPoint) {
-        this.lowPoint = lowPoint;
-    }
-
-    public String getDealNumber() {
-        return dealNumber;
-    }
-
-    public void setDealNumber(String dealNumber) {
-        this.dealNumber = dealNumber;
-    }
-
-    public String getDealMoney() {
-        return dealMoney;
-    }
-
-    public void setDealMoney(String dealMoney) {
-        this.dealMoney = dealMoney;
-    }
-
-    public String getAmplitude() {
-        return amplitude;
-    }
-
-    public void setAmplitude(String amplitude) {
-        this.amplitude = amplitude;
-    }
 }

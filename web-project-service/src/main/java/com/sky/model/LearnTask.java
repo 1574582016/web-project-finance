@@ -3,10 +3,12 @@ package com.sky.model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.sky.core.model.BaseModel;
+import lombok.Data;
 
 /**
  * Created by ThinkPad on 2018/10/16.
  */
+@Data
 @TableName("learn_task")
 public class LearnTask extends BaseModel<LearnTask> {
 
@@ -25,43 +27,4 @@ public class LearnTask extends BaseModel<LearnTask> {
     @TableField("task_content")
     private String taskContent ;
 
-    public String getTaskCode() {
-        return taskCode;
-    }
-
-    public void setTaskCode(String taskCode) {
-        this.taskCode = taskCode;
-    }
-
-    public String getTaskName() {
-        return taskName;
-    }
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
-
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getTaskState() {
-        return taskState;
-    }
-
-    public void setTaskState(String taskState) {
-        this.taskState = taskState;
-    }
-
-    public String getTaskContent() {
-        return taskContent;
-    }
-
-    public void setTaskContent(String taskContent) {
-        this.taskContent = taskContent;
-    }
 }

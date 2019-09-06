@@ -1,8 +1,11 @@
 package com.sky.controller;
 
+import com.sky.core.utils.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Date;
 
 /**
  * Created by ThinkPad on 2019/5/10.
@@ -33,4 +36,18 @@ public class StockCompanyController {
     public String stockPoolList(){
         return  "page/stockPoolList";
     }
+
+
+    @RequestMapping("/stockNoticeClassList")
+    public String stockNoticeClassList(){
+        return "page/stockNoticeClassList";
+    }
+
+    @RequestMapping("/stockCompanyNoticeList")
+    public String stockCompanyNoticeList(Model model){
+        model.addAttribute("startDay" , DateUtils.getDate());
+        model.addAttribute("endDay" , DateUtils.format(DateUtils.addDays(new Date(),1) ,"yyyy-MM-dd"));
+        return "page/stockCompanyNoticeList";
+    }
+
 }

@@ -32,9 +32,9 @@ import java.util.List;
 public class StockCompanyBaseServiceImpl extends ServiceImpl<StockCompanyBaseMapper,StockCompanyBase> implements StockCompanyBaseService {
 
     @Override
-    public void spiderStockCompanyBase(String skuCode) {
-            String companyUrl = "http://f10.eastmoney.com/CompanySurvey/CompanySurveyAjax?code=" + skuCode;
-            String subjectUrl = "http://f10.eastmoney.com/CoreConception/CoreConceptionAjax?code=" + skuCode;
+    public void spiderStockCompanyBase(String stockCode) {
+            String companyUrl = "http://f10.eastmoney.com/CompanySurvey/CompanySurveyAjax?code=" + stockCode;
+            String subjectUrl = "http://f10.eastmoney.com/CoreConception/CoreConceptionAjax?code=" + stockCode;
             String companyString = SpiderUtils.HttpClientBuilderGet(companyUrl);
             JSONObject companyObject = JSON.parseObject(companyString);
             JSONObject baseObject = companyObject.getJSONObject("jbzl");
@@ -103,9 +103,9 @@ public class StockCompanyBaseServiceImpl extends ServiceImpl<StockCompanyBaseMap
     }
 
     @Override
-    public Page<StockCompanyBase> getStockCompanyBaseList(Integer page, Integer size, String stockCode, String stockName, String stockSector,String stockExchange , String startDay ,String endDay) {
+    public Page<StockCompanyBase> getStockCompanyBaseList(Integer page, Integer size, String stockCode, String stockName, String stockSector,String stockExchange , String startDay ,String endDay ,String middleContrySector) {
         Page<StockCompanyBase> pageInfo = new Page<StockCompanyBase>(page, size);
-        List<StockCompanyBase> list = baseMapper.getStockCompanyBaseList( pageInfo,stockCode, stockName , stockSector, stockExchange , startDay , endDay);
+        List<StockCompanyBase> list = baseMapper.getStockCompanyBaseList( pageInfo,stockCode, stockName , stockSector, stockExchange , startDay , endDay ,middleContrySector);
         pageInfo.setRecords(list);
         return pageInfo;
     }

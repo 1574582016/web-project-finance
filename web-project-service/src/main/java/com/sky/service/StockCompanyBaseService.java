@@ -11,6 +11,6 @@ public interface StockCompanyBaseService extends IService<StockCompanyBase> {
 
     void spiderStockCompanyBase(String skuCode);
 
-    Page<StockCompanyBase> getStockCompanyBaseList(Integer page, Integer size, String stockCode, String stockName , String stockSector ,String stockExchange , String startDay ,String endDay);
+    Page<StockCompanyBase> getStockCompanyBaseList(Integer page, Integer size, String stockCode, String stockName , String stockSector ,String stockExchange , String startDay ,String endDay ,String middleContrySector);
 
 }

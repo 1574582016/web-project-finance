@@ -6,39 +6,117 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="功能调整">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/ForexIndexTypeMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesMarketProductMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/ForexIndexTypeMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesMarketProductMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexIndexType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesMarketProduct.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexIndexTypeService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesMarketProductService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexIndexTypeServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesMarketProductServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockPoolList.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/json/industryRelated.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockPoolList.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessForexIndexTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/transaction-logs/ShadowNoFileLockStore/defaultStore/Recovery/TransactionStatusManager/0_ffffac11c0c2_cd31_5d722642_6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/css/head.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StockNoticeApiController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StockPoolApiController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyHotPointMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyNoticeClassMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyNoticeMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockPoolClassMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockPoolSecondClassMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyHotPointMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyNoticeClassMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyNoticeMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockPoolClassMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockPoolSecondClassMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyHotPoint.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyNotice.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyNoticeClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockPoolClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockPoolSecondClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyHotPointService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyNoticeClassService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyNoticeService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockPoolClassService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockPoolSecondClassService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyHotPointServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyNoticeClassServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyNoticeServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockPoolClassServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockPoolSecondClassServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/StockNoticeCompany_VO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/StockNoticeDetail_VO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/StockCompanyNoticeScheduler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyNoticeList.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockNoticeClassList.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCompanyNoticeList.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockNoticeClassList.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ChangeDataTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/companyNoticeTestFive.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/companyNoticeTestFour.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/companyNoticeTestOne.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/companyNoticeTestThree.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/companyNoticeTestTwo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/FinanceMarket.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/FinanceMarket.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnDiary.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnDiary.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnEnglishWord.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnEnglishWord.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnPagerQuestion.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnPagerQuestion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnPaper.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnPaper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnQuestion.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnQuestion.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnTask.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/LearnTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemMenu.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemMenu.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemParam.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemParam.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemRole.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemRole.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemRoleMenu.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemRoleMenu.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemUser.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemUserRole.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/SystemUserRole.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/TraditionMarket.class" afterPath="$PROJECT_DIR$/web-project-service/target/classes/com/sky/model/TraditionMarket.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StockCompanyApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StockCompanyApiController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/web-project-api.iml" afterPath="$PROJECT_DIR$/web-project-api/web-project-api.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/SpiderUtils.java" afterPath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/SpiderUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-core/web-project-core.iml" afterPath="$PROJECT_DIR$/web-project-core/web-project-core.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-finance.iml" afterPath="$PROJECT_DIR$/web-project-finance.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyBaseMapper.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyBaseMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyBaseMapper.xml" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyBaseMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyMarketStatictis.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyMarketStatictis.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsInfluence.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsInfluence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FinanceMarket.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FinanceMarket.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexIndexType.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexIndexType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesMarketProduct.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesMarketProduct.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexOperate.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexOperate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplay.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplayDetail.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestForexReplayDetail.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplay.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplayDetail.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/InvestStockReplayDetail.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnDiary.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnDiary.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnEnglishClass.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnEnglishClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnEnglishWord.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnEnglishWord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnPagerQuestion.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnPagerQuestion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnPaper.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnPaper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnQuestion.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnQuestion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnTask.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/LearnTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StatisticsDayNews.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StatisticsDayNews.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCode.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyAnalyse.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyAnalyse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyBase.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyBase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyProduct.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyProduct.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockIndex.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockIndex.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockMarketClass.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockMarketClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemMenu.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemParam.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemParam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemRole.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemRole.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemRoleMenu.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemRoleMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemUser.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemUserRole.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/SystemUserRole.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/TraditionMarket.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/TraditionMarket.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyBaseService.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCompanyBaseService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyBaseServiceImpl.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyBaseServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/web-project-service.iml" afterPath="$PROJECT_DIR$/web-project-service/web-project-service.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/IndexController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/IndexController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StockCompanyController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessStockIndexTest.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessStockIndexTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/css/index.css" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockPoolList.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockPoolList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockPoolList.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockPoolList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/WebProjectWebApplicationTests.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/WebProjectWebApplicationTests.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_39.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_60.xml" />
     </list>
     <ignored path="web-project-finance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,8 +142,8 @@
     <favorites_list name="web-project-finance" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -75,24 +153,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
+      <file leaf-file-name="WebApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/WebApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-513">
+            <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2089">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1558502115104" expanded="true" signature="522:528" ph="&amp;nbsp;" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -120,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyAnalyseMapper.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyAnalyseMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCompanyProduct.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/WebApplication.java" />
@@ -171,6 +236,7 @@
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexIndexTypeService.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessForexIndexTest.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexIndexTypeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/home.html" />
       </list>
     </option>
   </component>
@@ -246,32 +312,31 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -281,11 +346,29 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -297,7 +380,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -311,11 +416,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="web-project-finance2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -331,128 +436,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-web" />
+              <option name="myItemId" value="sky" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -484,84 +482,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebApplication">
-    <configuration default="false" name="ProcessStockIndexTest.processqihuo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.sky.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="web-project-web" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessStockIndexTest" />
-      <option name="METHOD_NAME" value="processqihuo" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ProcessForexIndexTest.processForexIndexType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.sky.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="web-project-web" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessForexIndexTest" />
-      <option name="METHOD_NAME" value="processForexIndexType" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="ProcessForexIndexTest.spiderLastYearForexIndexType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.sky.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="web-project-web" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ProcessForexIndexTest" />
-      <option name="METHOD_NAME" value="spiderLastYearForexIndexType" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -979,24 +899,13 @@
     <configuration default="false" name="WebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.sky.WebApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <module name="web-project-web" />
       <envs />
       <method />
     </configuration>
-    <list size="4">
+    <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.WebApplication" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ProcessStockIndexTest.processqihuo" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.processForexIndexType" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.spiderLastYearForexIndexType" />
     </list>
-    <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.spiderLastYearForexIndexType" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ProcessForexIndexTest.processForexIndexType" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ProcessStockIndexTest.processqihuo" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -1080,6 +989,8 @@
       <workItem from="1562632533856" duration="9565000" />
       <workItem from="1563260465771" duration="661000" />
       <workItem from="1563330938509" duration="663000" />
+      <workItem from="1567761381795" duration="1435000" />
+      <workItem from="1567763378162" duration="51000" />
     </task>
     <task id="LOCAL-00001" summary="首页调整">
       <created>1540551511444</created>
@@ -1250,26 +1161,25 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="409685000" />
+    <option name="totallyTimeSpent" value="411171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23107049" sideWeight="0.5025" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5234987" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5248042" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1281,6 +1191,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1343,13 +1254,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockCodeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ProcessCompanyInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -1656,7 +1560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1671,9 +1574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
           <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1684,7 +1584,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/WebApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1692,21 +1592,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-513">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1563360675569" expanded="true" signature="522:528" ph="&amp;nbsp;" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/index.js">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2089">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1558502115104" expanded="true" signature="522:528" ph="&amp;nbsp;" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -40,6 +40,9 @@ html,body{
 	width: 58px;
 	height: 58px;
 	border-radius: 32px;
+	padding: 0;
+	background:url('head.jpg') no-repeat left top;
+	background-size:100% 100%;
 }
 .sy-navbar .message-alert{
 	line-height: 64px;
@@ -276,4 +279,10 @@ html,body{
 .form-input-show{
 	padding-top: 7px;
 	border-bottom: 1px dashed #000;
+}
+
+.text_link_a{
+	text-decoration: none;
+	cursor: pointer;
+	color: #0285f5;
 }

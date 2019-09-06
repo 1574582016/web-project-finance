@@ -7,16 +7,19 @@
 </head>
 <body layout:fragment="content">
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div id="tree"></div>
     </div>
-    <div class="col-md-5">
-
+    <div class="col-md-7">
+        <table id="tableList"></table>
+    </div>
+    <div class="col-md-3">
+        <div id="tree2"></div>
     </div>
 </div>
 
 </body>
 <th:block layout:fragment = "bodyAssets">
-    <script type="text/javascript" src = "/js/page/systemMenu.js" th:src="@{/js/page/stockPoolList.js}"></script>
+    <script type="text/javascript" src = "/js/page/stockPoolList.js" th:src="@{/js/page/stockPoolList.js}"></script>
 </th:block>
 </html>

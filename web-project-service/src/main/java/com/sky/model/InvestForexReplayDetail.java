@@ -3,6 +3,7 @@ package com.sky.model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.sky.core.model.BaseModel;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
 /**
  * Created by ThinkPad on 2019/5/16.
  */
+@Data
 @TableName("invest_forex_replay_detail")
 public class InvestForexReplayDetail extends BaseModel<InvestForexReplayDetail> {
 
@@ -55,59 +57,4 @@ public class InvestForexReplayDetail extends BaseModel<InvestForexReplayDetail> 
     @TableField(value = "remark")
     private String remark ;
 
-    public String getReplayCode() {
-        return replayCode;
-    }
-
-    public void setReplayCode(String replayCode) {
-        this.replayCode = replayCode;
-    }
-
-    public String getInvestType() {
-        return investType;
-    }
-
-    public void setInvestType(String investType) {
-        this.investType = investType;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public Integer getLineNumber() {
-        return lineNumber;
-    }
-
-    public void setLineNumber(Integer lineNumber) {
-        this.lineNumber = lineNumber;
-    }
-
-    public BigDecimal getGainPoint() {
-        return gainPoint;
-    }
-
-    public void setGainPoint(BigDecimal gainPoint) {
-        this.gainPoint = gainPoint;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
 }
