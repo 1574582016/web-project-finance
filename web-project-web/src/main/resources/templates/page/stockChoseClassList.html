@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="index">
+<head>
+</head>
+<body layout:fragment="content">
+<style>
+    .list-group-item{
+        cursor: pointer;
+    }
+    .list-group .active{
+        background-color: #33373d;
+        border-color: #33373d;
+    }
+    .list-group .active:hover{
+        background-color: #33373d;
+        border-color: #33373d;
+    }
+</style>
+<div class="row">
+    <div class="col-md-3">
+        <ul class="list-group" id="list_1">
+
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul class="list-group" id="list_2">
+
+        </ul>
+    </div>
+
+    <div class="col-md-3">
+        <ul class="list-group" id="list_3">
+
+        </ul>
+    </div>
+
+    <div class="col-md-3">
+        <ul class="list-group" id="list_4">
+
+        </ul>
+    </div>
+</div>
+
+</body>
+<th:block layout:fragment = "bodyAssets">
+    <script type="text/javascript" src = "/js/page/stockChoseClassList.js" th:src="@{/js/page/stockChoseClassList.js}"></script>
+</th:block>
+</html>

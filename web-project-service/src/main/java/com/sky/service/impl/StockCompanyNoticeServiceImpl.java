@@ -93,12 +93,13 @@ public class StockCompanyNoticeServiceImpl extends ServiceImpl<StockCompanyNotic
 
                     String className = noticeClassService.getStockNoticeClassCode(bigClass ,middleClass ,nticeType);
                     companyNotice.setClassCode(className);
-
+//                    System.out.println("==============================" + nticeType);
                     StockCompanyNotice notice = selectOne(new EntityWrapper<StockCompanyNotice>().where("stock_code = {0}" , stockCode).where("publish_time = {0}" , publishTime).where("notice_type = {0}" , nticeType).where("notice_title = {0}" , titleName));
                     if(notice == null){
                         list.add(companyNotice);
                     }
                 }
+//                System.out.println("=================" + list.toString());
                 if(list.size()>0){
                     insertBatch(list);
                 }else{

@@ -101,4 +101,7 @@ public class AbstractController extends BaseController {
     @Autowired
     protected StockCompanyNoticeService stockCompanyNoticeService ;
 
+    @Autowired
+    protected StockChoseClassService stockChoseClassService ;
+
 }
