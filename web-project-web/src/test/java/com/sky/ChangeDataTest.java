@@ -10,6 +10,8 @@ import com.sky.service.StockChoseClassService;
 import com.sky.service.StockCompanyNoticeService;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,5 +106,31 @@ public class ChangeDataTest {
 
         System.out.println(list.toString());
         stockChoseClassService.insertBatch(list);
+    }
+
+    @Test
+    public void test3(){
+        for(int x = 1 ; x < 2 ; x ++){
+            String url = "";
+            if(x == 1){
+                url = "http://finance.eastmoney.com/a/cywjh.html";
+            }else{
+                url = "http://finance.eastmoney.com/a/cywjh_"+ x +".html";
+            }
+            Document doc = SpiderUtils.HtmlJsoupGet(url);
+            String resultStr = doc.html();
+            Elements elements = doc.getElementsByClass("repeatList").get(0).getElementsByTag("li");
+            for(int i = 0 ; i < elements.size() ; i ++){
+                Element element1 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("title").get(0);
+                String href = element1.getElementsByTag("a").get(0).attr("href");
+                String title = element1.getElementsByTag("a").get(0).text();
+                System.out.println(title);
+                System.out.println(href);
+                Element element2 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("time").get(0);
+                String time = element2.text();
+                time = time.replace("月","-").replace("日","");
+                System.out.println(time);
+            }
+        }
     }
 }
