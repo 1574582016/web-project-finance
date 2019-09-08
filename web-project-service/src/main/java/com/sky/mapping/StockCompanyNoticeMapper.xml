@@ -33,8 +33,10 @@
         b.`publish_amount` publishAmount
         FROM stock_company_base b
         LEFT JOIN stock_company_notice n ON b.`stock_a_code` = n.`stock_code`
+        LEFT JOIN stock_company_notice_class c ON n.`class_code` = c.`class_code`
         WHERE b.`stock_plate_class` = 'A'
         AND b.`stock_plate_level` &lt; 3
+        AND c.`class_level` > 1
         <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
             AND b.`stock_a_code` REGEXP #{stockCode}
         </if>

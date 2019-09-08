@@ -1,14 +1,14 @@
 
 $(function () {
 
-    $('#s_start').datepicker({
+    $('#startDay').datepicker({
         format: 'yyyy-mm-dd',
         language: 'zh-CN',
         clearBtn: true ,
         autoclose: true
     });
 
-    $('#s_end').datepicker({
+    $('#endDay').datepicker({
         format: 'yyyy-mm-dd',
         language: 'zh-CN',
         clearBtn: true ,
@@ -76,11 +76,6 @@ $(function () {
                 align: 'center',
                 valign: 'middle'
             },{
-                field: 'middleContrySector',
-                title: '行业大类',
-                align: 'center',
-                valign: 'middle'
-            }, {
                 field: 'stockSector',
                 title: '行业细类',
                 align: 'center',
