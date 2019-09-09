@@ -24,9 +24,11 @@ public class EconomyStatisticsApiController extends AbstractController {
     @PostMapping("/getEconomyNewsStatisticsList")
     public Object getEconomyNewsStatisticsList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                                 @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
-                                                String listCode ,
-                                                String listName ){
-        Page selectedPage = economyNewsStatictisService.getEconomyNewsStatisticsList( page , size);
+                                                String name ,
+                                                String type ,
+                                                String startDate ,
+                                                String endDate){
+        Page selectedPage = economyNewsStatictisService.getEconomyNewsStatisticsList( page , size ,name ,type ,startDate ,endDate);
         return PageData(selectedPage);
     }
 

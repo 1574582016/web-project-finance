@@ -31,7 +31,7 @@ public class EconomyNewsStatictis extends BaseModel<EconomyNewsStatictis> {
      * 时间
      */
     @TableField("news_time")
-    private Date newsTime ;
+    private String newsTime ;
 
     /**
      * 区域
@@ -67,75 +67,5 @@ public class EconomyNewsStatictis extends BaseModel<EconomyNewsStatictis> {
     @TableField(exist = false)
     List<EconomyNewsInfluence> influencelist ;
 
-    public List<EconomyNewsInfluence> getInfluencelist() {
-        return influencelist;
-    }
 
-    public void setInfluencelist(List<EconomyNewsInfluence> influencelist) {
-        this.influencelist = influencelist;
-    }
-
-    public String getNewsCode() {
-        return newsCode;
-    }
-
-    public void setNewsCode(String newsCode) {
-        this.newsCode = newsCode;
-    }
-
-    public String getNewsTitle() {
-        return newsTitle;
-    }
-
-    public void setNewsTitle(String newsTitle) {
-        this.newsTitle = newsTitle;
-    }
-
-    public Date getNewsTime() {
-        return newsTime;
-    }
-
-    public void setNewsTime(Date newsTime) {
-        this.newsTime = newsTime;
-    }
-
-    public Integer getNewsRegion() {
-        return newsRegion;
-    }
-
-    public void setNewsRegion(Integer newsRegion) {
-        this.newsRegion = newsRegion;
-    }
-
-    public String getNewsContry() {
-        return newsContry;
-    }
-
-    public void setNewsContry(String newsContry) {
-        this.newsContry = newsContry;
-    }
-
-    public Integer getNewsType() {
-        return newsType;
-    }
-
-    public void setNewsType(Integer newsType) {
-        this.newsType = newsType;
-    }
-
-    public String getNewsKeyWord() {
-        return newsKeyWord;
-    }
-
-    public void setNewsKeyWord(String newsKeyWord) {
-        this.newsKeyWord = newsKeyWord;
-    }
-
-    public String getNewsContent() {
-        return newsContent;
-    }
-
-    public void setNewsContent(String newsContent) {
-        this.newsContent = newsContent;
-    }
 }

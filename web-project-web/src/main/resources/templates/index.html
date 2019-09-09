@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8"/>
     <title>首页</title>
@@ -51,11 +49,17 @@
         </ul>
     </div>
     <div class="body-container">
-        <ol class="breadcrumb">
-            <li><a href="#">首页</a></li>
-        </ol>
-        <div class="sroll-container">
-            <div layout:fragment="content"></div>
+        <ul id="myTab" class="nav nav-tabs">
+            <li id="homeTab" class="active">
+                <a href="#home" data-toggle="tab">
+                    首页
+                </a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content sroll-container">
+            <div class="tab-pane fade in active" id="home">
+                <p>菜鸟教程是一个提供最新的web技术站点，，。菜鸟先飞早入行——学的不仅是技术，更是梦想。</p>
+            </div>
         </div>
     </div>
 </div>
@@ -144,9 +148,4 @@
 <script type="text/javascript" src="/js/sky.ajax.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>
 <!--<script type="text/javascript" src="/js/common.js"></script>-->
-<script type="text/javascript"  th:inline="javascript">
-    var realName = [[${session.realName}]];
-    $("#dropdownMenu1").html(realName);
-</script>
-<th:block layout:fragment = "bodyAssets"></th:block>
 </html>

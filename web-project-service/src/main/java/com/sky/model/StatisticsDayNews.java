@@ -19,6 +19,12 @@ public class StatisticsDayNews extends BaseModel<StatisticsDayNews> {
     private String newsCode ;
 
     /**
+     * 新闻日期
+     */
+    @TableField("news_time")
+    private String newsTime ;
+
+    /**
      * 新闻名称
      */
     @TableField("news_name")

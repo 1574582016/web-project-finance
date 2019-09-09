@@ -18,9 +18,9 @@ import java.util.List;
 public class EconomyNewsStatictisServiceImpl extends ServiceImpl<EconomyNewsStatictisMapper,EconomyNewsStatictis> implements EconomyNewsStatictisService {
 
     @Override
-    public Page<EconomyNewsStatictis> getEconomyNewsStatisticsList(Integer page, Integer size) {
+    public Page<EconomyNewsStatictis> getEconomyNewsStatisticsList(Integer page, Integer size  , String name , String type , String startDate , String endDate) {
         Page<EconomyNewsStatictis> pageInfo = new Page<EconomyNewsStatictis>(page, size);
-        List<EconomyNewsStatictis> list = baseMapper.getEconomyNewsStatisticsList( pageInfo);
+        List<EconomyNewsStatictis> list = baseMapper.getEconomyNewsStatisticsList( pageInfo , name , type , startDate , endDate);
         pageInfo.setRecords(list);
         return pageInfo;
     }

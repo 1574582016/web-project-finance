@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorate="index">
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
-<body layout:fragment="content">
-
+<body style="padding: 20px;">
 <div class="panel panel-default search-list-panel">
-    <div class="panel-heading">查询条件
-        <button type="button" class="btn btn-default collapse-button"   data-toggle="collapse" data-parent="#accordion"  href="#collapseBox"><span class="glyphicon glyphicon-chevron-down"></span></button>
-        <button type="button" id="searchDataButton" class="btn btn-default btn-sm search-button">查询</button>
-    </div>
     <div id="collapseBox" class="panel-collapse collapse in">
         <div class="panel-body">
             <form id="formSearch" class="form-horizontal">
@@ -30,6 +28,7 @@
 
                         </select>
                     </div>
+                    <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
                 </div>
             </form>
         </div>
@@ -130,7 +129,11 @@
 </div>
 
 </body>
-<th:block layout:fragment = "bodyAssets">
-    <script type="text/javascript" src = "/js/page/systemUser.js" th:src="@{/js/page/systemUser.js}"></script>
-</th:block>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src = "/js/page/systemUser.js"></script>
 </html>

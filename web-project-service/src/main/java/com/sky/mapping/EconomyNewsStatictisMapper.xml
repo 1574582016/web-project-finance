@@ -25,5 +25,17 @@
         i.*
         FROM economy_news_statictis i
         where i.isvalid = 1
+        <if test="name != null and name != '' and name != 'undefined'">
+           AND i.news_title REGEXP #{name}
+        </if>
+        <if test="type != null and type != '' and type != 'undefined'">
+            AND i.news_type = #{type}
+        </if>
+        <if test="startDate != null and startDate != '' and startDate != 'undefined'">
+            AND i.news_time >= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != '' and endDate != 'undefined'">
+            AND i.news_time &lt; #{endDate}
+        </if>
     </select>
 </mapper>

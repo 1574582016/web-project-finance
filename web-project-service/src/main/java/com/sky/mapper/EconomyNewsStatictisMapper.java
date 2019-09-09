@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface EconomyNewsStatictisMapper extends BaseMapper<EconomyNewsStatictis> {
 
-    List<EconomyNewsStatictis> getEconomyNewsStatisticsList(Pagination page);
+    List<EconomyNewsStatictis> getEconomyNewsStatisticsList(Pagination page  ,@Param("name") String name ,@Param("type") String type ,@Param("startDate") String startDate ,@Param("endDate") String endDate);
 }

@@ -3,9 +3,14 @@ package com.sky;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.SpiderUtils;
+import com.sky.model.EconomyNewsStatictis;
+import com.sky.model.StatisticsDayNews;
 import com.sky.model.StockChoseClass;
 import com.sky.model.StockCompanyNotice;
+import com.sky.service.EconomyNewsStatictisService;
+import com.sky.service.StatisticsDayNewsService;
 import com.sky.service.StockChoseClassService;
 import com.sky.service.StockCompanyNoticeService;
 import org.apache.commons.lang3.StringUtils;
@@ -33,6 +38,9 @@ public class ChangeDataTest {
 
     @Autowired
     private StockChoseClassService stockChoseClassService ;
+
+    @Autowired
+    private EconomyNewsStatictisService economyNewsStatictisService ;
 
     @Test
     public void test(){
@@ -110,7 +118,7 @@ public class ChangeDataTest {
 
     @Test
     public void test3(){
-        for(int x = 1 ; x < 2 ; x ++){
+        for(int x = 1 ; x < 1000 ; x ++){
             String url = "";
             if(x == 1){
                 url = "http://finance.eastmoney.com/a/cywjh.html";
@@ -118,19 +126,34 @@ public class ChangeDataTest {
                 url = "http://finance.eastmoney.com/a/cywjh_"+ x +".html";
             }
             Document doc = SpiderUtils.HtmlJsoupGet(url);
-            String resultStr = doc.html();
             Elements elements = doc.getElementsByClass("repeatList").get(0).getElementsByTag("li");
+            List<EconomyNewsStatictis> list = new ArrayList<>();
             for(int i = 0 ; i < elements.size() ; i ++){
                 Element element1 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("title").get(0);
                 String href = element1.getElementsByTag("a").get(0).attr("href");
                 String title = element1.getElementsByTag("a").get(0).text();
-                System.out.println(title);
-                System.out.println(href);
+//                System.out.println(title);
+//                System.out.println(href);
                 Element element2 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("time").get(0);
                 String time = element2.text();
                 time = time.replace("月","-").replace("日","");
-                System.out.println(time);
+                time = href.substring(href.indexOf("/a/")+3,href.indexOf("/a/")+7) + "-"+ time +":00";
+//                System.out.println(time);
+                EconomyNewsStatictis dayNews = new EconomyNewsStatictis();
+                dayNews.setNewsTitle(title);
+                dayNews.setNewsContent(href);
+                dayNews.setNewsTime(time);
+                EconomyNewsStatictis news = economyNewsStatictisService.selectOne(new EntityWrapper<EconomyNewsStatictis>().where("news_time = {0}" , time).where("news_title = {0}" , title));
+                if(news == null){
+                    list.add(dayNews);
+                }
             }
+            if(list.size() > 0){
+                economyNewsStatictisService.insertBatch(list);
+            }else{
+                break;
+            }
+
         }
     }
 }

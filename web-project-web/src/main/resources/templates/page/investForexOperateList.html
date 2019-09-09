@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorate="index">
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-treeview/css/bootstrap-treeview.css">
+    <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
+    <link rel="stylesheet" href="/libs/webuploader-0.1.5/webuploader.css">
+    <link rel="stylesheet" href="/libs/webuploader-0.1.5/style.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
-<body layout:fragment="content">
+<body style="padding: 20px;">
 
 <div class="panel panel-default search-list-panel">
     <div class="panel-heading">查询条件
@@ -160,7 +167,17 @@
 </div>
 
 </body>
-<th:block layout:fragment = "bodyAssets">
-    <script type="text/javascript" src = "/js/page/investForexOperateList.js" th:src="@{/js/page/investForexOperateList.js}"></script>
-</th:block>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="/libs/echarts-2.2.7/echarts-all.js"></script>
+<script type="text/javascript" src="/libs/webuploader-0.1.5/webuploader.min.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src = "/js/page/investForexOperateList.js"></script>
 </html>

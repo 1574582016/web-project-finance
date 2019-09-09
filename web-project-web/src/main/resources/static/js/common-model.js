@@ -131,3 +131,11 @@ function hideModal(id) {
 function showModal(id) {
     $('#'+id).modal('show');
 }
+
+function isEmpty(obj){
+    if(typeof obj == "undefined" || obj == null || obj == ""){
+        return true;
+    }else{
+        return false;
+    }
+}

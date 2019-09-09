@@ -41,9 +41,9 @@ $(function () {
         pageSize: 10,                       //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
         search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-        strictSearch: true,
-        showColumns: true,                  //是否显示所有的列
-        showRefresh: true,                  //是否显示刷新按钮
+        strictSearch: false,
+        showColumns: false,                  //是否显示所有的列
+        showRefresh: false,                  //是否显示刷新按钮
         minimumCountColumns: 2,             //最少允许的列数
         clickToSelect: true,                //是否启用点击选中行
         // height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
@@ -58,6 +58,7 @@ $(function () {
                 title: '股票编码',
                 align: 'center',
                 valign: 'middle',
+                width:100,
                 formatter: function (value, row, index) {
                     return '<a class="text_link_a" onclick="view(\'' + value  + '\')">'+ value +'</a>';
                 }
@@ -65,37 +66,44 @@ $(function () {
                 field: 'stockName',
                 title: '股票名称',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width:100
             },{
                 field: 'stockPlate',
                 title: '股票类型',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width:140
             },{
                 field: 'companyRegion',
                 title: '所属地域',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width:100
             },{
                 field: 'stockSector',
                 title: '行业分类',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width:100
             }, {
                 field: 'establishDate',
                 title: '成立日期',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width:100
             }, {
                 field: 'companyRegistMoney',
                 title: '注册资本',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width:100
             }, {
                 field: 'publishDate',
                 title: '上市日期',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width:100
             }, {
                 field: 'detailVoList',
                 title: '公告内容',
