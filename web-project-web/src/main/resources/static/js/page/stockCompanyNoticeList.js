@@ -50,7 +50,7 @@ $(function () {
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
-        detailView: true,                   //是否显示父子表
+        detailView: false,                   //是否显示父子表
         columns: [
             {
                 field: 'stockCode',
@@ -77,7 +77,7 @@ $(function () {
                 valign: 'middle'
             },{
                 field: 'stockSector',
-                title: '行业细类',
+                title: '行业分类',
                 align: 'center',
                 valign: 'middle'
             }, {
@@ -96,10 +96,44 @@ $(function () {
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'publishAmount',
-                title: '发行数量',
+                field: 'detailVoList',
+                title: '公告内容',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: function (value, row, index) {
+                    var str = '<table class="table table-bordered" style="border: 0px">';
+                         // str += '<thead><tr><th>发布日期</th><th>重要程度</th><th>所属大类</th><th>所属中类</th><th>公告类型</th><th>公告标题</th></tr></thead><tbody>';
+                    $.each(value ,function (index ,value) {
+                         str +='<tr><td style="width: 120px;">'+ value.publishTime +'</td>'
+                             + '<td style="width: 120px;">' ;
+                        if(value.classLevel == 1){
+                            str += '<span class="glyphicon glyphicon-star"></span>';
+                        }
+                        if(value.classLevel == 2){
+                            str += '<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>';
+                        }
+                        if(value.classLevel == 3){
+                            str += '<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>';
+                        }
+                        if(value.classLevel == 4){
+                            str += '<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>';
+                        }
+                        if(value.classLevel == 5){
+                            str += '<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>';
+                        }
+                        str += '</td>'
+                            +  '<td style="width: 100px;">'+ value.bigNoticeClass +'</td>'
+                            +  '<td style="width: 100px;">'+ value.middleNoticeClass +'</td>'
+                            +  '<td style="width: 100px;">'+ value.noticeType +'</td>'
+                            +  '<td>';
+                        str += '<a class="text_link_a" href="'+ value.noticeDetail +'" target="view_window">'+ value.noticeTitle +'</a></td><tr>'
+                    });
+                    str += '</tbody></table>';
+                    return str;
+                },
+                cellStyle:{
+                    css:{"padding":"0"}
+                }
             }
         ],
         onExpandRow: function (index, row, $detail) {

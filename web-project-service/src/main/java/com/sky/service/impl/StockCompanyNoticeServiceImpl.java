@@ -116,6 +116,10 @@ public class StockCompanyNoticeServiceImpl extends ServiceImpl<StockCompanyNotic
     public Page<StockNoticeCompany_VO> getStockNoticeCompanyList(Integer page, Integer size, String stockCode, String stockName, String startDay, String endDay) {
         Page<StockNoticeCompany_VO> pageInfo = new Page<StockNoticeCompany_VO>(page, size);
         List<StockNoticeCompany_VO> list = baseMapper.getStockNoticeCompanyList( pageInfo, stockCode, stockName, startDay, endDay);
+        list.forEach(company->{
+            List<StockNoticeDetail_VO> detailVoList = baseMapper.getStockNoticeDetailList(company.getStockCode(), startDay, endDay);
+            company.setDetailVoList(detailVoList);
+        });
         pageInfo.setRecords(list);
         return pageInfo;
     }

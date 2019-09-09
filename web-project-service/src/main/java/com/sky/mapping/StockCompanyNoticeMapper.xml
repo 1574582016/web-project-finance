@@ -71,6 +71,7 @@
         <if test="endDay != null and endDay != '' and endDay != 'undefined'">
             AND n.`publish_time` &lt; #{endDay}
         </if>
+        AND c.`class_level` > 1
         ORDER BY n.`publish_time`,n.`big_notice_class`,n.`middle_notice_class` ,c.`class_level`
     </select>
 </mapper>

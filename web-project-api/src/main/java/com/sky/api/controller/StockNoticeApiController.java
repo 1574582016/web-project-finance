@@ -9,6 +9,8 @@ import com.sky.core.model.TreeNode;
 import com.sky.model.StockCompanyNoticeClass;
 import com.sky.model.StockPoolClass;
 import com.sky.model.StockPoolSecondClass;
+import com.sky.vo.StockNoticeCompany_VO;
+import com.sky.vo.StockNoticeDetail_VO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

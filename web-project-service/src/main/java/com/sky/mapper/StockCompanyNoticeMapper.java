@@ -24,4 +24,8 @@ public interface StockCompanyNoticeMapper extends BaseMapper<StockCompanyNotice>
                                                         @Param("stockCode") String stockCode,
                                                         @Param("startDay") String startDay,
                                                         @Param("endDay") String endDay);
+
+    List<StockNoticeDetail_VO> getStockNoticeDetailList(@Param("stockCode") String stockCode,
+                                                        @Param("startDay") String startDay,
+                                                        @Param("endDay") String endDay);
 }
