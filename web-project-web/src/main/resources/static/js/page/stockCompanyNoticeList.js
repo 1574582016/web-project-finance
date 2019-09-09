@@ -51,6 +51,7 @@ $(function () {
         showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
         detailView: false,                   //是否显示父子表
+        scrollTo: true,
         columns: [
             {
                 field: 'stockCode',
@@ -124,8 +125,8 @@ $(function () {
                         str += '</td>'
                             +  '<td style="width: 100px;">'+ value.bigNoticeClass +'</td>'
                             +  '<td style="width: 100px;">'+ value.middleNoticeClass +'</td>'
-                            +  '<td style="width: 100px;">'+ value.noticeType +'</td>'
-                            +  '<td>';
+                            +  '<td style="width: 200px;">'+ value.noticeType +'</td>'
+                            +  '<td style="width: 500px;">';
                         str += '<a class="text_link_a" href="'+ value.noticeDetail +'" target="view_window">'+ value.noticeTitle +'</a></td><tr>'
                     });
                     str += '</tbody></table>';
