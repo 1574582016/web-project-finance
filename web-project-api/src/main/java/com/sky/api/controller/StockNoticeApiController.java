@@ -36,18 +36,27 @@ public class StockNoticeApiController extends AbstractController {
         List<TreeNode> nodeList = new ArrayList<TreeNode>();
         for(StockCompanyNoticeClass noticeClass : list){
             if(noticeClass.getParentCode().equals("1000000")){
-                TreeNode treeNode = new TreeNode(false ,false ,false ,false);
-                treeNode.setText(noticeClass.getClassName());
-                treeNode.setCode(noticeClass.getClassCode());
-                treeNode.setParentCode(noticeClass.getParentCode());
-                nodeList.add(treeNode);
+                if(noticeClass.getClassCode().equals("1000005") || noticeClass.getClassCode().equals("1000006") || noticeClass.getClassCode().equals("1000007")){
+                    TreeNode treeNode = new TreeNode(false ,false ,true ,false);
+                    treeNode.setText(noticeClass.getClassName());
+                    treeNode.setCode(noticeClass.getClassCode());
+                    treeNode.setParentCode(noticeClass.getParentCode());
+                    treeNode.setHref("/api/notice/getStockNoticeClassList?parentCode="+ noticeClass.getClassCode());
+                    nodeList.add(treeNode);
+                }else{
+                    TreeNode treeNode = new TreeNode(false ,false ,false ,false);
+                    treeNode.setText(noticeClass.getClassName());
+                    treeNode.setCode(noticeClass.getClassCode());
+                    treeNode.setParentCode(noticeClass.getParentCode());
+                    nodeList.add(treeNode);
+                }
             }
         }
 
         for(TreeNode treeNode : nodeList){
             List<TreeNode> subNodeList = new ArrayList<TreeNode>();
             for(StockCompanyNoticeClass noticeClass : list){
-                if(treeNode.getCode().equals(noticeClass.getParentCode())){
+                if(treeNode.getCode().equals(noticeClass.getParentCode()) && !noticeClass.getParentCode().equals("1000005") && !noticeClass.getParentCode().equals("1000006") && !noticeClass.getParentCode().equals("1000007")){
                     TreeNode subTreeNode = new TreeNode(false ,false ,true ,false);
                     subTreeNode.setText(noticeClass.getClassName());
                     subTreeNode.setCode(noticeClass.getClassCode());
@@ -71,7 +80,7 @@ public class StockNoticeApiController extends AbstractController {
         if(StringUtils.isNotBlank(className)){
             wrapper.where("class_name = {0}" , className);
         }
-        Page<StockCompanyNoticeClass> list = stockCompanyNoticeClassService.selectPage(new Page<StockCompanyNoticeClass>(1,100) ,wrapper.orderBy("class_level , order_num"));
+        Page<StockCompanyNoticeClass> list = stockCompanyNoticeClassService.selectPage(new Page<StockCompanyNoticeClass>(1,100) ,wrapper.orderBy("class_level desc, order_num"));
         return PageData(list);
     }
 

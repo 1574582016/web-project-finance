@@ -1,10 +1,4 @@
 $(function(){
-    var menuNameJust = window.localStorage.getItem("menuName");
-    if(typeof menuNameJust == "undefined" || menuNameJust == null || menuNameJust == ""){
-        window.location.href="/home";
-        window.localStorage.setItem("menuName" , "false");
-    }
-
     $.APIPost("/api/menu/getMenuList",function (data) {
         var listr = "";
         // console.log(data);
@@ -164,6 +158,3 @@ function closeTab(obj){
     }
 }
 
-function testsss() {
-    alert("这是父页面的方法！");
-}
