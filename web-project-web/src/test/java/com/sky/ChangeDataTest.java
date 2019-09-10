@@ -156,4 +156,23 @@ public class ChangeDataTest {
 
         }
     }
+
+
+    @Test
+    public void test4(){
+        for(int x = 1 ; x < 2 ; x ++){
+            String url = "";
+            if(x == 1){
+                url = "http://finance.eastmoney.com/a/cgnjj.html";
+            }else{
+                url = "http://finance.eastmoney.com/a/cgnjj_"+ x +".html";
+            }
+            Document doc = SpiderUtils.HtmlJsoupGet(url);
+            Elements elements = doc.getElementsByClass("repeatList").get(0).getElementsByTag("li");
+            for(int i = 0 ; i < elements.size() ; i ++){
+                Element element1 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("title").get(0);
+                System.out.println(element1.html());
+            }
+        }
+    }
 }
