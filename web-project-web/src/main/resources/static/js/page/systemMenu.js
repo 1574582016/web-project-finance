@@ -92,13 +92,13 @@ $(function(){
                 $.APIPost("/api/menu/editMenu?roleId="+roleId,JSON.stringify({menuCode:menuCode , parentCode:parentCode , menuName:menuName ,menuIcon:menuIcon , menuUrl:menuUrl ,orderNum:orderNum ,isvalid:isvalid}),function (data) {
                     if(data.success){
                         hideModal("myModal");
-                        showSuccessAlert(data.message,function () {
+                        window.parent.showSuccessAlert(data.message,function () {
                             drawMenuTree();
                             // changeFormState();
                             getMenuInfo(menuCode);
                         });
                     }else{
-                        showFailedAlert("保存失败");
+                        window.parent.showFailedAlert("保存失败");
                     }
                 });
             }
@@ -116,10 +116,10 @@ $(function(){
             $("#p_orderNum").val(data.data.result.orderNum);
             $("#p_menuLevel").val(data.data.result.menuLevel);
             $("input[name='p_isvalid']").removeAttr("checked");
-            $("input[name='p_isvalid'][value='"+ data.data.result.isvalid +"']").attr("checked", true);
+            $("input[name='p_isvalid'][value='"+ data.data.result.isvalid +"']").prop("checked", true);
             $("input[name='p_role']").removeAttr("checked");
             $.each(data.data.role, function (index, value) {
-                $("input[name='p_role'][value='"+ value.roleCode +"']").attr("checked", true);
+                $("input[name='p_role'][value='"+ value.roleCode +"']").prop("checked", true);
             });
         });
         changeFormState();

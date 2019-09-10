@@ -135,11 +135,11 @@ $(function () {
         $.APIPost("/api/invest/editInvestForexOperate",JSON.stringify({investStrategy :investStrategy , currencyPairs: currencyPairs, timeCycle: timeCycle ,investType :investType , startTime: startTime ,endTime:endTime ,lineNumber:lineNumber ,gainPoint:gainPoint }),function (data) {
             if(data.success){
                 hideModal("myModal");
-                showSuccessAlert(data.message,function () {
+                window.parent.showSuccessAlert(data.message,function () {
                     $('#tableList').bootstrapTable('refresh');
                 });
             }else{
-                showFailedAlert(data.message);
+                window.parent.showFailedAlert(data.message);
             }
         })
 

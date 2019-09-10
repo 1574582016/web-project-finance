@@ -105,11 +105,11 @@ $(function(){
         $.APIPost("/api/notice/editStockNoticeClass?id=" + id + "&classLevel=" + classLevel + "&orderNum=" + orderNum + "&classDesc=" + classDesc ,function (data) {
             if(data.success){
                 hideModal("myModal");
-                showSuccessAlert(data.message,function () {
+                window.parent.showSuccessAlert(data.message,function () {
                     $('#tableList').bootstrapTable('refresh');
                 });
             }else{
-                showFailedAlert(data.message);
+                window.parent.showFailedAlert(data.message);
             }
         })
 

@@ -132,11 +132,11 @@ $(function () {
                 }else{
                     hideModal("myModal");
                 }
-                showSuccessAlert(data.message,function () {
+                window.parent.showSuccessAlert(data.message,function () {
                     $('#tableList').bootstrapTable('refresh');
                 });
             }else{
-                showFailedAlert(data.message);
+                window.parent.showFailedAlert(data.message);
             }
         })
 

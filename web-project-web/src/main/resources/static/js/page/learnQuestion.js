@@ -116,7 +116,7 @@ $(function () {
             $("#f_type").val("A");
             $("#f_answer").val("");
             $("[name='isvalid']").removeAttr("checked");
-            $("[name='isvalid'][value='1']").attr("checked", true);
+            $("[name='isvalid'][value='1']").prop("checked", true);
         });
     });
 
@@ -129,11 +129,11 @@ $(function () {
         $.APIPost("/api/question/editLearnQuestion",JSON.stringify({id : id ,questionType :questionType , questionContent: questionContent, questionAnswer: questionAnswer ,isvalid:isvalid}),function (data) {
             if(data.success){
                 hideModal("myModal");
-                showSuccessAlert(data.message,function () {
+                window.parent.showSuccessAlert(data.message,function () {
                     $('#tableList').bootstrapTable('refresh');
                 });
             }else{
-                showFailedAlert(data.message);
+                window.parent.showFailedAlert(data.message);
             }
         })
 
@@ -149,7 +149,7 @@ function edit(id) {
             $("#f_type").val(data.data.result.questionType);
             $("#f_answer").val(data.data.result.questionAnswer);
             $("[name='isvalid']").removeAttr("checked");
-            $("[name='isvalid'][value='"+ data.data.result.isvalid +"']").attr("checked", true);
+            $("[name='isvalid'][value='"+ data.data.result.isvalid +"']").prop("checked", true);
         });
     });
 }

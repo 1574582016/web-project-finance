@@ -64,13 +64,13 @@ $(function(){
                 $.APIPost("/api/menu/editMenu?roleId="+roleId,JSON.stringify({menuCode:menuCode , parentCode:parentCode , menuName:menuName ,menuIcon:menuIcon ,menuUrl:menuUrl ,orderNum:orderNum ,isvalid:isvalid}),function (data) {
                     if(data.success){
                         hideModal("myModal");
-                        showSuccessAlert(data.message,function () {
+                        window.parent.showSuccessAlert(data.message,function () {
                             drawMenuTree();
                             // changeFormState();
                             getMenuInfo(menuCode);
                         });
                     }else{
-                        showFailedAlert("保存失败");
+                        window.parent.showFailedAlert("保存失败");
                     }
                 });
             }

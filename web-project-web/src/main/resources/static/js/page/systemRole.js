@@ -49,20 +49,19 @@ $(function(){
                 id_array.push(check[i].href);
             }
             var menuCodes=id_array.join(',');
-            showDialog("系统提示" ,"您是否授权此角色？",function () {
+            window.parent.showDialog("系统提示" ,"您是否授权此角色？",function () {
                 $.APIPost("/api/role/authRole?roleCode=" + $("#p_roleCode").val() + "&menuCodes=" + menuCodes,function (data) {
-                    console.log(data);
                     if(data.success){
-                        showSuccessAlert(data.message,function () {
+                        window.parent.showSuccessAlert(data.message,function () {
                             getRoleInfo(data.data.result);
                         });
                     }else{
-                        showFailedAlert("保存失败");
+                        window.parent.showFailedAlert("保存失败");
                     }
                 });
             })
         }else{
-            showWarningAlert("请选择授权菜单！");
+            window.parent.showWarningAlert("请选择授权菜单！");
         }
 
     });
@@ -70,17 +69,17 @@ $(function(){
     function editRoleInfo(roleCode , roleName, describe , isvalid) {
         $.APIPost("/api/role/checkRoleName?roleName=" + roleName +"&roleCode=" + roleCode,function (data) {
             if(data.data.result){
-                showFailedAlert("角色已存在！");
+                window.parent.showFailedAlert("角色已存在！");
             }else{
                 $.APIPost("/api/role/editRole",JSON.stringify({roleCode:roleCode , roleName:roleName , describe:describe ,isvalid:isvalid}),function (data) {
                     if(data.success){
                         hideModal("myModal");
-                        showSuccessAlert(data.message,function () {
+                        window.parent.showSuccessAlert(data.message,function () {
                             createRoleList();
                             getRoleInfo(data.data.result);
                         });
                     }else{
-                        showFailedAlert("保存失败");
+                        window.parent.showFailedAlert("保存失败");
                     }
                 });
             }
@@ -94,7 +93,7 @@ function getRoleInfo(roleCode) {
         $("#p_roleName").val(data.data.result.roleName)
         $("#p_describe").val(data.data.result.describe);
         $("input[name='p_isvalid']").removeAttr("checked");
-        $("input[name='p_isvalid'][value='"+ data.data.result.isvalid +"']").attr("checked", true);
+        $("input[name='p_isvalid'][value='"+ data.data.result.isvalid +"']").prop("checked", true);
         creatMenuTree(data.data.menu);
         changeFormState(1);
     });

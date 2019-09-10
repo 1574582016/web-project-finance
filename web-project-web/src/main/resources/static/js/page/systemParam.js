@@ -163,11 +163,11 @@ $(function () {
         $.APIPost("/api/param/editSystemParam",JSON.stringify({id : id ,paramCode:paramCode ,paramIdentity :paramIdentity , paramName: paramName, subParamString: subParam }),function (data) {
             if(data.success) {
                 hideModal("myModal");
-                showSuccessAlert(data.message, function () {
+                window.parent.showSuccessAlert(data.message, function () {
                     $('#tableList').bootstrapTable('refresh');
                 });
             } else {
-                showFailedAlert(data.message);
+                window.parent.showFailedAlert(data.message);
             }
 
         });

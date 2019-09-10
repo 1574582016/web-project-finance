@@ -130,14 +130,14 @@ $(function () {
                 }else{
                     hideModal("myModal");
                 }
-                showSuccessAlert(data.message,function () {
+
+                window.parent.showSuccessAlert(data.message,function () {
                     $('#tableList').bootstrapTable('refresh');
                 });
             }else{
-                showFailedAlert(data.message);
+                window.parent.showFailedAlert(data.message);
             }
         })
-
     });
 
     $("#submitDataButton3").click(function () {
@@ -151,15 +151,15 @@ $(function () {
             $.APIPost("/api/user/linkUserRole?roleId=" + roleId + "&userCode="+ userCode ,function (data) {
                 if(data.success){
                     hideModal("myModal3");
-                    showSuccessAlert(data.message,function () {
+                    window.parent.showSuccessAlert(data.message,function () {
                         $('#tableList').bootstrapTable('refresh');
                     });
                 }else{
-                    showFailedAlert(data.message);
+                    window.parent.showFailedAlert(data.message);
                 }
             });
         }else {
-            showWarningAlert("请选择角色！");
+            window.parent.showWarningAlert("请选择角色！");
         }
 
 

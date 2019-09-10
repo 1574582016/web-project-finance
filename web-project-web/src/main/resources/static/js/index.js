@@ -163,3 +163,7 @@ function closeTab(obj){
         $(containId).remove();
     }
 }
+
+function testsss() {
+    alert("这是父页面的方法！");
+}

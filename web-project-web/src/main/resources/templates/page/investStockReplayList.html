@@ -5,25 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/libs/bootstrap-treeview/css/bootstrap-treeview.css">
     <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
-    <link rel="stylesheet" href="/libs/webuploader-0.1.5/webuploader.css">
-    <link rel="stylesheet" href="/libs/webuploader-0.1.5/style.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body style="padding: 20px;">
 
 <div class="panel panel-default search-list-panel">
-    <div class="panel-heading">查询条件
-        <button type="button" class="btn btn-default collapse-button"   data-toggle="collapse" data-parent="#accordion"  href="#collapseBox"><span class="glyphicon glyphicon-chevron-down"></span></button>
-        <button type="button" id="searchDataButton" class="btn btn-default btn-sm search-button">查询</button>
-    </div>
     <div id="collapseBox" class="panel-collapse collapse in">
         <div class="panel-body">
             <form id="formSearch" class="form-horizontal">
                 <div class="form-group" style="margin-top:15px">
-                    <label class="control-label col-sm-1">复盘策略：</label>
+                    <label class="control-label col-sm-2">复盘策略：</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="s_investStrategy">
                             <option value="">请选择</option>
@@ -34,12 +27,13 @@
                             <option value="5">策略五</option>
                         </select>
                     </div>
-                    <label class="control-label col-sm-1">复盘日期：</label>
+                    <label class="control-label col-sm-2">复盘日期：</label>
                     <div class="input-group date col-sm-4">
                         <input type="text" class="form-control" id="s_start" readonly>
                         <div class="input-group-addon">至</div>
                         <input type="text" class="form-control" id="s_end" readonly>
                     </div>
+                    <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
                 </div>
             </form>
         </div>
@@ -56,15 +50,11 @@
 </body>
 <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/libs/bootstrap-treeview/js/bootstrap-treeview.js"></script>
 <script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
 <script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
 <script type="text/javascript" src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src="/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
-<script type="text/javascript" src="/libs/echarts-2.2.7/echarts-all.js"></script>
-<script type="text/javascript" src="/libs/webuploader-0.1.5/webuploader.min.js"></script>
 <script type="text/javascript" src="/js/common-model.js"></script>
 <script type="text/javascript" src="/js/sky.ajax.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
 <script type="text/javascript" src = "/js/page/investForexReplayList.js"></script>
 </html>

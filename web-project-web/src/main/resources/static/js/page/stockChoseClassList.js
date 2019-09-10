@@ -14,7 +14,7 @@ function getPointIndexList(obj ,parentCode) {
                 str += '<li class="list-group-item" onclick="getPointIndexList(this ,\''+ value.classCode +'\')">' + value.className + '</li>';
             });
         } else {
-            showFailedAlert(data.message);
+            window.parent.showFailedAlert(data.message);
         }
     });
     if(isEmpty(idStr)){

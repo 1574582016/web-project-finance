@@ -167,42 +167,42 @@ $(function () {
         var operateType = $("#p_operateType").val();
         var typeName = $("#p_typeName").val();
         if(isEmpty(typeName)){
-            showWarningAlert("主营构成不能为空！");
+            window.parent.showWarningAlert("主营构成不能为空！");
             return ;
         }
         var publishDate = $("#p_publishDate").val();
         if(isEmpty(publishDate)){
-            showWarningAlert("发布日期不能为空！");
+            window.parent.showWarningAlert("发布日期不能为空！");
             return ;
         }
         var operateRevenue = $("#p_operateRevenue").val();
         if(isEmpty(operateRevenue)){
-            showWarningAlert("主营收入不能为空！");
+            window.parent.showWarningAlert("主营收入不能为空！");
             return ;
         }
         var operateRevenueRate = $("#p_operateRevenueRate").val();
         if(isEmpty(operateRevenueRate)){
-            showWarningAlert("主营收入率不能为空！");
+            window.parent.showWarningAlert("主营收入率不能为空！");
             return ;
         }
         var operateCost = $("#p_operateCost").val();
         if(isEmpty(operateCost)){
-            showWarningAlert("主营成本不能为空！");
+            window.parent.showWarningAlert("主营成本不能为空！");
             return ;
         }
         var operateCostRate = $("#p_operateCostRate").val();
         if(isEmpty(operateCostRate)){
-            showWarningAlert("主营成本率不能为空！");
+            window.parent.showWarningAlert("主营成本率不能为空！");
             return ;
         }
         var operateProfit = $("#p_operateProfit").val();
         if(isEmpty(operateProfit)){
-            showWarningAlert("主营利润不能为空！");
+            window.parent.showWarningAlert("主营利润不能为空！");
             return ;
         }
         var operateProfitRate = $("#p_operateProfitRate").val();
         if(isEmpty(operateProfitRate)){
-            showWarningAlert("主营利润率不能为空！");
+            window.parent.showWarningAlert("主营利润率不能为空！");
             return ;
         }
 
