@@ -24,16 +24,30 @@
                     <div class="col-sm-2">
                         <select class="form-control" id="s_type">
                             <option value="">请选择</option>
-
+                            <option value="咨询精华">咨询精华</option>
+                            <option value="国内经济">国内经济</option>
+                            <option value="国际经济">国际经济</option>
+                            <option value="证券聚焦">证券聚焦</option>
+                            <option value="公司资讯">公司资讯</option>
                         </select>
                     </div>
+                    <label class="control-label col-sm-1">主题：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="s_topic">
+                    </div>
+                    <label class="control-label col-sm-1">热点：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="s_hot">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:15px">
                     <label class="control-label col-sm-1">日期：</label>
                     <div class="input-group date col-sm-4">
                         <input type="text" class="form-control" id="s_start" readonly>
                         <div class="input-group-addon">至</div>
                         <input type="text" class="form-control" id="s_end" readonly>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="input-group col-sm-1">
                         <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
                     </div>
                 </div>
@@ -43,11 +57,72 @@
 </div>
 
 <div id="toolbar" class="btn-group">
-    <button type="button" class="btn btn-default"  id="addDataButton">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-    </button>
 </div>
 <table id="tableList"></table>
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title" id="myModalLabel">编辑新闻</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <input type="hidden" class="form-control" id="id" >
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">标题：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="newsTitle" placeholder="标题" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">级别：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="newsLevel">
+                                <option value="1">一级</option>
+                                <option value="2">二级</option>
+                                <option value="3">三级</option>
+                                <option value="4">四级</option>
+                                <option value="5">五级</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">主题：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="newsTopic" placeholder="主题">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">热点：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="newsHot" placeholder="热点">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">关键字：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="keyWord" placeholder="关键字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">内容：</label>
+                        <div class="col-sm-8" id="newsContent" style="font-size: 14px;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submitDataButton">提交</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>

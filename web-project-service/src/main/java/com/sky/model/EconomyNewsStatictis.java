@@ -16,10 +16,10 @@ import java.util.List;
 public class EconomyNewsStatictis extends BaseModel<EconomyNewsStatictis> {
 
     /**
-     * ID
+     * 时间
      */
-    @TableField("news_code")
-    private String newsCode ;
+    @TableField("news_time")
+    private String newsTime ;
 
     /**
      * 标题
@@ -28,34 +28,34 @@ public class EconomyNewsStatictis extends BaseModel<EconomyNewsStatictis> {
     private String newsTitle ;
 
     /**
-     * 时间
+     * 级别
      */
-    @TableField("news_time")
-    private String newsTime ;
+    @TableField("news_level")
+    private String newsLevel ;
 
     /**
-     * 区域
+     * 主题
      */
-    @TableField("news_region")
-    private Integer newsRegion ;
+    @TableField("news_topic")
+    private String newsTopic ;
 
     /**
-     * 国家
+     * 热点
      */
-    @TableField("news_contry")
-    private String newsContry ;
+    @TableField("news_hot")
+    private String newsHot ;
+
+    /**
+     * 关键字
+     */
+    @TableField("key_word")
+    private String keyWord ;
 
     /**
      * 类型
      */
     @TableField("news_type")
-    private Integer newsType ;
-
-    /**
-     * 关键词
-     */
-    @TableField("news_key_word")
-    private String newsKeyWord ;
+    private String newsType ;
 
     /**
      * 内容
@@ -63,9 +63,11 @@ public class EconomyNewsStatictis extends BaseModel<EconomyNewsStatictis> {
     @TableField("news_content")
     private String newsContent ;
 
-
-    @TableField(exist = false)
-    List<EconomyNewsInfluence> influencelist ;
+    /**
+     * 关键词
+     */
+    @TableField("news_url")
+    private String newsUrl ;
 
 
 }

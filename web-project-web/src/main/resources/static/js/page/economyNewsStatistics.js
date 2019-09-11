@@ -15,17 +15,6 @@ $(function () {
         autoclose: true
     });
 
-    $.APIPost("/api/param/getParamListByIndetity?indetity=diaryType" ,function (data) {
-        var str = ""
-        $.each(data.data.result ,function (index ,value) {
-            str +='<option value="'+ value.paramIdentity +'">' + value.paramName + '</option>'
-        });
-        var str2 = '<option value="">请选择</option>' + str;
-        $("#s_type").html(str2);
-        $("#x_type").html(str);
-
-    });
-
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
         url: '/api/economy/getEconomyNewsStatisticsList',         //请求后台的URL（*）
         method: 'post',
@@ -40,10 +29,12 @@ $(function () {
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 size: params.limit,   //页面大小
                 page: params.offset/params.limit + 1,  //页码
-                name: $("#s_name").val(),
-                type: $("#s_type").val(),
+                newsTitle: $("#s_name").val(),
+                newsType: $("#s_type").val(),
                 startDate: $("#s_start").val(),
-                endDate: $("#s_end").val()
+                endDate: $("#s_end").val(),
+                newsTopic: $("#s_topic").val(),
+                newsHot: $("#s_hot").val(),
             };
             return temp;
         },
@@ -68,61 +59,105 @@ $(function () {
                 title: '日期', // 表格表头显示文字
                 align: 'center', // 左右居中
                 valign: 'middle',
-                formatter: function (value, row, index) {
-                    return value.substr(0,10);
-                }
+                width: 180
+             }, {
+                field: 'newsType',
+                title: '类型',
+                align: 'center',
+                valign: 'middle',
+                width: 100
             }, {
                 field: 'newsTitle',
                 title: '标题',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width: 400,
+                formatter: function (value, row, index) {
+                    return '<a class="text_link_a" href="'+ row.newsUrl +'" target="view_window">'+ value +'</a>';
+                }
             }, {
-                field: 'newsRegion',
-                title: '区域',
-                align: 'left',
-                valign: 'middle'
-            }, {
-                field: 'newsContry',
-                title: '国家',
+                field: 'newsLevel',
+                title: '级别',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width: 100,
+                formatter: function (value, row, index) {
+                    var str = '';
+                    for(var i = 0 ; i < value ; i++){
+                        str += '<span class="glyphicon glyphicon-star"></span>';
+                    }
+                    return str ;
+                }
             }, {
-                field: 'newsType',
-                title: '类型',
+                field: 'newsTopic',
+                title: '主题',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                width: 100
+            }, {
+                field: 'newsHot',
+                title: '热点',
+                align: 'center',
+                valign: 'middle',
+                width: 100
+            }, {
+                field: 'keyWord',
+                title: '关键词',
+                align: 'center',
+                valign: 'middle',
+                formatter: function (value, row, index) {
+                    return '<span data-toggle="tooltip" data-placement="top" title="'+ row.newsContent +'">'+ value +'</span>';
+                }
             }, {
                 title: "操作",
                 align: 'center',
                 valign: 'middle',
-                width: 160, // 定义列的宽度，单位为像素px
+                width: 20, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
-                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\',\'' + row.newsCode + '\')">查看</button>&nbsp;'
-                        + '<button class="btn btn-primary btn-xs" onclick="edit(\'' + row.id + '\')">修改</button>';
+                    return '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="edit(\'' + row.id + '\')">修改</button>';
                 }
             }
         ]
     });
 
+    $("[data-toggle='tooltip']").tooltip();
+
     $("#searchDataButton").click(function () {
         $('#tableList').bootstrapTable('refresh');
     });
 
-
-    $("#addDataButton").click(function () {
-        addNextBread("添加新闻");
-        location.href="/economy/economyNewsStatisticsEdit";
-    })
-
+    $("#submitDataButton").click(function () {
+        var id = $("#id").val();
+        var newsLevel = $("#newsLevel").val();
+        var newsTopic = $("#newsTopic").val();
+        var newsHot = $("#newsHot").val();
+        var keyWord = $("#keyWord").val();
+        $.APIPost("/api/economy/editEconomyNewsStatistics",JSON.stringify({id : id ,newsLevel :newsLevel , newsTopic: newsTopic, newsHot: newsHot ,keyWord :keyWord }),function (data) {
+            if(data.success){
+                hideModal("myModal");
+                window.parent.showSuccessAlert(data.message,function () {
+                    $('#tableList').bootstrapTable('refresh');
+                });
+            }else{
+                window.parent.showFailedAlert(data.message);
+            }
+        })
+    });
 
 });
 
 function edit(id) {
-    addNextBread("修改新闻");
-    location.href="/economy/economyNewsStatisticsEdit?id="+id;
+    $('#myModal').on('show.bs.modal',function() {
+        $.APIPost("/api/economy/getEconomyNewsStatisticsById?id="+id ,function (data) {
+            $("#id").val(data.data.result.id);
+            $("#newsTitle").val(data.data.result.newsTitle);
+            $("#newsLevel").val(data.data.result.newsLevel);
+            $("#newsTopic").val(data.data.result.newsTopic);
+            $("#newsHot").val(data.data.result.newsHot);
+            $("#keyWord").val(data.data.result.keyWord);
+            $("#newsContent").html(data.data.result.newsContent);
+        });
+    });
 }
 
-function view(id , newsCode) {
-    addNextBread("查看新闻");
-    location.href="/economy/economyNewsStatisticsView?id="+id +"&newsCode=" + newsCode;
-}
+

@@ -130,18 +130,22 @@ public class ChangeDataTest {
             List<EconomyNewsStatictis> list = new ArrayList<>();
             for(int i = 0 ; i < elements.size() ; i ++){
                 Element element1 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("title").get(0);
-                String href = element1.getElementsByTag("a").get(0).attr("href");
-                String title = element1.getElementsByTag("a").get(0).text();
-//                System.out.println(title);
-//                System.out.println(href);
-                Element element2 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("time").get(0);
-                String time = element2.text();
+                Element element2 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("info").get(0);
+                Element element3 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("time").get(0);
+                String title = element1.text();
+                String newurl = element1.getElementsByTag("a").get(0).attr("href");
+                String contains= element2.attr("title");
+                String time = element3.html();
+                System.out.println(title);
+                System.out.println(newurl);
+                System.out.println(contains);
+                System.out.println(time);
                 time = time.replace("月","-").replace("日","");
-                time = href.substring(href.indexOf("/a/")+3,href.indexOf("/a/")+7) + "-"+ time +":00";
-//                System.out.println(time);
+                time = newurl.substring(newurl.indexOf("/a/")+3,newurl.indexOf("/a/")+7) + "-"+ time +":00";
+                System.out.println(time);
                 EconomyNewsStatictis dayNews = new EconomyNewsStatictis();
                 dayNews.setNewsTitle(title);
-                dayNews.setNewsContent(href);
+//                dayNews.setNewsContent(href);
                 dayNews.setNewsTime(time);
                 EconomyNewsStatictis news = economyNewsStatictisService.selectOne(new EntityWrapper<EconomyNewsStatictis>().where("news_time = {0}" , time).where("news_title = {0}" , title));
                 if(news == null){
@@ -171,8 +175,38 @@ public class ChangeDataTest {
             Elements elements = doc.getElementsByClass("repeatList").get(0).getElementsByTag("li");
             for(int i = 0 ; i < elements.size() ; i ++){
                 Element element1 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("title").get(0);
-                System.out.println(element1.html());
+                Element element2 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("info").get(0);
+                Element element3 = elements.get(i).getElementsByClass("text").get(0).getElementsByClass("time").get(0);
+                String title = element1.text();
+                String newurl = element1.getElementsByTag("a").get(0).attr("href");
+                String contains= element2.attr("title");
+                String time = element3.html();
+                System.out.println(title);
+                System.out.println(newurl);
+                System.out.println(contains);
+                System.out.println(time);
             }
         }
     }
+
+
+    @Test
+    public void test5(){
+        try{
+            for(int type = 1 ; type <= 5 ; type ++){
+                for(int page = 1 ; page <= 1000 ; page ++){
+                    boolean just = economyNewsStatictisService.processEveryDayNews(type ,page);
+                    if(just){
+                        Thread.sleep(200);
+                    }else{
+                        break;
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
+
+

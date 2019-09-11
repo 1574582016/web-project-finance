@@ -9,5 +9,15 @@ import com.sky.model.EconomyNewsStatictis;
  */
 public interface EconomyNewsStatictisService extends IService<EconomyNewsStatictis> {
 
-    Page<EconomyNewsStatictis> getEconomyNewsStatisticsList(Integer page, Integer size , String name , String type , String startDate , String endDate);
+    Page<EconomyNewsStatictis> getEconomyNewsStatisticsList(Integer page,
+                                                            Integer size ,
+                                                            String newsTitle ,
+                                                            String newsType ,
+                                                            String startDate ,
+                                                            String endDate ,
+                                                            String newsTopic ,
+                                                            String newsHot);
+
+    boolean processEveryDayNews(int type , int page);
+
 }

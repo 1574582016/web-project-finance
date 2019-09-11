@@ -11,7 +11,7 @@ import com.sky.vo.StockNoticeDetail_VO;
  */
 public interface StockCompanyNoticeService extends IService<StockCompanyNotice> {
 
-    boolean spiderStockCompanyNotice(String url ,String bigClass ,String middleClass);
+    boolean spiderStockCompanyNotice(Integer bigType ,Integer middleType ,Integer page);
 
     Page<StockNoticeCompany_VO> getStockNoticeCompanyList(Integer page,
                                                           Integer size,

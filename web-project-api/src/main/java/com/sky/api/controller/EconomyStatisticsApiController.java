@@ -24,11 +24,13 @@ public class EconomyStatisticsApiController extends AbstractController {
     @PostMapping("/getEconomyNewsStatisticsList")
     public Object getEconomyNewsStatisticsList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                                 @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
-                                                String name ,
-                                                String type ,
+                                                String newsTitle ,
+                                                String newsType ,
                                                 String startDate ,
-                                                String endDate){
-        Page selectedPage = economyNewsStatictisService.getEconomyNewsStatisticsList( page , size ,name ,type ,startDate ,endDate);
+                                                String endDate ,
+                                                String newsTopic ,
+                                                String newsHot){
+        Page selectedPage = economyNewsStatictisService.getEconomyNewsStatisticsList( page , size ,newsTitle ,newsType ,startDate ,endDate , newsTopic ,newsHot );
         return PageData(selectedPage);
     }
 
@@ -36,48 +38,13 @@ public class EconomyStatisticsApiController extends AbstractController {
     @PostMapping("/getEconomyNewsStatisticsById")
     public Object getEconomyNewsStatisticsById(String id){
         EconomyNewsStatictis companyInfo = economyNewsStatictisService.selectById(id);
-        if(companyInfo != null){
-            List<EconomyNewsInfluence> list = economyNewsInfluenceService.selectList(new EntityWrapper<EconomyNewsInfluence>().where("isvalid = 1 and news_code = {0}" , companyInfo.getNewsCode()));
-            companyInfo.setInfluencelist(list);
-        }
         return ResponseEntity.ok(MapSuccess("查询成功",companyInfo));
     }
 
     @LogRecord(name = "editEconomyNewsStatistics" ,description = "编辑新闻基本信息")
     @PostMapping("/editEconomyNewsStatistics")
     public Object editEconomyNewsStatistics(@RequestBody EconomyNewsStatictis body){
-        if(body.getId() == null){
-            String newsCode  = IdWorker.getIdStr();
-            body.setNewsCode(newsCode);
-        }
-        economyNewsStatictisService.insertOrUpdate(body);
-        List<EconomyNewsInfluence> list = body.getInfluencelist();
-        List<EconomyNewsInfluence> all = economyNewsInfluenceService.selectList(new EntityWrapper<EconomyNewsInfluence>().where("isvalid = 1 and news_code = {0}" , body.getNewsCode()));
-        List<EconomyNewsInfluence> delete = new ArrayList<EconomyNewsInfluence>();
-        if(all.size() > 0){
-            for(EconomyNewsInfluence influence : all){
-                boolean just = true ;
-                for(EconomyNewsInfluence subInfluence : list){
-                    if(influence.getInfluenceCode().equals(subInfluence.getInfluenceCode())){
-                        just = false ;
-                    }
-                }
-                if(just){
-                    influence.setIsvalid(0);
-                    delete.add(influence);
-                }
-            }
-        }
-        if(delete.size() > 0){
-            economyNewsInfluenceService.updateAllColumnBatchById(delete);
-        }
-        for(EconomyNewsInfluence influence : list){
-            if(influence.getId() == null){
-                influence.setInfluenceCode(IdWorker.getIdStr());
-                influence.setNewsCode(body.getNewsCode());
-            }
-        }
-        economyNewsInfluenceService.insertOrUpdateBatch(list);
+        economyNewsStatictisService.updateById(body);
         return ResponseEntity.ok(MapSuccess("保存成功！"));
     }
 

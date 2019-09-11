@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 /**
  * 拦截器作用：给各实体对象在增加、修改时，自动添加操作属性信息。
  */
-@Component
+//@Component
 @Intercepts({
         @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})
 })
