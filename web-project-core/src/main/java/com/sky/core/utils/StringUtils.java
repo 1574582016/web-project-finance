@@ -159,11 +159,11 @@ public class StringUtils {
         }
     }
 
-    public static void main(String[] args) {
-        String str = "1";
-        str = hexMD5(str);
-        logger.info("str is :{}", str);
-    }
+//    public static void main(String[] args) {
+//        String str = "1";
+//        str = hexMD5(str);
+//        logger.info("str is :{}", str);
+//    }
 
     public static String toISO(String str) {
         return changeCharset(str, "utf-8", "iso-8859-1");

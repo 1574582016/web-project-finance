@@ -90,17 +90,17 @@ public class Tools {
 		return true;
 	}
 
-	public static void main(String[] args) {
-
-//		System.out.println(utf8ToString("%EE%81%94%E9%B9%8F%E9%A3%9E%F0%9F%90%B3"));
-
-		System.out.println(String_length("我"));
-		System.out.println(String_length("1"));
-		System.out.println(String_length("a"));
-		System.out.println(String_length("!"));
-		System.out.println(String_length(""));
-		System.out.println(String_length("我 我"));
-	}
+//	public static void main(String[] args) {
+//
+////		System.out.println(utf8ToString("%EE%81%94%E9%B9%8F%E9%A3%9E%F0%9F%90%B3"));
+//
+//		System.out.println(String_length("我"));
+//		System.out.println(String_length("1"));
+//		System.out.println(String_length("a"));
+//		System.out.println(String_length("!"));
+//		System.out.println(String_length(""));
+//		System.out.println(String_length("我 我"));
+//	}
 
 	public static int String_length(String value) {
 		int valueLength = 0;
