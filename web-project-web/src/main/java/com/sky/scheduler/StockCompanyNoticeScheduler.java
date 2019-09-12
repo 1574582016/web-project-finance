@@ -24,7 +24,7 @@ public class StockCompanyNoticeScheduler {
     @Autowired
     private StockCompanyNoticeService stockCompanyNoticeService ;
 
-    @Scheduled(fixedRate = 1000 * 60 * 30 )
+    @Scheduled(fixedRate = 1000 * 60 * 60 )
     public void processStockCompanyNotice() {
         try {
             logger.info("爬取公告信息-->>开始时间：" + DateUtils.getDateTime());

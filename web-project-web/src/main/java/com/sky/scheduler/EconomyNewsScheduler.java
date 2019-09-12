@@ -21,7 +21,7 @@ public class EconomyNewsScheduler {
     @Autowired
     private EconomyNewsStatictisService economyNewsStatictisService ;
 
-    @Scheduled(fixedRate = 1000 * 60 * 10 )
+    @Scheduled(fixedRate = 1000 * 60 * 30 )
     public void processEveryDayNews() {
         try {
             logger.info("爬取时事新闻-->>开始时间：" + DateUtils.getDateTime());

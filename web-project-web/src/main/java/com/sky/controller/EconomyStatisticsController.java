@@ -1,5 +1,6 @@
 package com.sky.controller;
 
+import com.sky.core.utils.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EconomyStatisticsController {
 
     @RequestMapping("/economyNewsStatisticsList")
-    public String economyNewsStatisticsList(){
+    public String economyNewsStatisticsList(Model model){
+        model.addAttribute("startDay" , DateUtils.getDate());
+        model.addAttribute("endDay" , DateUtils.getBeforeDay(-1l));
         return "page/economyNewsStatisticsList";
     }
 

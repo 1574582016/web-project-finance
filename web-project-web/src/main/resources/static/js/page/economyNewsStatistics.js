@@ -73,7 +73,7 @@ $(function () {
                 valign: 'middle',
                 width: 400,
                 formatter: function (value, row, index) {
-                    return '<a class="text_link_a" href="'+ row.newsUrl +'" target="view_window">'+ value +'</a>';
+                    return '<a class="text_link_a" href="'+ row.newsUrl +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.newsContent +'">'+ value +'</a>';
                 }
             }, {
                 field: 'newsLevel',
@@ -104,10 +104,7 @@ $(function () {
                 field: 'keyWord',
                 title: '关键词',
                 align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    return '<span data-toggle="tooltip" data-placement="top" title="'+ row.newsContent +'">'+ value +'</span>';
-                }
+                valign: 'middle'
             }, {
                 title: "操作",
                 align: 'center',
