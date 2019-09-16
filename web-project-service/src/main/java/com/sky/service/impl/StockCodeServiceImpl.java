@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockCodeMapper;
@@ -20,7 +21,8 @@ import java.util.List;
 public class StockCodeServiceImpl extends ServiceImpl<StockCodeMapper,StockCode> implements StockCodeService {
 
     @Override
-    public void spiderStockCode(String url ,String sector) {
+    public void spiderStockCode(String classCode ,String sector) {
+        String url = "http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?cb=jQuery112402481894141903367_1559101505431&type=CT&token=4f1862fc3b5e77c150a2b985b12db0fd&sty=FCOIATC&js=(%7Bdata%3A%5B(x)%5D%2CrecordsFiltered%3A(tot)%7D)&cmd=C."+ classCode +"&st=(ChangePercent)&sr=-1&p=1&ps=20000&_=1559101505641";
         String jsonString = SpiderUtils.HttpClientBuilderGet(url);
         String jStr = jsonString.substring(jsonString.indexOf("%5B")+3 ,jsonString.indexOf("%5D"));
         String[] str = jStr.split("\",");
@@ -45,9 +47,14 @@ public class StockCodeServiceImpl extends ServiceImpl<StockCodeMapper,StockCode>
                     stockCode.setStockName(stockName);
                 }
             }
-            list.add(stockCode);
+            StockCode isExist = selectOne(new EntityWrapper<StockCode>().where("stock_code = {0}" , stockCode.getStockCode()).where("isvalid = 1"));
+            if(isExist == null){
+                list.add(stockCode);
+            }
         }
-        insertBatch(list);
+        if(list.size() > 0){
+            insertBatch(list);
+        }
     }
 
     @Override

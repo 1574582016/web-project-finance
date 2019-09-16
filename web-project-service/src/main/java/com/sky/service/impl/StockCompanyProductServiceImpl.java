@@ -63,7 +63,11 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
                 stockCompanyProduct.setProductProfit(sectorObject.getString("zylr"));
                 stockCompanyProduct.setProductProfitRate(sectorObject.getString("lrbl"));
                 stockCompanyProduct.setProductGrossRate(sectorObject.getString("mll"));
-                productList.add(stockCompanyProduct);
+
+                StockCompanyProduct sectorProduct = selectOne(new EntityWrapper<StockCompanyProduct>().where("stock_code = {0} and publish_date = {1} and pruduct_type = {2} and product_name = {3}" ,stockCompanyProduct.getStockCode() , stockCompanyProduct.getPublishDate() , stockCompanyProduct.getPruductType() , stockCompanyProduct.getProductName()));
+                if(sectorProduct == null){
+                    productList.add(stockCompanyProduct);
+                }
             }
 
             for(int y = 0 ;y < saleArray.size() ; y++){
@@ -80,7 +84,11 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
                 stockCompanyProduct.setProductProfit(saleObject.getString("zylr"));
                 stockCompanyProduct.setProductProfitRate(saleObject.getString("lrbl"));
                 stockCompanyProduct.setProductGrossRate(saleObject.getString("mll"));
-                productList.add(stockCompanyProduct);
+
+                StockCompanyProduct sectorProduct = selectOne(new EntityWrapper<StockCompanyProduct>().where("stock_code = {0} and publish_date = {1} and pruduct_type = {2} and product_name = {3}" ,stockCompanyProduct.getStockCode() , stockCompanyProduct.getPublishDate() , stockCompanyProduct.getPruductType() , stockCompanyProduct.getProductName()));
+                if(sectorProduct == null){
+                    productList.add(stockCompanyProduct);
+                }
             }
 
             for(int z = 0 ;z < regionArray.size() ; z++){
@@ -97,9 +105,15 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
                 stockCompanyProduct.setProductProfit(regionObject.getString("zylr"));
                 stockCompanyProduct.setProductProfitRate(regionObject.getString("lrbl"));
                 stockCompanyProduct.setProductGrossRate(regionObject.getString("mll"));
-                productList.add(stockCompanyProduct);
+
+                StockCompanyProduct sectorProduct = selectOne(new EntityWrapper<StockCompanyProduct>().where("stock_code = {0} and publish_date = {1} and pruduct_type = {2} and product_name = {3}" ,stockCompanyProduct.getStockCode() , stockCompanyProduct.getPublishDate() , stockCompanyProduct.getPruductType() , stockCompanyProduct.getProductName()));
+                if(sectorProduct == null){
+                    productList.add(stockCompanyProduct);
+                }
             }
         }
-        insertBatch(productList);
+        if(productList.size() > 0 ){
+            insertBatch(productList);
+        }
     }
 }

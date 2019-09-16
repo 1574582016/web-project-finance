@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface StockCodeService extends IService<StockCode> {
 
-    void spiderStockCode(String url ,String sector);
+    void spiderStockCode(String classCode ,String sector);
 
-    List<StockCode> getEmptyStockProdectList(@Param("stockSector") String stockSector);
+    List<StockCode> getEmptyStockProdectList(String stockSector);
 
-    List<StockCode> getEmptyStockCompanyList(@Param("stockSector") String stockSector);
+    List<StockCode> getEmptyStockCompanyList(String stockSector);
 
-    List<StockCode> getEmptyStockAnalyseList(@Param("stockSector") String stockSector);
+    List<StockCode> getEmptyStockAnalyseList(String stockSector);
 }

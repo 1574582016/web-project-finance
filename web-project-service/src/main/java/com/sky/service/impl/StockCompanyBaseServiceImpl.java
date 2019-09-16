@@ -99,7 +99,23 @@ public class StockCompanyBaseServiceImpl extends ServiceImpl<StockCompanyBaseMap
                 JSONObject matterObject = subjectArray.getJSONObject(0);
                 stockCompanyBase.setCompanySubjectMatter(matterObject.getString("ydnr"));
             }
-            insert(stockCompanyBase);
+            EntityWrapper<StockCompanyBase> entityWrapper = new EntityWrapper<>();
+            if(!stockCompanyBase.getStockACode().equals("--")){
+                    entityWrapper.where("stock_a_code = {0}" , stockCompanyBase.getStockACode());
+            }else{
+                    if(!stockCompanyBase.getStockBCode().equals("--")){
+                            entityWrapper.where("stock_b_code = {0}" , stockCompanyBase.getStockBCode());
+                    }else{
+                            if(!stockCompanyBase.getStockHCode().equals("--")){
+                                    entityWrapper.where("stock_h_code = {0}" , stockCompanyBase.getStockHCode());
+                            }
+                    }
+            }
+
+            StockCompanyBase isExist = selectOne(entityWrapper);
+            if(isExist == null){
+                    insert(stockCompanyBase);
+            }
     }
 
     @Override
