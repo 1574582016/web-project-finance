@@ -57,7 +57,7 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                             case 5 : dealData.setDealCount(new BigDecimal (datas[x])); break;
                             case 6 : dealData.setDealMoney(new BigDecimal (datas[x])); break;
                             case 7 : dealData.setAmplitude(datas[x]); break;
-                            case 8 : dealData.setExt(datas[x]); break;
+                            case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                         }
                     }
                 list.add(dealData);
@@ -106,7 +106,7 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                         case 5 : dealData.setDealCount(new BigDecimal (datas[x])); break;
                         case 6 : dealData.setDealMoney(new BigDecimal (datas[x])); break;
                         case 7 : dealData.setAmplitude(datas[x]); break;
-                        case 8 : dealData.setExt(datas[x]); break;
+                        case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
                 list.add(dealData);

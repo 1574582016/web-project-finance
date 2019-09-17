@@ -24,7 +24,7 @@ public class StockCodeScheduler {
     @Autowired
     private StockCodeService stockCodeService ;
 
-    @Scheduled(cron = "0 0 10 * * ?")
+    @Scheduled(fixedRate = 1000 * 60 * 120 )
     public void processStockCode(){
         EntityWrapper<StockMarketClass> entityWrapper = new EntityWrapper();
         entityWrapper.where("class_type = '行业板块'");

@@ -11,8 +11,8 @@ import java.math.BigDecimal;
  * Created by ThinkPad on 2019/9/16.
  */
 @Data
-@TableName("stock_deal_data")
-public class StockDealData extends BaseModel<StockDealData> {
+@TableName("sector_deal_data")
+public class SectorDealData extends BaseModel<SectorDealData> {
 
     /**
      * 周期类型
@@ -27,10 +27,10 @@ public class StockDealData extends BaseModel<StockDealData> {
     private String dealTime ;
 
     /**
-     * 上市代码
+     * 代码
      */
-    @TableField("stock_code")
-    private String stockCode ;
+    @TableField("sector_code")
+    private String sectorCode ;
 
     /**
      * 开盘价
