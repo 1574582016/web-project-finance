@@ -530,4 +530,9 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return formatDate;
 	}
 
+	public static int differentDaysByString(String date1,String date2){
+		int days = (int) ((parseDate(date2).getTime() - parseDate(date1).getTime()) / (1000*3600*24));
+		return days;
+	}
+
 }

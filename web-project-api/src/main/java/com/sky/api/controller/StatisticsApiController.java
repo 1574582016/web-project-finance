@@ -2,7 +2,9 @@ package com.sky.api.controller;
 
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.vo.MessageStatic_VO;
 import com.sky.vo.StockStatisticsEchart_VO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -127,5 +129,22 @@ public class StatisticsApiController extends AbstractController {
         map.put("rise",rise.toArray());
         map.put("down",down.toArray());
         return map;
+    }
+
+
+    @LogRecord(name = "getMessagePriceStaticData" ,description = "查询消息影响统计数据")
+    @PostMapping("/getMessagePriceStaticData")
+    public Object getMessagePriceStaticData(String messageType, String timeType, String directType){
+        List<MessageStatic_VO> list = messagePriceStaticService.getMessagePriceStaticData( messageType, timeType, directType);
+        List<String> title = new ArrayList<>();
+        List<Integer> count = new ArrayList<>();
+        for(MessageStatic_VO static_vo : list){
+            title.add(static_vo.getTitle());
+            count.add(static_vo.getCount());
+        }
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("title",title.toArray());
+        map.put("count",count.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
     }
 }

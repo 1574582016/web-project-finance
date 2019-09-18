@@ -36,4 +36,8 @@ public class StockCode extends BaseModel<StockCode> {
     @TableField("stock_sector")
     private String stockSector;
 
+
+    @TableField("market_type")
+    private Integer marketType ;
+
 }

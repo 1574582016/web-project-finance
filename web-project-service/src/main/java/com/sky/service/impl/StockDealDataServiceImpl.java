@@ -27,69 +27,29 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
     private static String type2 = "2" ;
 
     @Override
-    public List<StockDealData> spiderStockDealData(Integer periodType , String skuCode) {
+    public List<StockDealData> spiderStockDealData(Integer periodType , String skuCode  ,String mk) {
         List<StockDealData> list = new ArrayList<>();
         try {
-            String url = "http://pdfm.eastmoney.com/EM_UBG_PDTI_Fast/api/js?rtntype=5&token=4f1862fc3b5e77c150a2b985b12db0fd&cb=jQuery183017615742790226108_1568593087961&id=" + skuCode +"1&type=k&authorityType=&_=1568593108420";
-            String jsStr = SpiderUtils.HttpClientBuilderGet(url);
-            jsStr = jsStr.substring(jsStr.indexOf("(") + 1 , jsStr.indexOf(")"));
-            JSONObject jsonObject = JSON.parseObject(jsStr);
-            String stockCode = jsonObject.getString("code");
-            String stockName = jsonObject.getString("name");
-            JSONArray jsonArray = jsonObject.getJSONArray("data");
-            String stats = jsonObject.getString("stats");
-            if(StringUtils.isNotBlank(stats) && stats.equals("false")){
-                return spiderStockDealData2(periodType ,skuCode);
-            }else{
-                for(int i = 0 ; i < jsonArray.size() ; i++){
-                    String dataString = jsonArray.getString(i);
-                    String[] datas = dataString.split(",");
-                    StockDealData dealData = new StockDealData();
-                    dealData.setDealPeriod(1);
-                    dealData.setStockCode(stockCode);
-                    for(int x = 0 ; x < datas.length ; x ++){
-                        switch (x){
-                            case 0 : dealData.setDealTime(datas[x]); break;
-                            case 1 : dealData.setOpenPrice(new BigDecimal(datas[x])); break;
-                            case 2 : dealData.setClosePrice(new BigDecimal (datas[x])); break;
-                            case 3 : dealData.setHighPrice(new BigDecimal (datas[x])); break;
-                            case 4 : dealData.setLowPrice(new BigDecimal (datas[x])); break;
-                            case 5 : dealData.setDealCount(new BigDecimal (datas[x])); break;
-                            case 6 : dealData.setDealMoney(new BigDecimal (datas[x])); break;
-                            case 7 : dealData.setAmplitude(datas[x]); break;
-                            case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
-                        }
-                    }
-                list.add(dealData);
-//                    StockDealData isExist = selectOne(new EntityWrapper<StockDealData>().where("deal_period = {0} and deal_time = {1} and stock_code = {2}" , periodType ,dealData.getDealTime() , dealData.getStockCode()));
-//                    if(isExist == null){
-//                        list.add(dealData);
-//                    }else{
-//                        break;
-//                    }
-                }
-//            batchList(list);
-//            if(list.size() > 0){
-//               insertBatch(list);
-//            }
+            String type = "k";
+            switch (periodType){
+                case 1 : type = "k" ; break;
+                case 2 : type = "wk" ; break;
+                case 3 : type = "mk" ; break;
+
+                case 4 : type = "m5k" ; break;
+                case 5 : type = "m15k" ; break;
+                case 6 : type = "m30k" ; break;
+                case 7 : type = "m60k" ; break;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return list ;
-    }
 
-    private List<StockDealData> spiderStockDealData2(Integer periodType , String skuCode) {
-        List<StockDealData> list = new ArrayList<>();
-        try{
-            String url = "http://pdfm.eastmoney.com/EM_UBG_PDTI_Fast/api/js?rtntype=5&token=4f1862fc3b5e77c150a2b985b12db0fd&cb=jQuery183017615742790226108_1568593087961&id=" + skuCode +"2&type=k&authorityType=&_=1568593108420";
+
+
+            String url = "http://pdfm.eastmoney.com/EM_UBG_PDTI_Fast/api/js?rtntype=5&token=4f1862fc3b5e77c150a2b985b12db0fd&cb=jQuery183017615742790226108_1568593087961&id=" + skuCode + mk + "&type=" + type + "&authorityType=&_=1568593108420";
             String jsStr = SpiderUtils.HttpClientBuilderGet(url);
             jsStr = jsStr.substring(jsStr.indexOf("(") + 1 , jsStr.indexOf(")"));
             JSONObject jsonObject = JSON.parseObject(jsStr);
             String stockCode = jsonObject.getString("code");
-            String stockName = jsonObject.getString("name");
             JSONArray jsonArray = jsonObject.getJSONArray("data");
-
             for(int i = 0 ; i < jsonArray.size() ; i++){
                 String dataString = jsonArray.getString(i);
                 String[] datas = dataString.split(",");
@@ -109,23 +69,12 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                         case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
-                list.add(dealData);
-//                StockDealData isExist = selectOne(new EntityWrapper<StockDealData>().where("deal_period = {0} and deal_time = {1} and stock_code = {2}" , periodType ,dealData.getDealTime() , dealData.getStockCode()));
-//                if(isExist == null){
-//                    list.add(dealData);
-//                }else{
-//                    break;
-//                }
+            list.add(dealData);
             }
-//        batchList(list);
-//        if(list.size() > 0){
-//            insertBatch(list);
-//        }
         }catch (Exception e){
             e.printStackTrace();
         }
-
-        return list;
+        return list ;
     }
 
 
@@ -154,5 +103,10 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
         }else{
             System.out.println("没有数据!!!");
         }
+    }
+
+    @Override
+    public List<StockDealData> getPointDayScopeList(String stockCode, String pointDay, String days) {
+        return baseMapper.getPointDayScopeList(stockCode ,pointDay ,days);
     }
 }

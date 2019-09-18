@@ -44,7 +44,7 @@ public class ThreadTest {
 
         // 开始时间
         long start = System.currentTimeMillis();
-        List<StockCode> list = stockCodeService.selectList(null);
+        List<StockCode> list = stockCodeService.selectList(new EntityWrapper<StockCode>().where("stock_code NOT IN(SELECT stock_code FROM stock_deal_data)"));
         // 每500条数据开启一条线程
         int threadSize = 500;
         // 总数据条数
@@ -79,7 +79,11 @@ public class ThreadTest {
                 public Integer call() throws Exception {
                     for(StockCode stockCode : listStr){
                         System.out.println("================stockCode=========================" + stockCode);
-                        List<StockDealData> dataList = stockDealDataService.spiderStockDealData(1, stockCode.getStockCode());
+                        String mk = "1";
+                        if(stockCode.getStockMarket().equals("sz")){
+                            mk = "2";
+                        }
+                        List<StockDealData> dataList = stockDealDataService.spiderStockDealData(1, stockCode.getStockCode() ,mk);
 
                         if(null!=dataList&&dataList.size()>0){
                             int pointsDataLimit = 200;//限制条数

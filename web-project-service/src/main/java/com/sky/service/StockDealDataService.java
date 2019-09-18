@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface StockDealDataService extends IService<StockDealData> {
 
-    List<StockDealData> spiderStockDealData(Integer periodType , String skuCode);
+    List<StockDealData> spiderStockDealData(Integer periodType , String skuCode ,String mk);
 
     void batchList(List<StockDealData> dataList);
+
+    List<StockDealData> getPointDayScopeList( String stockCode , String pointDay , String days);
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.MessagePriceStaticMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.MessagePriceStatic">
+        <id column="id" property="id"/>
+
+        <result column="message_type" property="messageType"/>
+        <result column="time_type" property="timeType"/>
+        <result column="stock_code" property="stockCode"/>
+        <result column="direct_type" property="directType"/>
+        <result column="diff_price" property="diffPrice"/>
+    </resultMap>
+
+    <select id="getMessagePriceStaticData" parameterType="java.lang.String" resultType="com.sky.vo.MessageStatic_VO">
+       SELECT
+        a.title ,
+        SUM(1) AS COUNT
+        FROM(
+        SELECT
+        CASE WHEN diff_price >=0.0 AND diff_price &lt; 0.5 THEN 0.5
+             WHEN diff_price >=0.5 AND diff_price &lt; 1.0 THEN 1.0
+             WHEN diff_price >=1.0 AND diff_price &lt; 1.5 THEN 1.5
+             WHEN diff_price >=1.5 AND diff_price &lt; 2.0 THEN 2.0
+             WHEN diff_price >=2.0 AND diff_price &lt; 2.5 THEN 2.5
+             WHEN diff_price >=2.5 AND diff_price &lt; 3.0 THEN 3.0
+             WHEN diff_price >=3.0 AND diff_price &lt; 3.5 THEN 3.5
+             WHEN diff_price >=3.5 AND diff_price &lt; 4.0 THEN 4.0
+             WHEN diff_price >=4.0 AND diff_price &lt; 4.5 THEN 4.5
+             WHEN diff_price >=4.5 AND diff_price &lt; 5.0 THEN 5.0
+             WHEN diff_price >=5.0 AND diff_price &lt; 5.5 THEN 5.5
+             WHEN diff_price >=5.5 AND diff_price &lt; 6.0 THEN 6.0
+             WHEN diff_price >=6.0 AND diff_price &lt; 6.5 THEN 6.5
+             WHEN diff_price >=6.5 AND diff_price &lt; 7.0 THEN 7.0
+             WHEN diff_price >=7.0 AND diff_price &lt; 7.5 THEN 7.5
+             WHEN diff_price >=7.5 AND diff_price &lt; 8.0 THEN 8.0
+             WHEN diff_price >=8.0 AND diff_price &lt; 8.5 THEN 8.5
+             WHEN diff_price >=8.5 AND diff_price &lt; 9.0 THEN 9.0
+             WHEN diff_price >=9.0 AND diff_price &lt; 9.5 THEN 9.5
+             WHEN diff_price >=9.5 AND diff_price &lt; 10.0 THEN 10.0
+             WHEN diff_price >=10.0 AND diff_price &lt; 10.5 THEN 10.5
+             WHEN diff_price >=10.5 AND diff_price &lt; 11.0 THEN 11.0
+             WHEN diff_price >=11.0 AND diff_price &lt; 11.5 THEN 11.5
+             WHEN diff_price >=11.5 AND diff_price &lt; 12.0 THEN 12.0
+             WHEN diff_price >=12.0 AND diff_price &lt; 12.5 THEN 12.5
+             WHEN diff_price >=12.5 AND diff_price &lt; 13.0 THEN 13.0
+             WHEN diff_price >=13.0 AND diff_price &lt; 13.5 THEN 13.5
+             WHEN diff_price >=13.5 AND diff_price &lt; 14.0 THEN 14.0
+             WHEN diff_price >=14.0 AND diff_price &lt; 14.5 THEN 14.5
+             WHEN diff_price >=14.5 AND diff_price &lt; 15.0 THEN 15.0
+             WHEN diff_price >=15.0 AND diff_price &lt; 15.5 THEN 15.5
+             WHEN diff_price >=15.5 AND diff_price &lt; 16.0 THEN 16.0
+             WHEN diff_price >=16.0 AND diff_price &lt; 16.5 THEN 16.5
+             WHEN diff_price >=16.5 AND diff_price &lt; 17.0 THEN 17.0
+             WHEN diff_price >=17.0 AND diff_price &lt; 17.5 THEN 17.5
+             WHEN diff_price >=17.5 AND diff_price &lt; 18.0 THEN 18.0
+             WHEN diff_price >=18.0 AND diff_price &lt; 18.5 THEN 18.5
+             WHEN diff_price >=18.5 AND diff_price &lt; 19.0 THEN 19.0
+             WHEN diff_price >=19.0 AND diff_price &lt; 19.5 THEN 19.5
+             WHEN diff_price >=19.5 AND diff_price &lt; 20.0 THEN 20.0
+             ELSE 0 END AS title
+        FROM message_price_static
+        WHERE isvalid = 1
+        <if test="messageType != null and messageType != '' and messageType != 'undefined'">
+            AND message_type = #{messageType}
+        </if>
+        <if test="timeType != null and timeType != '' and timeType != 'undefined'">
+            AND time_type = #{timeType}
+        </if>
+        <if test="directType != null and directType != '' and directType != 'undefined'">
+            AND direct_type = #{directType}
+        </if>
+        ) a
+        GROUP BY a.title
+    </select>
+</mapper>

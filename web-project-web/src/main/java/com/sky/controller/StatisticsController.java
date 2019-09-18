@@ -14,4 +14,9 @@ public class StatisticsController {
     public String stockCycleStatisticsList(){
         return "page/stockCycleStatisticsList";
     }
+
+    @RequestMapping("/messagePriceStaticList")
+    public String messagePriceStaticList(){
+        return "page/messagePriceStaticList";
+    }
 }

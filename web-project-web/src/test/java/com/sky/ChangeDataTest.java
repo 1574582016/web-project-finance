@@ -265,7 +265,11 @@ public class ChangeDataTest {
             List<StockCode> codeList = stockCodeService.selectList(null);
             for (StockCode stockCode : codeList) {
                 System.out.println("================stockCode=========================" + stockCode);
-                List<StockDealData> dataList = stockDealDataService.spiderStockDealData(1, stockCode.getStockCode());
+                String mk = "1";
+                if(stockCode.getStockMarket().equals("sz")){
+                    mk = "2";
+                }
+                List<StockDealData> dataList = stockDealDataService.spiderStockDealData(1, stockCode.getStockCode() ,mk);
 
                 if(null!=dataList&&dataList.size()>0){
                     int pointsDataLimit = 200;//限制条数
@@ -353,6 +357,27 @@ public class ChangeDataTest {
             list.add(dealData);
         }
         System.out.println(list.toString());
+    }
+
+    @Test
+    public void test00(){
+        List<StockCode> list = stockCodeService.selectList(null);
+        for(StockCode skuCode : list){
+            System.out.println("=========================" + skuCode.getStockCode());
+            String mk = "1";
+            if(skuCode.getStockMarket().equals("sz")){
+                mk = "2";
+            }
+            String url = "http://pdfm.eastmoney.com/EM_UBG_PDTI_Fast/api/js?rtntype=5&token=4f1862fc3b5e77c150a2b985b12db0fd&cb=jQuery183017615742790226108_1568593087961&id=" + skuCode.getStockCode() + mk + "&type=k&authorityType=&_=1568593108420";
+            String jsStr = SpiderUtils.HttpClientBuilderGet(url);
+            jsStr = jsStr.substring(jsStr.indexOf("(") + 1 , jsStr.indexOf(")"));
+            JSONObject jsonObject = JSON.parseObject(jsStr);
+            System.out.println(jsonObject);
+
+        }
+
+
+
     }
 
 }
