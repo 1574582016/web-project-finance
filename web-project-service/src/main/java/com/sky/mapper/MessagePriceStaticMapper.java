@@ -13,4 +13,7 @@ import java.util.List;
 public interface MessagePriceStaticMapper extends BaseMapper<MessagePriceStatic> {
 
     List<MessageStatic_VO> getMessagePriceStaticData(@Param("messageType") String messageType,@Param("timeType") String timeType,@Param("directType") String directType);
+
+
+    List<MessageStatic_VO> getMessageStaticCount(@Param("messageType") String messageType);
 }

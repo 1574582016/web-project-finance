@@ -12,4 +12,6 @@ import java.util.List;
 public interface MessagePriceStaticService extends IService<MessagePriceStatic> {
 
     List<MessageStatic_VO> getMessagePriceStaticData( String messageType, String timeType, String directType);
+
+    List<MessageStatic_VO> getMessageStaticCount(String messageType);
 }

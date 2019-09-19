@@ -21,4 +21,9 @@ public class MessagePriceStaticServiceImpl extends ServiceImpl<MessagePriceStati
     public List<MessageStatic_VO> getMessagePriceStaticData(String messageType, String timeType, String directType) {
         return baseMapper.getMessagePriceStaticData(messageType ,timeType ,directType);
     }
+
+    @Override
+    public List<MessageStatic_VO> getMessageStaticCount(String messageType) {
+        return baseMapper.getMessageStaticCount(messageType);
+    }
 }

@@ -24,8 +24,13 @@
                     <label class="control-label col-sm-1">发布类型：</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="timeType">
-                            <option value="0">发布当天</option>
-
+                            <option value="0">当天</option>
+                            <option value="-3">前3天</option>
+                            <option value="-2">前2天</option>
+                            <option value="-1">前1天</option>
+                            <option value="1">后1天</option>
+                            <option value="2">后2天</option>
+                            <option value="3">后3天</option>
                         </select>
                     </div>
                     <label class="control-label col-sm-1">方向类型：</label>
@@ -42,6 +47,7 @@
         </div>
     </div>
 </div>
+<div id="top" style="width:100%;height:400px;"></div>
 <div id="main" style="width:100%;height:400px;"></div>
 
 </body>

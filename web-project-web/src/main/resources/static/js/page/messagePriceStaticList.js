@@ -1,8 +1,9 @@
 $(function () {
     messagePriceData();
-
+    messagePriceCount();
     $("#searchDataButton").click(function () {
         messagePriceData();
+        messagePriceCount();
     });
 });
 
@@ -61,6 +62,79 @@ function messagePriceData() {
                     }
                 }
 
+            ]
+        };
+
+        myChart.setOption(option);
+    });
+}
+
+
+function messagePriceCount() {
+    $.APIPost("/api/statistics/getMessageStaticCount?messageType=" + $("#messageType").val(),function (result) {
+        console.log(result);
+        var myChart = echarts.init(document.getElementById('top'));
+        option = {
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data:['升','平','降']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : result.data.title
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'升',
+                    type:'bar',
+                    stack: '率',
+                    itemStyle: {
+                        normal: {
+                            color: 'red'
+                        }
+                    },
+                    data:result.data.plusList
+                },
+                {
+                    name:'平',
+                    type:'bar',
+                    stack: '率',
+                    itemStyle: {
+                        normal: {
+                            color: 'grey'
+                        }
+                    },
+                    data:result.data.equalList
+                },
+                {
+                    name:'降',
+                    type:'bar',
+                    stack: '率',
+                    itemStyle: {
+                        normal: {
+                            color: 'green'
+                        }
+                    },
+                    data:result.data.minusList
+                }
             ]
         };
 

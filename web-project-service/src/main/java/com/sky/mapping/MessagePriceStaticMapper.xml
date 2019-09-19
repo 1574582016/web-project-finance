@@ -72,4 +72,18 @@
         ) a
         GROUP BY a.title
     </select>
+
+    <select id="getMessageStaticCount" parameterType="java.lang.String" resultType="com.sky.vo.MessageStatic_VO">
+        SELECT
+        time_type timeType,
+        direct_type directType,
+        SUM(1) staticNum
+        FROM message_price_static
+        WHERE isvalid = 1
+        <if test="messageType != null and messageType != '' and messageType != 'undefined'">
+            AND message_type = #{messageType}
+        </if>
+        GROUP BY message_type ,time_type ,direct_type
+        ORDER BY time_type ASC ,direct_type ASC
+    </select>
 </mapper>
