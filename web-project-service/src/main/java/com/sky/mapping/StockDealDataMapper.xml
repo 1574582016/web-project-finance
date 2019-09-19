@@ -28,7 +28,7 @@
         *
         FROM stock_deal_data
         WHERE stock_code = #{stockCode}
-        <if test="(pointDay != null and pointDay != '' and pointDay != 'undefined') and (days == '' or days != '' or days != 'undefined')">
+        <if test="(pointDay != null and pointDay != '' and pointDay != 'undefined') and (days == '' or days == '' or days == 'undefined')">
             AND deal_time = #{pointDay}
         </if>
         <if test="(pointDay != null and pointDay != '' and pointDay != 'undefined') and (days != null and days != '' and days != 'undefined')">
