@@ -20,6 +20,6 @@
         <result column="deal_count" property="dealCount"/>
         <result column="deal_money" property="dealMoney"/>
         <result column="amplitude" property="amplitude"/>
-        <result column="ext" property="ext"/>
+        <result column="hand_rate" property="handRate"/>
     </resultMap>
 </mapper>

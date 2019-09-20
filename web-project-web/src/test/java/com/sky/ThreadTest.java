@@ -1,14 +1,8 @@
 package com.sky;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.sky.model.SectorDealData;
-import com.sky.model.StockCode;
-import com.sky.model.StockDealData;
-import com.sky.model.StockMarketClass;
-import com.sky.service.SectorDealDataService;
-import com.sky.service.StockCodeService;
-import com.sky.service.StockDealDataService;
-import com.sky.service.StockMarketClassService;
+import com.sky.model.*;
+import com.sky.service.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -218,5 +212,33 @@ public class ThreadTest {
         exec.shutdown();
         System.out.println("线程任务执行结束");
         System.err.println("执行任务消耗了 ：" + (System.currentTimeMillis() - start) + "毫秒");
+    }
+
+    @Autowired
+    private IndexDealDataService indexDealDataService ;
+
+    @Test
+    public void test3() throws InterruptedException, ExecutionException {
+      List<IndexDealData> list = new ArrayList<>();
+        String klt = "";
+      for(int t = 1 ; t <=7 ;t++){
+          switch (t){
+              case 1 : klt = "101" ;break;
+              case 2 : klt = "102" ;break;
+              case 3 : klt = "103" ;break;
+
+              case 4 : klt = "60" ;break;
+              case 5 : klt = "30" ;break;
+              case 6 : klt = "15" ;break;
+              case 7 : klt = "5" ;break;
+          }
+          List<IndexDealData> singleList = indexDealDataService.spiderIndexDealData(t , "1.000001" ,klt);
+          list.addAll(singleList);
+      }
+
+      for(IndexDealData dealData : list){
+          indexDealDataService.insert(dealData);
+      }
+
     }
 }

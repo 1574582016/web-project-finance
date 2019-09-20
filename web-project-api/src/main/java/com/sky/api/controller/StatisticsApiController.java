@@ -2,6 +2,7 @@ package com.sky.api.controller;
 
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.vo.IndexStatic_VO;
 import com.sky.vo.MessageStatic_VO;
 import com.sky.vo.StockStatisticsEchart_VO;
 import org.springframework.http.ResponseEntity;
@@ -20,116 +21,86 @@ import java.util.*;
 @RequestMapping("/api/statistics")
 public class StatisticsApiController extends AbstractController {
 
-    @LogRecord(name = "getStockStatisticsData" ,description = "查询股票信息统计数据")
-    @PostMapping("/getStockStatisticsData")
-    public Object getLearnQuestionList(){
-        List<StockStatisticsEchart_VO> list = stockIndexService.getStockStatisticsByParame();
-        List<String> rise = new ArrayList<>();
-        List<String> down = new ArrayList<>();
-        for(StockStatisticsEchart_VO body : list){
-            String dateTime = body.getDateTime();
-            Integer dataType = body.getDateType();
-            if(dateTime.equals("01")){
-               if(dataType == 1){
-                   rise.add(body.getCountNum());
-               }else{
-                   down.add(body.getCountNum());
-               }
+    @LogRecord(name = "getIndexMonthData" ,description = "查询股票信息统计数据")
+    @PostMapping("/getIndexMonthData")
+    public Object getIndexMonthData(String indexCode , String dealPeriod ,String startDay , String endDay){
+        List<IndexStatic_VO> list = indexDealDataService.getIndexMonthRateStaticList( indexCode , dealPeriod , startDay , endDay);
+
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = indexDealDataService.getIndexMonthValueStaticList( indexCode , dealPeriod , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : averList){
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                changeArr.add(static_vo.getChangeAverage());
             }
 
-            if(dateTime.equals("02")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("03")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("04")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("05")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("06")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("07")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("08")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("09")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("10")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("11")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
-            }
-
-            if(dateTime.equals("12")){
-                if(dataType == 1){
-                    rise.add(body.getCountNum());
-                }else{
-                    down.add(body.getCountNum());
-                }
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockArr.add(static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                shockArr.add(static_vo.getShockAverage());
             }
         }
 
         Map<String,Object> map = new HashMap<String ,Object>();
-        map.put("rise",rise.toArray());
-        map.put("down",down.toArray());
-        return map;
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+
+    @LogRecord(name = "getIndexWeekData" ,description = "查询股票信息统计数据")
+    @PostMapping("/getIndexWeekData")
+    public Object getIndexWeekData(String indexCode , Integer dataIndex ,String startDay , String endDay){
+        String months = (dataIndex + 1) + "";
+
+        List<IndexStatic_VO> list = indexDealDataService.getIndexWeekRateStaticList( indexCode , months , startDay , endDay);
+
+        List<String> titleArr = new ArrayList<>();
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            titleArr.add("第" + static_vo.getPointTime() + "周");
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = indexDealDataService.getIndexWeekValueStaticList( indexCode , months , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : averList){
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                changeArr.add(static_vo.getChangeAverage());
+            }
+
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockArr.add(static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                shockArr.add(static_vo.getShockAverage());
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("titleArr",titleArr.toArray());
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
     }
 
 

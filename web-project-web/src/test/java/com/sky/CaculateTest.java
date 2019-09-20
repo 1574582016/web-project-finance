@@ -34,103 +34,112 @@ public class CaculateTest {
     @Autowired
     private MessagePriceStaticService messagePriceStaticService ;
 
+
     @Test
     public void test(){
-        String messageType = "股权激励计划";
+        try {
+            List<StockCompanyNotice> noticeList = stockCompanyNoticeService.selectList(new EntityWrapper<StockCompanyNotice>().where("notice_type not in ('股权激励计划' ,'重大合同' ,'其他')").groupBy("notice_type").orderBy("notice_type"));
+            for(StockCompanyNotice notice : noticeList){
+                String messageType = notice.getNoticeType();
 
-        List<StockCompanyNotice> list = stockCompanyNoticeService.selectList(new EntityWrapper<StockCompanyNotice>().where("notice_type = {0}" , messageType).groupBy("stock_code,publish_time").orderBy("stock_code,publish_time"));
-        for(StockCompanyNotice companyNotice : list){
-            List<MessagePriceStatic> arrList = new ArrayList<>();
-            String pointDay = companyNotice.getPublishTime();
-             List<StockDealData> dataList = stockDealDataService.getPointDayScopeList(companyNotice.getStockCode() , pointDay , "10");
-             Map<Integer ,String> lastMap  = new TreeMap<Integer, String>(
-                     new Comparator<Integer>() {
-                         public int compare(Integer obj1, Integer obj2) {
-                             // 降序排序
-                             return obj1.compareTo(obj2);
-                         }
-                     });
-            Map<Integer ,String> furtureMap  = new TreeMap<Integer, String>(
-                    new Comparator<Integer>() {
-                        public int compare(Integer obj1, Integer obj2) {
-                            // 降序排序
-                            return obj2.compareTo(obj1);
+                List<StockCompanyNotice> list = stockCompanyNoticeService.selectList(new EntityWrapper<StockCompanyNotice>().where("notice_type = {0}" , messageType).groupBy("stock_code,publish_time").orderBy("stock_code,publish_time"));
+                for(StockCompanyNotice companyNotice : list){
+                    List<MessagePriceStatic> arrList = new ArrayList<>();
+                    String pointDay = companyNotice.getPublishTime();
+                    List<StockDealData> dataList = stockDealDataService.getPointDayScopeList(companyNotice.getStockCode() , pointDay , "10");
+                    Map<Integer ,String> lastMap  = new TreeMap<Integer, String>(
+                            new Comparator<Integer>() {
+                                public int compare(Integer obj1, Integer obj2) {
+                                    // 降序排序
+                                    return obj1.compareTo(obj2);
+                                }
+                            });
+                    Map<Integer ,String> furtureMap  = new TreeMap<Integer, String>(
+                            new Comparator<Integer>() {
+                                public int compare(Integer obj1, Integer obj2) {
+                                    // 降序排序
+                                    return obj2.compareTo(obj1);
+                                }
+                            });
+                    for(StockDealData dealData : dataList){
+                        int days = DateUtils.differentDaysByString(dealData.getDealTime() , pointDay);
+                        if(days > 0){
+                            lastMap.put(days ,dealData.getDealTime());
                         }
-                    });
-             for(StockDealData dealData : dataList){
-                 int days = DateUtils.differentDaysByString(dealData.getDealTime() , pointDay);
-                 if(days > 0){
-                     lastMap.put(days ,dealData.getDealTime());
-                 }
 
-                 if(days == 0){
-                     MessagePriceStatic priceStatic = createModel( dealData , messageType , 0);
-                     arrList.add(priceStatic);
-                 }
+                        if(days == 0){
+                            MessagePriceStatic priceStatic = createModel( dealData , messageType , 0);
+                            arrList.add(priceStatic);
+                        }
 
-                 if(days < 0){
-                     furtureMap.put(days ,dealData.getDealTime());
-                 }
-             }
+                        if(days < 0){
+                            furtureMap.put(days ,dealData.getDealTime());
+                        }
+                    }
 
-            Set<Integer> keySet = lastMap.keySet();
-            Iterator<Integer> iter = keySet.iterator();
-            int num = 0;
-            while (iter.hasNext()) {
-                Integer key = iter.next();
-                int timeType = 0 ;
-                if(num == 0){
-                    timeType = -3 ;
-                }
-                if(num == 1){
-                    timeType = -2 ;
-                }
-                if(num == 2){
-                    timeType = -1 ;
-                }
-                for(StockDealData dealData : dataList){
-                    if(dealData.getDealTime().equals(lastMap.get(key))){
-                        MessagePriceStatic priceStatic = createModel( dealData , messageType , timeType);
-                        arrList.add(priceStatic);
+                    Set<Integer> keySet = lastMap.keySet();
+                    Iterator<Integer> iter = keySet.iterator();
+                    int num = 0;
+                    while (iter.hasNext()) {
+                        Integer key = iter.next();
+                        int timeType = 0 ;
+                        if(num == 0){
+                            timeType = -3 ;
+                        }
+                        if(num == 1){
+                            timeType = -2 ;
+                        }
+                        if(num == 2){
+                            timeType = -1 ;
+                        }
+                        for(StockDealData dealData : dataList){
+                            if(dealData.getDealTime().equals(lastMap.get(key))){
+                                MessagePriceStatic priceStatic = createModel( dealData , messageType , timeType);
+                                arrList.add(priceStatic);
+                            }
+                        }
+
+                        num ++;
+                        if(num == 3){
+                            break;
+                        }
+                    }
+
+                    Set<Integer> keySet2 = furtureMap.keySet();
+                    Iterator<Integer> iter2 = keySet2.iterator();
+                    int num2 = 0;
+                    while (iter2.hasNext()) {
+                        Integer key = iter2.next();
+                        int timeType = 0 ;
+                        if(num2 == 0){
+                            timeType = 1 ;
+                        }
+                        if(num2 == 1){
+                            timeType = 2 ;
+                        }
+                        if(num2 == 2){
+                            timeType = 3 ;
+                        }
+                        for(StockDealData dealData : dataList){
+                            if(dealData.getDealTime().equals(furtureMap.get(key))){
+                                MessagePriceStatic priceStatic = createModel( dealData , messageType , timeType);
+                                arrList.add(priceStatic);
+                            }
+                        }
+                        num2 ++;
+                        if(num2 == 3){
+                            break;
+                        }
+                    }
+                    System.out.println(arrList.toString());
+                    if(arrList.size() > 0){
+                        messagePriceStaticService.insertBatch(arrList);
                     }
                 }
 
-                num ++;
-                if(num == 3){
-                  break;
-                }
             }
-
-            Set<Integer> keySet2 = furtureMap.keySet();
-            Iterator<Integer> iter2 = keySet2.iterator();
-            int num2 = 0;
-            while (iter2.hasNext()) {
-                Integer key = iter2.next();
-                int timeType = 0 ;
-                if(num2 == 0){
-                    timeType = 1 ;
-                }
-                if(num2 == 1){
-                    timeType = 2 ;
-                }
-                if(num2 == 2){
-                    timeType = 3 ;
-                }
-                for(StockDealData dealData : dataList){
-                    if(dealData.getDealTime().equals(furtureMap.get(key))){
-                        MessagePriceStatic priceStatic = createModel( dealData , messageType , timeType);
-                        arrList.add(priceStatic);
-                    }
-                }
-                num2 ++;
-                if(num2 == 3){
-                    break;
-                }
-            }
-            System.out.println(arrList.toString());
-//            if(arrList.size() > 0){
-//                messagePriceStaticService.insertBatch(arrList);
-//            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

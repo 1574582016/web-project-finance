@@ -105,7 +105,7 @@ function messagePriceCount() {
                 {
                     name:'升',
                     type:'bar',
-                    stack: '率',
+                    // stack: '率',
                     itemStyle: {
                         normal: {
                             color: 'red'
@@ -116,7 +116,7 @@ function messagePriceCount() {
                 {
                     name:'平',
                     type:'bar',
-                    stack: '率',
+                    // stack: '率',
                     itemStyle: {
                         normal: {
                             color: 'grey'
@@ -127,7 +127,7 @@ function messagePriceCount() {
                 {
                     name:'降',
                     type:'bar',
-                    stack: '率',
+                    // stack: '率',
                     itemStyle: {
                         normal: {
                             color: 'green'
