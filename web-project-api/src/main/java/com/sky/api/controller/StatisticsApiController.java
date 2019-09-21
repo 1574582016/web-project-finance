@@ -40,19 +40,19 @@ public class StatisticsApiController extends AbstractController {
         List<BigDecimal> changeArr = new ArrayList<>();
         List<BigDecimal> shockArr = new ArrayList<>();
 
-        List<BigDecimal> openStandArr = new ArrayList<>();
-        List<BigDecimal> closeStandArr = new ArrayList<>();
-        List<BigDecimal> highStandArr = new ArrayList<>();
-        List<BigDecimal> lowStandArr = new ArrayList<>();
+//        List<BigDecimal> openStandArr = new ArrayList<>();
+//        List<BigDecimal> closeStandArr = new ArrayList<>();
+//        List<BigDecimal> highStandArr = new ArrayList<>();
+//        List<BigDecimal> lowStandArr = new ArrayList<>();
         for(IndexStatic_VO static_vo : averList){
-            List<IndexDealData> dataList = indexDealDataService.getIndexDealDataList( indexCode , dealPeriod , startDay , endDay , static_vo.getPointTime());
+//            List<IndexDealData> dataList = indexDealDataService.getIndexDealDataList( indexCode , dealPeriod , startDay , endDay , static_vo.getPointTime());
 //            BigDecimal openStand = caculateStandardDeviation(dataList , static_vo.getChangeAverage() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
-            BigDecimal closeStand = caculateStandardDeviation(dataList , static_vo.getCloseAveragePrice() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
-            BigDecimal highStand = caculateStandardDeviation(dataList , static_vo.getHighAveragePrice() ,3).setScale(2,BigDecimal.ROUND_HALF_UP);
+//            BigDecimal closeStand = caculateStandardDeviation(dataList , static_vo.getCloseAveragePrice() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
+//            BigDecimal highStand = caculateStandardDeviation(dataList , static_vo.getHighAveragePrice() ,3).setScale(2,BigDecimal.ROUND_HALF_UP);
 //            BigDecimal lowStand = caculateStandardDeviation(dataList , static_vo.getShockAverage() ,4).setScale(2,BigDecimal.ROUND_HALF_UP);
 //            openStandArr.add(openStand);
-            closeStandArr.add(closeStand);
-            highStandArr.add(highStand);
+//            closeStandArr.add(closeStand);
+//            highStandArr.add(highStand);
 //            lowStandArr.add(lowStand);
 
             if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
@@ -75,8 +75,8 @@ public class StatisticsApiController extends AbstractController {
         map.put("shockArr",shockArr.toArray());
 
 //        map.put("openStandArr",openStandArr.toArray());
-        map.put("closeStandArr",closeStandArr.toArray());
-        map.put("highStandArr",highStandArr.toArray());
+//        map.put("closeStandArr",closeStandArr.toArray());
+//        map.put("highStandArr",highStandArr.toArray());
 //        map.put("lowStandArr",lowStandArr.toArray());
         return ResponseEntity.ok(MapSuccess("查询成功！",map));
     }
@@ -125,6 +125,49 @@ public class StatisticsApiController extends AbstractController {
         }
 
         List<IndexStatic_VO> averList = indexDealDataService.getIndexWeekValueStaticList( indexCode , months , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : averList){
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                changeArr.add(static_vo.getChangeAverage());
+            }
+
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockArr.add(static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                shockArr.add(static_vo.getShockAverage());
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("titleArr",titleArr.toArray());
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+    @LogRecord(name = "getIndexDayData" ,description = "查询股票信息统计数据")
+    @PostMapping("/getIndexDayData")
+    public Object getIndexDayData(String indexCode , Integer dataIndex ,String startDay , String endDay){
+        String week = (dataIndex + 1) + "";
+
+        List<IndexStatic_VO> list = indexDealDataService.getIndexDayRateStaticList( indexCode , week , startDay , endDay);
+
+        List<String> titleArr = new ArrayList<>();
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            titleArr.add("第" + static_vo.getPointTime() + "周");
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = indexDealDataService.getIndexDayValueStaticList( indexCode , week , startDay , endDay);
 
         List<BigDecimal> changeArr = new ArrayList<>();
         List<BigDecimal> shockArr = new ArrayList<>();

@@ -85,4 +85,14 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
     public List<IndexStatic_VO> getIndexWeekValueStaticList(String indexCode, String month, String startDay, String endDay) {
         return baseMapper.getIndexWeekValueStaticList(indexCode ,month ,startDay ,endDay);
     }
+
+    @Override
+    public List<IndexStatic_VO> getIndexDayRateStaticList(String indexCode, String week, String startDay, String endDay) {
+        return baseMapper.getIndexDayRateStaticList(indexCode ,week ,startDay ,endDay);
+    }
+
+    @Override
+    public List<IndexStatic_VO> getIndexDayValueStaticList(String indexCode, String week, String startDay, String endDay) {
+        return baseMapper.getIndexDayValueStaticList(indexCode ,week ,startDay ,endDay);
+    }
 }

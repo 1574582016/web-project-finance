@@ -158,4 +158,59 @@
         AND SUBSTR(deal_time ,6,2) = ${month}
         GROUP BY ((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1)
     </select>
+
+    <select id="getIndexDayRateStaticList" parameterType="java.lang.String" resultType="com.sky.vo.IndexStatic_VO">
+        SELECT
+        ((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) pointTime,
+        SUM(CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) AS increaseNum ,
+        SUM(CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) AS decreaseNum ,
+        SUM(CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) +
+        SUM(CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) AS totalNum ,
+        ROUND(SUM(CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) / (
+        SUM(CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) +
+        SUM(CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END)
+        ) * 100 ,2) AS increaseRate ,
+        ROUND(SUM(CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) / (
+        SUM(CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) +
+        SUM(CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END)
+        ) * 100 ,2) AS decreaseRate
+        FROM index_deal_data
+        WHERE isvalid = 1
+        AND deal_period = 1
+        <if test="indexCode != null and indexCode != '' and indexCode != 'undefined'">
+            AND index_code = #{indexCode}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND deal_time &lt; #{endDay}
+        </if>
+        AND((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) = ${week}
+        GROUP BY (DAYOFWEEK(deal_time) -1)
+    </select>
+
+    <select id="getIndexDayValueStaticList" parameterType="java.lang.String" resultType="com.sky.vo.IndexStatic_VO">
+        SELECT
+        SUBSTR(deal_time ,6,2) months,
+        ((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) weeks,
+        SUM(close_price - open_price) changeRange,
+        SUM(high_price - low_price) shockRange ,
+        ROUND(SUM(close_price - open_price) / SUM(1),2) changeAverage,
+        ROUND(SUM(high_price - low_price) / SUM(1),2) shockAverage
+        FROM index_deal_data
+        WHERE isvalid = 1
+        AND deal_period = 1
+        <if test="indexCode != null and indexCode != '' and indexCode != 'undefined'">
+            AND index_code = #{indexCode}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND deal_time &lt; #{endDay}
+        </if>
+        AND((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) = ${week}
+        GROUP BY (DAYOFWEEK(deal_time) -1)
+    </select>
 </mapper>

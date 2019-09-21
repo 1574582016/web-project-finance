@@ -2,7 +2,11 @@ package com.sky;
 
 import com.sky.core.consts.SpiderUrlConst;
 import com.sky.core.utils.DateUtils;
+import com.sky.core.utils.SpiderUtils;
 import com.sky.service.ForexIndexTypeService;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +43,14 @@ public class ProcessForexIndexTest {
             forexIndexTypeService.spiderLastYearForexIndexType(newUrl);
             Thread.sleep(500L);
         }
+    }
+
+    @Test
+    public void test(){
+        String url = "https://rl.fx678.com/date/20190921.html";
+        Document doc = SpiderUtils.HtmlJsoupGet(url);
+        Elements elements = doc.body().getElementsByClass("cjsj_tab");
+        Element element = elements.get(0);
+        System.out.println(element.html());
     }
 }

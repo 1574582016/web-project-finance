@@ -22,4 +22,8 @@ public interface IndexDealDataService extends IService<IndexDealData> {
     List<IndexStatic_VO> getIndexWeekRateStaticList(String indexCode , String month ,String startDay , String endDay);
 
     List<IndexStatic_VO> getIndexWeekValueStaticList(String indexCode , String month ,String startDay , String endDay);
+
+    List<IndexStatic_VO> getIndexDayRateStaticList(String indexCode , String week ,String startDay , String endDay);
+
+    List<IndexStatic_VO> getIndexDayValueStaticList(String indexCode , String week ,String startDay , String endDay);
 }
