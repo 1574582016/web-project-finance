@@ -61,6 +61,10 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
         return list ;
     }
 
+    @Override
+    public List<IndexDealData> getIndexDealDataList(String indexCode, String dealPeriod, String startDay, String endDay, String month) {
+        return baseMapper.getIndexDealDataList( indexCode, dealPeriod, startDay, endDay, month);
+    }
 
     @Override
     public List<IndexStatic_VO> getIndexMonthRateStaticList(String indexCode, String dealPeriod, String startDay, String endDay) {

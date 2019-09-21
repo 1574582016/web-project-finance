@@ -19,4 +19,9 @@ public class StatisticsController {
     public String messagePriceStaticList(){
         return "page/messagePriceStaticList";
     }
+
+    @RequestMapping("/forexCycleStatisticsList")
+    public String forexCycleStatisticsList(){
+        return "page/forexCycleStatisticsList";
+    }
 }

@@ -2,6 +2,8 @@ package com.sky.api.controller;
 
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.core.utils.MathUtil;
+import com.sky.model.IndexDealData;
 import com.sky.vo.IndexStatic_VO;
 import com.sky.vo.MessageStatic_VO;
 import com.sky.vo.StockStatisticsEchart_VO;
@@ -37,6 +39,135 @@ public class StatisticsApiController extends AbstractController {
 
         List<BigDecimal> changeArr = new ArrayList<>();
         List<BigDecimal> shockArr = new ArrayList<>();
+
+        List<BigDecimal> openStandArr = new ArrayList<>();
+        List<BigDecimal> closeStandArr = new ArrayList<>();
+        List<BigDecimal> highStandArr = new ArrayList<>();
+        List<BigDecimal> lowStandArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : averList){
+            List<IndexDealData> dataList = indexDealDataService.getIndexDealDataList( indexCode , dealPeriod , startDay , endDay , static_vo.getPointTime());
+//            BigDecimal openStand = caculateStandardDeviation(dataList , static_vo.getChangeAverage() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
+            BigDecimal closeStand = caculateStandardDeviation(dataList , static_vo.getChangeAverage() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
+            BigDecimal highStand = caculateStandardDeviation(dataList , static_vo.getShockAverage() ,3).setScale(2,BigDecimal.ROUND_HALF_UP);
+//            BigDecimal lowStand = caculateStandardDeviation(dataList , static_vo.getShockAverage() ,4).setScale(2,BigDecimal.ROUND_HALF_UP);
+//            openStandArr.add(openStand);
+            closeStandArr.add(closeStand);
+            highStandArr.add(highStand);
+//            lowStandArr.add(lowStand);
+
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                changeArr.add(static_vo.getChangeAverage());
+            }
+
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockArr.add(static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                shockArr.add(static_vo.getShockAverage());
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+
+//        map.put("openStandArr",openStandArr.toArray());
+        map.put("closeStandArr",closeStandArr.toArray());
+        map.put("highStandArr",highStandArr.toArray());
+//        map.put("lowStandArr",lowStandArr.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+    private BigDecimal caculateStandardDeviation(List<IndexDealData> dataList ,BigDecimal means ,Integer type){
+        BigDecimal standardDeviation = BigDecimal.ZERO;
+        if(means.compareTo(BigDecimal.ZERO) < 0){
+            means = means.multiply(BigDecimal.valueOf(-1));
+        }
+        BigDecimal total = BigDecimal.ZERO ;
+        for(IndexDealData dealData : dataList){
+            if(type == 1){
+                total = total.add(dealData.getOpenPrice().subtract(means).pow(2));
+            }
+            if(type == 2){
+                total = total.add(dealData.getClosePrice().subtract(means).pow(2));
+            }
+            if(type == 3){
+                total = total.add(dealData.getHighPrice().subtract(means).pow(2));
+            }
+            if(type == 4){
+                total = total.add(dealData.getLowPrice().subtract(means).pow(2));
+            }
+
+        }
+//        standardDeviation = MathUtil.sqrt(total.divide(BigDecimal.valueOf(dataList.size()) ,5 ,BigDecimal.ROUND_HALF_UP));
+        standardDeviation = BigDecimal.valueOf(Math.sqrt(total.divide(BigDecimal.valueOf(dataList.size()) ,5 ,BigDecimal.ROUND_HALF_UP).doubleValue())).setScale(2,BigDecimal.ROUND_HALF_UP);
+        return standardDeviation ;
+    }
+
+
+    @LogRecord(name = "getIndexWeekData" ,description = "查询股票信息统计数据")
+    @PostMapping("/getIndexWeekData")
+    public Object getIndexWeekData(String indexCode , Integer dataIndex ,String startDay , String endDay){
+        String months = (dataIndex + 1) + "";
+
+        List<IndexStatic_VO> list = indexDealDataService.getIndexWeekRateStaticList( indexCode , months , startDay , endDay);
+
+        List<String> titleArr = new ArrayList<>();
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            titleArr.add("第" + static_vo.getPointTime() + "周");
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = indexDealDataService.getIndexWeekValueStaticList( indexCode , months , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : averList){
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                changeArr.add(static_vo.getChangeAverage());
+            }
+
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockArr.add(static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                shockArr.add(static_vo.getShockAverage());
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("titleArr",titleArr.toArray());
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+
+    @LogRecord(name = "getForexMonthData" ,description = "查询外汇信息统计数据")
+    @PostMapping("/getForexMonthData")
+    public Object getForexMonthData(String indexCode , String dealPeriod ,String startDay , String endDay){
+        List<IndexStatic_VO> list = forexDealDataService.getForexMonthRateStaticList( indexCode , dealPeriod , startDay , endDay);
+
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = forexDealDataService.getForexMonthValueStaticList( indexCode , dealPeriod , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
         for(IndexStatic_VO static_vo : averList){
             if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
                 changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
@@ -59,13 +190,12 @@ public class StatisticsApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功！",map));
     }
 
-
-    @LogRecord(name = "getIndexWeekData" ,description = "查询股票信息统计数据")
-    @PostMapping("/getIndexWeekData")
-    public Object getIndexWeekData(String indexCode , Integer dataIndex ,String startDay , String endDay){
+    @LogRecord(name = "getForexWeekData" ,description = "查询外汇信息统计数据")
+    @PostMapping("/getForexWeekData")
+    public Object getForexWeekData(String indexCode , Integer dataIndex ,String startDay , String endDay){
         String months = (dataIndex + 1) + "";
 
-        List<IndexStatic_VO> list = indexDealDataService.getIndexWeekRateStaticList( indexCode , months , startDay , endDay);
+        List<IndexStatic_VO> list = forexDealDataService.getForexMonthRateStaticList( indexCode , months , startDay , endDay);
 
         List<String> titleArr = new ArrayList<>();
         List<BigDecimal> upperArr = new ArrayList<>();
@@ -76,7 +206,7 @@ public class StatisticsApiController extends AbstractController {
             downArr.add(static_vo.getDecreaseRate());
         }
 
-        List<IndexStatic_VO> averList = indexDealDataService.getIndexWeekValueStaticList( indexCode , months , startDay , endDay);
+        List<IndexStatic_VO> averList = forexDealDataService.getForexMonthValueStaticList( indexCode , months , startDay , endDay);
 
         List<BigDecimal> changeArr = new ArrayList<>();
         List<BigDecimal> shockArr = new ArrayList<>();

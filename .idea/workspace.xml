@@ -7,26 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/IndexDealDataMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/IndexDealData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/IndexDealDataServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/IndexStatic_VO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/echarts-2.2.7/echarts.min.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/echarts-2.2.7/echarts-all.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/MathUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/ForexDealDataMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/ForexDealDataMapper.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexDealData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexDealDataService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexDealDataServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/forexCycleStatisticsList.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/forexCycleStatisticsList.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" afterPath="$PROJECT_DIR$/web-project-api/target/classes/com/sky/api/AbstractController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SectorDealDataMapper.xml" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SectorDealDataMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/messagePriceStaticList.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/messagePriceStaticList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/IndexDealDataMapper.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/IndexDealDataMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/IndexDealDataServiceImpl.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/IndexDealDataServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/messagePriceStaticList.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/messagePriceStaticList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/CaculateTest.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/CaculateTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ThreadTest.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ThreadTest.java" />
     </list>
     <ignored path="web-project-finance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,36 +52,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StatisticsController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java">
+      <file leaf-file-name="StatisticsApiController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="14" column="45" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="45" />
+            <state relative-caret-position="456">
+              <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatisticsApiController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
+      <file leaf-file-name="MathUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/MathUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="97" column="25" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="25" />
+            <state relative-caret-position="266">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="26" />
               <folding>
-                <element signature="e#4167#4183#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stockCycleStatisticsList.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,29 +77,33 @@
       <file leaf-file-name="stockCycleStatistics.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="116" column="30" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
+            <state relative-caret-position="395">
+              <caret line="145" column="33" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="messagePriceStaticList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/messagePriceStaticList.js">
+      <file leaf-file-name="ForexDealDataService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexDealDataService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2052">
-              <caret line="108" column="32" selection-start-line="108" selection-start-column="32" selection-end-line="108" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="209">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stockCompanyNoticeList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyNoticeList.js">
+      <file leaf-file-name="ForexDealDataServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexDealDataServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="7" selection-start-line="3" selection-start-column="4" selection-end-line="15" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="538">
+              <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,19 +111,25 @@
       <file leaf-file-name="IndexDealDataMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
+            <state relative-caret-position="38">
+              <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
               <folding>
-                <element signature="e#4548#4552#0" expanded="true" />
-                <element signature="e#4710#4714#0" expanded="true" />
-                <element signature="e#4949#4953#0" expanded="true" />
-                <element signature="e#5066#5070#0" expanded="true" />
-                <element signature="e#5215#5219#0" expanded="true" />
-                <marker date="1568975414916" expanded="true" signature="1515:3084" ph="SELECT SUBST... index_deal_data" />
-                <marker date="1568975414916" expanded="true" signature="3227:4171" ph="SELECT SUBST... index_deal_data" />
-                <marker date="1568975414916" expanded="true" signature="4312:5913" ph="SELECT SUBST... index_deal_data" />
-                <marker date="1568975414916" expanded="true" signature="6055:7066" ph="SELECT ((DAY... index_deal_data" />
+                <marker date="1569049007686" expanded="true" signature="1495:2175" ph="SELECT * FRO... index_deal_data" />
+                <marker date="1569049007686" expanded="true" signature="2317:3886" ph="SELECT SUBST... index_deal_data" />
+                <marker date="1569049007686" expanded="true" signature="4029:4973" ph="SELECT SUBST... index_deal_data" />
+                <marker date="1569049007686" expanded="true" signature="5114:6715" ph="SELECT ((DAY... index_deal_data" />
+                <marker date="1569049007686" expanded="true" signature="6857:7868" ph="SELECT SUBST... index_deal_data" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexDealDataMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/IndexDealDataMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="221" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,9 +137,21 @@
       <file leaf-file-name="IndexDealDataService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" column="52" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="52" />
+            <state relative-caret-position="133">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexDealDataServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/IndexDealDataServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="65" column="88" selection-start-line="65" selection-start-column="88" selection-end-line="65" selection-end-column="88" />
+              <folding>
+                <element signature="method#spiderIndexDealData#0;class#IndexDealDataServiceImpl#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,8 +161,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -171,15 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockCompanyNoticeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/EconomyNewsStatictis.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/economyNewsStatisticsList.html" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/EconomyNewsStatictisService.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsStatictisMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsStatictisServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsStatictisMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/economyNewsStatistics.js" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/interceptor/SqlInjectInterceptor.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/StockCompanyBaceScheduler.java" />
@@ -199,7 +198,6 @@
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockDealDataService.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockDealDataServiceImpl.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/MessagePriceStatic.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/MessageStatic_VO.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/MessagePriceStaticMapper.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/MessagePriceStaticService.java" />
@@ -211,17 +209,27 @@
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/IndexDealData.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/SectorDealDataMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ThreadTest.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/IndexStatic_VO.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/StockCompanyNoticeScheduler.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/EconomyNewsScheduler.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexDealData.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/forexDealDataList.html" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/forexCycleStatisticsList.html" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/vo/IndexStatic_VO.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/ForexDealDataMapper.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/ForexDealDataMapper.xml" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexDealDataService.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexDealDataServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/forexCycleStatisticsList.js" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/IndexDealDataMapper.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/IndexDealDataServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/MathUtil.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
       </list>
     </option>
   </component>
@@ -295,9 +303,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -345,18 +353,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -528,6 +524,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="web-project-service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -559,40 +589,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -660,7 +656,111 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mapping" />
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-finance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-project-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -785,7 +885,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mx3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../peanut2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -1504,7 +1604,8 @@
       <workItem from="1568685765107" duration="11099000" />
       <workItem from="1568765530302" duration="19632000" />
       <workItem from="1568872553370" duration="596000" />
-      <workItem from="1568875962086" duration="22896000" />
+      <workItem from="1568875962086" duration="22979000" />
+      <workItem from="1569029145580" duration="8544000" />
     </task>
     <task id="LOCAL-00001" summary="首页调整">
       <created>1540551511444</created>
@@ -1723,7 +1824,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568878506722</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="统计">
+      <created>1568976616205</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1568976616205</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1759,7 +1867,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="567267000" />
+    <option name="totallyTimeSpent" value="575894000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
@@ -1772,8 +1880,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23107049" sideWeight="0.5025" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43472585" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43472585" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1785,8 +1893,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1885,69 +1993,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyProductMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockCompanyNoticeClassMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="29" column="13" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ChangeDataTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="271" column="78" selection-start-line="271" selection-start-column="78" selection-end-line="271" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockDealDataMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="13" column="149" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="149" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/model/MiddleModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/MessagePriceStatic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/StockDealDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="10" column="71" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockDealDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="24" column="126" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCompanyStatictis.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -2014,7 +2059,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="15" column="48" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2022,7 +2066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="14" column="52" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2030,9 +2073,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="20" column="53" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2059,7 +2099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="12" column="74" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2071,21 +2110,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/IndexDealData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/SectorDealDataService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="12" column="86" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2101,30 +2129,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="218" column="0" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/StockCompanyNoticeScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/EconomyNewsScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="112" column="55" selection-start-line="112" selection-start-column="35" selection-end-line="112" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -2179,19 +2183,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/libs/echarts-2.2.7/echarts.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2199,7 +2194,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2207,9 +2201,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="99" column="46" selection-start-line="99" selection-start-column="33" selection-end-line="99" selection-end-column="46" />
-          <folding>
-            <marker date="1568871975004" expanded="true" signature="4785:4791" ph="&amp;nbsp;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2218,58 +2209,6 @@
         <state relative-caret-position="190">
           <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/IndexDealDataMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="52" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/IndexDealDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="81" column="88" selection-start-line="81" selection-start-column="88" selection-end-line="81" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="52" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
-          <folding>
-            <element signature="e#4548#4552#0" expanded="true" />
-            <element signature="e#4710#4714#0" expanded="true" />
-            <element signature="e#4949#4953#0" expanded="true" />
-            <element signature="e#5066#5070#0" expanded="true" />
-            <element signature="e#5215#5219#0" expanded="true" />
-            <marker date="1568975414916" expanded="true" signature="1515:3084" ph="SELECT SUBST... index_deal_data" />
-            <marker date="1568975414916" expanded="true" signature="3227:4171" ph="SELECT SUBST... index_deal_data" />
-            <marker date="1568975414916" expanded="true" signature="4312:5913" ph="SELECT SUBST... index_deal_data" />
-            <marker date="1568975414916" expanded="true" signature="6055:7066" ph="SELECT ((DAY... index_deal_data" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="97" column="25" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="25" />
-          <folding>
-            <element signature="e#4167#4183#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2289,22 +2228,199 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/StockCompanyNoticeScheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="116" column="30" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
+        <state relative-caret-position="63">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/scheduler/EconomyNewsScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/IndexDealData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="86" column="33" selection-start-line="16" selection-start-column="4" selection-end-line="86" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/forexDealDataList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/forexCycleStatisticsList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="55" column="71" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/ForexDealData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockCycleStatisticsList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="357">
+          <caret line="42" column="54" selection-start-line="0" selection-start-column="0" selection-end-line="56" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="115" column="55" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="46" />
           <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#415#416#0" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/ForexDealDataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="121" column="26" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
+          <folding>
+            <marker date="1569047746491" expanded="true" signature="1282:2851" ph="SELECT SUBST... index_deal_data" />
+            <marker date="1569047746491" expanded="true" signature="2994:3938" ph="SELECT SUBST... index_deal_data" />
+            <marker date="1569047746491" expanded="true" signature="4079:5680" ph="SELECT ((DAY... forex_deal_data" />
+            <marker date="1569047746491" expanded="true" signature="5822:6833" ph="SELECT SUBST... forex_deal_data" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/ForexDealDataMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="52" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/ForexDealDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/ForexDealDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+          <folding>
+            <marker date="1569049007686" expanded="true" signature="1495:2175" ph="SELECT * FRO... index_deal_data" />
+            <marker date="1569049007686" expanded="true" signature="2317:3886" ph="SELECT SUBST... index_deal_data" />
+            <marker date="1569049007686" expanded="true" signature="4029:4973" ph="SELECT SUBST... index_deal_data" />
+            <marker date="1569049007686" expanded="true" signature="5114:6715" ph="SELECT ((DAY... index_deal_data" />
+            <marker date="1569049007686" expanded="true" signature="6857:7868" ph="SELECT SUBST... index_deal_data" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/IndexDealDataMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="221" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/IndexDealDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="65" column="88" selection-start-line="65" selection-start-column="88" selection-end-line="65" selection-end-column="88" />
+          <folding>
+            <element signature="method#spiderIndexDealData#0;class#IndexDealDataServiceImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/forexCycleStatisticsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="661">
+          <caret line="253" column="33" selection-start-line="253" selection-start-column="33" selection-end-line="253" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCycleStatistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="145" column="33" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-core/src/main/java/com/sky/core/utils/MathUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

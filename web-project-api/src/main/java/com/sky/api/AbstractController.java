@@ -112,4 +112,7 @@ public class AbstractController extends BaseController {
     @Autowired
     protected IndexDealDataService indexDealDataService ;
 
+    @Autowired
+    protected ForexDealDataService forexDealDataService ;
+
 }

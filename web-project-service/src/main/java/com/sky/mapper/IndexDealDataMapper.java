@@ -12,6 +12,8 @@ import java.util.List;
  */
 public interface IndexDealDataMapper extends BaseMapper<IndexDealData> {
 
+    List<IndexDealData> getIndexDealDataList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay ,@Param("month") String month);
+
     List<IndexStatic_VO> getIndexMonthRateStaticList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
 
     List<IndexStatic_VO> getIndexMonthValueStaticList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);

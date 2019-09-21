@@ -13,6 +13,8 @@ public interface IndexDealDataService extends IService<IndexDealData> {
 
     List<IndexDealData> spiderIndexDealData(Integer periodType , String indexCode , String mk);
 
+    List<IndexDealData> getIndexDealDataList(String indexCode , String dealPeriod , String startDay , String endDay , String month);
+
     List<IndexStatic_VO> getIndexMonthRateStaticList(String indexCode , String dealPeriod ,String startDay , String endDay);
 
     List<IndexStatic_VO> getIndexMonthValueStaticList(String indexCode , String dealPeriod ,String startDay , String endDay);

@@ -27,7 +27,7 @@ $(function () {
 function flashCycleStatic() {
     var myChart = echarts.init(document.getElementById('main'));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
-    $.APIPost("/api/statistics/getIndexMonthData?indexCode=" + $("#index_code").val()
+    $.APIPost("/api/statistics/getForexMonthData?indexCode=" + $("#index_code").val()
         + "&dealPeriod=" + $("#deal_period").val()
         + "&startDay=" + $("#s_start").val()
         + "&endDay=" + $("#s_end").val()
@@ -52,7 +52,7 @@ function flashCycleStatic() {
                     }
                 },
                 legend: {
-                    data:['跌率','涨率','涨幅','涨幅标准差','振幅','振幅标准差']
+                    data:['跌率','涨率','涨幅','振幅']
                 },
                 xAxis: [
                     {
@@ -85,6 +85,7 @@ function flashCycleStatic() {
                         min: 0,
                         max: 100,
                         position: 'right',
+                        offset: 80,
                         axisLine: {
                             lineStyle: {
                                 color: colors[1]
@@ -99,21 +100,6 @@ function flashCycleStatic() {
                         name: '涨幅',
                         min: 0,
                         max: 100,
-                        position: 'right',
-                        axisLine: {
-                            lineStyle: {
-                                color: colors[2]
-                            }
-                        },
-                        axisLabel: {
-                            formatter: '{value} 点'
-                        }
-                    },
-                    {
-                        type: 'value',
-                        name: '涨幅标准差',
-                        min: 0,
-                        max: 3000,
                         position: 'left',
                         axisLine: {
                             lineStyle: {
@@ -128,22 +114,7 @@ function flashCycleStatic() {
                         type: 'value',
                         name: '振幅',
                         min: 0,
-                        max: 300,
-                        position: 'right',
-                        axisLine: {
-                            lineStyle: {
-                                color: colors[3]
-                            }
-                        },
-                        axisLabel: {
-                            formatter: '{value} 点'
-                        }
-                    },
-                    {
-                        type: 'value',
-                        name: '振幅标准差',
-                        min: 0,
-                        max: 3000,
+                        max: 100,
                         position: 'left',
                         axisLine: {
                             lineStyle: {
@@ -174,22 +145,10 @@ function flashCycleStatic() {
                         data:result.data.changeArr
                     },
                     {
-                        name:'涨幅标准差',
-                        type:'line',
-                        yAxisIndex: 3,
-                        data:result.data.closeStandArr
-                    },
-                    {
                         name:'振幅',
                         type:'line',
-                        yAxisIndex: 4,
+                        yAxisIndex: 3,
                         data:result.data.shockArr
-                    },
-                    {
-                        name:'振幅标准差',
-                        type:'line',
-                        yAxisIndex: 5,
-                        data:result.data.highStandArr
                     }
                 ]
             };
@@ -205,7 +164,7 @@ function flashCycleStatic() {
 function falshWeekBar(dataIndex) {
     var myChart = echarts.init(document.getElementById('weekBar'));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
-    $.APIPost("/api/statistics/getIndexWeekData?indexCode=" + $("#index_code").val()
+    $.APIPost("/api/statistics/getForexWeekData?indexCode=" + $("#index_code").val()
         + "&dataIndex=" + dataIndex
         + "&startDay=" + $("#s_start").val()
         + "&endDay=" + $("#s_end").val()
@@ -292,7 +251,7 @@ function falshWeekBar(dataIndex) {
                         type: 'value',
                         name: '振幅',
                         min: 0,
-                        max: 300,
+                        max: 100,
                         position: 'left',
                         axisLine: {
                             lineStyle: {
