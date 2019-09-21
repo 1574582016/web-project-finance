@@ -47,8 +47,8 @@ public class StatisticsApiController extends AbstractController {
         for(IndexStatic_VO static_vo : averList){
             List<IndexDealData> dataList = indexDealDataService.getIndexDealDataList( indexCode , dealPeriod , startDay , endDay , static_vo.getPointTime());
 //            BigDecimal openStand = caculateStandardDeviation(dataList , static_vo.getChangeAverage() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
-            BigDecimal closeStand = caculateStandardDeviation(dataList , static_vo.getChangeAverage() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
-            BigDecimal highStand = caculateStandardDeviation(dataList , static_vo.getShockAverage() ,3).setScale(2,BigDecimal.ROUND_HALF_UP);
+            BigDecimal closeStand = caculateStandardDeviation(dataList , static_vo.getCloseAveragePrice() ,2).setScale(2,BigDecimal.ROUND_HALF_UP);
+            BigDecimal highStand = caculateStandardDeviation(dataList , static_vo.getHighAveragePrice() ,3).setScale(2,BigDecimal.ROUND_HALF_UP);
 //            BigDecimal lowStand = caculateStandardDeviation(dataList , static_vo.getShockAverage() ,4).setScale(2,BigDecimal.ROUND_HALF_UP);
 //            openStandArr.add(openStand);
             closeStandArr.add(closeStand);

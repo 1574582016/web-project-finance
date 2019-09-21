@@ -82,7 +82,11 @@
         SUM(close_price - open_price) changeRange,
         SUM(high_price - low_price) shockRange ,
         ROUND(SUM(close_price - open_price) / SUM(1),2) changeAverage,
-        ROUND(SUM(high_price - low_price) / SUM(1),2) shockAverage
+        ROUND(SUM(high_price - low_price) / SUM(1),2) shockAverage ,
+        ROUND(SUM(open_price) / SUM(1),2) openAveragePrice,
+        ROUND(SUM(close_price) / SUM(1),2) closeAveragePrice,
+        ROUND(SUM(high_price) / SUM(1),2) highAveragePrice,
+        ROUND(SUM(low_price) / SUM(1),2) lowAveragePrice
         FROM index_deal_data
         WHERE isvalid = 1
         <if test="indexCode != null and indexCode != '' and indexCode != 'undefined'">

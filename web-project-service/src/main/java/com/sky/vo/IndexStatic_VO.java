@@ -26,4 +26,12 @@ public class IndexStatic_VO extends VoModel {
     private BigDecimal changeAverage ;
 
     private BigDecimal shockAverage ;
+
+    private BigDecimal openAveragePrice ;
+
+    private BigDecimal closeAveragePrice ;
+
+    private BigDecimal highAveragePrice ;
+
+    private BigDecimal lowAveragePrice ;
 }

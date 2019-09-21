@@ -113,7 +113,7 @@ function flashCycleStatic() {
                         type: 'value',
                         name: '涨幅标准差',
                         min: 0,
-                        max: 3000,
+                        max: 1500,
                         position: 'left',
                         axisLine: {
                             lineStyle: {
@@ -143,7 +143,7 @@ function flashCycleStatic() {
                         type: 'value',
                         name: '振幅标准差',
                         min: 0,
-                        max: 3000,
+                        max: 1500,
                         position: 'left',
                         axisLine: {
                             lineStyle: {
@@ -193,6 +193,7 @@ function flashCycleStatic() {
                     }
                 ]
             };
+
             myChart.setOption(option);
         });
 
