@@ -47,6 +47,17 @@
                         <div class="input-group-addon">至</div>
                         <input type="text" class="form-control" id="s_end" th:value="${endDay}" readonly>
                     </div>
+                    <label class="control-label col-sm-1">级别：</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="s_level">
+                            <option value="">请选择</option>
+                            <option value="1">一级</option>
+                            <option value="2">二级</option>
+                            <option value="3">三级</option>
+                            <option value="4">四级</option>
+                            <option value="5">五级</option>
+                        </select>
+                    </div>
                     <div class="input-group col-sm-1">
                         <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
                     </div>
