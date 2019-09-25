@@ -14,4 +14,9 @@ public class StockChoseClassController {
     public String stockChoseClassList(){
         return "page/stockChoseClassList";
     }
+
+    @RequestMapping("/stockTigerList")
+    public String stockTigerList(){
+        return "page/stockTigerList";
+    }
 }

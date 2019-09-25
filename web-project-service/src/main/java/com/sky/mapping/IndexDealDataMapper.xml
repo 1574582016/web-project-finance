@@ -137,7 +137,7 @@
 
     <select id="getIndexWeekValueStaticList" parameterType="java.lang.String" resultType="com.sky.vo.IndexStatic_VO">
         SELECT
-        SUBSTR(deal_time ,6,2) months,
+        SUBSTR(deal_time ,6,2) pointTime,
         ((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) weeks,
         SUM(close_price - open_price) changeRange,
         SUM(high_price - low_price) shockRange ,
@@ -192,8 +192,7 @@
 
     <select id="getIndexDayValueStaticList" parameterType="java.lang.String" resultType="com.sky.vo.IndexStatic_VO">
         SELECT
-        SUBSTR(deal_time ,6,2) months,
-        ((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) weeks,
+        (DAYOFWEEK(deal_time) -1) pointTime,
         SUM(close_price - open_price) changeRange,
         SUM(high_price - low_price) shockRange ,
         ROUND(SUM(close_price - open_price) / SUM(1),2) changeAverage,
@@ -212,5 +211,51 @@
         </if>
         AND((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) = ${week}
         GROUP BY (DAYOFWEEK(deal_time) -1)
+    </select>
+
+    <select id="getIndexTimeRateStaticList" parameterType="java.lang.String" resultType="com.sky.vo.IndexStatic_VO">
+        SELECT
+        RIGHT(deal_time ,5) pointTime ,
+        SUM(deal_count) dealCount ,
+        ROUND(SUM(deal_count)/SUM(1),2) dealCountAverage
+        FROM index_deal_data
+        WHERE isvalid = 1
+        <if test="dealPeriod != null and dealPeriod != '' and dealPeriod != 'undefined'">
+            AND deal_period = #{dealPeriod}
+        </if>
+        <if test="indexCode != null and indexCode != '' and indexCode != 'undefined'">
+            AND index_code = #{indexCode}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND deal_time &lt; #{endDay}
+        </if>
+        GROUP BY RIGHT(deal_time ,5)
+    </select>
+
+    <select id="getIndexTimeValueStaticList" parameterType="java.lang.String" resultType="com.sky.vo.IndexStatic_VO">
+        SELECT
+        RIGHT(deal_time ,5) pointTime,
+        SUM(close_price - open_price) changeRange,
+        SUM(high_price - low_price) shockRange ,
+        ROUND(SUM(close_price - open_price) / SUM(1),2) changeAverage,
+        ROUND(SUM(high_price - low_price) / SUM(1),2) shockAverage
+        FROM index_deal_data
+        WHERE isvalid = 1
+        <if test="dealPeriod != null and dealPeriod != '' and dealPeriod != 'undefined'">
+            AND deal_period = #{dealPeriod}
+        </if>
+        <if test="indexCode != null and indexCode != '' and indexCode != 'undefined'">
+            AND index_code = #{indexCode}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND deal_time &lt; #{endDay}
+        </if>
+        GROUP BY RIGHT(deal_time ,5)
     </select>
 </mapper>

@@ -34,4 +34,14 @@ public class IndexStatic_VO extends VoModel {
     private BigDecimal highAveragePrice ;
 
     private BigDecimal lowAveragePrice ;
+
+    private BigDecimal dealCountAverage ;
+
+    private BigDecimal dealCountRate ;
+
+    private BigDecimal dealCount ;
+
+    private BigDecimal changeRange ;
+
+    private BigDecimal shockRange ;
 }

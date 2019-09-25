@@ -26,4 +26,7 @@ public interface IndexDealDataMapper extends BaseMapper<IndexDealData> {
 
     List<IndexStatic_VO> getIndexDayValueStaticList(@Param("indexCode") String indexCode ,@Param("week") String week ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
 
+    List<IndexStatic_VO> getIndexTimeRateStaticList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
+
+    List<IndexStatic_VO> getIndexTimeValueStaticList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
 }

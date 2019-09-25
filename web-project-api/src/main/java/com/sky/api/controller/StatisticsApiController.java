@@ -422,4 +422,63 @@ public class StatisticsApiController extends AbstractController {
         map.put("plusList",plusList.toArray());
         return ResponseEntity.ok(MapSuccess("查询成功！",map));
     }
+
+
+    @LogRecord(name = "getIndexTimeData" ,description = "查询分时统计数据")
+    @PostMapping("/getIndexTimeData")
+    public Object getIndexTimeData(String indexCode , String dealPeriod ,String startDay , String endDay){
+        List<IndexStatic_VO> list = indexDealDataService.getIndexTimeRateStaticList( indexCode, dealPeriod , startDay , endDay);
+        BigDecimal totalCount = BigDecimal.ZERO ;
+
+        List<String> title = new ArrayList<>();
+        List<BigDecimal> average = new ArrayList<>();
+        List<BigDecimal> line = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            totalCount = totalCount.add(static_vo.getDealCount());
+        }
+
+        BigDecimal maxValue = BigDecimal.ZERO;
+        for(IndexStatic_VO static_vo : list){
+            title.add(static_vo.getPointTime());
+            BigDecimal caculate = static_vo.getDealCountAverage().divide(BigDecimal.valueOf(10000) ,2 ,BigDecimal.ROUND_HALF_UP);
+            if(caculate.compareTo(maxValue) > 0){
+                maxValue = caculate;
+            }
+            average.add(caculate);
+            line.add(static_vo.getDealCount().divide(totalCount ,6 ,BigDecimal.ROUND_HALF_UP).multiply(BigDecimal.valueOf(100)).setScale(2,BigDecimal.ROUND_HALF_UP));
+        }
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("title",title.toArray());
+        map.put("average",average.toArray());
+        map.put("line",line.toArray());
+        map.put("maxValue",maxValue.add(BigDecimal.valueOf(500)));
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+    @LogRecord(name = "getIndexTimeValueData" ,description = "查询分时统计数据")
+    @PostMapping("/getIndexTimeValueData")
+    public Object getIndexTimeValueData(String indexCode , String dealPeriod ,String startDay , String endDay){
+        List<IndexStatic_VO> list = indexDealDataService.getIndexTimeValueStaticList( indexCode, dealPeriod , startDay , endDay);
+        BigDecimal totalCount = BigDecimal.ZERO ;
+
+        List<String> title = new ArrayList<>();
+        List<BigDecimal> changeRange = new ArrayList<>();
+        List<BigDecimal> shockRange = new ArrayList<>();
+        List<BigDecimal> changeAverage = new ArrayList<>();
+        List<BigDecimal> shockAverage = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            title.add(static_vo.getPointTime());
+            changeRange.add(static_vo.getChangeRange());
+            shockRange.add(static_vo.getShockRange());
+            changeAverage.add(static_vo.getChangeAverage());
+            shockAverage.add(static_vo.getShockAverage());
+        }
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("title",title.toArray());
+        map.put("changeRange",changeRange.toArray());
+        map.put("shockRange",shockRange.toArray());
+        map.put("changeAverage",changeAverage.toArray());
+        map.put("shockAverage",shockAverage.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
 }

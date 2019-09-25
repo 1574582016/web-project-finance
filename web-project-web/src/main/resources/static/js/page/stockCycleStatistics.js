@@ -16,7 +16,6 @@ $(function () {
 
     flashCycleStatic();
 
-
     $("#searchDataButton").click(function () {
         flashCycleStatic();
     });

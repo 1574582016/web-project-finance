@@ -2,14 +2,17 @@ package com.sky.api.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.StockChoseClass;
+import com.sky.model.StockTigerList;
 import com.sky.vo.SpecialTreeNode;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -69,5 +72,29 @@ public class StockChoseClassApiController extends AbstractController {
         });
         treeNode.setChildren(children1);
         return ResponseEntity.ok(MapSuccess("查询成功",treeNode));
+    }
+
+    @LogRecord(name = "getStockTigerList" ,description = "查询龙虎榜信息列表")
+    @PostMapping("/getStockTigerList")
+    public Object getStockTigerList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
+                                    @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
+                                    String stockCode ,
+                                    String stockName ,
+                                    String startDay ,
+                                    String endDay){
+        Page selectedPage = stockTigerListService.getStockTigerList( page , size , stockCode, stockName  ,startDay ,endDay );
+        return PageData(selectedPage);
+    }
+
+    @LogRecord(name = "editStockTigerList" ,description = "查询龙虎榜信息列表")
+    @PostMapping("/editStockTigerList")
+    public Object editStockTigerList(Integer id ,String unusualReason, String chooseReason){
+        if(id == null){
+            return ResponseEntity.ok(MapSuccess("ID不能为空"));
+        }
+        StockTigerList tigerList = stockTigerListService.selectById(id);
+        tigerList.setUnusualReason(unusualReason);
+        tigerList.setChooseReason(chooseReason);
+        return stockTigerListService.updateById(tigerList) ? ResponseEntity.ok(MapSuccess("修改成功")) : ResponseEntity.ok(MapSuccess("修改失败"));
     }
 }

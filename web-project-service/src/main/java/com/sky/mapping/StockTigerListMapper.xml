@@ -21,4 +21,39 @@
         <result column="unusual_reason" property="unusualReason"/>
         <result column="choose_reason" property="chooseReason"/>
     </resultMap>
+
+    <select id="getStockTigerList" parameterType="java.lang.String" resultType="com.sky.vo.StockTigerList_VO">
+        SELECT
+        t.`id`,
+        t.publish_time publishTime,
+        t.stock_code stockCode,
+        t.stock_name stockName,
+        b.`stock_plate` stockPlate,
+        t.upper_range upperRange,
+        t.hand_rate handRate,
+        t.buy_money buyMoney,
+        t.sell_money sellMoney,
+        t.focus_reason focusReason,
+        b.`big_contry_sector` bigContrySector,
+        b.`middle_contry_sector` middleContrySector,
+        b.`stock_sector` stockSector ,
+        t.`unusual_reason` unusualReason ,
+        t.`choose_reason` chooseReason
+        FROM stock_tiger_list t
+        LEFT JOIN stock_company_base b ON t.`stock_code` = b.`stock_a_code`
+        WHERE t.`isvalid` = 1
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND t.`stock_code` REGEXP #{stockCode}
+        </if>
+        <if test="stockName != null and stockName != '' and stockName != 'undefined'">
+            AND t.`stock_name` REGEXP #{stockName}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND t.`publish_time` >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND t.`publish_time` &lt; #{endDay}
+        </if>
+        ORDER BY t.`upper_range` DESC,t.stock_code
+    </select>
 </mapper>

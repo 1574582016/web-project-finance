@@ -24,4 +24,9 @@ public class StatisticsController {
     public String forexCycleStatisticsList(){
         return "page/forexCycleStatisticsList";
     }
+
+    @RequestMapping("/stockTimeStatisticsList")
+    public String stockTimeStatisticsList(){
+        return "page/stockTimeStatisticsList";
+    }
 }
