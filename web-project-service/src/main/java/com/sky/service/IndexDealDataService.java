@@ -2,6 +2,7 @@ package com.sky.service;
 
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.IndexDealData;
+import com.sky.vo.CovarDeal_VO;
 import com.sky.vo.IndexStatic_VO;
 
 import java.util.List;
@@ -31,4 +32,6 @@ public interface IndexDealDataService extends IService<IndexDealData> {
 
 
     List<IndexStatic_VO> getIndexTimeValueStaticList(String indexCode , String dealPeriod ,String startDay , String endDay);
+
+    List<CovarDeal_VO> getIndexDealCovarList( String indexCode , String dealPeriod , String startDay ,String endDay );
 }

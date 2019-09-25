@@ -2,6 +2,7 @@ package com.sky.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.sky.model.IndexDealData;
+import com.sky.vo.CovarDeal_VO;
 import com.sky.vo.IndexStatic_VO;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +30,6 @@ public interface IndexDealDataMapper extends BaseMapper<IndexDealData> {
     List<IndexStatic_VO> getIndexTimeRateStaticList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
 
     List<IndexStatic_VO> getIndexTimeValueStaticList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
+
+    List<CovarDeal_VO> getIndexDealCovarList(@Param("indexCode") String indexCode , @Param("dealPeriod") String dealPeriod , @Param("startDay") String startDay , @Param("endDay") String endDay );
 }

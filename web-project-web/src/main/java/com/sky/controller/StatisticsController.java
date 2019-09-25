@@ -29,4 +29,9 @@ public class StatisticsController {
     public String stockTimeStatisticsList(){
         return "page/stockTimeStatisticsList";
     }
+
+    @RequestMapping("/sectorCovarStatisticsList")
+    public String sectorCovarStatisticsList(){
+        return "page/sectorCovarStatisticsList";
+    }
 }

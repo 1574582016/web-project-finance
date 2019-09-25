@@ -11,10 +11,10 @@ CREATE TABLE `stock_tiger_list` (
   `publish_time` varchar(20) DEFAULT NULL COMMENT '发布日期',
   `upper_range` decimal(10,2) DEFAULT '0.00' COMMENT '涨跌幅',
   `hand_rate` decimal(10,2) DEFAULT '0.00' COMMENT '换手率',
-  `focus_reason` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '上榜原因',
-  `buy_money` decimal(10,2) DEFAULT '0.00' COMMENT '买入额',
-  `sell_money` decimal(10,2) DEFAULT '0.00' COMMENT '卖出额',
+  `focus_reason` varchar(200) DEFAULT NULL COMMENT '上榜原因',
+  `buy_money` decimal(20,2) DEFAULT '0.00' COMMENT '买入额',
+  `sell_money` decimal(20,2) DEFAULT '0.00' COMMENT '卖出额',
   `unusual_reason` varchar(2000) DEFAULT NULL COMMENT '异动原因',
   `choose_reason` varchar(2000) DEFAULT NULL COMMENT '选择原因',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='龙虎榜'
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8mb4 COMMENT='龙虎榜'

@@ -8,6 +8,7 @@ import com.sky.core.utils.CommonHttpUtil;
 import com.sky.mapper.IndexDealDataMapper;
 import com.sky.model.IndexDealData;
 import com.sky.service.IndexDealDataService;
+import com.sky.vo.CovarDeal_VO;
 import com.sky.vo.IndexStatic_VO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -104,5 +105,10 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
     @Override
     public List<IndexStatic_VO> getIndexTimeValueStaticList(String indexCode, String dealPeriod, String startDay, String endDay) {
         return baseMapper.getIndexTimeValueStaticList(indexCode ,dealPeriod ,startDay ,endDay);
+    }
+
+    @Override
+    public List<CovarDeal_VO> getIndexDealCovarList(String indexCode, String dealPeriod, String startDay, String endDay) {
+        return baseMapper.getIndexDealCovarList( indexCode, dealPeriod, startDay, endDay);
     }
 }

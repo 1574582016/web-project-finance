@@ -4,6 +4,7 @@ import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.core.utils.MathUtil;
 import com.sky.model.IndexDealData;
+import com.sky.vo.CovarStatic_VO;
 import com.sky.vo.IndexStatic_VO;
 import com.sky.vo.MessageStatic_VO;
 import com.sky.vo.StockStatisticsEchart_VO;
@@ -480,5 +481,13 @@ public class StatisticsApiController extends AbstractController {
         map.put("changeAverage",changeAverage.toArray());
         map.put("shockAverage",shockAverage.toArray());
         return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+
+    @LogRecord(name = "getCovarIndexAndSector" ,description = "查询行业相关性统计")
+    @PostMapping("/getCovarIndexAndSector")
+    public Object getCovarIndexAndSector(String indexCode , String dealPeriod ,String startDay , String endDay){
+        List<CovarStatic_VO> list = sectorDealDataService.caculateCovarIndexAndSector( indexCode, dealPeriod , startDay , endDay);
+        return ResponseEntity.ok(MapSuccess("查询成功！",list));
     }
 }

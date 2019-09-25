@@ -22,4 +22,24 @@
         <result column="amplitude" property="amplitude"/>
         <result column="hand_rate" property="handRate"/>
     </resultMap>
+
+    <select id="getSectorDealCovarList" parameterType="java.lang.String" resultType="com.sky.vo.CovarDeal_VO">
+        SELECT
+        s.deal_time dealTime ,
+        CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE -1 END isUpper,
+        s.close_price - s.open_price upperPrice ,
+        s.high_price - s.low_price sockPrice
+        FROM sector_deal_data s
+        WHERE s.isvalid = 1
+        AND s.sector_code = #{sectorCode}
+        <if test="dealPeriod != null and dealPeriod != '' and dealPeriod != 'undefined'">
+            AND s.deal_period = #{dealPeriod}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND s.deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND s.deal_time &lt; #{endDay}
+        </if>
+    </select>
 </mapper>
