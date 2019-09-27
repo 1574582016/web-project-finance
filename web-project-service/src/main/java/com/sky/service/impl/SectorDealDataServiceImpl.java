@@ -16,6 +16,8 @@ import com.sky.service.SectorDealDataService;
 import com.sky.service.StockMarketClassService;
 import com.sky.vo.CovarDeal_VO;
 import com.sky.vo.CovarStatic_VO;
+import com.sky.vo.IndexStatic_VO;
+import com.sky.vo.SectorOrderStatic_VO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,8 +47,19 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
     @Override
     public List<SectorDealData> spiderSectorDealData(Integer periodType, String sectorCode) {
         List<SectorDealData> list = new ArrayList<>();
+        int klt = 0 ;
+        switch (periodType){
+            case 1 : klt = 101 ; break;
+            case 2 : klt = 102 ; break;
+            case 3 : klt = 103 ; break;
+
+            case 4 : klt = 60 ;break;
+            case 5 : klt = 30 ;break;
+            case 6 : klt = 15 ;break;
+            case 7 : klt = 5  ;break;
+        }
         try {
-            String url = "http://push2his.eastmoney.com/api/qt/stock/kline/get?cb=jQuery172014973714601512267_1568627497999&secid=90."+ sectorCode +"&ut=fa5fd1943c7b386f172d6893dbfba10b&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58&klt=101&fqt=0&beg=19900101&END=20220101&_=1568627502199";
+            String url = "http://push2his.eastmoney.com/api/qt/stock/kline/get?cb=jQuery172014973714601512267_1568627497999&secid=90."+ sectorCode +"&ut=fa5fd1943c7b386f172d6893dbfba10b&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58&klt="+ klt +"&fqt=0&beg=19900101&END=20220101&_=1568627502199";
             String jsStr = CommonHttpUtil.sendGet(url);
             jsStr = jsStr.substring(jsStr.indexOf("(") + 1 , jsStr.indexOf(")"));
             JSONObject jsonObject = JSON.parseObject(jsStr);
@@ -56,7 +69,7 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
                 String dataStr = jsonArray.getString(i);
                 String[] datas = dataStr.split(",");
                 SectorDealData dealData = new SectorDealData();
-                dealData.setDealPeriod(1);
+                dealData.setDealPeriod(periodType);
                 dealData.setSectorCode(sectorCode);
                 for(int x = 0 ; x < datas.length ; x++){
                     switch (x){
@@ -129,5 +142,40 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
             }
         }
         return staticVoList;
+    }
+
+    @Override
+    public List<IndexStatic_VO> getSectorMonthRateStaticList(String sectorCode, String dealPeriod, String startDay, String endDay) {
+        return baseMapper.getSectorMonthRateStaticList( sectorCode, dealPeriod, startDay, endDay);
+    }
+
+    @Override
+    public List<IndexStatic_VO> getSectorMonthValueStaticList(String sectorCode, String dealPeriod, String startDay, String endDay) {
+        return baseMapper.getSectorMonthValueStaticList( sectorCode, dealPeriod, startDay, endDay);
+    }
+
+    @Override
+    public List<IndexStatic_VO> getSectorWeekRateStaticList(String sectorCode, String month, String startDay, String endDay) {
+        return baseMapper.getSectorWeekRateStaticList( sectorCode, month, startDay, endDay);
+    }
+
+    @Override
+    public List<IndexStatic_VO> getSectorWeekValueStaticList(String sectorCode, String month, String startDay, String endDay) {
+        return baseMapper.getSectorWeekValueStaticList( sectorCode, month, startDay, endDay);
+    }
+
+    @Override
+    public List<IndexStatic_VO> getSectorDayRateStaticList(String sectorCode, String week, String startDay, String endDay) {
+        return baseMapper.getSectorDayRateStaticList( sectorCode, week, startDay, endDay);
+    }
+
+    @Override
+    public List<IndexStatic_VO> getSectorDayValueStaticList(String sectorCode, String week, String startDay, String endDay) {
+        return baseMapper.getSectorDayValueStaticList( sectorCode, week, startDay, endDay);
+    }
+
+    @Override
+    public List<SectorOrderStatic_VO> getSectorOrderStaticList(String orderType, String startDay, String endDay) {
+        return baseMapper.getSectorOrderStaticList(orderType, startDay, endDay);
     }
 }

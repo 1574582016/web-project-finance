@@ -168,7 +168,7 @@ public class ThreadTest {
                         System.out.println("================stockCode=========================" + marketClass);
                         String marketCode = marketClass.getClassCode();
                         marketCode = marketCode.substring(0,marketCode.length()-1);
-                        List<SectorDealData> dataList = sectorDealDataService.spiderSectorDealData(1 , marketCode);
+                        List<SectorDealData> dataList = sectorDealDataService.spiderSectorDealData(7 , marketCode);
 
                         if(null!=dataList&&dataList.size()>0){
                             int pointsDataLimit = 200;//限制条数

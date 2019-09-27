@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.SectorDealData;
 import com.sky.vo.CovarDeal_VO;
 import com.sky.vo.CovarStatic_VO;
+import com.sky.vo.IndexStatic_VO;
+import com.sky.vo.SectorOrderStatic_VO;
 
 import java.util.List;
 
@@ -18,4 +20,19 @@ public interface SectorDealDataService extends IService<SectorDealData> {
 
 
     List<CovarStatic_VO> caculateCovarIndexAndSector(String indexCode , String dealPeriod , String startDay ,String endDay );
+
+    List<IndexStatic_VO> getSectorMonthRateStaticList(String sectorCode , String dealPeriod , String startDay , String endDay);
+
+    List<IndexStatic_VO> getSectorMonthValueStaticList(String sectorCode ,String dealPeriod ,String startDay ,String endDay);
+
+    List<IndexStatic_VO> getSectorWeekRateStaticList(String sectorCode , String month ,String startDay , String endDay);
+
+    List<IndexStatic_VO> getSectorWeekValueStaticList(String sectorCode , String month ,String startDay , String endDay);
+
+    List<IndexStatic_VO> getSectorDayRateStaticList(String sectorCode , String week ,String startDay , String endDay);
+
+    List<IndexStatic_VO> getSectorDayValueStaticList(String sectorCode , String week ,String startDay , String endDay);
+
+    List<SectorOrderStatic_VO> getSectorOrderStaticList(String orderType ,String startDay , String endDay);
+
 }

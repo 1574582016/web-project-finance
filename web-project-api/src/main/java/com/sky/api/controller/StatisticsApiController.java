@@ -4,10 +4,8 @@ import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.core.utils.MathUtil;
 import com.sky.model.IndexDealData;
-import com.sky.vo.CovarStatic_VO;
-import com.sky.vo.IndexStatic_VO;
-import com.sky.vo.MessageStatic_VO;
-import com.sky.vo.StockStatisticsEchart_VO;
+import com.sky.vo.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -489,5 +487,152 @@ public class StatisticsApiController extends AbstractController {
     public Object getCovarIndexAndSector(String indexCode , String dealPeriod ,String startDay , String endDay){
         List<CovarStatic_VO> list = sectorDealDataService.caculateCovarIndexAndSector( indexCode, dealPeriod , startDay , endDay);
         return ResponseEntity.ok(MapSuccess("查询成功！",list));
+    }
+
+    @LogRecord(name = "getSectorMonthData" ,description = "查询行业统计数据")
+    @PostMapping("/getSectorMonthData")
+    public Object getSectorMonthData(String sectorCode , String dealPeriod ,String startDay , String endDay){
+        if(StringUtils.isNotBlank(sectorCode)){
+            sectorCode = sectorCode.substring(0,sectorCode.length()-1);
+        }
+        List<IndexStatic_VO> list = sectorDealDataService.getSectorMonthRateStaticList( sectorCode , dealPeriod , startDay , endDay);
+
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = sectorDealDataService.getSectorMonthValueStaticList( sectorCode , dealPeriod , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
+
+        BigDecimal maxChangeValue = BigDecimal.ZERO ;
+        BigDecimal maxShockValue = BigDecimal.ZERO ;
+        for(IndexStatic_VO static_vo : averList){
+            BigDecimal changeAverage = BigDecimal.ZERO ;
+            BigDecimal shockAverage = BigDecimal.ZERO ;
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeAverage = static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1));
+            }
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockAverage = static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1));
+            }
+            changeArr.add(changeAverage);
+            shockArr.add(shockAverage);
+            if(changeAverage.compareTo(maxChangeValue) > 0){
+                maxChangeValue = changeAverage ;
+            }
+            if(shockAverage.compareTo(maxShockValue) > 0){
+                maxShockValue = shockAverage ;
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+        map.put("maxChangeValue",maxChangeValue.add(BigDecimal.valueOf(500)));
+        map.put("maxShockValue",maxShockValue.add(BigDecimal.valueOf(500)));
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+    @LogRecord(name = "getSectorWeekData" ,description = "查询行业计数据")
+    @PostMapping("/getSectorWeekData")
+    public Object getSectorWeekData(String sectorCode , Integer dataIndex ,String startDay , String endDay){
+        String months = (dataIndex + 1) + "";
+
+        List<IndexStatic_VO> list = sectorDealDataService.getSectorWeekRateStaticList( sectorCode , months , startDay , endDay);
+
+        List<String> titleArr = new ArrayList<>();
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            titleArr.add("第" + static_vo.getPointTime() + "周");
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = sectorDealDataService.getSectorWeekValueStaticList( sectorCode , months , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : averList){
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                changeArr.add(static_vo.getChangeAverage());
+            }
+
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockArr.add(static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                shockArr.add(static_vo.getShockAverage());
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("titleArr",titleArr.toArray());
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+    @LogRecord(name = "getSectorDayData" ,description = "查询行业计数据")
+    @PostMapping("/getSectorDayData")
+    public Object getSectorDayData(String sectorCode , Integer dataIndex ,String startDay , String endDay){
+        String week = (dataIndex + 1) + "";
+
+        List<IndexStatic_VO> list = sectorDealDataService.getSectorDayRateStaticList( sectorCode , week , startDay , endDay);
+
+        List<String> titleArr = new ArrayList<>();
+        List<BigDecimal> upperArr = new ArrayList<>();
+        List<BigDecimal> downArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : list){
+            titleArr.add("第" + static_vo.getPointTime() + "天");
+            upperArr.add(static_vo.getIncreaseRate());
+            downArr.add(static_vo.getDecreaseRate());
+        }
+
+        List<IndexStatic_VO> averList = sectorDealDataService.getSectorDayValueStaticList( sectorCode , week , startDay , endDay);
+
+        List<BigDecimal> changeArr = new ArrayList<>();
+        List<BigDecimal> shockArr = new ArrayList<>();
+        for(IndexStatic_VO static_vo : averList){
+            if(static_vo.getChangeAverage().compareTo(BigDecimal.ZERO) < 0){
+                changeArr.add(static_vo.getChangeAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                changeArr.add(static_vo.getChangeAverage());
+            }
+
+            if(static_vo.getShockAverage().compareTo(BigDecimal.ZERO) < 0){
+                shockArr.add(static_vo.getShockAverage().multiply(BigDecimal.valueOf(-1)));
+            }else{
+                shockArr.add(static_vo.getShockAverage());
+            }
+        }
+
+        Map<String,Object> map = new HashMap<String ,Object>();
+        map.put("titleArr",titleArr.toArray());
+        map.put("upperArr",upperArr.toArray());
+        map.put("downArr",downArr.toArray());
+        map.put("changeArr",changeArr.toArray());
+        map.put("shockArr",shockArr.toArray());
+        return ResponseEntity.ok(MapSuccess("查询成功！",map));
+    }
+
+    @LogRecord(name = "getSectorOrderStaticList" ,description = "查询行业计数据")
+    @PostMapping("/getSectorOrderStaticList")
+    public Object getSectorOrderStaticList(String orderType ,String startDay , String endDay){
+        List<SectorOrderStatic_VO> list = sectorDealDataService.getSectorOrderStaticList(orderType , startDay , endDay);
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
     }
 }
