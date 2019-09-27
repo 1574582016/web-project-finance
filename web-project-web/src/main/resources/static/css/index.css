@@ -39,9 +39,9 @@ html,body{
 .sy-navbar .dropdown button{
 	width: 58px;
 	height: 58px;
-	border-radius: 32px;
+	border-radius: 29px;
 	padding: 0;
-	background:url('head.jpg') no-repeat left top;
+	background:url('head.png') no-repeat left top;
 	background-size:100% 100%;
 }
 .sy-navbar .message-alert{
