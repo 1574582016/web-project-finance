@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by ThinkPad on 2019/9/4.
  */
-//@Component
+@Component
 @EnableScheduling
 public class StockCompanyNoticeScheduler {
 
