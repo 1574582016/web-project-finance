@@ -2,6 +2,7 @@ package com.sky.service;
 
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.StockDealData;
+import com.sky.vo.StockOrderStatic_VO;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface StockDealDataService extends IService<StockDealData> {
     void batchList(List<StockDealData> dataList);
 
     List<StockDealData> getPointDayScopeList( String stockCode , String pointDay , String days);
+
+    List<StockOrderStatic_VO> getStockOrderStaticList(String sectorName ,String orderType ,String startDay , String endDay);
 }

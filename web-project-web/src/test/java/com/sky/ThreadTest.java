@@ -38,7 +38,8 @@ public class ThreadTest {
 
         // 开始时间
         long start = System.currentTimeMillis();
-        List<StockCode> list = stockCodeService.selectList(new EntityWrapper<StockCode>().where("stock_code NOT IN(SELECT stock_code FROM stock_deal_data)"));
+//        List<StockCode> list = stockCodeService.selectList(new EntityWrapper<StockCode>().where("stock_code NOT IN(SELECT stock_code FROM stock_deal_data)"));
+        List<StockCode> list = stockCodeService.selectList(null);
         // 每500条数据开启一条线程
         int threadSize = 500;
         // 总数据条数

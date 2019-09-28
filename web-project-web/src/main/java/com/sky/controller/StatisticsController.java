@@ -53,7 +53,22 @@ public class StatisticsController {
     }
 
     @RequestMapping("/sectorOrderStatisticsList")
-    public String sectorOrderStatisticsList(){
+    public String sectorOrderStatisticsList(Model model ,String orderType ,String searchAngle ,String startDay ,String endDay ){
+        model.addAttribute("orderType" , orderType);
+        model.addAttribute("searchAngle" , searchAngle);
+        model.addAttribute("startDay" , startDay);
+        model.addAttribute("endDay" , endDay);
         return "page/sectorOrderStatisticsList";
+    }
+
+
+    @RequestMapping("/stockOrderStatisticsList")
+    public String stockOrderStatisticsList(Model model ,String sectorName ,String orderType ,String searchAngle ,String startDay ,String endDay ){
+        model.addAttribute("sectorName" , sectorName);
+        model.addAttribute("orderType" , orderType);
+        model.addAttribute("searchAngle" , searchAngle);
+        model.addAttribute("startDay" , startDay);
+        model.addAttribute("endDay" , endDay);
+        return "page/stockOrderStatisticsList";
     }
 }

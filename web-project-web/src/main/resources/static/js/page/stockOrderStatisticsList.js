@@ -13,14 +13,9 @@ $(function () {
         clearBtn: true ,
         autoclose: true
     });
-    if(!isEmpty($("#b_orderType").val())){
-        $("#orderType").val($("#b_orderType").val());
-    }
-    if(!isEmpty($("#b_searchAngle").val())){
-        $("#search_angle").val($("#b_searchAngle").val());
-    }
-    $("#s_start").val($("#b_startDay").val());
-    $("#s_end").val($("#b_endDay").val());
+
+    $("#orderType").val($("#b_orderType").val());
+    $("#search_angle").val($("#b_searchAngle").val());
 
     var search_angle = $("#search_angle").val();
     if(search_angle == 1){
@@ -32,7 +27,7 @@ $(function () {
     if(search_angle == 3){
         angleSock();
     }
-    
+
     $("#searchDataButton").click(function () {
         var search_angle = $("#search_angle").val();
         if(search_angle == 1){
@@ -45,11 +40,20 @@ $(function () {
             angleSock();
         }
     });
+
+    $("#backforthButton").click(function () {
+        var orderType = $("#b_orderType").val();
+        var searchAngle = $("#b_searchAngle").val();
+        var startDay = $("#b_startDay").val();
+        var endDay = $("#b_endDay").val();
+        window.location.href = "/statistics/sectorOrderStatisticsList?orderType=" + orderType + "&searchAngle=" + searchAngle + "&startDay=" + startDay + "&endDay=" + endDay;
+
+    });
 });
 
 function angleRate() {
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
-        url: '/api/statistics/getSectorOrderStaticList' ,
+        url: '/api/statistics/getStockOrderStaticList' ,
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -64,7 +68,8 @@ function angleRate() {
                 page: params.offset/params.limit + 1,  //页码
                 orderType: $("#orderType").val(),
                 startDay: $("#s_start").val(),
-                endDay: $("#s_end").val()
+                endDay: $("#s_end").val(),
+                sectorName: $("#sectorName").val()
             };
             return temp;
         },
@@ -86,13 +91,18 @@ function angleRate() {
         scrollTo: true,
         columns: [
             {
-                field: 'sectorCode',
+                field: 'stockCode',
                 title: '编码',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'sectorName',
+                field: 'stockName',
                 title: '名称',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'publishDate',
+                title: '上市时间',
                 align: 'center',
                 valign: 'middle'
             },{
@@ -170,7 +180,7 @@ function angleRate() {
 
 function angleUpper() {
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
-        url: '/api/statistics/getSectorOrderStaticList' ,
+        url: '/api/statistics/getStockOrderStaticList' ,
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -185,7 +195,8 @@ function angleUpper() {
                 page: params.offset/params.limit + 1,  //页码
                 orderType: $("#orderType").val(),
                 startDay: $("#s_start").val(),
-                endDay: $("#s_end").val()
+                endDay: $("#s_end").val(),
+                sectorName: $("#sectorName").val()
             };
             return temp;
         },
@@ -207,13 +218,18 @@ function angleUpper() {
         scrollTo: true,
         columns: [
             {
-                field: 'sectorCode',
+                field: 'stockCode',
                 title: '编码',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'sectorName',
+                field: 'stockName',
                 title: '名称',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'publishDate',
+                title: '上市时间',
                 align: 'center',
                 valign: 'middle'
             },{
@@ -283,7 +299,7 @@ function angleUpper() {
 
 function angleSock() {
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
-        url: '/api/statistics/getSectorOrderStaticList' ,
+        url: '/api/statistics/getStockOrderStaticList' ,
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -298,7 +314,8 @@ function angleSock() {
                 page: params.offset/params.limit + 1,  //页码
                 orderType: $("#orderType").val(),
                 startDay: $("#s_start").val(),
-                endDay: $("#s_end").val()
+                endDay: $("#s_end").val(),
+                sectorName: $("#sectorName").val()
             };
             return temp;
         },
@@ -320,13 +337,18 @@ function angleSock() {
         scrollTo: true,
         columns: [
             {
-                field: 'sectorCode',
+                field: 'stockCode',
                 title: '编码',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'sectorName',
+                field: 'stockName',
                 title: '名称',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'publishDate',
+                title: '上市时间',
                 align: 'center',
                 valign: 'middle'
             },{

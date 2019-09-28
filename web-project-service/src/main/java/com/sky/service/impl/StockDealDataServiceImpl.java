@@ -9,6 +9,7 @@ import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockDealDataMapper;
 import com.sky.model.StockDealData;
 import com.sky.service.StockDealDataService;
+import com.sky.vo.StockOrderStatic_VO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,6 +46,7 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
 
 
             String url = "http://pdfm.eastmoney.com/EM_UBG_PDTI_Fast/api/js?rtntype=5&token=4f1862fc3b5e77c150a2b985b12db0fd&cb=jQuery183017615742790226108_1568593087961&id=" + skuCode + mk + "&type=" + type + "&authorityType=&_=1568593108420";
+            System.out.println(url);
             String jsStr = SpiderUtils.HttpClientBuilderGet(url);
             jsStr = jsStr.substring(jsStr.indexOf("(") + 1 , jsStr.indexOf(")"));
             JSONObject jsonObject = JSON.parseObject(jsStr);
@@ -54,7 +56,7 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                 String dataString = jsonArray.getString(i);
                 String[] datas = dataString.split(",");
                 StockDealData dealData = new StockDealData();
-                dealData.setDealPeriod(1);
+                dealData.setDealPeriod(periodType);
                 dealData.setStockCode(stockCode);
                 for(int x = 0 ; x < datas.length ; x ++){
                     switch (x){
@@ -64,7 +66,7 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                         case 3 : dealData.setHighPrice(new BigDecimal (datas[x])); break;
                         case 4 : dealData.setLowPrice(new BigDecimal (datas[x])); break;
                         case 5 : dealData.setDealCount(new BigDecimal (datas[x])); break;
-                        case 6 : dealData.setDealMoney(new BigDecimal (datas[x])); break;
+                        case 6 : dealData.setDealMoney(datas[x]); break;
                         case 7 : dealData.setAmplitude(datas[x]); break;
                         case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
@@ -108,5 +110,10 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
     @Override
     public List<StockDealData> getPointDayScopeList(String stockCode, String pointDay, String days) {
         return baseMapper.getPointDayScopeList(stockCode ,pointDay ,days);
+    }
+
+    @Override
+    public List<StockOrderStatic_VO> getStockOrderStaticList(String sectorName, String orderType, String startDay, String endDay) {
+        return baseMapper.getStockOrderStaticList( sectorName, orderType, startDay, endDay);
     }
 }

@@ -15,6 +15,7 @@
     <div id="collapseBox" class="panel-collapse collapse in">
         <div class="panel-body">
             <form id="formSearch" class="form-horizontal">
+                <input type="hidden" id="sectorName"  th:value="${sectorName}" readonly>
                 <input type="hidden" id="b_orderType"  th:value="${orderType}" readonly>
                 <input type="hidden" id="b_searchAngle"  th:value="${searchAngle}" readonly>
                 <input type="hidden" id="b_startDay"  th:value="${startDay}" readonly>
@@ -22,36 +23,37 @@
                 <div class="form-group" style="margin-top:15px">
                     <label class="control-label col-sm-1">排序：</label>
                     <div class="col-sm-2">
-                        <select class="form-control" id="orderType">
-                            <option value="1">1月</option>
-                            <option value="2">2月</option>
-                            <option value="3">3月</option>
-                            <option value="4">4月</option>
-                            <option value="5">5月</option>
-                            <option value="6">6月</option>
-                            <option value="7">7月</option>
-                            <option value="8">8月</option>
-                            <option value="9">9月</option>
-                            <option value="10">10月</option>
-                            <option value="11">11月</option>
-                            <option value="12">12月</option>
-                        </select>
-                    </div>
-                    <label class="control-label col-sm-1">维度：</label>
-                    <div class="col-sm-2">
-                        <select class="form-control" id="search_angle">
-                            <option value="1">比例</option>
-                            <option value="2">涨幅</option>
-                            <option value="3">振幅</option>
-                        </select>
-                    </div>
+                            <select class="form-control" id="orderType">
+                                <option value="1">1月</option>
+                                <option value="2">2月</option>
+                                <option value="3">3月</option>
+                                <option value="4">4月</option>
+                                <option value="5">5月</option>
+                                <option value="6">6月</option>
+                                <option value="7">7月</option>
+                                <option value="8">8月</option>
+                                <option value="9">9月</option>
+                                <option value="10">10月</option>
+                                <option value="11">11月</option>
+                                <option value="12">12月</option>
+                            </select>
+                        </div>
+                        <label class="control-label col-sm-1">维度：</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="search_angle">
+                                <option value="1">比例</option>
+                                <option value="2">涨幅</option>
+                                <option value="3">振幅</option>
+                            </select>
+                        </div>
                     <label class="control-label col-sm-1">日期：</label>
                     <div class="input-group date col-sm-4">
-                        <input type="text" class="form-control" id="s_start" readonly>
+                        <input type="text" class="form-control" id="s_start" th:value="${startDay}" readonly>
                         <div class="input-group-addon">至</div>
-                        <input type="text" class="form-control" id="s_end" readonly>
+                        <input type="text" class="form-control" id="s_end"  th:value="${endDay}" readonly>
                     </div>
                     <button type="button" id="searchDataButton" class="btn btn-default btn-sm search-button">查询</button>
+                    <button type="button" id="backforthButton" class="btn btn-default btn-sm search-button">返回</button>
                 </div>
             </form>
         </div>
@@ -73,5 +75,5 @@
 <script type="text/javascript" src="/js/common-model.js"></script>
 <script type="text/javascript" src="/js/sky.ajax.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>
-<script type="text/javascript" src = "/js/page/sectorOrderStatisticsList.js"></script>
+<script type="text/javascript" src = "/js/page/stockOrderStatisticsList.js"></script>
 </html>

@@ -66,7 +66,7 @@ public class StockDealData extends BaseModel<StockDealData> {
      * 成交额
      */
     @TableField("deal_money")
-    private BigDecimal dealMoney ;
+    private String dealMoney ;
 
     /**
      * 振幅

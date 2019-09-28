@@ -247,7 +247,7 @@ public class ChangeDataTest {
                     case 3 : dealData.setHighPrice(new BigDecimal (datas[x])); break;
                     case 4 : dealData.setLowPrice(new BigDecimal (datas[x])); break;
                     case 5 : dealData.setDealCount(new BigDecimal (datas[x])); break;
-                    case 6 : dealData.setDealMoney(new BigDecimal (datas[x])); break;
+                    case 6 : dealData.setDealMoney(datas[x]); break;
                     case 7 : dealData.setAmplitude(datas[x]); break;
                     case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                 }

@@ -635,4 +635,14 @@ public class StatisticsApiController extends AbstractController {
         map.put("rows",list);
         return map;
     }
+
+    @LogRecord(name = "getStockOrderStaticList" ,description = "查询企业计数据")
+    @PostMapping("/getStockOrderStaticList")
+    public Object getStockOrderStaticList(String sectorName ,String orderType ,String startDay , String endDay){
+        List<StockOrderStatic_VO> list = stockDealDataService.getStockOrderStaticList(sectorName ,orderType , startDay , endDay);
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
+    }
 }
