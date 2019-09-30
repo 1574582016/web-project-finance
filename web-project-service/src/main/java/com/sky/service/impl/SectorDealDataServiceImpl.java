@@ -14,10 +14,7 @@ import com.sky.model.StockMarketClass;
 import com.sky.service.IndexDealDataService;
 import com.sky.service.SectorDealDataService;
 import com.sky.service.StockMarketClassService;
-import com.sky.vo.CovarDeal_VO;
-import com.sky.vo.CovarStatic_VO;
-import com.sky.vo.IndexStatic_VO;
-import com.sky.vo.SectorOrderStatic_VO;
+import com.sky.vo.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -177,5 +174,10 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
     @Override
     public List<SectorOrderStatic_VO> getSectorOrderStaticList(String orderType, String startDay, String endDay) {
         return baseMapper.getSectorOrderStaticList(orderType, startDay, endDay);
+    }
+
+    @Override
+    public List<FestivalStatic_VO> getSectorFestivalStaticList(String sectorCode, String startDay, String endDay, String startTime, String endTime) {
+        return baseMapper.getSectorFestivalStaticList( sectorCode, startDay, endDay, startTime, endTime);
     }
 }

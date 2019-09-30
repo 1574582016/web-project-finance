@@ -36,4 +36,11 @@ public class EconomyStatisticsController {
     public String economyMarketStatisticsList(){
         return "page/economyMarketStatisticsList";
     }
+
+    @RequestMapping("/forexNewsStatisticsList")
+    public String forexNewsStatisticsList(Model model){
+        model.addAttribute("startDay" , DateUtils.getDate());
+        model.addAttribute("endDay" , DateUtils.getBeforeDay(-1l));
+        return "page/forexNewsStatisticsList";
+    }
 }

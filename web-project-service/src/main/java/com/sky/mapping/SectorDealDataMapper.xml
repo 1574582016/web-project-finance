@@ -368,4 +368,73 @@
             ORDER BY ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) DESC
         </if>
     </select>
+
+    <select id="getSectorFestivalStaticList" parameterType="java.lang.String" resultType="com.sky.vo.FestivalStatic_VO">
+        SELECT
+        s.sector_code sectorCode,
+        c.class_name sectorName,
+        SUM(CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) AS increaseNum ,
+        SUM(CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) AS decreaseNum ,
+        SUM(CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) +
+        SUM(CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) AS totalNum ,
+        ROUND(SUM(CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) / (
+        SUM(CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) +
+        SUM(CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END)
+        ) * 100 ,2) AS increaseRate ,
+        ROUND(SUM(CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) / (
+        SUM(CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) +
+        SUM(CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END)
+        ) * 100 ,2) AS decreaseRate ,
+        ROUND(SUM(s.close_price - s.open_price) / SUM(1),2) changeAverage,
+        ROUND(SUM(s.high_price - s.low_price) / SUM(1),2) shockAverage ,
+
+
+        ROUND(IFNULL(
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) AND s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) /
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) THEN 1 ELSE 0 END) * 100
+        ,0) ,2) firstIncrease ,
+        ROUND(IFNULL(
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 1 AND s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) /
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 1 THEN 1 ELSE 0 END) * 100
+        ,0) ,2) secondIncrease ,
+        ROUND(IFNULL(
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 2 AND s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) /
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 2 THEN 1 ELSE 0 END) * 100
+        ,0) ,2) thirdIncrease ,
+        ROUND(IFNULL(
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 3 AND s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) /
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 3 THEN 1 ELSE 0 END) * 100
+        ,0) ,2) fourthIncrease ,
+        ROUND(IFNULL(
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 4 AND s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) /
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 4 THEN 1 ELSE 0 END) * 100
+        ,0) ,2) fifthIncrease ,
+        ROUND(IFNULL(
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 5 AND s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) /
+        SUM(CASE WHEN RIGHT(s.deal_time,2) = RIGHT(#{startTime},2) + 5 THEN 1 ELSE 0 END) * 100
+        ,0) ,2) sixthIncrease
+
+        FROM sector_deal_data s
+        LEFT JOIN stock_market_class c ON LEFT(c.class_code,LENGTH(c.class_code)-1) = s.sector_code AND c.class_type = '行业板块'
+        WHERE s.isvalid = 1
+        AND s.deal_period = 1
+        <if test="sectorCode != null and sectorCode != '' and sectorCode != 'undefined'">
+            AND sector_code = #{sectorCode}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND deal_time &lt; #{endDay}
+        </if>
+        AND RIGHT(s.deal_time,5) >= #{startTime}
+        AND RIGHT(s.deal_time,5) &lt;= #{endTime}
+        GROUP BY s.sector_code
+        ORDER BY
+        ROUND(SUM(CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) / (
+        SUM(CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) +
+        SUM(CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END)
+        ) * 100 ,2) DESC,
+        ROUND(SUM(s.close_price - s.open_price) / SUM(1),2) DESC
+    </select>
 </mapper>

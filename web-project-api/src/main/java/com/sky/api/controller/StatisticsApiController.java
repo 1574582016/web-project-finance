@@ -1,9 +1,13 @@
 package com.sky.api.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.MathUtil;
 import com.sky.model.IndexDealData;
+import com.sky.model.SectorDealData;
+import com.sky.model.StockMarketClass;
 import com.sky.vo.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
@@ -640,6 +644,51 @@ public class StatisticsApiController extends AbstractController {
     @PostMapping("/getStockOrderStaticList")
     public Object getStockOrderStaticList(String sectorName ,String orderType ,String startDay , String endDay){
         List<StockOrderStatic_VO> list = stockDealDataService.getStockOrderStaticList(sectorName ,orderType , startDay , endDay);
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
+    }
+
+    @LogRecord(name = "getSectorFestivalStaticList" ,description = "查询企业计数据")
+    @PostMapping("/getSectorFestivalStaticList")
+    public Object getSectorFestivalStaticList(String sectorCode ,String startDay , String endDay ,String startTime , String endTime){
+        if(StringUtils.isNotBlank(startTime)){
+            startTime = startTime.substring(5,startTime.length());
+        }else {
+            String nowDay = DateUtils.getDate() ;
+            startTime = nowDay.substring(5,nowDay.length());
+        }
+        if(StringUtils.isNotBlank(endTime)){
+            endTime = endTime.substring(5,endTime.length());
+        }else {
+            String nowDay = DateUtils.getDate() ;
+            endTime = nowDay.substring(5,nowDay.length());
+        }
+        List<FestivalStatic_VO> list = sectorDealDataService.getSectorFestivalStaticList( sectorCode , startDay , endDay , startTime ,  endTime);
+
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
+    }
+
+    @LogRecord(name = "getStockFestivalStaticList" ,description = "查询企业节假日数据")
+    @PostMapping("/getStockFestivalStaticList")
+    public Object getStockFestivalStaticList(String sectorName , String startDay , String endDay , String startTime , String endTime){
+        if(StringUtils.isNotBlank(startTime)){
+            startTime = startTime.substring(5,startTime.length());
+        }else {
+            String nowDay = DateUtils.getDate() ;
+            startTime = nowDay.substring(5,nowDay.length());
+        }
+        if(StringUtils.isNotBlank(endTime)){
+            endTime = endTime.substring(5,endTime.length());
+        }else {
+            String nowDay = DateUtils.getDate() ;
+            endTime = nowDay.substring(5,nowDay.length());
+        }
+        List<FestivalStatic_VO> list = stockDealDataService.getStockFestivalStaticList(sectorName , startDay , endDay , startTime , endTime);
         Map<String ,Object> map = new HashMap<String ,Object>();
         map.put("total",list.size());
         map.put("rows",list);

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.sky.model.SectorDealData;
 import com.sky.model.StockDealData;
 import com.sky.vo.CovarDeal_VO;
+import com.sky.vo.FestivalStatic_VO;
 import com.sky.vo.IndexStatic_VO;
 import com.sky.vo.SectorOrderStatic_VO;
 import org.apache.ibatis.annotations.Param;
@@ -30,4 +31,6 @@ public interface SectorDealDataMapper extends BaseMapper<SectorDealData> {
     List<IndexStatic_VO> getSectorDayValueStaticList(@Param("sectorCode") String sectorCode ,@Param("week") String week ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
 
     List<SectorOrderStatic_VO> getSectorOrderStaticList(@Param("orderType") String orderType ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
+
+    List<FestivalStatic_VO> getSectorFestivalStaticList(@Param("sectorCode") String sectorCode ,@Param("startDay") String startDay ,@Param("endDay") String endDay ,@Param("startTime") String startTime ,@Param("endTime") String endTime);
 }

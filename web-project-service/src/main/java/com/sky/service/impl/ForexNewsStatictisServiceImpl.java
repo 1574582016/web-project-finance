@@ -1,35 +1,41 @@
-package com.sky;
+package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.SpiderUtils;
+import com.sky.mapper.ForexNewsStatictisMapper;
 import com.sky.model.ForexNewsStatictis;
+import com.sky.service.ForexNewsStatictisService;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ThinkPad on 2019/9/29.
+ * Created by ThinkPad on 2019/9/30.
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class Test02 {
-
-    @Test
-    public void test(){
-        Document doc = SpiderUtils.HtmlJsoupGet("https://news.fx678.com/column/toutiao");
+@Service
+@Transactional
+public class ForexNewsStatictisServiceImpl extends ServiceImpl<ForexNewsStatictisMapper,ForexNewsStatictis> implements ForexNewsStatictisService {
+    @Override
+    public boolean spiderForexNews(Integer page) {
+        String url = "https://news.fx678.com/column/toutiao";
+        if(page > 0){
+            url = url + "/" + page;
+        }
+        Document doc = SpiderUtils.HtmlJsoupGet(url);
         Elements elements = doc.getElementsByClass("list");
         List<ForexNewsStatictis> list = new ArrayList<>();
         for(int i = 0 ; i < elements.size() ; i++){
             Elements elementLi = elements.get(i).getElementsByTag("li");
             for(int j = 0 ; j < elementLi.size() ; j++){
-               Element element = elementLi.get(j);
+                Element element = elementLi.get(j);
                 String time = element.getElementsByClass("recent").text();
                 Elements cElements = element.getElementsByTag("a");
 
@@ -58,36 +64,26 @@ public class Test02 {
                 newsStatictis.setNewsTitle(title);
                 newsStatictis.setNewsUrl(href);
                 newsStatictis.setNewsContent(contain);
-                list.add(newsStatictis);
+
+                ForexNewsStatictis isExist = selectOne(new EntityWrapper<ForexNewsStatictis>().where("news_time = {0}" , time + ":00").where("news_title = {0}" , title));
+                if(isExist == null){
+                    list.add(newsStatictis);
+                }
+//                list.add(newsStatictis);
             }
         }
-        System.out.println(list.toString());
+
+        if(list.size() > 0){
+            return insertBatch(list);
+        }
+        return false;
     }
 
-/**
- * 开会——议程
- *     ——企业问题
- *
- *JOAN: Okay,Let's get started.Do you all have the agenda?
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
-  */
+    @Override
+    public Page<ForexNewsStatictis> getForexNewsStatisticsList(Integer page, Integer size, String newsTitle, String newsType, String startDate, String endDate, String newsTopic, String newsHot) {
+        Page<ForexNewsStatictis> pageInfo = new Page<ForexNewsStatictis>(page, size);
+        List<ForexNewsStatictis> list = baseMapper.getForexNewsStatisticsList( pageInfo , newsTitle , newsType , startDate , endDate , newsTopic , newsHot);
+        pageInfo.setRecords(list);
+        return pageInfo;
+    }
 }

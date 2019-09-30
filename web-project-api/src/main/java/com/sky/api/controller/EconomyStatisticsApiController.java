@@ -7,6 +7,7 @@ import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.EconomyNewsInfluence;
 import com.sky.model.EconomyNewsStatictis;
+import com.sky.model.ForexNewsStatictis;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +46,35 @@ public class EconomyStatisticsApiController extends AbstractController {
     @PostMapping("/editEconomyNewsStatistics")
     public Object editEconomyNewsStatistics(@RequestBody EconomyNewsStatictis body){
         economyNewsStatictisService.updateById(body);
+        return ResponseEntity.ok(MapSuccess("保存成功！"));
+    }
+
+    @LogRecord(name = "getForexNewsStatisticsList" ,description = "查询外汇新闻信息列表")
+    @PostMapping("/getForexNewsStatisticsList")
+    public Object getForexNewsStatisticsList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
+                                               @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
+                                               String newsTitle ,
+                                               String newsType ,
+                                               String startDate ,
+                                               String endDate ,
+                                               String newsTopic ,
+                                               String newsHot){
+        Page selectedPage = forexNewsStatictisService.getForexNewsStatisticsList( page , size ,newsTitle ,newsType ,startDate ,endDate , newsTopic ,newsHot );
+        return PageData(selectedPage);
+    }
+
+
+    @LogRecord(name = "getForexNewsStatisticsById" ,description = "根据ID获取外汇新闻基本信息")
+    @PostMapping("/getForexNewsStatisticsById")
+    public Object getForexNewsStatisticsById(String id){
+        ForexNewsStatictis forexNew = forexNewsStatictisService.selectById(id);
+        return ResponseEntity.ok(MapSuccess("查询成功",forexNew));
+    }
+
+    @LogRecord(name = "editForexNewsStatistics" ,description = "编辑新闻基本信息")
+    @PostMapping("/editForexNewsStatistics")
+    public Object editForexNewsStatistics(@RequestBody ForexNewsStatictis body){
+        forexNewsStatictisService.updateById(body);
         return ResponseEntity.ok(MapSuccess("保存成功！"));
     }
 

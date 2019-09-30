@@ -2,10 +2,7 @@ package com.sky.service;
 
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.SectorDealData;
-import com.sky.vo.CovarDeal_VO;
-import com.sky.vo.CovarStatic_VO;
-import com.sky.vo.IndexStatic_VO;
-import com.sky.vo.SectorOrderStatic_VO;
+import com.sky.vo.*;
 
 import java.util.List;
 
@@ -35,4 +32,5 @@ public interface SectorDealDataService extends IService<SectorDealData> {
 
     List<SectorOrderStatic_VO> getSectorOrderStaticList(String orderType ,String startDay , String endDay);
 
+    List<FestivalStatic_VO> getSectorFestivalStaticList( String sectorCode , String startDay ,String endDay ,String startTime ,String endTime);
 }

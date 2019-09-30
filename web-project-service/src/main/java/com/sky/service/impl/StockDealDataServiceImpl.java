@@ -9,6 +9,7 @@ import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockDealDataMapper;
 import com.sky.model.StockDealData;
 import com.sky.service.StockDealDataService;
+import com.sky.vo.FestivalStatic_VO;
 import com.sky.vo.StockOrderStatic_VO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -115,5 +116,10 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
     @Override
     public List<StockOrderStatic_VO> getStockOrderStaticList(String sectorName, String orderType, String startDay, String endDay) {
         return baseMapper.getStockOrderStaticList( sectorName, orderType, startDay, endDay);
+    }
+
+    @Override
+    public List<FestivalStatic_VO> getStockFestivalStaticList(String sectorName, String startDay, String endDay, String startTime, String endTime) {
+        return baseMapper.getStockFestivalStaticList( sectorName, startDay, endDay, startTime, endTime);
     }
 }

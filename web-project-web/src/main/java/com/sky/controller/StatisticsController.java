@@ -71,4 +71,23 @@ public class StatisticsController {
         model.addAttribute("endDay" , endDay);
         return "page/stockOrderStatisticsList";
     }
+
+    @RequestMapping("/sectorFestivalStatisticsList")
+    public String sectorFestivalStatisticsList(Model model ,String startDay ,String endDay  ,String startTime ,String endTime){
+        model.addAttribute("startTime" , startTime);
+        model.addAttribute("endTime" , endTime);
+        model.addAttribute("startDay" , startDay);
+        model.addAttribute("endDay" , endDay);
+        return "page/sectorFestivalStatisticsList";
+    }
+
+    @RequestMapping("/stockFestivalStatisticsList")
+    public String stockFestivalStatisticsList(Model model ,String sectorName ,String startDay ,String endDay ,String startTime ,String endTime){
+        model.addAttribute("sectorName" , sectorName);
+        model.addAttribute("startDay" , startDay);
+        model.addAttribute("endDay" , endDay);
+        model.addAttribute("startTime" , startTime);
+        model.addAttribute("endTime" , endTime);
+        return "page/stockFestivalStatisticsList";
+    }
 }

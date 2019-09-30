@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body style="padding: 20px;">
+
+<div class="panel panel-default search-list-panel">
+    <div id="collapseBox" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <form id="formSearch" class="form-horizontal">
+                <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1">名称：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="s_name">
+                    </div>
+                    <label class="control-label col-sm-1">类型：</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="s_type">
+                            <option value="">请选择</option>
+                            <option value="黄金">黄金</option>
+                            <option value="英镑">英镑</option>
+                            <option value="欧元">欧元</option>
+                            <option value="澳元">澳元</option>
+                            <option value="加元">加元</option>
+                            <option value="法郎">法郎</option>
+                            <option value="新元">新元</option>
+                            <option value="日元">日元</option>
+                            <option value="石油">石油</option>
+                        </select>
+                    </div>
+                    <label class="control-label col-sm-1">主题：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="s_topic">
+                    </div>
+                    <label class="control-label col-sm-1">热点：</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="s_hot">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1">日期：</label>
+                    <div class="input-group date col-sm-4">
+                        <input type="text" class="form-control" id="s_start" th:value="${startDay}" readonly>
+                        <div class="input-group-addon">至</div>
+                        <input type="text" class="form-control" id="s_end" th:value="${endDay}" readonly>
+                    </div>
+                    <label class="control-label col-sm-1">级别：</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="s_level">
+                            <option value="">请选择</option>
+                            <option value="1">一级</option>
+                            <option value="2">二级</option>
+                            <option value="3">三级</option>
+                            <option value="4">四级</option>
+                            <option value="5">五级</option>
+                        </select>
+                    </div>
+                    <div class="input-group col-sm-1">
+                        <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="toolbar" class="btn-group">
+</div>
+<table id="tableList"></table>
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title" id="myModalLabel">编辑新闻</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <input type="hidden" class="form-control" id="id" >
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">标题：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="newsTitle" placeholder="标题" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">类型：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="newsType">
+                                <option value="黄金">黄金</option>
+                                <option value="英镑">英镑</option>
+                                <option value="欧元">欧元</option>
+                                <option value="澳元">澳元</option>
+                                <option value="加元">加元</option>
+                                <option value="法郎">法郎</option>
+                                <option value="新元">新元</option>
+                                <option value="日元">日元</option>
+                                <option value="石油">石油</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">级别：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="newsLevel">
+                                <option value="1">一级</option>
+                                <option value="2">二级</option>
+                                <option value="3">三级</option>
+                                <option value="4">四级</option>
+                                <option value="5">五级</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">主题：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="newsTopic" placeholder="主题">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">热点：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="newsHot" placeholder="热点">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">关键字：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="keyWord" placeholder="关键字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">内容：</label>
+                        <div class="col-sm-8" id="newsContent" style="font-size: 14px;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submitDataButton">提交</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src = "/js/page/forexNewsStatisticsList.js"></script>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.ForexNewsStatictisMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.ForexNewsStatictis">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="news_time" property="newsTime"/>
+        <result column="news_title" property="newsTitle"/>
+        <result column="news_level" property="newsLevel"/>
+        <result column="news_topic" property="newsTopic"/>
+        <result column="news_hot" property="newsHot"/>
+        <result column="key_word" property="keyWord"/>
+        <result column="news_type" property="newsType"/>
+        <result column="news_content" property="newsContent"/>
+        <result column="news_url" property="newsUrl"/>
+    </resultMap>
+
+    <select id="getForexNewsStatisticsList" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        i.*
+        FROM forex_news_statictis i
+        where i.isvalid = 1
+        <if test="newsTitle != null and newsTitle != '' and newsTitle != 'undefined'">
+            AND i.news_title REGEXP #{newsTitle}
+        </if>
+        <if test="newsType != null and newsType != '' and newsType != 'undefined'">
+            AND i.news_type REGEXP #{newsType}
+        </if>
+        <if test="startDate != null and startDate != '' and startDate != 'undefined'">
+            AND i.news_time >= #{startDate}
+        </if>
+        <if test="endDate != null and endDate != '' and endDate != 'undefined'">
+            AND i.news_time &lt; #{endDate}
+        </if>
+        <if test="newsTopic != null and newsTopic != '' and newsTopic != 'undefined'">
+            AND i.news_topic REGEXP #{newsTopic}
+        </if>
+        <if test="newsHot != null and newsHot != '' and newsHot != 'undefined'">
+            AND i.news_hot REGEXP #{newsType}
+        </if>
+        ORDER BY i.`news_time` DESC
+    </select>
+</mapper>
