@@ -1,5 +1,9 @@
 server:
     port: 8090
+    sevelet:
+        session:
+            timeout: 3600s
+
 
 # mysql 的数据库配置
 spring:

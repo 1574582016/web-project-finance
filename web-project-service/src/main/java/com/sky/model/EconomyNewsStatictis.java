@@ -69,5 +69,15 @@ public class EconomyNewsStatictis extends BaseModel<EconomyNewsStatictis> {
     @TableField("news_url")
     private String newsUrl ;
 
+    /**
+     * 涉及股票
+     */
+    @TableField("link_stock")
+    private String linkStock ;
 
+    /**
+     * 内容牵涉
+     */
+    @TableField("news_involve")
+    private String newsInvolve ;
 }

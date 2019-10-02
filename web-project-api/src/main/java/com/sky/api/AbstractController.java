@@ -1,10 +1,7 @@
 package com.sky.api;
 
 import com.sky.core.controller.BaseController;
-import com.sky.model.IndexDealData;
-import com.sky.model.MessagePriceStatic;
-import com.sky.model.SectorDealData;
-import com.sky.model.StockTigerList;
+import com.sky.model.*;
 import com.sky.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -128,4 +125,7 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected ForexNewsStatictisService forexNewsStatictisService;
+
+    @Autowired
+    protected StockIndexConstituentService stockIndexConstituentService;
 }

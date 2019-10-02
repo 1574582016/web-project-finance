@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockIndexConstituentMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockIndexConstituent">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="publish_time" property="publishTime"/>
+        <result column="index_type" property="indexType"/>
+        <result column="index_code" property="indexCode"/>
+        <result column="index_name" property="indexName"/>
+        <result column="stock_code" property="stockCode"/>
+        <result column="stock_name" property="stockName"/>
+        <result column="stock_weight" property="stockWeight"/>
+        <result column="chose_num" property="choseNum"/>
+    </resultMap>
+
+    <select id="getStockIndexConstituentList" parameterType="java.lang.String" resultType="com.sky.vo.IndexConstituent_VO">
+        SELECT
+        c.`stock_code` stockCode ,
+        c.`stock_name` stockName ,
+        b.`stock_sector` stockSector ,
+        sc.`index_name` indexName
+        FROM stock_index_constituent c
+        LEFT JOIN stock_company_base b ON c.`stock_code` = b.`stock_a_code`
+        LEFT JOIN stock_index_constituent sc ON sc.`stock_code` = b.`stock_a_code` AND sc.`index_type` = '上证行业指数'
+        WHERE c.`isvalid` = 1
+        AND c.`index_name` = #{indexName}
+        ORDER BY sc.`index_name`,b.`stock_sector`,c.`stock_code`
+    </select>
+</mapper>

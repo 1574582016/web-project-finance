@@ -42,6 +42,8 @@
         a.stockCode ,
         a.stockName ,
         a.publishDate ,
+        a.stockPlate,
+        a.publishAmount ,
         ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) oneRiseRate ,
         ROUND(a.oneDown/(a.oneRise + a.oneDown)  * 100,2) oneDownRate ,
         ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) towRiseRate ,
@@ -96,6 +98,8 @@
         s.`stock_code` stockCode,
         c.`stock_a_name` stockName ,
         c.publish_date publishDate ,
+        c.stock_plate stockPlate,
+        c.`publish_amount` publishAmount ,
         SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 1  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS oneRise ,
         SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 1  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS oneDown ,
         SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 2  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS towRise ,
@@ -160,40 +164,40 @@
         GROUP BY s.stock_code
         ) a
         <if test="orderType == '1'.toString()">
-            ORDER BY ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) DESC
+            ORDER BY ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) DESC,ROUND(a.oneUpper/(a.oneRise + a.oneDown),2)  DESC
         </if>
         <if test="orderType == '2'.toString()">
-            ORDER BY ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) DESC
+            ORDER BY ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) DESC,ROUND(a.towUpper/(a.towRise + a.towDown),2)  DESC
         </if>
         <if test="orderType == '3'.toString()">
-            ORDER BY ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2) DESC
+            ORDER BY ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2) DESC,ROUND(a.threeUpper/(a.threeRise + a.threeDown),2)  DESC
         </if>
         <if test="orderType == '4'.toString()">
-            ORDER BY ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2) DESC
+            ORDER BY ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2) DESC,ROUND(a.fourUpper/(a.fourRise + a.fourDown),2)  DESC
         </if>
         <if test="orderType == '5'.toString()">
-            ORDER BY ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2) DESC
+            ORDER BY ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2) DESC,ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2)  DESC
         </if>
         <if test="orderType == '6'.toString()">
-            ORDER BY ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2) DESC
+            ORDER BY ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2) DESC,ROUND(a.sixUpper/(a.sixRise + a.sixDown),2)  DESC
         </if>
         <if test="orderType == '7'.toString()">
-            ORDER BY ROUND(a.sevenRise/(a.sevenRise + a.sevenDown)  * 100,2) DESC
+            ORDER BY ROUND(a.sevenRise/(a.sevenRise + a.sevenDown)  * 100,2) DESC,ROUND(a.sevenUpper/(a.sevenRise + a.sevenDown),2)  DESC
         </if>
         <if test="orderType == '8'.toString()">
-            ORDER BY ROUND(a.eightRise/(a.eightRise + a.eightDown)  * 100,2) DESC
+            ORDER BY ROUND(a.eightRise/(a.eightRise + a.eightDown)  * 100,2) DESC,ROUND(a.eightUpper/(a.eightRise + a.eightDown),2)  DESC
         </if>
         <if test="orderType == '9'.toString()">
-            ORDER BY ROUND(a.nineRise/(a.nineRise + a.nineDown)  * 100,2) DESC
+            ORDER BY ROUND(a.nineRise/(a.nineRise + a.nineDown)  * 100,2) DESC,ROUND(a.nineUpper/(a.nineRise + a.nineDown),2)  DESC
         </if>
         <if test="orderType == '10'.toString()">
-            ORDER BY ROUND(a.tenRise/(a.tenRise + a.tenDown)  * 100,2) DESC
+            ORDER BY ROUND(a.tenRise/(a.tenRise + a.tenDown)  * 100,2) DESC,ROUND(a.tenUpper/(a.tenRise + a.tenDown),2)  DESC
         </if>
         <if test="orderType == '11'.toString()">
-            ORDER BY ROUND(a.elevenRise/(a.elevenRise + a.elevenDown)  * 100,2) DESC
+            ORDER BY ROUND(a.elevenRise/(a.elevenRise + a.elevenDown)  * 100,2) DESC,ROUND(a.elvenUpper/(a.elevenRise + a.elevenDown),2)  DESC
         </if>
         <if test="orderType == '12'.toString()">
-            ORDER BY ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) DESC
+            ORDER BY ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) DESC,ROUND(a.twelveUpper/(a.twelveRise + a.twelveDown),2)  DESC
         </if>
     </select>
 

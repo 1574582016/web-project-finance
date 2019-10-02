@@ -548,7 +548,9 @@ public class StatisticsApiController extends AbstractController {
     @PostMapping("/getSectorWeekData")
     public Object getSectorWeekData(String sectorCode , Integer dataIndex ,String startDay , String endDay){
         String months = (dataIndex + 1) + "";
-
+        if(StringUtils.isNotBlank(sectorCode)){
+            sectorCode = sectorCode.substring(0 ,sectorCode.length() - 1);
+        }
         List<IndexStatic_VO> list = sectorDealDataService.getSectorWeekRateStaticList( sectorCode , months , startDay , endDay);
 
         List<String> titleArr = new ArrayList<>();
@@ -591,7 +593,9 @@ public class StatisticsApiController extends AbstractController {
     @PostMapping("/getSectorDayData")
     public Object getSectorDayData(String sectorCode , Integer dataIndex ,String startDay , String endDay){
         String week = (dataIndex + 1) + "";
-
+        if(StringUtils.isNotBlank(sectorCode)){
+            sectorCode = sectorCode.substring(0 ,sectorCode.length() - 1);
+        }
         List<IndexStatic_VO> list = sectorDealDataService.getSectorDayRateStaticList( sectorCode , week , startDay , endDay);
 
         List<String> titleArr = new ArrayList<>();

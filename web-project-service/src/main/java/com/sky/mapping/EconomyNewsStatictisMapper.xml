@@ -19,6 +19,8 @@
         <result column="news_type" property="newsType"/>
         <result column="news_content" property="newsContent"/>
         <result column="news_url" property="newsUrl"/>
+        <result column="link_stock" property="linkStock"/>
+        <result column="news_involve" property="newsInvolve"/>
     </resultMap>
 
     <select id="getEconomyNewsStatisticsList" resultMap="BaseResultMap" parameterType="java.lang.String">

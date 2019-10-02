@@ -106,6 +106,18 @@ $(function () {
                 align: 'center',
                 valign: 'middle'
             }, {
+                field: 'newsInvolve',
+                title: '牵扯内容',
+                align: 'center',
+                valign: 'middle',
+                width: 400
+            }, {
+                field: 'linkStock',
+                title: '涉及股票',
+                align: 'center',
+                valign: 'middle',
+                width: 400
+            }, {
                 title: "操作",
                 align: 'center',
                 valign: 'middle',
@@ -129,7 +141,9 @@ $(function () {
         var newsTopic = $("#newsTopic").val();
         var newsHot = $("#newsHot").val();
         var keyWord = $("#keyWord").val();
-        $.APIPost("/api/economy/editEconomyNewsStatistics",JSON.stringify({id : id ,newsLevel :newsLevel , newsTopic: newsTopic, newsHot: newsHot ,keyWord :keyWord }),function (data) {
+        var newsInvolve = $("#newsInvolve").val();
+        var linkStock = $("#linkStock").val();
+        $.APIPost("/api/economy/editEconomyNewsStatistics",JSON.stringify({id : id ,newsLevel :newsLevel , newsTopic: newsTopic, newsHot: newsHot ,keyWord :keyWord ,newsInvolve:newsInvolve ,linkStock:linkStock }),function (data) {
             if(data.success){
                 hideModal("myModal");
                 window.parent.showSuccessAlert(data.message,function () {
@@ -152,6 +166,8 @@ function edit(id) {
             $("#newsTopic").val(data.data.result.newsTopic);
             $("#newsHot").val(data.data.result.newsHot);
             $("#keyWord").val(data.data.result.keyWord);
+            $("#newsInvolve").val(data.data.result.newsInvolve);
+            $("#linkStock").val(data.data.result.linkStock);
             $("#newsContent").html(data.data.result.newsContent);
         });
     });

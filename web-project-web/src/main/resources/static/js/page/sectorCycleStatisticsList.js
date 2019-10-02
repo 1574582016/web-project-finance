@@ -14,6 +14,8 @@ $(function () {
         autoclose: true
     });
 
+    $("#sector_code").select2();
+
     flashCycleStatic();
 
     $("#searchDataButton").click(function () {

@@ -15,6 +15,10 @@ public class StockOrderStatic_VO extends VoModel {
 
     private String stockName ;
 
+    private String stockPlate ;
+
+    private String publishAmount ;
+
     private String publishDate ;
 
     private BigDecimal oneRiseRate ;
