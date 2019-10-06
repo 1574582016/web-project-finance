@@ -30,8 +30,9 @@ public class EconomyStatisticsApiController extends AbstractController {
                                                 String startDate ,
                                                 String endDate ,
                                                 String newsTopic ,
-                                                String newsHot){
-        Page selectedPage = economyNewsStatictisService.getEconomyNewsStatisticsList( page , size ,newsTitle ,newsType ,startDate ,endDate , newsTopic ,newsHot );
+                                                String newsHot ,
+                                                String newsLevel){
+        Page selectedPage = economyNewsStatictisService.getEconomyNewsStatisticsList( page , size ,newsTitle ,newsType ,startDate ,endDate , newsTopic ,newsHot ,newsLevel );
         return PageData(selectedPage);
     }
 

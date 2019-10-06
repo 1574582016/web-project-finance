@@ -16,7 +16,8 @@ public interface EconomyNewsStatictisService extends IService<EconomyNewsStatict
                                                             String startDate ,
                                                             String endDate ,
                                                             String newsTopic ,
-                                                            String newsHot);
+                                                            String newsHot ,
+                                                            String newsLevel);
 
     boolean processEveryDayNews(int type , int page);
 

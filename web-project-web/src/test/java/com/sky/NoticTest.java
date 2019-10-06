@@ -1,9 +1,27 @@
 package com.sky;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.sky.core.utils.CommonHttpUtil;
+import com.sky.core.utils.SpiderUtils;
+import com.sky.core.utils.Tools;
+import com.sky.model.StockCompanyBase;
+import com.sky.model.StockCompanyValueCompare;
+import com.sky.service.StockCompanyBaseService;
+import com.sky.service.StockCompanyValueCompareSerivce;
+import org.apache.commons.lang3.StringUtils;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by ThinkPad on 2019/9/26.
@@ -14,7 +32,294 @@ public class NoticTest {
 
     @Test
     public void test(){
+        String url = "http://push2.eastmoney.com/api/qt/stock/get?ut=fa5fd1943c7b386f172d6893dbfba10b&invt=2&fltt=2&fields=f43,f57,f58,f169,f170,f46,f44,f51,f168,f47,f164,f116,f60,f45,f52,f50,f48,f167,f117,f71,f161,f49,f530,f135,f136,f137,f138,f139,f141,f142,f144,f145,f147,f148,f140,f143,f146,f149,f55,f62,f162,f92,f173,f104,f105,f84,f85,f183,f184,f185,f186,f187,f188,f189,f190,f191,f192,f107,f111,f86,f177,f78,f110,f262,f263,f264,f267,f268,f250,f251,f252,f253,f254,f255,f256,f257,f258,f266,f269,f270,f271,f273,f274,f275,f127,f199,f128,f193,f196,f194,f195,f197,f80,f280,f281,f282,f284,f285,f286,f287&secid=0.002616&cb=jQuery183029528189124867765_1570337713424&_=1570337713781";
+        String resultJson = CommonHttpUtil.sendGet(url);
+
+        resultJson = resultJson.substring(resultJson.indexOf("(")  + 1 ,resultJson.indexOf(")"));
+        JSONObject jsonObject = JSON.parseObject(resultJson);
+        JSONObject dataJson = jsonObject.getJSONObject("data");
+        BigDecimal totalValue = dataJson.getBigDecimal("f116");
+        BigDecimal flowValue = dataJson.getBigDecimal("f117");
+        BigDecimal currentPrice = dataJson.getBigDecimal("f43");
+        BigDecimal totalCount = dataJson.getBigDecimal("f84");
+        BigDecimal flowCount = dataJson.getBigDecimal("f85");
+
+
+
+        String url2 = "http://push2.eastmoney.com/api/qt/slist/get?spt=1&np=3&fltt=2&invt=2&fields=f9,f12,f13,f14,f20,f23,f37,f45,f49,f134,f135,f129,f1000,f2000,f3000&ut=bd1d9ddb04089700cf9c27f6f7426281&cb=jQuery18303250630669859258_1570336648576&secid=0.002616&_=1570336648910";
+        String resultJson2 = CommonHttpUtil.sendGet(url2);
+        resultJson2 = resultJson2.substring(resultJson2.indexOf("(")  + 1 ,resultJson2.indexOf(")"));
+        JSONArray jsonArray = JSON.parseObject(resultJson2).getJSONObject("data").getJSONArray("diff");
+        System.out.println(jsonArray.toString());
+        BigDecimal totalAsset = BigDecimal.ZERO ;
+        BigDecimal pureAsset = BigDecimal.ZERO ;
+        BigDecimal pureIntrest = BigDecimal.ZERO ;
+        BigDecimal marketIntrestRate = BigDecimal.ZERO ;
+        BigDecimal marktePureRate = BigDecimal.ZERO ;
+        BigDecimal pocessIntrestRate = BigDecimal.ZERO ;
+        BigDecimal pureIntrestRate = BigDecimal.ZERO ;
+        BigDecimal roe = BigDecimal.ZERO ;
+
+        BigDecimal mtotalAsset = BigDecimal.ZERO ;
+        BigDecimal mpureAsset = BigDecimal.ZERO ;
+        BigDecimal mpureIntrest = BigDecimal.ZERO ;
+        BigDecimal mmarketIntrestRate = BigDecimal.ZERO ;
+        BigDecimal mmarktePureRate = BigDecimal.ZERO ;
+        BigDecimal mpocessIntrestRate = BigDecimal.ZERO ;
+        BigDecimal mpureIntrestRate = BigDecimal.ZERO ;
+        BigDecimal mroe = BigDecimal.ZERO ;
+
+        BigDecimal ototalAsset = BigDecimal.ZERO ;
+        BigDecimal opureAsset = BigDecimal.ZERO ;
+        BigDecimal opureIntrest = BigDecimal.ZERO ;
+        BigDecimal omarketIntrestRate = BigDecimal.ZERO ;
+        BigDecimal omarktePureRate = BigDecimal.ZERO ;
+        BigDecimal opocessIntrestRate = BigDecimal.ZERO ;
+        BigDecimal opureIntrestRate = BigDecimal.ZERO ;
+        BigDecimal oroe = BigDecimal.ZERO ;
+
+
+        String stockCode = "";
+        String stockName = "";
+        String sectorCode = "";
+        String sectorName = "";
+        BigDecimal orderCount = BigDecimal.ZERO;
+        for(int i = 0 ; i < jsonArray.size() ; i++){
+            if(i == 0){
+              JSONObject comJson = jsonArray.getJSONObject(i);
+                stockCode = comJson.getString("f12");
+                stockName = comJson.getString("f14");
+
+               totalAsset = comJson.getBigDecimal("f20");
+               pureAsset = comJson.getBigDecimal("f135");
+               pureIntrest = comJson.getBigDecimal("f45");
+               marketIntrestRate = comJson.getBigDecimal("f9");
+               marktePureRate = comJson.getBigDecimal("f23");
+               pocessIntrestRate = comJson.getBigDecimal("f49");
+               pureIntrestRate = comJson.getBigDecimal("f129");
+               roe = comJson.getBigDecimal("f37");
+
+                ototalAsset = comJson.getBigDecimal("f1020");
+                opureAsset = comJson.getBigDecimal("f1135");
+                opureIntrest = comJson.getBigDecimal("f1045");
+                omarketIntrestRate = comJson.getBigDecimal("f1009");
+                omarktePureRate = comJson.getBigDecimal("f1023");
+                opocessIntrestRate = comJson.getBigDecimal("f1049");
+                opureIntrestRate = comJson.getBigDecimal("f1129");
+                oroe = comJson.getBigDecimal("f1037");
+            }
+
+            if(i == 1){
+                JSONObject comJson = jsonArray.getJSONObject(i);
+                sectorCode = comJson.getString("f12");
+                sectorName = comJson.getString("f14");
+                orderCount = comJson.getBigDecimal("f134");
+
+                mtotalAsset = comJson.getBigDecimal("f2020");
+                mpureAsset = comJson.getBigDecimal("f2135");
+                mpureIntrest = comJson.getBigDecimal("f2045");
+                mmarketIntrestRate = comJson.getBigDecimal("f2009");
+                mmarktePureRate = comJson.getBigDecimal("f2023");
+                mpocessIntrestRate = comJson.getBigDecimal("f2049");
+                mpureIntrestRate = comJson.getBigDecimal("f2129");
+                mroe = comJson.getBigDecimal("f2037");
+
+            }
+        }
+
+        String url3 = "http://f10.eastmoney.com/IndustryAnalysis/IndustryAnalysisAjax?code=SZ002616&icode=456";
+        String resultJson3 = CommonHttpUtil.sendGet(url3);
+        JSONObject jsonObject9 = JSONObject.parseObject(resultJson3);
+        JSONArray czxbj = jsonObject9.getJSONObject("czxbj").getJSONArray("data");
+        JSONArray gzbj = jsonObject9.getJSONObject("gzbj").getJSONArray("data");
+        JSONArray dbfxbj = jsonObject9.getJSONObject("dbfxbj").getJSONArray("data");
+        JSONArray gsgmzsz = jsonObject9.getJSONArray("gsgmzsz");
+
+        BigDecimal czxOrder = BigDecimal.ZERO ;
+        BigDecimal mgsyGrowthRate = BigDecimal.ZERO ;
+        BigDecimal yysrGrowthRate = BigDecimal.ZERO ;
+        BigDecimal jlrGrowthRate = BigDecimal.ZERO ;
+
+        BigDecimal vmgsyGrowthRate = BigDecimal.ZERO ;
+        BigDecimal vyysrGrowthRate = BigDecimal.ZERO ;
+        BigDecimal vjlrGrowthRate = BigDecimal.ZERO ;
+
+        BigDecimal mmgsyGrowthRate = BigDecimal.ZERO ;
+        BigDecimal myysrGrowthRate = BigDecimal.ZERO ;
+        BigDecimal mjlrGrowthRate = BigDecimal.ZERO ;
+        for(int i = 0 ; i < czxbj.size() ; i ++){
+            JSONObject jsonObject5 = czxbj.getJSONObject(i);
+            if(i == 0){
+                czxOrder = jsonObject5.getBigDecimal("pm");
+                mgsyGrowthRate = jsonObject5.getBigDecimal("jbmgsyzzlfh");
+                yysrGrowthRate = jsonObject5.getBigDecimal("yysrzzlfh");
+                jlrGrowthRate = jsonObject5.getBigDecimal("jlrzzlfh");
+            }
+
+            if(i == 1){
+                vmgsyGrowthRate = jsonObject5.getBigDecimal("jbmgsyzzlfh");
+                vyysrGrowthRate = jsonObject5.getBigDecimal("yysrzzlfh");
+                vjlrGrowthRate = jsonObject5.getBigDecimal("jlrzzlfh");
+            }
+
+            if(i == 2){
+                mmgsyGrowthRate = jsonObject5.getBigDecimal("jbmgsyzzlfh");
+                myysrGrowthRate = jsonObject5.getBigDecimal("yysrzzlfh");
+                mjlrGrowthRate = jsonObject5.getBigDecimal("jlrzzlfh");
+            }
+        }
+
+
+        BigDecimal gzOrder = BigDecimal.ZERO ;
+        BigDecimal gzPEG = BigDecimal.ZERO ;
+        BigDecimal VgzPEG = BigDecimal.ZERO ;
+        BigDecimal MgzPEG = BigDecimal.ZERO ;
+        for(int i = 0 ; i < gzbj.size() ; i ++){
+            JSONObject jsonObject5 = gzbj.getJSONObject(i);
+            if(i == 0){
+                gzOrder = jsonObject5.getBigDecimal("pm");
+                gzPEG = jsonObject5.getBigDecimal("peg");
+            }
+
+            if(i == 1){
+                VgzPEG = jsonObject5.getBigDecimal("peg");
+            }
+            if(i == 2){
+                MgzPEG = jsonObject5.getBigDecimal("peg");
+            }
+        }
+
+
+        BigDecimal dbOrder = BigDecimal.ZERO ;
+        BigDecimal dbROE = BigDecimal.ZERO ;
+        BigDecimal dbJLR = BigDecimal.ZERO ;
+        BigDecimal dbZCZZL = BigDecimal.ZERO ;
+        BigDecimal dbQYCS = BigDecimal.ZERO ;
+
+        BigDecimal VdbROE = BigDecimal.ZERO ;
+        BigDecimal VdbJLR = BigDecimal.ZERO ;
+        BigDecimal VdbZCZZL = BigDecimal.ZERO ;
+        BigDecimal VdbQYCS = BigDecimal.ZERO ;
+
+        BigDecimal MdbROE = BigDecimal.ZERO ;
+        BigDecimal MdbJLR = BigDecimal.ZERO ;
+        BigDecimal MdbZCZZL = BigDecimal.ZERO ;
+        BigDecimal MdbQYCS = BigDecimal.ZERO ;
+
+        for(int i = 0 ; i < dbfxbj.size() ; i ++){
+            JSONObject jsonObject5 = dbfxbj.getJSONObject(i);
+            if(i == 0){
+                dbOrder = jsonObject5.getBigDecimal("pm");
+                dbROE = jsonObject5.getBigDecimal("roepj");
+                dbJLR = jsonObject5.getBigDecimal("jllpj");
+                dbZCZZL = jsonObject5.getBigDecimal("zzczzlpj");
+                dbQYCS = jsonObject5.getBigDecimal("qycspj");
+            }
+
+            if(i == 1){
+                VdbROE = jsonObject5.getBigDecimal("roepj");
+                VdbJLR = jsonObject5.getBigDecimal("jllpj");
+                VdbZCZZL = jsonObject5.getBigDecimal("zzczzlpj");
+                VdbQYCS = jsonObject5.getBigDecimal("qycspj");
+            }
+
+            if(i == 2){
+                MdbROE = jsonObject5.getBigDecimal("roepj");
+                MdbJLR = jsonObject5.getBigDecimal("jllpj");
+                MdbZCZZL = jsonObject5.getBigDecimal("zzczzlpj");
+                MdbQYCS = jsonObject5.getBigDecimal("qycspj");
+            }
+        }
+
+        BigDecimal ltOrder = BigDecimal.ZERO ;
+        String zsz = "" ;
+        String ltsz = "" ;
+        String yysr = "" ;
+        String jlr = "" ;
+
+        String Vzsz = "" ;
+        String Vltsz = "" ;
+        String Vyysr = "" ;
+        String Vjlr = "" ;
+
+        String Mzsz = "" ;
+        String Mltsz = "" ;
+        String Myysr = "" ;
+        String Mjlr = "" ;
+
+        for(int i = 0 ; i < gsgmzsz.size() ; i ++){
+            JSONObject jsonObject5 = gsgmzsz.getJSONObject(i);
+            if(i == 0){
+                ltOrder = jsonObject5.getBigDecimal("pm");
+                zsz = jsonObject5.getString("zsz");
+                ltsz = jsonObject5.getString("ltsz");
+                yysr = jsonObject5.getString("yysr");
+                jlr = jsonObject5.getString("jlr");
+            }
+
+            if(i == 1){
+                Vzsz = jsonObject5.getString("zsz");
+                Vltsz = jsonObject5.getString("ltsz");
+                Vyysr = jsonObject5.getString("yysr");
+                Vjlr = jsonObject5.getString("jlr");
+            }
+
+            if(i == 2){
+                Mzsz = jsonObject5.getString("zsz");
+                Mltsz = jsonObject5.getString("ltsz");
+                Myysr = jsonObject5.getString("yysr");
+                Mjlr = jsonObject5.getString("jlr");
+            }
+
+        }
+
+        String url4 = "http://baike.eastmoney.com/item/%E5%B9%BF%E4%B8%9C%E9%95%BF%E9%9D%92(%E9%9B%86%E5%9B%A2)%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8";
+        Document doc = SpiderUtils.HtmlJsoupGet(url4);
+        Elements elements = doc.getElementsByClass("company_intro");
+        String business = elements.get(0).html();
         System.out.println();
+    }
+
+    @Autowired
+    private StockCompanyValueCompareSerivce stockCompanyValueCompareSerivce ;
+
+    @Autowired
+    private StockCompanyBaseService stockCompanyBaseService ;
+
+    @Test
+    public void test2(){
+        List<StockCompanyBase> list = stockCompanyBaseService.selectList(null);
+        List<StockCompanyValueCompare> compareList = stockCompanyValueCompareSerivce.selectList(null);
+        for(StockCompanyBase companyBase : list){
+            String market = "SH";
+            String marketNum = "1";
+            System.out.println(companyBase.getStockPlate());
+            System.out.println(companyBase.getStockPlate().indexOf("深交所"));
+            if(companyBase.getStockPlate().indexOf("深交所") != -1){
+                market = "SZ";
+                marketNum = "0";
+            }
+            if(StringUtils.isNotBlank(companyBase.getStockACode())){
+                boolean just = false ;
+                for(StockCompanyValueCompare compare : compareList){
+                       if(companyBase.getStockACode().equals(compare.getStockCode())){
+                           just = true ;
+                           break;
+                       }
+                }
+                if(!just){
+                    StockCompanyValueCompare valueCompare = stockCompanyValueCompareSerivce.spiderStockCompanyValueCompare("2019" ,market , marketNum ,companyBase.getStockACode() ,companyBase.getCompanyName());
+                    System.out.println(valueCompare.toString());
+                    StockCompanyValueCompare companyValueCompare = stockCompanyValueCompareSerivce.selectOne(new EntityWrapper<StockCompanyValueCompare>().where("stock_code = {0}" , valueCompare.getStockCode()));
+                    if(companyValueCompare == null){
+                        stockCompanyValueCompareSerivce.insert(valueCompare);
+                    }
+                }
+
+            }
+
+        }
+
     }
 
 

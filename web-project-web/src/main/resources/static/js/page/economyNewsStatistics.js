@@ -35,6 +35,7 @@ $(function () {
                 endDate: $("#s_end").val(),
                 newsTopic: $("#s_topic").val(),
                 newsHot: $("#s_hot").val(),
+                newsLevel:$("#s_level").val()
             };
             return temp;
         },

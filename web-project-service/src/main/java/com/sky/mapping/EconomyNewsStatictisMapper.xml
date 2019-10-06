@@ -46,6 +46,9 @@
         <if test="newsHot != null and newsHot != '' and newsHot != 'undefined'">
             AND i.news_hot REGEXP #{newsType}
         </if>
+        <if test="newsLevel != null and newsLevel != '' and newsLevel != 'undefined'">
+            AND i.news_level = #{newsLevel}
+        </if>
         ORDER BY i.`news_time` DESC
     </select>
 </mapper>

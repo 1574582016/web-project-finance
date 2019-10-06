@@ -31,9 +31,10 @@ public class EconomyNewsStatictisServiceImpl extends ServiceImpl<EconomyNewsStat
                                                                    String startDate ,
                                                                    String endDate ,
                                                                    String newsTopic ,
-                                                                   String newsHot) {
+                                                                   String newsHot ,
+                                                                   String newsLevel) {
         Page<EconomyNewsStatictis> pageInfo = new Page<EconomyNewsStatictis>(page, size);
-        List<EconomyNewsStatictis> list = baseMapper.getEconomyNewsStatisticsList( pageInfo , newsTitle , newsType , startDate , endDate , newsTopic , newsHot);
+        List<EconomyNewsStatictis> list = baseMapper.getEconomyNewsStatisticsList( pageInfo , newsTitle , newsType , startDate , endDate , newsTopic , newsHot ,newsLevel);
         pageInfo.setRecords(list);
         return pageInfo;
     }

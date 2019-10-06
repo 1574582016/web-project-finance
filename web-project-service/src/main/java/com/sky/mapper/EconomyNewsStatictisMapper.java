@@ -18,5 +18,6 @@ public interface EconomyNewsStatictisMapper extends BaseMapper<EconomyNewsStatic
                                                             @Param("startDate") String startDate ,
                                                             @Param("endDate") String endDate ,
                                                             @Param("newsTopic") String newsTopic ,
-                                                            @Param("newsHot") String newsHot);
+                                                            @Param("newsHot") String newsHot ,
+                                                            @Param("newsLevel") String newsLevel);
 }
