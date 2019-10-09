@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.CommonHttpUtil;
 import com.sky.mapper.IndexDealDataMapper;
@@ -54,7 +55,10 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
                         case 7 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
-                list.add(dealData);
+                IndexDealData indexDealData = selectOne(new EntityWrapper<IndexDealData>().where("index_code = {0} and deal_period = {1} and deal_time = {2}" ,indexCode ,periodType ,dealData.getDealTime()));
+                if(indexDealData == null){
+                    list.add(dealData);
+                }
             }
         }catch (Exception e){
             e.printStackTrace();

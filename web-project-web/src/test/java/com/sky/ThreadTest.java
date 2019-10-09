@@ -104,6 +104,7 @@ public class ThreadTest {
                         }
 
                         Thread.sleep(1000);
+
                     }
                     return 1;
                 }
@@ -169,32 +170,34 @@ public class ThreadTest {
                         System.out.println("================stockCode=========================" + marketClass);
                         String marketCode = marketClass.getClassCode();
                         marketCode = marketCode.substring(0,marketCode.length()-1);
-                        List<SectorDealData> dataList = sectorDealDataService.spiderSectorDealData(7 , marketCode);
+                        for(int t = 1 ; t <=7 ; t++){
+                            List<SectorDealData> dataList = sectorDealDataService.spiderSectorDealData(t , marketCode);
 
-                        if(null!=dataList&&dataList.size()>0){
-                            int pointsDataLimit = 200;//限制条数
-                            Integer size = dataList.size();
-                            //判断是否有必要分批
-                            if(pointsDataLimit<size){
-                                int part = size/pointsDataLimit;//分批数
-                                System.out.println("共有 ： "+size+"条，！"+" 分为 ："+part+"批");
-                                for (int i = 0; i < part; i++) {
-                                    List<SectorDealData> listPage = dataList.subList(0, pointsDataLimit);
-                                    sectorDealDataService.insertBatch(listPage);
-                                    //剔除
-                                    dataList.subList(0, pointsDataLimit).clear();
-                                }
-                                if(!dataList.isEmpty()){
+                            if(null!=dataList&&dataList.size()>0){
+                                int pointsDataLimit = 200;//限制条数
+                                Integer size = dataList.size();
+                                //判断是否有必要分批
+                                if(pointsDataLimit<size){
+                                    int part = size/pointsDataLimit;//分批数
+                                    System.out.println("共有 ： "+size+"条，！"+" 分为 ："+part+"批");
+                                    for (int i = 0; i < part; i++) {
+                                        List<SectorDealData> listPage = dataList.subList(0, pointsDataLimit);
+                                        sectorDealDataService.insertBatch(listPage);
+                                        //剔除
+                                        dataList.subList(0, pointsDataLimit).clear();
+                                    }
+                                    if(!dataList.isEmpty()){
+                                        sectorDealDataService.insertBatch(dataList);
+                                    }
+                                }else{
                                     sectorDealDataService.insertBatch(dataList);
                                 }
                             }else{
-                                sectorDealDataService.insertBatch(dataList);
+                                System.out.println("没有数据!!!");
                             }
-                        }else{
-                            System.out.println("没有数据!!!");
-                        }
 
-                        Thread.sleep(1000);
+                            Thread.sleep(1000);
+                        }
                     }
                     return 1;
                 }

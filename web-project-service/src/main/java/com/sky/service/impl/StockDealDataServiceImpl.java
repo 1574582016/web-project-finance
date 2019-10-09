@@ -72,7 +72,10 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                         case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
-            list.add(dealData);
+                StockDealData stockDealData = selectOne(new EntityWrapper<StockDealData>().where("stock_code = {0} and deal_period = {1} and deal_time = {2}" ,skuCode ,periodType ,dealData.getDealTime()));
+                if(stockDealData == null){
+                    list.add(dealData);
+                }
             }
         }catch (Exception e){
             e.printStackTrace();

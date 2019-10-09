@@ -80,7 +80,10 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
                         case 7 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
-                list.add(dealData);
+                SectorDealData sectorDealData = selectOne(new EntityWrapper<SectorDealData>().where("sector_code = {0} and deal_period = {1} and deal_time = {2}" ,sectorCode ,periodType ,dealData.getDealTime()));
+                if(sectorDealData == null){
+                    list.add(dealData);
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
