@@ -5,9 +5,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sky.core.utils.CommonHttpUtil;
 import com.sky.model.SectorDealData;
+import com.sky.model.StockCompanySector;
 import com.sky.model.StockIndexClass;
 import com.sky.service.SectorDealDataService;
+import com.sky.service.StockCompanySectorService;
 import com.sky.service.StockIndexClassService;
+import lombok.ToString;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class Test04 {
 
     @Autowired
     private StockIndexClassService stockIndexClassService ;
+
+    @Autowired
+    private StockCompanySectorService stockCompanySectorService;
 
     @Test
     public void test(){
@@ -68,6 +74,26 @@ public class Test04 {
             stockIndexClassService.insertBatch(list);
         }
 
+    }
+
+    @Test
+    public void test3(){
+        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
+        for(StockCompanySector sector : list){
+            String stockCode = sector.getStockCode();
+            String mk = "SZ";
+            if(stockCode.substring(0,1).equals("6")){
+                mk = "SH";
+            }
+            String url = "http://f10.eastmoney.com/CompanySurvey/CompanySurveyAjax?code=" + mk + stockCode;
+            String jsStr = CommonHttpUtil.sendGet(url);
+            JSONObject jsonObject = JSON.parseObject(jsStr).getJSONObject("jbzl");
+            String gsjj = jsonObject.getString("gsjj").replace(" ","");
+            String jyfw = jsonObject.getString("jyfw").replace(" ","");
+            sector.setCompanyIntr(gsjj);
+            sector.setCompanyProduct(jyfw);
+            stockCompanySectorService.updateById(sector);
+        }
     }
 
 

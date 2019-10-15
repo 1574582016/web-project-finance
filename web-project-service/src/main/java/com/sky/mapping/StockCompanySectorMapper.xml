@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockCompanySectorMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockCompanySector">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="stock_code" property="stockCode"/>
+        <result column="stock_name" property="stockName"/>
+        <result column="first_sector" property="firstSector"/>
+        <result column="second_sector" property="secondSector"/>
+        <result column="third_secotor" property="thirdSecotor"/>
+        <result column="forth_sector" property="forthSector"/>
+        <result column="company_intr" property="companyIntr"/>
+        <result column="company_product" property="companyProduct"/>
+    </resultMap>
+</mapper>
