@@ -183,4 +183,9 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
     public List<FestivalStatic_VO> getSectorFestivalStaticList(String sectorCode, String startDay, String endDay, String startTime, String endTime) {
         return baseMapper.getSectorFestivalStaticList( sectorCode, startDay, endDay, startTime, endTime);
     }
+
+    @Override
+    public List<HotSectorStaticVO> getHotSectorStatisticList(String sectorCode, String orderRegain, String startDay, String endDay, String sectorCodes) {
+        return baseMapper.getHotSectorStatisticList( sectorCode,  orderRegain, startDay, endDay, sectorCodes);
+    }
 }

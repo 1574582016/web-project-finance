@@ -33,4 +33,6 @@ public interface SectorDealDataService extends IService<SectorDealData> {
     List<SectorOrderStatic_VO> getSectorOrderStaticList(String orderType ,String startDay , String endDay);
 
     List<FestivalStatic_VO> getSectorFestivalStaticList( String sectorCode , String startDay ,String endDay ,String startTime ,String endTime);
+
+    List<HotSectorStaticVO> getHotSectorStatisticList(String sectorCode ,String orderRegain ,String startDay , String endDay ,String sectorCodes);
 }

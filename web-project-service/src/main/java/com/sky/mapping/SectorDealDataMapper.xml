@@ -437,4 +437,100 @@
         ) * 100 ,2) DESC,
         ROUND(SUM(s.close_price - s.open_price) / SUM(1),2) DESC
     </select>
+
+    <select id="getHotSectorStatisticList" parameterType="java.lang.String" resultType="com.sky.vo.HotSectorStaticVO">
+        SELECT
+        e.sector_code lastCode,
+        e.class_name lastName,
+        f.sector_code nowCode,
+        f.class_name nowName,
+        SUM(1) amount
+        FROM
+        (
+            SELECT
+            *
+            FROM(
+                SELECT
+                @r:= CASE WHEN @deal_time=a.deal_time THEN @r+1 ELSE 1 END AS rowNum,
+                @deal_time:=a.deal_time AS deal_time_1,
+                a.*
+                FROM
+                (
+                SELECT
+                d.deal_time,
+                c.class_code sector_code,
+                c.class_name ,
+                d.close_price - d.open_price increase
+                FROM sector_deal_data d
+                LEFT JOIN stock_market_class c ON d.sector_code = LEFT(c.class_code,6)
+                WHERE d.deal_period = 1
+                <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+                    AND d.deal_time >= #{startDay}
+                </if>
+                <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+                    AND d.deal_time &lt; #{endDay}
+                </if>
+                ORDER BY d.deal_time ASC,(d.close_price - d.open_price) DESC
+                ) a
+                ,(SELECT @r:=0 ,@deal_time:='') b
+                ORDER BY a.deal_time,a.increase DESC
+            ) d <where>
+                    <if test="orderRegain != null and orderRegain != '' and orderRegain != 'undefined'">
+                        AND d.rowNum &lt;= #{orderRegain}
+                    </if>
+                </where>
+        ) e
+        LEFT JOIN
+        (
+            SELECT
+            *
+            FROM(
+                SELECT
+                @r:= CASE WHEN @deal_time=a.deal_time THEN @r+1 ELSE 1 END AS rowNum,
+                @deal_time:=a.deal_time AS deal_time_1,
+                a.*
+                FROM
+                (
+                SELECT
+                d.deal_time,
+                c.class_code sector_code,
+                c.class_name ,
+                d.close_price - d.open_price increase
+                FROM sector_deal_data d
+                LEFT JOIN stock_market_class c ON d.sector_code = LEFT(c.class_code,6)
+                WHERE d.deal_period = 1
+                <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+                    AND d.deal_time >= #{startDay}
+                </if>
+                <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+                    AND d.deal_time &lt; #{endDay}
+                </if>
+                ORDER BY d.deal_time ASC,(d.close_price - d.open_price) DESC
+                ) a
+                ,(SELECT @r:=0 ,@deal_time:='') b
+                ORDER BY a.deal_time,a.increase DESC
+            ) t
+                <where>
+                    <if test="orderRegain != null and orderRegain != '' and orderRegain != 'undefined'">
+                        AND t.rowNum &lt;= #{orderRegain}
+                    </if>
+                </where>
+        ) f ON e.deal_time = DATE_ADD(f.deal_time, INTERVAL -1 DAY)
+        <where>
+            <if test="sectorCode != null and sectorCode != '' and sectorCode != 'undefined'">
+                AND e.sector_code = #{sectorCode}
+            </if>
+        </where>
+        <if test="sectorCodes != null and sectorCodes != '' and sectorCodes != 'undefined'">
+            GROUP BY f.sector_code
+            HAVING(SUM(1)>= 5)
+            ORDER BY SUM(1) DESC
+        </if>
+        <if test="sectorCodes == null or sectorCodes == '' or sectorCodes == 'undefined'">
+            GROUP BY e.sector_code,f.sector_code
+            HAVING(SUM(1)>= 5)
+            ORDER BY e.sector_code ,SUM(1) DESC
+        </if>
+
+    </select>
 </mapper>

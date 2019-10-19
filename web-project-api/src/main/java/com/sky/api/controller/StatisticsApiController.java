@@ -698,4 +698,28 @@ public class StatisticsApiController extends AbstractController {
         map.put("rows",list);
         return map;
     }
+
+
+    @LogRecord(name = "getHotSectorStatisticList" ,description = "统计行业热点")
+    @PostMapping("/getHotSectorStatisticList")
+    public Object getHotSectorStatisticList(String sectorCode ,String orderRegain ,String startDay , String endDay ,String sectorCodes){
+        List<HotSectorStaticVO> list = sectorDealDataService.getHotSectorStatisticList( sectorCode ,orderRegain , startDay , endDay , sectorCodes);
+        Map<String ,BigDecimal> caculMap = new HashMap<>();
+        for(HotSectorStaticVO staticVO : list){
+            BigDecimal amout = caculMap.get(staticVO.getLastCode());
+            if(amout == null){
+                caculMap.put(staticVO.getLastCode() ,staticVO.getAmount());
+            }else {
+                caculMap.put(staticVO.getLastCode() ,staticVO.getAmount().add(amout));
+            }
+        }
+        for(HotSectorStaticVO staticVO : list){
+            BigDecimal total = caculMap.get(staticVO.getLastCode());
+            staticVO.setRate(staticVO.getAmount().multiply(BigDecimal.valueOf(100)).divide(total ,2 ,BigDecimal.ROUND_HALF_UP));
+        }
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
+    }
 }

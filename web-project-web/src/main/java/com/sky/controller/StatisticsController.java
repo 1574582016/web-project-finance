@@ -90,4 +90,11 @@ public class StatisticsController {
         model.addAttribute("endTime" , endTime);
         return "page/stockFestivalStatisticsList";
     }
+
+    @RequestMapping("/hotSectorStatisticList")
+    public String hotSectorStatisticList(Model model){
+        List<StockMarketClass> list = stockMarketClassService.selectList(new EntityWrapper<StockMarketClass>().where("class_type = '行业板块'"));
+        model.addAttribute("marketList" , list);
+        return "page/hotSectorStatisticList";
+    }
 }

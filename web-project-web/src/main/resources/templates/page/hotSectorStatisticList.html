@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
+    <link rel="stylesheet" href="/libs/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body style="padding: 20px;">
+
+<div class="panel panel-default search-list-panel">
+    <div id="collapseBox" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <form id="formSearch" class="form-horizontal">
+                <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1">行业：</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="sector_code">
+                            <option value="">全部</option>
+                            <option th:each="item,itemStat:${marketList}" th:value="${item.classCode}" th:text="${item.className}"></option>
+                        </select>
+                    </div>
+                    <label class="control-label col-sm-1">排行：</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="order_regain">
+                            <option value="1">前1名</option>
+                            <option value="2">前2名</option>
+                            <option value="3">前3名</option>
+                            <option value="4">前4名</option>
+                            <option value="5">前5名</option>
+                            <option value="6">前6名</option>
+                        </select>
+                    </div>
+                    <label class="control-label col-sm-1">日期：</label>
+                    <div class="input-group date col-sm-4">
+                        <input type="text" class="form-control" id="s_start" readonly>
+                        <div class="input-group-addon">至</div>
+                        <input type="text" class="form-control" id="s_end" readonly>
+                    </div>
+                    <button type="button" id="searchDataButton" class="btn btn-default btn-sm search-button">查询</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="toolbar" class="btn-group">
+</div>
+<table id="tableList" class="table"></table>
+
+
+</body>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="/libs/select2/js/select2.min.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src = "/js/page/hotSectorStatisticList.js"></script>
+</html>

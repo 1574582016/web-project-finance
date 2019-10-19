@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockMarketClassMapper;
@@ -23,7 +24,7 @@ public class StockMarketClassServiceImpl extends ServiceImpl<StockMarketClassMap
 
     @Override
     public void spiderStockMarketClass() {
-        String url = "http://quote.eastmoney.com/center/sidemenu.json";
+        String url = "http://quote.eastmoney.com/config/sidemenu.json";
         String subjectString = SpiderUtils.HttpClientBuilderGet(url);
         JSONArray jsonArray = JSON.parseArray(subjectString);
         JSONArray sectorArray = jsonArray.getJSONObject(5).getJSONArray("next").getJSONObject(2).getJSONArray("next");
@@ -38,7 +39,10 @@ public class StockMarketClassServiceImpl extends ServiceImpl<StockMarketClassMap
             stockMarketClass.setClassCode(classCode.substring(7 ,classCode.length()));
             stockMarketClass.setClassName(className);
             stockMarketClass.setClassType("行业板块");
-            list.add(stockMarketClass);
+            StockMarketClass marketClass = selectOne(new EntityWrapper<StockMarketClass>().where("class_code = {0} and class_name = {1} and class_type = {2} ",stockMarketClass.getClassCode() , stockMarketClass.getClassName(), stockMarketClass.getClassType()));
+            if(marketClass == null){
+                list.add(stockMarketClass);
+            }
         }
 
         for(int y = 0 ; y < regionArray.size() ; y ++){
@@ -49,7 +53,10 @@ public class StockMarketClassServiceImpl extends ServiceImpl<StockMarketClassMap
             stockMarketClass.setClassCode(classCode.substring(7 ,classCode.length()));
             stockMarketClass.setClassName(className);
             stockMarketClass.setClassType("地域板块");
-            list.add(stockMarketClass);
+            StockMarketClass marketClass = selectOne(new EntityWrapper<StockMarketClass>().where("class_code = {0} and class_name = {1} and class_type = {2} ",stockMarketClass.getClassCode() , stockMarketClass.getClassName(), stockMarketClass.getClassType()));
+            if(marketClass == null){
+                list.add(stockMarketClass);
+            }
         }
 
         for(int z = 0 ; z < subjectArray.size() ; z ++){
@@ -60,8 +67,13 @@ public class StockMarketClassServiceImpl extends ServiceImpl<StockMarketClassMap
             stockMarketClass.setClassCode(classCode.substring(7 ,classCode.length()));
             stockMarketClass.setClassName(className);
             stockMarketClass.setClassType("概念板块");
-            list.add(stockMarketClass);
+            StockMarketClass marketClass = selectOne(new EntityWrapper<StockMarketClass>().where("class_code = {0} and class_name = {1} and class_type = {2} ",stockMarketClass.getClassCode() , stockMarketClass.getClassName(), stockMarketClass.getClassType()));
+            if(marketClass == null){
+                list.add(stockMarketClass);
+            }
         }
-        insertBatch(list);
+        if(list.size() > 0){
+            insertBatch(list);
+        }
     }
 }

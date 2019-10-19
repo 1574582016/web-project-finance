@@ -3,13 +3,10 @@ package com.sky;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.CommonHttpUtil;
-import com.sky.model.SectorDealData;
-import com.sky.model.StockCompanySector;
-import com.sky.model.StockIndexClass;
-import com.sky.service.SectorDealDataService;
-import com.sky.service.StockCompanySectorService;
-import com.sky.service.StockIndexClassService;
+import com.sky.model.*;
+import com.sky.service.*;
 import lombok.ToString;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +32,12 @@ public class Test04 {
 
     @Autowired
     private StockCompanySectorService stockCompanySectorService;
+
+    @Autowired
+    private StockHotClassService stockHotClassService ;
+
+    @Autowired
+    private StockMarketClassService stockMarketClassService ;
 
     @Test
     public void test(){
@@ -96,5 +99,17 @@ public class Test04 {
         }
     }
 
+    @Test
+    public void test4(){
+        EntityWrapper<StockMarketClass> entityWrapper = new EntityWrapper();
+        entityWrapper.where("class_type = '概念板块'");
+        List<StockMarketClass> list = stockMarketClassService.selectList(entityWrapper);
+        for(StockMarketClass marketClass : list){
+            List<StockHotClass> subList = stockHotClassService.spiderStockHotClass(marketClass.getClassCode() , marketClass.getClassName());
+            if(subList.size() > 0){
+                stockHotClassService.insertBatch(subList);
+            }
+        }
 
+    }
 }
