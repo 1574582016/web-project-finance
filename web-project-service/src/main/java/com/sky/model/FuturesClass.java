@@ -35,4 +35,16 @@ public class FuturesClass extends BaseModel<FuturesClass> {
      */
     @TableField("second_class")
     private String secondClass ;
+
+    /**
+     * 三级分类
+     */
+    @TableField("third_class")
+    private String thirdClass ;
+
+    /**
+     * 四级分类
+     */
+    @TableField("forth_class")
+    private String forthClass ;
 }

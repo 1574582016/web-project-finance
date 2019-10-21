@@ -14,5 +14,7 @@
         <result column="futures_name" property="futuresName"/>
         <result column="first_class" property="firstClass"/>
         <result column="second_class" property="secondClass"/>
+        <result column="third_class" property="thirdClass"/>
+        <result column="forth_class" property="forthClass"/>
     </resultMap>
 </mapper>
