@@ -116,6 +116,85 @@ public class Test02 {
             }
     }
 
+    @Test
+    public void test04(){
+        String url = "http://f10.eastmoney.com/NewFinanceAnalysis/zcfzbAjax?companyType=4&reportDateType=0&reportType=1&endDate=&code=SZ000333";
+        String jsStr = CommonHttpUtil.sendGet(url);
+        jsStr = jsStr.replace("\\","");
+        jsStr = jsStr.substring(1,jsStr.length()-1);
+        JSONArray jsonArray = JSON.parseArray(jsStr);
+        for(int i = 0 ; i < jsonArray.size() ; i++){
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String publishDay = jsonObject.getString("REPORTDATE");//发布日期
+            BigDecimal totalAssetDebt = jsonObject.getBigDecimal("SUMLIABSHEQUITY");//总资产负债
+            //资产
+            BigDecimal totalAssets = jsonObject.getBigDecimal("SUMASSET");//总资产
+            //流动资产
+            BigDecimal totalFlowAssets = jsonObject.getBigDecimal("SUMLASSET");//总流动资产
+
+            BigDecimal flowAssetCurrency = jsonObject.getBigDecimal("MONETARYFUND");//货币资产
+            BigDecimal flowAssetPay = jsonObject.getBigDecimal("ADVANCEPAY");//预付款资产
+            BigDecimal flowAssetStorage = jsonObject.getBigDecimal("INVENTORY");//库存资产
+
+            BigDecimal flowAssetBill = jsonObject.getBigDecimal("ACCOUNTBILLREC");//应收账款资产
+            BigDecimal flowAssetOherBill = jsonObject.getBigDecimal("OTHERREC");//其他应收账款资产
+
+            BigDecimal flowAssetOther = jsonObject.getBigDecimal("OTHERLASSET");//其他资产
+            //非流动资产
+            BigDecimal totalUnFlowAssets = jsonObject.getBigDecimal("SUMNONLASSET");//非流动总资产
+
+            BigDecimal unflowFixedAssets = jsonObject.getBigDecimal("FIXEDASSET");//固定资产
+            BigDecimal unflowBuildProduct = jsonObject.getBigDecimal("CONSTRUCTIONPROGRESS");//在建工程
+            BigDecimal unflowHouse = jsonObject.getBigDecimal("ESTATEINVEST");//投资型房地产
+
+            BigDecimal unflowStockRight = jsonObject.getBigDecimal("LTEQUITYINV");//长期股权投资
+            BigDecimal unflowLongBill = jsonObject.getBigDecimal("LTREC");//长期应收款
+            BigDecimal unflowFinacial = jsonObject.getBigDecimal("SALEABLEFASSET");//可供出售金融资产
+
+            BigDecimal unflowIntangible = jsonObject.getBigDecimal("INTANGIBLEASSET");//无形资产
+            BigDecimal unflowReputation = jsonObject.getBigDecimal("GOODWILL");//商誉
+
+            BigDecimal unflowPrepaidExpenses = jsonObject.getBigDecimal("LTDEFERASSET");//长期待摊费用
+            BigDecimal unflowDeferredTax = jsonObject.getBigDecimal("DEFERINCOMETAXASSET");//递延所得税资产
+
+            BigDecimal unflowOher = jsonObject.getBigDecimal("OTHERNONLASSET");//其他非流动资产
+
+            //负债
+            BigDecimal totalDebt = jsonObject.getBigDecimal("SUMLIAB");//总负债
+            //流动负债
+            BigDecimal totalFlowDebt = jsonObject.getBigDecimal("SUMLLIAB");//总流动负债
+
+            BigDecimal flowSortLoan = jsonObject.getBigDecimal("STBORROW");//短期借款
+            BigDecimal flowCenterLoan = jsonObject.getBigDecimal("BORROWFROMCBANK");//向中央银行借款
+            BigDecimal flowSameCompanyLoan = jsonObject.getBigDecimal("DEPOSIT");//吸收存款及同业存放
+
+            BigDecimal flowBill = jsonObject.getBigDecimal("ACCOUNTBILLPAY");//应付票据及应付账款
+            BigDecimal flowReceive = jsonObject.getBigDecimal("ADVANCERECEIVE");//预收款项
+
+            BigDecimal flowSalary = jsonObject.getBigDecimal("SALARYPAY");//应付职工薪酬
+            BigDecimal flowTax = jsonObject.getBigDecimal("TAXPAY");//应交税费
+            BigDecimal flowOherPay = jsonObject.getBigDecimal("OTHERPAY");//其他应付款合计
+
+            BigDecimal flowSoonDeadLine = jsonObject.getBigDecimal("NONLLIABONEYEAR");//一年内到期的非流动负债
+            BigDecimal flowOher = jsonObject.getBigDecimal("OTHERLLIAB");//其他流动负债
+
+            //非流动负债
+            BigDecimal totalUnFlowDebt = jsonObject.getBigDecimal("SUMNONLLIAB");//总非流动负债
+
+
+            BigDecimal unflowLongLoan = jsonObject.getBigDecimal("STBORROW");//长期借款
+            BigDecimal unflowLongPay = jsonObject.getBigDecimal("STBORROW");//长期应付款
+            BigDecimal unflowLongSalary = jsonObject.getBigDecimal("STBORROW");//长期应付职工薪酬
+            BigDecimal unflowSpecialPay = jsonObject.getBigDecimal("STBORROW");//专项应付款
+            BigDecimal unflowEstimateLoan = jsonObject.getBigDecimal("STBORROW");//预计负债
+            BigDecimal unflowDeferredProfit = jsonObject.getBigDecimal("STBORROW");//递延收益
+            BigDecimal unflowDeferredTaxDebt = jsonObject.getBigDecimal("STBORROW");//递延所得税负债
+            BigDecimal unflowOherDebt = jsonObject.getBigDecimal("STBORROW");//其他非流动负债
+
+            System.out.println(jsonObject.toString());
+        }
+    }
+
 /**
  * 开会——议程
  *     ——企业问题
