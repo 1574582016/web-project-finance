@@ -128,4 +128,10 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected StockIndexConstituentService stockIndexConstituentService;
+
+    @Autowired
+    protected FuturesClassService futuresClassService ;
+
+    @Autowired
+    protected FuturesDealDataService futuresDealDataService;
 }

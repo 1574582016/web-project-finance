@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.FuturesDealDataMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.FuturesDealData">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="deal_period" property="dealPeriod"/>
+        <result column="deal_time" property="dealTime"/>
+        <result column="futures_code" property="futuresCode"/>
+        <result column="open_price" property="openPrice"/>
+        <result column="close_price" property="closePrice"/>
+        <result column="high_price" property="highPrice"/>
+        <result column="low_price" property="lowPrice"/>
+        <result column="deal_count" property="dealCount"/>
+    </resultMap>
+
+    <select id="getFuturesOrderStaticList" parameterType="java.lang.String" resultType="com.sky.vo.SectorOrderStatic_VO">
+        SELECT
+        a.sectorCode ,
+        a.sectorName ,
+        ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) oneRiseRate ,
+        ROUND(a.oneDown/(a.oneRise + a.oneDown)  * 100,2) oneDownRate ,
+        ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) towRiseRate ,
+        ROUND(a.towDown/(a.towRise + a.towDown)  * 100,2) towDownRate ,
+        ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2) threeRiseRate ,
+        ROUND(a.threeDown/(a.threeRise + a.threeDown)  * 100,2) threeDownRate ,
+        ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2) fourRiseRate ,
+        ROUND(a.fourDown/(a.fourRise + a.fourDown)  * 100,2) fourDownRate ,
+        ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2) fiveRiseRate ,
+        ROUND(a.fiveDown/(a.fiveRise + a.fiveDown)  * 100,2) fiveDownRate ,
+        ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2) sixRiseRate ,
+        ROUND(a.sixDown/(a.sixRise + a.sixDown)  * 100,2) sixDownRate ,
+        ROUND(a.sevenRise/(a.sevenRise + a.sevenDown)  * 100,2) sevenRiseRate ,
+        ROUND(a.sevenDown/(a.sevenRise + a.sevenDown)  * 100,2) sevenDownRate ,
+        ROUND(a.eightRise/(a.eightRise + a.eightDown)  * 100,2) eightRiseRate ,
+        ROUND(a.eightDown/(a.eightRise + a.eightDown)  * 100,2) eightDownRate ,
+        ROUND(a.nineRise/(a.nineRise + a.nineDown)  * 100,2) nineRiseRate ,
+        ROUND(a.nineDown/(a.nineRise + a.nineDown)  * 100,2) nineDownRate ,
+        ROUND(a.tenRise/(a.tenRise + a.tenDown)  * 100,2) tenRiseRate ,
+        ROUND(a.tenDown/(a.tenRise + a.tenDown)  * 100,2) tenDownRate ,
+        ROUND(a.elevenRise/(a.elevenRise + a.elevenDown)  * 100,2) elevenRiseRate ,
+        ROUND(a.elevenDown/(a.elevenRise + a.elevenDown)  * 100,2) elevenDownRate ,
+        ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) twelveRiseRate ,
+        ROUND(a.twelveDown/(a.twelveRise + a.twelveDown)  * 100,2) twelveDownRate ,
+
+        ROUND(a.oneUpper/(a.oneRise + a.oneDown),2) oneUpperAverage ,
+        ROUND(a.oneShock/(a.oneRise + a.oneDown),2) oneShockAverage ,
+        ROUND(a.towUpper/(a.towRise + a.towDown),2) towUpperAverage ,
+        ROUND(a.towShock/(a.towRise + a.towDown),2) towShockAverage ,
+        ROUND(a.threeUpper/(a.threeRise + a.threeDown),2) threeUpperAverage ,
+        ROUND(a.threeShock/(a.threeRise + a.threeDown),2) threeShockAverage ,
+        ROUND(a.fourUpper/(a.fourRise + a.fourDown),2) fourUpperAverage ,
+        ROUND(a.fourShock/(a.fourRise + a.fourDown),2) fourShockAverage ,
+        ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2) fiveUpperAverage ,
+        ROUND(a.fiveShock/(a.fiveRise + a.fiveDown),2) fiveShockAverage ,
+        ROUND(a.sixUpper/(a.sixRise + a.sixDown),2) sixUpperAverage ,
+        ROUND(a.sixShock/(a.sixRise + a.sixDown),2) sixShockAverage ,
+        ROUND(a.sevenUpper/(a.sevenRise + a.sevenDown),2) sevenUpperAverage ,
+        ROUND(a.sevenShock/(a.sevenRise + a.sevenDown),2) sevenShockAverage ,
+        ROUND(a.eightUpper/(a.eightRise + a.eightDown),2) eightUpperAverage ,
+        ROUND(a.eightShock/(a.eightRise + a.eightDown),2) eightShockAverage ,
+        ROUND(a.nineUpper/(a.nineRise + a.nineDown),2) nineUpperAverage ,
+        ROUND(a.nineShock/(a.nineRise + a.nineDown),2) nineShockAverage ,
+        ROUND(a.tenUpper/(a.tenRise + a.tenDown),2) tenUpperAverage ,
+        ROUND(a.tenShock/(a.tenRise + a.tenDown),2) tenShockAverage ,
+        ROUND(a.elvenUpper/(a.elevenRise + a.elevenDown),2) elvenUpperAverage ,
+        ROUND(a.elvenShock/(a.elevenRise + a.elevenDown),2) elvenShockAverage ,
+        ROUND(a.twelveUpper/(a.twelveRise + a.twelveDown),2) twelveUpperAverage ,
+        ROUND(a.twelveShock/(a.twelveRise + a.twelveDown),2) twelveShockAverage
+        FROM(
+        SELECT
+        s.futures_code sectorCode,
+        c.futures_name sectorName ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 1  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS oneRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 1  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS oneDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 2  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS towRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 2  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS towDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 3  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS threeRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 3  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS threeDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 4  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS fourRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 4  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS fourDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 5  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS fiveRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 5  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS fiveDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 6  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS sixRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 6  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS sixDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 7  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS sevenRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 7  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS sevenDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 8  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS eightRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 8  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS eightDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 9  THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS nineRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 9  THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS nineDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 10 THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS tenRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 10 THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS tenDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 11 THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS elevenRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 11 THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS elevenDown ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 11 THEN (CASE WHEN s.close_price - s.open_price > 0 THEN 1 ELSE 0 END) END) AS twelveRise ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 11 THEN (CASE WHEN s.close_price - s.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS twelveDown ,
+
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 1  THEN s.close_price - s.open_price END) AS oneUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 1  THEN s.high_price - s.low_price END) AS oneShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 2  THEN s.close_price - s.open_price END) AS towUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 2  THEN s.high_price - s.low_price END) AS towShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 3  THEN s.close_price - s.open_price END) AS threeUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 3  THEN s.high_price - s.low_price END) AS threeShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 4  THEN s.close_price - s.open_price END) AS fourUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 4  THEN s.high_price - s.low_price END) AS fourShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 5  THEN s.close_price - s.open_price END) AS fiveUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 5  THEN s.high_price - s.low_price END) AS fiveShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 6  THEN s.close_price - s.open_price END) AS sixUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 6  THEN s.high_price - s.low_price END) AS sixShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 7  THEN s.close_price - s.open_price END) AS sevenUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 7  THEN s.high_price - s.low_price END) AS sevenShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 8  THEN s.close_price - s.open_price END) AS eightUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 8  THEN s.high_price - s.low_price END) AS eightShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 9  THEN s.close_price - s.open_price END) AS nineUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 9  THEN s.high_price - s.low_price END) AS nineShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 10 THEN s.close_price - s.open_price END) AS tenUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 10 THEN s.high_price - s.low_price END) AS tenShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 11 THEN s.close_price - s.open_price END) AS elvenUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 11 THEN s.high_price - s.low_price END) AS elvenShock ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 12 THEN s.close_price - s.open_price END) AS twelveUpper ,
+        SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 12 THEN s.high_price - s.low_price END) AS twelveShock
+        FROM futures_deal_data s
+        LEFT JOIN futures_class c ON s.futures_code = c.futures_code
+        WHERE s.isvalid = 1
+        AND s.deal_period = 3
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND s.deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND s.deal_time &lt; #{endDay}
+        </if>
+        GROUP BY s.futures_code
+        ) a
+        <if test="orderType == '1'.toString()">
+            ORDER BY ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) DESC ,ROUND(a.oneUpper/(a.oneRise + a.oneDown),2) DESC
+        </if>
+        <if test="orderType == '2'.toString()">
+            ORDER BY ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) DESC ,ROUND(a.towUpper/(a.towRise + a.towDown),2)  DESC
+        </if>
+        <if test="orderType == '3'.toString()">
+            ORDER BY ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2) DESC ,ROUND(a.threeUpper/(a.threeRise + a.threeDown),2)  DESC
+        </if>
+        <if test="orderType == '4'.toString()">
+            ORDER BY ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2) DESC ,ROUND(a.fourUpper/(a.fourRise + a.fourDown),2)  DESC
+        </if>
+        <if test="orderType == '5'.toString()">
+            ORDER BY ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2) DESC ,ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2)  DESC
+        </if>
+        <if test="orderType == '6'.toString()">
+            ORDER BY ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2) DESC ,ROUND(a.sixUpper/(a.sixRise + a.sixDown),2)  DESC
+        </if>
+        <if test="orderType == '7'.toString()">
+            ORDER BY ROUND(a.sevenRise/(a.sevenRise + a.sevenDown)  * 100,2) DESC ,ROUND(a.sevenUpper/(a.sevenRise + a.sevenDown),2)  DESC
+        </if>
+        <if test="orderType == '8'.toString()">
+            ORDER BY ROUND(a.eightRise/(a.eightRise + a.eightDown)  * 100,2) DESC ,ROUND(a.eightUpper/(a.eightRise + a.eightDown),2)  DESC
+        </if>
+        <if test="orderType == '9'.toString()">
+            ORDER BY ROUND(a.nineRise/(a.nineRise + a.nineDown)  * 100,2) DESC ,ROUND(a.nineUpper/(a.nineRise + a.nineDown),2)  DESC
+        </if>
+        <if test="orderType == '10'.toString()">
+            ORDER BY ROUND(a.tenRise/(a.tenRise + a.tenDown)  * 100,2) DESC ,ROUND(a.tenUpper/(a.tenRise + a.tenDown),2)  DESC
+        </if>
+        <if test="orderType == '11'.toString()">
+            ORDER BY ROUND(a.elevenRise/(a.elevenRise + a.elevenDown)  * 100,2) DESC ,ROUND(a.elvenUpper/(a.elevenRise + a.elevenDown),2)  DESC
+        </if>
+        <if test="orderType == '12'.toString()">
+            ORDER BY ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) DESC ,ROUND(a.twelveUpper/(a.twelveRise + a.twelveDown),2)  DESC
+        </if>
+    </select>
+</mapper>

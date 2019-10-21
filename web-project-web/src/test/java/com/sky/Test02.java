@@ -1,5 +1,6 @@
 package com.sky;
 
+import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.model.ForexNewsStatictis;
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,6 +65,11 @@ public class Test02 {
             }
         }
         System.out.println(list.toString());
+    }
+
+    @Test
+    public void test02(){
+        System.out.println(DateUtils.format(new Date(),"yyyy_MM_dd"));
     }
 
 /**
