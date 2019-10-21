@@ -1,7 +1,12 @@
 package com.sky;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.sky.core.utils.CommonHttpUtil;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.SpiderUtils;
+import com.sky.core.utils.Tools;
 import com.sky.model.ForexNewsStatictis;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Document;
@@ -12,6 +17,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -69,7 +75,45 @@ public class Test02 {
 
     @Test
     public void test02(){
-        System.out.println(DateUtils.format(new Date(),"yyyy_MM_dd"));
+        for(int x = 0 ; x < 20 ; x ++){
+            System.out.println(DateUtils.format(DateUtils.addYears(new Date(),-1 * x),"yyyy"));
+            String url = "http://f10.eastmoney.com/NewFinanceAnalysis/lrbAjax?companyType=4&reportDateType=0&reportType=1&endDate="+ DateUtils.format(DateUtils.addYears(new Date(),-1 * x),"yyyy") +"%2F6%2F30+0%3A00%3A00&code=SZ000333";
+            String jsStr = CommonHttpUtil.sendGet(url);
+            if(StringUtils.isNotBlank(jsStr)&& !jsStr.equals("\"null\"")){
+                jsStr = jsStr.replace("\\","");
+                jsStr = jsStr.substring(1,jsStr.length()-1);
+                JSONArray jsonArray = JSON.parseArray(jsStr);
+                for(int i = 0 ; i < jsonArray.size() ; i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    System.out.println(jsonObject.getString("REPORTDATE"));
+                }
+            }else{
+                break;
+            }
+
+        }
+    }
+
+    @Test
+    public void test03(){
+            String url = "http://f10.eastmoney.com/NewFinanceAnalysis/lrbAjax?companyType=4&reportDateType=0&reportType=1&endDate=&code=SZ000333";
+            String jsStr = CommonHttpUtil.sendGet(url);
+            jsStr = jsStr.replace("\\","");
+            jsStr = jsStr.substring(1,jsStr.length()-1);
+            JSONArray jsonArray = JSON.parseArray(jsStr);
+            for(int i = 0 ; i < jsonArray.size() ; i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                BigDecimal totalIncome = jsonObject.getBigDecimal("TOTALOPERATEREVE");//总收入
+                BigDecimal businessIncome = jsonObject.getBigDecimal("OPERATEREVE");//营业收入
+                BigDecimal totalCost = jsonObject.getBigDecimal("TOTALOPERATEEXP");//总成本
+                BigDecimal businessCost = jsonObject.getBigDecimal("OPERATEEXP");//营业成本
+                BigDecimal totalRevenue = jsonObject.getBigDecimal("OPERATEPROFIT");//营业利润 + 其他营业利润
+                BigDecimal otherTotalRevenue = jsonObject.getBigDecimal("SUMPROFIT");//营业利润 + 其他营业利润 + 其他收入利润
+                BigDecimal taxMoney = jsonObject.getBigDecimal("INCOMETAX");//扣税金额
+                BigDecimal belongProfit = jsonObject.getBigDecimal("PARENTNETPROFIT");//扣除其他利润分配后，归属公司利润
+                BigDecimal lastProfit = jsonObject.getBigDecimal("KCFJCXSYJLR");//扣税损益后，最终的剩余利润
+                System.out.println(jsonObject.toString());
+            }
     }
 
 /**

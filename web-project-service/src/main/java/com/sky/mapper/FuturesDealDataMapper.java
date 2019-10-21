@@ -13,4 +13,6 @@ import java.util.List;
 public interface FuturesDealDataMapper extends BaseMapper<FuturesDealData> {
 
     List<SectorOrderStatic_VO> getFuturesOrderStaticList(@Param("orderType") String orderType , @Param("startDay") String startDay , @Param("endDay") String endDay);
+
+    List<FuturesDealData> getFuturesDealDataList(@Param("futureCode") String futureCode ,@Param("startDay") String startDay , @Param("endDay") String endDay);
 }

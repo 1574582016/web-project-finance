@@ -74,4 +74,9 @@ public class FuturesDealDataServiceImpl extends ServiceImpl<FuturesDealDataMappe
     public List<SectorOrderStatic_VO> getFuturesOrderStaticList(String orderType, String startDay, String endDay) {
         return baseMapper.getFuturesOrderStaticList(orderType, startDay, endDay);
     }
+
+    @Override
+    public List<FuturesDealData> getFuturesDealDataList(String futureCode, String startDay, String endDay) {
+        return baseMapper.getFuturesDealDataList(futureCode, startDay, endDay);
+    }
 }

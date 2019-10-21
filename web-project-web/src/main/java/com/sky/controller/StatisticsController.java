@@ -70,6 +70,16 @@ public class StatisticsController {
         return "page/futuresOrderStaticList";
     }
 
+    @RequestMapping("/futuresOrderStatisticsEchart")
+    public String futuresOrderStatisticsEchart(Model model ,String sectorCode ,String orderType ,String searchAngle ,String startDay ,String endDay ){
+        model.addAttribute("sectorCode" , sectorCode);
+        model.addAttribute("orderType" , orderType);
+        model.addAttribute("searchAngle" , searchAngle);
+        model.addAttribute("startDay" , startDay);
+        model.addAttribute("endDay" , endDay);
+        return "page/futuresOrderStatisticsEchart";
+    }
+
 
     @RequestMapping("/stockOrderStatisticsList")
     public String stockOrderStatisticsList(Model model ,String sectorName ,String orderType ,String searchAngle ,String startDay ,String endDay ){

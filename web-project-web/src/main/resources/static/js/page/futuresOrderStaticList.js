@@ -161,7 +161,7 @@ function angleRate() {
                 valign: 'middle',
                 width: 20, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
-                    return '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.sectorName + '\')">查看</button>';
+                    return '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.sectorCode + '\')">查看</button>';
                 }
             }
         ]
@@ -394,10 +394,10 @@ function angleSock() {
     });
 }
 
-function view(sectorName) {
+function view(sectorCode) {
     var orderType = $("#orderType").val();
     var searchAngle = $("#search_angle").val();
     var startDay = $("#s_start").val();
     var endDay = $("#s_end").val();
-    window.location.href = "/statistics/stockOrderStatisticsList?sectorName=" + sectorName + "&orderType=" + orderType + "&searchAngle=" + searchAngle + "&startDay=" + startDay + "&endDay=" + endDay;
+    window.location.href = "/statistics/futuresOrderStatisticsEchart?sectorCode=" + sectorCode + "&orderType=" + orderType + "&searchAngle=" + searchAngle + "&startDay=" + startDay + "&endDay=" + endDay;
 }

@@ -1,10 +1,13 @@
 package com.sky.api.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.MathUtil;
+import com.sky.model.FuturesDealData;
 import com.sky.model.IndexDealData;
 import com.sky.model.SectorDealData;
 import com.sky.model.StockMarketClass;
@@ -644,7 +647,7 @@ public class StatisticsApiController extends AbstractController {
         return map;
     }
 
-    @LogRecord(name = "getFuturesOrderStaticList" ,description = "查询商品计数据")
+    @LogRecord(name = "getFuturesOrderStaticList" ,description = "查询商品期货计数据")
     @PostMapping("/getFuturesOrderStaticList")
     public Object getFuturesOrderStaticList(String orderType ,String startDay , String endDay){
         List<SectorOrderStatic_VO> list = futuresDealDataService.getFuturesOrderStaticList(orderType , startDay , endDay);
@@ -652,6 +655,36 @@ public class StatisticsApiController extends AbstractController {
         map.put("total",list.size());
         map.put("rows",list);
         return map;
+    }
+
+    @LogRecord(name = "getFuturesDealDataList" ,description = "查询商品期货交易数据")
+    @PostMapping("/getFuturesDealDataList")
+    public Object getFuturesDealDataList(String futureCode ,String startDay , String endDay){
+        List<FuturesDealData> list = futuresDealDataService.getFuturesDealDataList(futureCode , startDay , endDay);
+        Map<String ,List<FuturesDealData>> map = new HashMap<String ,List<FuturesDealData>>();
+        for(FuturesDealData dealData : list){
+            String year = dealData.getDealTime().substring(0,4);
+            List<FuturesDealData> mapList = map.get(year);
+            if(mapList == null){
+                List<FuturesDealData> newList = new ArrayList<FuturesDealData>();
+                newList.add(dealData);
+                map.put(year , newList);
+            }else{
+                mapList.add(dealData);
+                map.put(year , mapList);
+            }
+        }
+        JSONArray jsonArray0 = new JSONArray();
+        for(String key:map.keySet()){//keySet获取map集合key的集合  然后在遍历key即可
+            List<FuturesDealData> value = map.get(key);//
+            JSONArray jsonArray = new JSONArray();
+            for(FuturesDealData dealData : value){
+                String[] arr = {dealData.getDealTime() ,dealData.getOpenPrice().toString() , dealData.getClosePrice().toString() ,dealData.getLowPrice().toString() ,dealData.getHighPrice().toString()};
+                jsonArray.add(arr);
+            }
+            jsonArray0.add(jsonArray);
+        }
+        return ResponseEntity.ok(MapSuccess("查询成功！",jsonArray0));
     }
 
     @LogRecord(name = "getStockOrderStaticList" ,description = "查询企业计数据")

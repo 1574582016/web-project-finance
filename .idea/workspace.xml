@@ -7,9 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf12ede-dd28-44b0-a23e-121a6b8e65d2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStatisticsEchart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/futuresOrderStatisticsEchart.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesClassMapper.xml" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesClassMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesClass.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" afterPath="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesDealDataMapper.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesDealDataMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesDealDataMapper.xml" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesDealDataMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesDealDataService.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesDealDataService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesDealDataServiceImpl.java" afterPath="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesDealDataServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" afterPath="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStaticList.js" afterPath="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStaticList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/Test02.java" afterPath="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/Test02.java" />
     </list>
     <ignored path="web-project-finance.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,24 +43,62 @@
     <favorites_list name="web-project-finance" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FuturesClass.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesClass.java">
+    <leaf>
+      <file leaf-file-name="futuresOrderStaticList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStaticList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
+            <state relative-caret-position="110">
+              <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#!!block;n#angleUpper#0" expanded="false" />
+                <element signature="n#!!block;n#angleSock#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FuturesClassMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesClassMapper.xml">
+      <file leaf-file-name="StatisticsApiController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="57" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="57" />
+            <state relative-caret-position="399">
+              <caret line="684" column="22" selection-start-line="684" selection-start-column="12" selection-end-line="684" selection-end-column="22" />
+              <folding>
+                <element signature="e#32693#32724#0" expanded="true" />
+                <element signature="e#32992#33009#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="futuresOrderStatisticsEchart.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStatisticsEchart.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+              <folding>
+                <marker date="1571648870552" expanded="true" signature="1156:1180" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="futuresOrderStatisticsEchart.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/futuresOrderStatisticsEchart.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forexCycleStatisticsList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/forexCycleStatisticsList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="154" column="38" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -81,8 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/EconomyNewsStatictisMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/EconomyNewsStatictisServiceImpl.java" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/EconomyStatisticsApiController.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/EconomyNewsStatictisMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockCompanyValueCompareMapper.java" />
@@ -119,19 +163,21 @@
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesClassMapper.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesClassService.java" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesClassServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/Test02.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ThreadTest.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesDealDataMapper.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesDealDataService.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesDealDataServiceImpl.java" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
         <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/futuresOrderStaticList.html" />
-        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStaticList.js" />
         <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/AbstractController.java" />
-        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
-        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesDealDataMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesClassMapper.xml" />
         <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesClass.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/test/java/com/sky/Test02.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStaticList.js" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesDealDataService.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesDealDataMapper.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesDealDataServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesDealDataMapper.xml" />
+        <option value="$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStatisticsEchart.js" />
+        <option value="$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/futuresOrderStatisticsEchart.html" />
       </list>
     </option>
   </component>
@@ -206,6 +252,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,6 +308,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sky" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -594,47 +645,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-finance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-project-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="mapping" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -667,32 +683,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WebApplication">
-    <configuration default="false" name="ThreadTest.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.sky.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="web-project-web" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.sky" />
-      <option name="MAIN_CLASS_NAME" value="com.sky.ThreadTest" />
-      <option name="METHOD_NAME" value="test5" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="Test04.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -784,6 +774,32 @@
       <option name="PACKAGE_NAME" value="com.sky" />
       <option name="MAIN_CLASS_NAME" value="com.sky.ThreadTest" />
       <option name="METHOD_NAME" value="test6" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test02.test03" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.sky.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="web-project-web" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.sky" />
+      <option name="MAIN_CLASS_NAME" value="com.sky.Test02" />
+      <option name="METHOD_NAME" value="test03" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1247,19 +1263,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="JUnit.ProcessCompanyInfo.processStockCompanyNotice0" />
       <item index="1" class="java.lang.String" itemvalue="Spring Boot.WebApplication" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ThreadTest.test5" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.Test04.test4" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.Test02.test02" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.ThreadTest.test06" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.ThreadTest.test6" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.Test04.test4" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.Test02.test02" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ThreadTest.test06" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ThreadTest.test6" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.Test02.test03" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ThreadTest.test6" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ThreadTest.test06" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.Test02.test02" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.Test04.test4" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ThreadTest.test5" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.Test02.test03" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.Test02.test02" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ThreadTest.test6" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ThreadTest.test06" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.Test04.test4" />
       </list>
     </recent_temporary>
   </component>
@@ -1383,7 +1399,8 @@
       <workItem from="1571371143324" duration="599000" />
       <workItem from="1571447481671" duration="1252000" />
       <workItem from="1571464438333" duration="10614000" />
-      <workItem from="1571615130885" duration="8331000" />
+      <workItem from="1571615130885" duration="9352000" />
+      <workItem from="1571632783341" duration="12906000" />
     </task>
     <task id="LOCAL-00001" summary="首页调整">
       <created>1540551511444</created>
@@ -1721,43 +1738,50 @@
       <option name="project" value="LOCAL" />
       <updated>1571627756107</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="统计">
+      <created>1571628008481</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1571628008481</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test02_test02 - 2019.10.21 at 09h 14m 33s.xml">
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 41m 22s.xml">
       <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test02_test02 - 2019.10.21 at 09h 16m 28s.xml">
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 42m 07s.xml">
       <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test02_test02 - 2019.10.21 at 09h 18m 26s.xml">
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 43m 33s.xml">
       <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Test02_test02 - 2019.10.21 at 10h 06m 57s.xml">
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 44m 41s.xml">
       <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ThreadTest_test06 - 2019.10.21 at 09h 58m 19s.xml">
-      <configuration name="ThreadTest.test06" configurationId="JUnit" />
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 48m 33s.xml">
+      <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ThreadTest_test06 - 2019.10.21 at 09h 59m 18s.xml">
-      <configuration name="ThreadTest.test06" configurationId="JUnit" />
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 49m 27s.xml">
+      <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ThreadTest_test06 - 2019.10.21 at 10h 00m 00s.xml">
-      <configuration name="ThreadTest.test06" configurationId="JUnit" />
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 51m 00s.xml">
+      <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ThreadTest_test06 - 2019.10.21 at 10h 09m 37s.xml">
-      <configuration name="ThreadTest.test06" configurationId="JUnit" />
+    <history-entry file="Test02_test02 - 2019.10.21 at 13h 52m 50s.xml">
+      <configuration name="Test02.test02" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ThreadTest_test5 - 2019.10.19 at 16h 23m 03s.xml">
-      <configuration name="ThreadTest.test5" configurationId="JUnit" />
+    <history-entry file="Test02_test03 - 2019.10.21 at 13h 54m 30s.xml">
+      <configuration name="Test02.test03" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ThreadTest_test6 - 2019.10.21 at 10h 18m 10s.xml">
-      <configuration name="ThreadTest.test6" configurationId="JUnit" />
+    <history-entry file="Test02_test03 - 2019.10.21 at 13h 55m 15s.xml">
+      <configuration name="Test02.test03" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="774572000" />
+    <option name="totallyTimeSpent" value="788499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1783,8 +1807,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1884,84 +1908,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/HotDealData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/HotDealDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/StockDealData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="32" selection-start-line="16" selection-start-column="4" selection-end-line="20" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockHotClassMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="69" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/StockDealDataMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="13" column="72" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/IndexDealDataMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="16" />
-          <folding>
-            <marker date="1569404381579" expanded="true" signature="1495:2175" ph="SELECT * FRO... index_deal_data" />
-            <marker date="1569404381579" expanded="true" signature="2317:3886" ph="SELECT SUBST... index_deal_data" />
-            <marker date="1569404381579" expanded="true" signature="4029:5214" ph="SELECT SUBST... index_deal_data" />
-            <marker date="1569404381579" expanded="true" signature="5355:6956" ph="SELECT ((DAY... index_deal_data" />
-            <marker date="1569404381579" expanded="true" signature="7098:8112" ph="SELECT SUBST... index_deal_data" />
-            <marker date="1569404381579" expanded="true" signature="8252:9854" ph="SELECT ((DAY... index_deal_data" />
-            <marker date="1569404381579" expanded="true" signature="9995:10922" ph="SELECT (DAYO... index_deal_data" />
-            <marker date="1569404381579" expanded="true" signature="11063:11857" ph="SELECT RIGHT... " />
-            <marker date="1569404381579" expanded="true" signature="11999:12937" ph="SELECT RIGHT... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/StockHotClassMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/IndexDealDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="12" column="71" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/StockIndexClassServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="14" column="134" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="134" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1969,9 +1919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="12" column="74" selection-start-line="12" selection-start-column="74" selection-end-line="12" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1979,9 +1926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="27" column="51" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1989,9 +1933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="40" column="65" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1999,9 +1940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2009,7 +1947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2017,7 +1954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2025,7 +1961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2033,7 +1968,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2065,7 +1999,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="522" column="57" selection-start-line="522" selection-start-column="57" selection-end-line="522" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2073,7 +2006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2089,7 +2021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="12" column="72" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2097,9 +2028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="35" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2116,7 +2044,7 @@
         <state relative-caret-position="74">
           <caret line="14" column="28" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2125,9 +2053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="66" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2135,7 +2060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="17" column="126" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="126" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2143,9 +2067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="82" selection-start-line="14" selection-start-column="82" selection-end-line="14" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2153,7 +2074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="11" column="71" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2161,7 +2081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2169,25 +2088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="222" column="63" selection-start-line="222" selection-start-column="53" selection-end-line="222" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/Test02.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="71" column="68" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="68" />
-          <folding>
-            <element signature="e#2583#2584#0" expanded="true" />
-            <element signature="e#2660#2661#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ThreadTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="351" column="0" selection-start-line="351" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2219,7 +2119,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
           <caret line="75" column="89" selection-start-line="75" selection-start-column="89" selection-end-line="75" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2227,75 +2126,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="29" column="55" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesDealDataMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="14" column="56" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesDealDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="73" column="48" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesDealDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="56" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/sectorOrderStatisticsList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/sectorOrderStatisticsList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="402" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/futuresOrderStaticList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="649" column="91" selection-start-line="649" selection-start-column="91" selection-end-line="649" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStaticList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="298" column="49" selection-start-line="298" selection-start-column="49" selection-end-line="298" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2307,20 +2137,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java">
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="63" column="44" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesDealDataMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="138" column="31" selection-start-line="138" selection-start-column="31" selection-end-line="138" selection-end-column="31" />
+        <state relative-caret-position="500">
+          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
           <folding>
-            <marker date="1571627043834" expanded="true" signature="5012:11458" ph="SELECT s.fut... futures_deal_data" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2333,12 +2155,178 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/model/FuturesClass.java">
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/Test02.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
+        <state relative-caret-position="586">
+          <caret line="113" column="95" selection-start-line="113" selection-start-column="95" selection-end-line="113" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/test/java/com/sky/ThreadTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="391" column="90" selection-start-line="391" selection-start-column="90" selection-end-line="391" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/sectorCycleStatisticsList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/sectorOrderStatisticsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-209">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/sectorOrderStatisticsList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="75" column="75" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/sectorCycleStatisticsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/futuresOrderStaticList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1041">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockCompanyList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="25" column="7" selection-start-line="17" selection-start-column="4" selection-end-line="25" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1569375337996" expanded="true" signature="4641:4647" ph="&amp;nbsp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/impl/FuturesDealDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="79" column="70" selection-start-line="79" selection-start-column="70" selection-end-line="79" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/service/FuturesDealDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStaticList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!block;n#angleUpper#0" expanded="false" />
+            <element signature="n#!!block;n#angleSock#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapper/FuturesDealDataMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-service/src/main/java/com/sky/mapping/FuturesDealDataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="190" column="13" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
+          <folding>
+            <element signature="e#14351#14355#0" expanded="true" />
+            <marker date="1571646052121" expanded="true" signature="5012:11458" ph="SELECT s.fut... futures_deal_data" />
+            <marker date="1571646052121" expanded="true" signature="13953:14071" ph="SELECT * FRO... futures_deal_data" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/java/com/sky/controller/StatisticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/stockOrderStatisticsList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="77" column="74" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/stockOrderStatisticsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="424" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/forexCycleStatisticsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="154" column="38" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/templates/page/futuresOrderStatisticsEchart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-api/src/main/java/com/sky/api/controller/StatisticsApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="684" column="22" selection-start-line="684" selection-start-column="12" selection-end-line="684" selection-end-column="22" />
+          <folding>
+            <element signature="e#32693#32724#0" expanded="true" />
+            <element signature="e#32992#33009#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-project-web/src/main/resources/static/js/page/futuresOrderStatisticsEchart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+          <folding>
+            <marker date="1571648870552" expanded="true" signature="1156:1180" ph="..." />
           </folding>
         </state>
       </provider>

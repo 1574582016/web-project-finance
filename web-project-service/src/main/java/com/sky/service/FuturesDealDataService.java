@@ -14,4 +14,6 @@ public interface FuturesDealDataService extends IService<FuturesDealData> {
     List<FuturesDealData> spiderFuturesDealData(Integer periodType , String futuresCode);
 
     List<SectorOrderStatic_VO> getFuturesOrderStaticList(String orderType , String startDay , String endDay);
+
+    List<FuturesDealData> getFuturesDealDataList(String futureCode ,String startDay , String endDay);
 }

@@ -175,4 +175,18 @@
             ORDER BY ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) DESC ,ROUND(a.twelveUpper/(a.twelveRise + a.twelveDown),2)  DESC
         </if>
     </select>
+
+    <select id="getFuturesDealDataList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM futures_deal_data
+        WHERE deal_period = 1
+        AND futures_code = #{futureCode}
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND SUBSTR(deal_time,6,2) >= SUBSTR(#{startDay},6,2)
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND SUBSTR(deal_time,6,2) &lt;= SUBSTR(#{endDay},6,2)
+        </if>
+    </select>
 </mapper>
