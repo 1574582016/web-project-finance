@@ -50,4 +50,9 @@ public class StockCompanyController {
         return "page/stockCompanyNoticeList";
     }
 
+    @RequestMapping("/stockSectorCompanyList")
+    public String stockSectorCompanyList(){
+        return "page/stockSectorCompanyList";
+    }
+
 }

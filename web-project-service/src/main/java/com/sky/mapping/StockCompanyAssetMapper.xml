@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockCompanyAssetMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockCompanyAsset">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="stock_code" property="stockCode"/>
+        <result column="publish_day" property="publishDay"/>
+        <result column="total_asset_debt" property="totalAssetDebt"/>
+        <result column="total_asset" property="totalAsset"/>
+        <result column="total_flow_asset" property="totalFlowAsset"/>
+        <result column="flow_currency_asset" property="flowCurrencyAsset"/>
+        <result column="flow_pay_asset" property="flowPayAsset"/>
+        <result column="flow_storage_asset" property="flowStorageAsset"/>
+        <result column="flow_bill_asset" property="flowBillAsset"/>
+        <result column="flow_other_bill" property="flowOtherBill"/>
+        <result column="flow_other_asset" property="flowOtherAsset"/>
+        <result column="total_unflow_asset" property="totalUnflowAsset"/>
+        <result column="unflow_fixed_asset" property="unflowFixedAsset"/>
+        <result column="unflow_build_project" property="unflowBuildProject"/>
+        <result column="unflow_invest_house" property="unflowInvestHouse"/>
+        <result column="unflow_stock_right" property="unflowStockRight"/>
+        <result column="unflow_long_bill" property="unflowLongBill"/>
+        <result column="unflow_sell_finacial" property="unflowSellFinacial"/>
+        <result column="unflow_intangible_asset" property="unflowIntangibleAsset"/>
+        <result column="unflow_company_reputation" property="unflowCompanyReputation"/>
+        <result column="unflow_prepaid_expenses" property="unflowPrepaidExpenses"/>
+        <result column="unflow_deferred_tax_asset" property="unflowDeferredTaxAsset"/>
+        <result column="unflow_other_asset" property="unflowOtherAsset"/>
+        <result column="total_debt" property="totalDebt"/>
+        <result column="total_flow_debt" property="totalFlowDebt"/>
+        <result column="flow_sort_loan" property="flowSortLoan"/>
+        <result column="flow_center_bank_loan" property="flowCenterBankLoan"/>
+        <result column="flow_same_company_loan" property="flowSameCompanyLoan"/>
+        <result column="flow_pay_bill" property="flowPayBill"/>
+        <result column="flow_advance_receive" property="flowAdvanceReceive"/>
+        <result column="flow_pay_salary" property="flowPaySalary"/>
+        <result column="flow_pay_tax" property="flowPayTax"/>
+        <result column="flow_pay_other" property="flowPayOther"/>
+        <result column="flow_sort_debt" property="flowSortDebt"/>
+        <result column="flow_other" property="flowOther"/>
+        <result column="total_unflow_debt" property="totalUnflowDebt"/>
+        <result column="unflow_long_loan" property="unflowLongLoan"/>
+        <result column="unflow_pay_long" property="unflowPayLong"/>
+        <result column="unflow_pay_salary" property="unflowPaySalary"/>
+        <result column="unflow_pay_special" property="unflowPaySpecial"/>
+        <result column="unflow_estimate_loan" property="unflowEstimateLoan"/>
+        <result column="unflow_deferred_profit" property="unflowDeferredProfit"/>
+        <result column="unflow_deferred_tax_debt" property="unflowDeferredTaxDebt"/>
+        <result column="unflow_other_debt" property="unflowOtherDebt"/>
+    </resultMap>
+</mapper>

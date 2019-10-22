@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.*;
+import com.sky.vo.CompanySectorVO;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -159,5 +161,38 @@ public class StockCompanyApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功",list));
     }
 
+    @LogRecord(name = "getStockCompanySectorList" ,description = "查询公司行业信息列表")
+    @PostMapping("/getStockCompanySectorList")
+    public Object getStockCompanySectorList(String stockCode ,
+                                            String stockName ,
+                                            String firstSector ,
+                                            String secondSector ,
+                                            String thirdSecotor ,
+                                            String forthSector ){
+        List<CompanySectorVO> list = stockCompanySectorService.getStockCompanySectorList(stockCode, stockName, firstSector, secondSector, thirdSecotor, forthSector);
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
+    }
+
+    @LogRecord(name = "getStockCompanySector" ,description = "查询企业行业数据")
+    @PostMapping("/getStockCompanySector")
+    public Object getStockCompanySector(String stockCode){
+        EntityWrapper<StockCompanySector> entityWrapper = new EntityWrapper();
+        entityWrapper.where("stock_code = {0}" , stockCode).and("isvalid = 1");
+        StockCompanySector stockCompanySector = stockCompanySectorService.selectOne(entityWrapper);
+        return ResponseEntity.ok(MapSuccess("查询成功",stockCompanySector));
+    }
+
+    @LogRecord(name = "editStockCompanySector" ,description = "查询企业行业数据")
+    @PostMapping("/editStockCompanySector")
+    public Object editStockCompanySector(String stockCode ,String fiveSector){
+        EntityWrapper<StockCompanySector> entityWrapper = new EntityWrapper();
+        entityWrapper.where("stock_code = {0}" , stockCode).and("isvalid = 1");
+        StockCompanySector stockCompanySector = stockCompanySectorService.selectOne(entityWrapper);
+        stockCompanySector.setFirstSector(fiveSector);
+        return ResponseEntity.ok(stockCompanySectorService.updateById(stockCompanySector) ? MapSuccess("操作成功") : MapError("操作失败"));
+    }
 
 }

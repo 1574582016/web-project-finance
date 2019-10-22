@@ -184,11 +184,14 @@ public class Test02 {
 
             BigDecimal unflowLongLoan = jsonObject.getBigDecimal("STBORROW");//长期借款
             BigDecimal unflowLongPay = jsonObject.getBigDecimal("STBORROW");//长期应付款
+
             BigDecimal unflowLongSalary = jsonObject.getBigDecimal("STBORROW");//长期应付职工薪酬
             BigDecimal unflowSpecialPay = jsonObject.getBigDecimal("STBORROW");//专项应付款
             BigDecimal unflowEstimateLoan = jsonObject.getBigDecimal("STBORROW");//预计负债
+
             BigDecimal unflowDeferredProfit = jsonObject.getBigDecimal("STBORROW");//递延收益
             BigDecimal unflowDeferredTaxDebt = jsonObject.getBigDecimal("STBORROW");//递延所得税负债
+
             BigDecimal unflowOherDebt = jsonObject.getBigDecimal("STBORROW");//其他非流动负债
 
             System.out.println(jsonObject.toString());

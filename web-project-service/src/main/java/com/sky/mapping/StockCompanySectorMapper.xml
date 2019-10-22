@@ -19,4 +19,123 @@
         <result column="company_intr" property="companyIntr"/>
         <result column="company_product" property="companyProduct"/>
     </resultMap>
+
+    <select id="getStockCompanySectorList" parameterType="java.lang.String" resultType="com.sky.vo.CompanySectorVO">
+        SELECT
+        a.forth_sector forthSector,
+        a.five_sector fiveSector,
+        a.stock_code stockCode,
+        a.stock_name stockName,
+        CONCAT(
+        CASE WHEN a.ZHONG = 6 THEN 'S'
+             WHEN a.ZHONG = 5 THEN 'A'
+             WHEN a.ZHONG = 4 THEN 'B'
+             WHEN a.ZHONG = 3 THEN 'C'
+             WHEN a.ZHONG = 2 THEN 'D'
+             WHEN a.ZHONG = 1 THEN 'E'
+             END,
+        CASE WHEN a.SHANG = 6 THEN 'S'
+             WHEN a.SHANG = 5 THEN 'A'
+             WHEN a.SHANG = 4 THEN 'B'
+             WHEN a.SHANG = 3 THEN 'C'
+             WHEN a.SHANG = 2 THEN 'D'
+             WHEN a.SHANG = 1 THEN 'E'
+             END,
+        CASE WHEN a.ZHONG_i = 6 THEN 'S'
+             WHEN a.ZHONG_i = 5 THEN 'A'
+             WHEN a.ZHONG_i = 4 THEN 'B'
+             WHEN a.ZHONG_i = 3 THEN 'C'
+             WHEN a.ZHONG_i = 2 THEN 'D'
+             WHEN a.ZHONG_i = 1 THEN 'E'
+             END,
+        CASE WHEN a.SHANG_i = 6 THEN 'S'
+             WHEN a.SHANG_i = 5 THEN 'A'
+             WHEN a.SHANG_i = 4 THEN 'B'
+             WHEN a.SHANG_i = 3 THEN 'C'
+             WHEN a.SHANG_i = 2 THEN 'D'
+             WHEN a.SHANG_i = 1 THEN 'E'
+             END
+        ) companyLevel,
+        a.company_name companyName,
+        a.company_region companyRegion,
+        a.establish_date establishDate,
+        a.publish_date publishDate ,
+        a.groupIndex
+        FROM(
+        SELECT
+        s.`stock_code` ,
+        s.`stock_name` ,
+        s.`first_sector` ,
+        s.`second_sector` ,
+        s.`third_secotor` ,
+        s.`forth_sector` ,
+        s.`five_sector` ,
+        MAX(CASE WHEN i.index_name = '中证超大' THEN '6'
+                 WHEN i.index_name = '中证100'  THEN '5'
+                 WHEN i.index_name = '中证200'  THEN '4'
+                 WHEN i.index_name = '中证500'  THEN '3'
+                 WHEN i.index_name = '中证1000'  THEN '2'
+                 WHEN i.index_name NOT REGEXP '中证超大|中证100|中证200|中证500|中证1000'  THEN '1'
+                 END) AS ZHONG,
+        MAX(CASE WHEN i.index_name = '上证50' THEN '6'
+                 WHEN i.index_name = '上证180' AND i.index_name != '上证50'  THEN '5'
+                 WHEN i.index_name = '上证100'  THEN '4'
+                 WHEN i.index_name = '上证380' AND i.index_name != '上证100'  THEN '3'
+                 WHEN i.index_name = '上证150'  THEN '2'
+                 WHEN i.index_name NOT REGEXP '上证50|上证180|上证100|上证380|上证150'  THEN '1'
+                 END) AS SHANG,
+        MAX(CASE WHEN i.index_name = 'CX基石' THEN '6'
+                 WHEN i.index_name = '中证龙头'  THEN '5'
+                 WHEN i.index_name REGEXP '价值'  THEN '4'
+                 WHEN i.index_name REGEXP '成长'  THEN '3'
+                 WHEN i.index_name NOT REGEXP 'CX基石|中证龙头|价值|成长'  THEN '1'
+                 END) AS ZHONG_i,
+        MAX(CASE WHEN i.index_name = '超大盘'   THEN '6'
+                 WHEN i.index_name = '上证龙头' THEN '5'
+                 WHEN i.index_name = '上证中盘' THEN '4'
+                 WHEN i.index_name = '上证小盘' THEN '3'
+                 WHEN i.index_name NOT REGEXP '超大盘|上证龙头|上证中盘|上证小盘'  THEN '1'
+                 END) AS SHANG_i,
+        REPLACE(c.`company_name`, '股份有限公司', '') company_name,
+        c.`company_region` ,
+        c.`establish_date` ,
+        c.`publish_date` ,
+        GROUP_CONCAT(i.index_name SEPARATOR '->') groupIndex
+        FROM stock_company_sector s
+        LEFT JOIN stock_company_base c ON s.`stock_code` = c.`stock_a_code`
+        LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
+        WHERE LEFT(s.`stock_code`,1) != 3
+        AND  LEFT(s.`stock_code`,2) != 68
+        <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
+            AND s.`first_sector` = #{firstSector}
+        </if>
+        <if test="secondSector != null and secondSector != '' and secondSector != 'undefined'">
+            AND s.`second_sector` = #{secondSector}
+        </if>
+        <if test="thirdSecotor != null and thirdSecotor != '' and thirdSecotor != 'undefined'">
+            AND s.`third_secotor` = #{thirdSecotor}
+        </if>
+        <if test="forthSector != null and forthSector != '' and forthSector != 'undefined'">
+            AND s.`forth_sector` = #{forthSector}
+        </if>
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND s.`stock_code` REGEXP #{stockCode}
+        </if>
+        <if test="stockName != null and stockName != '' and stockName != 'undefined'">
+            AND s.`stock_name` REGEXP #{stockName}
+        </if>
+        GROUP BY s.`stock_code`
+        ORDER BY s.`first_sector` ,
+        s.`second_sector` ,
+        s.`third_secotor` ,
+        s.`forth_sector` ,
+        s.`five_sector`
+        ) a
+        ORDER BY a.`first_sector` ,
+        a.`second_sector` ,
+        a.`third_secotor` ,
+        a.`forth_sector` ,
+        a.five_sector,
+        CONCAT(a.ZHONG,a.SHANG,a.ZHONG_i,a.SHANG_i) DESC
+    </select>
 </mapper>
