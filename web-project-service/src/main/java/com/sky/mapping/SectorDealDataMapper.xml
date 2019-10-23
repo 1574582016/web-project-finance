@@ -320,7 +320,7 @@
         SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 12 THEN s.close_price - s.open_price END) AS twelveUpper ,
         SUM(CASE WHEN SUBSTR(s.deal_time ,6,2) = 12 THEN s.high_price - s.low_price END) AS twelveShock
         FROM sector_deal_data s
-        LEFT JOIN stock_market_class c ON s.sector_code = LEFT(c.class_code,LENGTH(c.class_code) - 1) AND c.class_type = '行业板块'
+        LEFT JOIN stock_market_class c ON s.sector_code = c.class_code AND c.class_type = '行业板块'
         WHERE s.isvalid = 1
         AND s.deal_period = 3
         <if test="startDay != null and startDay != '' and startDay != 'undefined'">
