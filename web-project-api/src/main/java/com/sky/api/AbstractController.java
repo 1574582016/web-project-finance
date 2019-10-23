@@ -140,4 +140,10 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected StockCompanySectorService stockCompanySectorService;
+
+    @Autowired
+    protected StockCompanyProfitService stockCompanyProfitService;
+
+    @Autowired
+    protected StockCompanyAssetService stockCompanyAssetService;
 }

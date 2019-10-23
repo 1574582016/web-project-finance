@@ -3,17 +3,25 @@ package com.sky;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.sky.core.utils.CommonHttpUtil;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.core.utils.Tools;
 import com.sky.model.ForexNewsStatictis;
+import com.sky.model.StockCompanyAsset;
+import com.sky.model.StockCompanyProfit;
+import com.sky.model.StockCompanySector;
+import com.sky.service.StockCompanyAssetService;
+import com.sky.service.StockCompanyProfitService;
+import com.sky.service.StockCompanySectorService;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -29,6 +37,15 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Test02 {
+
+    @Autowired
+    private StockCompanySectorService stockCompanySectorService;
+
+    @Autowired
+    private StockCompanyProfitService stockCompanyProfitService ;
+
+    @Autowired
+    private StockCompanyAssetService stockCompanyAssetService;
 
     @Test
     public void test(){
@@ -74,23 +91,32 @@ public class Test02 {
     }
 
     @Test
-    public void test02(){
-        for(int x = 0 ; x < 20 ; x ++){
-            System.out.println(DateUtils.format(DateUtils.addYears(new Date(),-1 * x),"yyyy"));
-            String url = "http://f10.eastmoney.com/NewFinanceAnalysis/lrbAjax?companyType=4&reportDateType=0&reportType=1&endDate="+ DateUtils.format(DateUtils.addYears(new Date(),-1 * x),"yyyy") +"%2F6%2F30+0%3A00%3A00&code=SZ000333";
-            String jsStr = CommonHttpUtil.sendGet(url);
-            if(StringUtils.isNotBlank(jsStr)&& !jsStr.equals("\"null\"")){
-                jsStr = jsStr.replace("\\","");
-                jsStr = jsStr.substring(1,jsStr.length()-1);
-                JSONArray jsonArray = JSON.parseArray(jsStr);
-                for(int i = 0 ; i < jsonArray.size() ; i++){
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    System.out.println(jsonObject.getString("REPORTDATE"));
+    public void test02() throws InterruptedException {
+        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
+        for(StockCompanySector sector : list){
+            for(int x = 0 ; x < 50 ; x ++){
+                boolean just = stockCompanyProfitService.spiderStockCompanyProfit(sector.getStockCode() , x);
+                if(just){
+                    Thread.sleep(300);
+                }else{
+                    break;
                 }
-            }else{
-                break;
             }
+        }
+    }
 
+    @Test
+    public void test0202() throws InterruptedException {
+        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
+        for(StockCompanySector sector : list){
+            for(int x = 0 ; x < 50 ; x ++){
+                boolean just = stockCompanyAssetService.spiderStockCompanyAsset(sector.getStockCode() , x);
+                if(just){
+                    Thread.sleep(300);
+                }else{
+                    break;
+                }
+            }
         }
     }
 
@@ -101,18 +127,31 @@ public class Test02 {
             jsStr = jsStr.replace("\\","");
             jsStr = jsStr.substring(1,jsStr.length()-1);
             JSONArray jsonArray = JSON.parseArray(jsStr);
+            List<StockCompanyProfit> profitList = new ArrayList<>();
             for(int i = 0 ; i < jsonArray.size() ; i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                BigDecimal totalIncome = jsonObject.getBigDecimal("TOTALOPERATEREVE");//总收入
-                BigDecimal businessIncome = jsonObject.getBigDecimal("OPERATEREVE");//营业收入
-                BigDecimal totalCost = jsonObject.getBigDecimal("TOTALOPERATEEXP");//总成本
-                BigDecimal businessCost = jsonObject.getBigDecimal("OPERATEEXP");//营业成本
-                BigDecimal totalRevenue = jsonObject.getBigDecimal("OPERATEPROFIT");//营业利润 + 其他营业利润
-                BigDecimal otherTotalRevenue = jsonObject.getBigDecimal("SUMPROFIT");//营业利润 + 其他营业利润 + 其他收入利润
-                BigDecimal taxMoney = jsonObject.getBigDecimal("INCOMETAX");//扣税金额
-                BigDecimal belongProfit = jsonObject.getBigDecimal("PARENTNETPROFIT");//扣除其他利润分配后，归属公司利润
-                BigDecimal lastProfit = jsonObject.getBigDecimal("KCFJCXSYJLR");//扣税损益后，最终的剩余利润
-                System.out.println(jsonObject.toString());
+                String publishDay = jsonObject.getString("REPORTDATE");//发布日期
+                String totalIncome = jsonObject.getString("TOTALOPERATEREVE");//总收入
+                String businessIncome = jsonObject.getString("OPERATEREVE");//营业收入
+                String totalCost = jsonObject.getString("TOTALOPERATEEXP");//总成本
+                String businessCost = jsonObject.getString("OPERATEEXP");//营业成本
+                String totalRevenue = jsonObject.getString("OPERATEPROFIT");//营业利润 + 其他营业利润
+                String otherTotalRevenue = jsonObject.getString("SUMPROFIT");//营业利润 + 其他营业利润 + 其他收入利润
+                String taxMoney = jsonObject.getString("INCOMETAX");//扣税金额
+                String belongProfit = jsonObject.getString("PARENTNETPROFIT");//扣除其他利润分配后，归属公司利润
+                String lastProfit = jsonObject.getString("KCFJCXSYJLR");//扣税损益后，最终的剩余利润
+                StockCompanyProfit profit = new StockCompanyProfit();
+                profit.setPublishDay(publishDay);
+                profit.setTotalIncome(totalIncome);
+                profit.setBusinessIncome(businessIncome);
+                profit.setTotalCost(totalCost);
+                profit.setBusinessCost(businessCost);
+                profit.setTotalProfit(otherTotalRevenue);
+                profit.setBusinessTotalProfit(totalRevenue);
+                profit.setIncomeTax(taxMoney);
+                profit.setBelongProfit(belongProfit);
+                profit.setFinalProfit(lastProfit);
+                profitList.add(profit);
             }
     }
 
@@ -125,77 +164,153 @@ public class Test02 {
         JSONArray jsonArray = JSON.parseArray(jsStr);
         for(int i = 0 ; i < jsonArray.size() ; i++){
             JSONObject jsonObject = jsonArray.getJSONObject(i);
+            StockCompanyAsset asset = new StockCompanyAsset();
             String publishDay = jsonObject.getString("REPORTDATE");//发布日期
-            BigDecimal totalAssetDebt = jsonObject.getBigDecimal("SUMLIABSHEQUITY");//总资产负债
+            String totalAssetDebt = jsonObject.getString("SUMLIABSHEQUITY");//总资产负债
             //资产
-            BigDecimal totalAssets = jsonObject.getBigDecimal("SUMASSET");//总资产
+            String totalAssets = jsonObject.getString("SUMASSET");//总资产
             //流动资产
-            BigDecimal totalFlowAssets = jsonObject.getBigDecimal("SUMLASSET");//总流动资产
+            String totalFlowAssets = jsonObject.getString("SUMLASSET");//总流动资产
 
-            BigDecimal flowAssetCurrency = jsonObject.getBigDecimal("MONETARYFUND");//货币资产
-            BigDecimal flowAssetPay = jsonObject.getBigDecimal("ADVANCEPAY");//预付款资产
-            BigDecimal flowAssetStorage = jsonObject.getBigDecimal("INVENTORY");//库存资产
+            String flowAssetCurrency = jsonObject.getString("MONETARYFUND");//货币资产
+            String flowAssetPay = jsonObject.getString("ADVANCEPAY");//预付款资产
+            String flowAssetStorage = jsonObject.getString("INVENTORY");//库存资产
 
-            BigDecimal flowAssetBill = jsonObject.getBigDecimal("ACCOUNTBILLREC");//应收账款资产
-            BigDecimal flowAssetOherBill = jsonObject.getBigDecimal("OTHERREC");//其他应收账款资产
+            String flowAssetBill = jsonObject.getString("ACCOUNTBILLREC");//应收账款资产
+            String flowAssetOherBill = jsonObject.getString("OTHERREC");//其他应收账款资产
 
-            BigDecimal flowAssetOther = jsonObject.getBigDecimal("OTHERLASSET");//其他资产
+            String flowAssetOther = jsonObject.getString("OTHERLASSET");//其他资产
+
+            asset.setPublishDay(publishDay);
+            asset.setTotalAssetDebt(totalAssetDebt);
+            asset.setTotalAsset(totalAssets);
+            asset.setTotalFlowAsset(totalFlowAssets);
+            asset.setFlowCurrencyAsset(flowAssetCurrency);
+            asset.setFlowPayAsset(flowAssetPay);
+            asset.setFlowStorageAsset(flowAssetStorage);
+            asset.setFlowBillAsset(flowAssetBill);
+            asset.setFlowOtherBill(flowAssetOherBill);
+            asset.setFlowOtherAsset(flowAssetOther);
+
             //非流动资产
-            BigDecimal totalUnFlowAssets = jsonObject.getBigDecimal("SUMNONLASSET");//非流动总资产
+            String totalUnFlowAssets = jsonObject.getString("SUMNONLASSET");//非流动总资产
 
-            BigDecimal unflowFixedAssets = jsonObject.getBigDecimal("FIXEDASSET");//固定资产
-            BigDecimal unflowBuildProduct = jsonObject.getBigDecimal("CONSTRUCTIONPROGRESS");//在建工程
-            BigDecimal unflowHouse = jsonObject.getBigDecimal("ESTATEINVEST");//投资型房地产
+            String unflowFixedAssets = jsonObject.getString("FIXEDASSET");//固定资产
+            String unflowBuildProduct = jsonObject.getString("CONSTRUCTIONPROGRESS");//在建工程
+            String unflowHouse = jsonObject.getString("ESTATEINVEST");//投资型房地产
 
-            BigDecimal unflowStockRight = jsonObject.getBigDecimal("LTEQUITYINV");//长期股权投资
-            BigDecimal unflowLongBill = jsonObject.getBigDecimal("LTREC");//长期应收款
-            BigDecimal unflowFinacial = jsonObject.getBigDecimal("SALEABLEFASSET");//可供出售金融资产
+            String unflowStockRight = jsonObject.getString("LTEQUITYINV");//长期股权投资
+            String unflowLongBill = jsonObject.getString("LTREC");//长期应收款
+            String unflowFinacial = jsonObject.getString("SALEABLEFASSET");//可供出售金融资产
 
-            BigDecimal unflowIntangible = jsonObject.getBigDecimal("INTANGIBLEASSET");//无形资产
-            BigDecimal unflowReputation = jsonObject.getBigDecimal("GOODWILL");//商誉
+            String unflowIntangible = jsonObject.getString("INTANGIBLEASSET");//无形资产
+            String unflowReputation = jsonObject.getString("GOODWILL");//商誉
 
-            BigDecimal unflowPrepaidExpenses = jsonObject.getBigDecimal("LTDEFERASSET");//长期待摊费用
-            BigDecimal unflowDeferredTax = jsonObject.getBigDecimal("DEFERINCOMETAXASSET");//递延所得税资产
+            String unflowPrepaidExpenses = jsonObject.getString("LTDEFERASSET");//长期待摊费用
+            String unflowDeferredTax = jsonObject.getString("DEFERINCOMETAXASSET");//递延所得税资产
 
-            BigDecimal unflowOher = jsonObject.getBigDecimal("OTHERNONLASSET");//其他非流动资产
+            String unflowOher = jsonObject.getString("OTHERNONLASSET");//其他非流动资产
+
+
+            asset.setTotalUnflowAsset(totalUnFlowAssets);
+            asset.setUnflowFixedAsset(unflowFixedAssets);
+            asset.setUnflowBuildProject(unflowBuildProduct);
+            asset.setUnflowInvestHouse(unflowHouse);
+            asset.setUnflowStockRight(unflowStockRight);
+            asset.setUnflowLongBill(unflowLongBill);
+            asset.setUnflowSellFinacial(unflowFinacial);
+            asset.setUnflowIntangibleAsset(unflowIntangible);
+            asset.setUnflowCompanyReputation(unflowReputation);
+            asset.setUnflowPrepaidExpenses(unflowPrepaidExpenses);
+            asset.setUnflowDeferredTaxAsset(unflowDeferredTax);
+            asset.setUnflowOtherAsset(unflowOher);
 
             //负债
-            BigDecimal totalDebt = jsonObject.getBigDecimal("SUMLIAB");//总负债
+            String totalDebt = jsonObject.getString("SUMLIAB");//总负债
             //流动负债
-            BigDecimal totalFlowDebt = jsonObject.getBigDecimal("SUMLLIAB");//总流动负债
+            String totalFlowDebt = jsonObject.getString("SUMLLIAB");//总流动负债
 
-            BigDecimal flowSortLoan = jsonObject.getBigDecimal("STBORROW");//短期借款
-            BigDecimal flowCenterLoan = jsonObject.getBigDecimal("BORROWFROMCBANK");//向中央银行借款
-            BigDecimal flowSameCompanyLoan = jsonObject.getBigDecimal("DEPOSIT");//吸收存款及同业存放
+            String flowSortLoan = jsonObject.getString("STBORROW");//短期借款
+            String flowCenterLoan = jsonObject.getString("BORROWFROMCBANK");//向中央银行借款
+            String flowSameCompanyLoan = jsonObject.getString("DEPOSIT");//吸收存款及同业存放
 
-            BigDecimal flowBill = jsonObject.getBigDecimal("ACCOUNTBILLPAY");//应付票据及应付账款
-            BigDecimal flowReceive = jsonObject.getBigDecimal("ADVANCERECEIVE");//预收款项
+            String flowBill = jsonObject.getString("ACCOUNTBILLPAY");//应付票据及应付账款
+            String flowReceive = jsonObject.getString("ADVANCERECEIVE");//预收款项
 
-            BigDecimal flowSalary = jsonObject.getBigDecimal("SALARYPAY");//应付职工薪酬
-            BigDecimal flowTax = jsonObject.getBigDecimal("TAXPAY");//应交税费
-            BigDecimal flowOherPay = jsonObject.getBigDecimal("OTHERPAY");//其他应付款合计
+            String flowSalary = jsonObject.getString("SALARYPAY");//应付职工薪酬
+            String flowTax = jsonObject.getString("TAXPAY");//应交税费
+            String flowOherPay = jsonObject.getString("OTHERPAY");//其他应付款合计
 
-            BigDecimal flowSoonDeadLine = jsonObject.getBigDecimal("NONLLIABONEYEAR");//一年内到期的非流动负债
-            BigDecimal flowOher = jsonObject.getBigDecimal("OTHERLLIAB");//其他流动负债
+            String flowSoonDeadLine = jsonObject.getString("NONLLIABONEYEAR");//一年内到期的非流动负债
+            String flowOher = jsonObject.getString("OTHERLLIAB");//其他流动负债
+
+
+            asset.setTotalDebt(totalDebt);
+            asset.setTotalFlowDebt(totalFlowDebt);
+            asset.setFlowSortLoan(flowSortLoan);
+            asset.setFlowCenterBankLoan(flowCenterLoan);
+            asset.setFlowSameCompanyLoan(flowSameCompanyLoan);
+            asset.setFlowPayBill(flowBill);
+            asset.setFlowAdvanceReceive(flowReceive);
+            asset.setFlowPaySalary(flowSalary);
+            asset.setFlowPayTax(flowTax);
+            asset.setFlowPayOther(flowOherPay);
+            asset.setFlowSortDebt(flowSoonDeadLine);
+            asset.setFlowOther(flowOher);
 
             //非流动负债
-            BigDecimal totalUnFlowDebt = jsonObject.getBigDecimal("SUMNONLLIAB");//总非流动负债
+            String totalUnFlowDebt = jsonObject.getString("SUMNONLLIAB");//总非流动负债
 
+            String unflowLongLoan = jsonObject.getString("STBORROW");//长期借款
+            String unflowLongPay = jsonObject.getString("STBORROW");//长期应付款
 
-            BigDecimal unflowLongLoan = jsonObject.getBigDecimal("STBORROW");//长期借款
-            BigDecimal unflowLongPay = jsonObject.getBigDecimal("STBORROW");//长期应付款
+            String unflowLongSalary = jsonObject.getString("STBORROW");//长期应付职工薪酬
+            String unflowSpecialPay = jsonObject.getString("STBORROW");//专项应付款
+            String unflowEstimateLoan = jsonObject.getString("STBORROW");//预计负债
 
-            BigDecimal unflowLongSalary = jsonObject.getBigDecimal("STBORROW");//长期应付职工薪酬
-            BigDecimal unflowSpecialPay = jsonObject.getBigDecimal("STBORROW");//专项应付款
-            BigDecimal unflowEstimateLoan = jsonObject.getBigDecimal("STBORROW");//预计负债
+            String unflowDeferredProfit = jsonObject.getString("STBORROW");//递延收益
+            String unflowDeferredTaxDebt = jsonObject.getString("STBORROW");//递延所得税负债
 
-            BigDecimal unflowDeferredProfit = jsonObject.getBigDecimal("STBORROW");//递延收益
-            BigDecimal unflowDeferredTaxDebt = jsonObject.getBigDecimal("STBORROW");//递延所得税负债
+            String unflowOherDebt = jsonObject.getString("STBORROW");//其他非流动负债
 
-            BigDecimal unflowOherDebt = jsonObject.getBigDecimal("STBORROW");//其他非流动负债
-
+            asset.setTotalUnflowDebt(totalUnFlowDebt);
+            asset.setUnflowLongLoan(unflowLongLoan);
+            asset.setUnflowPayLong(unflowLongPay);
+            asset.setUnflowPaySalary(unflowLongSalary);
+            asset.setUnflowPaySpecial(unflowSpecialPay);
+            asset.setUnflowEstimateLoan(unflowEstimateLoan);
+            asset.setUnflowDeferredProfit(unflowDeferredProfit);
+            asset.setUnflowDeferredTaxDebt(unflowDeferredTaxDebt);
+            asset.setUnflowOtherDebt(unflowOherDebt);
             System.out.println(jsonObject.toString());
         }
+    }
+
+    @Test
+    public void test05(){
+        String url = "http://f10.eastmoney.com/NewFinanceAnalysis/xjllbAjax?companyType=4&reportDateType=0&reportType=1&endDate=&code=SZ000333";
+        String jsStr = CommonHttpUtil.sendGet(url);
+        jsStr = jsStr.replace("\\","");
+        jsStr = jsStr.substring(1,jsStr.length()-1);
+        JSONArray jsonArray = JSON.parseArray(jsStr);
+        for(int i = 0 ; i < jsonArray.size() ; i++){
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+//            BigDecimal totalIncome = jsonObject.getBigDecimal("TOTALOPERATEREVE");//总收入
+//            BigDecimal businessIncome = jsonObject.getBigDecimal("OPERATEREVE");//营业收入
+//            BigDecimal totalCost = jsonObject.getBigDecimal("TOTALOPERATEEXP");//总成本
+//            BigDecimal businessCost = jsonObject.getBigDecimal("OPERATEEXP");//营业成本
+//            BigDecimal totalRevenue = jsonObject.getBigDecimal("OPERATEPROFIT");//营业利润 + 其他营业利润
+//            BigDecimal otherTotalRevenue = jsonObject.getBigDecimal("SUMPROFIT");//营业利润 + 其他营业利润 + 其他收入利润
+//            BigDecimal taxMoney = jsonObject.getBigDecimal("INCOMETAX");//扣税金额
+//            BigDecimal belongProfit = jsonObject.getBigDecimal("PARENTNETPROFIT");//扣除其他利润分配后，归属公司利润
+//            BigDecimal lastProfit = jsonObject.getBigDecimal("KCFJCXSYJLR");//扣税损益后，最终的剩余利润
+            System.out.println(jsonObject.toString());
+        }
+    }
+
+    @Test
+    public void test07(){
+        System.out.println(DateUtils.getYear());
     }
 
 /**

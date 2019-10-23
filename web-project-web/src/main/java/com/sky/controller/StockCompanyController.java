@@ -51,8 +51,26 @@ public class StockCompanyController {
     }
 
     @RequestMapping("/stockSectorCompanyList")
-    public String stockSectorCompanyList(){
+    public String stockSectorCompanyList(Model model ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector){
+        model.addAttribute("stockCode" , stockCode);
+        model.addAttribute("stockName" , stockName);
+        model.addAttribute("firstSector" , firstSector);
+        model.addAttribute("secondSector" , secondSector);
+        model.addAttribute("thirdSecotor" , thirdSecotor);
+        model.addAttribute("forthSector" , forthSector);
         return "page/stockSectorCompanyList";
+    }
+
+    @RequestMapping("/stockCompanyFinancial")
+    public String stockCompanyFinancial(Model model ,String stock_code ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector){
+        model.addAttribute("stock_code" , stock_code);
+        model.addAttribute("stockCode" , stockCode);
+        model.addAttribute("stockName" , stockName);
+        model.addAttribute("firstSector" , firstSector);
+        model.addAttribute("secondSector" , secondSector);
+        model.addAttribute("thirdSecotor" , thirdSecotor);
+        model.addAttribute("forthSector" , forthSector);
+        return "page/stockCompanyFinancial";
     }
 
 }

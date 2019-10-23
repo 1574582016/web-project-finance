@@ -107,7 +107,8 @@ $(function () {
                 formatter: function (value, row, index) {
                     var btn = "";
                     btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="edit(\'' + row.stockCode + '\')">修改</button>';
-                    btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.stockCode + '\')">修改</button>';
+                    btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.stockCode + '\')">查看</button>';
+                    return btn
                 }
             }
         ]
@@ -123,7 +124,7 @@ $(function () {
     $("#submitDataButton").click(function () {
         var stockCode = $("#stockCode").val();
         var fiveSector = $("#fiveSector").val();
-        $.APIPost("/api/stock/editStockCompanySector?stockCode=" + stockCode + "&fiveSector=" + fiveSector,function (data) {
+        $.APIPost("/api/stock/editStockCompanySector?stockCode=" + stockCode + "&fiveSector=" + fiveSector + "&mainBusiness=" + mainBusiness,function (data) {
             if(data.success){
                     hideModal("myModal");
                 window.parent.showSuccessAlert(data.message,function () {
@@ -158,6 +159,8 @@ function edit(stockCode) {
             $("#stockName").val(data.data.result.stockName);
             $("#forthSector").val(data.data.result.forthSector);
             $("#fiveSector").val(data.data.result.fiveSector);
+            $("#mainBusiness").val(data.data.result.mainBusiness);
+            $("#companyDscr").html(data.data.result.companyIntr + data.data.result.companyProduct);
         });
     });
 }

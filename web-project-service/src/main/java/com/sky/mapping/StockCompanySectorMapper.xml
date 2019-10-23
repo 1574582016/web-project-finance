@@ -16,6 +16,8 @@
         <result column="second_sector" property="secondSector"/>
         <result column="third_secotor" property="thirdSecotor"/>
         <result column="forth_sector" property="forthSector"/>
+        <result column="five_sector" property="fiveSector"/>
+        <result column="main_business" property="mainBusiness"/>
         <result column="company_intr" property="companyIntr"/>
         <result column="company_product" property="companyProduct"/>
     </resultMap>

@@ -7,4 +7,6 @@ import com.sky.model.StockCompanyAsset;
  * Created by ThinkPad on 2019/10/22.
  */
 public interface StockCompanyAssetService extends IService<StockCompanyAsset> {
+
+    boolean spiderStockCompanyAsset(String stockCode ,Integer page);
 }
