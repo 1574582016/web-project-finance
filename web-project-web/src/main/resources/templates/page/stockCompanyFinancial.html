@@ -10,7 +10,13 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body style="padding: 20px;">
-
+<input type="hidden" id="stock_code" th:value="${stock_code}">
+<input type="hidden" id="stockCode" th:value="${stockCode}">
+<input type="hidden" id="stockName" th:value="${stockName}">
+<input type="hidden" id="firstSector" th:value="${firstSector}">
+<input type="hidden" id="secondSector" th:value="${secondSector}">
+<input type="hidden" id="thirdSecotor" th:value="${thirdSecotor}">
+<input type="hidden" id="forthSector" th:value="${forthSector}">
 <ul id="myTab" class="nav nav-tabs">
     <li class="active">
         <a href="#home" data-toggle="tab">
@@ -23,11 +29,42 @@
 </ul>
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade in active" id="home">
-        <p>菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。</p>
+        <div class="panel panel-default search-list-panel"  style="margin-top: 20px;margin-bottom: 20px;">
+            <div id="collapseBox" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <table class="table table-bordered" style="margin-bottom:0px;">
+                        <tr>
+                            <td style="width: 10%;">利润总评分</td>
+                            <td id="total_profit_score"></td>
+                            <td style="width: 10%;">利润增长评分</td>
+                            <td id="profit_grow_score"></td>
+                            <td style="width: 10%;">利润归属评分</td>
+                            <td id="profit_belong_score"></td>
+                            <td style="width: 10%;">利润划出评分</td>
+                            <td id="profit_other_score"></td>
+                        </tr>
+                        <tr>
+                            <td>利润总评级</td>
+                            <td id="total_profit_levle" style="color: red"></td>
+                            <td>利润增长评级</td>
+                            <td id="profit_grow_levle" style="color: red"></td>
+                            <td>利润归属评级</td>
+                            <td id="profit_belong_levle" style="color: red"></td>
+                            <td>利润划出评级</td>
+                            <td id="profit_other_levle" style="color: red"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="mainProfit" style="width:100%;height:400px;"></div>
     </div>
     <div class="tab-pane fade" id="profit">
-        <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
-            TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
+        <div id="profitGrowMain" style="width:100%;height:400px;"></div>
+        <div id="profitSeasonMain" style="width:100%;height:400px;"></div>
+        <div id="profitBelongMain" style="width:100%;height:400px;"></div>
+        <div id="profitOperateRelation" style="width:100%;height:400px;"></div>
+        <div id="profitGrowRate" style="width:100%;height:400px;"></div>
     </div>
     <div class="tab-pane fade" id="asset">
         <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
@@ -37,14 +74,6 @@
         </p>
     </div>
 </div>
-
-<div id="main" style="width:100%;height:400px;"></div>
-
-<div id="weekBar" style="width:100%;height:400px;"></div>
-
-<div id="dayBar" style="width:100%;height:400px;"></div>
-
-<div id="timeBar" style="width:100%;height:400px;"></div>
 
 </body>
 <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>

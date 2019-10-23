@@ -49,6 +49,18 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
     private String forthSector ;
 
     /**
+     *五级行业
+     */
+    @TableField("five_sector")
+    private String fiveSector ;
+
+    /**
+     *主营业务
+     */
+    @TableField("main_business")
+    private String mainBusiness ;
+
+    /**
      *公司简介
      */
     @TableField("company_intr")

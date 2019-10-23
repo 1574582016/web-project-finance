@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.core.utils.DateUtils;
 import com.sky.model.*;
 import com.sky.vo.CompanySectorVO;
+import com.sky.vo.StockCompanyProfitVO;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +18,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by ThinkPad on 2019/5/10.
@@ -187,12 +186,212 @@ public class StockCompanyApiController extends AbstractController {
 
     @LogRecord(name = "editStockCompanySector" ,description = "查询企业行业数据")
     @PostMapping("/editStockCompanySector")
-    public Object editStockCompanySector(String stockCode ,String fiveSector){
+    public Object editStockCompanySector(String stockCode ,String fiveSector ,String mainBusiness){
         EntityWrapper<StockCompanySector> entityWrapper = new EntityWrapper();
         entityWrapper.where("stock_code = {0}" , stockCode).and("isvalid = 1");
         StockCompanySector stockCompanySector = stockCompanySectorService.selectOne(entityWrapper);
-        stockCompanySector.setFirstSector(fiveSector);
+        stockCompanySector.setFiveSector(fiveSector);
+        stockCompanySector.setMainBusiness(mainBusiness);
         return ResponseEntity.ok(stockCompanySectorService.updateById(stockCompanySector) ? MapSuccess("操作成功") : MapError("操作失败"));
+    }
+
+    @LogRecord(name = "getCompanyProfitGrowList" ,description = "查询企业利润数据")
+    @PostMapping("/getCompanyProfitGrowList")
+    public Object getCompanyProfitGrowList(String stockCode ,String season){
+        List<StockCompanyProfitVO> list = stockCompanyProfitService.getCompanyProfitGrowList(stockCode);
+        List<String> title = new ArrayList<>();
+
+        List<BigDecimal> totalProfit = new ArrayList<>();
+        List<BigDecimal> operateCost = new ArrayList<>();
+        List<BigDecimal> belongProfit = new ArrayList<>();
+        List<BigDecimal> mainBusinessProfit = new ArrayList<>();
+        List<BigDecimal> viceBusinessProfit = new ArrayList<>();
+        List<BigDecimal> otherProfit = new ArrayList<>();
+
+        List<BigDecimal> firstProfitRate = new ArrayList<>();
+        List<BigDecimal> secondProfitRate = new ArrayList<>();
+        List<BigDecimal> threeProfitRate = new ArrayList<>();
+        List<BigDecimal> forthtProfitRate = new ArrayList<>();
+
+        List<BigDecimal> operateProfitRate = new ArrayList<>();
+        List<BigDecimal> belongProfitRate = new ArrayList<>();
+        List<BigDecimal> finalProfitRate = new ArrayList<>();
+        List<BigDecimal> otherCompanyProfitRate = new ArrayList<>();
+
+        List<BigDecimal> totalProfitGrowRate = new ArrayList<>();
+        List<BigDecimal> mainBusinessProfitRate = new ArrayList<>();
+
+        for(StockCompanyProfitVO profit : list){
+            title.add(profit.getPublishYear());
+            totalProfit.add(profit.getTotalProfit());
+            mainBusinessProfit.add(profit.getMainBusinessProfit());
+            viceBusinessProfit.add(profit.getViceBusinessProfit());
+            otherProfit.add(profit.getOtherProfit());
+
+            operateCost.add(profit.getOperateCost());
+            belongProfit.add(profit.getBelongProfit());
+
+            firstProfitRate.add(profit.getFirstProfitRate());
+            secondProfitRate.add(profit.getSecondProfitRate());
+            threeProfitRate.add(profit.getThreeProfitRate());
+            forthtProfitRate.add(profit.getForthtProfitRate());
+
+            operateProfitRate.add(profit.getOperateProfitRate());
+            belongProfitRate.add(profit.getBelongProfitRate());
+            finalProfitRate.add(profit.getFinalProfitRate());
+            otherCompanyProfitRate.add(BigDecimal.valueOf(100).subtract(profit.getOperateProfitRate()).subtract(profit.getFinalProfitRate()).setScale(2,BigDecimal.ROUND_HALF_UP));
+
+            totalProfitGrowRate.add(profit.getTotalProfitGrowRate());
+            mainBusinessProfitRate.add(profit.getMainBusinessProfitRate());
+        }
+
+        JSONObject jsonObject = stockCompanyProfitLevel(list);
+
+        Map<String,Object> resultMap = new HashedMap();
+        resultMap.put("title",title);
+        resultMap.put("totalProfit",totalProfit);
+        resultMap.put("mainBusinessProfit",mainBusinessProfit);
+        resultMap.put("viceBusinessProfit",viceBusinessProfit);
+        resultMap.put("otherProfit",otherProfit);
+
+        resultMap.put("operateCost",operateCost);
+        resultMap.put("belongProfit",belongProfit);
+
+        resultMap.put("firstProfitRate",firstProfitRate);
+        resultMap.put("secondProfitRate",secondProfitRate);
+        resultMap.put("threeProfitRate",threeProfitRate);
+        resultMap.put("forthtProfitRate",forthtProfitRate);
+
+        resultMap.put("operateProfitRate",operateProfitRate);
+        resultMap.put("belongProfitRate",belongProfitRate);
+        resultMap.put("finalProfitRate",finalProfitRate);
+        resultMap.put("otherCompanyProfitRate",otherCompanyProfitRate);
+
+        resultMap.put("totalProfitGrowRate",totalProfitGrowRate);
+        resultMap.put("mainBusinessProfitRate",mainBusinessProfitRate);
+        resultMap.put("profitLevel",jsonObject);
+        return ResponseEntity.ok(MapSuccess("操作成功",resultMap));
+    }
+
+
+    private JSONObject stockCompanyProfitLevel(List<StockCompanyProfitVO> list){
+        String nowYear = DateUtils.getYear();
+        String sixYear = Integer.parseInt(nowYear) - 6 + "";
+        String fiveYear = Integer.parseInt(nowYear) - 5 + "";
+        String fourYear = Integer.parseInt(nowYear) - 4 + "";
+        String threeYear = Integer.parseInt(nowYear) - 3 + "";
+        String twoYear = Integer.parseInt(nowYear) - 2 + "";
+        String oneYear = Integer.parseInt(nowYear) - 1 + "";
+
+        int totalIsGrow = 0;
+        int totalIsBelong = 0;
+        int totalBelongOther = 0;
+        int num = 0;
+        for(StockCompanyProfitVO profit : list){
+            if(sixYear.equals(profit.getPublishYear()) ||
+                    fiveYear.equals(profit.getPublishYear()) ||
+                    fourYear.equals(profit.getPublishYear()) ||
+                    threeYear.equals(profit.getPublishYear()) ||
+                    twoYear.equals(profit.getPublishYear()) ||
+                    oneYear.equals(profit.getPublishYear())
+                    ){
+                if(profit.getIsGrow() == 1){
+                    totalIsGrow += 1;
+                }
+                if(profit.getIsBelong() == 1){
+                    totalIsBelong += 1;
+                }
+                if(profit.getBelongOther() == 1){
+                    totalBelongOther += 1;
+                }
+                num +=1;
+            }
+        }
+
+        JSONObject jsonObject = new JSONObject();
+
+        BigDecimal isGrowRate = BigDecimal.valueOf(totalIsGrow).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        String isGrowLevel = "";
+        if(isGrowRate.compareTo(BigDecimal.valueOf(80)) >=0){
+            isGrowLevel = "S";
+        }else if(isGrowRate.compareTo(BigDecimal.valueOf(70)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(80)) < 0){
+            isGrowLevel = "A";
+        }else if(isGrowRate.compareTo(BigDecimal.valueOf(60)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(70)) < 0){
+            isGrowLevel = "B";
+        }else if(isGrowRate.compareTo(BigDecimal.valueOf(50)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(60)) < 0){
+            isGrowLevel = "C";
+        }else if(isGrowRate.compareTo(BigDecimal.valueOf(40)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(50)) < 0){
+            isGrowLevel = "D";
+        }else if(isGrowRate.compareTo(BigDecimal.valueOf(30)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(40)) < 0){
+            isGrowLevel = "E";
+        }else{
+            isGrowLevel = "F";
+        }
+        jsonObject.put("isGrowRate" , isGrowRate);
+        jsonObject.put("isGrowLevel" , isGrowLevel);
+
+
+        BigDecimal isBlongRate = BigDecimal.valueOf(totalIsBelong).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        String isBlongLevel = "";
+        if(isBlongRate.compareTo(BigDecimal.valueOf(80)) >=0){
+            isBlongLevel = "S";
+        }else if(isBlongRate.compareTo(BigDecimal.valueOf(70)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(80)) < 0){
+            isBlongLevel = "A";
+        }else if(isBlongRate.compareTo(BigDecimal.valueOf(60)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(70)) < 0){
+            isBlongLevel = "B";
+        }else if(isBlongRate.compareTo(BigDecimal.valueOf(50)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(60)) < 0){
+            isBlongLevel = "C";
+        }else if(isBlongRate.compareTo(BigDecimal.valueOf(40)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(50)) < 0){
+            isBlongLevel = "D";
+        }else if(isBlongRate.compareTo(BigDecimal.valueOf(30)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(40)) < 0){
+            isBlongLevel = "E";
+        }else{
+            isBlongLevel = "F";
+        }
+        jsonObject.put("isBlongRate" , isBlongRate);
+        jsonObject.put("isBlongLevel" , isBlongLevel);
+
+        BigDecimal belongOtherRate = BigDecimal.valueOf(totalBelongOther).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        String belongOtherLevel = "";
+        if(belongOtherRate.compareTo(BigDecimal.valueOf(80)) >=0){
+            belongOtherLevel = "S";
+        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(70)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(80)) < 0){
+            belongOtherLevel = "A";
+        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(60)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(70)) < 0){
+            belongOtherLevel = "B";
+        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(50)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(60)) < 0){
+            belongOtherLevel = "C";
+        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(40)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(50)) < 0){
+            belongOtherLevel = "D";
+        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(30)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(40)) < 0){
+            belongOtherLevel = "E";
+        }else{
+            belongOtherLevel = "F";
+        }
+        jsonObject.put("belongOtherRate" , belongOtherRate);
+        jsonObject.put("belongOtherLevel" , belongOtherLevel);
+
+
+        BigDecimal rightRightRate = (isGrowRate.multiply(BigDecimal.valueOf(0.6))).add(isBlongRate.multiply(BigDecimal.valueOf(0.3))).add(belongOtherRate.multiply(BigDecimal.valueOf(0.1))).setScale(2,BigDecimal.ROUND_HALF_UP);
+        String rightRightLevel = "";
+        if(rightRightRate.compareTo(BigDecimal.valueOf(80)) >=0){
+            rightRightLevel = "S";
+        }else if(rightRightRate.compareTo(BigDecimal.valueOf(70)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(80)) < 0){
+            rightRightLevel = "A";
+        }else if(rightRightRate.compareTo(BigDecimal.valueOf(60)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(70)) < 0){
+            rightRightLevel = "B";
+        }else if(rightRightRate.compareTo(BigDecimal.valueOf(50)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(60)) < 0){
+            rightRightLevel = "C";
+        }else if(rightRightRate.compareTo(BigDecimal.valueOf(40)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(50)) < 0){
+            rightRightLevel = "D";
+        }else if(rightRightRate.compareTo(BigDecimal.valueOf(30)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(40)) < 0){
+            rightRightLevel = "E";
+        }else{
+            rightRightLevel = "F";
+        }
+        jsonObject.put("rightRightRate" , rightRightRate);
+        jsonObject.put("rightRightLevel" , rightRightLevel);
+        return jsonObject;
     }
 
 }
