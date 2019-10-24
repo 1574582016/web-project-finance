@@ -9,6 +9,7 @@ import com.sky.api.AbstractController;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.*;
 import com.sky.vo.CompanySectorVO;
+import com.sky.vo.StockCompanyAssetVO;
 import com.sky.vo.StockCompanyProfitVO;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.http.ResponseEntity;
@@ -392,6 +393,116 @@ public class StockCompanyApiController extends AbstractController {
         jsonObject.put("rightRightRate" , rightRightRate);
         jsonObject.put("rightRightLevel" , rightRightLevel);
         return jsonObject;
+    }
+
+
+    @LogRecord(name = "getCompanyAssetGrowList" ,description = "查询企业资产负债数据")
+    @PostMapping("/getCompanyAssetGrowList")
+    public Object getCompanyAssetGrowList(String stockCode ,String season){
+        List<StockCompanyAssetVO> list = stockCompanyAssetService.getCompanyAssetGrowList(stockCode);
+        List<String> title = new ArrayList<>();
+
+        List<BigDecimal> totalAsset = new ArrayList<>();
+        List<BigDecimal> totalDebt = new ArrayList<>();
+        List<BigDecimal> pureAsset = new ArrayList<>();
+
+        List<BigDecimal> debtAssetRate = new ArrayList<>();
+        List<BigDecimal> pureAssetRate = new ArrayList<>();
+
+        List<BigDecimal> totalFlowAssetRate = new ArrayList<>();
+        List<BigDecimal> totalUnflowAssetRate = new ArrayList<>();
+        List<BigDecimal> flowDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowDebtRate = new ArrayList<>();
+
+        List<BigDecimal> useAssetRate = new ArrayList<>();
+        List<BigDecimal> billAssetRate = new ArrayList<>();
+        List<BigDecimal> flowOtherAssetRate = new ArrayList<>();
+
+        List<BigDecimal> fixedAssetRate = new ArrayList<>();
+        List<BigDecimal> investAssetRate = new ArrayList<>();
+        List<BigDecimal> virtualAssetRate = new ArrayList<>();
+        List<BigDecimal> deferredAssetRate = new ArrayList<>();
+        List<BigDecimal> unflowOtherAssetRate = new ArrayList<>();
+
+        List<BigDecimal> loanDebtRate = new ArrayList<>();
+        List<BigDecimal> billDebtRate = new ArrayList<>();
+        List<BigDecimal> payDebtRate = new ArrayList<>();
+        List<BigDecimal> otherDebtRate = new ArrayList<>();
+
+        List<BigDecimal> unflowLoanDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowPayDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowDeferredDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowOtherDebtRate = new ArrayList<>();
+
+        for(StockCompanyAssetVO asset : list){
+            title.add(asset.getPublishYear());
+            totalAsset.add(asset.getTotalAsset());
+            totalDebt.add(asset.getTotalDebt());
+            pureAsset.add(asset.getPureAsset());
+
+            debtAssetRate.add(asset.getDebtAssetRate());
+            pureAssetRate.add(asset.getPureAssetRate());
+
+            totalFlowAssetRate.add(asset.getTotalFlowAssetRate());
+            totalUnflowAssetRate.add(asset.getTotalUnflowAssetRate());
+            flowDebtRate.add(asset.getFlowDebtRate());
+            unflowDebtRate.add(asset.getUnflowDebtRate());
+
+            useAssetRate.add(asset.getUseAssetRate());
+            billAssetRate.add(asset.getBillAssetRate());
+            flowOtherAssetRate.add(asset.getFlowOtherAssetRate());
+
+            fixedAssetRate.add(asset.getFixedAssetRate());
+            investAssetRate.add(asset.getInvestAssetRate());
+            virtualAssetRate.add(asset.getVirtualAssetRate());
+            deferredAssetRate.add(asset.getDeferredAssetRate());
+            unflowOtherAssetRate.add(asset.getUnflowOtherAssetRate());
+
+            loanDebtRate.add(asset.getLoanDebtRate());
+            billDebtRate.add(asset.getBillDebtRate());
+            payDebtRate.add(asset.getPayDebtRate());
+            otherDebtRate.add(asset.getOtherDebtRate());
+
+            unflowLoanDebtRate.add(asset.getUnflowLoanDebtRate());
+            unflowPayDebtRate.add(asset.getUnflowPayDebtRate());
+            unflowDeferredDebtRate.add(asset.getUnflowDeferredDebtRate());
+            unflowOtherDebtRate.add(asset.getUnflowOtherDebtRate());
+        }
+
+        Map<String,Object> resultMap = new HashedMap();
+        resultMap.put("title",title);
+        resultMap.put("totalAsset",totalAsset);
+        resultMap.put("totalDebt",totalDebt);
+        resultMap.put("pureAsset",pureAsset);
+
+        resultMap.put("debtAssetRate",debtAssetRate);
+        resultMap.put("pureAssetRate",pureAssetRate);
+
+        resultMap.put("totalFlowAssetRate",totalFlowAssetRate);
+        resultMap.put("totalUnflowAssetRate",totalUnflowAssetRate);
+        resultMap.put("flowDebtRate",flowDebtRate);
+        resultMap.put("unflowDebtRate",unflowDebtRate);
+
+        resultMap.put("useAssetRate",useAssetRate);
+        resultMap.put("billAssetRate",billAssetRate);
+        resultMap.put("flowOtherAssetRate",flowOtherAssetRate);
+
+        resultMap.put("fixedAssetRate",fixedAssetRate);
+        resultMap.put("investAssetRate",investAssetRate);
+        resultMap.put("virtualAssetRate",virtualAssetRate);
+        resultMap.put("deferredAssetRate",deferredAssetRate);
+        resultMap.put("unflowOtherAssetRate",unflowOtherAssetRate);
+
+        resultMap.put("loanDebtRate",loanDebtRate);
+        resultMap.put("billDebtRate",billDebtRate);
+        resultMap.put("payDebtRate",payDebtRate);
+        resultMap.put("otherDebtRate",otherDebtRate);
+
+        resultMap.put("unflowLoanDebtRate",unflowLoanDebtRate);
+        resultMap.put("unflowPayDebtRate",unflowPayDebtRate);
+        resultMap.put("unflowDeferredDebtRate",unflowDeferredDebtRate);
+        resultMap.put("unflowOtherDebtRate",unflowOtherDebtRate);
+        return ResponseEntity.ok(MapSuccess("操作成功",resultMap));
     }
 
 }
