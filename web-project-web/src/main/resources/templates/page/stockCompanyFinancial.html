@@ -17,6 +17,7 @@
 <input type="hidden" id="secondSector" th:value="${secondSector}">
 <input type="hidden" id="thirdSecotor" th:value="${thirdSecotor}">
 <input type="hidden" id="forthSector" th:value="${forthSector}">
+<input type="hidden" id="hotCode" th:value="${hotCode}">
 <ul id="myTab" class="nav nav-tabs">
     <li class="active">
         <a href="#home" data-toggle="tab">
@@ -26,11 +27,12 @@
     <li><a href="#profit" data-toggle="tab">利润分析</a></li>
     <li><a href="#asset" data-toggle="tab">资产分析</a></li>
     <li><a href="#flow" data-toggle="tab">流动性分析</a></li>
+    <button type="button" class="btn btn-primary" id="backButton" style="float: right;">返回</button>
 </ul>
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade in active" id="home">
         <div class="panel panel-default search-list-panel"  style="margin-top: 20px;margin-bottom: 20px;">
-            <div id="collapseBox" class="panel-collapse collapse in">
+            <div class="panel-collapse collapse in">
                 <div class="panel-body">
                     <table class="table table-bordered" style="margin-bottom:0px;">
                         <tr>
@@ -58,6 +60,36 @@
             </div>
         </div>
         <div id="mainProfit" style="width:100%;height:400px;"></div>
+
+        <div class="panel panel-default search-list-panel"  style="margin-top: 20px;margin-bottom: 20px;">
+            <div class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <table class="table table-bordered" style="margin-bottom:0px;">
+                        <tr>
+                            <td style="width: 10%;">资产总评分</td>
+                            <td id="total_asset_score"></td>
+                            <td style="width: 10%;">资产增长评分</td>
+                            <td id="asset_grow_score"></td>
+                            <td style="width: 10%;">资产负债评分</td>
+                            <td id="asset_debt_score"></td>
+                            <td style="width: 10%;">资产成分评分</td>
+                            <td id="asset_component_score"></td>
+                        </tr>
+                        <tr>
+                            <td>资产总评级</td>
+                            <td id="total_asset_levle" style="color: red"></td>
+                            <td>资产增长评级</td>
+                            <td id="asset_grow_levle" style="color: red"></td>
+                            <td>资产负债评级</td>
+                            <td id="asset_debt_levle" style="color: red"></td>
+                            <td>资产成分评级</td>
+                            <td id="asset_component_levle" style="color: red"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="mainAsset" style="width:100%;height:400px;"></div>
     </div>
     <div class="tab-pane fade" id="profit">
         <div id="profitGrowMain" style="width:100%;height:400px;"></div>

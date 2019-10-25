@@ -62,7 +62,8 @@
         a.company_region companyRegion,
         a.establish_date establishDate,
         a.publish_date publishDate ,
-        a.groupIndex
+        a.groupIndex ,
+        GROUP_CONCAT(h.`hot_name` SEPARATOR '->') groupHot
         FROM(
         SELECT
         s.`stock_code` ,
@@ -133,6 +134,13 @@
         s.`forth_sector` ,
         s.`five_sector`
         ) a
+        LEFT JOIN stock_hot_class h ON a.`stock_code` = h.`stock_code`
+        <where>
+            <if test="hotCode != null and hotCode != '' and hotCode != 'undefined'">
+                h.`hot_code` = #{hotCode}
+            </if>
+        </where>
+        GROUP BY a.stock_code
         ORDER BY a.`first_sector` ,
         a.`second_sector` ,
         a.`third_secotor` ,

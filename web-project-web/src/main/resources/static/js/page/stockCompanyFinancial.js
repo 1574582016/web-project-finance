@@ -9,21 +9,94 @@ $(function () {
     });
 
     $.APIPost("/api/stock/getCompanyAssetGrowList?stockCode=" + $("#stock_code").val() ,function (result) {
-        // mainProfit(result);
+        mainAsset(result);
         assetGrowMain("assetGrowMain" ,"资产增长"  ,result);
         assetDebtRate("assetDebtRate" ,"资产负债比例"  ,result);
         flowAssetRate("flowAssetRate" ,"流动&固定比例"  ,result);
-
         flowAssetComponent("flowAssetComponent" ,"流动资产成分比例"  ,result);
         unflowAssetComponent("unflowAssetComponent" ,"非流动资产成分比例"  ,result);
-
         flowDetbComponent("flowDetbComponent" ,"流动负债成分比例"  ,result);
         unflowDetbComponent("unflowDetbComponent" ,"非流动负债成分比例"  ,result);
     });
 
+    $("#backButton").click(function () {
+        var firstSector = $("#firstSector").val();
+        var secondSector = $("#secondSector").val();
+        var thirdSecotor = $("#thirdSecotor").val();
+        var forthSector = $("#forthSector").val();
+        var stockCode = $("#stockCode").val();
+        var stockName = $("#stockName").val();
+        var hotCode = $("#hotCode").val();
+        location.href="/stock/stockSectorCompanyList?stockCode=" + stockCode + "&stockName=" + stockName + "&firstSector=" + firstSector + "&secondSector=" + secondSector + "&thirdSecotor=" + thirdSecotor + "&forthSector=" + forthSector + "&hotCode=" + hotCode;
+    });
 
 });
+function mainAsset(result) {
+    $("#total_asset_score").html(result.data.assetLevel.assetDebtRate);
+    $("#total_asset_levle").html(result.data.assetLevel.assetDebtRateLevel);
 
+    $("#asset_grow_score").html(result.data.assetLevel.averageGrowLevel);
+    $("#asset_grow_levle").html(result.data.assetLevel.growLevel);
+
+    $("#asset_debt_score").html(result.data.assetLevel.averageAssetDebtLevel);
+    $("#asset_debt_levle").html(result.data.assetLevel.assetDebtLevel);
+
+    $("#asset_component_score").html(result.data.assetLevel.averageAssetLevel);
+    $("#asset_component_levle").html(result.data.assetLevel.assetLevel);
+
+    var myChart = echarts.init(document.getElementById("mainAsset"));
+    var colors = ['#3a9ff5', '#e80b3e', '#34bd37', '#d3ff24'];
+    var option = {
+        color: colors,
+        title: {
+            text: "利润分析"
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['总资产','净资产','固定资产比例','流动资产比例']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: result.data.title
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'总资产',
+                type:'line',
+                stack: '总量0',
+                data:result.data.totalAsset
+            },{
+                name:'净资产',
+                type:'line',
+                stack: '总量1',
+                data:result.data.pureAsset
+            },{
+                name:'固定资产比例',
+                type:'line',
+                stack: '总量2',
+                data:result.data.totalUnflowAssetRate
+            },{
+                name:'流动资产比例',
+                type:'line',
+                stack: '总量3',
+                data:result.data.totalFlowAssetRate
+            }
+        ]
+    };
+    myChart.setOption(option);
+}
 
 function assetGrowMain(boxId ,name ,result) {
     $('#'+ boxId).width($('#mainProfit').width());
@@ -728,3 +801,4 @@ function profitGrowRate(boxId ,name ,result) {
     };
     myChart.setOption(option);
 }
+

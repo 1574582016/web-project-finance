@@ -45,6 +45,7 @@ public class StockCompanyAssetServiceImpl extends ServiceImpl<StockCompanyAssetM
             List<StockCompanyAsset> assetList = new ArrayList<>();
             for(int i = 0 ; i < jsonArray.size() ; i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                System.out.println(jsonObject.toString());
                 StockCompanyAsset asset = new StockCompanyAsset();
                 String publishDay = jsonObject.getString("REPORTDATE");//发布日期
                 String totalAssetDebt = jsonObject.getString("SUMLIABSHEQUITY");//总资产负债
@@ -171,6 +172,7 @@ public class StockCompanyAssetServiceImpl extends ServiceImpl<StockCompanyAssetM
                 }
             }
             if(assetList.size() > 0){
+                System.out.println(assetList.toString());
                 return insertBatch(assetList);
             }
         }else{

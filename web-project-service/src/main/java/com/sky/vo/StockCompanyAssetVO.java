@@ -62,4 +62,10 @@ public class StockCompanyAssetVO extends VoModel {
     private BigDecimal unflowDeferredDebtRate ;
 
     private BigDecimal unflowOtherDebtRate ;
+
+    private BigDecimal growLevel ;
+
+    private BigDecimal assetDebtLevel ;
+
+    private BigDecimal assetLevel ;
 }

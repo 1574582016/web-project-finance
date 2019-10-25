@@ -18,27 +18,28 @@
             <input type="hidden" id="second_1_Sector" th:value="${secondSector}">
             <input type="hidden" id="third_1_Secotor" th:value="${thirdSecotor}">
             <input type="hidden" id="forth_1_Sector" th:value="${forthSector}">
+            <input type="hidden" id="hot_1_Code" th:value="${hotCode}">
             <form id="formSearch" class="form-horizontal">
                 <div class="form-group" style="margin-top:15px">
-                    <label class="control-label col-sm-1">一级行业：</label>
+                    <label class="control-label col-sm-1">一级：</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="first_sector" onchange="getSelectOption('second_sector' , this)">
 
                         </select>
                     </div>
-                    <label class="control-label col-sm-1">二级行业：</label>
+                    <label class="control-label col-sm-1">二级：</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="second_sector" onchange="getSelectOption('third_secotor' , this)">
 
                         </select>
                     </div>
-                    <label class="control-label col-sm-1">三级行业：</label>
+                    <label class="control-label col-sm-1">三级：</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="third_secotor" onchange="getSelectOption('forth_sector' , this)">
 
                         </select>
                     </div>
-                    <label class="control-label col-sm-1">四级行业：</label>
+                    <label class="control-label col-sm-1">四级：</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="forth_sector">
 
@@ -46,6 +47,13 @@
                     </div>
                 </div>
                 <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1">热点：</label>
+                    <div class="col-sm-2">
+                        <select class="form-control" id="mark_hot">
+                            <option value="">请选择</option>
+                            <option th:each="item,itemStat:${hotList}" th:value="${item.classCode}" th:text="${item.className}"></option>
+                        </select>
+                    </div>
                     <label class="control-label col-sm-1">编码：</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" id="stock_code" th:value="${stockCode}">

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockCompanyCashFlowMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockCompanyCashFlow">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="stock_code" property="stockCode"/>
+        <result column="publish_day" property="publishDay"/>
+        <result column="business_total_cash_flow" property="businessTotalCashFlow"/>
+        <result column="business_total_in_cash_flow" property="businessTotalInCashFlow"/>
+        <result column="main_business_income" property="mainBusinessIncome"/>
+        <result column="customer_repay_income" property="customerRepayIncome"/>
+        <result column="bank_loan_income" property="bankLoanIncome"/>
+        <result column="business_commission_income" property="businessCommissionIncome"/>
+        <result column="loan_repay_income" property="loanRepayIncome"/>
+        <result column="tax_repay_income" property="taxRepayIncome"/>
+        <result column="business_other_income" property="businessOtherIncome"/>
+        <result column="business_total_out_cash_flow" property="businessTotalOutCashFlow"/>
+        <result column="main_business_pay" property="mainBusinessPay"/>
+        <result column="customer_installment_buy" property="customerInstallmentBuy"/>
+        <result column="bank_loan_pay" property="bankLoanPay"/>
+        <result column="business_commission_pay" property="businessCommissionPay"/>
+        <result column="staff_salary_pay" property="staffSalaryPay"/>
+        <result column="tax_pay" property="taxPay"/>
+        <result column="business_other_pay" property="businessOtherPay"/>
+        <result column="invest_total_cash_flow" property="investTotalCashFlow"/>
+        <result column="invest_total_in_cash_flow" property="investTotalInCashFlow"/>
+        <result column="invest_cost_income" property="investCostIncome"/>
+        <result column="invest_profit_income" property="investProfitIncome"/>
+        <result column="asset_sell_income" property="assetSellIncome"/>
+        <result column="son_company_sell_income" property="sonCompanySellIncome"/>
+        <result column="invest_total_out_cash_flow" property="investTotalOutCashFlow"/>
+        <result column="invest_cost_pay" property="investCostPay"/>
+        <result column="asset_buy_pay" property="assetBuyPay"/>
+        <result column="son_company_pay" property="sonCompanyPay"/>
+        <result column="collect_total_cash_flow" property="collectTotalCashFlow"/>
+        <result column="collect_total_in_cash_flow" property="collectTotalInCashFlow"/>
+        <result column="investor_pay_income" property="investorPayIncome"/>
+        <result column="son_company_pay_income" property="sonCompanyPayIncome"/>
+        <result column="loan_pay_income" property="loanPayIncome"/>
+        <result column="collect_total_out_cash_flow" property="collectTotalOutCashFlow"/>
+        <result column="pay_loan" property="payLoan"/>
+        <result column="investor_profit" property="investorProfit"/>
+        <result column="minority_investor_profit" property="minorityInvestorProfit"/>
+        <result column="pay_son_company_profit" property="paySonCompanyProfit"/>
+    </resultMap>
+</mapper>

@@ -1,11 +1,16 @@
 package com.sky.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
+import com.sky.model.StockMarketClass;
+import com.sky.service.StockMarketClassService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ThinkPad on 2019/5/10.
@@ -13,6 +18,9 @@ import java.util.Date;
 @Controller
 @RequestMapping("/stock")
 public class StockCompanyController {
+
+    @Autowired
+    private StockMarketClassService stockMarketClassService;
 
     @RequestMapping("/stockCompanyList")
     public String companyInformationList(){
@@ -51,18 +59,22 @@ public class StockCompanyController {
     }
 
     @RequestMapping("/stockSectorCompanyList")
-    public String stockSectorCompanyList(Model model ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector){
+    public String stockSectorCompanyList(Model model ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector ,String hotCode){
+        List<StockMarketClass> hotList = stockMarketClassService.selectList(new EntityWrapper<StockMarketClass>().where("class_type = '概念板块'"));
+        model.addAttribute("hotCode" , hotCode);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);
         model.addAttribute("firstSector" , firstSector);
         model.addAttribute("secondSector" , secondSector);
         model.addAttribute("thirdSecotor" , thirdSecotor);
         model.addAttribute("forthSector" , forthSector);
+        model.addAttribute("hotList" , hotList);
         return "page/stockSectorCompanyList";
     }
 
     @RequestMapping("/stockCompanyFinancial")
-    public String stockCompanyFinancial(Model model ,String stock_code ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector){
+    public String stockCompanyFinancial(Model model ,String stock_code ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector ,String hotCode){
+        model.addAttribute("hotCode" , hotCode);
         model.addAttribute("stock_code" , stock_code);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);
