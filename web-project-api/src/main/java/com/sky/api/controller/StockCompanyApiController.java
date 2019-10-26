@@ -9,6 +9,7 @@ import com.sky.api.AbstractController;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.*;
 import com.sky.vo.CompanySectorVO;
+import com.sky.vo.StockCompanyAssetVO;
 import com.sky.vo.StockCompanyProfitVO;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.http.ResponseEntity;
@@ -167,8 +168,9 @@ public class StockCompanyApiController extends AbstractController {
                                             String firstSector ,
                                             String secondSector ,
                                             String thirdSecotor ,
-                                            String forthSector ){
-        List<CompanySectorVO> list = stockCompanySectorService.getStockCompanySectorList(stockCode, stockName, firstSector, secondSector, thirdSecotor, forthSector);
+                                            String forthSector ,
+                                            String hotCode){
+        List<CompanySectorVO> list = stockCompanySectorService.getStockCompanySectorList(stockCode, stockName, firstSector, secondSector, thirdSecotor, forthSector ,hotCode);
         Map<String ,Object> map = new HashMap<String ,Object>();
         map.put("total",list.size());
         map.put("rows",list);
@@ -188,7 +190,7 @@ public class StockCompanyApiController extends AbstractController {
     @PostMapping("/editStockCompanySector")
     public Object editStockCompanySector(String stockCode ,String fiveSector ,String mainBusiness){
         EntityWrapper<StockCompanySector> entityWrapper = new EntityWrapper();
-        entityWrapper.where("stock_code = {0}" , stockCode).and("isvalid = 1");
+        entityWrapper.where("stock_code = {0}" , stockCode);
         StockCompanySector stockCompanySector = stockCompanySectorService.selectOne(entityWrapper);
         stockCompanySector.setFiveSector(fiveSector);
         stockCompanySector.setMainBusiness(mainBusiness);
@@ -394,4 +396,237 @@ public class StockCompanyApiController extends AbstractController {
         return jsonObject;
     }
 
+
+    @LogRecord(name = "getCompanyAssetGrowList" ,description = "查询企业资产负债数据")
+    @PostMapping("/getCompanyAssetGrowList")
+    public Object getCompanyAssetGrowList(String stockCode ,String season){
+        List<StockCompanyAssetVO> list = stockCompanyAssetService.getCompanyAssetGrowList(stockCode);
+        List<String> title = new ArrayList<>();
+
+        List<BigDecimal> totalAsset = new ArrayList<>();
+        List<BigDecimal> totalDebt = new ArrayList<>();
+        List<BigDecimal> pureAsset = new ArrayList<>();
+
+        List<BigDecimal> debtAssetRate = new ArrayList<>();
+        List<BigDecimal> pureAssetRate = new ArrayList<>();
+
+        List<BigDecimal> totalFlowAssetRate = new ArrayList<>();
+        List<BigDecimal> totalUnflowAssetRate = new ArrayList<>();
+        List<BigDecimal> flowDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowDebtRate = new ArrayList<>();
+
+        List<BigDecimal> useAssetRate = new ArrayList<>();
+        List<BigDecimal> billAssetRate = new ArrayList<>();
+        List<BigDecimal> flowOtherAssetRate = new ArrayList<>();
+
+        List<BigDecimal> fixedAssetRate = new ArrayList<>();
+        List<BigDecimal> investAssetRate = new ArrayList<>();
+        List<BigDecimal> virtualAssetRate = new ArrayList<>();
+        List<BigDecimal> deferredAssetRate = new ArrayList<>();
+        List<BigDecimal> unflowOtherAssetRate = new ArrayList<>();
+
+        List<BigDecimal> loanDebtRate = new ArrayList<>();
+        List<BigDecimal> billDebtRate = new ArrayList<>();
+        List<BigDecimal> payDebtRate = new ArrayList<>();
+        List<BigDecimal> otherDebtRate = new ArrayList<>();
+
+        List<BigDecimal> unflowLoanDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowPayDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowDeferredDebtRate = new ArrayList<>();
+        List<BigDecimal> unflowOtherDebtRate = new ArrayList<>();
+
+        for(StockCompanyAssetVO asset : list){
+            title.add(asset.getPublishYear());
+            totalAsset.add(asset.getTotalAsset());
+            totalDebt.add(asset.getTotalDebt());
+            pureAsset.add(asset.getPureAsset());
+
+            debtAssetRate.add(asset.getDebtAssetRate());
+            pureAssetRate.add(asset.getPureAssetRate());
+
+            totalFlowAssetRate.add(asset.getTotalFlowAssetRate());
+            totalUnflowAssetRate.add(asset.getTotalUnflowAssetRate());
+            flowDebtRate.add(asset.getFlowDebtRate());
+            unflowDebtRate.add(asset.getUnflowDebtRate());
+
+            useAssetRate.add(asset.getUseAssetRate());
+            billAssetRate.add(asset.getBillAssetRate());
+            flowOtherAssetRate.add(asset.getFlowOtherAssetRate());
+
+            fixedAssetRate.add(asset.getFixedAssetRate());
+            investAssetRate.add(asset.getInvestAssetRate());
+            virtualAssetRate.add(asset.getVirtualAssetRate());
+            deferredAssetRate.add(asset.getDeferredAssetRate());
+            unflowOtherAssetRate.add(asset.getUnflowOtherAssetRate());
+
+            loanDebtRate.add(asset.getLoanDebtRate());
+            billDebtRate.add(asset.getBillDebtRate());
+            payDebtRate.add(asset.getPayDebtRate());
+            otherDebtRate.add(asset.getOtherDebtRate());
+
+            unflowLoanDebtRate.add(asset.getUnflowLoanDebtRate());
+            unflowPayDebtRate.add(asset.getUnflowPayDebtRate());
+            unflowDeferredDebtRate.add(asset.getUnflowDeferredDebtRate());
+            unflowOtherDebtRate.add(asset.getUnflowOtherDebtRate());
+        }
+
+        JSONObject jsonObject = stockCompanyAssetLevel(list);
+
+        Map<String,Object> resultMap = new HashedMap();
+        resultMap.put("title",title);
+        resultMap.put("totalAsset",totalAsset);
+        resultMap.put("totalDebt",totalDebt);
+        resultMap.put("pureAsset",pureAsset);
+
+        resultMap.put("debtAssetRate",debtAssetRate);
+        resultMap.put("pureAssetRate",pureAssetRate);
+
+        resultMap.put("totalFlowAssetRate",totalFlowAssetRate);
+        resultMap.put("totalUnflowAssetRate",totalUnflowAssetRate);
+        resultMap.put("flowDebtRate",flowDebtRate);
+        resultMap.put("unflowDebtRate",unflowDebtRate);
+
+        resultMap.put("useAssetRate",useAssetRate);
+        resultMap.put("billAssetRate",billAssetRate);
+        resultMap.put("flowOtherAssetRate",flowOtherAssetRate);
+
+        resultMap.put("fixedAssetRate",fixedAssetRate);
+        resultMap.put("investAssetRate",investAssetRate);
+        resultMap.put("virtualAssetRate",virtualAssetRate);
+        resultMap.put("deferredAssetRate",deferredAssetRate);
+        resultMap.put("unflowOtherAssetRate",unflowOtherAssetRate);
+
+        resultMap.put("loanDebtRate",loanDebtRate);
+        resultMap.put("billDebtRate",billDebtRate);
+        resultMap.put("payDebtRate",payDebtRate);
+        resultMap.put("otherDebtRate",otherDebtRate);
+
+        resultMap.put("unflowLoanDebtRate",unflowLoanDebtRate);
+        resultMap.put("unflowPayDebtRate",unflowPayDebtRate);
+        resultMap.put("unflowDeferredDebtRate",unflowDeferredDebtRate);
+        resultMap.put("unflowOtherDebtRate",unflowOtherDebtRate);
+        resultMap.put("assetLevel",jsonObject);
+        return ResponseEntity.ok(MapSuccess("操作成功",resultMap));
+    }
+
+
+    private JSONObject stockCompanyAssetLevel(List<StockCompanyAssetVO> list){
+        String nowYear = DateUtils.getYear();
+        String nineYear = Integer.parseInt(nowYear) - 9 + "";
+        String eightYear = Integer.parseInt(nowYear) - 8 + "";
+        String sevenYear = Integer.parseInt(nowYear) - 7 + "";
+        String sixYear = Integer.parseInt(nowYear) - 6 + "";
+        String fiveYear = Integer.parseInt(nowYear) - 5 + "";
+        String fourYear = Integer.parseInt(nowYear) - 4 + "";
+        String threeYear = Integer.parseInt(nowYear) - 3 + "";
+        String twoYear = Integer.parseInt(nowYear) - 2 + "";
+        String oneYear = Integer.parseInt(nowYear) - 1 + "";
+
+        BigDecimal totalGrowLevel = BigDecimal.ZERO;
+        BigDecimal totalAssetDebtLevel = BigDecimal.ZERO;
+        BigDecimal totalAssetLevel = BigDecimal.ZERO;
+        int num = 0;
+        for(StockCompanyAssetVO assetVO : list){
+            if(nineYear.equals(assetVO.getPublishYear()) ||
+              eightYear.equals(assetVO.getPublishYear()) ||
+              sevenYear.equals(assetVO.getPublishYear()) ||
+              sixYear.equals(assetVO.getPublishYear()) ||
+              fiveYear.equals(assetVO.getPublishYear()) ||
+              fourYear.equals(assetVO.getPublishYear()) ||
+              threeYear.equals(assetVO.getPublishYear()) ||
+              twoYear.equals(assetVO.getPublishYear()) ||
+              oneYear.equals(assetVO.getPublishYear()) ||
+              nowYear.equals(assetVO.getPublishYear())){
+                totalGrowLevel = totalGrowLevel.add(assetVO.getGrowLevel());
+                totalAssetDebtLevel = totalAssetDebtLevel.add(assetVO.getAssetDebtLevel());
+                totalAssetLevel = totalAssetLevel.add(assetVO.getAssetLevel());
+                num +=1;
+            }
+        }
+
+        BigDecimal averageGrowLevel = totalGrowLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        BigDecimal averageAssetDebtLevel = totalAssetDebtLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        BigDecimal averageAssetLevel = totalAssetLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+
+        JSONObject jsonObject = new JSONObject();
+
+        String isGrowLevel = "";
+        if(averageGrowLevel.compareTo(BigDecimal.valueOf(80)) >=0){
+            isGrowLevel = "S";
+        }else if(averageGrowLevel.compareTo(BigDecimal.valueOf(70)) >=0 && averageGrowLevel.compareTo(BigDecimal.valueOf(80)) < 0){
+            isGrowLevel = "A";
+        }else if(averageGrowLevel.compareTo(BigDecimal.valueOf(60)) >=0 && averageGrowLevel.compareTo(BigDecimal.valueOf(70)) < 0){
+            isGrowLevel = "B";
+        }else if(averageGrowLevel.compareTo(BigDecimal.valueOf(50)) >=0 && averageGrowLevel.compareTo(BigDecimal.valueOf(60)) < 0){
+            isGrowLevel = "C";
+        }else if(averageGrowLevel.compareTo(BigDecimal.valueOf(40)) >=0 && averageGrowLevel.compareTo(BigDecimal.valueOf(50)) < 0){
+            isGrowLevel = "D";
+        }else if(averageGrowLevel.compareTo(BigDecimal.valueOf(30)) >=0 && averageGrowLevel.compareTo(BigDecimal.valueOf(40)) < 0){
+            isGrowLevel = "E";
+        }else{
+            isGrowLevel = "F";
+        }
+        jsonObject.put("averageGrowLevel" , averageGrowLevel);
+        jsonObject.put("growLevel" , isGrowLevel);
+
+        String assetDebtLevel = "";
+        if(averageAssetDebtLevel.compareTo(BigDecimal.valueOf(80)) >=0){
+            assetDebtLevel = "S";
+        }else if(averageAssetDebtLevel.compareTo(BigDecimal.valueOf(70)) >=0 && averageAssetDebtLevel.compareTo(BigDecimal.valueOf(80)) < 0){
+            assetDebtLevel = "A";
+        }else if(averageAssetDebtLevel.compareTo(BigDecimal.valueOf(60)) >=0 && averageAssetDebtLevel.compareTo(BigDecimal.valueOf(70)) < 0){
+            assetDebtLevel = "B";
+        }else if(averageAssetDebtLevel.compareTo(BigDecimal.valueOf(50)) >=0 && averageAssetDebtLevel.compareTo(BigDecimal.valueOf(60)) < 0){
+            assetDebtLevel = "C";
+        }else if(averageAssetDebtLevel.compareTo(BigDecimal.valueOf(40)) >=0 && averageAssetDebtLevel.compareTo(BigDecimal.valueOf(50)) < 0){
+            assetDebtLevel = "D";
+        }else if(averageAssetDebtLevel.compareTo(BigDecimal.valueOf(30)) >=0 && averageAssetDebtLevel.compareTo(BigDecimal.valueOf(40)) < 0){
+            assetDebtLevel = "E";
+        }else{
+            assetDebtLevel = "F";
+        }
+        jsonObject.put("averageAssetDebtLevel" , averageAssetDebtLevel);
+        jsonObject.put("assetDebtLevel" , assetDebtLevel);
+
+        String assetLevel = "";
+        if(averageAssetLevel.compareTo(BigDecimal.valueOf(80)) >=0){
+            assetLevel = "S";
+        }else if(averageAssetLevel.compareTo(BigDecimal.valueOf(70)) >=0 && averageAssetLevel.compareTo(BigDecimal.valueOf(80)) < 0){
+            assetLevel = "A";
+        }else if(averageAssetLevel.compareTo(BigDecimal.valueOf(60)) >=0 && averageAssetLevel.compareTo(BigDecimal.valueOf(70)) < 0){
+            assetLevel = "B";
+        }else if(averageAssetLevel.compareTo(BigDecimal.valueOf(50)) >=0 && averageAssetLevel.compareTo(BigDecimal.valueOf(60)) < 0){
+            assetLevel = "C";
+        }else if(averageAssetLevel.compareTo(BigDecimal.valueOf(40)) >=0 && averageAssetLevel.compareTo(BigDecimal.valueOf(50)) < 0){
+            assetLevel = "D";
+        }else if(averageAssetLevel.compareTo(BigDecimal.valueOf(30)) >=0 && averageAssetLevel.compareTo(BigDecimal.valueOf(40)) < 0){
+            assetLevel = "E";
+        }else{
+            assetLevel = "F";
+        }
+        jsonObject.put("averageAssetLevel" , averageAssetLevel);
+        jsonObject.put("assetLevel" , assetLevel);
+
+
+        BigDecimal assetDebtRate = (averageGrowLevel.multiply(BigDecimal.valueOf(0.7))).add(averageAssetDebtLevel.multiply(BigDecimal.valueOf(0.2))).add(averageAssetLevel.multiply(BigDecimal.valueOf(0.1))).setScale(2,BigDecimal.ROUND_HALF_UP);
+        String assetDebtRateLevel = "";
+        if(assetDebtRate.compareTo(BigDecimal.valueOf(80)) >=0){
+            assetDebtRateLevel = "S";
+        }else if(assetDebtRate.compareTo(BigDecimal.valueOf(70)) >=0 && assetDebtRate.compareTo(BigDecimal.valueOf(80)) < 0){
+            assetDebtRateLevel = "A";
+        }else if(assetDebtRate.compareTo(BigDecimal.valueOf(60)) >=0 && assetDebtRate.compareTo(BigDecimal.valueOf(70)) < 0){
+            assetDebtRateLevel = "B";
+        }else if(assetDebtRate.compareTo(BigDecimal.valueOf(50)) >=0 && assetDebtRate.compareTo(BigDecimal.valueOf(60)) < 0){
+            assetDebtRateLevel = "C";
+        }else if(assetDebtRate.compareTo(BigDecimal.valueOf(40)) >=0 && assetDebtRate.compareTo(BigDecimal.valueOf(50)) < 0){
+            assetDebtRateLevel = "D";
+        }else if(assetDebtRate.compareTo(BigDecimal.valueOf(30)) >=0 && assetDebtRate.compareTo(BigDecimal.valueOf(40)) < 0){
+            assetDebtRateLevel = "E";
+        }else{
+            assetDebtRateLevel = "F";
+        }
+        jsonObject.put("assetDebtRate" , assetDebtRate);
+        jsonObject.put("assetDebtRateLevel" , assetDebtRateLevel);
+        return jsonObject;
+    }
 }

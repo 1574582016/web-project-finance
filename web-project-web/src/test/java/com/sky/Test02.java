@@ -8,14 +8,10 @@ import com.sky.core.utils.CommonHttpUtil;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.core.utils.Tools;
-import com.sky.model.ForexNewsStatictis;
-import com.sky.model.StockCompanyAsset;
-import com.sky.model.StockCompanyProfit;
-import com.sky.model.StockCompanySector;
-import com.sky.service.StockCompanyAssetService;
-import com.sky.service.StockCompanyProfitService;
-import com.sky.service.StockCompanySectorService;
+import com.sky.model.*;
+import com.sky.service.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.xpath.SourceTree;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -46,6 +42,9 @@ public class Test02 {
 
     @Autowired
     private StockCompanyAssetService stockCompanyAssetService;
+
+    @Autowired
+    private StockCompanyCashFlowService stockCompanyCashFlowService;
 
     @Test
     public void test(){
@@ -117,6 +116,49 @@ public class Test02 {
                     break;
                 }
             }
+        }
+    }
+
+    @Test
+    public void test0203() throws InterruptedException {
+//        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
+//        for(StockCompanySector sector : list){
+            for(int x = 0 ; x < 50 ; x ++){
+                boolean just = stockCompanyCashFlowService.spiderStockCompanyCashFlow("000333" , x);
+                if(just){
+                    Thread.sleep(300);
+                }else{
+                    break;
+                }
+            }
+//        }
+    }
+
+    @Autowired
+    private ContryMacroEconomyIndexService contryMacroEconomyIndexService;
+
+    @Test
+    public void test0204(){
+        String contryClass = "美国";
+        String subIndexClass = "美国3个月期国债拍卖";
+        String classCode = "568";
+        String url = "https://sbcharts.investing.com/events_charts/us/"+ classCode +".json";
+        String jsStr = CommonHttpUtil.sendGet(url);
+        System.out.println(jsStr);
+        List<ContryMacroEconomyIndex> list = new ArrayList<>();
+        JSONArray jsonArray = JSON.parseObject(jsStr).getJSONArray("attr");
+        for(int i = 0 ; i < jsonArray.size() ; i ++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            ContryMacroEconomyIndex economyIndex = new ContryMacroEconomyIndex();
+            economyIndex.setClassCode(classCode);
+            economyIndex.setContryClass(contryClass);
+            economyIndex.setSubIndexClass(subIndexClass);
+            economyIndex.setPublishDay(jsonObject.getString("timestamp"));
+            economyIndex.setPublishValue(jsonObject.getString("actual"));
+            list.add(economyIndex);
+        }
+        if(list.size() > 0){
+            contryMacroEconomyIndexService.insertBatch(list);
         }
     }
 
@@ -295,15 +337,56 @@ public class Test02 {
         JSONArray jsonArray = JSON.parseArray(jsStr);
         for(int i = 0 ; i < jsonArray.size() ; i++){
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-//            BigDecimal totalIncome = jsonObject.getBigDecimal("TOTALOPERATEREVE");//总收入
-//            BigDecimal businessIncome = jsonObject.getBigDecimal("OPERATEREVE");//营业收入
-//            BigDecimal totalCost = jsonObject.getBigDecimal("TOTALOPERATEEXP");//总成本
-//            BigDecimal businessCost = jsonObject.getBigDecimal("OPERATEEXP");//营业成本
-//            BigDecimal totalRevenue = jsonObject.getBigDecimal("OPERATEPROFIT");//营业利润 + 其他营业利润
-//            BigDecimal otherTotalRevenue = jsonObject.getBigDecimal("SUMPROFIT");//营业利润 + 其他营业利润 + 其他收入利润
-//            BigDecimal taxMoney = jsonObject.getBigDecimal("INCOMETAX");//扣税金额
-//            BigDecimal belongProfit = jsonObject.getBigDecimal("PARENTNETPROFIT");//扣除其他利润分配后，归属公司利润
-//            BigDecimal lastProfit = jsonObject.getBigDecimal("KCFJCXSYJLR");//扣税损益后，最终的剩余利润
+            String businessTotalMoeny = jsonObject.getString("NETOPERATECASHFLOW");//经营活动总现金流
+            String businessTotalInMoeny = jsonObject.getString("SUMFINAFLOWIN");//经营活动总流入现金流
+
+            String mainBusinessIncome = jsonObject.getString("SALEGOODSSERVICEREC");//销售商品、提供劳务收到的现金——主营收入
+            String customerRepayIncome = jsonObject.getString("NIDEPOSIT");//客户存款和同业存放款项净增加额——客户还钱
+            String bankLoanIncome = jsonObject.getString("NIBORROWFROMCBANK");//向中央银行借款净增加额——银行贷款
+            String businessCommissionIncome = jsonObject.getString("INTANDCOMMREC");//收取利息、手续费及佣金的现金——业务费
+            String loanRepayIncome = jsonObject.getString("NDLOANADVANCES");//发放贷款及垫款的净减少额——外借还款
+            String taxRepayIncome = jsonObject.getString("TAXRETURNREC");//收到的税费返还——税收政策优惠
+            String businessOtherIncome = jsonObject.getString("OTHEROPERATEREC");//收到其他与经营活动有关的现金
+
+            String businessTotalOutMoeny = jsonObject.getString("SUMOPERATEFLOWOUT");//经营活动总流出现金流
+
+            String mainBusinessPay = jsonObject.getString("BUYGOODSSERVICEPAY");//购买商品、接受劳务支付的现金——主营业务支出
+            String customerInstallment = jsonObject.getString("NILOANADVANCES");//客户贷款及垫款净增加额——客户分期购买
+            String bankLoanPay = jsonObject.getString("NIDEPOSITINCBANKFI");//存放中央银行和同业款项净增加额——付给银行贷款
+            String businessCommissionPay = jsonObject.getString("INTANDCOMMPAY");//支付利息、手续费及佣金的现金——办理业务费用
+            String staffSalary = jsonObject.getString("EMPLOYEEPAY");//支付给职工以及为职工支付的现金——工资
+            String taxPay = jsonObject.getString("TAXPAY");//支付的各项税费——缴纳的税收
+            String businessOtherPay = jsonObject.getString("OTHEROPERATEPAY");//支付其他与经营活动有关的现金——
+
+            String investTotalMoeny = jsonObject.getString("NETINVCASHFLOW");//投资活动总现金流
+            String investTotalInMoeny = jsonObject.getString("SUMINVFLOWIN");//投资活动总流入现金流
+
+            String investCostIncome = jsonObject.getString("SUMINVFLOWIN");//收回投资收到的现金——投资成本
+            String investProfitIncome = jsonObject.getString("SUMINVFLOWIN");//取得投资收益收到的现金——投资收益
+            String assetSellIncome = jsonObject.getString("SUMINVFLOWIN");//处置固定资产、无形资产和其他长期资产收回的现金净额——资产售卖
+            String sonCompanySellIncome = jsonObject.getString("SUMINVFLOWIN");//处置子公司及其他营业单位收到的现金净额——子公司售卖
+
+            String investTotalOutMoeny = jsonObject.getString("SUMINVFLOWOUT");//投资活动总流出现金流
+
+            String investCostPay = jsonObject.getString("SUMINVFLOWIN");//投资支付的现金——投资支付
+            String assetBuyPay = jsonObject.getString("SUMINVFLOWIN");//购建固定资产、无形资产和其他长期资产支付的现金——购买资产
+            String sonCompanyPay = jsonObject.getString("SUMINVFLOWIN");//取得子公司及其他营业单位支付的现金净额——投资给子公司的钱
+
+
+            String collectTotalMoeny = jsonObject.getString("NETFINACASHFLOW");//投资活动总现金流
+            String collectTotalInMoeny = jsonObject.getString("SUMOPERATEFLOWIN");//投资活动总流入现金流
+
+            String investorPayIncome = jsonObject.getString("ACCEPTINVREC");//吸收投资收到的现金——投资人出资
+            String sonCompanyPayIncome = jsonObject.getString("SUBSIDIARYACCEPT");//子公司吸收少数股东投资收到的现金——子公司出资人出资
+            String loanPayIncome = jsonObject.getString("LOANREC");//取得借款收到的现金——借的款项
+
+            String collectTotalOutMoeny = jsonObject.getString("SUMFINAFLOWOUT");//投资活动总流出现金流
+
+            String payLoan = jsonObject.getString("REPAYDEBTPAY");//偿还债务支付的现金——还债
+            String investorProfit = jsonObject.getString("DIVIPROFITORINTPAY");//分配股利、利润或偿付利息支付的现金——发放投资收益
+            String minorityInvestorProfit = jsonObject.getString("SUBSIDIARYPAY");//子公司支付给少数股东的股利、利润——少数投资者投资收益
+            String paySonCompanyProfit = jsonObject.getString("OTHERFINAPAY");//支付其他与筹资活动有关的现金
+
             System.out.println(jsonObject.toString());
         }
     }

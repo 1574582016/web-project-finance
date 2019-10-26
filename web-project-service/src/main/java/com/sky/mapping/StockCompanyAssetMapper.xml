@@ -55,4 +55,96 @@
         <result column="unflow_deferred_tax_debt" property="unflowDeferredTaxDebt"/>
         <result column="unflow_other_debt" property="unflowOtherDebt"/>
     </resultMap>
+
+    <select id="getCompanyAssetGrowList" parameterType="java.lang.String" resultType="com.sky.vo.StockCompanyAssetVO">
+        SELECT
+        b.* ,
+        CASE WHEN b.totalAsset - IFNULL(c.totalAsset,0) > 0 AND b.totalDebt - IFNULL(c.totalDebt,0) &lt; 0 AND b.pureAsset - IFNULL(c.pureAsset,0) > 0 THEN 90
+              WHEN (b.totalAsset - IFNULL(c.totalAsset,0) > 0 AND b.totalDebt - IFNULL(c.totalDebt,0) > 0 AND b.pureAsset - IFNULL(c.pureAsset,0) > 0) OR
+                    (b.totalAsset - IFNULL(c.totalAsset,0) > 0 AND b.totalDebt - IFNULL(c.totalDebt,0) = 0 AND b.pureAsset - IFNULL(c.pureAsset,0) > 0) OR
+                    (b.totalAsset - IFNULL(c.totalAsset,0) = 0 AND b.totalDebt - IFNULL(c.totalDebt,0) &lt; 0 AND b.pureAsset - IFNULL(c.pureAsset,0) > 0 )THEN 80
+              WHEN b.totalAsset - IFNULL(c.totalAsset,0) > 0 AND b.totalDebt - IFNULL(c.totalDebt,0) > 0 AND b.pureAsset - IFNULL(c.pureAsset,0) = 0 THEN 70
+              WHEN b.totalAsset - IFNULL(c.totalAsset,0) > 0 AND b.totalDebt - IFNULL(c.totalDebt,0) > 0 AND b.pureAsset - IFNULL(c.pureAsset,0) &lt; 0 THEN 60
+              WHEN (b.totalAsset - IFNULL(c.totalAsset,0) = 0 AND b.totalDebt - IFNULL(c.totalDebt,0) > 0 AND b.pureAsset - IFNULL(c.pureAsset,0) &lt; 0) OR
+                    (b.totalAsset - IFNULL(c.totalAsset,0) = 0 AND b.totalDebt - IFNULL(c.totalDebt,0) = 0 AND b.pureAsset - IFNULL(c.pureAsset,0) = 0) OR
+                    (b.totalAsset - IFNULL(c.totalAsset,0) &lt; 0 AND b.totalDebt - IFNULL(c.totalDebt,0) &lt; 0 AND b.pureAsset - IFNULL(c.pureAsset,0) > 0) OR
+                    (b.totalAsset - IFNULL(c.totalAsset,0) &lt; 0 AND b.totalDebt - IFNULL(c.totalDebt,0) &lt; 0 AND b.pureAsset - IFNULL(c.pureAsset,0) = 0) THEN 50
+              WHEN (b.totalAsset - IFNULL(c.totalAsset,0) &lt; 0 AND b.totalDebt - IFNULL(c.totalDebt,0) > 0 AND b.pureAsset - IFNULL(c.pureAsset,0) &lt; 0) OR
+                    (b.totalAsset - IFNULL(c.totalAsset,0) &lt; 0 AND b.totalDebt - IFNULL(c.totalDebt,0) = 0 AND b.pureAsset - IFNULL(c.pureAsset,0) &lt; 0) OR
+                    (b.totalAsset - IFNULL(c.totalAsset,0) &lt; 0 AND b.totalDebt - IFNULL(c.totalDebt,0) &lt; 0 AND b.pureAsset - IFNULL(c.pureAsset,0) &lt; 0 )THEN 40
+              ELSE 0 END AS growLevel ,
+        CASE WHEN b.pureAsset - b.totalDebt >= 80  THEN 90
+              WHEN b.pureAsset - b.totalDebt >= 60  AND b.pureAsset - b.totalDebt &lt; 80  THEN 80
+              WHEN b.pureAsset - b.totalDebt >= 40  AND b.pureAsset - b.totalDebt &lt; 60  THEN 70
+              WHEN b.pureAsset - b.totalDebt >= 20  AND b.pureAsset - b.totalDebt &lt; 40  THEN 60
+              WHEN b.pureAsset - b.totalDebt >= 0   AND b.pureAsset - b.totalDebt &lt; 20  THEN 50
+              WHEN b.pureAsset - b.totalDebt >= -20 AND b.pureAsset - b.totalDebt &lt; 0   THEN 40
+              WHEN b.pureAsset - b.totalDebt >= -40 AND b.pureAsset - b.totalDebt &lt; -20 THEN 30
+              WHEN b.pureAsset - b.totalDebt >= -60 AND b.pureAsset - b.totalDebt &lt; -40 THEN 20
+              WHEN b.pureAsset - b.totalDebt >= -80 AND b.pureAsset - b.totalDebt &lt; -60 THEN 10
+              ELSE 0 END assetDebtLevel ,
+        CASE WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= 80  THEN 90
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= 60  AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; 80  THEN 80
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= 40  AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; 60  THEN 70
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= 20  AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; 40  THEN 60
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= 0   AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; 20  THEN 50
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= -20 AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; 0   THEN 40
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= -40 AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; -20 THEN 30
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= -60 AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; -40 THEN 20
+              WHEN b.totalUnflowAssetRate - b.totalFlowAssetRate >= -80 AND b.totalUnflowAssetRate - b.totalFlowAssetRate &lt; -60 THEN 10
+              ELSE 0 END assetLevel
+        FROM(
+        SELECT
+        LEFT(a.publish_day,4) publishYear ,
+        ROUND(IFNULL(a.`total_asset`,0) / 100000000 ,2) totalAsset ,
+        ROUND(IFNULL(a.`total_debt`,0) / 100000000 ,2) totalDebt,
+        ROUND((IFNULL(a.`total_asset`,0) - IFNULL(a.`total_debt`,0)) / 100000000 ,2) pureAsset ,
+
+        ROUND(IFNULL(a.`total_debt`,0) / IFNULL(a.`total_asset`,0) * 100 ,2) debtAssetRate ,
+        ROUND((IFNULL(a.`total_asset`,0) - IFNULL(a.`total_debt`,0)) / IFNULL(a.`total_asset`,0) * 100 ,2) pureAssetRate ,
+
+        ROUND(IFNULL(a.`total_flow_asset`,0) / IFNULL(a.`total_asset`,0) * 100 ,2)  totalFlowAssetRate,
+        ROUND(IFNULL(a.`total_unflow_asset`,0) / IFNULL(a.`total_asset`,0) * 100 ,2)  totalUnflowAssetRate,
+
+        ROUND((IFNULL(a.`flow_currency_asset`,0) + IFNULL(a.`flow_storage_asset`,0)) / IFNULL(a.`total_flow_asset`,0) * 100 ,2) useAssetRate,
+        ROUND((IFNULL(a.`flow_pay_asset`,0) + IFNULL(a.`flow_bill_asset`,0) + IFNULL(a.`flow_other_bill`,0)) / IFNULL(a.`total_flow_asset`,0) * 100 ,2) billAssetRate,
+        ROUND(IFNULL(a.`flow_other_asset`,0) / IFNULL(a.`total_flow_asset`,0) * 100 ,2) flowOtherAssetRate,
+
+        ROUND((IFNULL(a.`unflow_fixed_asset`,0) + IFNULL(a.`unflow_build_project`,0) + IFNULL(a.`unflow_invest_house`,0)) / IFNULL(a.total_unflow_asset,0) * 100 ,2) fixedAssetRate,
+        ROUND((IFNULL(a.`unflow_stock_right`,0) + IFNULL(a.`unflow_long_bill`,0) + IFNULL(a.`unflow_sell_finacial`,0)) / IFNULL(a.total_unflow_asset,0) * 100 ,2) investAssetRate,
+        ROUND((IFNULL(a.`unflow_intangible_asset`,0) + IFNULL(a.`unflow_company_reputation`,0)) / IFNULL(a.total_unflow_asset,0) * 100 ,2) virtualAssetRate,
+        ROUND((IFNULL(a.`unflow_prepaid_expenses`,0) + IFNULL(a.`unflow_deferred_tax_asset`,0)) / IFNULL(a.total_unflow_asset,0) * 100 ,2) deferredAssetRate,
+        ROUND(IFNULL(a.`unflow_other_asset`,0)/ IFNULL(a.total_unflow_asset,0) * 100 ,2) unflowOtherAssetRate ,
+
+        ROUND(IFNULL(a.total_flow_debt,0) / IFNULL(a.`total_debt`,0) * 100 ,2) flowDebtRate ,
+        ROUND(IFNULL(a.total_unflow_debt,0) / IFNULL(a.`total_debt`,0) * 100 ,2) unflowDebtRate ,
+
+        ROUND((IFNULL(a.flow_sort_loan,0) + IFNULL(a.flow_center_bank_loan,0) + IFNULL(a.flow_same_company_loan,0) + IFNULL(a.flow_sort_debt,0)) / IFNULL(a.`total_flow_debt`,0) * 100 ,2) loanDebtRate ,
+        ROUND((IFNULL(a.flow_pay_bill,0) + IFNULL(a.flow_advance_receive,0)) / IFNULL(a.`total_flow_debt`,0) * 100 ,2) billDebtRate ,
+        ROUND((IFNULL(a.flow_pay_salary,0) + IFNULL(a.flow_pay_tax,0) + IFNULL(a.flow_pay_other,0)) / IFNULL(a.`total_flow_debt`,0) * 100 ,2) payDebtRate ,
+        ROUND(IFNULL(a.flow_other,0) / IFNULL(a.`total_flow_debt`,0) * 100 ,2) otherDebtRate ,
+
+        ROUND((IFNULL(a.`unflow_long_loan` ,0) + IFNULL(a.`unflow_pay_long` ,0)) / IFNULL(a.`total_unflow_debt`,0) * 100 ,2) unflowLoanDebtRate ,
+        ROUND((IFNULL(a.`unflow_pay_salary` ,0) + IFNULL(a.`unflow_pay_special` ,0) + IFNULL(a.`unflow_estimate_loan` ,0)) / IFNULL(a.`total_unflow_debt`,0) * 100 ,2) unflowPayDebtRate,
+        ROUND((IFNULL(a.`unflow_deferred_profit` ,0) + IFNULL(a.`unflow_deferred_tax_debt` ,0)) / IFNULL(a.`total_unflow_debt`,0) * 100 ,2) unflowDeferredDebtRate ,
+        ROUND(IFNULL(a.`unflow_other_debt` ,0) / IFNULL(a.`total_unflow_debt`,0) * 100 ,2) unflowOtherDebtRate
+        FROM stock_company_asset a
+        WHERE a.stock_code = #{stockCode}
+        AND REPLACE(SUBSTR(a.publish_day,6,2),'/','') = 12
+        GROUP BY LEFT(a.publish_day,4)
+        ) b
+        LEFT JOIN
+        (
+        SELECT
+        LEFT(a.publish_day,4) publishYear ,
+        ROUND(IFNULL(a.`total_asset`,0) / 100000000 ,2) totalAsset ,
+        ROUND(IFNULL(a.`total_debt`,0) / 100000000 ,2) totalDebt,
+        ROUND((IFNULL(a.`total_asset`,0) - IFNULL(a.`total_debt`,0)) / 100000000 ,2) pureAsset
+        FROM stock_company_asset a
+        WHERE a.stock_code = #{stockCode}
+        AND REPLACE(SUBSTR(a.publish_day,6,2),'/','') = 12
+        GROUP BY LEFT(a.publish_day,4)
+        ) c ON b.publishYear = (c.publishYear + 1)
+        ORDER BY b.publishYear
+    </select>
 </mapper>

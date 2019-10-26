@@ -10,6 +10,7 @@ import com.sky.core.utils.DateUtils;
 import com.sky.mapper.StockCompanyAssetMapper;
 import com.sky.model.StockCompanyAsset;
 import com.sky.service.StockCompanyAssetService;
+import com.sky.vo.StockCompanyAssetVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +45,7 @@ public class StockCompanyAssetServiceImpl extends ServiceImpl<StockCompanyAssetM
             List<StockCompanyAsset> assetList = new ArrayList<>();
             for(int i = 0 ; i < jsonArray.size() ; i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                System.out.println(jsonObject.toString());
                 StockCompanyAsset asset = new StockCompanyAsset();
                 String publishDay = jsonObject.getString("REPORTDATE");//发布日期
                 String totalAssetDebt = jsonObject.getString("SUMLIABSHEQUITY");//总资产负债
@@ -114,6 +116,7 @@ public class StockCompanyAssetServiceImpl extends ServiceImpl<StockCompanyAssetM
                 String flowSortLoan = jsonObject.getString("STBORROW");//短期借款
                 String flowCenterLoan = jsonObject.getString("BORROWFROMCBANK");//向中央银行借款
                 String flowSameCompanyLoan = jsonObject.getString("DEPOSIT");//吸收存款及同业存放
+                String flowSoonDeadLine = jsonObject.getString("NONLLIABONEYEAR");//一年内到期的非流动负债
 
                 String flowBill = jsonObject.getString("ACCOUNTBILLPAY");//应付票据及应付账款
                 String flowReceive = jsonObject.getString("ADVANCERECEIVE");//预收款项
@@ -122,7 +125,7 @@ public class StockCompanyAssetServiceImpl extends ServiceImpl<StockCompanyAssetM
                 String flowTax = jsonObject.getString("TAXPAY");//应交税费
                 String flowOherPay = jsonObject.getString("OTHERPAY");//其他应付款合计
 
-                String flowSoonDeadLine = jsonObject.getString("NONLLIABONEYEAR");//一年内到期的非流动负债
+
                 String flowOher = jsonObject.getString("OTHERLLIAB");//其他流动负债
 
 
@@ -142,17 +145,17 @@ public class StockCompanyAssetServiceImpl extends ServiceImpl<StockCompanyAssetM
                 //非流动负债
                 String totalUnFlowDebt = jsonObject.getString("SUMNONLLIAB");//总非流动负债
 
-                String unflowLongLoan = jsonObject.getString("STBORROW");//长期借款
-                String unflowLongPay = jsonObject.getString("STBORROW");//长期应付款
+                String unflowLongLoan = jsonObject.getString("LTBORROW");//长期借款
+                String unflowLongPay = jsonObject.getString("LTACCOUNTPAY");//长期应付款
 
-                String unflowLongSalary = jsonObject.getString("STBORROW");//长期应付职工薪酬
-                String unflowSpecialPay = jsonObject.getString("STBORROW");//专项应付款
-                String unflowEstimateLoan = jsonObject.getString("STBORROW");//预计负债
+                String unflowLongSalary = jsonObject.getString("LTSALARYPAY");//长期应付职工薪酬
+                String unflowSpecialPay = jsonObject.getString("SPECIALPAY");//专项应付款
+                String unflowEstimateLoan = jsonObject.getString("ANTICIPATELIAB");//预计负债
 
-                String unflowDeferredProfit = jsonObject.getString("STBORROW");//递延收益
-                String unflowDeferredTaxDebt = jsonObject.getString("STBORROW");//递延所得税负债
+                String unflowDeferredProfit = jsonObject.getString("DEFERINCOME");//递延收益
+                String unflowDeferredTaxDebt = jsonObject.getString("DEFERINCOMETAXLIAB");//递延所得税负债
 
-                String unflowOherDebt = jsonObject.getString("STBORROW");//其他非流动负债
+                String unflowOherDebt = jsonObject.getString("OTHERNONLLIAB");//其他非流动负债
 
                 asset.setTotalUnflowDebt(totalUnFlowDebt);
                 asset.setUnflowLongLoan(unflowLongLoan);
@@ -169,11 +172,17 @@ public class StockCompanyAssetServiceImpl extends ServiceImpl<StockCompanyAssetM
                 }
             }
             if(assetList.size() > 0){
+                System.out.println(assetList.toString());
                 return insertBatch(assetList);
             }
         }else{
             return false;
         }
         return false;
+    }
+
+    @Override
+    public List<StockCompanyAssetVO> getCompanyAssetGrowList(String stockCode) {
+        return baseMapper.getCompanyAssetGrowList(stockCode);
     }
 }

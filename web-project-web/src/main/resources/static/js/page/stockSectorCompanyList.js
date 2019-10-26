@@ -1,15 +1,92 @@
 
 $(function () {
 
-    $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=0",function (data) {
-        var str = ""
-        $.each(data.data.result ,function (index ,value) {
-            str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
-        });
-        var str2 = '<option value="">请选择</option>' + str;
-        $("#first_sector").html(str);
+    var first_1_Sector = $("#first_1_Sector").val();
+    var second_1_Sector = $("#second_1_Sector").val();
+    var third_1_Secotor = $("#third_1_Secotor").val();
+    var forth_1_Sector = $("#forth_1_Sector").val();
+    var firstCode = 0;
+    var secondCode = 0;
+    var thirdCode = 0;
+    if(isEmpty(first_1_Sector)){
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=0",function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
+            });
+            var str2 = str + '<option value="">请选择</option>' ;
+            $("#first_sector").html(str2);
 
-    });
+        });
+    }else{
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=0",function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                if(first_1_Sector == value.sectorName){
+                    firstCode = value.sectorCode;
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'" selected="selected">' + value.sectorName + '</option>'
+                }else{
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
+                }
+
+            });
+            var str2 = str + '<option value="">请选择</option>' ;
+            $("#first_sector").html(str2);
+        });
+    }
+
+    if(!isEmpty(second_1_Sector)){
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=" + firstCode,function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                if(second_1_Sector == value.sectorName){
+                    secondCode = value.sectorCode;
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'" selected="selected">' + value.sectorName + '</option>'
+                }else{
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
+                }
+
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#second_sector").html(str2);
+        });
+    }
+
+    if(!isEmpty(third_1_Secotor)) {
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=" + secondCode, function (data) {
+            var str = ""
+            $.each(data.data.result, function (index, value) {
+                if (third_1_Secotor == value.sectorName) {
+                    thirdCode = value.sectorCode;
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '" selected="selected">' + value.sectorName + '</option>'
+                } else {
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '">' + value.sectorName + '</option>'
+                }
+
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#third_secotor").html(str2);
+        });
+    }
+
+    if(!isEmpty(forth_1_Sector)) {
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=" + thirdCode, function (data) {
+            var str = ""
+            $.each(data.data.result, function (index, value) {
+                if (forth_1_Sector == value.sectorName) {
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '" selected="selected">' + value.sectorName + '</option>'
+                } else {
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '">' + value.sectorName + '</option>'
+                }
+
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#forth_sector").html(str2);
+        });
+    }
+
+    $("#mark_hot").val($("#hot_1_Code").val())
+
 
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
         url: '/api/stock/getStockCompanySectorList' ,
@@ -30,7 +107,8 @@ $(function () {
                 thirdSecotor: $("#third_secotor").val(),
                 forthSector: $("#forth_sector").val(),
                 stockCode: $("#stock_code").val(),
-                stockName: $("#stock_name").val()
+                stockName: $("#stock_name").val(),
+                hotCode: $("#mark_hot").val()
             };
             return temp;
         },
@@ -70,14 +148,17 @@ $(function () {
                 field: 'stockName',
                 title: '名称',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: function (value, row, index) {
+                    return '<a class="text_link_a" href="#" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupHot +'">'+ value +'</a>';
+                }
             },{
                 field: 'companyLevel',
                 title: '级别',
                 align: 'center',
                 valign: 'middle',
                 formatter: function (value, row, index) {
-                    return '<a class="text_link_a" href="'+ row.newsUrl +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                    return '<a class="text_link_a" href="#" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
                 }
             },{
                 field: 'companyName',
@@ -124,6 +205,7 @@ $(function () {
     $("#submitDataButton").click(function () {
         var stockCode = $("#stockCode").val();
         var fiveSector = $("#fiveSector").val();
+        var mainBusiness = $("#mainBusiness").val();
         $.APIPost("/api/stock/editStockCompanySector?stockCode=" + stockCode + "&fiveSector=" + fiveSector + "&mainBusiness=" + mainBusiness,function (data) {
             if(data.success){
                     hideModal("myModal");
@@ -172,6 +254,6 @@ function view(stock_code) {
     var forthSector = $("#forth_sector").val();
     var stockCode = $("#stock_code").val();
     var stockName = $("#stock_name").val();
-
-    location.href="/stock/stockCompanyFinancial?stock_code="+stock_code + "&stockCode=" + stockCode + "&stockName=" + stockName + "&firstSector=" + firstSector + "&secondSector=" + secondSector + "&thirdSecotor=" + thirdSecotor + "&forthSector=" + forthSector;
+    var hotCode = $("#mark_hot").val()
+    location.href="/stock/stockCompanyFinancial?stock_code="+stock_code + "&stockCode=" + stockCode + "&stockName=" + stockName + "&firstSector=" + firstSector + "&secondSector=" + secondSector + "&thirdSecotor=" + thirdSecotor + "&forthSector=" + forthSector + "&hotCode=" + hotCode;
 }

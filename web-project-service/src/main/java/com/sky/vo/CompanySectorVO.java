@@ -28,4 +28,6 @@ public class CompanySectorVO extends VoModel {
     private String publishDate ;
 
     private String groupIndex ;
+
+    private String groupHot ;
 }
