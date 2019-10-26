@@ -9,11 +9,9 @@ import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.core.utils.Tools;
 import com.sky.model.*;
-import com.sky.service.StockCompanyAssetService;
-import com.sky.service.StockCompanyCashFlowService;
-import com.sky.service.StockCompanyProfitService;
-import com.sky.service.StockCompanySectorService;
+import com.sky.service.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.xpath.SourceTree;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -134,6 +132,34 @@ public class Test02 {
                 }
             }
 //        }
+    }
+
+    @Autowired
+    private ContryMacroEconomyIndexService contryMacroEconomyIndexService;
+
+    @Test
+    public void test0204(){
+        String contryClass = "美国";
+        String subIndexClass = "美国3个月期国债拍卖";
+        String classCode = "568";
+        String url = "https://sbcharts.investing.com/events_charts/us/"+ classCode +".json";
+        String jsStr = CommonHttpUtil.sendGet(url);
+        System.out.println(jsStr);
+        List<ContryMacroEconomyIndex> list = new ArrayList<>();
+        JSONArray jsonArray = JSON.parseObject(jsStr).getJSONArray("attr");
+        for(int i = 0 ; i < jsonArray.size() ; i ++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            ContryMacroEconomyIndex economyIndex = new ContryMacroEconomyIndex();
+            economyIndex.setClassCode(classCode);
+            economyIndex.setContryClass(contryClass);
+            economyIndex.setSubIndexClass(subIndexClass);
+            economyIndex.setPublishDay(jsonObject.getString("timestamp"));
+            economyIndex.setPublishValue(jsonObject.getString("actual"));
+            list.add(economyIndex);
+        }
+        if(list.size() > 0){
+            contryMacroEconomyIndexService.insertBatch(list);
+        }
     }
 
     @Test
