@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/libs/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body style="padding: 20px;">
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+        <a href="#home" data-toggle="tab">
+            汇总分析
+        </a>
+    </li>
+    <li><a href="#business" data-toggle="tab">工商活动</a></li>
+    <li><a href="#job" data-toggle="tab">就业情况</a></li>
+    <li><a href="#house" data-toggle="tab">房产投资</a></li>
+    <li><a href="#globe" data-toggle="tab">国际贸易</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <div class="panel panel-default search-list-panel"  style="margin-top: 20px;margin-bottom: 20px;">
+            <div class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <form id="formSearch" class="form-horizontal">
+                        <div class="form-group" style="margin-top:15px">
+                            <label class="control-label col-sm-1">日期：</label>
+                            <div class="input-group date col-sm-4">
+                                <input type="text" class="form-control" id="s_start" th:value="${startDay}" readonly>
+                                <div class="input-group-addon">至</div>
+                                <input type="text" class="form-control" id="s_end" th:value="${endDay}" readonly>
+                            </div>
+                            <div class="input-group col-sm-1">
+                                <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="mainGDP" style="width:100%;height:400px;"></div>
+    </div>
+    <div class="tab-pane fade" id="business">
+        <div id="businessPMI" style="width:100%;height:400px;"></div>
+
+        <div id="businessOrder" style="width:100%;height:400px;"></div>
+
+        <div id="businessPrice" style="width:100%;height:400px;"></div>
+
+        <div id="businessSale" style="width:100%;height:400px;"></div>
+
+        <div id="businessConsumConf" style="width:100%;height:400px;"></div>
+    </div>
+    <div class="tab-pane fade" id="job">
+        <div id="jobMain" style="width:100%;height:400px;"></div>
+    </div>
+    <div class="tab-pane fade" id="house">
+        <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+        </p>
+    </div>
+    <div class="tab-pane fade" id="globe">
+        <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+        </p>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="/libs/select2/js/select2.min.js"></script>
+<script type="text/javascript" src="/libs/echarts-2.2.7/echarts.min.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src = "/js/page/usMacroEconomyList.js"></script>
+</html>
