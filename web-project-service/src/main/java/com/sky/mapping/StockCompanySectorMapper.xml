@@ -63,7 +63,8 @@
         a.establish_date establishDate,
         a.publish_date publishDate ,
         a.groupIndex ,
-        GROUP_CONCAT(h.`hot_name` SEPARATOR '->') groupHot
+        GROUP_CONCAT(h.`hot_name` SEPARATOR '->') groupHot ,
+        a.main_business mainBusiness
         FROM(
         SELECT
         s.`stock_code` ,
@@ -103,7 +104,8 @@
         c.`company_region` ,
         c.`establish_date` ,
         c.`publish_date` ,
-        GROUP_CONCAT(i.index_name SEPARATOR '->') groupIndex
+        GROUP_CONCAT(i.index_name SEPARATOR '->') groupIndex ,
+        s.main_business
         FROM stock_company_sector s
         LEFT JOIN stock_company_base c ON s.`stock_code` = c.`stock_a_code`
         LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
