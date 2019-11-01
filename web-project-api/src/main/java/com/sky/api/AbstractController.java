@@ -146,4 +146,7 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected StockCompanyAssetService stockCompanyAssetService;
+
+    @Autowired
+    protected ContryMacroEconomyIndexService contryMacroEconomyIndexService;
 }

@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/web-project-finance.iml" filepath="$PROJECT_DIR$/web-project-finance.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-project-service/web-project-service.iml" filepath="$PROJECT_DIR$/web-project-service/web-project-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-project-web/web-project-web.iml" filepath="$PROJECT_DIR$/web-project-web/web-project-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web-project-web/web-project-web.iml" filepath="$PROJECT_DIR$/web-project-web/web-project-web.iml" />
     </modules>
   </component>
 </project>

@@ -12,9 +12,112 @@
 
         <result column="class_code" property="classCode"/>
         <result column="contry_class" property="contryClass"/>
+        <result column="class_level" property="classLevel"/>
         <result column="publish_day" property="publishDay"/>
         <result column="index_class" property="indexClass"/>
         <result column="sub_index_class" property="subIndexClass"/>
         <result column="publish_value" property="publishValue"/>
     </resultMap>
+
+    <select id="getContryMacroEconomy" parameterType="java.lang.String" resultType="com.sky.vo.MacroEconomy_VO">
+        SELECT
+        a.*
+        FROM(
+        SELECT
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+             ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+             END AS publishDay ,
+        sub_index_class className ,
+        publish_value publishValue
+        FROM contry_macro_economy_index
+        <where>
+            <if test="indexCode != null and indexCode != '' and indexCode != 'undefined'">
+                class_code = #{indexCode}
+            </if>
+            <if test="contry != null and contry != '' and contry != 'undefined'">
+                AND contry_class = #{contry}
+            </if>
+        </where>
+        ) a
+        <where>
+            <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+                a.publishDay >= #{startDay}
+            </if>
+            <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+                AND a.publishDay &lt; #{endDay}
+            </if>
+        </where>
+        ORDER BY a.publishDay
+    </select>
+
+    <select id="getWeekLossJobCount" parameterType="java.lang.String" resultType="com.sky.vo.WeekLossJobCountVO">
+        SELECT
+        e.publishMonth ,
+        e.className ,
+        SUM(CASE WHEN e.rank = 1 THEN e.publishValue ELSE 0 END) AS firstWeekValue ,
+        SUM(CASE WHEN e.rank = 2 THEN e.publishValue ELSE 0 END) AS secondWeekValue ,
+        SUM(CASE WHEN e.rank = 3 THEN e.publishValue ELSE 0 END) AS thirdWeekValue ,
+        SUM(CASE WHEN e.rank = 4 THEN e.publishValue ELSE 0 END) AS forthWeekValue ,
+        SUM(CASE WHEN e.rank = 5 THEN e.publishValue ELSE 0 END) AS fifthWeekValue
+        FROM(
+        SELECT
+        c.*,
+        IF(@p=c.publishMonth,@r:=@r+1,@r:=1) AS rank,
+        @p:=c.publishMonth
+        FROM(
+        SELECT
+        CASE WHEN b.publishWeek = 0 OR (b.publishWeek = 1 AND b.rank = 1) THEN DATE_FORMAT(SUBDATE(b.publishDay,INTERVAL 1 MONTH) ,'%Y-%m')
+             ELSE b.publishMonth END AS publishMonth,
+        b.publishDay ,
+        b.className ,
+        b.publishValue
+        FROM(
+        SELECT
+        a.* ,
+        IF(@p=a.publishMonth,@r:=@r+1,@r:=1) AS rank,
+        @p:=a.publishMonth
+        FROM(
+        SELECT
+        DATE_FORMAT((
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+             ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+             END
+        ),'%Y-%m') publishMonth,
+        ((DAY(
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+             ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+             END
+        )+WEEKDAY((
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+             ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+             END
+        )-INTERVAL DAY(
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+             ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+             END
+        ) DAY)) DIV 7) publishWeek,
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+             ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+             END AS publishDay ,
+        sub_index_class className ,
+        publish_value publishValue
+        FROM contry_macro_economy_index
+        WHERE class_code = #{indexCode}
+        AND contry_class = '美国'
+        ) a,(SELECT @p:=NULL,@r:=0)r
+        ) b
+        ) c ,(SELECT @p:=NULL,@r:=0)r
+        <where>
+            <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+                AND c.publishMonth >= DATE_FORMAT(#{startDay} ,'%Y-%m')
+            </if>
+            <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+                AND c.publishMonth &lt; DATE_FORMAT(#{endDay} ,'%Y-%m')
+            </if>
+        </where>
+        ORDER BY c.publishDay
+        ) e
+        GROUP BY e.publishMonth
+        ORDER BY e.publishMonth
+    </select>
 </mapper>

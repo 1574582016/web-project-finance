@@ -162,6 +162,17 @@ public class Test02 {
         }
     }
 
+    @Autowired
+    private ContryMacroEconomyClassService contryMacroEconomyClassService;
+
+    @Test
+    public void test0205(){
+       List<ContryMacroEconomyClass> list = contryMacroEconomyClassService.selectList(null);
+        for(ContryMacroEconomyClass economyClass : list){
+            contryMacroEconomyIndexService.spiderMacroEconomyIndex(economyClass);
+        }
+    }
+
     @Test
     public void test03(){
             String url = "http://f10.eastmoney.com/NewFinanceAnalysis/lrbAjax?companyType=4&reportDateType=0&reportType=1&endDate=&code=SZ000333";
