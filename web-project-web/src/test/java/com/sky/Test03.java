@@ -1,9 +1,24 @@
 package com.sky;
 
+import com.sky.core.utils.DateUtils;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Date;
+
 /**
  * Created by ThinkPad on 2019/10/8.
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class Test03 {
+
+    @Test
+    public void test01(){
+        System.out.println(DateUtils.addMonths(new Date() , -1));
+    }
 
 /**
  * 1、市盈率——P/E——PER——Price Earnings Ratio

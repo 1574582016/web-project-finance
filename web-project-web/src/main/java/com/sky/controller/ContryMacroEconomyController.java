@@ -16,7 +16,7 @@ public class ContryMacroEconomyController {
 
     @RequestMapping("/usMacroEconomyList")
     public String economyNewsStatisticsList(Model model){
-        model.addAttribute("startDay" , DateUtils.formatDate(DateUtils.addYears(new Date(),-3),"yyyy-MM-dd"));
+        model.addAttribute("startDay" , DateUtils.formatDate(DateUtils.addYears(new Date(),-1),"yyyy-MM-dd"));
         model.addAttribute("endDay" , DateUtils.getDate());
         return "page/usMacroEconomyList";
     }
