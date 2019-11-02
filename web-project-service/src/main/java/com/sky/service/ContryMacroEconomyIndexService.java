@@ -19,4 +19,8 @@ public interface ContryMacroEconomyIndexService extends IService<ContryMacroEcon
     void spiderMacroEconomyIndex(ContryMacroEconomyClass economyClass);
 
     List<WeekLossJobCountVO> getWeekLossJobCount(String indexCode , String startDay , String endDay);
+
+    List<MacroEconomy_VO> getContryMacroEconomyMonth(String contry , String indexCode ,String startDay ,String endDay);
+
+    List<MacroEconomy_VO> getUsMarkitPMIIndex(String contry , String indexCode ,String week ,String startDay ,String endDay);
 }

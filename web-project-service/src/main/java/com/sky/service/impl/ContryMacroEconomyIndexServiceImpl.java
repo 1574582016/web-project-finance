@@ -72,4 +72,14 @@ public class ContryMacroEconomyIndexServiceImpl extends ServiceImpl<ContryMacroE
     public List<WeekLossJobCountVO> getWeekLossJobCount(String indexCode, String startDay, String endDay) {
         return baseMapper.getWeekLossJobCount( indexCode, startDay, endDay);
     }
+
+    @Override
+    public List<MacroEconomy_VO> getContryMacroEconomyMonth(String contry, String indexCode, String startDay, String endDay) {
+        return baseMapper.getContryMacroEconomyMonth( contry, indexCode, startDay, endDay);
+    }
+
+    @Override
+    public List<MacroEconomy_VO> getUsMarkitPMIIndex(String contry, String indexCode,String week , String startDay, String endDay) {
+        return baseMapper.getUsMarkitPMIIndex( contry,  indexCode, week ,  startDay,  endDay);
+    }
 }
