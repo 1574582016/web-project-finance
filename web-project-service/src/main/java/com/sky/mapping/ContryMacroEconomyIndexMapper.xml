@@ -217,10 +217,10 @@
         AND contry_class = '美国'
         ) a
         <where>
-            <if test="week = '1'.toString()">
+            <if test="week == '1'.toString()">
                 AND a.publishWeek > 1
             </if>
-            <if test="week = '3'.toString()">
+            <if test="week == '3'.toString()">
                 AND a.publishWeek &lt; 3
             </if>
         </where>

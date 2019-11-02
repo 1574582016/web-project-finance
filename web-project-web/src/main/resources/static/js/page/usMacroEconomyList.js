@@ -43,7 +43,7 @@ function searchUSdata() {
     });
 
     $.APIPost("/api/macroEconomy/getUsMarkitPMIIndex?contry=美国&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
-        commonLine("markitPMI" ,"谘商会消费者信心指数"  ,result);
+        commonLine("markitPMI" ,"Markit采购经理人指数(PMI)"  ,result);
     });
 
     $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=294,522,1041&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {

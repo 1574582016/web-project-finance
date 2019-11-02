@@ -140,8 +140,33 @@ public class Test02 {
     @Test
     public void test0204(){
         String contryClass = "美国";
-        String subIndexClass = "美国3个月期国债拍卖";
-        String classCode = "568";
+        String subIndexClass = "美国达拉斯联储截尾PCE物价指数年率";
+        String classCode = "1550";
+        String url = "https://sbcharts.investing.com/events_charts/us/"+ classCode +".json";
+        String jsStr = CommonHttpUtil.sendGet(url);
+        System.out.println(jsStr);
+        List<ContryMacroEconomyIndex> list = new ArrayList<>();
+        JSONArray jsonArray = JSON.parseObject(jsStr).getJSONArray("attr");
+        for(int i = 0 ; i < jsonArray.size() ; i ++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            ContryMacroEconomyIndex economyIndex = new ContryMacroEconomyIndex();
+            economyIndex.setClassCode(classCode);
+            economyIndex.setContryClass(contryClass);
+            economyIndex.setSubIndexClass(subIndexClass);
+            economyIndex.setPublishDay(jsonObject.getString("timestamp"));
+            economyIndex.setPublishValue(jsonObject.getString("actual"));
+            list.add(economyIndex);
+        }
+        if(list.size() > 0){
+            contryMacroEconomyIndexService.insertBatch(list);
+        }
+    }
+
+    @Test
+    public void test0205(){
+        String contryClass = "中国";
+        String subIndexClass = "中国季度国内生产总值(GDP)年率";
+        String classCode = "461";
         String url = "https://sbcharts.investing.com/events_charts/us/"+ classCode +".json";
         String jsStr = CommonHttpUtil.sendGet(url);
         System.out.println(jsStr);
@@ -166,7 +191,7 @@ public class Test02 {
     private ContryMacroEconomyClassService contryMacroEconomyClassService;
 
     @Test
-    public void test0205(){
+    public void test0208(){
        List<ContryMacroEconomyClass> list = contryMacroEconomyClassService.selectList(null);
         for(ContryMacroEconomyClass economyClass : list){
             contryMacroEconomyIndexService.spiderMacroEconomyIndex(economyClass);

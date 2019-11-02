@@ -215,6 +215,7 @@ public class ContryMacroEconomyApiController extends AbstractController {
         dataArr.add(jsonObject1);
 
         List<MacroEconomy_VO> list2 = contryMacroEconomyIndexService.getUsMarkitPMIIndex(null ,"1062" ,"3" ,startDay , endDay);
+        nameArr.add(list2.get(0).getClassName()+"—预期");
         JSONObject jsonObject2 = new JSONObject();
         jsonObject2.put("name" , list2.get(0).getClassName()+"—预期");
         jsonObject2.put("type" , "line");
@@ -227,6 +228,7 @@ public class ContryMacroEconomyApiController extends AbstractController {
         dataArr.add(jsonObject2);
 
         List<MacroEconomy_VO> list3 = contryMacroEconomyIndexService.getUsMarkitPMIIndex(null ,"829" ,"1" ,startDay , endDay);
+        nameArr.add(list3.get(0).getClassName()+"—实际");
         JSONObject jsonObject3 = new JSONObject();
         jsonObject3.put("name" , list3.get(0).getClassName()+"—实际");
         jsonObject3.put("type" , "line");
@@ -239,6 +241,7 @@ public class ContryMacroEconomyApiController extends AbstractController {
         dataArr.add(jsonObject3);
 
         List<MacroEconomy_VO> list4 = contryMacroEconomyIndexService.getUsMarkitPMIIndex(null ,"1062" ,"1" ,startDay , endDay);
+        nameArr.add(list4.get(0).getClassName()+"—实际");
         JSONObject jsonObject4 = new JSONObject();
         jsonObject4.put("name" , list4.get(0).getClassName()+"—实际");
         jsonObject4.put("type" , "line");
