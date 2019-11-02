@@ -16,4 +16,8 @@ public interface ContryMacroEconomyIndexMapper extends BaseMapper<ContryMacroEco
     List<MacroEconomy_VO> getContryMacroEconomy(@Param("contry") String contry ,@Param("indexCode")  String indexCode ,@Param("startDay")  String startDay ,@Param("endDay")  String endDay);
 
     List<WeekLossJobCountVO> getWeekLossJobCount(@Param("indexCode")  String indexCode , @Param("startDay")  String startDay , @Param("endDay")  String endDay);
+
+    List<MacroEconomy_VO> getContryMacroEconomyMonth(@Param("contry") String contry ,@Param("indexCode")  String indexCode ,@Param("startDay")  String startDay ,@Param("endDay")  String endDay);
+
+    List<MacroEconomy_VO> getUsMarkitPMIIndex(@Param("contry") String contry ,@Param("indexCode")  String indexCode ,@Param("week")  String week ,@Param("startDay")  String startDay ,@Param("endDay")  String endDay);
 }

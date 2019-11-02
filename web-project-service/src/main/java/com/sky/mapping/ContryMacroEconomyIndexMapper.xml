@@ -120,4 +120,119 @@
         GROUP BY e.publishMonth
         ORDER BY e.publishMonth
     </select>
+
+    <select id="getContryMacroEconomyMonth" parameterType="java.lang.String" resultType="com.sky.vo.MacroEconomy_VO">
+        SELECT
+        c.*
+        FROM(
+            SELECT
+            CASE WHEN b.publishWeek = 0 OR (b.publishWeek = 1 AND b.rank = 1) THEN DATE_FORMAT(SUBDATE(b.publishDay,INTERVAL 1 MONTH) ,'%Y-%m')
+            ELSE b.publishMonth END AS publishMonth,
+            b.publishDay,
+            b.className ,
+            b.publishValue
+            FROM(
+                SELECT
+                a.* ,
+                IF(@p=a.publishMonth,@r:=@r+1,@r:=1) AS rank,
+                @p:=a.publishMonth
+                FROM(
+                    SELECT
+                    DATE_FORMAT((
+                    CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+                    ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+                    END
+                    ),'%Y-%m') publishMonth,
+                    ((DAY(
+                    CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+                    ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+                    END
+                    )+WEEKDAY((
+                    CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+                    ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+                    END
+                    )-INTERVAL DAY(
+                    CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+                    ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+                    END
+                    ) DAY)) DIV 7) publishWeek,
+                    CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+                    ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+                    END AS publishDay ,
+                    sub_index_class className ,
+                    publish_value publishValue
+                    FROM contry_macro_economy_index
+                    WHERE class_code = #{indexCode}
+                    AND contry_class = '美国'
+                ) a,(SELECT @p:=NULL,@r:=0)r
+            ) b
+        ) c
+        <where>
+            <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+                AND c.publishMonth >= DATE_FORMAT(#{startDay} ,'%Y-%m')
+            </if>
+            <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+                AND c.publishMonth &lt; DATE_FORMAT(#{endDay} ,'%Y-%m')
+            </if>
+        </where>
+        ORDER BY c.publishDay
+    </select>
+
+    <select id="getUsMarkitPMIIndex" parameterType="java.lang.String" resultType="com.sky.vo.MacroEconomy_VO">
+        SELECT
+        b.*
+        FROM(
+        SELECT
+        CASE WHEN ${week} = 1 THEN DATE_FORMAT(SUBDATE(a.publishDay,INTERVAL -1 MONTH) ,'%Y-%m')
+        ELSE a.publishMonth  END AS publishMonth ,
+        a.className ,
+        a.publishValue
+        FROM(
+        SELECT
+        DATE_FORMAT((
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+        ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+        END
+        ),'%Y-%m') publishMonth,
+        ((DAY(
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+        ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+        END
+        )+WEEKDAY((
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+        ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+        END
+        )-INTERVAL DAY(
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+        ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+        END
+        ) DAY)) DIV 7) publishWeek,
+        CASE WHEN LENGTH(publish_day) = 13 THEN FROM_UNIXTIME(LEFT(publish_day,10),'%Y-%m-%d')
+        ELSE FROM_UNIXTIME(LEFT(publish_day,9),'%Y-%m-%d')
+        END AS publishDay ,
+        sub_index_class className ,
+        publish_value publishValue
+        FROM contry_macro_economy_index
+        WHERE class_code = #{indexCode}
+        AND contry_class = '美国'
+        ) a
+        <where>
+            <if test="week = '1'.toString()">
+                AND a.publishWeek > 1
+            </if>
+            <if test="week = '3'.toString()">
+                AND a.publishWeek &lt; 3
+            </if>
+        </where>
+        ORDER BY a.publishDay
+        ) b
+        <where>
+            <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+                AND b.publishMonth >= DATE_FORMAT(#{startDay} ,'%Y-%m')
+            </if>
+            <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+                AND b.publishMonth &lt; DATE_FORMAT(#{endDay} ,'%Y-%m')
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -11,6 +11,10 @@ import java.math.BigDecimal;
 @Data
 public class MacroEconomy_VO extends VoModel {
 
+    private String publishMonth;
+
+    private String publishWeek;
+
     private String publishDay ;
 
     private String className ;

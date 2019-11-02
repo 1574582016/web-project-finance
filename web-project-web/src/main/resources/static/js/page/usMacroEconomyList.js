@@ -23,7 +23,27 @@ $(function () {
 
 function searchUSdata() {
     $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=375,343&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
-        mainGDP("mainGDP" ,"GDP增长"  ,result);
+        main("mainGDP" ,"GDP增长"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=168&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        main("mainInterest" ,"利率决议"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyMonth?contry=美国&indexCodes=890,895,234,235&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("incomeRate" ,"个人收入&支出月率"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=320,900&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("zshXX" ,"密歇根大学消费者预期指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=48&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("custRate" ,"谘商会消费者信心指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getUsMarkitPMIIndex?contry=美国&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("markitPMI" ,"谘商会消费者信心指数"  ,result);
     });
 
     $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=294,522,1041&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
@@ -44,7 +64,7 @@ function searchUSdata() {
     });
 }
 
-function mainGDP(boxId ,name ,result) {
+function main(boxId ,name ,result) {
     var myChart = echarts.init(document.getElementById(boxId));
     var colors = ['#3a9ff5', '#34bd37','#e80b3e'];
     var option = {
