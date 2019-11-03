@@ -140,8 +140,8 @@ public class Test02 {
     @Test
     public void test0204(){
         String contryClass = "美国";
-        String subIndexClass = "美国达拉斯联储截尾PCE物价指数年率";
-        String classCode = "1550";
+        String subIndexClass = "美国挑战者企业裁员年率";
+        String classCode = "333";
         String url = "https://sbcharts.investing.com/events_charts/us/"+ classCode +".json";
         String jsStr = CommonHttpUtil.sendGet(url);
         System.out.println(jsStr);

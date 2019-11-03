@@ -30,8 +30,21 @@ function searchUSdata() {
         main("mainInterest" ,"利率决议"  ,result);
     });
 
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=888&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("firePeople" ,"挑战者企业裁员人数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1307,161,1755,31&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("factoryProduce" ,"工业产出(滞后)"  ,result);
+    });
+
     $.APIPost("/api/macroEconomy/getContryMacroEconomyMonth?contry=美国&indexCodes=890,895,234,235&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
         commonLine("incomeRate" ,"个人收入&支出月率"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyMonth?contry=美国&indexCodes=1046,1048&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        console.log(result);
+        commonLine("ISMJob" ,"ISM就业指数"  ,result);
     });
 
     $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=320,900&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
@@ -44,6 +57,10 @@ function searchUSdata() {
 
     $.APIPost("/api/macroEconomy/getUsMarkitPMIIndex?contry=美国&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
         commonLine("markitPMI" ,"Markit采购经理人指数(PMI)"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyMonth?contry=美国&indexCodes=173,176&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("ISMPMI" ,"ISM采购经理人指数(PMI)"  ,result);
     });
 
     $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=294,522,1041&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
