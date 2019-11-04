@@ -112,4 +112,38 @@ public class Test04 {
         }
 
     }
+
+
+/**
+ *level 3
+ *语法：
+ *    1、词组——喜欢——be interested in
+ *                   ——like
+ *                   ——love
+ *                   ——enjoy
+ *                   ——prefer
+ *                   ——care for
+ *           ——擅长——
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+  */
 }

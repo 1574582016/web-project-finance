@@ -191,6 +191,70 @@ public class ContryMacroEconomyApiController extends AbstractController {
     }
 
 
+    @LogRecord(name = "getContryMacroEconomyAverage" ,description = "查询数据平均值")
+    @PostMapping("/getContryMacroEconomyAverage")
+    public Object getContryMacroEconomyAverage(String contry, String indexCodes ,String startDay ,String endDay ,String descr){
+        Map<String,Object> resultMap = new HashedMap();
+        List<String> titleArr = new ArrayList<String>();
+        List<String> nameArr = new ArrayList<String>();
+        List<JSONObject> dataArr = new ArrayList<>();
+        String[] codes = indexCodes.split(",");
+        List<MacroEconomy_VO> list1 = contryMacroEconomyIndexService.getContryMacroEconomyMonth( contry ,  codes[0] , startDay , endDay);
+        nameArr.add(list1.get(0).getClassName());
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("name" , list1.get(0).getClassName());
+        jsonObject1.put("type" , "line");
+        jsonObject1.put("stack" ,codes[0]);
+        List<BigDecimal> arrayList1 = new ArrayList<BigDecimal>();
+        for(MacroEconomy_VO economy_vo : list1){
+            titleArr.add(economy_vo.getPublishMonth());
+            arrayList1.add(economy_vo.getPublishValue());
+        }
+        jsonObject1.put("data" ,arrayList1);
+        dataArr.add(jsonObject1);
+
+        List<MacroEconomy_VO> list2 = contryMacroEconomyIndexService.getContryMacroEconomyMonth( contry ,  codes[1] , startDay , endDay);
+        nameArr.add(list2.get(0).getClassName());
+        JSONObject jsonObject2 = new JSONObject();
+        jsonObject2.put("name" , list2.get(0).getClassName());
+        jsonObject2.put("type" , "line");
+        jsonObject2.put("stack" , codes[1]);
+        List<BigDecimal> arrayList2 = new ArrayList<BigDecimal>();
+        for(MacroEconomy_VO economy_vo : list2){
+            arrayList2.add(economy_vo.getPublishValue());
+        }
+        jsonObject2.put("data" ,arrayList2);
+        dataArr.add(jsonObject2);
+
+        nameArr.add(descr);
+        JSONObject jsonObject3 = new JSONObject();
+        jsonObject3.put("name" , descr);
+        jsonObject3.put("type" , "line");
+        jsonObject3.put("stack" , "23456");
+        List<BigDecimal> arrayList3 = new ArrayList<BigDecimal>();
+        int num = list1.size();
+        if(list1.size() > list2.size()){
+            num = list2.size();
+        }
+
+        for(int i = 0 ; i < num ; i++){
+            MacroEconomy_VO economy_vo1 = list1.get(i);
+            MacroEconomy_VO economy_vo2 = list2.get(i);
+            if(economy_vo1 != null && economy_vo2 != null){
+                arrayList3.add((economy_vo1.getPublishValue().add(economy_vo2.getPublishValue())).divide(BigDecimal.valueOf(2) ,2,BigDecimal.ROUND_HALF_UP));
+            }
+        }
+        jsonObject3.put("data" ,arrayList3);
+        dataArr.add(jsonObject3);
+
+
+        resultMap.put("titleArr",titleArr);
+        resultMap.put("nameArr",nameArr);
+        resultMap.put("dataArr",dataArr);
+        return ResponseEntity.ok(MapSuccess("操作成功",resultMap));
+    }
+
+
 
     @LogRecord(name = "getUsMarkitPMIIndex" ,description = "查询美国Markit的PMI指标")
     @PostMapping("/getUsMarkitPMIIndex")
@@ -252,6 +316,32 @@ public class ContryMacroEconomyApiController extends AbstractController {
         }
         jsonObject4.put("data" ,arrayList4);
         dataArr.add(jsonObject4);
+
+        List<MacroEconomy_VO> list5 = contryMacroEconomyIndexService.getUsMarkitPMIIndex(null ,"1492" ,"3" ,startDay , endDay);
+        nameArr.add(list5.get(0).getClassName()+"—实际");
+        JSONObject jsonObject5 = new JSONObject();
+        jsonObject5.put("name" , list5.get(0).getClassName()+"—实际");
+        jsonObject5.put("type" , "line");
+        jsonObject5.put("stack" , "14921");
+        List<BigDecimal> arrayList5 = new ArrayList<BigDecimal>();
+        for(MacroEconomy_VO economy_vo : list5){
+            arrayList5.add(economy_vo.getPublishValue());
+        }
+        jsonObject5.put("data" ,arrayList5);
+        dataArr.add(jsonObject5);
+
+        List<MacroEconomy_VO> list6 = contryMacroEconomyIndexService.getUsMarkitPMIIndex(null ,"1492" ,"1" ,startDay , endDay);
+        nameArr.add(list6.get(0).getClassName()+"—预期");
+        JSONObject jsonObject6 = new JSONObject();
+        jsonObject6.put("name" , list6.get(0).getClassName()+"—预期");
+        jsonObject6.put("type" , "line");
+        jsonObject6.put("stack" , "14920");
+        List<BigDecimal> arrayList6 = new ArrayList<BigDecimal>();
+        for(MacroEconomy_VO economy_vo : list6){
+            arrayList6.add(economy_vo.getPublishValue());
+        }
+        jsonObject6.put("data" ,arrayList6);
+        dataArr.add(jsonObject6);
 
         resultMap.put("titleArr",titleArr);
         resultMap.put("nameArr",nameArr);

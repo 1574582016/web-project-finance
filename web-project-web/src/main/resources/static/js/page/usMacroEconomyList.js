@@ -30,8 +30,72 @@ function searchUSdata() {
         main("mainInterest" ,"利率决议"  ,result);
     });
 
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1334,329,913&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("SPCS" ,"S&P/CS 20座大城市房价指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1287,327,897&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("FHFA" ,"FHFA房价指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=151,222,232,891,896,898,902,99&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("houseSale" ,"房屋销售指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=25,45,885&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("houseBuild" ,"房屋建造指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1427,1428,1494,380,1042&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("MBALoan" ,"抵押贷款情况"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1762,1763,286&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("transport" ,"进出口情况"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=153,1747,1748,892&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("transportPrice" ,"进出口价格"  ,result);
+    });
+
     $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=888&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
         commonLine("firePeople" ,"挑战者企业裁员人数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1047,1446,59,86,100,893&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("durableOrder" ,"耐用品订单"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyMonth?contry=美国&indexCodes=655,911&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("HPSSale" ,"红皮书商业零售销售"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyMonth?contry=美国&indexCodes=1506,256,63&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("commonSale" ,"商业零售"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1226,1549,1888,1889,56,69,733,736&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("CPIPrice" ,"CPI价格指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=238,62,734,735&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("PPIPrice" ,"PPI价格指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=61,1548,1550,1571,905&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("PCEPrice" ,"PCE价格指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=8,1777,379&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("hourSalary" ,"每小时工资"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyAverage?contry=美国&indexCodes=1483,1050&descr=ISM订单指数均值&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("ISMOrder" ,"ISM订单指数"  ,result);
+    });
+
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyAverage?contry=美国&indexCodes=174,1049&descr=ISM物价指数均值&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+        commonLine("ISMPrice" ,"ISM物价指数"  ,result);
     });
 
     $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=1307,161,1755,31&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
@@ -42,8 +106,7 @@ function searchUSdata() {
         commonLine("incomeRate" ,"个人收入&支出月率"  ,result);
     });
 
-    $.APIPost("/api/macroEconomy/getContryMacroEconomyMonth?contry=美国&indexCodes=1046,1048&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
-        console.log(result);
+    $.APIPost("/api/macroEconomy/getContryMacroEconomyAverage?contry=美国&indexCodes=1046,1048&descr=ISM就业指数均值&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
         commonLine("ISMJob" ,"ISM就业指数"  ,result);
     });
 
@@ -68,7 +131,6 @@ function searchUSdata() {
     });
 
     $.APIPost("/api/macroEconomy/getWeekLossJobCount?startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
-        console.log(result);
         jobWeekLoss("jobWeekLoss" ,"每周净失业人数"  ,result);
     });
 
@@ -76,7 +138,7 @@ function searchUSdata() {
         commonLine("jobADP" ,"ADP就业人数"  ,result);
     });
 
-    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=227,300,1581&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
+    $.APIPost("/api/macroEconomy/getContryMacroEconomy?contry=美国&indexCodes=227,300,1581,1531,528&startDay=" + $("#s_start").val() + "&endDay=" + $("#s_end").val(),function (result) {
         commonLine("jobEmployee" ,"非农就业人口"  ,result);
     });
 }
