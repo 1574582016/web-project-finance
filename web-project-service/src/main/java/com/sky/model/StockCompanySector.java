@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.sky.core.model.BaseModel;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * Created by ThinkPad on 2019/10/14.
  */
@@ -71,4 +73,28 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
      */
     @TableField("company_product")
     private String companyProduct ;
+
+    /**
+     *盈利分数
+     */
+    @TableField("profit_score")
+    private BigDecimal profitScore ;
+
+    /**
+     *资产分数
+     */
+    @TableField("asset_score")
+    private BigDecimal assetScore ;
+
+    /**
+     *资产增长分数
+     */
+    @TableField("asset_grow_score")
+    private BigDecimal assetGrowScore ;
+
+    /**
+     *流动性分数
+     */
+    @TableField("flow_score")
+    private BigDecimal flowScore ;
 }

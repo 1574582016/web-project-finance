@@ -81,7 +81,7 @@ public class Test04 {
 
     @Test
     public void test3(){
-        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
+        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("company_intr IS NULL"));
         for(StockCompanySector sector : list){
             String stockCode = sector.getStockCode();
             String mk = "SZ";
@@ -123,17 +123,100 @@ public class Test04 {
  *                   ——enjoy
  *                   ——prefer
  *                   ——care for
- *           ——擅长——
+ *           ——擅长——be good at
+ *                   ——be okay at
+ *                   ——be bad at
+ *                   ——be terrible at
+ *           ——频率——always   ——100%
+ *                   ——usually  ——80%
+ *                   ——often    ——60%
+ *                   ——sometime ——40%
+ *                   ——rarely   ——20%
+ *                   ——never    ——0%
+ *            ——可能——probably——动词前、be后——极大的肯定
+ *                    ——could   ——be前
+ *                    ——might   ——be前
+ *                    ——maybe   ——句首
+ *                    ——perhaps ——句首或句中
+ *            ——位置——next to
+ *                    ——behind
+ *                    ——in the front of
+ *                    ——between
+ *                    ——on the corner of xxx and xxx
+ *                    ——across the stress
+ *                    ——across the stress from
+ *            ——坐标——street = St.
+ *                    ——road = Rd.
+ *                    ——avenue = Ave.
+ *                    ——boulevard = Blvd.
+ *                    ——drive = Dr.
+ *                    ——way
+ *            ——方向——go straight on
+ *                    ——go down
+ *                    ——go/turn left/right on
+ *                    ——go/turn north/south/east/west
+ *                    ——make a left/right on
+ *                    ——xxx on the right/left
+ *
+ *    2、句型——一般询问——What are/do you ...——什么都不知道，进行提问
+ *                         ——Do you ...——针对特定的事物，进行提问
+ *                         ——Which xxx do/are you ...——两个选一个，进行提问
+ *           ——频率询问——How often do you ...
+ *                       ——Do/Are you ever ....
+ *           ——能力询问——Can you ...?
+ *           ——请求询问——Could you ...?
+ *                       ——Would you ...?——更礼貌
+ *           ——进行询问——Like what?
+ *           ——省略询问——You ... ?
+ *           ——询问计划——Do you have any plans ...?
+ *           ——询问事件——What's up?
+ *           ——询问地址——What's the address of xxx,please?
+ *                       ——Where's xxx,please?
+ *                       ——How do I get to xxx,please?
+ *                       ——Can you please tell me how to get xxx?
+ *
+ *   3、词性——冠词——乐器通用词前(instrument) + an/a
+ *                  ——乐器特定词前(guitar) + the
+ *          ——介词——on——街道
+ *                  ——at——街道门牌号
  *
  *
+ *阅读：
+ *    1、技巧——看标题
+ *           ——看图
+ *           ——阅读主题句、第一句
+ *
+ *句子：——Can you show him around?
+ *      ——I know he ......
+ *
+ *      ——What's your address?/Where do you live?
+ *      ——What's the cross street?
+ *      ——What's your apartment number?
+ *      ——What floor do you live on?
+ *
+ *      ——Which direction is it?
+ *      ——It's west.
  *
  *
+ *主题：——询问爱好——询问对方的爱好
+ *                  ——询问第三人的爱好
+ *      ——询问能力——询问对方能干什么吗
+ *      ——询问计划——询问对方有什么安排
+ *      ——介绍方位——介绍建筑间的方位
+ *      ——指路    ——指路
+ *      ——问路    ——问路
+ *      ——
  *
- *
- *
- *
- *
- *
+ *拓展：——询问爱好——问爱好
+ *                  ——为什么喜爱
+ *                  ——你能做到同样的事吗
+ *                  ——如果我也想尝试、能不能推荐一下
+ *      ——询问事物——问是什么
+ *                  ——有什么用
+ *                  ——怎么用
+ *                  ——有什么优缺点
+ *                  ——价格多少
+ *                  ——哪里可以获得
  *
  *
  *

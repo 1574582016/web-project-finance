@@ -31,14 +31,17 @@
         CASE WHEN a.totalProfit - IFNULL(b.totalProfit,a.totalProfit) > 0 THEN 1
               WHEN a.totalProfit - IFNULL(b.totalProfit,a.totalProfit) = 0 THEN 0
               WHEN a.totalProfit - IFNULL(b.totalProfit,a.totalProfit) &lt; 0 THEN -1
+              ELSE 0
               END AS isGrow,
         CASE WHEN a.finalProfit - IFNULL(b.finalProfit,a.finalProfit) > 0 THEN 1
               WHEN a.finalProfit - IFNULL(b.finalProfit,a.finalProfit) = 0 THEN 0
               WHEN a.finalProfit - IFNULL(b.finalProfit,a.finalProfit) &lt; 0 THEN -1
+              ELSE 0
               END AS isBelong ,
         CASE WHEN (a.totalProfit - a.operateProfit - a.finalProfit) - (IFNULL(b.totalProfit,a.totalProfit) - IFNULL(b.operateProfit,a.operateProfit) -IFNULL(b.finalProfit,a.finalProfit)) &lt; 0 THEN 1
               WHEN (a.totalProfit - a.operateProfit - a.finalProfit) - (IFNULL(b.totalProfit,a.totalProfit) - IFNULL(b.operateProfit,a.operateProfit) -IFNULL(b.finalProfit,a.finalProfit)) = 0 THEN 0
               WHEN (a.totalProfit - a.operateProfit - a.finalProfit) - (IFNULL(b.totalProfit,a.totalProfit) - IFNULL(b.operateProfit,a.operateProfit) -IFNULL(b.finalProfit,a.finalProfit)) > 0 THEN -1
+              ELSE 0
               END AS belongOther
         FROM(
         SELECT

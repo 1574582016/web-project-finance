@@ -154,12 +154,17 @@ $(function () {
                 }
             },{
                 field: 'companyLevel',
-                title: '级别',
+                title: '市场',
                 align: 'center',
                 valign: 'middle',
                 formatter: function (value, row, index) {
                     return '<a class="text_link_a" href="#" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
                 }
+            },{
+                field: 'financialLevel',
+                title: '资产',
+                align: 'center',
+                valign: 'middle'
             },{
                 field: 'companyName',
                 title: '全称',
@@ -180,6 +185,12 @@ $(function () {
                 title: '上市日期',
                 align: 'center',
                 valign: 'middle'
+            },{
+                field: 'mainBusiness',
+                title: '主营',
+                align: 'center',
+                valign: 'middle',
+                width: '20%'
             },{
                 title: "操作",
                 align: 'center',

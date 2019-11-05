@@ -32,4 +32,6 @@ public class CompanySectorVO extends VoModel {
     private String groupHot ;
 
     private String mainBusiness ;
+
+    private String financialLevel;
 }

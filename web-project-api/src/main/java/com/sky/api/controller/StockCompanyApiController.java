@@ -311,86 +311,91 @@ public class StockCompanyApiController extends AbstractController {
         }
 
         JSONObject jsonObject = new JSONObject();
-
-        BigDecimal isGrowRate = BigDecimal.valueOf(totalIsGrow).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        BigDecimal isGrowRate = BigDecimal.ZERO;
         String isGrowLevel = "";
-        if(isGrowRate.compareTo(BigDecimal.valueOf(80)) >=0){
-            isGrowLevel = "S";
-        }else if(isGrowRate.compareTo(BigDecimal.valueOf(70)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(80)) < 0){
-            isGrowLevel = "A";
-        }else if(isGrowRate.compareTo(BigDecimal.valueOf(60)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(70)) < 0){
-            isGrowLevel = "B";
-        }else if(isGrowRate.compareTo(BigDecimal.valueOf(50)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(60)) < 0){
-            isGrowLevel = "C";
-        }else if(isGrowRate.compareTo(BigDecimal.valueOf(40)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(50)) < 0){
-            isGrowLevel = "D";
-        }else if(isGrowRate.compareTo(BigDecimal.valueOf(30)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(40)) < 0){
-            isGrowLevel = "E";
-        }else{
-            isGrowLevel = "F";
+        BigDecimal isBlongRate = BigDecimal.ZERO;
+        String isBlongLevel = "";
+        String belongOtherLevel = "";
+        BigDecimal belongOtherRate = BigDecimal.ZERO;
+        String rightRightLevel = "";
+        BigDecimal rightRightRate = BigDecimal.ZERO ;
+        if(num > 0){
+            isGrowRate = BigDecimal.valueOf(totalIsGrow).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+            if(isGrowRate.compareTo(BigDecimal.valueOf(80)) >=0){
+                isGrowLevel = "S";
+            }else if(isGrowRate.compareTo(BigDecimal.valueOf(70)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(80)) < 0){
+                isGrowLevel = "A";
+            }else if(isGrowRate.compareTo(BigDecimal.valueOf(60)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(70)) < 0){
+                isGrowLevel = "B";
+            }else if(isGrowRate.compareTo(BigDecimal.valueOf(50)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(60)) < 0){
+                isGrowLevel = "C";
+            }else if(isGrowRate.compareTo(BigDecimal.valueOf(40)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(50)) < 0){
+                isGrowLevel = "D";
+            }else if(isGrowRate.compareTo(BigDecimal.valueOf(30)) >=0 && isGrowRate.compareTo(BigDecimal.valueOf(40)) < 0){
+                isGrowLevel = "E";
+            }else{
+                isGrowLevel = "F";
+            }
+
+            isBlongRate = BigDecimal.valueOf(totalIsBelong).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+            if(isBlongRate.compareTo(BigDecimal.valueOf(80)) >=0){
+                isBlongLevel = "S";
+            }else if(isBlongRate.compareTo(BigDecimal.valueOf(70)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(80)) < 0){
+                isBlongLevel = "A";
+            }else if(isBlongRate.compareTo(BigDecimal.valueOf(60)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(70)) < 0){
+                isBlongLevel = "B";
+            }else if(isBlongRate.compareTo(BigDecimal.valueOf(50)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(60)) < 0){
+                isBlongLevel = "C";
+            }else if(isBlongRate.compareTo(BigDecimal.valueOf(40)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(50)) < 0){
+                isBlongLevel = "D";
+            }else if(isBlongRate.compareTo(BigDecimal.valueOf(30)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(40)) < 0){
+                isBlongLevel = "E";
+            }else{
+                isBlongLevel = "F";
+            }
+
+            belongOtherRate = BigDecimal.valueOf(totalBelongOther).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+            if(belongOtherRate.compareTo(BigDecimal.valueOf(80)) >=0){
+                belongOtherLevel = "S";
+            }else if(belongOtherRate.compareTo(BigDecimal.valueOf(70)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(80)) < 0){
+                belongOtherLevel = "A";
+            }else if(belongOtherRate.compareTo(BigDecimal.valueOf(60)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(70)) < 0){
+                belongOtherLevel = "B";
+            }else if(belongOtherRate.compareTo(BigDecimal.valueOf(50)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(60)) < 0){
+                belongOtherLevel = "C";
+            }else if(belongOtherRate.compareTo(BigDecimal.valueOf(40)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(50)) < 0){
+                belongOtherLevel = "D";
+            }else if(belongOtherRate.compareTo(BigDecimal.valueOf(30)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(40)) < 0){
+                belongOtherLevel = "E";
+            }else{
+                belongOtherLevel = "F";
+            }
+
+
+            rightRightRate = (isGrowRate.multiply(BigDecimal.valueOf(0.6))).add(isBlongRate.multiply(BigDecimal.valueOf(0.3))).add(belongOtherRate.multiply(BigDecimal.valueOf(0.1))).setScale(2,BigDecimal.ROUND_HALF_UP);
+            if(rightRightRate.compareTo(BigDecimal.valueOf(80)) >=0){
+                rightRightLevel = "S";
+            }else if(rightRightRate.compareTo(BigDecimal.valueOf(70)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(80)) < 0){
+                rightRightLevel = "A";
+            }else if(rightRightRate.compareTo(BigDecimal.valueOf(60)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(70)) < 0){
+                rightRightLevel = "B";
+            }else if(rightRightRate.compareTo(BigDecimal.valueOf(50)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(60)) < 0){
+                rightRightLevel = "C";
+            }else if(rightRightRate.compareTo(BigDecimal.valueOf(40)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(50)) < 0){
+                rightRightLevel = "D";
+            }else if(rightRightRate.compareTo(BigDecimal.valueOf(30)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(40)) < 0){
+                rightRightLevel = "E";
+            }else{
+                rightRightLevel = "F";
+            }
         }
+
         jsonObject.put("isGrowRate" , isGrowRate);
         jsonObject.put("isGrowLevel" , isGrowLevel);
-
-
-        BigDecimal isBlongRate = BigDecimal.valueOf(totalIsBelong).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
-        String isBlongLevel = "";
-        if(isBlongRate.compareTo(BigDecimal.valueOf(80)) >=0){
-            isBlongLevel = "S";
-        }else if(isBlongRate.compareTo(BigDecimal.valueOf(70)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(80)) < 0){
-            isBlongLevel = "A";
-        }else if(isBlongRate.compareTo(BigDecimal.valueOf(60)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(70)) < 0){
-            isBlongLevel = "B";
-        }else if(isBlongRate.compareTo(BigDecimal.valueOf(50)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(60)) < 0){
-            isBlongLevel = "C";
-        }else if(isBlongRate.compareTo(BigDecimal.valueOf(40)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(50)) < 0){
-            isBlongLevel = "D";
-        }else if(isBlongRate.compareTo(BigDecimal.valueOf(30)) >=0 && isBlongRate.compareTo(BigDecimal.valueOf(40)) < 0){
-            isBlongLevel = "E";
-        }else{
-            isBlongLevel = "F";
-        }
         jsonObject.put("isBlongRate" , isBlongRate);
         jsonObject.put("isBlongLevel" , isBlongLevel);
-
-        BigDecimal belongOtherRate = BigDecimal.valueOf(totalBelongOther).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
-        String belongOtherLevel = "";
-        if(belongOtherRate.compareTo(BigDecimal.valueOf(80)) >=0){
-            belongOtherLevel = "S";
-        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(70)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(80)) < 0){
-            belongOtherLevel = "A";
-        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(60)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(70)) < 0){
-            belongOtherLevel = "B";
-        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(50)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(60)) < 0){
-            belongOtherLevel = "C";
-        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(40)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(50)) < 0){
-            belongOtherLevel = "D";
-        }else if(belongOtherRate.compareTo(BigDecimal.valueOf(30)) >=0 && belongOtherRate.compareTo(BigDecimal.valueOf(40)) < 0){
-            belongOtherLevel = "E";
-        }else{
-            belongOtherLevel = "F";
-        }
         jsonObject.put("belongOtherRate" , belongOtherRate);
         jsonObject.put("belongOtherLevel" , belongOtherLevel);
-
-
-        BigDecimal rightRightRate = (isGrowRate.multiply(BigDecimal.valueOf(0.6))).add(isBlongRate.multiply(BigDecimal.valueOf(0.3))).add(belongOtherRate.multiply(BigDecimal.valueOf(0.1))).setScale(2,BigDecimal.ROUND_HALF_UP);
-        String rightRightLevel = "";
-        if(rightRightRate.compareTo(BigDecimal.valueOf(80)) >=0){
-            rightRightLevel = "S";
-        }else if(rightRightRate.compareTo(BigDecimal.valueOf(70)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(80)) < 0){
-            rightRightLevel = "A";
-        }else if(rightRightRate.compareTo(BigDecimal.valueOf(60)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(70)) < 0){
-            rightRightLevel = "B";
-        }else if(rightRightRate.compareTo(BigDecimal.valueOf(50)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(60)) < 0){
-            rightRightLevel = "C";
-        }else if(rightRightRate.compareTo(BigDecimal.valueOf(40)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(50)) < 0){
-            rightRightLevel = "D";
-        }else if(rightRightRate.compareTo(BigDecimal.valueOf(30)) >=0 && rightRightRate.compareTo(BigDecimal.valueOf(40)) < 0){
-            rightRightLevel = "E";
-        }else{
-            rightRightLevel = "F";
-        }
         jsonObject.put("rightRightRate" , rightRightRate);
         jsonObject.put("rightRightLevel" , rightRightLevel);
         return jsonObject;
@@ -543,10 +548,14 @@ public class StockCompanyApiController extends AbstractController {
                 num +=1;
             }
         }
-
-        BigDecimal averageGrowLevel = totalGrowLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
-        BigDecimal averageAssetDebtLevel = totalAssetDebtLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
-        BigDecimal averageAssetLevel = totalAssetLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        BigDecimal averageGrowLevel = BigDecimal.ZERO;
+        BigDecimal averageAssetDebtLevel = BigDecimal.ZERO;
+        BigDecimal averageAssetLevel = BigDecimal.ZERO;
+        if(num > 0){
+            averageGrowLevel = totalGrowLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+            averageAssetDebtLevel = totalAssetDebtLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+            averageAssetLevel = totalAssetLevel.divide(BigDecimal.valueOf(num) ,2 ,BigDecimal.ROUND_HALF_UP);
+        }
 
         JSONObject jsonObject = new JSONObject();
 
