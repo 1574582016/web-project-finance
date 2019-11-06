@@ -81,6 +81,12 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
     private BigDecimal profitScore ;
 
     /**
+     *盈利增长分数
+     */
+    @TableField("profit_grow_score")
+    private BigDecimal profitGrowScore ;
+
+    /**
      *资产分数
      */
     @TableField("asset_score")

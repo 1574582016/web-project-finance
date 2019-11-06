@@ -45,6 +45,8 @@ public class Test06 {
                 if(voList.size() > 0){
                     JSONObject jsonObject = stockCompanyProfitLevel(voList);
                     BigDecimal profit_score = jsonObject.getBigDecimal("rightRightRate");
+                    BigDecimal profit_grow_score = jsonObject.getBigDecimal("isGrowRate");
+                    sector.setProfitGrowScore(profit_grow_score);
                     sector.setProfitScore(profit_score);
                 }
 

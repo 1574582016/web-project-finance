@@ -22,6 +22,7 @@
         <result column="company_product" property="companyProduct"/>
         <result column="profit_score" property="profitScore"/>
         <result column="asset_score" property="assetScore"/>
+        <result column="profit_grow_score" property="profitGrowScore"/>
         <result column="asset_grow_score" property="assetGrowScore"/>
         <result column="flow_score" property="flowScore"/>
     </resultMap>
@@ -71,6 +72,14 @@
         WHEN a.profit_score >= 30 AND a.profit_score &lt; 40 THEN 'E'
         ELSE 'F'
         END,
+        CASE WHEN a.profit_grow_score >= 80 THEN 'S'
+        WHEN a.profit_grow_score >= 70 AND a.profit_grow_score &lt; 80 THEN 'A'
+        WHEN a.profit_grow_score >= 60 AND a.profit_grow_score &lt; 70 THEN 'B'
+        WHEN a.profit_grow_score >= 50 AND a.profit_grow_score &lt; 60 THEN 'C'
+        WHEN a.profit_grow_score >= 40 AND a.profit_grow_score &lt; 50 THEN 'D'
+        WHEN a.profit_grow_score >= 30 AND a.profit_grow_score &lt; 40 THEN 'E'
+        ELSE 'F'
+        END,
         CASE WHEN a.asset_score >= 80 THEN 'S'
         WHEN a.asset_score >= 70 AND a.asset_score &lt; 80 THEN 'A'
         WHEN a.asset_score >= 60 AND a.asset_score &lt; 70 THEN 'B'
@@ -113,6 +122,7 @@
         s.`forth_sector` ,
         s.`five_sector` ,
         MAX(s.`profit_score`) profit_score,
+        MAX(s.`profit_grow_score`) profit_grow_score,
         MAX(s.`asset_score`) asset_score,
         MAX(s.`asset_grow_score`) asset_grow_score,
         MAX(s.`flow_score`) flow_score,
@@ -190,6 +200,6 @@
         a.`third_secotor` ,
         a.`forth_sector` ,
         CONCAT(a.ZHONG,a.SHANG,a.ZHONG_i,a.SHANG_i) DESC,
-        CONCAT(a.profit_score,a.asset_grow_score,a.asset_score,a.flow_score) DESC
+        CONCAT(a.profit_grow_score,a.profit_score,a.asset_grow_score,a.asset_score,a.flow_score) DESC
     </select>
 </mapper>
