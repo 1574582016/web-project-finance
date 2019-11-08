@@ -32,4 +32,7 @@ public interface IndexDealDataMapper extends BaseMapper<IndexDealData> {
     List<IndexStatic_VO> getIndexTimeValueStaticList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
 
     List<CovarDeal_VO> getIndexDealCovarList(@Param("indexCode") String indexCode , @Param("dealPeriod") String dealPeriod , @Param("startDay") String startDay , @Param("endDay") String endDay );
+
+    List<IndexDealData> getStockIndexDataList(@Param("indexCode") String indexCode ,@Param("dealPeriod") String dealPeriod ,@Param("startDay") String startDay ,@Param("endDay") String endDay);
+
 }

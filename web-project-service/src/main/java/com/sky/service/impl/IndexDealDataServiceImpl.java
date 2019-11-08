@@ -129,4 +129,9 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
     public List<CovarDeal_VO> getIndexDealCovarList(String indexCode, String dealPeriod, String startDay, String endDay) {
         return baseMapper.getIndexDealCovarList( indexCode, dealPeriod, startDay, endDay);
     }
+
+    @Override
+    public List<IndexDealData> getStockIndexDataList(String indexCode, String dealPeriod, String startDay, String endDay) {
+        return baseMapper.getStockIndexDataList( indexCode, dealPeriod, startDay, endDay);
+    }
 }

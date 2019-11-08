@@ -1,12 +1,21 @@
 package com.sky;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
+import com.sky.model.StockCompanySector;
+import com.sky.service.StockCompanySectorService;
+import com.sky.service.StockDealDataService;
+import com.sky.vo.StockDealDateRank_VO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ThinkPad on 2019/10/8.
@@ -15,10 +24,34 @@ import java.util.Date;
 @SpringBootTest
 public class Test03 {
 
+    @Autowired
+    private StockDealDataService stockDealDataService ;
+
+    @Autowired
+    private StockCompanySectorService stockCompanySectorService ;
+
     @Test
     public void test01(){
-        String stockCode = "603986";
-        System.out.println(stockCode.substring(0,1));
+        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,1) != '3' AND LEFT(stock_code,2) != '68'"));
+        List<StockDealDateRank_VO> topList = new ArrayList<>();
+        List<StockDealDateRank_VO> middleList = new ArrayList<>();
+        List<StockDealDateRank_VO> bottomList = new ArrayList<>();
+        for(StockCompanySector sector : list){
+            StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll(sector.getStockCode() ,DateUtils.getDate() , "5");
+            if(rankVo.getIsTop().compareTo(BigDecimal.ZERO) > 0){
+                topList.add(rankVo);
+            }
+            if(rankVo.getIsMiddle().compareTo(BigDecimal.ZERO) > 0){
+                middleList.add(rankVo);
+            }
+            if(rankVo.getIsBottom().compareTo(BigDecimal.ZERO) > 0){
+                bottomList.add(rankVo);
+            }
+        }
+        System.out.println(topList.toString());
+        System.out.println(middleList.toString());
+        System.out.println(bottomList.toString());
+
     }
 
 /**

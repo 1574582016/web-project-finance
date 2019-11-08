@@ -3,6 +3,7 @@ package com.sky.mapper;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.sky.model.StockDealData;
 import com.sky.vo.FestivalStatic_VO;
+import com.sky.vo.StockDealDateRank_VO;
 import com.sky.vo.StockOrderStatic_VO;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,4 +20,6 @@ public interface StockDealDataMapper extends BaseMapper<StockDealData> {
 
 
     List<FestivalStatic_VO> getStockFestivalStaticList(@Param("sectorName") String sectorName ,@Param("startDay")  String startDay ,@Param("endDay")  String endDay ,@Param("startTime")  String startTime ,@Param("endTime")  String endTime);
+
+    List<StockDealDateRank_VO> getStockDealDateByRank(@Param("stockCode") String stockCode , @Param("dealPeriod") String dealPeriod , @Param("dealTime") String dealTime , @Param("rank") String rank );
 }

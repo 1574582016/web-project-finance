@@ -279,4 +279,21 @@
             AND i.deal_time &lt; #{endDay}
         </if>
     </select>
+    
+    <select id="getStockIndexDataList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        i.*
+        FROM index_deal_data i
+        WHERE i.isvalid = 1
+        AND i.index_code = #{indexCode}
+        <if test="dealPeriod != null and dealPeriod != '' and dealPeriod != 'undefined'">
+            AND i.deal_period = #{dealPeriod}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND i.deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND i.deal_time &lt; #{endDay}
+        </if>
+    </select>
 </mapper>

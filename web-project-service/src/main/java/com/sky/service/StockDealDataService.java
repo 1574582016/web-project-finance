@@ -3,6 +3,7 @@ package com.sky.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.StockDealData;
 import com.sky.vo.FestivalStatic_VO;
+import com.sky.vo.StockDealDateRank_VO;
 import com.sky.vo.StockOrderStatic_VO;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface StockDealDataService extends IService<StockDealData> {
     List<StockOrderStatic_VO> getStockOrderStaticList(String sectorName ,String orderType ,String startDay , String endDay);
 
     List<FestivalStatic_VO> getStockFestivalStaticList(String sectorName , String startDay , String endDay , String startTime , String endTime);
+
+    StockDealDateRank_VO caculateBoll(String stockCode ,String pointDay , String selectDay);
 }

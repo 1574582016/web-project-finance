@@ -269,4 +269,31 @@
         ) * 100 ,2) DESC,
         ROUND(SUM(s.close_price - s.open_price) / SUM(1),2) DESC
     </select>
+
+    <select id="getStockDealDateByRank" parameterType="java.lang.String" resultType="com.sky.vo.StockDealDateRank_VO">
+        SELECT
+        stock_code stockCode,
+        deal_time dealTime,
+        open_price openPrice,
+        low_price lowPrice,
+        high_price highPrice,
+        close_price closePrice,
+        IF(@p=stock_code,@r:=@r+1,@r:=1) AS rank,
+        @p:=stock_code
+        FROM stock_deal_data ,(SELECT @p:=NULL,@r:=0)r
+        WHERE isvalid = 1
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND stock_code = #{stockCode}
+        </if>
+        <if test="dealPeriod != null and dealPeriod != '' and dealPeriod != 'undefined'">
+            AND deal_period = #{dealPeriod}
+        </if>
+        <if test="dealTime != null and dealTime != '' and dealTime != 'undefined'">
+            AND deal_time &lt;= #{dealTime}
+        </if>
+        ORDER BY deal_time DESC
+        <if test="rank != null and rank != '' and rank != 'undefined'">
+            LIMIT ${rank}
+        </if>
+    </select>
 </mapper>

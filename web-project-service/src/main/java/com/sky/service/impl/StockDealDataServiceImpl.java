@@ -5,12 +5,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.sky.core.utils.MathUtil;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockDealDataMapper;
 import com.sky.model.SectorDealData;
 import com.sky.model.StockDealData;
 import com.sky.service.StockDealDataService;
 import com.sky.vo.FestivalStatic_VO;
+import com.sky.vo.StockDealDateRank_VO;
 import com.sky.vo.StockOrderStatic_VO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -138,5 +140,110 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
     @Override
     public List<FestivalStatic_VO> getStockFestivalStaticList(String sectorName, String startDay, String endDay, String startTime, String endTime) {
         return baseMapper.getStockFestivalStaticList( sectorName, startDay, endDay, startTime, endTime);
+    }
+
+
+    @Override
+    public StockDealDateRank_VO caculateBoll(String stockCode ,String pointDay , String selectDay) {
+        List<StockDealDateRank_VO> list = baseMapper.getStockDealDateByRank(stockCode , "1" , pointDay ,selectDay);
+        for(StockDealDateRank_VO rank_vo : list){
+            BigDecimal averageMoney = BigDecimal.ZERO;
+            BigDecimal totalMoney = BigDecimal.ZERO;
+            List<StockDealDateRank_VO> subList = baseMapper.getStockDealDateByRank(stockCode , "1" , rank_vo.getDealTime() , "20");
+            for(StockDealDateRank_VO rankVo : subList){
+                totalMoney = totalMoney.add(rankVo.getClosePrice());
+            }
+            averageMoney = totalMoney.divide(BigDecimal.valueOf(20) ,2 ,BigDecimal.ROUND_HALF_UP);
+
+            BigDecimal totalSpace = BigDecimal.ZERO ;
+            for(StockDealDateRank_VO rankVo : subList){
+                totalSpace = totalSpace.add((rankVo.getClosePrice().subtract(averageMoney)).pow(2));
+            }
+            BigDecimal averageSpace = totalSpace.divide(BigDecimal.valueOf(20) ,4 ,BigDecimal.ROUND_HALF_UP);
+            BigDecimal standarMoney = MathUtil.sqrt(averageSpace);
+
+            rank_vo.setAveragePrice(averageMoney);
+            rank_vo.setStandarPrice(standarMoney.multiply(BigDecimal.valueOf(2)).setScale(2,BigDecimal.ROUND_HALF_UP));
+
+            rank_vo.setTopPrice(rank_vo.getAveragePrice().add(rank_vo.getStandarPrice()));
+            rank_vo.setBottomPrice(rank_vo.getAveragePrice().subtract(rank_vo.getStandarPrice()));
+
+            rank_vo.setTopDistance(rank_vo.getTopPrice().subtract(rank_vo.getClosePrice()));
+            rank_vo.setBottomDistance(rank_vo.getClosePrice().subtract(rank_vo.getBottomPrice()));
+            rank_vo.setMiddleDistance(rank_vo.getClosePrice().subtract(rank_vo.getAveragePrice()));
+        }
+        StockDealDateRank_VO rank_vo = caculateAverageBoll(list);
+        return rank_vo;
+    }
+
+    private StockDealDateRank_VO caculateAverageBoll(List<StockDealDateRank_VO> list){
+        StockDealDateRank_VO rankVo = null;
+        BigDecimal avarageSpace = BigDecimal.ZERO;
+        BigDecimal avarageStock = BigDecimal.ZERO;
+        BigDecimal averagePrice = BigDecimal.ZERO;
+        BigDecimal closePrice = BigDecimal.ZERO;
+        BigDecimal num = BigDecimal.ZERO;
+        for(StockDealDateRank_VO rank_vo : list){
+            if(rankVo == null){
+                rankVo = new StockDealDateRank_VO();
+                rankVo.setStockCode(rank_vo.getStockCode());
+                rankVo.setDealTime(rank_vo.getDealTime());
+                rankVo.setOpenPrice(rank_vo.getOpenPrice());
+                rankVo.setHighPrice(rank_vo.getHighPrice());
+                rankVo.setLowPrice(rank_vo.getLowPrice());
+                rankVo.setClosePrice(rank_vo.getClosePrice());
+                rankVo.setTopPrice(rank_vo.getTopPrice());
+                rankVo.setBottomPrice(rank_vo.getBottomPrice());
+                rankVo.setTopDistance(rank_vo.getTopDistance());
+                rankVo.setBottomDistance(rank_vo.getBottomDistance());
+                rankVo.setMiddleDistance(rank_vo.getMiddleDistance());
+                closePrice = rank_vo.getClosePrice();
+
+                BigDecimal topRate = rank_vo.getTopDistance().multiply(BigDecimal.valueOf(100)).divide(rank_vo.getStandarPrice() , 2 ,BigDecimal.ROUND_HALF_UP);
+
+                BigDecimal middleRate = rank_vo.getMiddleDistance().abs().multiply(BigDecimal.valueOf(100)).divide(rank_vo.getStandarPrice() , 2 ,BigDecimal.ROUND_HALF_UP);
+
+                BigDecimal bottomRate = rank_vo.getBottomDistance().multiply(BigDecimal.valueOf(100)).divide(rank_vo.getStandarPrice() , 2 ,BigDecimal.ROUND_HALF_UP);
+
+                if(topRate.compareTo(BigDecimal.valueOf(10)) < 0){
+                    rankVo.setIsTop(BigDecimal.ONE);
+                }else{
+                    rankVo.setIsTop(BigDecimal.ZERO);
+                }
+
+                if(middleRate.compareTo(BigDecimal.valueOf(10)) < 0){
+                    rankVo.setIsMiddle(BigDecimal.ONE);
+                }else{
+                    rankVo.setIsMiddle(BigDecimal.ZERO);
+                }
+
+                if(bottomRate.compareTo(BigDecimal.valueOf(10)) < 0){
+                    rankVo.setIsBottom(BigDecimal.ONE);
+                }else{
+                    rankVo.setIsBottom(BigDecimal.ZERO);
+                }
+
+            }else{
+                if(closePrice.compareTo(rank_vo.getClosePrice()) >= 0 ){
+                    num = num.add(BigDecimal.ONE);//上升
+                }
+                closePrice = rank_vo.getClosePrice();
+            }
+            avarageStock = avarageStock.add((rank_vo.getClosePrice().subtract(rank_vo.getOpenPrice())).abs());
+            avarageSpace = avarageSpace.add(rank_vo.getStandarPrice());
+            averagePrice = averagePrice.add(rank_vo.getAveragePrice());
+
+        }
+        BigDecimal upRate = num.divide((BigDecimal.valueOf(list.size()).subtract(BigDecimal.ONE)) ,2 ,BigDecimal.ROUND_HALF_UP);
+        if(upRate.compareTo(BigDecimal.valueOf(0.5)) > 0){
+            rankVo.setIsUpper(BigDecimal.ONE);
+        }else{
+            rankVo.setIsUpper(BigDecimal.ZERO);
+        }
+
+        rankVo.setAveragePrice(averagePrice.divide(BigDecimal.valueOf(list.size()) ,2 ,BigDecimal.ROUND_HALF_UP));
+        rankVo.setStandarPrice(avarageSpace.divide(BigDecimal.valueOf(list.size()) ,2 ,BigDecimal.ROUND_HALF_UP));
+        rankVo.setAverageStock(avarageStock.multiply(BigDecimal.valueOf(2)).divide(BigDecimal.valueOf(list.size()) ,2 ,BigDecimal.ROUND_HALF_UP));
+        return rankVo;
     }
 }
