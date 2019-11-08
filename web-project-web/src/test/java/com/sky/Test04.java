@@ -113,6 +113,32 @@ public class Test04 {
 
     }
 
+    @Test
+    public void test5(){
+        String url = "http://61.push2.eastmoney.com/api/qt/clist/get?cb=jQuery11240980439168164756_1573119912798&pn=1&pz=1000&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=m:1+s:2&fields=f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f12,f13,f14,f15,f16,f17,f18,f20,f21,f23,f24,f25,f26,f22,f33,f11,f62,f128,f136,f115,f152&_=1573119913039";
+        String jsStr = CommonHttpUtil.sendGet(url);
+        jsStr = jsStr.substring(jsStr.indexOf("({") + 1 ,jsStr.indexOf("})") + 1);
+        JSONArray jsonArray = JSON.parseObject(jsStr).getJSONObject("data").getJSONArray("diff");
+        List<StockIndexClass> list = new ArrayList<>();
+        for(int i = 0 ; i < jsonArray.size() ; i++){
+           JSONObject jsonObject = jsonArray.getJSONObject(i);
+           StockIndexClass indexClass = new StockIndexClass();
+           indexClass.setIndexCode(jsonObject.getString("f12"));
+           indexClass.setIndxSname(jsonObject.getString("f14"));
+            indexClass.setMarketType(1);
+           StockIndexClass exist = stockIndexClassService.selectOne(new EntityWrapper<StockIndexClass>().where("index_code = {0}" , indexClass.getIndexCode()));
+           if(exist == null){
+               list.add(indexClass);
+           }else{
+               exist.setMarketType(1);
+               stockIndexClassService.updateById(exist);
+           }
+        }
+        if(list.size() > 0){
+            stockIndexClassService.insertBatch(list);
+        }
+    }
+
 
 /**
  *level 3

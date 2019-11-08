@@ -25,6 +25,12 @@ public class StockIndexClass extends BaseModel<StockIndexClass> {
     private String indxSname ;
 
     /**
+     *市场类型1-上证,0-深证
+     */
+    @TableField("market_type")
+    private Integer marketType ;
+
+    /**
      *股票数量
      */
     @TableField("stock_num")

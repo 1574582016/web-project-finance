@@ -28,6 +28,7 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
     @Override
     public List<IndexDealData> spiderIndexDealData(Integer periodType, String indexCode , String mk) {
         List<IndexDealData> list = new ArrayList<>();
+        List<IndexDealData> newList = new ArrayList<>();
         try {
             String url = "http://push2his.eastmoney.com/api/qt/stock/kline/get?cb=jQuery18306798388937577338_1568939381264&secid="+ indexCode +"&ut=fa5fd1943c7b386f172d6893dbfba10b&fields1=f1%2Cf2%2Cf3%2Cf4%2Cf5&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56%2Cf57%2Cf58&klt="+ mk +"&fqt=0&beg=19900101&end=20220101&_=1568939431099";
             String jsStr = CommonHttpUtil.sendGet(url);
@@ -55,15 +56,28 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
                         case 7 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
-                IndexDealData indexDealData = selectOne(new EntityWrapper<IndexDealData>().where("index_code = {0} and deal_period = {1} and deal_time = {2}" ,indexCode ,periodType ,dealData.getDealTime()));
-                if(indexDealData == null){
-                    list.add(dealData);
+                list.add(dealData);
+            }
+
+            List<IndexDealData> dataList = selectList(new EntityWrapper<IndexDealData>().where("index_code = {0} and deal_period = {1}" ,indexCode ,periodType));
+
+            for(IndexDealData dealData : list){
+                boolean just = false;
+                for(IndexDealData existData : dataList){
+                    if(dealData.getDealTime().equals(existData.getDealTime())){
+                        just = true ;
+                        continue;
+                    }
+                }
+                if(!just){
+                    newList.add(dealData);
                 }
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }
-        return list ;
+        return newList ;
     }
 
     @Override

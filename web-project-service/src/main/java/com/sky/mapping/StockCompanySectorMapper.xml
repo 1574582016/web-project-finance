@@ -195,11 +195,25 @@
             </if>
         </where>
         GROUP BY a.stock_code
-        ORDER BY a.`first_sector` ,
-        a.`second_sector` ,
-        a.`third_secotor` ,
-        a.`forth_sector` ,
-        CONCAT(a.ZHONG,a.SHANG,a.ZHONG_i,a.SHANG_i) DESC,
-        CONCAT(a.profit_grow_score,a.profit_score,a.asset_grow_score,a.asset_score,a.flow_score) DESC
+        <choose>
+            <when test="hotCode != null and hotCode != '' and hotCode != 'undefined'">
+                ORDER BY
+                CONCAT(a.ZHONG,a.SHANG) DESC,
+                CONCAT(a.profit_grow_score,a.profit_score,a.asset_grow_score,a.asset_score,a.flow_score) DESC
+            </when>
+            <otherwise>
+                ORDER BY
+                a.`first_sector` ,
+                a.`second_sector` ,
+                a.`third_secotor` ,
+                a.`forth_sector` ,
+                a.ZHONG DESC,
+                a.profit_grow_score DESC,
+                a.profit_score DESC,
+                a.asset_grow_score DESC,
+                a.asset_score DESC
+            </otherwise>
+        </choose>
+
     </select>
 </mapper>

@@ -88,6 +88,9 @@ $(function () {
     $("#mark_hot").val($("#hot_1_Code").val())
 
 
+    $("#mark_hot").select2();
+
+
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
         url: '/api/stock/getStockCompanySectorList' ,
         method: 'post',
@@ -158,13 +161,32 @@ $(function () {
                 align: 'center',
                 valign: 'middle',
                 formatter: function (value, row, index) {
-                    return '<a class="text_link_a" href="#" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                    var lev = value.substr(0,1);
+                    if(lev == 'S' || lev == 'A' || lev == 'B'){
+                        return '<a class="text_link_a" href="#" style="color: red;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                    }else
+                    if(lev == 'C'){
+                        return '<a class="text_link_a" href="#" style="color: #b804ff;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                    }else
+                    if(lev == 'D'){
+                        return '<a class="text_link_a" href="#" style="color: #ffc000;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                    }else{
+                            return '<a class="text_link_a" href="#" style="color: grey;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                    }
                 }
             },{
                 field: 'financialLevel',
                 title: '资产',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: function (value, row, index) {
+                    var lev = value.substr(1,1);
+                    if(lev == 'S' || lev == 'A' ){
+                        return '<a class="text_link_a" href="#" style="color: red;">'+ value +'</a>';
+                    }else{
+                        return '<a class="text_link_a" href="#" style="color: grey;">'+ value +'</a>';
+                    }
+                }
             },{
                 field: 'companyName',
                 title: '全称',

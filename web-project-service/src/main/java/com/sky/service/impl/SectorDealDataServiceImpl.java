@@ -44,6 +44,7 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
     @Override
     public List<SectorDealData> spiderSectorDealData(Integer periodType, String sectorCode) {
         List<SectorDealData> list = new ArrayList<>();
+        List<SectorDealData> newList = new ArrayList<>();
         int klt = 0 ;
         switch (periodType){
             case 1 : klt = 101 ; break;
@@ -80,15 +81,29 @@ public class SectorDealDataServiceImpl extends ServiceImpl<SectorDealDataMapper,
                         case 7 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
-                SectorDealData sectorDealData = selectOne(new EntityWrapper<SectorDealData>().where("sector_code = {0} and deal_period = {1} and deal_time = {2}" ,sectorCode ,periodType ,dealData.getDealTime()));
-                if(sectorDealData == null){
-                    list.add(dealData);
+
+                list.add(dealData);
+            }
+
+            List<SectorDealData> dataList = selectList(new EntityWrapper<SectorDealData>().where("sector_code = {0} and deal_period = {1}" ,sectorCode ,periodType));
+
+            for(SectorDealData dealData : list){
+                boolean just = false;
+                for(SectorDealData existData : dataList){
+                    if(dealData.getDealTime().equals(existData.getDealTime())){
+                        just = true ;
+                        continue;
+                    }
+                }
+                if(!just){
+                    newList.add(dealData);
                 }
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }
-        return list ;
+        return newList ;
     }
 
 

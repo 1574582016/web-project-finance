@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.CommonHttpUtil;
 import com.sky.mapper.StockHotClassMapper;
@@ -39,10 +40,10 @@ public class StockHotClassServiceImpl extends ServiceImpl<StockHotClassMapper,St
                 dealData.setHotName(hotName);
                 dealData.setStockCode(singleObject.getString("f12"));
                 dealData.setStockName(singleObject.getString("f14"));
-//                HotDealData sectorDealData = selectOne(new EntityWrapper<HotDealData>().where("sector_code = {0} and deal_period = {1} and deal_time = {2}" ,sectorCode ,periodType ,dealData.getDealTime()));
-//                if(sectorDealData == null){
+                StockHotClass hotClass = selectOne(new EntityWrapper<StockHotClass>().where("hot_code = {0} and stock_code = {1}" ,dealData.getHotCode() ,dealData.getStockCode()));
+                if(hotClass == null){
                 list.add(dealData);
-//                }
+                }
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -17,7 +17,8 @@ public class Test03 {
 
     @Test
     public void test01(){
-        System.out.println(DateUtils.addMonths(new Date() , -1));
+        String stockCode = "603986";
+        System.out.println(stockCode.substring(0,1));
     }
 
 /**

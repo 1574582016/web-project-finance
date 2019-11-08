@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockDealDataMapper;
+import com.sky.model.SectorDealData;
 import com.sky.model.StockDealData;
 import com.sky.service.StockDealDataService;
 import com.sky.vo.FestivalStatic_VO;
@@ -31,6 +32,7 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
     @Override
     public List<StockDealData> spiderStockDealData(Integer periodType , String skuCode  ,String mk) {
         List<StockDealData> list = new ArrayList<>();
+        List<StockDealData> newList = new ArrayList<>();
         try {
             String type = "k";
             switch (periodType){
@@ -72,15 +74,27 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                         case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
                 }
-                StockDealData stockDealData = selectOne(new EntityWrapper<StockDealData>().where("stock_code = {0} and deal_period = {1} and deal_time = {2}" ,skuCode ,periodType ,dealData.getDealTime()));
-                if(stockDealData == null){
-                    list.add(dealData);
+                list.add(dealData);
+            }
+
+            List<StockDealData> dataList = selectList(new EntityWrapper<StockDealData>().where("stock_code = {0} and deal_period = {1}" ,skuCode ,periodType ));
+            for(StockDealData dealData : list){
+                boolean just = false;
+                for(StockDealData existData : dataList){
+                    if(dealData.getDealTime().equals(existData.getDealTime())){
+                        just = true ;
+                        continue;
+                    }
+                }
+                if(!just){
+                    newList.add(dealData);
                 }
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }
-        return list ;
+        return newList ;
     }
 
 

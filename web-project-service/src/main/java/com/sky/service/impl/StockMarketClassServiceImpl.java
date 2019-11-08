@@ -36,7 +36,7 @@ public class StockMarketClassServiceImpl extends ServiceImpl<StockMarketClassMap
             String className = detailObject.getString("title");
             String classCode = detailObject.getString("key");
             StockMarketClass stockMarketClass = new StockMarketClass();
-            stockMarketClass.setClassCode(classCode.substring(7 ,classCode.length()));
+            stockMarketClass.setClassCode(classCode.substring(11 ,classCode.length()));
             stockMarketClass.setClassName(className);
             stockMarketClass.setClassType("行业板块");
             StockMarketClass marketClass = selectOne(new EntityWrapper<StockMarketClass>().where("class_code = {0} and class_name = {1} and class_type = {2} ",stockMarketClass.getClassCode() , stockMarketClass.getClassName(), stockMarketClass.getClassType()));
@@ -50,7 +50,7 @@ public class StockMarketClassServiceImpl extends ServiceImpl<StockMarketClassMap
             String className = detailObject.getString("title");
             String classCode = detailObject.getString("key");
             StockMarketClass stockMarketClass = new StockMarketClass();
-            stockMarketClass.setClassCode(classCode.substring(7 ,classCode.length()));
+            stockMarketClass.setClassCode(classCode.substring(11 ,classCode.length()));
             stockMarketClass.setClassName(className);
             stockMarketClass.setClassType("地域板块");
             StockMarketClass marketClass = selectOne(new EntityWrapper<StockMarketClass>().where("class_code = {0} and class_name = {1} and class_type = {2} ",stockMarketClass.getClassCode() , stockMarketClass.getClassName(), stockMarketClass.getClassType()));
@@ -64,7 +64,7 @@ public class StockMarketClassServiceImpl extends ServiceImpl<StockMarketClassMap
             String className = detailObject.getString("title");
             String classCode = detailObject.getString("key");
             StockMarketClass stockMarketClass = new StockMarketClass();
-            stockMarketClass.setClassCode(classCode.substring(7 ,classCode.length()));
+            stockMarketClass.setClassCode(classCode.substring(11 ,classCode.length()));
             stockMarketClass.setClassName(className);
             stockMarketClass.setClassType("概念板块");
             StockMarketClass marketClass = selectOne(new EntityWrapper<StockMarketClass>().where("class_code = {0} and class_name = {1} and class_type = {2} ",stockMarketClass.getClassCode() , stockMarketClass.getClassName(), stockMarketClass.getClassType()));

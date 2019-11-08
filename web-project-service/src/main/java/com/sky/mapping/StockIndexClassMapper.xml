@@ -12,6 +12,7 @@
 
         <result column="index_code" property="indexCode"/>
         <result column="indx_sname" property="indxSname"/>
+        <result column="market_type" property="marketType"/>
         <result column="stock_num" property="stockNum"/>
         <result column="base_point" property="basePoint"/>
         <result column="base_date" property="baseDate"/>
