@@ -22,7 +22,7 @@ public class StockIndexStatisticsController {
 
     @RequestMapping("/stockIndexStatisticList")
     public String stockIndexStatisticList(Model model){
-        model.addAttribute("startDay" , DateUtils.formatDate(DateUtils.addYears(new Date(),-1),"yyyy-MM-dd"));
+        model.addAttribute("startDay" , DateUtils.formatDate(DateUtils.addMonths(new Date(),-1),"yyyy-MM-dd"));
         model.addAttribute("endDay" , DateUtils.getDate());
         return "page/stockIndexStatisticList";
     }

@@ -29,6 +29,7 @@ public class FuturesDealDataServiceImpl extends ServiceImpl<FuturesDealDataMappe
     @Override
     public List<FuturesDealData> spiderFuturesDealData(Integer periodType, String futuresCode) {
         List<FuturesDealData> list = new ArrayList<>();
+        List<FuturesDealData> newList = new ArrayList<>();
 //        int klt = 0 ;
 //        switch (periodType){
 //            case 1 : klt = 101 ; break;
@@ -64,10 +65,23 @@ public class FuturesDealDataServiceImpl extends ServiceImpl<FuturesDealDataMappe
 //                    list.add(dealData);
 //                }
             }
+            List<FuturesDealData> dataList = selectList(new EntityWrapper<FuturesDealData>().where("futures_code = {0} and deal_period = {1}" ,futuresCode ,periodType));
+            for(FuturesDealData dealData : list){
+                boolean just = false;
+                for(FuturesDealData existData : dataList){
+                    if(dealData.getDealTime().equals(existData.getDealTime())){
+                        just = true ;
+                        continue;
+                    }
+                }
+                if(!just){
+                    newList.add(dealData);
+                }
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return list ;
+        return newList ;
     }
 
     @Override

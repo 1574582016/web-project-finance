@@ -66,7 +66,7 @@
         @p:=c.publishMonth
         FROM(
         SELECT
-        CASE WHEN b.publishWeek = 0 OR (b.publishWeek = 1 AND b.rank = 1) THEN DATE_FORMAT(SUBDATE(b.publishDay,INTERVAL 1 MONTH) ,'%Y-%m')
+        CASE WHEN b.publishWeek = 0 THEN DATE_FORMAT(SUBDATE(b.publishDay,INTERVAL 1 MONTH) ,'%Y-%m')
              ELSE b.publishMonth END AS publishMonth,
         b.publishDay ,
         b.className ,
