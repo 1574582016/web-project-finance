@@ -2,7 +2,9 @@ package com.sky;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
+import com.sky.model.StockChoseStrategy;
 import com.sky.model.StockCompanySector;
+import com.sky.service.StockChoseStrategyService;
 import com.sky.service.StockCompanySectorService;
 import com.sky.service.StockDealDataService;
 import com.sky.vo.StockDealDateRank_VO;
@@ -30,27 +32,56 @@ public class Test03 {
     @Autowired
     private StockCompanySectorService stockCompanySectorService ;
 
+    @Autowired
+    private StockChoseStrategyService stockChoseStrategyService;
+
     @Test
-    public void test01(){
-        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,1) != '3' AND LEFT(stock_code,2) != '68'"));
-        List<StockDealDateRank_VO> topList = new ArrayList<>();
-        List<StockDealDateRank_VO> middleList = new ArrayList<>();
-        List<StockDealDateRank_VO> bottomList = new ArrayList<>();
+    public void test01() throws InterruptedException {
+        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,2) != '68'"));
         for(StockCompanySector sector : list){
             StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll(sector.getStockCode() ,DateUtils.getDate() , "5");
+
+            StockChoseStrategy strategy = new StockChoseStrategy();
+            strategy.setStrategyType(1);
+            strategy.setStockCode(rankVo.getStockCode());
+            strategy.setDealTime(rankVo.getDealTime());
+            strategy.setOpenPrice(rankVo.getOpenPrice());
+            strategy.setHighPrice(rankVo.getHighPrice());
+            strategy.setLowPrice(rankVo.getLowPrice());
+            strategy.setClosePrice(rankVo.getClosePrice());
+            strategy.setAveragePrice(rankVo.getAveragePrice());
+            strategy.setStandarPrice(rankVo.getStandarPrice());
+            strategy.setTopPrice(rankVo.getTopPrice());
+            strategy.setBottomPrice(rankVo.getBottomPrice());
+            strategy.setTopDistance(rankVo.getTopDistance());
+            strategy.setBottomDistance(rankVo.getBottomDistance());
+            strategy.setMiddleDistance(rankVo.getMiddleDistance());
+            strategy.setAverageStock(rankVo.getAverageStock());
+            strategy.setIsUpper(rankVo.getIsUpper().intValue());
             if(rankVo.getIsTop().compareTo(BigDecimal.ZERO) > 0){
-                topList.add(rankVo);
+                strategy.setIsTop(1);
             }
             if(rankVo.getIsMiddle().compareTo(BigDecimal.ZERO) > 0){
-                middleList.add(rankVo);
+                strategy.setIsMiddle(1);
             }
             if(rankVo.getIsBottom().compareTo(BigDecimal.ZERO) > 0){
-                bottomList.add(rankVo);
+                strategy.setIsBottom(1);
             }
+            StockChoseStrategy choseStrategy = stockChoseStrategyService.selectOne(new EntityWrapper<StockChoseStrategy>().where("stock_code = {0} and deal_time = {1} " , strategy.getStockCode() , strategy.getDealTime()));
+            if(choseStrategy == null){
+                stockChoseStrategyService.insert(strategy);
+            }
+
+            Thread.sleep(1000);
+
         }
-        System.out.println(topList.toString());
-        System.out.println(middleList.toString());
-        System.out.println(bottomList.toString());
+
+    }
+
+    @Test
+    public void test02(){
+        StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll("000333" ,DateUtils.getDate() , "5");
+        System.out.println(rankVo.toString());
 
     }
 
