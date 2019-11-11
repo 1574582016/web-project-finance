@@ -31,4 +31,107 @@
         <result column="is_middle" property="isMiddle"/>
         <result column="is_bottom" property="isBottom"/>
     </resultMap>
+
+    <select id="getStockChoseStrategyList" parameterType="java.lang.String" resultType="com.sky.vo.StockStrategy_VO">
+        SELECT
+        o.deal_time  dealTime,
+        o.stock_code  stockCode,
+        o.stock_name  stockName,
+        o.forth_sector  forthSector,
+        o.company_level  companyLevel,
+        o.financial_level  financialLevel,
+        o.open_price  openPrice,
+        o.close_price  closePrice,
+        o.high_price  highPrice,
+        o.low_price  lowPrice,
+        o.average_price  averagePrice,
+        o.standar_price  standarPrice,
+        o.top_price  topPrice,
+        o.bottom_price  bottomPrice,
+        o.top_distance  topDistance,
+        o.middle_distance  middleDistance,
+        o.bottom_distance  bottomDistance,
+        o.average_stock  averageStock
+        FROM(
+        SELECT
+        c.deal_time ,
+        c.`stock_code` ,
+        s.`stock_name` ,
+        s.`forth_sector` ,
+        CASE WHEN i.index_name = '中证超大' THEN 'S'
+        WHEN i.index_name = '中证100'  THEN 'A'
+        WHEN i.index_name = '中证200'  THEN 'B'
+        WHEN i.index_name = '中证500'  THEN 'C'
+        WHEN i.index_name = '中证1000'  THEN 'D'
+        WHEN i.index_name NOT REGEXP '中证超大|中证100|中证200|中证500|中证1000'  THEN 'E'
+        END company_level ,
+        CONCAT(
+        CASE WHEN s.profit_grow_score >= 80 THEN 'S'
+        WHEN s.profit_grow_score >= 70 AND s.profit_grow_score &lt; 80 THEN 'A'
+        WHEN s.profit_grow_score >= 60 AND s.profit_grow_score &lt; 70 THEN 'B'
+        WHEN s.profit_grow_score >= 50 AND s.profit_grow_score &lt; 60 THEN 'C'
+        WHEN s.profit_grow_score >= 40 AND s.profit_grow_score &lt; 50 THEN 'D'
+        WHEN s.profit_grow_score >= 30 AND s.profit_grow_score &lt; 40 THEN 'E'
+        ELSE 'F'
+        END,
+        CASE WHEN s.asset_grow_score >= 80 THEN 'S'
+        WHEN s.asset_grow_score >= 70 AND s.asset_grow_score &lt; 80 THEN 'A'
+        WHEN s.asset_grow_score >= 60 AND s.asset_grow_score &lt; 70 THEN 'B'
+        WHEN s.asset_grow_score >= 50 AND s.asset_grow_score &lt; 60 THEN 'C'
+        WHEN s.asset_grow_score >= 40 AND s.asset_grow_score &lt; 50 THEN 'D'
+        WHEN s.asset_grow_score >= 30 AND s.asset_grow_score &lt; 40 THEN 'E'
+        ELSE 'F'
+        END
+        ) financial_level ,
+        c.open_price ,
+        c.close_price ,
+        c.high_price ,
+        c.low_price ,
+        c.average_price ,
+        c.standar_price ,
+        c.top_price ,
+        c.bottom_price ,
+        c.top_distance ,
+        c.middle_distance ,
+        c.bottom_distance ,
+        c.average_stock
+        FROM stock_chose_strategy c
+        LEFT JOIN stock_company_sector s ON c.`stock_code` = s.`stock_code`
+        LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
+        WHERE c.`isvalid` = 1
+        <if test="isUpper != null and isUpper != '' and isUpper != 'undefined'">
+            AND c.`is_upper` = #{isUpper}
+        </if>
+        <if test="isTop != null and isTop != '' and isTop != 'undefined'">
+            AND c.`is_top` = #{isTop}
+        </if>
+        <if test="isMiddle != null and isMiddle != '' and isMiddle != 'undefined'">
+            AND c.`is_middle` = #{isMiddle}
+        </if>
+        <if test="isBottom != null and isBottom != '' and isBottom != 'undefined'">
+            AND c.`is_bottom` = #{isBottom}
+        </if>
+        <if test="minClosePrice != null and minClosePrice != '' and minClosePrice != 'undefined'">
+            AND c.`close_price` >= #{minClosePrice}
+        </if>
+        <if test="maxClosePrice != null and maxClosePrice != '' and maxClosePrice != 'undefined'">
+            AND c.`close_price` &lt;= #{maxClosePrice}
+        </if>
+        <if test="minStandarPrice != null and minStandarPrice != '' and minStandarPrice != 'undefined'">
+            AND c.`standar_price` >= #{minStandarPrice}
+        </if>
+        <if test="maxStandarPrice != null and maxStandarPrice != '' and maxStandarPrice != 'undefined'">
+            AND c.`standar_price` &lt;= #{maxStandarPrice}
+        </if>
+        <if test="forthSector != null and forthSector != '' and forthSector != 'undefined'">
+            AND s.`forth_sector` REGEXP #{forthSector}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND c.deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND c.deal_time &lt;= #{endDay}
+        </if>
+        ) o ORDER BY o.company_level ASC ,o.financial_level ASC ,standar_price DESC
+    </select>
 </mapper>

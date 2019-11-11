@@ -97,4 +97,23 @@ public class StockChoseClassApiController extends AbstractController {
         tigerList.setChooseReason(chooseReason);
         return stockTigerListService.updateById(tigerList) ? ResponseEntity.ok(MapSuccess("修改成功")) : ResponseEntity.ok(MapSuccess("修改失败"));
     }
+
+    @LogRecord(name = "getStockChoseStrategyList" ,description = "查询策略列表")
+    @PostMapping("/getStockChoseStrategyList")
+    public Object getStockChoseStrategyList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
+                                            @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
+                                            String isUpper ,
+                                            String isTop,
+                                            String isMiddle,
+                                            String isBottom,
+                                            String minClosePrice,
+                                            String maxClosePrice,
+                                            String minStandarPrice,
+                                            String maxStandarPrice,
+                                            String forthSector ,
+                                            String startDay ,
+                                            String endDay){
+        Page selectedPage = stockChoseStrategyService.getStockChoseStrategyList( page, size, isUpper , isTop, isMiddle, isBottom, minClosePrice, maxClosePrice, minStandarPrice, maxStandarPrice, forthSector , startDay , endDay);
+        return PageData(selectedPage);
+    }
 }
