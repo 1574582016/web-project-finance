@@ -55,63 +55,95 @@ $(function () {
         detailView: false,                   //是否显示父子表
         columns: [
             {
-                field: 'stockACode',
+                field: 'stockCode',
                 title: '股票编码',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'stockAName',
+                field: 'stockName',
                 title: '股票名称',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'stockSector',
-                title: '市场板块',
+                field: 'dealTime',
+                title: '交易日',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'contrySector',
-                title: '行业板块',
+                field: 'forthSector',
+                title: '行业',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'companyRegion',
-                title: '地区',
+                field: 'companyLevel',
+                title: '市场',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'stockExchange',
-                title: '交易所',
+                field: 'financialLevel',
+                title: '财务',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'stockPlate',
-                title: '板块',
+                field: 'openPrice',
+                title: '开盘价',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'publishDate',
-                title: '上市日期',
+                field: 'closePrice',
+                title: '收盘价',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'companyRegistMoney',
-                title: '注册资本',
+                field: 'highPrice',
+                title: '最高价',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'publishAmount',
-                title: '发行量',
+                field: 'lowPrice',
+                title: '最低价',
                 align: 'center',
                 valign: 'middle'
-            }, {
-                title: "操作",
+            },{
+                field: 'averagePrice',
+                title: '均价',
                 align: 'center',
-                valign: 'middle',
-                width: 80, // 定义列的宽度，单位为像素px
-                formatter: function (value, row, index) {
-                    return '<button class="btn btn-default btn-xs" onclick="view(\'' + row.id + '\',\'' + row.stockACode  + '\')">查看</button>&nbsp;';
-                }
+                valign: 'middle'
+            },{
+                field: 'standarPrice',
+                title: '标准差',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'topPrice',
+                title: '上轨价',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'bottomPrice',
+                title: '下轨价',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'topDistance',
+                title: '顶部距离',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'middleDistance',
+                title: '中规距离',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'bottomDistance',
+                title: '底部距离',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'averageStock',
+                title: '平均振幅',
+                align: 'center',
+                valign: 'middle'
             }
         ]
     });
@@ -120,21 +152,5 @@ $(function () {
         $('#tableList').bootstrapTable('refresh');
     });
 
-
-    // $("#addDataButton").click(function () {
-    //     addNextBread("新增公司信息");
-    //     location.href="/company/companyInformationEdit";
-    // })
-
-
 });
 
-// function edit(id) {
-//     addNextBread("修改公司信息");
-//     location.href="/company/companyInformationEdit?id="+id;
-// }
-
-function view(id , stockCode) {
-    addNextBread("查看公司信息");
-    location.href="/stock/stockCompanyStatictis?id="+id + "&stockCode=" + stockCode;
-}
