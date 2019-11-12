@@ -10,6 +10,9 @@
         <result column="update_time" property="updateTime"/>
         <result column="update_user" property="updateUser"/>
 
+        <result column="first_class" property="firstClass"/>
+        <result column="second_class" property="secondClass"/>
+        <result column="third_class" property="thirdClass"/>
         <result column="class_code" property="classCode"/>
         <result column="class_name" property="className"/>
         <result column="class_type" property="classType"/>

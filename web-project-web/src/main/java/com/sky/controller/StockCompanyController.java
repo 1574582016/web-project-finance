@@ -60,7 +60,6 @@ public class StockCompanyController {
 
     @RequestMapping("/stockSectorCompanyList")
     public String stockSectorCompanyList(Model model ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector ,String hotCode){
-        List<StockMarketClass> hotList = stockMarketClassService.selectList(new EntityWrapper<StockMarketClass>().where("class_type = '概念板块'"));
         model.addAttribute("hotCode" , hotCode);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);
@@ -68,7 +67,6 @@ public class StockCompanyController {
         model.addAttribute("secondSector" , secondSector);
         model.addAttribute("thirdSecotor" , thirdSecotor);
         model.addAttribute("forthSector" , forthSector);
-        model.addAttribute("hotList" , hotList);
         return "page/stockSectorCompanyList";
     }
 

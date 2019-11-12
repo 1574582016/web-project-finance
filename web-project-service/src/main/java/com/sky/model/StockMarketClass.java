@@ -13,6 +13,24 @@ import lombok.Data;
 public class StockMarketClass extends BaseModel<StockMarketClass> {
 
     /**
+     *一级分类
+     */
+    @TableField("first_class")
+    private String firstClass ;
+
+    /**
+     *二级分类
+     */
+    @TableField("second_class")
+    private String secondClass ;
+
+    /**
+     *三级分类
+     */
+    @TableField("third_class")
+    private String thirdClass ;
+
+    /**
      *类型编码
      */
     @TableField("class_code")
