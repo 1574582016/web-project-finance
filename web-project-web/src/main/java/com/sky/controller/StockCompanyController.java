@@ -59,8 +59,21 @@ public class StockCompanyController {
     }
 
     @RequestMapping("/stockSectorCompanyList")
-    public String stockSectorCompanyList(Model model ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector ,String hotCode){
-        model.addAttribute("hotCode" , hotCode);
+    public String stockSectorCompanyList(Model model ,
+                                         String stockCode ,
+                                         String stockName ,
+                                         String firstSector ,
+                                         String secondSector ,
+                                         String thirdSecotor ,
+                                         String forthSector ,
+                                         String firstHot ,
+                                         String secondHot ,
+                                         String thirdHot ,
+                                         String forthHot ){
+        model.addAttribute("firstHot" , firstHot);
+        model.addAttribute("secondHot" , secondHot);
+        model.addAttribute("thirdHot" , thirdHot);
+        model.addAttribute("forthHot" , forthHot);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);
         model.addAttribute("firstSector" , firstSector);
@@ -71,8 +84,22 @@ public class StockCompanyController {
     }
 
     @RequestMapping("/stockCompanyFinancial")
-    public String stockCompanyFinancial(Model model ,String stock_code ,String stockCode ,String stockName ,String firstSector ,String secondSector ,String thirdSecotor ,String forthSector ,String hotCode){
-        model.addAttribute("hotCode" , hotCode);
+    public String stockCompanyFinancial(Model model ,
+                                        String stock_code ,
+                                        String stockCode ,
+                                        String stockName ,
+                                        String firstSector ,
+                                        String secondSector ,
+                                        String thirdSecotor ,
+                                        String forthSector ,
+                                        String firstHot ,
+                                        String secondHot ,
+                                        String thirdHot ,
+                                        String forthHot ){
+        model.addAttribute("firstHot" , firstHot);
+        model.addAttribute("secondHot" , secondHot);
+        model.addAttribute("thirdHot" , thirdHot);
+        model.addAttribute("forthHot" , forthHot);
         model.addAttribute("stock_code" , stock_code);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);

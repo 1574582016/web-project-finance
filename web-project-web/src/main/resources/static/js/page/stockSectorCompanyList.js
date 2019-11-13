@@ -85,10 +85,87 @@ $(function () {
         });
     }
 
-    $("#mark_hot").val($("#hot_1_Code").val())
 
+    var first_1_Hot = $("#first_1_Hot").val();
+    var second_1_Hot = $("#second_1_Hot").val();
+    var third_1_Hot = $("#third_1_Hot").val();
+    var forth_1_Hot = $("#forth_1_Hot").val();
+    var firstClass = '';
+    var secondClass = '';
+    var thirdClass = '';
+    if(isEmpty(first_1_Hot)){
+        $.APIPost("/api/stockSector/getStockHotClassList",function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                str +='<option value="'+ value.firstClass +'">' + value.firstClass + '</option>'
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#first_hot").html(str2);
+        });
+    }else{
+        $.APIPost("/api/stockSector/getStockHotClassList",function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                if(first_1_Hot == value.firstClass){
+                    firstClass = value.firstClass;
+                    str +='<option value="'+ value.firstClass +'" selected="selected">' + value.firstClass + '</option>'
+                }else{
+                    str +='<option value="'+ value.firstClass +'" >' + value.firstClass + '</option>'
+                }
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#first_hot").html(str2);
+        });
+    }
 
-    $("#mark_hot").select2();
+    if(!isEmpty(second_1_Hot)){
+        $.APIPost("/api/stockSector/getStockHotClassList?firstClass=" + firstClass,function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                if(second_1_Hot == value.secondClass){
+                    secondClass = value.secondClass;
+                    str +='<option value="'+ value.secondClass +'" selected="selected">' + value.secondClass + '</option>'
+                }else{
+                    str +='<option value="'+ value.secondClass +'" >' + value.secondClass + '</option>'
+                }
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#second_hot").html(str2);
+        });
+    }
+
+    if(!isEmpty(third_1_Hot)) {
+        $.APIPost("/api/stockSector/getStockHotClassList?secondClass=" + secondClass,function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                if(third_1_Hot == value.thirdClass){
+                    thirdClass = value.thirdClass;
+                    str +='<option value="'+ value.thirdClass +'" selected="selected">' + value.thirdClass + '</option>'
+                }else{
+                    str +='<option value="'+ value.thirdClass +'" >' + value.thirdClass + '</option>'
+                }
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#third_hot").html(str2);
+        });
+    }
+
+    if(!isEmpty(forth_1_Hot)) {
+        $.APIPost("/api/stockSector/getStockHotClassList?thirdClass=" + thirdClass,function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                if(forth_1_Hot == value.className){
+                    str +='<option value="'+ value.className +'" selected="selected">' + value.className + '</option>'
+                }else{
+                    str +='<option value="'+ value.className +'" >' + value.className + '</option>'
+                }
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#forth_hot").html(str2);
+        });
+    }
+
+    // $("#mark_hot").select2();
 
 
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
@@ -111,7 +188,10 @@ $(function () {
                 forthSector: $("#forth_sector").val(),
                 stockCode: $("#stock_code").val(),
                 stockName: $("#stock_name").val(),
-                hotCode: $("#mark_hot").val()
+                firstHot: $("#first_hot").val(),
+                secondHot: $("#second_hot").val(),
+                thirdHot: $("#third_hot").val(),
+                forthHot: $("#forth_hot").val()
             };
             return temp;
         },
@@ -267,6 +347,28 @@ function getSelectOption(boxId , obj) {
     });
 }
 
+function getHotOption(boxId , params , obj) {
+    var thisObj=$(obj);
+    var hotClass = thisObj.val();
+    $.APIPost("/api/stockSector/getStockHotClassList?" + params +"=" + hotClass,function (data) {
+        var str = ""
+        $.each(data.data.result ,function (index ,value) {
+            if(boxId == 'second_hot'){
+                str +='<option value="'+ value.secondClass +'">' + value.secondClass + '</option>'
+            }
+            if(boxId == 'third_hot'){
+                str +='<option value="'+ value.thirdClass +'">' + value.thirdClass + '</option>'
+            }
+            if(boxId == 'forth_hot'){
+                str +='<option value="'+ value.className +'">' + value.className + '</option>'
+            }
+        });
+        var str2 = '<option value="">请选择</option>' + str;
+        $("#" + boxId).html(str2);
+
+    });
+}
+
 function edit(stockCode) {
     $('#myModal').on('show.bs.modal',function() {
         $.APIPost("/api/stock/getStockCompanySector?stockCode="+stockCode ,function (data) {
@@ -287,6 +389,19 @@ function view(stock_code) {
     var forthSector = $("#forth_sector").val();
     var stockCode = $("#stock_code").val();
     var stockName = $("#stock_name").val();
-    var hotCode = $("#mark_hot").val()
-    location.href="/stock/stockCompanyFinancial?stock_code="+stock_code + "&stockCode=" + stockCode + "&stockName=" + stockName + "&firstSector=" + firstSector + "&secondSector=" + secondSector + "&thirdSecotor=" + thirdSecotor + "&forthSector=" + forthSector + "&hotCode=" + hotCode;
+    var firstHot = $("#first_hot").val();
+    var secondHot = $("#second_hot").val();
+    var thirdHot = $("#third_hot").val();
+    var forthHot = $("#forth_hot").val();
+    location.href="/stock/stockCompanyFinancial?stock_code=" + stock_code
+                                             + "&stockCode=" + stockCode
+                                             + "&stockName=" + stockName
+                                             + "&firstSector=" + firstSector
+                                             + "&secondSector=" + secondSector
+                                             + "&thirdSecotor=" + thirdSecotor
+                                             + "&forthSector=" + forthSector
+                                             + "&firstHot=" + firstHot
+                                             + "&secondHot=" + secondHot
+                                             + "&thirdHot=" + thirdHot
+                                             + "&forthHot=" + forthHot;
 }

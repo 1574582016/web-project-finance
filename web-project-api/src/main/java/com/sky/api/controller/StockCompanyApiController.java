@@ -169,8 +169,11 @@ public class StockCompanyApiController extends AbstractController {
                                             String secondSector ,
                                             String thirdSecotor ,
                                             String forthSector ,
-                                            String hotCode){
-        List<CompanySectorVO> list = stockCompanySectorService.getStockCompanySectorList(stockCode, stockName, firstSector, secondSector, thirdSecotor, forthSector ,hotCode);
+                                            String firstHot ,
+                                            String secondHot ,
+                                            String thirdHot ,
+                                            String forthHot ){
+        List<CompanySectorVO> list = stockCompanySectorService.getStockCompanySectorList(stockCode, stockName, firstSector, secondSector, thirdSecotor, forthSector ,firstHot , secondHot ,thirdHot ,forthHot );
         Map<String ,Object> map = new HashMap<String ,Object>();
         map.put("total",list.size());
         map.put("rows",list);

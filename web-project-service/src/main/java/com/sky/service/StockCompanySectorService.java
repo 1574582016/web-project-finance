@@ -17,5 +17,8 @@ public interface StockCompanySectorService extends IService<StockCompanySector> 
                                                     String secondSector ,
                                                     String thirdSecotor ,
                                                     String forthSector  ,
-                                                    String hotCode);
+                                                    String firstHot ,
+                                                    String secondHot ,
+                                                    String thirdHot ,
+                                                    String forthHot );
 }

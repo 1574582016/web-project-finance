@@ -26,8 +26,20 @@ $(function () {
         var forthSector = $("#forthSector").val();
         var stockCode = $("#stockCode").val();
         var stockName = $("#stockName").val();
-        var hotCode = $("#hotCode").val();
-        location.href="/stock/stockSectorCompanyList?stockCode=" + stockCode + "&stockName=" + stockName + "&firstSector=" + firstSector + "&secondSector=" + secondSector + "&thirdSecotor=" + thirdSecotor + "&forthSector=" + forthSector + "&hotCode=" + hotCode;
+        var firstHot = $("#firstHot").val();
+        var secondHot = $("#secondHot").val();
+        var thirdHot = $("#thirdHot").val();
+        var forthHot = $("#forthHot").val();
+        location.href="/stock/stockSectorCompanyList?stockCode=" + stockCode
+            + "&stockName=" + stockName
+            + "&firstSector=" + firstSector
+            + "&secondSector=" + secondSector
+            + "&thirdSecotor=" + thirdSecotor
+            + "&forthSector=" + forthSector
+            + "&firstHot=" + firstHot
+            + "&secondHot=" + secondHot
+            + "&thirdHot=" + thirdHot
+            + "&forthHot=" + forthHot ;
     });
 
 });

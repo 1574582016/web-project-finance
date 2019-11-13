@@ -189,17 +189,33 @@
         s.`five_sector`
         ) a
         LEFT JOIN stock_hot_class h ON a.`stock_code` = h.`stock_code`
+        LEFT JOIN stock_market_class c ON h.`hot_code` = c.`class_code`
         <where>
-            <if test="hotCode != null and hotCode != '' and hotCode != 'undefined'">
-                h.`hot_code` = #{hotCode}
+            <if test="firstHot != null and firstHot != '' and firstHot != 'undefined'">
+                AND c.`first_class` = #{firstHot}
+            </if>
+            <if test="secondHot != null and secondHot != '' and secondHot != 'undefined'">
+                AND c.`second_class` =  #{secondHot}
+            </if>
+            <if test="thirdHot != null and thirdHot != '' and thirdHot != 'undefined'">
+                AND c.`third_class` = #{thirdHot}
+            </if>
+            <if test="forthHot != null and forthHot != '' and forthHot != 'undefined'">
+                AND c.`class_name` = #{forthHot}
             </if>
         </where>
         GROUP BY a.stock_code
         <choose>
-            <when test="hotCode != null and hotCode != '' and hotCode != 'undefined'">
+            <when test="(firstHot != null and firstHot != '' and firstHot != 'undefined') or (secondHot != null and secondHot != '' and secondHot != 'undefined') or (thirdHot != null and thirdHot != '' and thirdHot != 'undefined') or(forthHot != null and forthHot != '' and forthHot != 'undefined')">
                 ORDER BY
-                CONCAT(a.ZHONG,a.SHANG) DESC,
-                CONCAT(a.profit_grow_score,a.profit_score,a.asset_grow_score,a.asset_score,a.flow_score) DESC
+                c.`first_class` ,
+                c.`second_class`,
+                c.`third_class` ,
+                a.ZHONG DESC,
+                a.profit_grow_score DESC,
+                a.profit_score DESC,
+                a.asset_grow_score DESC,
+                a.asset_score DESC
             </when>
             <otherwise>
                 ORDER BY

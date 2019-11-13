@@ -17,8 +17,9 @@ import java.util.List;
 @Transactional
 public class StockCompanySectorServiceImpl extends ServiceImpl<StockCompanySectorMapper,StockCompanySector> implements StockCompanySectorService {
 
+
     @Override
-    public List<CompanySectorVO> getStockCompanySectorList(String stockCode, String stockName, String firstSector, String secondSector, String thirdSecotor, String forthSector ,String hotCode) {
-        return baseMapper.getStockCompanySectorList( stockCode, stockName, firstSector, secondSector, thirdSecotor, forthSector ,hotCode);
+    public List<CompanySectorVO> getStockCompanySectorList(String stockCode, String stockName, String firstSector, String secondSector, String thirdSecotor, String forthSector, String firstHot, String secondHot, String thirdHot, String forthHot) {
+        return baseMapper.getStockCompanySectorList( stockCode, stockName, firstSector, secondSector, thirdSecotor, forthSector, firstHot, secondHot, thirdHot, forthHot);
     }
 }

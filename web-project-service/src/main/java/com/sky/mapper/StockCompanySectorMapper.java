@@ -18,5 +18,8 @@ public interface StockCompanySectorMapper extends BaseMapper<StockCompanySector>
                                                     @Param("secondSector") String secondSector ,
                                                     @Param("thirdSecotor") String thirdSecotor ,
                                                     @Param("forthSector") String forthSector  ,
-                                                    @Param("hotCode") String hotCode);
+                                                    @Param("firstHot") String firstHot ,
+                                                    @Param("secondHot") String secondHot ,
+                                                    @Param("thirdHot") String thirdHot ,
+                                                    @Param("forthHot") String forthHot );
 }
