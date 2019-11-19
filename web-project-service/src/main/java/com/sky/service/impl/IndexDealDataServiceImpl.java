@@ -9,8 +9,7 @@ import com.sky.core.utils.CommonHttpUtil;
 import com.sky.mapper.IndexDealDataMapper;
 import com.sky.model.IndexDealData;
 import com.sky.service.IndexDealDataService;
-import com.sky.vo.CovarDeal_VO;
-import com.sky.vo.IndexStatic_VO;
+import com.sky.vo.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -133,5 +132,20 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
     @Override
     public List<IndexDealData> getStockIndexDataList(String indexCode, String dealPeriod, String startDay, String endDay) {
         return baseMapper.getStockIndexDataList( indexCode, dealPeriod, startDay, endDay);
+    }
+
+    @Override
+    public StockIndexMonthData_VO getStockIndexMonthList(String indexName, String startDay, String endDay) {
+        return baseMapper.getStockIndexMonthList(indexName, startDay, endDay);
+    }
+
+    @Override
+    public List<StockIndexWeekData_VO> getStockIndexWeekList(String indexName, String startDay, String endDay) {
+        return baseMapper.getStockIndexWeekList(indexName , startDay , endDay);
+    }
+
+    @Override
+    public List<StockIndexDayData_VO> getStockIndexDayList(String indexName, String startDay, String endDay) {
+        return baseMapper.getStockIndexDayList(indexName , startDay , endDay);
     }
 }

@@ -499,9 +499,9 @@ public class StatisticsApiController extends AbstractController {
     @LogRecord(name = "getSectorMonthData" ,description = "查询行业统计数据")
     @PostMapping("/getSectorMonthData")
     public Object getSectorMonthData(String sectorCode , String dealPeriod ,String startDay , String endDay){
-        if(StringUtils.isNotBlank(sectorCode)){
-            sectorCode = sectorCode.substring(0,sectorCode.length()-1);
-        }
+//        if(StringUtils.isNotBlank(sectorCode)){
+//            sectorCode = sectorCode.substring(0,sectorCode.length()-1);
+//        }
         List<IndexStatic_VO> list = sectorDealDataService.getSectorMonthRateStaticList( sectorCode , dealPeriod , startDay , endDay);
 
         List<BigDecimal> upperArr = new ArrayList<>();
@@ -551,9 +551,9 @@ public class StatisticsApiController extends AbstractController {
     @PostMapping("/getSectorWeekData")
     public Object getSectorWeekData(String sectorCode , Integer dataIndex ,String startDay , String endDay){
         String months = (dataIndex + 1) + "";
-        if(StringUtils.isNotBlank(sectorCode)){
-            sectorCode = sectorCode.substring(0 ,sectorCode.length() - 1);
-        }
+//        if(StringUtils.isNotBlank(sectorCode)){
+//            sectorCode = sectorCode.substring(0 ,sectorCode.length() - 1);
+//        }
         List<IndexStatic_VO> list = sectorDealDataService.getSectorWeekRateStaticList( sectorCode , months , startDay , endDay);
 
         List<String> titleArr = new ArrayList<>();
@@ -596,9 +596,9 @@ public class StatisticsApiController extends AbstractController {
     @PostMapping("/getSectorDayData")
     public Object getSectorDayData(String sectorCode , Integer dataIndex ,String startDay , String endDay){
         String week = (dataIndex + 1) + "";
-        if(StringUtils.isNotBlank(sectorCode)){
-            sectorCode = sectorCode.substring(0 ,sectorCode.length() - 1);
-        }
+//        if(StringUtils.isNotBlank(sectorCode)){
+//            sectorCode = sectorCode.substring(0 ,sectorCode.length() - 1);
+//        }
         List<IndexStatic_VO> list = sectorDealDataService.getSectorDayRateStaticList( sectorCode , week , startDay , endDay);
 
         List<String> titleArr = new ArrayList<>();

@@ -296,4 +296,671 @@
             AND i.deal_time &lt; #{endDay}
         </if>
     </select>
+
+
+    <select id="getStockIndexMonthList" parameterType="java.lang.String" resultType="com.sky.vo.StockIndexMonthData_VO">
+        SELECT
+        a.indexName ,
+        ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) oneRiseRate ,
+        ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) towRiseRate ,
+        ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2) threeRiseRate ,
+        ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2) fourRiseRate ,
+        ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2) fiveRiseRate ,
+        ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2) sixRiseRate ,
+        ROUND(a.sevenRise/(a.sevenRise + a.sevenDown)  * 100,2) sevenRiseRate ,
+        ROUND(a.eightRise/(a.eightRise + a.eightDown)  * 100,2) eightRiseRate ,
+        ROUND(a.nineRise/(a.nineRise + a.nineDown)  * 100,2) nineRiseRate ,
+        ROUND(a.tenRise/(a.tenRise + a.tenDown)  * 100,2) tenRiseRate ,
+        ROUND(a.elevenRise/(a.elevenRise + a.elevenDown)  * 100,2) elevenRiseRate ,
+        ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) twelveRiseRate ,
+
+        ROUND(a.oneUpper/(a.oneRise + a.oneDown),2) oneUpperAverage ,
+        ROUND(a.towUpper/(a.towRise + a.towDown),2) towUpperAverage ,
+        ROUND(a.threeUpper/(a.threeRise + a.threeDown),2) threeUpperAverage ,
+        ROUND(a.fourUpper/(a.fourRise + a.fourDown),2) fourUpperAverage ,
+        ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2) fiveUpperAverage ,
+        ROUND(a.sixUpper/(a.sixRise + a.sixDown),2) sixUpperAverage ,
+        ROUND(a.sevenUpper/(a.sevenRise + a.sevenDown),2) sevenUpperAverage ,
+        ROUND(a.eightUpper/(a.eightRise + a.eightDown),2) eightUpperAverage ,
+        ROUND(a.nineUpper/(a.nineRise + a.nineDown),2) nineUpperAverage ,
+        ROUND(a.tenUpper/(a.tenRise + a.tenDown),2) tenUpperAverage ,
+        ROUND(a.elvenUpper/(a.elevenRise + a.elevenDown),2) elvenUpperAverage ,
+        ROUND(a.twelveUpper/(a.twelveRise + a.twelveDown),2) twelveUpperAverage ,
+
+
+        ROUND(a.oneShock/(a.oneRise + a.oneDown),2) oneShockAverage ,
+        ROUND(a.towShock/(a.towRise + a.towDown),2) towShockAverage ,
+        ROUND(a.threeShock/(a.threeRise + a.threeDown),2) threeShockAverage ,
+        ROUND(a.fourShock/(a.fourRise + a.fourDown),2) fourShockAverage ,
+        ROUND(a.fiveShock/(a.fiveRise + a.fiveDown),2) fiveShockAverage ,
+        ROUND(a.sixShock/(a.sixRise + a.sixDown),2) sixShockAverage ,
+        ROUND(a.sevenShock/(a.sevenRise + a.sevenDown),2) sevenShockAverage ,
+        ROUND(a.eightShock/(a.eightRise + a.eightDown),2) eightShockAverage ,
+        ROUND(a.nineShock/(a.nineRise + a.nineDown),2) nineShockAverage ,
+        ROUND(a.tenShock/(a.tenRise + a.tenDown),2) tenShockAverage ,
+        ROUND(a.elvenShock/(a.elevenRise + a.elevenDown),2) elvenShockAverage ,
+        ROUND(a.twelveShock/(a.twelveRise + a.twelveDown),2) twelveShockAverage
+        FROM(
+        SELECT
+        d.`index_name` indexName,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS oneRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS oneDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS towRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS towDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS threeRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS threeDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS fourRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS fourDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS fiveRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS fiveDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS sixRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS sixDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS sevenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS sevenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS eightRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS eightDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS nineRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS nineDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS tenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS tenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS elevenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS elevenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS twelveRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) END) AS twelveDown ,
+
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN d.close_price - d.open_price END) AS oneUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN d.high_price - d.low_price END) AS oneShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN d.close_price - d.open_price END) AS towUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN d.high_price - d.low_price END) AS towShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN d.close_price - d.open_price END) AS threeUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN d.high_price - d.low_price END) AS threeShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN d.close_price - d.open_price END) AS fourUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN d.high_price - d.low_price END) AS fourShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN d.close_price - d.open_price END) AS fiveUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN d.high_price - d.low_price END) AS fiveShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN d.close_price - d.open_price END) AS sixUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN d.high_price - d.low_price END) AS sixShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN d.close_price - d.open_price END) AS sevenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN d.high_price - d.low_price END) AS sevenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN d.close_price - d.open_price END) AS eightUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN d.high_price - d.low_price END) AS eightShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN d.close_price - d.open_price END) AS nineUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN d.high_price - d.low_price END) AS nineShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN d.close_price - d.open_price END) AS tenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN d.high_price - d.low_price END) AS tenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN d.close_price - d.open_price END) AS elvenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN d.high_price - d.low_price END) AS elvenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN d.close_price - d.open_price END) AS twelveUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN d.high_price - d.low_price END) AS twelveShock
+        FROM index_deal_data d
+        WHERE d.deal_period = 3
+        <if test="indexName != null and indexName != '' and indexName != 'undefined'">
+            AND d.`index_name` REGEXP #{indexName}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND d.deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND d.deal_time &lt; #{endDay}
+        </if>
+        ) a
+    </select>
+
+    <select id="getStockIndexWeekList" parameterType="java.lang.String" resultType="com.sky.vo.StockIndexWeekData_VO">
+        SELECT
+        a.pointTime ,
+        IFNULL(ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2),0) oneRiseRate ,
+        IFNULL(ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2),0) towRiseRate ,
+        IFNULL(ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2),0) threeRiseRate ,
+        IFNULL(ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2),0) fourRiseRate ,
+        IFNULL(ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2),0) fiveRiseRate ,
+        IFNULL(ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2),0) sixRiseRate ,
+
+        IFNULL(ROUND(a.oneUpper/(a.oneRise + a.oneDown),2),0) oneUpperAverage ,
+        IFNULL(ROUND(a.towUpper/(a.towRise + a.towDown),2),0) towUpperAverage ,
+        IFNULL(ROUND(a.threeUpper/(a.threeRise + a.threeDown),2),0) threeUpperAverage ,
+        IFNULL(ROUND(a.fourUpper/(a.fourRise + a.fourDown),2),0) fourUpperAverage ,
+        IFNULL(ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2),0) fiveUpperAverage ,
+        IFNULL(ROUND(a.sixUpper/(a.sixRise + a.sixDown),2),0) sixUpperAverage ,
+
+        IFNULL(ROUND(a.oneShock/(a.oneRise + a.oneDown),2),0) oneShockAverage ,
+        IFNULL(ROUND(a.towShock/(a.towRise + a.towDown),2),0) towShockAverage ,
+        IFNULL(ROUND(a.threeShock/(a.threeRise + a.threeDown),2),0) threeShockAverage ,
+        IFNULL(ROUND(a.fourShock/(a.fourRise + a.fourDown),2),0) fourShockAverage ,
+        IFNULL(ROUND(a.fiveShock/(a.fiveRise + a.fiveDown),2),0) fiveShockAverage ,
+        IFNULL(ROUND(a.sixShock/(a.sixRise + a.sixDown),2),0) sixShockAverage
+        FROM(
+        SELECT
+        SUBSTR(d.deal_time ,6,2) pointTime,
+        ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) weeks,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 1
+        THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS oneRise,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 1
+        THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS oneDown,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 2
+        THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS towRise,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 2
+        THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS towDown,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 3
+        THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS threeRise,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 3
+        THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS threeDown,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 4
+        THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS fourRise,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 4
+        THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS fourDown,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 5
+        THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS fiveRise,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 5
+        THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS fiveDown ,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 6
+        THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS sixRise,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 6
+        THEN (CASE WHEN d.close_price - d.open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0
+        END) AS sixDown ,
+
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 1
+        THEN d.close_price - d.open_price ELSE 0
+        END) AS oneUpper,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 2
+        THEN d.close_price - d.open_price ELSE 0
+        END) AS towUpper,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 3
+        THEN d.close_price - d.open_price ELSE 0
+        END) AS threeUpper,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 4
+        THEN d.close_price - d.open_price ELSE 0
+        END) AS fourUpper,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 5
+        THEN d.close_price - d.open_price ELSE 0
+        END) AS fiveUpper,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 6
+        THEN d.close_price - d.open_price ELSE 0
+        END) AS sixUpper,
+
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 1
+        THEN d.`high_price` - d.`low_price` ELSE 0
+        END) AS oneShock,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 2
+        THEN d.`high_price` - d.`low_price` ELSE 0
+        END) AS towShock,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 3
+        THEN d.`high_price` - d.`low_price` ELSE 0
+        END) AS threeShock,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 4
+        THEN d.`high_price` - d.`low_price` ELSE 0
+        END) AS fourShock,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 5
+        THEN d.`high_price` - d.`low_price` ELSE 0
+        END) AS fiveShock,
+        SUM(CASE WHEN ((DAY(d.deal_time)+WEEKDAY(d.deal_time-INTERVAL DAY(d.deal_time) DAY)) DIV 7 + 1) = 6
+        THEN d.`high_price` - d.`low_price` ELSE 0
+        END) AS sixShock
+        FROM index_deal_data d
+        WHERE d.deal_period = 2
+        <if test="indexName != null and indexName != '' and indexName != 'undefined'">
+            AND d.`index_name` REGEXP #{indexName}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND d.deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND d.deal_time &lt; #{endDay}
+        </if>
+        GROUP BY SUBSTR(d.deal_time ,6,2)
+        ) a
+    </select>
+
+
+    <select id="getStockIndexDayList" parameterType="java.lang.String" resultType="com.sky.vo.StockIndexDayData_VO">
+        SELECT
+        a.pointMonth ,
+        a.pointWeek ,
+        IFNULL(ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2),0) oneRiseRate ,
+        IFNULL(ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2),0) towRiseRate ,
+        IFNULL(ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2),0) threeRiseRate ,
+        IFNULL(ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2),0) fourRiseRate ,
+        IFNULL(ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2),0) fiveRiseRate ,
+
+        IFNULL(ROUND(a.oneUpper/(a.oneRise + a.oneDown),2),0) oneUpperAverage ,
+        IFNULL(ROUND(a.towUpper/(a.towRise + a.towDown),2),0) towUpperAverage ,
+        IFNULL(ROUND(a.threeUpper/(a.threeRise + a.threeDown),2),0) threeUpperAverage ,
+        IFNULL(ROUND(a.fourUpper/(a.fourRise + a.fourDown),2),0) fourUpperAverage ,
+        IFNULL(ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2),0) fiveUpperAverage ,
+
+        IFNULL(ROUND(a.oneShock/(a.oneRise + a.oneDown),2),0) oneShockAverage ,
+        IFNULL(ROUND(a.towShock/(a.towRise + a.towDown),2),0) towShockAverage ,
+        IFNULL(ROUND(a.threeShock/(a.threeRise + a.threeDown),2),0) threeShockAverage ,
+        IFNULL(ROUND(a.fourShock/(a.fourRise + a.fourDown),2),0) fourShockAverage ,
+        IFNULL(ROUND(a.fiveShock/(a.fiveRise + a.fiveDown),2),0) fiveShockAverage
+
+        FROM (
+        SELECT
+        SUBSTR(d.deal_time ,6,2) pointMonth ,
+        ((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1) pointWeek,
+        (DAYOFWEEK(deal_time) -1) pointDay,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 1 THEN (CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) ELSE 0 END) AS oneRise ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 1 THEN (CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0 END) AS oneDown ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 2 THEN (CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) ELSE 0 END) AS towRise ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 2 THEN (CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0 END) AS towDown ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 3 THEN (CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) ELSE 0 END) AS threeRise ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 3 THEN (CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0 END) AS threeDown ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 4 THEN (CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) ELSE 0 END) AS fourRise ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 4 THEN (CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0 END) AS fourDown ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 5 THEN (CASE WHEN close_price - open_price > 0 THEN 1 ELSE 0 END) ELSE 0 END) AS fiveRise ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 5 THEN (CASE WHEN close_price - open_price &lt; 0 THEN 1 ELSE 0 END) ELSE 0 END) AS fiveDown ,
+
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 1 THEN close_price - open_price ELSE 0 END) AS oneUpper ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 2 THEN close_price - open_price ELSE 0 END) AS towUpper ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 3 THEN close_price - open_price ELSE 0 END) AS threeUpper ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 4 THEN close_price - open_price ELSE 0 END) AS fourUpper ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 5 THEN close_price - open_price ELSE 0 END) AS fiveUpper ,
+
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 1 THEN high_price - low_price ELSE 0 END) AS oneShock ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 2 THEN high_price - low_price ELSE 0 END) AS towShock ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 3 THEN high_price - low_price ELSE 0 END) AS threeShock ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 4 THEN high_price - low_price ELSE 0 END) AS fourShock ,
+        SUM(CASE WHEN (DAYOFWEEK(deal_time) -1) = 5 THEN high_price - low_price ELSE 0 END) AS fiveShock
+
+        FROM index_deal_data d
+        WHERE d.deal_period = 1
+        <if test="indexName != null and indexName != '' and indexName != 'undefined'">
+            AND d.`index_name` REGEXP #{indexName}
+        </if>
+        <if test="startDay != null and startDay != '' and startDay != 'undefined'">
+            AND d.deal_time >= #{startDay}
+        </if>
+        <if test="endDay != null and endDay != '' and endDay != 'undefined'">
+            AND d.deal_time &lt; #{endDay}
+        </if>
+        GROUP BY SUBSTR(d.deal_time ,6,2),
+        ((DAY(deal_time)+WEEKDAY(deal_time-INTERVAL DAY(deal_time) DAY)) DIV 7 + 1)
+        ) a
+    </select>
+
+    <select id="">
+        SELECT
+        *
+        FROM(
+        SELECT
+        a.`first_sector` firstSector,
+        a.`second_sector` secondSector,
+        a.`third_secotor` thirdSecotor,
+        a.`forth_sector` forthSector,
+        ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) oneRiseRate ,
+        ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) towRiseRate ,
+        ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2) threeRiseRate ,
+        ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2) fourRiseRate ,
+        ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2) fiveRiseRate ,
+        ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2) sixRiseRate ,
+        ROUND(a.sevenRise/(a.sevenRise + a.sevenDown)  * 100,2) sevenRiseRate ,
+        ROUND(a.eightRise/(a.eightRise + a.eightDown)  * 100,2) eightRiseRate ,
+        ROUND(a.nineRise/(a.nineRise + a.nineDown)  * 100,2) nineRiseRate ,
+        ROUND(a.tenRise/(a.tenRise + a.tenDown)  * 100,2) tenRiseRate ,
+        ROUND(a.elevenRise/(a.elevenRise + a.elevenDown)  * 100,2) elevenRiseRate ,
+        ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) twelveRiseRate ,
+
+        ROUND(a.oneUpper/(a.oneRise + a.oneDown),2) oneUpperAverage ,
+        ROUND(a.towUpper/(a.towRise + a.towDown),2) towUpperAverage ,
+        ROUND(a.threeUpper/(a.threeRise + a.threeDown),2) threeUpperAverage ,
+        ROUND(a.fourUpper/(a.fourRise + a.fourDown),2) fourUpperAverage ,
+        ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2) fiveUpperAverage ,
+        ROUND(a.sixUpper/(a.sixRise + a.sixDown),2) sixUpperAverage ,
+        ROUND(a.sevenUpper/(a.sevenRise + a.sevenDown),2) sevenUpperAverage ,
+        ROUND(a.eightUpper/(a.eightRise + a.eightDown),2) eightUpperAverage ,
+        ROUND(a.nineUpper/(a.nineRise + a.nineDown),2) nineUpperAverage ,
+        ROUND(a.tenUpper/(a.tenRise + a.tenDown),2) tenUpperAverage ,
+        ROUND(a.elvenUpper/(a.elevenRise + a.elevenDown),2) elvenUpperAverage ,
+        ROUND(a.twelveUpper/(a.twelveRise + a.twelveDown),2) twelveUpperAverage ,
+
+
+        ROUND(a.oneShock/(a.oneRise + a.oneDown),2) oneShockAverage ,
+        ROUND(a.towShock/(a.towRise + a.towDown),2) towShockAverage ,
+        ROUND(a.threeShock/(a.threeRise + a.threeDown),2) threeShockAverage ,
+        ROUND(a.fourShock/(a.fourRise + a.fourDown),2) fourShockAverage ,
+        ROUND(a.fiveShock/(a.fiveRise + a.fiveDown),2) fiveShockAverage ,
+        ROUND(a.sixShock/(a.sixRise + a.sixDown),2) sixShockAverage ,
+        ROUND(a.sevenShock/(a.sevenRise + a.sevenDown),2) sevenShockAverage ,
+        ROUND(a.eightShock/(a.eightRise + a.eightDown),2) eightShockAverage ,
+        ROUND(a.nineShock/(a.nineRise + a.nineDown),2) nineShockAverage ,
+        ROUND(a.tenShock/(a.tenRise + a.tenDown),2) tenShockAverage ,
+        ROUND(a.elvenShock/(a.elevenRise + a.elevenDown),2) elvenShockAverage ,
+        ROUND(a.twelveShock/(a.twelveRise + a.twelveDown),2) twelveShockAverage
+        FROM(
+        SELECT
+        s.`stock_code` ,
+        s.`stock_name` ,
+        s.`first_sector` ,
+        s.`second_sector` ,
+        s.`third_secotor` ,
+        s.`forth_sector` ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS oneRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS oneDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS towRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS towDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS threeRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS threeDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS fourRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS fourDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS fiveRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS fiveDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS sixRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS sixDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS sevenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS sevenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS eightRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS eightDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS nineRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS nineDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS tenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS tenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS elevenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS elevenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS twelveRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS twelveDown ,
+
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN d.close_price - d.open_price END) AS oneUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN d.high_price - d.low_price END) AS oneShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN d.close_price - d.open_price END) AS towUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN d.high_price - d.low_price END) AS towShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN d.close_price - d.open_price END) AS threeUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN d.high_price - d.low_price END) AS threeShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN d.close_price - d.open_price END) AS fourUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN d.high_price - d.low_price END) AS fourShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN d.close_price - d.open_price END) AS fiveUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN d.high_price - d.low_price END) AS fiveShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN d.close_price - d.open_price END) AS sixUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN d.high_price - d.low_price END) AS sixShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN d.close_price - d.open_price END) AS sevenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN d.high_price - d.low_price END) AS sevenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN d.close_price - d.open_price END) AS eightUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN d.high_price - d.low_price END) AS eightShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN d.close_price - d.open_price END) AS nineUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN d.high_price - d.low_price END) AS nineShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN d.close_price - d.open_price END) AS tenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN d.high_price - d.low_price END) AS tenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN d.close_price - d.open_price END) AS elvenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN d.high_price - d.low_price END) AS elvenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN d.close_price - d.open_price END) AS twelveUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN d.high_price - d.low_price END) AS twelveShock
+        FROM stock_company_sector s
+        LEFT JOIN stock_company_base c ON s.`stock_code` = c.`stock_a_code`
+        LEFT JOIN stock_deal_data d ON s.`stock_code` = d.`stock_code`
+        WHERE LEFT(s.`stock_code`,2) != 68
+        AND d.`deal_period` = 3
+        #AND s.`first_sector` = '公用事业'
+        #AND s.`forth_sector` = '半导体'
+        AND d.deal_time >= '2015-01-01'
+        AND c.`publish_date` <= '2015-01-01'
+        GROUP BY s.`stock_code`
+        ORDER BY s.`first_sector` ,
+        s.`second_sector` ,
+        s.`third_secotor` ,
+        s.`forth_sector`
+        ) a
+        GROUP BY a.`forth_sector`
+        ) b
+        WHERE b.elevenRiseRate >= 70
+        ORDER BY b.elevenRiseRate DESC
+    </select>
+
+    <select id="">
+
+        SELECT
+        a.`first_sector` ,
+        a.`second_sector` ,
+        a.`third_secotor` ,
+        a.`forth_sector` ,
+        a.stock_code stockCode,
+        a.stock_name stockName,
+        CONCAT(
+        CASE WHEN a.ZHONG = 6 THEN 'S'
+        WHEN a.ZHONG = 5 THEN 'A'
+        WHEN a.ZHONG = 4 THEN 'B'
+        WHEN a.ZHONG = 3 THEN 'C'
+        WHEN a.ZHONG = 2 THEN 'D'
+        WHEN a.ZHONG = 1 THEN 'E'
+        END,
+        CASE WHEN a.SHANG = 6 THEN 'S'
+        WHEN a.SHANG = 5 THEN 'A'
+        WHEN a.SHANG = 4 THEN 'B'
+        WHEN a.SHANG = 3 THEN 'C'
+        WHEN a.SHANG = 2 THEN 'D'
+        WHEN a.SHANG = 1 THEN 'E'
+        END,
+        CASE WHEN a.ZHONG_i = 6 THEN 'S'
+        WHEN a.ZHONG_i = 5 THEN 'A'
+        WHEN a.ZHONG_i = 4 THEN 'B'
+        WHEN a.ZHONG_i = 3 THEN 'C'
+        WHEN a.ZHONG_i = 2 THEN 'D'
+        WHEN a.ZHONG_i = 1 THEN 'E'
+        END,
+        CASE WHEN a.SHANG_i = 6 THEN 'S'
+        WHEN a.SHANG_i = 5 THEN 'A'
+        WHEN a.SHANG_i = 4 THEN 'B'
+        WHEN a.SHANG_i = 3 THEN 'C'
+        WHEN a.SHANG_i = 2 THEN 'D'
+        WHEN a.SHANG_i = 1 THEN 'E'
+        END
+        ) companyLevel,
+        CONCAT(
+        CASE WHEN a.profit_score >= 80 THEN 'S'
+        WHEN a.profit_score >= 70 AND a.profit_score < 80 THEN 'A'
+        WHEN a.profit_score >= 60 AND a.profit_score < 70 THEN 'B'
+        WHEN a.profit_score >= 50 AND a.profit_score < 60 THEN 'C'
+        WHEN a.profit_score >= 40 AND a.profit_score < 50 THEN 'D'
+        WHEN a.profit_score >= 30 AND a.profit_score < 40 THEN 'E'
+        ELSE 'F'
+        END,
+        CASE WHEN a.profit_grow_score >= 80 THEN 'S'
+        WHEN a.profit_grow_score >= 70 AND a.profit_grow_score < 80 THEN 'A'
+        WHEN a.profit_grow_score >= 60 AND a.profit_grow_score < 70 THEN 'B'
+        WHEN a.profit_grow_score >= 50 AND a.profit_grow_score < 60 THEN 'C'
+        WHEN a.profit_grow_score >= 40 AND a.profit_grow_score < 50 THEN 'D'
+        WHEN a.profit_grow_score >= 30 AND a.profit_grow_score < 40 THEN 'E'
+        ELSE 'F'
+        END,
+        CASE WHEN a.asset_score >= 80 THEN 'S'
+        WHEN a.asset_score >= 70 AND a.asset_score < 80 THEN 'A'
+        WHEN a.asset_score >= 60 AND a.asset_score < 70 THEN 'B'
+        WHEN a.asset_score >= 50 AND a.asset_score < 60 THEN 'C'
+        WHEN a.asset_score >= 40 AND a.asset_score < 50 THEN 'D'
+        WHEN a.asset_score >= 30 AND a.asset_score < 40 THEN 'E'
+        ELSE 'F'
+        END,
+        CASE WHEN a.asset_grow_score >= 80 THEN 'S'
+        WHEN a.asset_grow_score >= 70 AND a.asset_grow_score < 80 THEN 'A'
+        WHEN a.asset_grow_score >= 60 AND a.asset_grow_score < 70 THEN 'B'
+        WHEN a.asset_grow_score >= 50 AND a.asset_grow_score < 60 THEN 'C'
+        WHEN a.asset_grow_score >= 40 AND a.asset_grow_score < 50 THEN 'D'
+        WHEN a.asset_grow_score >= 30 AND a.asset_grow_score < 40 THEN 'E'
+        ELSE 'F'
+        END,
+        CASE WHEN a.flow_score >= 80 THEN 'S'
+        WHEN a.flow_score >= 70 AND a.flow_score < 80 THEN 'A'
+        WHEN a.flow_score >= 60 AND a.flow_score < 70 THEN 'B'
+        WHEN a.flow_score >= 50 AND a.flow_score < 60 THEN 'C'
+        WHEN a.flow_score >= 40 AND a.flow_score < 50 THEN 'D'
+        WHEN a.flow_score >= 30 AND a.flow_score < 40 THEN 'E'
+        ELSE 'F'
+        END
+        ) financialLevel,
+        a.company_name companyName,
+        a.company_region companyRegion,
+        a.establish_date establishDate,
+        a.publish_date publishDate ,
+        GROUP_CONCAT(h.`hot_name` SEPARATOR '->') groupHot ,
+
+        ROUND(a.oneRise/(a.oneRise + a.oneDown)  * 100,2) oneRiseRate ,
+        ROUND(a.towRise/(a.towRise + a.towDown)  * 100,2) towRiseRate ,
+        ROUND(a.threeRise/(a.threeRise + a.threeDown)  * 100,2) threeRiseRate ,
+        ROUND(a.fourRise/(a.fourRise + a.fourDown)  * 100,2) fourRiseRate ,
+        ROUND(a.fiveRise/(a.fiveRise + a.fiveDown)  * 100,2) fiveRiseRate ,
+        ROUND(a.sixRise/(a.sixRise + a.sixDown)  * 100,2) sixRiseRate ,
+        ROUND(a.sevenRise/(a.sevenRise + a.sevenDown)  * 100,2) sevenRiseRate ,
+        ROUND(a.eightRise/(a.eightRise + a.eightDown)  * 100,2) eightRiseRate ,
+        ROUND(a.nineRise/(a.nineRise + a.nineDown)  * 100,2) nineRiseRate ,
+        ROUND(a.tenRise/(a.tenRise + a.tenDown)  * 100,2) tenRiseRate ,
+        ROUND(a.elevenRise/(a.elevenRise + a.elevenDown)  * 100,2) elevenRiseRate ,
+        ROUND(a.twelveRise/(a.twelveRise + a.twelveDown)  * 100,2) twelveRiseRate ,
+
+        ROUND(a.oneUpper/(a.oneRise + a.oneDown),2) oneUpperAverage ,
+        ROUND(a.towUpper/(a.towRise + a.towDown),2) towUpperAverage ,
+        ROUND(a.threeUpper/(a.threeRise + a.threeDown),2) threeUpperAverage ,
+        ROUND(a.fourUpper/(a.fourRise + a.fourDown),2) fourUpperAverage ,
+        ROUND(a.fiveUpper/(a.fiveRise + a.fiveDown),2) fiveUpperAverage ,
+        ROUND(a.sixUpper/(a.sixRise + a.sixDown),2) sixUpperAverage ,
+        ROUND(a.sevenUpper/(a.sevenRise + a.sevenDown),2) sevenUpperAverage ,
+        ROUND(a.eightUpper/(a.eightRise + a.eightDown),2) eightUpperAverage ,
+        ROUND(a.nineUpper/(a.nineRise + a.nineDown),2) nineUpperAverage ,
+        ROUND(a.tenUpper/(a.tenRise + a.tenDown),2) tenUpperAverage ,
+        ROUND(a.elvenUpper/(a.elevenRise + a.elevenDown),2) elvenUpperAverage ,
+        ROUND(a.twelveUpper/(a.twelveRise + a.twelveDown),2) twelveUpperAverage ,
+
+
+        ROUND(a.oneShock/(a.oneRise + a.oneDown),2) oneShockAverage ,
+        ROUND(a.towShock/(a.towRise + a.towDown),2) towShockAverage ,
+        ROUND(a.fourShock/(a.fourRise + a.fourDown),2) fourShockAverage ,
+        ROUND(a.fiveShock/(a.fiveRise + a.fiveDown),2) fiveShockAverage ,
+        ROUND(a.sixShock/(a.sixRise + a.sixDown),2) sixShockAverage ,
+        ROUND(a.sevenShock/(a.sevenRise + a.sevenDown),2) sevenShockAverage ,
+        ROUND(a.eightShock/(a.eightRise + a.eightDown),2) eightShockAverage ,
+        ROUND(a.nineShock/(a.nineRise + a.nineDown),2) nineShockAverage ,
+        ROUND(a.tenShock/(a.tenRise + a.tenDown),2) tenShockAverage ,
+        ROUND(a.elvenShock/(a.elevenRise + a.elevenDown),2) elvenShockAverage ,
+        ROUND(a.twelveShock/(a.twelveRise + a.twelveDown),2) twelveShockAverage
+        FROM(
+        SELECT
+        s.`stock_code` ,
+        s.`stock_name` ,
+        s.`first_sector` ,
+        s.`second_sector` ,
+        s.`third_secotor` ,
+        s.`forth_sector` ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS oneRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS oneDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS towRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS towDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS threeRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS threeDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS fourRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS fourDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS fiveRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS fiveDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS sixRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS sixDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS sevenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS sevenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS eightRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS eightDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS nineRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS nineDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS tenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS tenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS elevenRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS elevenDown ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) END) AS twelveRise ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN (CASE WHEN d.close_price - d.open_price < 0 THEN 1 ELSE 0 END) END) AS twelveDown ,
+
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN d.close_price - d.open_price END) AS oneUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 1  THEN d.high_price - d.low_price END) AS oneShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN d.close_price - d.open_price END) AS towUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 2  THEN d.high_price - d.low_price END) AS towShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN d.close_price - d.open_price END) AS threeUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 3  THEN d.high_price - d.low_price END) AS threeShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN d.close_price - d.open_price END) AS fourUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 4  THEN d.high_price - d.low_price END) AS fourShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN d.close_price - d.open_price END) AS fiveUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 5  THEN d.high_price - d.low_price END) AS fiveShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN d.close_price - d.open_price END) AS sixUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 6  THEN d.high_price - d.low_price END) AS sixShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN d.close_price - d.open_price END) AS sevenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 7  THEN d.high_price - d.low_price END) AS sevenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN d.close_price - d.open_price END) AS eightUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 8  THEN d.high_price - d.low_price END) AS eightShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN d.close_price - d.open_price END) AS nineUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 9  THEN d.high_price - d.low_price END) AS nineShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN d.close_price - d.open_price END) AS tenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 10 THEN d.high_price - d.low_price END) AS tenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN d.close_price - d.open_price END) AS elvenUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 11 THEN d.high_price - d.low_price END) AS elvenShock ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN d.close_price - d.open_price END) AS twelveUpper ,
+        SUM(CASE WHEN SUBSTR(d.deal_time ,6,2) = 12 THEN d.high_price - d.low_price END) AS twelveShock ,
+
+        MAX(s.`profit_score`) profit_score,
+        MAX(s.`profit_grow_score`) profit_grow_score,
+        MAX(s.`asset_score`) asset_score,
+        MAX(s.`asset_grow_score`) asset_grow_score,
+        MAX(s.`flow_score`) flow_score,
+        MAX(CASE WHEN i.index_name = '中证超大' THEN '6'
+        WHEN i.index_name = '中证100'  THEN '5'
+        WHEN i.index_name = '中证200'  THEN '4'
+        WHEN i.index_name = '中证500'  THEN '3'
+        WHEN i.index_name = '中证1000'  THEN '2'
+        WHEN i.index_name NOT REGEXP '中证超大|中证100|中证200|中证500|中证1000'  THEN '1'
+        END) AS ZHONG,
+        MAX(CASE WHEN i.index_name = '上证50' THEN '6'
+        WHEN i.index_name = '上证180' AND i.index_name != '上证50'  THEN '5'
+        WHEN i.index_name = '上证100'  THEN '4'
+        WHEN i.index_name = '上证380' AND i.index_name != '上证100'  THEN '3'
+        WHEN i.index_name = '上证150'  THEN '2'
+        WHEN i.index_name NOT REGEXP '上证50|上证180|上证100|上证380|上证150'  THEN '1'
+        END) AS SHANG,
+        MAX(CASE WHEN i.index_name = 'CX基石' THEN '6'
+        WHEN i.index_name = '中证龙头'  THEN '5'
+        WHEN i.index_name REGEXP '价值'  THEN '4'
+        WHEN i.index_name REGEXP '成长'  THEN '3'
+        WHEN i.index_name NOT REGEXP 'CX基石|中证龙头|价值|成长'  THEN '1'
+        END) AS ZHONG_i,
+        MAX(CASE WHEN i.index_name = '超大盘'   THEN '6'
+        WHEN i.index_name = '上证龙头' THEN '5'
+        WHEN i.index_name = '上证中盘' THEN '4'
+        WHEN i.index_name = '上证小盘' THEN '3'
+        WHEN i.index_name NOT REGEXP '超大盘|上证龙头|上证中盘|上证小盘'  THEN '1'
+        END) AS SHANG_i,
+        REPLACE(c.`company_name`, '股份有限公司', '') company_name,
+        c.`company_region` ,
+        c.`establish_date` ,
+        c.`publish_date`
+
+        FROM stock_company_sector s
+        LEFT JOIN stock_company_base c ON s.`stock_code` = c.`stock_a_code`
+        LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
+        LEFT JOIN stock_deal_data d ON s.`stock_code` = d.`stock_code`
+        WHERE LEFT(s.`stock_code`,2) != 68
+        AND d.`deal_period` = 3
+        #AND s.`first_sector` = '公用事业'
+        AND s.`forth_sector` = '通信传输设备'
+        AND d.deal_time >= '2015-01-01'
+        #AND c.`publish_date` <= '2015-01-01'
+        GROUP BY s.`stock_code`
+        ORDER BY s.`first_sector` ,
+        s.`second_sector` ,
+        s.`third_secotor` ,
+        s.`forth_sector`
+        ) a
+        LEFT JOIN stock_hot_class h ON a.`stock_code` = h.`stock_code`
+        GROUP BY a.`stock_code`
+        ORDER BY
+        a.`first_sector` ,
+        a.`second_sector` ,
+        a.`third_secotor` ,
+        a.`forth_sector` ,
+        a.ZHONG DESC,
+        a.profit_grow_score DESC,
+        a.profit_score DESC,
+        a.asset_grow_score DESC,
+        a.asset_score DESC
+    </select>
 </mapper>

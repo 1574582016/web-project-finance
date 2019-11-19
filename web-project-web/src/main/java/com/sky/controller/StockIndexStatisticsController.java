@@ -26,4 +26,10 @@ public class StockIndexStatisticsController {
         model.addAttribute("endDay" , DateUtils.getDate());
         return "page/stockIndexStatisticList";
     }
+
+
+    @RequestMapping("/stockIndexCycleList")
+    public String stockIndexCycleList(Model model){
+        return "page/stockIndexCycleList";
+    }
 }
