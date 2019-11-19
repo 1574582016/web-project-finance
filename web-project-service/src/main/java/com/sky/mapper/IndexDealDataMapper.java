@@ -39,4 +39,8 @@ public interface IndexDealDataMapper extends BaseMapper<IndexDealData> {
     List<StockIndexWeekData_VO> getStockIndexWeekList(@Param("indexName") String indexName,@Param("startDay") String startDay,@Param("endDay") String endDay);
 
     List<StockIndexDayData_VO> getStockIndexDayList(@Param("indexName") String indexName,@Param("startDay") String startDay,@Param("endDay") String endDay);
+
+    List<StockIndexMonthData_VO> getStockSectorMonthDataList(@Param("sectorName") String sectorName,@Param("startDay") String startDay,@Param("endDay") String endDay ,@Param("sectorMonth") String sectorMonth);
+
+    List<StockSectorCompany_VO> getStockCompanyMonthDataList(@Param("stockCode") String stockCode,@Param("sectorName") String sectorName,@Param("startDay") String startDay,@Param("endDay") String endDay ,@Param("sectorMonth") String sectorMonth);
 }

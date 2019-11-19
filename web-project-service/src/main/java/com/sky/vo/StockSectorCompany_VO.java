@@ -6,12 +6,10 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * Created by ThinkPad on 2019/11/19.
+ * Created by Administrator on 2019/11/19/019.
  */
 @Data
-public class StockIndexMonthData_VO extends VoModel {
-
-    private String indexName ;
+public class StockSectorCompany_VO extends VoModel {
 
     private String firstSector ;
 
@@ -20,6 +18,28 @@ public class StockIndexMonthData_VO extends VoModel {
     private String thirdSecotor ;
 
     private String forthSector ;
+
+    private String stockCode ;
+
+    private String stockName ;
+
+    private String companyLevel ;
+
+    private String companyName ;
+
+    private String companyRegion ;
+
+    private String establishDate ;
+
+    private String publishDate ;
+
+    private String groupIndex ;
+
+    private String groupHot ;
+
+    private String mainBusiness ;
+
+    private String financialLevel;
 
     private BigDecimal oneRiseRate ;
 
@@ -92,5 +112,4 @@ public class StockIndexMonthData_VO extends VoModel {
     private BigDecimal elvenShockAverage ;
 
     private BigDecimal twelveShockAverage ;
-
 }

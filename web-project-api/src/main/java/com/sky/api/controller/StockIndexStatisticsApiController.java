@@ -217,4 +217,26 @@ public class StockIndexStatisticsApiController extends AbstractController {
 
         return ResponseEntity.ok(MapSuccess("查询成功",map));
     }
+
+
+
+    @LogRecord(name = "getStockSectorMonthDataList" ,description = "查询指标数据")
+    @PostMapping("/getStockSectorMonthDataList")
+    public Object getStockSectorMonthDataList(String sectorName,String startDay,String endDay ,String sectorMonth){
+        List<StockIndexMonthData_VO> list = indexDealDataService.getStockSectorMonthDataList( sectorName, startDay, endDay , sectorMonth);
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
+    }
+
+    @LogRecord(name = "getStockCompanyMonthDataList" ,description = "查询指标数据")
+    @PostMapping("/getStockCompanyMonthDataList")
+    public Object getStockCompanyMonthDataList(String stockCode,String sectorName,String startDay,String endDay ,String sectorMonth){
+        List<StockSectorCompany_VO> list = indexDealDataService.getStockCompanyMonthDataList(stockCode , sectorName, startDay, endDay , sectorMonth);
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
+    }
 }

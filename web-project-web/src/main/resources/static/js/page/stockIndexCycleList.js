@@ -124,7 +124,7 @@ function indexMonthStatic() {
 
             myChart.on('click', function (params) {
                 console.log(params.dataIndex);
-                // falshDayBar(params.dataIndex);
+                sectorCompanyList(params.dataIndex);
             });
         });
 }
@@ -330,9 +330,9 @@ function indexDayStatic() {
 }
 
 
-function angleRate() {
+function sectorCompanyList(month) {
     $('#tableList').bootstrapTable('destroy').bootstrapTable({
-        url: '/api/statistics/getSectorOrderStaticList' ,
+        url: '/api/stockIndex/getStockSectorMonthDataList' ,
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -345,7 +345,7 @@ function angleRate() {
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 size: params.limit,   //页面大小
                 page: params.offset/params.limit + 1,  //页码
-                orderType: $("#orderType").val(),
+                sectorMonth: parseInt(month) + 1,
                 startDay: $("#s_start").val(),
                 endDay: $("#s_end").val()
             };
@@ -369,13 +369,23 @@ function angleRate() {
         scrollTo: true,
         columns: [
             {
-                field: 'sectorCode',
-                title: '编码',
+                field: 'firstSector',
+                title: '一级',
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'sectorName',
-                title: '名称',
+                field: 'secondSector',
+                title: '二级',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'thirdSecotor',
+                title: '三级',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'forthSector',
+                title: '四级',
                 align: 'center',
                 valign: 'middle'
             },{
@@ -444,9 +454,113 @@ function angleRate() {
                 valign: 'middle',
                 width: 20, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
-                    return '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.sectorName + '\')">查看</button>';
+                    return '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="viewSector(\'' + row.forthSector + '\')">查看</button>';
                 }
             }
         ]
     });
+}
+
+function viewSector() {
+
+}
+
+function sectorMonthStatic() {
+    var myChart = echarts.init(document.getElementById('main'));
+    var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
+    $.APIPost("/api/stockIndex/getStockIndexMonthList?indexName=" + $("#index_name").val()
+        + "&startDay=" + $("#s_start").val()
+        + "&endDay=" + $("#s_end").val()
+        ,function (result) {
+            console.log(result)
+            var option = {
+                title : {
+                    text: $("#index_name").val()
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['涨率','涨幅' ,'震幅']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'涨率',
+                        type:'bar',
+                        data:result.data.result.rateArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'涨幅',
+                        type:'bar',
+                        data:result.data.result.upperArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'震幅',
+                        type:'bar',
+                        data:result.data.result.shockArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+
+            myChart.on('click', function (params) {
+                console.log(params.dataIndex);
+                sectorCompanyList(params.dataIndex);
+            });
+        });
 }
