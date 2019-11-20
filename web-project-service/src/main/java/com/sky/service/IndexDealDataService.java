@@ -47,5 +47,6 @@ public interface IndexDealDataService extends IService<IndexDealData> {
 
     List<StockSectorCompany_VO> getStockCompanyMonthDataList(String stockCode,String sectorName,String startDay,String endDay ,String sectorMonth);
 
+    List<StockIndexWeekData_VO> getStockSectorWeekList( String dealPeriod , String stockCode ,String sectorName ,String startDay ,String endDay);
 
 }

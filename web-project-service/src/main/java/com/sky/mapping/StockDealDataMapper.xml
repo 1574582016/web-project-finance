@@ -296,4 +296,18 @@
             LIMIT ${rank}
         </if>
     </select>
+
+    <select id="getStockDealDataList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        deal_time ,
+        open_price ,
+        close_price ,
+        high_price ,
+        low_price
+        FROM stock_deal_data
+        WHERE LEFT(deal_time,7) >= LEFT(SUBDATE( #{pointMonth} ,INTERVAL 1 MONTH),7)
+        AND LEFT(deal_time,7) &lt;= LEFT(ADDDATE(  #{pointMonth} ,INTERVAL 1 MONTH),7)
+        AND deal_period = 1
+        AND stock_code =  #{stockCode}
+    </select>
 </mapper>

@@ -24,4 +24,6 @@ public interface StockDealDataService extends IService<StockDealData> {
     List<FestivalStatic_VO> getStockFestivalStaticList(String sectorName , String startDay , String endDay , String startTime , String endTime);
 
     StockDealDateRank_VO caculateBoll(String stockCode ,String pointDay , String selectDay);
+
+    List<StockDealData> getStockDealDataList(String stockCode ,String pointMonth);
 }

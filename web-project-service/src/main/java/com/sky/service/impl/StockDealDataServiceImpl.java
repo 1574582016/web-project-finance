@@ -246,4 +246,10 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
         rankVo.setAverageStock(avarageStock.multiply(BigDecimal.valueOf(2)).divide(BigDecimal.valueOf(list.size()) ,2 ,BigDecimal.ROUND_HALF_UP));
         return rankVo;
     }
+
+
+    @Override
+    public List<StockDealData> getStockDealDataList(String stockCode, String pointMonth) {
+        return baseMapper.getStockDealDataList(stockCode ,pointMonth);
+    }
 }

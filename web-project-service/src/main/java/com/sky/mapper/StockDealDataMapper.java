@@ -22,4 +22,7 @@ public interface StockDealDataMapper extends BaseMapper<StockDealData> {
     List<FestivalStatic_VO> getStockFestivalStaticList(@Param("sectorName") String sectorName ,@Param("startDay")  String startDay ,@Param("endDay")  String endDay ,@Param("startTime")  String startTime ,@Param("endTime")  String endTime);
 
     List<StockDealDateRank_VO> getStockDealDateByRank(@Param("stockCode") String stockCode , @Param("dealPeriod") String dealPeriod , @Param("dealTime") String dealTime , @Param("rank") String rank );
+
+
+    List<StockDealData> getStockDealDataList(@Param("stockCode") String stockCode ,@Param("pointMonth") String pointMonth);
 }

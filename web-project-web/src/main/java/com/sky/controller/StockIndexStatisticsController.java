@@ -32,4 +32,9 @@ public class StockIndexStatisticsController {
     public String stockIndexCycleList(Model model){
         return "page/stockIndexCycleList";
     }
+
+    @RequestMapping("/stockSectorCycleList")
+    public String stockSectorCycleList(Model model){
+        return "page/stockSectorCycleList";
+    }
 }
