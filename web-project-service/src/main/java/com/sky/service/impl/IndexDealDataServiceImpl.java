@@ -150,8 +150,8 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
     }
 
     @Override
-    public List<StockIndexMonthData_VO> getStockSectorMonthDataList(String sectorName, String startDay, String endDay, String sectorMonth) {
-        return baseMapper.getStockSectorMonthDataList(sectorName , startDay , endDay ,sectorMonth);
+    public List<StockIndexMonthData_VO> getStockSectorMonthDataList(String firstName,String sectorName, String startDay, String endDay, String sectorMonth) {
+        return baseMapper.getStockSectorMonthDataList( firstName,sectorName , startDay , endDay ,sectorMonth);
     }
 
     @Override
@@ -162,5 +162,10 @@ public class IndexDealDataServiceImpl extends ServiceImpl<IndexDealDataMapper,In
     @Override
     public List<StockIndexWeekData_VO> getStockSectorWeekList(String dealPeriod , String stockCode ,String sectorName, String startDay, String endDay) {
         return baseMapper.getStockSectorWeekList( dealPeriod , stockCode ,sectorName , startDay , endDay);
+    }
+
+    @Override
+    public List<StockIndexMonthData_VO> getStockDifferentSectorMonthList(List<String> indexList, String startDay, String endDay) {
+        return baseMapper.getStockDifferentSectorMonthList( indexList, startDay, endDay);
     }
 }

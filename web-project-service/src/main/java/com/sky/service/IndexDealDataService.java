@@ -42,11 +42,12 @@ public interface IndexDealDataService extends IService<IndexDealData> {
 
     List<StockIndexDayData_VO> getStockIndexDayList(String indexName ,String startDay ,String endDay);
 
-    List<StockIndexMonthData_VO> getStockSectorMonthDataList(String sectorName,String startDay,String endDay ,String sectorMonth);
-
+    List<StockIndexMonthData_VO> getStockSectorMonthDataList(String firstName,String sectorName,String startDay,String endDay ,String sectorMonth);
 
     List<StockSectorCompany_VO> getStockCompanyMonthDataList(String stockCode,String sectorName,String startDay,String endDay ,String sectorMonth);
 
     List<StockIndexWeekData_VO> getStockSectorWeekList( String dealPeriod , String stockCode ,String sectorName ,String startDay ,String endDay);
+
+    List<StockIndexMonthData_VO> getStockDifferentSectorMonthList(List<String> indexList,String startDay,String endDay);
 
 }

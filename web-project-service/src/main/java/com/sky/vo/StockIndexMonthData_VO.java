@@ -13,6 +13,8 @@ public class StockIndexMonthData_VO extends VoModel {
 
     private String indexName ;
 
+    private String indexCode ;
+
     private String firstSector ;
 
     private String secondSector ;

@@ -227,7 +227,7 @@ public class StockIndexStatisticsApiController extends AbstractController {
     @LogRecord(name = "getStockSectorMonthDataList" ,description = "查询行业月排行")
     @PostMapping("/getStockSectorMonthDataList")
     public Object getStockSectorMonthDataList(String sectorName,String startDay,String endDay ,String sectorMonth){
-        List<StockIndexMonthData_VO> list = indexDealDataService.getStockSectorMonthDataList( sectorName, startDay, endDay , sectorMonth);
+        List<StockIndexMonthData_VO> list = indexDealDataService.getStockSectorMonthDataList(null , sectorName, startDay, endDay , sectorMonth);
         Map<String ,Object> map = new HashMap<String ,Object>();
         map.put("total",list.size());
         map.put("rows",list);
@@ -238,7 +238,7 @@ public class StockIndexStatisticsApiController extends AbstractController {
     @LogRecord(name = "getStockSectorMonthList" ,description = "查询行业月数据")
     @PostMapping("/getStockSectorMonthList")
     public Object getStockSectorMonthList(String sectorName ,String startDay ,String endDay){
-        List<StockIndexMonthData_VO> list = indexDealDataService.getStockSectorMonthDataList( sectorName, startDay, endDay , null);
+        List<StockIndexMonthData_VO> list = indexDealDataService.getStockSectorMonthDataList(null , sectorName, startDay, endDay , null);
         Map<String ,JSONArray> map = new HashMap<>();
         JSONArray rateArr = new JSONArray();
         JSONArray upperArr = new JSONArray();
