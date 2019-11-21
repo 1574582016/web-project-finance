@@ -142,11 +142,19 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return formatDate(new Date(), "dd");
 	}
 
+	public static String getDay(Date date) {
+		return formatDate(date, "d");
+	}
+
 	/**
 	 * 得到当前星期字符串 格式（E）星期几
 	 */
 	public static String getWeek() {
 		return formatDate(new Date(), "E");
+	}
+
+	public static String getWeek(Date date) {
+		return formatDate(date, "E");
 	}
 
 	/**
