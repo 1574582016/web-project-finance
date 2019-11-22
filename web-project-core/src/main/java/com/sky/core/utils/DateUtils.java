@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 /**
@@ -128,11 +129,19 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return formatDate(new Date(), "yyyy");
 	}
 
+	public static String getYear(Date date) {
+		return formatDate(date, "yyyy");
+	}
+
 	/**
 	 * 得到当前月份字符串 格式（MM）
 	 */
 	public static String getMonth() {
 		return formatDate(new Date(), "MM");
+	}
+
+	public static String getMonth(Date date) {
+		return formatDate(date, "MM");
 	}
 
 	/**
@@ -543,4 +552,216 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return days;
 	}
 
+
+	public static JSONObject getYearMonthWeekDay(String pointDay){
+		JSONObject jsonObject = new JSONObject();
+		Date pointDate = DateUtils.parseDate(pointDay , "yyyy-MM-dd");
+		int year = Integer.parseInt(DateUtils.getYear(pointDate));
+		int month = Integer.parseInt(DateUtils.getMonth(pointDate));
+		String week = DateUtils.getWeek(pointDate);
+		int day = Integer.parseInt(DateUtils.getDay(pointDate));
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(pointDate);
+		int monthWeek = calendar.get(Calendar.WEEK_OF_MONTH);
+		int targetYear = getPointYear(pointDate) ;
+		int targetMonth = getPointMonth(pointDate) ;
+
+
+		jsonObject.put("year" , targetYear);
+		jsonObject.put("month" , targetMonth);
+
+		int targetWeek = monthWeek ;
+		int localMonth = getPointMonth(DateUtils.parseDate(pointDay.substring(0 , 8) + "01" , "yyyy-MM-dd"));
+
+		Date pointDate3 = DateUtils.parseDate(pointDay.substring(0 , 8) + "01" , "yyyy-MM-dd");
+		Calendar calendar3 = Calendar.getInstance();
+		calendar3.setTime(pointDate3);
+		int monthWeek3 = calendar3.get(Calendar.WEEK_OF_MONTH);
+		String week3 = DateUtils.getWeek(pointDate3);
+		if(week3.equals("星期日")){
+			monthWeek3 = monthWeek3 - 1 ;
+		}
+
+		if(month != localMonth){
+			if(monthWeek3 > 0){
+				targetWeek = monthWeek - 1 ;
+			}
+			if(week.equals("星期日")){
+				targetWeek = targetWeek - 1 ;
+			}
+		}
+		if(targetWeek == 0 || targetWeek == -1){
+			String lastMonthDay = DateUtils.formatDate( DateUtils.addMonths(DateUtils.parseDate(pointDay , "yyyy-MM-dd") , -1), "yyyy-MM-dd");
+			String lastDay = "31";
+			int lastMonth = Integer.parseInt(lastMonthDay.substring(6,7));
+			if(lastMonth == 4 || lastMonth == 6 || lastMonth == 9 || lastMonth == 11){
+				lastDay = "30";
+			}
+			if(lastMonth == 2){
+				if((year%4==0 && year%100!=0) || year%400==0){
+					lastDay = "29";
+				}else{
+					lastDay = "28";
+				}
+			}
+			int lastLocalMonth = getPointMonth(DateUtils.parseDate(lastMonthDay.substring(0 , 8) + lastDay , "yyyy-MM-dd"));
+			Calendar calendar2 = Calendar.getInstance();
+			calendar2.setTime(DateUtils.parseDate(lastMonthDay.substring(0 , 8) + lastDay , "yyyy-MM-dd"));
+			int monthWeek2 = calendar2.get(Calendar.WEEK_OF_MONTH);
+            int lastTargetWeek = monthWeek2 ;
+			int month2 = Integer.parseInt(DateUtils.getMonth(DateUtils.parseDate(lastMonthDay , "yyyy-MM-dd")));
+			if(month2 != lastLocalMonth){
+				lastTargetWeek = monthWeek2 - 1 ;
+				if(week.equals("星期日")){
+					lastTargetWeek = lastTargetWeek - 1 ;
+				}
+			}
+			targetWeek = lastTargetWeek ;
+		}
+		jsonObject.put("week" , targetWeek);
+
+		int targetDay = 0 ;
+		if(week.equals("星期一")){
+			targetDay = 1 ;
+		}
+		if(week.equals("星期二")){
+			targetDay = 2 ;
+		}
+		if(week.equals("星期三")){
+			targetDay = 3 ;
+		}
+		if(week.equals("星期四")){
+			targetDay = 4 ;
+		}
+		if(week.equals("星期五")){
+			targetDay = 5 ;
+		}
+		if(week.equals("星期六")){
+			targetDay = 6 ;
+		}
+		if(week.equals("星期日")){
+			targetDay = 7 ;
+		}
+		jsonObject.put("day" , targetDay);
+		return jsonObject;
+	}
+
+
+	private static Integer getPointYear(Date pointDate){
+		int year = Integer.parseInt(DateUtils.getYear(pointDate));
+		int month = Integer.parseInt(DateUtils.getMonth(pointDate));
+		String week = DateUtils.getWeek(pointDate);
+		int day = Integer.parseInt(DateUtils.getDay(pointDate));
+		int targetYear = year ;
+		if(month == 1 && (
+				(day == 1 && week.equals("星期四")) ||
+				(day == 1 && week.equals("星期五")) ||
+				(day == 1 && week.equals("星期六")) ||
+				(day == 1 && week.equals("星期日")) ||
+				(day == 2 &&  week.equals("星期五")) ||
+				(day == 2 &&  week.equals("星期六")) ||
+				(day == 2 &&  week.equals("星期日")) ||
+				(day == 3 &&  week.equals("星期六")) ||
+				(day == 3 &&  week.equals("星期日")) ||
+				(day == 4 &&  week.equals("星期日"))
+		)){
+			targetYear = year - 1 ;
+		}
+		if(month == 12 && (
+				(day == 31 && week.equals("星期一")) ||
+				(day == 31 && week.equals("星期二")) ||
+				(day == 30 &&  week.equals("星期一"))
+		)){
+			targetYear = year + 1 ;
+		}
+		return targetYear;
+	}
+
+
+	private static Integer getPointMonth(Date pointDate){
+		int year = Integer.parseInt(DateUtils.getYear(pointDate));
+		int month = Integer.parseInt(DateUtils.getMonth(pointDate));
+		String week = DateUtils.getWeek(pointDate);
+		int day = Integer.parseInt(DateUtils.getDay(pointDate));
+		int targetMonth = month ;
+		if(month == 1 && (
+				(day == 1 && week.equals("星期四")) ||
+				(day == 1 && week.equals("星期五")) ||
+				(day == 1 && week.equals("星期六")) ||
+				(day == 1 && week.equals("星期日")) ||
+				(day == 2 &&  week.equals("星期五")) ||
+				(day == 2 &&  week.equals("星期六")) ||
+				(day == 2 &&  week.equals("星期日")) ||
+				(day == 3 &&  week.equals("星期六")) ||
+				(day == 3 &&  week.equals("星期日")) ||
+				(day == 4 &&  week.equals("星期日"))
+		)){
+			targetMonth = 12 ;
+		}
+		if(month == 12 && (
+				(day == 31 && week.equals("星期一")) ||
+				(day == 31 && week.equals("星期二")) ||
+				(day == 30 &&  week.equals("星期一"))
+		)){
+			targetMonth  = 1 ;
+		}
+
+		if(month != 1 && month != 12){
+			if(
+					(day == 1 && week.equals("星期四")) ||
+					(day == 1 && week.equals("星期五")) ||
+					(day == 1 && week.equals("星期六")) ||
+					(day == 1 && week.equals("星期日")) ||
+					(day == 2 &&  week.equals("星期五")) ||
+					(day == 2 &&  week.equals("星期六")) ||
+					(day == 2 &&  week.equals("星期日")) ||
+					(day == 3 &&  week.equals("星期六")) ||
+					(day == 3 &&  week.equals("星期日")) ||
+					(day == 4 &&  week.equals("星期日"))
+					){
+				targetMonth = month - 1 ;
+			}
+
+			if(month == 3 || month == 5 || month == 7 || month == 8 || month == 10){
+				if(
+						(day == 31 && week.equals("星期一")) ||
+						(day == 31 && week.equals("星期二")) ||
+						(day == 30 &&  week.equals("星期一"))
+						){
+					targetMonth = month + 1 ;
+				}
+			}
+
+			if(month == 4 || month == 6 || month == 9 || month == 11){
+				if(
+						(day == 30 && week.equals("星期一")) ||
+						(day == 30 && week.equals("星期二")) ||
+						(day == 29 &&  week.equals("星期一"))
+						){
+					targetMonth = month + 1 ;
+				}
+			}
+
+			if(month == 2){
+				if((year%4==0 && year%100!=0) || year%400==0){
+					if(
+							(day == 29 && week.equals("星期一")) ||
+							(day == 29 && week.equals("星期二")) ||
+							(day == 28 &&  week.equals("星期一"))
+							){
+						targetMonth = month + 1 ;
+					}
+				}else{
+					if(
+							(day == 28 && week.equals("星期一")) ||
+							(day == 28 && week.equals("星期二")) ||
+							(day == 27 &&  week.equals("星期一"))
+							){
+						targetMonth = month + 1 ;
+					}
+				}
+			}
+		}
+		return targetMonth;
+	}
 }
