@@ -83,5 +83,10 @@ public class SplitTimeTest {
         }
     }
 
+    @Test
+    public void test04(){
+        System.out.println(DateUtils.getYearMonthWeekDay("2015-04-05"));
+    }
+
 
 }

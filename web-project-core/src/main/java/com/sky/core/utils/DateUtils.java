@@ -570,26 +570,8 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		jsonObject.put("year" , targetYear);
 		jsonObject.put("month" , targetMonth);
 
-		int targetWeek = monthWeek ;
-		int localMonth = getPointMonth(DateUtils.parseDate(pointDay.substring(0 , 8) + "01" , "yyyy-MM-dd"));
+		int targetWeek = getPointWeek(pointDay) ;
 
-		Date pointDate3 = DateUtils.parseDate(pointDay.substring(0 , 8) + "01" , "yyyy-MM-dd");
-		Calendar calendar3 = Calendar.getInstance();
-		calendar3.setTime(pointDate3);
-		int monthWeek3 = calendar3.get(Calendar.WEEK_OF_MONTH);
-		String week3 = DateUtils.getWeek(pointDate3);
-		if(week3.equals("星期日")){
-			monthWeek3 = monthWeek3 - 1 ;
-		}
-
-		if(month != localMonth){
-			if(monthWeek3 > 0){
-				targetWeek = monthWeek - 1 ;
-			}
-			if(week.equals("星期日")){
-				targetWeek = targetWeek - 1 ;
-			}
-		}
 		if(targetWeek == 0 || targetWeek == -1){
 			String lastMonthDay = DateUtils.formatDate( DateUtils.addMonths(DateUtils.parseDate(pointDay , "yyyy-MM-dd") , -1), "yyyy-MM-dd");
 			String lastDay = "31";
@@ -604,20 +586,47 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 					lastDay = "28";
 				}
 			}
-			int lastLocalMonth = getPointMonth(DateUtils.parseDate(lastMonthDay.substring(0 , 8) + lastDay , "yyyy-MM-dd"));
-			Calendar calendar2 = Calendar.getInstance();
-			calendar2.setTime(DateUtils.parseDate(lastMonthDay.substring(0 , 8) + lastDay , "yyyy-MM-dd"));
-			int monthWeek2 = calendar2.get(Calendar.WEEK_OF_MONTH);
-            int lastTargetWeek = monthWeek2 ;
-			int month2 = Integer.parseInt(DateUtils.getMonth(DateUtils.parseDate(lastMonthDay , "yyyy-MM-dd")));
-			if(month2 != lastLocalMonth){
-				lastTargetWeek = monthWeek2 - 1 ;
-				if(week.equals("星期日")){
-					lastTargetWeek = lastTargetWeek - 1 ;
+			targetWeek = getPointWeek(lastMonthDay.substring(0 , 8) + lastDay) ;
+		}
+
+		if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+			if((day == 31 && week.equals("星期一")) ||
+				(day == 31 && week.equals("星期二")) ||
+				(day == 30 &&  week.equals("星期一"))
+			){
+				targetWeek = 1 ;
+			}
+		}
+
+		if(month == 4 || month == 6 || month == 9 || month == 11){
+			if((day == 30 && week.equals("星期一")) ||
+			   (day == 30 && week.equals("星期二")) ||
+			   (day == 29 &&  week.equals("星期一"))
+			){
+				targetWeek = 1 ;
+			}
+		}
+
+		if (month == 2){
+			if((year%4==0 && year%100!=0) || year%400==0){
+				if(
+					(day == 29 && week.equals("星期一")) ||
+					(day == 29 && week.equals("星期二")) ||
+					(day == 28 &&  week.equals("星期一"))
+				){
+					targetWeek = 1 ;
+				}
+			}else{
+				if(
+					(day == 28 && week.equals("星期一")) ||
+					(day == 28 && week.equals("星期二")) ||
+					(day == 27 &&  week.equals("星期一"))
+				){
+					targetWeek = 1 ;
 				}
 			}
-			targetWeek = lastTargetWeek ;
 		}
+
 		jsonObject.put("week" , targetWeek);
 
 		int targetDay = 0 ;
@@ -644,6 +653,38 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		}
 		jsonObject.put("day" , targetDay);
 		return jsonObject;
+	}
+
+
+	private static Integer getPointWeek(String pointDay){
+		Date pointDate = DateUtils.parseDate(pointDay , "yyyy-MM-dd");
+		int month = Integer.parseInt(DateUtils.getMonth(pointDate));
+		String week = DateUtils.getWeek(pointDate);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(pointDate);
+		int monthWeek = calendar.get(Calendar.WEEK_OF_MONTH);
+
+		int targetWeek = monthWeek ;
+		int localMonth = getPointMonth(DateUtils.parseDate(pointDay.substring(0 , 8) + "01" , "yyyy-MM-dd"));
+
+		Date pointDate3 = DateUtils.parseDate(pointDay.substring(0 , 8) + "01" , "yyyy-MM-dd");
+		Calendar calendar3 = Calendar.getInstance();
+		calendar3.setTime(pointDate3);
+		int monthWeek3 = calendar3.get(Calendar.WEEK_OF_MONTH);
+		String week3 = DateUtils.getWeek(pointDate3);
+		if(week3.equals("星期日")){
+			monthWeek3 = monthWeek3 - 1 ;
+		}
+
+		if(month != localMonth){
+			if(monthWeek3 > 0){
+				targetWeek = monthWeek - 1 ;
+			}
+			if(week.equals("星期日")){
+				targetWeek = targetWeek - 1 ;
+			}
+		}
+		return targetWeek;
 	}
 
 
