@@ -86,6 +86,14 @@ public class SplitTimeTest {
     @Test
     public void test04(){
         System.out.println(DateUtils.getYearMonthWeekDay("2015-04-05"));
+
+        Date pointDate = DateUtils.parseDate("2015-04-05" , "yyyy-MM-dd");
+        int month = Integer.parseInt(DateUtils.getMonth(pointDate));
+        String week = DateUtils.getWeek(pointDate);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(pointDate);
+        int monthWeek = calendar.get(Calendar.WEEK_OF_MONTH);
+        System.out.println(monthWeek);
     }
 
 

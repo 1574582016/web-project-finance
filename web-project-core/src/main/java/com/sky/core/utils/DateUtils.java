@@ -680,9 +680,9 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 			if(monthWeek3 > 0){
 				targetWeek = monthWeek - 1 ;
 			}
-			if(week.equals("星期日")){
-				targetWeek = targetWeek - 1 ;
-			}
+		}
+		if(week.equals("星期日")){
+			targetWeek = targetWeek - 1 ;
 		}
 		return targetWeek;
 	}
