@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.StockCompanySector;
 import com.sky.model.StockDealData;
+import com.sky.model.StockHandleDealData;
 import com.sky.service.StockCompanySectorService;
 import com.sky.service.StockDealDataService;
+import com.sky.service.StockHandleDealDataService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class SplitTimeTest {
 
     @Autowired
     private StockCompanySectorService stockCompanySectorService ;
+
+    @Autowired
+    private StockHandleDealDataService stockHandleDealDataService ;
 
     @Test
     public void test(){
@@ -87,15 +92,21 @@ public class SplitTimeTest {
 
     @Test
     public void test04(){
-        System.out.println(DateUtils.getYearMonthWeekDay("2015-04-05"));
+        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,2) != 68"));
+        for(StockCompanySector sector : list){
+           for(int i = 2 ; i <= 3 ; i++){
+               List<StockHandleDealData> dataList = stockHandleDealDataService.getGroupDealDataList(sector.getStockCode() , i+"");
+               if(dataList.size()>0){
+                   stockHandleDealDataService.insertBatch(dataList);
+               }
+           }
+        }
 
-        Date pointDate = DateUtils.parseDate("2015-04-05" , "yyyy-MM-dd");
-        int month = Integer.parseInt(DateUtils.getMonth(pointDate));
-        String week = DateUtils.getWeek(pointDate);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(pointDate);
-        int monthWeek = calendar.get(Calendar.WEEK_OF_MONTH);
-        System.out.println(monthWeek);
+//        List<StockHandleDealData> list = stockHandleDealDataService.getGroupDealDataList("600261" , "2");
+//        boolean just = stockHandleDealDataService.insertBatch(list);
+//        if(just){
+//            stockHandleDealDataService.updateHandleClosePrice("600261");
+//        }
     }
 
 

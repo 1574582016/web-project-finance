@@ -27,4 +27,62 @@
         <result column="amplitude" property="amplitude"/>
         <result column="hand_rate" property="handRate"/>
     </resultMap>
+
+    <select id="getGroupDealDataList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        ${dealPeriod} deal_period ,
+        a.point_year ,
+        a.point_month ,
+        a.point_week ,
+        a.stock_code ,
+        a.start_time ,
+        a.end_time ,
+        a.low_price ,
+        a.high_price ,
+        a.open_price ,
+        a.deal_count ,
+        a.deal_money ,
+        a.amplitude ,
+        a.hand_rate
+        FROM(
+        SELECT
+        d.`stock_code` ,
+        d.point_year,
+        d.point_month,
+        d.point_week ,
+        MIN(d.deal_time) start_time ,
+        MAX(d.deal_time) end_time ,
+        MIN(d.`low_price`) low_price ,
+        MAX(d.`high_price`) high_price ,
+        CASE WHEN d.deal_time = MIN(d.deal_time) THEN d.open_price END AS open_price ,
+        MAX(d.`high_price`) - MIN(d.`low_price`) amplitude ,
+        SUM(d.deal_count) deal_count ,
+        SUM(d.deal_money) deal_money ,
+        SUM(d.hand_rate) hand_rate
+        FROM stock_deal_data d
+        WHERE d.deal_period = 1
+        AND d.stock_code = #{stockCode}
+        GROUP BY d.stock_code,
+        d.point_year,
+        <if test="dealPeriod == '2'.toString()">
+            d.point_month,
+            d.point_week
+        </if>
+        <if test="dealPeriod == '3'.toString()">
+            d.point_month
+        </if>
+        ) a
+        LEFT JOIN stock_handle_deal_data h ON a.stock_code = h.stock_code AND h.start_time = a.start_time  AND h.end_time = a.end_time AND h.deal_period = ${dealPeriod}
+        WHERE h.id IS NULL
+        ORDER BY a.start_time
+    </select>
+
+    <update id="updateHandleClosePrice" parameterType="java.lang.String">
+        UPDATE stock_handle_deal_data h ,stock_deal_data d  SET h.`close_price` = d.`close_price`
+        WHERE h.`stock_code` = d.`stock_code`
+        AND h.`end_time` = d.deal_time
+        AND h.`stock_code` = #{stockCode}
+        AND d.deal_period = 1
+        AND h.`close_price` = 0
+    </update>
 </mapper>
