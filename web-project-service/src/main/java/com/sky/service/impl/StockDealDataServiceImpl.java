@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.MathUtil;
 import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockDealDataMapper;
@@ -75,6 +76,13 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                         case 7 : dealData.setAmplitude(datas[x]); break;
                         case 8 : dealData.setHandRate(new BigDecimal (datas[x])); break;
                     }
+                }
+                if(periodType == 1){
+                    JSONObject jsonObject3 = DateUtils.getYearMonthWeekDay(dealData.getDealTime());
+                    dealData.setPointYear(jsonObject3.getInteger("year"));
+                    dealData.setPointMonth(jsonObject3.getInteger("month"));
+                    dealData.setPointWeek(jsonObject3.getInteger("week"));
+                    dealData.setPointDay(jsonObject3.getInteger("day"));
                 }
                 list.add(dealData);
             }

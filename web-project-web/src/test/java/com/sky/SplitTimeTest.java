@@ -141,7 +141,7 @@ public class SplitTimeTest {
                 public Integer call() throws Exception {
                     for(StockCompanySector stockCode : listStr){
 
-                        List<StockDealData> dataList = stockDealDataService.selectList(new EntityWrapper<StockDealData>().where("stock_code = {0} and deal_period = 1 " ,stockCode.getStockCode()));
+                        List<StockDealData> dataList = stockDealDataService.selectList(new EntityWrapper<StockDealData>().where("stock_code = {0} and deal_period = 1 and point_year is null " ,stockCode.getStockCode()));
                         for(StockDealData dealData : dataList){
                             String dealTime = dealData.getDealTime() ;
                             JSONObject jsonObject = DateUtils.getYearMonthWeekDay(dealTime);
