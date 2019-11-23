@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockRiseRateMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockRiseRate">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="deal_period" property="dealPeriod"/>
+        <result column="point_year" property="pointYear"/>
+        <result column="point_month" property="pointMonth"/>
+        <result column="point_week" property="pointWeek"/>
+        <result column="point_day" property="pointDay"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="stock_code" property="stock_code"/>
+
+        <result column="one_rise" property="oneRise"/>
+        <result column="tow_rise" property="towRise"/>
+        <result column="three_rise" property="threeRise"/>
+        <result column="four_rise" property="fourRise"/>
+        <result column="five_rise" property="fiveRise"/>
+        <result column="six_rise" property="sixRise"/>
+        <result column="seven_rise" property="sevenRise"/>
+        <result column="eight_rise" property="eightRise"/>
+        <result column="nine_rise" property="nineRise"/>
+        <result column="ten_rise" property="tenRise"/>
+        <result column="eleven_rise" property="elevenRise"/>
+        <result column="twelve_rise" property="twelveRise"/>
+
+        <result column="one_amplitude" property="oneAmplitude"/>
+        <result column="tow_amplitude" property="towAmplitude"/>
+        <result column="three_amplitude" property="threeAmplitude"/>
+        <result column="four_amplitude" property="fourAmplitude"/>
+        <result column="five_amplitude" property="fiveAmplitude"/>
+        <result column="six_amplitude" property="sixAmplitude"/>
+        <result column="seven_amplitude" property="sevenAmplitude"/>
+        <result column="eight_amplitude" property="eightAmplitude"/>
+        <result column="nine_amplitude" property="nineAmplitude"/>
+        <result column="ten_amplitude" property="tenAmplitude"/>
+        <result column="eleven_amplitude" property="elevenAmplitude"/>
+        <result column="twelve_amplitude" property="twelveAmplitude"/>
+
+        <result column="one_shock" property="oneShock"/>
+        <result column="tow_shock" property="towShock"/>
+        <result column="three_shock" property="threeShock"/>
+        <result column="four_shock" property="fourShock"/>
+        <result column="five_shock" property="fiveShock"/>
+        <result column="six_shock" property="sixShock"/>
+        <result column="seven_shock" property="sevenShock"/>
+        <result column="eight_shock" property="eightShock"/>
+        <result column="nine_shock" property="nineShock"/>
+        <result column="ten_shock" property="tenShock"/>
+        <result column="eleven_shock" property="elevenShock"/>
+        <result column="twelve_shock" property="twelveShock"/>
+    </resultMap>
+</mapper>

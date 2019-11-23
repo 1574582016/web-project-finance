@@ -116,33 +116,34 @@ public class ThreadTest {
                         if(!stockCode.getStockCode().substring(0,1).equals("6")){
                             mk = "2";
                         }
-                        List<StockDealData> dataList = stockDealDataService.spiderStockDealData(1, stockCode.getStockCode() ,mk);
+                        for(int t = 1 ; t <=7 ; t++) {
+                            List<StockDealData> dataList = stockDealDataService.spiderStockDealData(t, stockCode.getStockCode(), mk);
 
-                        if(null!=dataList&&dataList.size()>0){
-                            int pointsDataLimit = 200;//限制条数
-                            Integer size = dataList.size();
-                            //判断是否有必要分批
-                            if(pointsDataLimit<size){
-                                int part = size/pointsDataLimit;//分批数
-                                System.out.println("共有 ： "+size+"条，！"+" 分为 ："+part+"批");
-                                for (int i = 0; i < part; i++) {
-                                    List<StockDealData> listPage = dataList.subList(0, pointsDataLimit);
-                                    stockDealDataService.insertBatch(listPage);
-                                    //剔除
-                                    dataList.subList(0, pointsDataLimit).clear();
-                                }
-                                if(!dataList.isEmpty()){
+                            if (null != dataList && dataList.size() > 0) {
+                                int pointsDataLimit = 200;//限制条数
+                                Integer size = dataList.size();
+                                //判断是否有必要分批
+                                if (pointsDataLimit < size) {
+                                    int part = size / pointsDataLimit;//分批数
+                                    System.out.println("共有 ： " + size + "条，！" + " 分为 ：" + part + "批");
+                                    for (int i = 0; i < part; i++) {
+                                        List<StockDealData> listPage = dataList.subList(0, pointsDataLimit);
+                                        stockDealDataService.insertBatch(listPage);
+                                        //剔除
+                                        dataList.subList(0, pointsDataLimit).clear();
+                                    }
+                                    if (!dataList.isEmpty()) {
+                                        stockDealDataService.insertBatch(dataList);
+                                    }
+                                } else {
                                     stockDealDataService.insertBatch(dataList);
                                 }
-                            }else{
-                                stockDealDataService.insertBatch(dataList);
+                            } else {
+                                System.out.println("没有数据!!!");
                             }
-                        }else{
-                            System.out.println("没有数据!!!");
+
+                            Thread.sleep(1000);
                         }
-
-                        Thread.sleep(1000);
-
                     }
                     return 1;
                 }
