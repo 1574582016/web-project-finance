@@ -85,4 +85,95 @@
         AND d.deal_period = 1
         AND h.`close_price` = 0
     </update>
+
+    <select id="getCalculateHandleDealMonthWeekList" parameterType="java.lang.String" resultType="com.sky.model.StockRiseRate">
+        SELECT
+        s.`stock_code` stockCode,
+        ${dealPeriod} dealPeriod ,
+        d.`point_year` pointYear,
+        d.`point_month` pointMonth,
+        <if test="startTime != null and startTime != '' and startTime != 'undefined'">
+            #{startTime} startTime ,
+        </if>
+        <if test="endTime != null and endTime != '' and endTime != 'undefined'">
+            #{endTime} endTime ,
+        </if>
+        <if test="dealPeriod == '2'.toString()">
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 1  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_week = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 2  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_week = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 3  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_week = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 4  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_week = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 5  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_week = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveRise ,
+
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 1  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 2  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 3  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 4  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 5  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveAmplitude ,
+
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 1  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 2  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 3  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 4  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_week = 5  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_week = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveShock
+        </if>
+        <if test="dealPeriod == '3'.toString()">
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 1  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 2  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 3  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 4  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 5  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 6  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 6  THEN 1 ELSE 0 END) * 100 ,2),0) sixRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 7  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 7  THEN 1 ELSE 0 END) * 100 ,2),0) sevenRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 8  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 8  THEN 1 ELSE 0 END) * 100 ,2),0) eightRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 9  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 9  THEN 1 ELSE 0 END) * 100 ,2),0) nineRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 10 AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 10 THEN 1 ELSE 0 END) * 100 ,2),0) tenRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 11 AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 11 THEN 1 ELSE 0 END) * 100 ,2),0) elevenRise ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 12 AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_month = 12 THEN 1 ELSE 0 END) * 100 ,2),0) twelveRise ,
+
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 1  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 2  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 3  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 4  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 5  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 6  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 6  THEN 1 ELSE 0 END) * 100 ,2),0) sixAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 7  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 7  THEN 1 ELSE 0 END) * 100 ,2),0) sevenAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 8  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 8  THEN 1 ELSE 0 END) * 100 ,2),0) eightAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 9  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 9  THEN 1 ELSE 0 END) * 100 ,2),0) nineAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 10 THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 10 THEN 1 ELSE 0 END) * 100 ,2),0) tenAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 11 THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 11 THEN 1 ELSE 0 END) * 100 ,2),0) elevenAmplitude ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 12 THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 12 THEN 1 ELSE 0 END) * 100 ,2),0) twelveAmplitude ,
+
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 1  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 2  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 3  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 4  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 5  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 6  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 6  THEN 1 ELSE 0 END) * 100 ,2),0) sixShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 7  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 7  THEN 1 ELSE 0 END) * 100 ,2),0) sevenShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 8  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 8  THEN 1 ELSE 0 END) * 100 ,2),0) eightShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 9  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 9  THEN 1 ELSE 0 END) * 100 ,2),0) nineShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 10 THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 10 THEN 1 ELSE 0 END) * 100 ,2),0) tenShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 11 THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 11 THEN 1 ELSE 0 END) * 100 ,2),0) elevenShock ,
+            IFNULL(ROUND(SUM(CASE WHEN d.point_month = 12 THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_month = 12 THEN 1 ELSE 0 END) * 100 ,2),0) twelveShock
+        </if>
+        FROM stock_company_sector s
+        LEFT JOIN stock_handle_deal_data d ON s.`stock_code` = d.`stock_code`
+        WHERE LEFT(s.`stock_code`,2) != '68'
+        AND d.`deal_period` = #{dealPeriod}
+        AND d.`start_time` >= SUBDATE(s.`publish_time`,INTERVAL -1 YEAR)
+        <if test="startTime != null and startTime != '' and startTime != 'undefined'">
+            AND d.`start_time` >= #{startTime}
+        </if>
+        <if test="endTime != null and endTime != '' and endTime != 'undefined'">
+            AND d.`end_time` &lt;= #{endTime}
+        </if>
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND d.`stock_code` =  #{stockCode}
+        </if>
+        GROUP BY d.`stock_code`
+        <if test="dealPeriod == '2'.toString()">
+            ,d.`point_month`
+        </if>
+    </select>
 </mapper>
