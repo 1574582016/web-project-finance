@@ -11,6 +11,7 @@ import com.sky.core.utils.SpiderUtils;
 import com.sky.mapper.StockDealDataMapper;
 import com.sky.model.SectorDealData;
 import com.sky.model.StockDealData;
+import com.sky.model.StockRiseRate;
 import com.sky.service.StockDealDataService;
 import com.sky.vo.FestivalStatic_VO;
 import com.sky.vo.StockDealDateRank_VO;
@@ -259,5 +260,10 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
     @Override
     public List<StockDealData> getStockDealDataList(String stockCode, String pointMonth) {
         return baseMapper.getStockDealDataList(stockCode ,pointMonth);
+    }
+
+    @Override
+    public List<StockRiseRate> getCalculateHandleDealDayList(String stockCode, String dealPeriod, String startTime, String endTime) {
+        return baseMapper.getCalculateHandleDealDayList( stockCode, dealPeriod, startTime, endTime);
     }
 }

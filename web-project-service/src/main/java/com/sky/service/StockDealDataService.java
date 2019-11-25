@@ -2,6 +2,7 @@ package com.sky.service;
 
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.StockDealData;
+import com.sky.model.StockRiseRate;
 import com.sky.vo.FestivalStatic_VO;
 import com.sky.vo.StockDealDateRank_VO;
 import com.sky.vo.StockOrderStatic_VO;
@@ -26,4 +27,6 @@ public interface StockDealDataService extends IService<StockDealData> {
     StockDealDateRank_VO caculateBoll(String stockCode ,String pointDay , String selectDay);
 
     List<StockDealData> getStockDealDataList(String stockCode ,String pointMonth);
+
+    List<StockRiseRate> getCalculateHandleDealDayList(String stockCode , String dealPeriod , String startTime , String endTime);
 }

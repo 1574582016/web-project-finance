@@ -492,4 +492,50 @@
             ORDER BY b.twelveRiseRate DESC, b.twelveUpperAverage DESC
         </if>
     </select>
+
+    <select id="getCalculateHandleDealDayList" parameterType="java.lang.String" resultType="com.sky.model.StockRiseRate">
+        SELECT
+        s.`stock_code` stockCode,
+        ${dealPeriod} dealPeriod ,
+        d.`point_year` pointYear,
+        d.`point_month` pointMonth,
+        <if test="startTime != null and startTime != '' and startTime != 'undefined'">
+            #{startTime} startTime ,
+        </if>
+        <if test="endTime != null and endTime != '' and endTime != 'undefined'">
+            #{endTime} endTime ,
+        </if>
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 1  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_day = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneRise ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 2  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_day = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towRise ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 3  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_day = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeRise ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourRise ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveRise ,
+
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 1  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 2  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 3  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveAmplitude ,
+
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 1  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 2  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 3  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveShock
+        FROM stock_company_sector s
+        LEFT JOIN stock_deal_data d ON s.`stock_code` = d.`stock_code`
+        WHERE LEFT(s.`stock_code`,2) != '68'
+        AND d.`deal_period` = #{dealPeriod}
+        AND d.`deal_time` >= SUBDATE(s.`publish_time`,INTERVAL -1 YEAR)
+        <if test="startTime != null and startTime != '' and startTime != 'undefined'">
+            AND d.`deal_time` >= #{startTime}
+        </if>
+        <if test="endTime != null and endTime != '' and endTime != 'undefined'">
+            AND d.`deal_time` &lt;= #{endTime}
+        </if>
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND d.`stock_code` =  #{stockCode}
+        </if>
+        GROUP BY d.`stock_code` ,d.`point_month` ,d.`point_week`
+    </select>
 </mapper>
