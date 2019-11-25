@@ -6,10 +6,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.consts.SpiderUrlConst;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.SpiderUtils;
-import com.sky.model.StockCode;
-import com.sky.model.StockCompanyBase;
-import com.sky.model.StockCompanyHotPoint;
-import com.sky.model.StockMarketClass;
+import com.sky.model.*;
 import com.sky.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -55,6 +52,9 @@ public class ProcessCompanyInfo {
     @Autowired
     private StockCompanyNoticeService stockCompanyNoticeService ;
 
+    @Autowired
+    private StockCompanySectorService stockCompanySectorService;
+
     @Test
     public void processStockCode(){
         EntityWrapper<StockMarketClass> entityWrapper = new EntityWrapper();
@@ -67,9 +67,16 @@ public class ProcessCompanyInfo {
 
     @Test
     public void processStockCompanyBace() throws InterruptedException {
-        List<StockCode> codeList = stockCodeService.selectList(new EntityWrapper<StockCode>().where("create_time regexp {0}" , DateUtils.getDate()));
-        for (StockCode stockCode : codeList) {
-            stockCompanyBaseService.spiderStockCompanyBase(stockCode.getStockMarket()+stockCode.getStockCode());
+        List<StockCompanySector> codeList = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code NOT IN (SELECT stock_a_code FROM stock_company_base WHERE stock_a_code IS NOT NULL)"));
+        for (StockCompanySector sector : codeList) {
+            String stockCode = sector.getStockCode() ;
+            String str = stockCode.substring(0,1);
+            System.out.println(stockCode + "=======================" + str);
+            String market = "sh";
+            if(str.equals("0") || str.equals("3")){
+                market = "sz";
+            }
+            stockCompanyBaseService.spiderStockCompanyBase(market+stockCode);
             Thread.sleep(sleep);
         }
 

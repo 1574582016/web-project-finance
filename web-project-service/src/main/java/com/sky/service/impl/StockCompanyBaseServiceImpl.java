@@ -35,6 +35,7 @@ public class StockCompanyBaseServiceImpl extends ServiceImpl<StockCompanyBaseMap
     public void spiderStockCompanyBase(String stockCode) {
             String companyUrl = "http://f10.eastmoney.com/CompanySurvey/CompanySurveyAjax?code=" + stockCode;
             String subjectUrl = "http://f10.eastmoney.com/CoreConception/CoreConceptionAjax?code=" + stockCode;
+            System.out.println(companyUrl);
             String companyString = SpiderUtils.HttpClientBuilderGet(companyUrl);
             JSONObject companyObject = JSON.parseObject(companyString);
             JSONObject baseObject = companyObject.getJSONObject("jbzl");
