@@ -415,4 +415,97 @@ public class SplitTimeTest {
         System.out.println("线程任务执行结束");
         System.err.println("执行任务消耗了 ：" + (System.currentTimeMillis() - start) + "毫秒");
     }
+
+    @Test
+    public void test0009(){
+        List<StockRiseRate> dataList = stockDealDataService.getCalculateHandleDealDayList("000333" , "1" , "2015-01-01" , "2020-01-01");
+    }
+
+    @Test
+    public void test666() throws InterruptedException, ExecutionException {
+
+        // 开始时间
+        long start = System.currentTimeMillis();
+//        List<StockCode> list = stockCodeService.selectList(new EntityWrapper<StockCode>().where("stock_code NOT IN(SELECT stock_code FROM stock_deal_data)"));
+        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,2) != 68 and stock_code not IN (SELECT stock_code FROM stock_rise_rate where deal_period = 1)"));
+        // 每500条数据开启一条线程
+        int threadSize = 500;
+        // 总数据条数
+        int dataSize = list.size();
+        // 线程数
+        int threadNum = dataSize / threadSize + 1;
+        // 定义标记,过滤threadNum为整数
+        boolean special = dataSize % threadSize == 0;
+
+        // 创建一个线程池
+        ExecutorService exec = Executors.newFixedThreadPool(threadNum);
+        // 定义一个任务集合
+        List<Callable<Integer>> tasks = new ArrayList<Callable<Integer>>();
+        Callable<Integer> task = null;
+        List<StockCompanySector> cutList = null;
+
+        // 确定每条线程的数据
+        for (int i = 0; i < threadNum; i++) {
+            if (i == threadNum - 1) {
+                if (special) {
+                    break;
+                }
+                cutList = list.subList(threadSize * i, dataSize);
+            } else {
+                cutList = list.subList(threadSize * i, threadSize * (i + 1));
+            }
+            // System.out.println("第" + (i + 1) + "组：" + cutList.toString());
+            final List<StockCompanySector> listStr = cutList;
+            task = new Callable<Integer>() {
+
+                @Override
+                public Integer call() throws Exception {
+                    for(StockCompanySector stockCode : listStr){
+
+                            List<StockRiseRate> dataList = stockDealDataService.getCalculateHandleDealDayList(stockCode.getStockCode() , "1" , "2015-01-01" , "2020-01-01");
+                            if(null!=dataList&&dataList.size()>0){
+                                int pointsDataLimit = 200;//限制条数
+                                Integer size = dataList.size();
+                                //判断是否有必要分批
+                                if(pointsDataLimit<size){
+                                    int part = size/pointsDataLimit;//分批数
+                                    System.out.println("共有 ： "+size+"条，！"+" 分为 ："+part+"批");
+                                    for (int i = 0; i < part; i++) {
+                                        List<StockRiseRate> listPage = dataList.subList(0, pointsDataLimit);
+                                        stockRiseRateService.insertBatch(listPage);
+                                        //剔除
+                                        dataList.subList(0, pointsDataLimit).clear();
+                                    }
+                                    if(!dataList.isEmpty()){
+                                        stockRiseRateService.insertBatch(dataList);
+                                    }
+                                }else{
+                                    stockRiseRateService.insertBatch(dataList);
+                                }
+                            }else{
+                                System.out.println("没有数据!!!");
+                            }
+
+                            Thread.sleep(1000);
+
+
+                    }
+                    return 1;
+                }
+            };
+            // 这里提交的任务容器列表和返回的Future列表存在顺序对应的关系
+            tasks.add(task);
+        }
+
+        List<Future<Integer>> results = exec.invokeAll(tasks);
+
+        for (Future<Integer> future : results) {
+            System.out.println(future.get());
+        }
+
+        // 关闭线程池
+        exec.shutdown();
+        System.out.println("线程任务执行结束");
+        System.err.println("执行任务消耗了 ：" + (System.currentTimeMillis() - start) + "毫秒");
+    }
 }

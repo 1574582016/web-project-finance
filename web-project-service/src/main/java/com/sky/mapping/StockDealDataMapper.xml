@@ -499,6 +499,7 @@
         ${dealPeriod} dealPeriod ,
         d.`point_year` pointYear,
         d.`point_month` pointMonth,
+        d.`point_week`  pointWeek ,
         <if test="startTime != null and startTime != '' and startTime != 'undefined'">
             #{startTime} startTime ,
         </if>
@@ -511,17 +512,17 @@
         IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourRise ,
         IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  AND d.close_price - d.open_price > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveRise ,
 
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 1  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneAmplitude ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 2  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towAmplitude ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 3  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeAmplitude ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourAmplitude ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 1  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 1  THEN 1 ELSE 0 END) ,2),0) oneAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 2  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 2  THEN 1 ELSE 0 END) ,2),0) towAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 3  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 3  THEN 1 ELSE 0 END) ,2),0) threeAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) ,2),0) fourAmplitude ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  THEN d.close_price - d.open_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) ,2),0) fiveAmplitude ,
 
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 1  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 1  THEN 1 ELSE 0 END) * 100 ,2),0) oneShock ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 2  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 2  THEN 1 ELSE 0 END) * 100 ,2),0) towShock ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 3  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 3  THEN 1 ELSE 0 END) * 100 ,2),0) threeShock ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) * 100 ,2),0) fourShock ,
-        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) * 100 ,2),0) fiveShock
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 1  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 1  THEN 1 ELSE 0 END) ,2),0) oneShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 2  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 2  THEN 1 ELSE 0 END) ,2),0) towShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 3  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 3  THEN 1 ELSE 0 END) ,2),0) threeShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 4  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 4  THEN 1 ELSE 0 END) ,2),0) fourShock ,
+        IFNULL(ROUND(SUM(CASE WHEN d.point_day = 5  THEN d.high_price - d.close_price ELSE 0 END) / SUM(CASE WHEN d.point_day = 5  THEN 1 ELSE 0 END) ,2),0) fiveShock
         FROM stock_company_sector s
         LEFT JOIN stock_deal_data d ON s.`stock_code` = d.`stock_code`
         WHERE LEFT(s.`stock_code`,2) != '68'

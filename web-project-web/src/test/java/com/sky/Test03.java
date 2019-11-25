@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.StockChoseStrategy;
 import com.sky.model.StockCompanySector;
+import com.sky.model.StockDealData;
 import com.sky.service.StockChoseStrategyService;
 import com.sky.service.StockCompanySectorService;
 import com.sky.service.StockDealDataService;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * Created by ThinkPad on 2019/10/8.
@@ -39,8 +41,80 @@ public class Test03 {
     public void test01() throws InterruptedException {
         List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,2) != '68'"));
         for(StockCompanySector sector : list){
-            StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll(sector.getStockCode() ,DateUtils.getDate() , "5");
+            StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll(sector.getStockCode() ,DateUtils.getDate() , "50");
 
+
+
+        }
+
+    }
+
+
+    @Test
+    public void test001() throws InterruptedException, ExecutionException {
+
+        // 开始时间
+        long start = System.currentTimeMillis();
+        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,2) != '68'"));
+        // 每500条数据开启一条线程
+        int threadSize = 500;
+        // 总数据条数
+        int dataSize = list.size();
+        // 线程数
+        int threadNum = dataSize / threadSize + 1;
+        // 定义标记,过滤threadNum为整数
+        boolean special = dataSize % threadSize == 0;
+
+        // 创建一个线程池
+        ExecutorService exec = Executors.newFixedThreadPool(threadNum);
+        // 定义一个任务集合
+        List<Callable<Integer>> tasks = new ArrayList<Callable<Integer>>();
+        Callable<Integer> task = null;
+        List<StockCompanySector> cutList = null;
+
+        // 确定每条线程的数据
+        for (int i = 0; i < threadNum; i++) {
+            if (i == threadNum - 1) {
+                if (special) {
+                    break;
+                }
+                cutList = list.subList(threadSize * i, dataSize);
+            } else {
+                cutList = list.subList(threadSize * i, threadSize * (i + 1));
+            }
+            // System.out.println("第" + (i + 1) + "组：" + cutList.toString());
+            final List<StockCompanySector> listStr = cutList;
+            task = new Callable<Integer>() {
+
+                @Override
+                public Integer call() throws Exception {
+                    for(StockCompanySector sector : listStr){
+                        StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll(sector.getStockCode() ,DateUtils.getDate() , "50");
+                        saveResult( rankVo);
+                        Thread.sleep(1000);
+
+                    }
+                    return 1;
+                }
+            };
+            // 这里提交的任务容器列表和返回的Future列表存在顺序对应的关系
+            tasks.add(task);
+        }
+
+        List<Future<Integer>> results = exec.invokeAll(tasks);
+
+        for (Future<Integer> future : results) {
+            System.out.println(future.get());
+        }
+
+        // 关闭线程池
+        exec.shutdown();
+        System.out.println("线程任务执行结束");
+        System.err.println("执行任务消耗了 ：" + (System.currentTimeMillis() - start) + "毫秒");
+    }
+
+    private void saveResult(StockDealDateRank_VO rankVo){
+        if(rankVo != null){
             StockChoseStrategy strategy = new StockChoseStrategy();
             strategy.setStrategyType(1);
             strategy.setStockCode(rankVo.getStockCode());
@@ -57,30 +131,27 @@ public class Test03 {
             strategy.setBottomDistance(rankVo.getBottomDistance());
             strategy.setMiddleDistance(rankVo.getMiddleDistance());
             strategy.setAverageStock(rankVo.getAverageStock());
-            strategy.setIsUpper(rankVo.getIsUpper().intValue());
-            if(rankVo.getIsTop().compareTo(BigDecimal.ZERO) > 0){
+            strategy.setIsUpper(rankVo.getIsUpper() == null ? 0 : rankVo.getIsUpper().intValue());
+            if(rankVo.getIsTop() != null && rankVo.getIsTop().compareTo(BigDecimal.ZERO) > 0){
                 strategy.setIsTop(1);
             }
-            if(rankVo.getIsMiddle().compareTo(BigDecimal.ZERO) > 0){
+            if(rankVo.getIsMiddle() != null && rankVo.getIsMiddle().compareTo(BigDecimal.ZERO) > 0){
                 strategy.setIsMiddle(1);
             }
-            if(rankVo.getIsBottom().compareTo(BigDecimal.ZERO) > 0){
+            if(rankVo.getIsBottom() != null && rankVo.getIsBottom().compareTo(BigDecimal.ZERO) > 0){
                 strategy.setIsBottom(1);
             }
             StockChoseStrategy choseStrategy = stockChoseStrategyService.selectOne(new EntityWrapper<StockChoseStrategy>().where("stock_code = {0} and deal_time = {1} " , strategy.getStockCode() , strategy.getDealTime()));
             if(choseStrategy == null){
                 stockChoseStrategyService.insert(strategy);
             }
-
-            Thread.sleep(1000);
-
         }
 
     }
 
     @Test
     public void test02(){
-        StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll("000333" ,DateUtils.getDate() , "5");
+        StockDealDateRank_VO rankVo = stockDealDataService.caculateBoll("000001" ,DateUtils.getDate() , "50");
         System.out.println(rankVo.toString());
 
     }
