@@ -2,7 +2,9 @@ var drawWeight ;
 $(function () {
     drawWeight = $('#main').width();
 
-    sectorMonthStatic(0);
+    commonSectorMonthStatic("全局" ,"main" , 0 , 3);
+    commonSectorMonthStatic("全局" ,"weekBar" , 0 , 2);
+    commonSectorMonthStatic("全局" ,"dayBar" , 0 , 1);
 
     // indexMonthStatic();
     // indexWeekStatic();
@@ -456,18 +458,24 @@ function viewSector(forthSector) {
 
 }
 
-function sectorMonthStatic2(forthSector) {
-    $('#sectorMonth').width(drawWeight);
-    var myChart = echarts.init(document.getElementById('sectorMonth'));
+function drawCommonBarStatic(sectorName , monthId , weekId ,dayId) {
+    commonSectorMonthStatic(sectorName ,monthId , 1 , 3);
+    commonSectorWeekStatic(sectorName ,weekId , 1 , 2);
+    commonSectorDayStatic(sectorName ,dayId , 1 , 1);
+}
+
+function commonSectorMonthStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
+    $('#' + boxId).width(drawWeight);
+    var myChart = echarts.init(document.getElementById(boxId));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
-    $.APIPost("/api/stockIndex/getStockSectorMonthList?sectorName=" + forthSector
-        + "&startDay=" + $("#s_start").val()
-        + "&endDay=" + $("#s_end").val()
+    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + sectorName
+        + "&startDay=" + $("#start_day").val()
+        + "&sectorLevel=" + sectorLevel
+        + "&dealPeriod=" + dealPeriod
         ,function (result) {
-            console.log(result);
             var option = {
                 title : {
-                    text: forthSector
+                    text: sectorName + "—月统计"
                 },
                 tooltip : {
                     trigger: 'axis'
@@ -481,14 +489,121 @@ function sectorMonthStatic2(forthSector) {
                         dataView : {show: true, readOnly: false},
                         magicType : {show: true, type: ['line', 'bar']},
                         restore : {show: true},
-                        saveAsImage : {show: true}
+                        saveAsImage : {show: true},
+                        dataZoom: {}
                     }
                 },
+                dataZoom: [{
+                    type: 'inside'
+                }, {
+                    type: 'slider'
+                }],
                 calculable : true,
                 xAxis : [
                     {
                         type : 'category',
-                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                        data : result.data.result.titleArr
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'涨率',
+                        type:'bar',
+                        data:result.data.result.rateArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'涨幅',
+                        type:'bar',
+                        data:result.data.result.upperArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'震幅',
+                        type:'bar',
+                        data:result.data.result.shockArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        });
+}
+
+function commonSectorWeekStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
+    $('#' + boxId).width(drawWeight);
+    var myChart = echarts.init(document.getElementById(boxId));
+    var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
+    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + sectorName
+        + "&startDay=" + $("#start_day").val()
+        + "&sectorLevel=" + sectorLevel
+        + "&dealPeriod=" + dealPeriod
+        ,function (result) {
+            var option = {
+                title : {
+                    text: sectorName + "—周统计"
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['涨率','涨幅' ,'震幅']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true},
+                        dataZoom: {}
+                    }
+                },
+                dataZoom: [{
+                    type: 'inside'
+                }, {
+                    type: 'slider'
+                }],
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : result.data.result.titleArr
                     }
                 ],
                 yAxis : [
@@ -549,25 +664,21 @@ function sectorMonthStatic2(forthSector) {
             };
 
             myChart.setOption(option);
-
-            myChart.on('click', function (params) {
-                sectorCompanyList(forthSector ,params.dataIndex);
-            });
         });
 }
 
-function sectorWeekStatic(forthSector) {
-    $('#sectorWeek').width(drawWeight);
-    var myChart = echarts.init(document.getElementById('sectorWeek'));
+function commonSectorDayStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
+    $('#' + boxId).width(drawWeight);
+    var myChart = echarts.init(document.getElementById(boxId));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
-    $.APIPost("/api/stockIndex/getStockSectorWeekList?sectorName=" + forthSector
-        + "&startDay=" + $("#s_start").val()
-        + "&endDay=" + $("#s_end").val()
-        + "&dealPeriod=2"
+    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + sectorName
+        + "&startDay=" + $("#start_day").val()
+        + "&sectorLevel=" + sectorLevel
+        + "&dealPeriod=" + dealPeriod
         ,function (result) {
             var option = {
                 title : {
-                    text: forthSector
+                    text: sectorName + "—日统计"
                 },
                 tooltip : {
                     trigger: 'axis'

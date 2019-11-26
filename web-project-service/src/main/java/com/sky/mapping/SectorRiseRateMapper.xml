@@ -63,42 +63,24 @@
         <result column="twelve_shock" property="twelveShock"/>
     </resultMap>
 
-    <select id="getSectorCycleMonthList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="getSectorCycleList" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT
         *
         FROM sector_rise_rate
-        WHERE deal_period = 3
+        WHERE deal_period = #{dealPeriod}
         AND start_time = #{startDay}
         AND sector_level = #{sectorLevel}
-        <if test="sectorName == '主要消费'.toString()">
-            AND first_sector = #{sectorName}
+        <if test="firstSector != null and firstSector != '' and firstSector != 'undefined' and firstSector != '全局'.toString()">
+            AND first_sector = #{firstSector}
         </if>
-        <if test="sectorName == '可选消费'.toString()">
-            AND first_sector = #{sectorName}
+        <if test="secondSector != null and secondSector != '' and secondSector != 'undefined' and secondSector != '全局'.toString()">
+            AND second_sector = #{secondSector}
         </if>
-        <if test="sectorName == '信息技术'.toString()">
-            AND first_sector = #{sectorName}
+        <if test="thirdSecotor != null and thirdSecotor != '' and thirdSecotor != 'undefined' and thirdSecotor != '全局'.toString()">
+            AND third_secotor = #{thirdSecotor}
         </if>
-        <if test="sectorName == '电信业务'.toString()">
-            AND first_sector = #{sectorName}
-        </if>
-        <if test="sectorName == '能源'.toString()">
-            AND first_sector = #{sectorName}
-        </if>
-        <if test="sectorName == '原材料'.toString()">
-            AND first_sector = #{sectorName}
-        </if>
-        <if test="sectorName == '工业'.toString()">
-            AND first_sector = #{sectorName}
-        </if>
-        <if test="sectorName == '医药卫生'.toString()">
-            AND first_sector = #{sectorName}
-        </if>
-        <if test="sectorName == '金融地产'.toString()">
-            AND first_sector = #{sectorName}
-        </if>
-        <if test="sectorName == '公用事业'.toString()">
-            AND first_sector = #{sectorName}
+        <if test="forthSector != null and forthSector != '' and forthSector != 'undefined' and forthSector != '全局'.toString()">
+            AND forth_sector = #{forthSector}
         </if>
     </select>
 </mapper>

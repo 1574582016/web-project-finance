@@ -11,5 +11,11 @@ import java.util.List;
  */
 public interface SectorRiseRateMapper extends BaseMapper<SectorRiseRate> {
 
-    List<SectorRiseRate> getSectorCycleMonthList(@Param("sectorName") String sectorName ,@Param("startDay") String startDay ,@Param("sectorLevel") String sectorLevel);
+    List<SectorRiseRate> getSectorCycleList(@Param("startDay") String startDay ,
+                                            @Param("sectorLevel") String sectorLevel ,
+                                            @Param("dealPeriod") String dealPeriod ,
+                                            @Param("firstSector") String firstSector ,
+                                            @Param("secondSector") String secondSector ,
+                                            @Param("thirdSecotor") String thirdSecotor ,
+                                            @Param("forthSector") String forthSector);
 }

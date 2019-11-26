@@ -17,7 +17,7 @@ import java.util.List;
 public class SectorRiseRateServiceImpl extends ServiceImpl<SectorRiseRateMapper,SectorRiseRate> implements SectorRiseRateService {
 
     @Override
-    public List<SectorRiseRate> getSectorCycleMonthList(String sectorName, String startDay,String sectorLevel) {
-        return baseMapper.getSectorCycleMonthList(sectorName , startDay ,sectorLevel);
+    public List<SectorRiseRate> getSectorCycleList(String startDay, String sectorLevel, String dealPeriod, String firstSector, String secondSector, String thirdSecotor, String forthSector) {
+        return baseMapper.getSectorCycleList( startDay,  sectorLevel,  dealPeriod,  firstSector,  secondSector,  thirdSecotor,  forthSector);
     }
 }

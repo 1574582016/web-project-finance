@@ -10,5 +10,11 @@ import java.util.List;
  */
 public interface SectorRiseRateService extends IService<SectorRiseRate> {
 
-    List<SectorRiseRate> getSectorCycleMonthList(String sectorName ,String startDay ,String sectorLevel);
+    List<SectorRiseRate> getSectorCycleList(String startDay ,
+                                            String sectorLevel ,
+                                            String dealPeriod ,
+                                            String firstSector ,
+                                            String secondSector ,
+                                            String thirdSecotor ,
+                                            String forthSector);
 }
