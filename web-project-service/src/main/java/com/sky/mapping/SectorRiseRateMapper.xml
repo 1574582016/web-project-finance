@@ -62,4 +62,43 @@
         <result column="eleven_shock" property="elevenShock"/>
         <result column="twelve_shock" property="twelveShock"/>
     </resultMap>
+
+    <select id="getSectorCycleMonthList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM sector_rise_rate
+        WHERE deal_period = 3
+        AND start_time = #{startDay}
+        AND sector_level = #{sectorLevel}
+        <if test="sectorName == '主要消费'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '可选消费'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '信息技术'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '电信业务'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '能源'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '原材料'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '工业'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '医药卫生'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '金融地产'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+        <if test="sectorName == '公用事业'.toString()">
+            AND first_sector = #{sectorName}
+        </if>
+    </select>
 </mapper>

@@ -152,4 +152,7 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected StockChoseStrategyService stockChoseStrategyService ;
+
+    @Autowired
+    protected SectorRiseRateService sectorRiseRateService ;
 }
