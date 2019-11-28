@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
+    <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/libs/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body style="padding: 20px;">
+<ul id="myTab" class="nav nav-tabs">
+    <li id="mainButton" class="active">
+        <a href="#home" data-toggle="tab">
+            指数统计
+        </a>
+    </li>
+    <li id="sectorButton"><a href="#sector" data-toggle="tab">行业统计</a></li>
+    <li id="companyButton"><a href="#company" data-toggle="tab">企业统计</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <div class="panel panel-default search-list-panel">
+            <div id="collapseBox" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <form id="formSearch" class="form-horizontal">
+                        <div class="form-group" style="margin-top:15px">
+                            <label class="control-label col-sm-1">周期：</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" id="static_date">
+                                    <option value="2015-01-01">2015-01-01 至 2020-01-01</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-sm-1">月份：</label>
+                            <div class="col-sm-1">
+                                <select class="form-control" id="static_month">
+                                    <option value="1">1月</option>
+                                    <option value="2">2月</option>
+                                    <option value="3">3月</option>
+                                    <option value="4">4月</option>
+                                    <option value="5">5月</option>
+                                    <option value="6">6月</option>
+                                    <option value="7">7月</option>
+                                    <option value="8">8月</option>
+                                    <option value="9">9月</option>
+                                    <option value="10">10月</option>
+                                    <option value="11">11月</option>
+                                    <option value="12">12月</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-sm-1">概率：</label>
+                            <div class="col-sm-2">
+                                <select class="form-control" id="static_rate">
+                                    <option value="100"> = 100 % </option>
+                                    <option value="90"> >= 90 % </option>
+                                    <option value="80"> >= 80 % </option>
+                                    <option value="70"> >= 70 % </option>
+                                    <option value="60"> >= 60 % </option>
+                                    <option value="50"> >= 50 % </option>
+                                    <option value="40"> >= 40 % </option>
+                                </select>
+                            </div>
+                            <label class="control-label col-sm-1">涨幅：</label>
+                            <div class="col-sm-1">
+                                <select class="form-control" id="static_amplitude">
+                                    <option value="2"> > 2 </option>
+                                    <option value="1.5"> > 1.5 </option>
+                                    <option value="1"> > 1 </option>
+                                    <option value="0.5"> > 0.5 </option>
+                                    <option value="0.2"> > 0.2 </option>
+                                </select>
+                            </div>
+                            <button type="button" id="searchDataButton" class="btn btn-default btn-sm search-button">查询</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="firstSector" style="width:100%;height:400px;"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="secondSector" style="width:100%;height:400px;"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="thirdSector" style="width:100%;height:400px;"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="forthSector" style="width:100%;height:400px;"></div>
+            </div>
+        </div>
+
+        <table id="tableList"></table>
+    </div>
+    <div class="tab-pane fade" id="sector">
+        <div id="sectorMonth" style="width:100%;height:400px;"></div>
+        <div id="sectorWeek" style="width:100%;height:400px;"></div>
+        <table id="companyTableList"></table>
+    </div>
+    <div class="tab-pane fade" id="company">
+        <div id="companyMonth" style="width:100%;height:400px;"></div>
+        <div id="companyWeek" style="width:100%;height:400px;"></div>
+        <div id="echartBox">
+
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript" src="/libs/select2/js/select2.min.js"></script>
+<script type="text/javascript" src="/libs/echarts-2.2.7/echarts.min.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src = "/js/page/handleStockCycleList.js"></script>
+</html>

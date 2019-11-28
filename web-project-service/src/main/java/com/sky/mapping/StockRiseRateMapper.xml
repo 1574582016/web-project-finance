@@ -58,4 +58,452 @@
         <result column="eleven_shock" property="elevenShock"/>
         <result column="twelve_shock" property="twelveShock"/>
     </resultMap>
+
+    <select id="getStaticSectorNum" parameterType="java.lang.String" resultType="com.sky.vo.StaticSectorNum_VO">
+        SELECT
+        s.`first_sector` firstSector,
+        s.`second_sector` secondSector,
+        s.`third_secotor` thirdSecotor,
+        s.`forth_sector` forthSector,
+        SUM(1) sectorNum
+        FROM stock_rise_rate r
+        LEFT JOIN stock_company_sector s ON r.`stock_code` = s.`stock_code`
+        WHERE r.`deal_period` = 3
+        AND s.`stock_name` NOT REGEXP 'ST'
+        AND s.`publish_time` &lt;=  #{staticDate}
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '1'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`one_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`one_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '2'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`tow_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`tow_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '3'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`three_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`three_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '4'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`four_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`four_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '5'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`five_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`five_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '6'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`six_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`six_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '7'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`seven_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`seven_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '8'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`eight_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`eight_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '9'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`nine_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`nine_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '10'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`ten_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`ten_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '11'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`eleven_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`eleven_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '12'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`twelve_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`twelve_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="sectorType != null and sectorType != '' and sectorType != 'undefined' and sectorType == '1'.toString()">
+            GROUP BY s.`first_sector`
+        </if>
+        <if test="sectorType != null and sectorType != '' and sectorType != 'undefined' and sectorType == '2'.toString()">
+            AND s.`first_sector` = #{firstSector}
+            GROUP BY s.`second_sector`
+        </if>
+        <if test="sectorType != null and sectorType != '' and sectorType != 'undefined' and sectorType == '3'.toString()">
+            AND s.`second_sector` = #{secondSector}
+            GROUP BY s.`third_secotor`
+        </if>
+        <if test="sectorType != null and sectorType != '' and sectorType != 'undefined' and sectorType == '4'.toString()">
+            AND s.`third_secotor` = #{thirdSecotor}
+            GROUP BY s.`forth_sector`
+        </if>
+    </select>
+
+
+    <select id="getPointMonthStockList" parameterType="java.lang.String" resultType="com.sky.vo.PointMonthStock_VO">
+        SELECT
+        a.forthSector ,
+        a.stockCode ,
+        a.stockName ,
+        CONCAT(
+        CASE WHEN a.ZHONG = 6 THEN 'S'
+             WHEN a.ZHONG = 5 THEN 'A'
+             WHEN a.ZHONG = 4 THEN 'B'
+             WHEN a.ZHONG = 3 THEN 'C'
+             WHEN a.ZHONG = 2 THEN 'D'
+             WHEN a.ZHONG = 1 THEN 'E'
+             END,
+        CASE WHEN a.SHANG = 6 THEN 'S'
+             WHEN a.SHANG = 5 THEN 'A'
+             WHEN a.SHANG = 4 THEN 'B'
+             WHEN a.SHANG = 3 THEN 'C'
+             WHEN a.SHANG = 2 THEN 'D'
+             WHEN a.SHANG = 1 THEN 'E'
+             END,
+        CASE WHEN a.ZHONG_i = 6 THEN 'S'
+             WHEN a.ZHONG_i = 5 THEN 'A'
+             WHEN a.ZHONG_i = 4 THEN 'B'
+             WHEN a.ZHONG_i = 3 THEN 'C'
+             WHEN a.ZHONG_i = 2 THEN 'D'
+             WHEN a.ZHONG_i = 1 THEN 'E'
+             END,
+        CASE WHEN a.SHANG_i = 6 THEN 'S'
+             WHEN a.SHANG_i = 5 THEN 'A'
+             WHEN a.SHANG_i = 4 THEN 'B'
+             WHEN a.SHANG_i = 3 THEN 'C'
+             WHEN a.SHANG_i = 2 THEN 'D'
+             WHEN a.SHANG_i = 1 THEN 'E'
+             END
+        ) companyLevel,
+        CONCAT(
+        CASE WHEN a.profit_score >= 80 THEN 'S'
+             WHEN a.profit_score >= 70 AND a.profit_score &lt; 80 THEN 'A'
+             WHEN a.profit_score >= 60 AND a.profit_score &lt; 70 THEN 'B'
+             WHEN a.profit_score >= 50 AND a.profit_score &lt; 60 THEN 'C'
+             WHEN a.profit_score >= 40 AND a.profit_score &lt; 50 THEN 'D'
+             WHEN a.profit_score >= 30 AND a.profit_score &lt; 40 THEN 'E'
+             ELSE 'F'
+             END,
+        CASE WHEN a.profit_grow_score >= 80 THEN 'S'
+             WHEN a.profit_grow_score >= 70 AND a.profit_grow_score &lt; 80 THEN 'A'
+             WHEN a.profit_grow_score >= 60 AND a.profit_grow_score &lt; 70 THEN 'B'
+             WHEN a.profit_grow_score >= 50 AND a.profit_grow_score &lt; 60 THEN 'C'
+             WHEN a.profit_grow_score >= 40 AND a.profit_grow_score &lt; 50 THEN 'D'
+             WHEN a.profit_grow_score >= 30 AND a.profit_grow_score &lt; 40 THEN 'E'
+             ELSE 'F'
+             END,
+        CASE WHEN a.asset_score >= 80 THEN 'S'
+             WHEN a.asset_score >= 70 AND a.asset_score &lt; 80 THEN 'A'
+             WHEN a.asset_score >= 60 AND a.asset_score &lt; 70 THEN 'B'
+             WHEN a.asset_score >= 50 AND a.asset_score &lt; 60 THEN 'C'
+             WHEN a.asset_score >= 40 AND a.asset_score &lt; 50 THEN 'D'
+             WHEN a.asset_score >= 30 AND a.asset_score &lt; 40 THEN 'E'
+             ELSE 'F'
+             END,
+        CASE WHEN a.asset_grow_score >= 80 THEN 'S'
+             WHEN a.asset_grow_score >= 70 AND a.asset_grow_score &lt; 80 THEN 'A'
+             WHEN a.asset_grow_score >= 60 AND a.asset_grow_score &lt; 70 THEN 'B'
+             WHEN a.asset_grow_score >= 50 AND a.asset_grow_score &lt; 60 THEN 'C'
+             WHEN a.asset_grow_score >= 40 AND a.asset_grow_score &lt; 50 THEN 'D'
+             WHEN a.asset_grow_score >= 30 AND a.asset_grow_score &lt; 40 THEN 'E'
+             ELSE 'F'
+             END
+        ) financialLevel,
+        a.companyName ,
+        a.publishTime ,
+        a.oneRise,
+        a.oneAmplitude,
+        a.oneShock,
+        a.towRise,
+        a.towAmplitude,
+        a.towShock,
+        a.threeRise,
+        a.threeAmplitude,
+        a.threeShock,
+        a.fourRise,
+        a.fourAmplitude,
+        a.fourShock,
+        a.fiveRise,
+        a.fiveAmplitude,
+        a.fiveShock,
+        a.sixRise,
+        a.sixAmplitude,
+        a.sixShock,
+        a.sevenRise,
+        a.sevenAmplitude,
+        a.sevenShock,
+        a.eightRise,
+        a.eightAmplitude,
+        a.eightShock,
+        a.nineRise,
+        a.nineAmplitude,
+        a.nineShock,
+        a.tenRise,
+        a.tenAmplitude,
+        a.tenShock,
+        a.elevenRise,
+        a.elevenAmplitude,
+        a.elevenShock,
+        a.twelveRise,
+        a.twelveAmplitude,
+        a.twelveShock
+        FROM(
+        SELECT
+        s.`forth_sector` forthSector,
+        s.`stock_code` stockCode,
+        s.`stock_name` stockName,
+        s.`publish_time` publishTime,
+        MAX(s.`profit_score`) profit_score,
+        MAX(s.`profit_grow_score`) profit_grow_score,
+        MAX(s.`asset_score`) asset_score,
+        MAX(s.`asset_grow_score`) asset_grow_score,
+        MAX(CASE WHEN i.index_name = '中证超大' THEN '6'
+             WHEN i.index_name = '中证100'  THEN '5'
+             WHEN i.index_name = '中证200'  THEN '4'
+             WHEN i.index_name = '中证500'  THEN '3'
+             WHEN i.index_name = '中证1000'  THEN '2'
+             WHEN i.index_name NOT REGEXP '中证超大|中证100|中证200|中证500|中证1000'  THEN '1'
+             END) AS ZHONG,
+        MAX(CASE WHEN i.index_name = '上证50' THEN '6'
+             WHEN i.index_name = '上证180' AND i.index_name != '上证50'  THEN '5'
+             WHEN i.index_name = '上证100'  THEN '4'
+             WHEN i.index_name = '上证380' AND i.index_name != '上证100'  THEN '3'
+             WHEN i.index_name = '上证150'  THEN '2'
+             WHEN i.index_name NOT REGEXP '上证50|上证180|上证100|上证380|上证150'  THEN '1'
+             END) AS SHANG,
+        MAX(CASE WHEN i.index_name = 'CX基石' THEN '6'
+             WHEN i.index_name = '中证龙头'  THEN '5'
+             WHEN i.index_name REGEXP '价值'  THEN '4'
+             WHEN i.index_name REGEXP '成长'  THEN '3'
+             WHEN i.index_name NOT REGEXP 'CX基石|中证龙头|价值|成长'  THEN '1'
+             END) AS ZHONG_i,
+        MAX(CASE WHEN i.index_name = '超大盘'   THEN '6'
+             WHEN i.index_name = '上证龙头' THEN '5'
+             WHEN i.index_name = '上证中盘' THEN '4'
+             WHEN i.index_name = '上证小盘' THEN '3'
+             WHEN i.index_name NOT REGEXP '超大盘|上证龙头|上证中盘|上证小盘'  THEN '1'
+             END) AS SHANG_i,
+        REPLACE(s.`company_name`, '股份有限公司', '') companyName,
+        r.`one_rise` oneRise,
+        r.`one_amplitude` oneAmplitude,
+        r.`one_shock` oneShock,
+        r.`tow_rise` towRise,
+        r.`tow_amplitude` towAmplitude,
+        r.`tow_shock` towShock,
+        r.`three_rise` threeRise,
+        r.`three_amplitude` threeAmplitude,
+        r.`three_shock` threeShock,
+        r.`four_rise` fourRise,
+        r.`four_amplitude` fourAmplitude,
+        r.`four_shock` fourShock,
+        r.`five_rise` fiveRise,
+        r.`five_amplitude` fiveAmplitude,
+        r.`five_shock` fiveShock,
+        r.`six_rise` sixRise,
+        r.`six_amplitude` sixAmplitude,
+        r.`six_shock` sixShock,
+        r.`seven_rise` sevenRise,
+        r.`seven_amplitude` sevenAmplitude,
+        r.`seven_shock` sevenShock,
+        r.`eight_rise` eightRise,
+        r.`eight_amplitude` eightAmplitude,
+        r.`eight_shock` eightShock,
+        r.`nine_rise` nineRise,
+        r.`nine_amplitude` nineAmplitude,
+        r.`nine_shock` nineShock,
+        r.`ten_rise` tenRise,
+        r.`ten_amplitude` tenAmplitude,
+        r.`ten_shock` tenShock,
+        r.`eleven_rise` elevenRise,
+        r.`eleven_amplitude` elevenAmplitude,
+        r.`eleven_shock` elevenShock,
+        r.`twelve_rise` twelveRise,
+        r.`twelve_amplitude` twelveAmplitude,
+        r.`twelve_shock` twelveShock
+        FROM stock_rise_rate r
+        LEFT JOIN stock_company_sector s ON r.`stock_code` = s.`stock_code`
+        LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
+        WHERE r.`deal_period` = 3
+        AND s.`publish_time` &lt;= #{staticDate}
+        AND s.`stock_name` NOT REGEXP 'ST'
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '1'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`one_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`one_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '2'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`tow_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`tow_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '3'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`three_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`three_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '4'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`four_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`four_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '5'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`five_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`five_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '6'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`six_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`six_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '7'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`seven_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`seven_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '8'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`eight_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`eight_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '9'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`nine_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`nine_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '10'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`ten_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`ten_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '11'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`eleven_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`eleven_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '12'.toString()">
+            <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
+                AND r.`twelve_rise` >= #{staticRate}
+            </if>
+            <if test="staticAmplitude != null and staticAmplitude != '' and staticAmplitude != 'undefined'">
+                AND r.`twelve_amplitude` >= #{staticAmplitude}
+            </if>
+        </if>
+        GROUP BY s.`stock_code`
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '1'.toString()">
+            ORDER BY r.`one_rise` DESC  , r.`one_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '2'.toString()">
+            ORDER BY r.`tow_rise` DESC  , r.`tow_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '3'.toString()">
+            ORDER BY r.`three_rise` DESC  , r.`three_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '4'.toString()">
+            ORDER BY r.`four_rise` DESC  , r.`four_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '5'.toString()">
+            ORDER BY r.`five_rise` DESC  , r.`five_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '6'.toString()">
+            ORDER BY r.`six_rise` DESC  , r.`six_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '7'.toString()">
+            ORDER BY r.`seven_rise` DESC  , r.`seven_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '8'.toString()">
+            ORDER BY r.`eight_rise` DESC  , r.`eight_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '9'.toString()">
+            ORDER BY r.`nine_rise` DESC  , r.`nine_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '10'.toString()">
+            ORDER BY r.`ten_rise` DESC  , r.`ten_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '11'.toString()">
+            ORDER BY r.`eleven_rise` DESC  , r.`eleven_amplitude` DESC
+        </if>
+        <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '12'.toString()">
+            ORDER BY r.`twelve_rise` DESC  , r.`twelve_amplitude` DESC
+        </if>
+        ) a
+    </select>
 </mapper>

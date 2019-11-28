@@ -18,16 +18,16 @@
             指数统计
         </a>
     </li>
-    <li onclick="drawCommonBarStatic('信息技术' , 'technologyMonth' , 'technologyWeek' , 'technologyDay')"><a href="#technology" data-toggle="tab">信息技术</a></li>
-    <li onclick="drawCommonBarStatic('电信业务' , 'communicateMonth' , 'communicateWeek' , 'communicateDay')"><a href="#communicate" data-toggle="tab">电信业务</a></li>
-    <li onclick="drawCommonBarStatic('可选消费' , 'choseCustMonth' , 'choseCustWeek' , 'choseCustDay')"><a href="#choseCust" data-toggle="tab">可选消费</a></li>
-    <li onclick="drawCommonBarStatic('主要消费' , 'mainCustMonth' , 'mainCustWeek' , 'mainCustDay')"><a href="#mainCust" data-toggle="tab">主要消费</a></li>
-    <li onclick="drawCommonBarStatic('能源' , 'energyMonth' , 'energyWeek' , 'energyDay')"><a href="#energy" data-toggle="tab">能源</a></li>
-    <li onclick="drawCommonBarStatic('原材料' , 'materialMonth' , 'materialWeek' , 'materialDay')"><a href="#material" data-toggle="tab">原材料</a></li>
-    <li onclick="drawCommonBarStatic('工业' , 'industryMonth' , 'industryWeek' , 'industryDay')"><a href="#industry" data-toggle="tab">工业</a></li>
-    <li onclick="drawCommonBarStatic('金融地产' , 'financialMonth' , 'financialWeek' , 'financialDay')"><a href="#financial " data-toggle="tab">金融地产</a></li>
-    <li onclick="drawCommonBarStatic('医药卫生' , 'medicineMonth' , 'medicineWeek' , 'medicineDay')"><a href="#medicine" data-toggle="tab">医药卫生</a></li>
-    <li onclick="drawCommonBarStatic('公用事业' , 'publicServiceMonth' , 'publicServiceWeek' , 'publicServiceDay')"><a href="#publicService" data-toggle="tab">公用事业</a></li>
+    <li onclick="drawCommonBarStatic('信息技术' , 'technology')"><a href="#technology" data-toggle="tab">信息技术</a></li>
+    <li onclick="drawCommonBarStatic('电信业务' , 'communicate')"><a href="#communicate" data-toggle="tab">电信业务</a></li>
+    <li onclick="drawCommonBarStatic('可选消费' , 'choseCust')"><a href="#choseCust" data-toggle="tab">可选消费</a></li>
+    <li onclick="drawCommonBarStatic('主要消费' , 'mainCust')"><a href="#mainCust" data-toggle="tab">主要消费</a></li>
+    <li onclick="drawCommonBarStatic('能源' , 'energy')"><a href="#energy" data-toggle="tab">能源</a></li>
+    <li onclick="drawCommonBarStatic('原材料' , 'material')"><a href="#material" data-toggle="tab">原材料</a></li>
+    <li onclick="drawCommonBarStatic('工业' , 'industry')"><a href="#industry" data-toggle="tab">工业</a></li>
+    <li onclick="drawCommonBarStatic('金融地产' , 'financial')"><a href="#financial " data-toggle="tab">金融地产</a></li>
+    <li onclick="drawCommonBarStatic('医药卫生' , 'medicine')"><a href="#medicine" data-toggle="tab">医药卫生</a></li>
+    <li onclick="drawCommonBarStatic('公用事业' , 'publicService')"><a href="#publicService" data-toggle="tab">公用事业</a></li>
 </ul>
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade in active" id="home">
@@ -57,14 +57,93 @@
         <table id="tableList"></table>
     </div>
     <div class="tab-pane fade" id="technology">
-        <div id="technologyMonth" style="width:100%;height:400px;"></div>
-        <div id="technologyWeek" style="width:100%;height:400px;"></div>
-        <div id="technologyDay" style="width:100%;height:400px;"></div>
+        <div class="panel panel-default" id="accordionTechnologyMonth" style="margin-top: 20px;">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionTechnologyMonth" href="#collapseTechnologyMonth">
+                信息技术——月统计
+            </div>
+            <div id="collapseTechnologyMonth" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="technologyMonth" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="accordionTechnologyWeek">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionTechnologyWeek" href="#collapseTechnologyWeek">
+                信息技术——周统计
+            </div>
+            <div id="collapseTechnologyWeek" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="technologyWeek" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="accordionTechnologyDay">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionTechnologyDay" href="#collapseTechnologyDay">
+                信息技术——日统计
+            </div>
+            <div id="collapseTechnologyDay" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="technologyDay" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="accordionSemiconductorMonth" style="margin-top: 20px;">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionSemiconductorMonth" href="#collapseSemiconductorMonth">
+                半导体——月统计
+            </div>
+            <div id="collapseSemiconductorMonth" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="semiconductorMonth" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="accordionPhotoelectronMonth" style="margin-top: 20px;">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionPhotoelectronMonth" href="#collapsePhotoelectronMonth">
+                半导体——月统计
+            </div>
+            <div id="collapsePhotoelectronMonth" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="photoelectronMonth" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="tab-pane fade" id="communicate">
-        <div id="communicateMonth" style="width:100%;height:400px;"></div>
-        <div id="communicateWeek" style="width:100%;height:400px;"></div>
-        <div id="communicateDay" style="width:100%;height:400px;"></div>
+        <div class="panel panel-default" id="accordionCommunicateMonth">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionCommunicateMonth" href="#collapseCommunicateMonth">
+                电信业务——月统计
+            </div>
+            <div id="collapseCommunicateMonth" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="communicateMonth" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="accordionCommunicateWeek">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionCommunicateWeek" href="#collapseCommunicateWeek">
+                电信业务——周统计
+            </div>
+            <div id="collapseCommunicateWeek" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="communicateWeek" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="accordionCommunicateDay">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordionCommunicateDay" href="#collapseCommunicateDay">
+                电信业务——日统计
+            </div>
+            <div id="collapseCommunicateDay" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div id="communicateDay" style="width:100%;height:400px;"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="tab-pane fade" id="choseCust">
         <div id="choseCustMonth" style="width:100%;height:400px;"></div>

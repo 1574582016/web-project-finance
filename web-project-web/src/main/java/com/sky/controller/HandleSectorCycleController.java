@@ -15,4 +15,9 @@ public class HandleSectorCycleController {
     public String handleSectorCycleList(Model model){
         return "page/handleSectorCycleList";
     }
+
+    @RequestMapping("/handleStockCycleList")
+    public String handleStockCycleList(Model model){
+        return "page/handleStockCycleList";
+    }
 }

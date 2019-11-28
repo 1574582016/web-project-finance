@@ -1,13 +1,18 @@
 package com.sky.api.controller;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.SectorRiseRate;
+import com.sky.vo.PointMonthStock_VO;
+import com.sky.vo.StaticSectorNum_VO;
 import com.sky.vo.StockIndexMonthData_VO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -112,4 +117,53 @@ public class HandleSectorCycleApiController extends AbstractController {
         return ResponseEntity.ok(MapSuccess("查询成功",map));
     }
 
+    @LogRecord(name = "getStaticSectorNum" ,description = "查询每月行业占比")
+    @PostMapping("/getStaticSectorNum")
+    public Object getStaticSectorNum(String staticDate, String staticMonth, String staticRate, String staticAmplitude, String sectorType, String firstSector, String secondSector, String thirdSecotor){
+        firstSector = firstSector.split("-")[0];
+        secondSector = secondSector.split("-")[0];
+        thirdSecotor = thirdSecotor.split("-")[0];
+        List<StaticSectorNum_VO> list = stockRiseRateService.getStaticSectorNum( staticDate, staticMonth, staticRate, staticAmplitude, sectorType, firstSector, secondSector, thirdSecotor);
+        JSONArray jsonArray = new JSONArray();
+        for(StaticSectorNum_VO num_vo : list){
+            JSONObject jsonObject = new JSONObject();
+            if(sectorType.equals("1")){
+                jsonObject.put("name" , num_vo.getFirstSector() + "-" + num_vo.getSectorNum());
+                jsonObject.put("value" , num_vo.getSectorNum());
+            }
+            if(sectorType.equals("2")){
+                jsonObject.put("name" , num_vo.getSecondSector() + "-" + num_vo.getSectorNum());
+                jsonObject.put("value" , num_vo.getSectorNum());
+            }
+            if(sectorType.equals("3")){
+                jsonObject.put("name" , num_vo.getThirdSecotor() + "-" + num_vo.getSectorNum());
+                jsonObject.put("value" , num_vo.getSectorNum());
+            }
+            if(sectorType.equals("4")){
+                jsonObject.put("name" , num_vo.getForthSector() + "-" + num_vo.getSectorNum());
+                jsonObject.put("value" , num_vo.getSectorNum());
+            }
+            jsonArray.add(jsonObject);
+        }
+
+        Map<String ,JSONArray> map = new HashMap<>();
+        map.put("sectorNum" , jsonArray);
+        return ResponseEntity.ok(MapSuccess("查询成功",map));
+    }
+
+    @LogRecord(name = "getPointMonthStockList" ,description = "查询每月增长企业")
+    @PostMapping("/getPointMonthStockList")
+    public Object getPointMonthStockList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
+                                         @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
+                                         String staticDate,
+                                         String staticMonth,
+                                         String staticRate,
+                                         String staticAmplitude){
+        System.out.println("===========staticDate=============" + staticDate);
+        System.out.println("===========staticMonth=============" + staticMonth);
+        System.out.println("===========staticRate=============" + staticRate);
+        System.out.println("===========staticAmplitude=============" + staticAmplitude);
+        Page selectedPage = stockRiseRateService.getPointMonthStockList(page , size , staticDate, staticMonth, staticRate, staticAmplitude);
+        return PageData(selectedPage);
+    }
 }

@@ -2,9 +2,9 @@ var drawWeight ;
 $(function () {
     drawWeight = $('#main').width();
 
-    commonSectorMonthStatic("全局" ,"main" , 0 , 3);
-    commonSectorMonthStatic("全局" ,"weekBar" , 0 , 2);
-    commonSectorMonthStatic("全局" ,"dayBar" , 0 , 1);
+    commonSectorMonthStatic("main" , 0 , 3 ,"全局" ,'' , '' , '');
+    commonSectorWeekStatic("weekBar" , 0 , 2 ,"全局" ,'' , '' , '');
+    commonSectorDayStatic("dayBar" , 0 , 1 ,"全局" ,'' , '' , '');
 
     // indexMonthStatic();
     // indexWeekStatic();
@@ -458,25 +458,33 @@ function viewSector(forthSector) {
 
 }
 
-function drawCommonBarStatic(sectorName , monthId , weekId ,dayId) {
-    commonSectorMonthStatic(sectorName ,monthId , 1 , 3);
-    commonSectorWeekStatic(sectorName ,weekId , 1 , 2);
-    commonSectorDayStatic(sectorName ,dayId , 1 , 1);
+function drawCommonBarStatic(sectorName , boxId) {
+    var monthId = boxId + "Month" ;
+    var weekId = boxId + "Week" ;
+    var dayId = boxId + "Day" ;
+    if(boxId == 'technology'){
+        commonSectorMonthStatic('semiconductorMonth' , 4 , 3 ,sectorName ,'' , '' , '半导体');
+        commonSectorMonthStatic('photoelectronMonth' , 4 , 3 ,sectorName ,'' , '' , '光电子器件');
+    }
+
+    commonSectorMonthStatic(monthId , 1 , 3 ,sectorName ,'' , '' , '');
+    commonSectorWeekStatic(weekId , 1 , 2 ,sectorName ,'' , '' , '');
+    commonSectorDayStatic(dayId , 1 , 1 ,sectorName ,'' , '' , '');
 }
 
-function commonSectorMonthStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
+function commonSectorMonthStatic(boxId , sectorLevel ,dealPeriod ,firstSector ,secondSector , thirdSecotor , forthSector) {
     $('#' + boxId).width(drawWeight);
     var myChart = echarts.init(document.getElementById(boxId));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
-    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + sectorName
+    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + firstSector
         + "&startDay=" + $("#start_day").val()
         + "&sectorLevel=" + sectorLevel
         + "&dealPeriod=" + dealPeriod
+        + "&secondSector=" + secondSector
+        + "&thirdSecotor=" + thirdSecotor
+        + "&forthSector=" + forthSector
         ,function (result) {
             var option = {
-                title : {
-                    text: sectorName + "—月统计"
-                },
                 tooltip : {
                     trigger: 'axis'
                 },
@@ -484,12 +492,7 @@ function commonSectorMonthStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
                     data:['涨率','涨幅' ,'震幅']
                 },
                 toolbox: {
-                    show : true,
                     feature : {
-                        dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
-                        saveAsImage : {show: true},
                         dataZoom: {}
                     }
                 },
@@ -565,19 +568,19 @@ function commonSectorMonthStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
         });
 }
 
-function commonSectorWeekStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
+function commonSectorWeekStatic(boxId , sectorLevel ,dealPeriod ,firstSector ,secondSector , thirdSecotor , forthSector) {
     $('#' + boxId).width(drawWeight);
     var myChart = echarts.init(document.getElementById(boxId));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
-    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + sectorName
+    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + firstSector
         + "&startDay=" + $("#start_day").val()
         + "&sectorLevel=" + sectorLevel
         + "&dealPeriod=" + dealPeriod
+        + "&secondSector=" + secondSector
+        + "&thirdSecotor=" + thirdSecotor
+        + "&forthSector=" + forthSector
         ,function (result) {
             var option = {
-                title : {
-                    text: sectorName + "—周统计"
-                },
                 tooltip : {
                     trigger: 'axis'
                 },
@@ -585,12 +588,7 @@ function commonSectorWeekStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
                     data:['涨率','涨幅' ,'震幅']
                 },
                 toolbox: {
-                    show : true,
                     feature : {
-                        dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
-                        saveAsImage : {show: true},
                         dataZoom: {}
                     }
                 },
@@ -667,19 +665,19 @@ function commonSectorWeekStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
         });
 }
 
-function commonSectorDayStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
+function commonSectorDayStatic(boxId , sectorLevel ,dealPeriod ,firstSector ,secondSector , thirdSecotor , forthSector) {
     $('#' + boxId).width(drawWeight);
     var myChart = echarts.init(document.getElementById(boxId));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
-    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + sectorName
+    $.APIPost("/api/handleCycle/getSectorCycleList?firstSector=" + firstSector
         + "&startDay=" + $("#start_day").val()
         + "&sectorLevel=" + sectorLevel
         + "&dealPeriod=" + dealPeriod
+        + "&secondSector=" + secondSector
+        + "&thirdSecotor=" + thirdSecotor
+        + "&forthSector=" + forthSector
         ,function (result) {
             var option = {
-                title : {
-                    text: sectorName + "—日统计"
-                },
                 tooltip : {
                     trigger: 'axis'
                 },
@@ -687,12 +685,7 @@ function commonSectorDayStatic(sectorName ,boxId , sectorLevel ,dealPeriod) {
                     data:['涨率','涨幅' ,'震幅']
                 },
                 toolbox: {
-                    show : true,
                     feature : {
-                        dataView : {show: true, readOnly: false},
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
-                        saveAsImage : {show: true},
                         dataZoom: {}
                     }
                 },
