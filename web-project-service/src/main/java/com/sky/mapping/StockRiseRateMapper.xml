@@ -674,7 +674,23 @@
         a.fourWeekShock,
         a.fiveWeekRise,
         a.fiveWeekAmplitude,
-        a.fiveWeekShock
+        a.fiveWeekShock ,
+
+        a.oneDayRise,
+        a.oneDayAmplitude,
+        a.oneDayShock,
+        a.towDayRise,
+        a.towDayAmplitude,
+        a.towDayShock,
+        a.threeDayRise,
+        a.threeDayAmplitude,
+        a.threeDayShock,
+        a.fourDayRise,
+        a.fourDayAmplitude,
+        a.fourDayShock,
+        a.fiveDayRise,
+        a.fiveDayAmplitude,
+        a.fiveDayShock
         FROM(
         SELECT
         s.`forth_sector` forthSector,
@@ -763,11 +779,28 @@
         r.`four_shock` fourWeekShock,
         r.`five_rise` fiveWeekRise,
         r.`five_amplitude` fiveWeekAmplitude,
-        r.`five_shock` fiveWeekShock
+        r.`five_shock` fiveWeekShock ,
+
+        d.`one_rise` oneDayRise,
+        d.`one_amplitude` oneDayAmplitude,
+        d.`one_shock` oneDayShock,
+        d.`tow_rise` towDayRise,
+        d.`tow_amplitude` towDayAmplitude,
+        d.`tow_shock` towDayShock,
+        d.`three_rise` threeDayRise,
+        d.`three_amplitude` threeDayAmplitude,
+        d.`three_shock` threeDayShock,
+        d.`four_rise` fourDayRise,
+        d.`four_amplitude` fourDayAmplitude,
+        d.`four_shock` fourDayShock,
+        d.`five_rise` fiveDayRise,
+        d.`five_amplitude` fiveDayAmplitude,
+        d.`five_shock` fiveDayShock
         FROM stock_rise_rate r
         LEFT JOIN stock_company_sector s ON r.`stock_code` = s.`stock_code`
         LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
         LEFT JOIN stock_rise_rate m ON m.`stock_code` = r.`stock_code` AND m.`deal_period` = 3
+        LEFT JOIN stock_rise_rate d ON d.`stock_code` = r.`stock_code` AND d.`deal_period` = 1 AND d.`point_month` = r.`point_month` AND d.`point_week` = #{staticWeek}
         WHERE r.`deal_period` = 2
         AND s.`publish_time` &lt;= #{staticDate}
         AND s.`stock_name` NOT REGEXP 'ST'

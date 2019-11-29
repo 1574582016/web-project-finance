@@ -5,19 +5,19 @@ $(function () {
     sectorCycleStatic(1 ,'一级行业');
     stockMonthList('orderMonthRateTable');
     stockWeekList("orderOneWeekRateTable" ,1);
-    stockWeekList("orderTowWeekRateTable" ,2);
-    stockWeekList("orderThreeWeekRateTable" ,3);
-    stockWeekList("orderFourWeekRateTable" ,4);
-    stockWeekList("orderFiveWeekRateTable" ,5);
+    // stockWeekList("orderTowWeekRateTable" ,2);
+    // stockWeekList("orderThreeWeekRateTable" ,3);
+    // stockWeekList("orderFourWeekRateTable" ,4);
+    // stockWeekList("orderFiveWeekRateTable" ,5);
 
     $("#searchDataButton").click(function () {
         sectorCycleStatic(1 ,'一级行业');
         stockMonthList('orderMonthRateTable');
         stockWeekList("orderOneWeekRateTable" ,1);
-        stockWeekList("orderTowWeekRateTable" ,2);
-        stockWeekList("orderThreeWeekRateTable" ,3);
-        stockWeekList("orderFourWeekRateTable" ,4);
-        stockWeekList("orderFiveWeekRateTable" ,5);
+        // stockWeekList("orderTowWeekRateTable" ,2);
+        // stockWeekList("orderThreeWeekRateTable" ,3);
+        // stockWeekList("orderFourWeekRateTable" ,4);
+        // stockWeekList("orderFiveWeekRateTable" ,5);
     });
 });
 
@@ -358,6 +358,11 @@ function stockWeekList(idBox ,staticWeek) {
             },{
                 field: 'weekLevel',
                 title: '周级',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'dayLevel',
+                title: '天级',
                 align: 'center',
                 valign: 'middle'
             },{
