@@ -5,19 +5,19 @@ $(function () {
     sectorCycleStatic(1 ,'一级行业');
     stockMonthList('orderMonthRateTable');
     stockWeekList("orderOneWeekRateTable" ,1);
-    // stockWeekList("orderTowWeekRateTable" ,2);
-    // stockWeekList("orderThreeWeekRateTable" ,3);
-    // stockWeekList("orderFourWeekRateTable" ,4);
-    // stockWeekList("orderFiveWeekRateTable" ,5);
+    stockWeekList("orderTowWeekRateTable" ,2);
+    stockWeekList("orderThreeWeekRateTable" ,3);
+    stockWeekList("orderFourWeekRateTable" ,4);
+    stockWeekList("orderFiveWeekRateTable" ,5);
 
     $("#searchDataButton").click(function () {
         sectorCycleStatic(1 ,'一级行业');
         stockMonthList('orderMonthRateTable');
         stockWeekList("orderOneWeekRateTable" ,1);
-        // stockWeekList("orderTowWeekRateTable" ,2);
-        // stockWeekList("orderThreeWeekRateTable" ,3);
-        // stockWeekList("orderFourWeekRateTable" ,4);
-        // stockWeekList("orderFiveWeekRateTable" ,5);
+        stockWeekList("orderTowWeekRateTable" ,2);
+        stockWeekList("orderThreeWeekRateTable" ,3);
+        stockWeekList("orderFourWeekRateTable" ,4);
+        stockWeekList("orderFiveWeekRateTable" ,5);
     });
 });
 
@@ -141,7 +141,7 @@ function stockMonthList(idBox ,sectorType , sectorName) {
         showRefresh: false,                  //是否显示刷新按钮
         minimumCountColumns: 2,             //最少允许的列数
         clickToSelect: true,                //是否启用点击选中行
-        height: 536,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        // height: 536,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
@@ -277,7 +277,7 @@ function stockWeekList(idBox ,staticWeek) {
         showRefresh: false,                  //是否显示刷新按钮
         minimumCountColumns: 2,             //最少允许的列数
         clickToSelect: true,                //是否启用点击选中行
-        height: 536,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        // height: 536,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
