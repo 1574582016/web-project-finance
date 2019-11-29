@@ -26,9 +26,9 @@ public class StockRiseRateServiceImpl extends ServiceImpl<StockRiseRateMapper,St
     }
 
     @Override
-    public Page<PointMonthStock_VO> getPointMonthStockList(Integer page, Integer size, String staticDate, String staticMonth, String staticRate, String staticAmplitude) {
+    public Page<PointMonthStock_VO> getPointMonthStockList(Integer page, Integer size, String staticDate, String staticMonth, String staticRate, String staticAmplitude, String firstSector, String secondSector, String thirdSecotor, String forthSector ) {
         Page<PointMonthStock_VO> pageInfo = new Page<PointMonthStock_VO>(page, size);
-        List<PointMonthStock_VO> list = baseMapper.getPointMonthStockList(pageInfo, staticDate, staticMonth, staticRate, staticAmplitude);
+        List<PointMonthStock_VO> list = baseMapper.getPointMonthStockList(pageInfo, staticDate, staticMonth, staticRate, staticAmplitude , firstSector, secondSector, thirdSecotor, forthSector );
         if(StringUtils.isNotBlank(staticMonth)){
             int month = Integer.parseInt(staticMonth);
             for(PointMonthStock_VO stock_vo : list){

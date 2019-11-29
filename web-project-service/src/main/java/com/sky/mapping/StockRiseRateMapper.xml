@@ -371,6 +371,18 @@
         WHERE r.`deal_period` = 3
         AND s.`publish_time` &lt;= #{staticDate}
         AND s.`stock_name` NOT REGEXP 'ST'
+        <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
+            AND s.first_sector = #{firstSector}
+        </if>
+        <if test="secondSector != null and secondSector != '' and secondSector != 'undefined'">
+            AND s.second_sector = #{secondSector}
+        </if>
+        <if test="thirdSecotor != null and thirdSecotor != '' and thirdSecotor != 'undefined'">
+            AND s.third_secotor = #{thirdSecotor}
+        </if>
+        <if test="forthSector != null and forthSector != '' and forthSector != 'undefined'">
+            AND s.forth_sector = #{forthSector}
+        </if>
         <if test="staticMonth != null and staticMonth != '' and staticMonth != 'undefined' and staticMonth == '1'.toString()">
             <if test="staticRate != null and staticRate != '' and staticRate != 'undefined'">
                 AND r.`one_rise` >= #{staticRate}

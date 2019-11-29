@@ -158,12 +158,16 @@ public class HandleSectorCycleApiController extends AbstractController {
                                          String staticDate,
                                          String staticMonth,
                                          String staticRate,
-                                         String staticAmplitude){
-        System.out.println("===========staticDate=============" + staticDate);
-        System.out.println("===========staticMonth=============" + staticMonth);
-        System.out.println("===========staticRate=============" + staticRate);
-        System.out.println("===========staticAmplitude=============" + staticAmplitude);
-        Page selectedPage = stockRiseRateService.getPointMonthStockList(page , size , staticDate, staticMonth, staticRate, staticAmplitude);
+                                         String staticAmplitude,
+                                         String firstSector,
+                                         String secondSector,
+                                         String thirdSecotor,
+                                         String forthSector){
+        firstSector = firstSector.split("-")[0];
+        secondSector = secondSector.split("-")[0];
+        thirdSecotor = thirdSecotor.split("-")[0];
+        forthSector = forthSector.split("-")[0];
+        Page selectedPage = stockRiseRateService.getPointMonthStockList(page , size , staticDate, staticMonth, staticRate, staticAmplitude , firstSector, secondSector, thirdSecotor, forthSector );
         return PageData(selectedPage);
     }
 }

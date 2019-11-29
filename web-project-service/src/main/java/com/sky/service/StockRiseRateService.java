@@ -26,5 +26,9 @@ public interface StockRiseRateService extends IService<StockRiseRate> {
                                                     String staticDate ,
                                                     String staticMonth ,
                                                     String staticRate ,
-                                                    String staticAmplitude );
+                                                    String staticAmplitude ,
+                                                    String firstSector,
+                                                    String secondSector,
+                                                    String thirdSecotor,
+                                                    String forthSector);
 }

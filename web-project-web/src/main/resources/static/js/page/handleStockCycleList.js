@@ -3,11 +3,11 @@ $(function () {
     drawWeight = $('#firstSector').width();
 
     sectorCycleStatic(1 ,'一级行业');
-    stockMonthList();
+    stockMonthList('orderMonthRateTable');
 
     $("#searchDataButton").click(function () {
         sectorCycleStatic(1 ,'一级行业');
-        stockMonthList();
+        stockMonthList('orderMonthRateTable');
     });
 });
 
@@ -74,19 +74,36 @@ function sectorCycleStatic(sectorType , sectorName) {
                 if(sectorType < 4){
                     sectorCycleStatic( sectorType + 1 , params.data.name);
                 }
+                stockMonthList('pointSectorTable' ,sectorType , params.data.name)
             });
         });
 }
 
-function stockMonthList() {
-    $('#tableList').bootstrapTable('destroy').bootstrapTable({
+function stockMonthList(idBox ,sectorType , sectorName) {
+    var firstSector = "";
+    var secondSector = "";
+    var thirdSecotor = "";
+    var forthSector = "" ;
+    if(sectorType === 1){
+        firstSector = sectorName ;
+    }
+    if(sectorType === 2){
+        secondSector = sectorName ;
+    }
+    if(sectorType === 3){
+        thirdSecotor = sectorName ;
+    }
+    if(sectorType === 4){
+        forthSector = sectorName ;
+    }
+    $('#' + idBox).bootstrapTable('destroy').bootstrapTable({
         url: '/api/handleCycle/getPointMonthStockList' ,
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
         striped: true,                      //是否显示行间隔色
         cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-        pagination: false,                   //是否显示分页（*）
+        pagination: true,                   //是否显示分页（*）
         sortable: true,                     //是否启用排序
         sortOrder: "id desc",                   //排序方式
         queryParams: function (params) {
@@ -96,7 +113,11 @@ function stockMonthList() {
                 staticDate: $("#static_date").val() ,
                 staticMonth: $("#static_month").val() ,
                 staticRate: $("#static_rate").val() ,
-                staticAmplitude: $("#static_amplitude").val()
+                staticAmplitude: $("#static_amplitude").val() ,
+                firstSector : firstSector ,
+                secondSector : secondSector ,
+                thirdSecotor : thirdSecotor ,
+                forthSector : forthSector
             };
             return temp;
         },
@@ -105,7 +126,7 @@ function stockMonthList() {
         pageSize: 10,                       //每页的记录行数（*）
         pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
         search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-        strictSearch: false,
+        strictSearch: true,
         showColumns: true,                  //是否显示所有的列
         showRefresh: true,                  //是否显示刷新按钮
         minimumCountColumns: 2,             //最少允许的列数
@@ -115,7 +136,6 @@ function stockMonthList() {
         showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
         detailView: false,                   //是否显示父子表
-        scrollTo: true,
         columns: [
             {
                 field: 'forthSector',
@@ -173,7 +193,7 @@ function stockMonthList() {
                 align: 'center',
                 valign: 'middle'
             },{
-                field: 'publishDate',
+                field: 'publishTime',
                 title: '上市日期',
                 align: 'center',
                 valign: 'middle'
