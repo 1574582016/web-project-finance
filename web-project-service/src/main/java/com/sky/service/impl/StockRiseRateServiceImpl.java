@@ -33,6 +33,7 @@ public class StockRiseRateServiceImpl extends ServiceImpl<StockRiseRateMapper,St
         if(StringUtils.isNotBlank(staticMonth)){
             int month = Integer.parseInt(staticMonth);
             for(PointMonthStock_VO stock_vo : list){
+                String weekLevel = "";
                 switch (month){
                     case 1 :
                         stock_vo.setCommonRise(stock_vo.getOneRise());
@@ -95,6 +96,77 @@ public class StockRiseRateServiceImpl extends ServiceImpl<StockRiseRateMapper,St
                         stock_vo.setCommonShock(stock_vo.getTwelveShock());
                         break;
                 }
+
+                if(stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(90)) >= 0){
+                    weekLevel += "S" ;
+                }else if(stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(80)) >= 0 && stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(90)) < 0){
+                    weekLevel += "A" ;
+                }else if(stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(70)) >= 0 && stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(80)) < 0){
+                    weekLevel += "B" ;
+                }else if(stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(60)) >= 0 && stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(70)) < 0){
+                    weekLevel += "C" ;
+                }else if(stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(50)) >= 0 && stock_vo.getOneWeekRise().compareTo(BigDecimal.valueOf(60)) < 0){
+                    weekLevel += "D" ;
+                }else{
+                    weekLevel += "E" ;
+                }
+
+                if(stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(90)) >= 0){
+                    weekLevel += "S" ;
+                }else if(stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(80)) >= 0 && stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(90)) < 0){
+                    weekLevel += "A" ;
+                }else if(stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(70)) >= 0 && stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(80)) < 0){
+                    weekLevel += "B" ;
+                }else if(stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(60)) >= 0 && stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(70)) < 0){
+                    weekLevel += "C" ;
+                }else if(stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(50)) >= 0 && stock_vo.getTowWeekRise().compareTo(BigDecimal.valueOf(60)) < 0){
+                    weekLevel += "D" ;
+                }else{
+                    weekLevel += "E" ;
+                }
+
+                if(stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(90)) >= 0){
+                    weekLevel += "S" ;
+                }else if(stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(80)) >= 0 && stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(90)) < 0){
+                    weekLevel += "A" ;
+                }else if(stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(70)) >= 0 && stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(80)) < 0){
+                    weekLevel += "B" ;
+                }else if(stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(60)) >= 0 && stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(70)) < 0){
+                    weekLevel += "C" ;
+                }else if(stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(50)) >= 0 && stock_vo.getThreeWeekRise().compareTo(BigDecimal.valueOf(60)) < 0){
+                    weekLevel += "D" ;
+                }else{
+                    weekLevel += "E" ;
+                }
+
+                if(stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(90)) >= 0){
+                    weekLevel += "S" ;
+                }else if(stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(80)) >= 0 && stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(90)) < 0){
+                    weekLevel += "A" ;
+                }else if(stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(70)) >= 0 && stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(80)) < 0){
+                    weekLevel += "B" ;
+                }else if(stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(60)) >= 0 && stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(70)) < 0){
+                    weekLevel += "C" ;
+                }else if(stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(50)) >= 0 && stock_vo.getFourWeekRise().compareTo(BigDecimal.valueOf(60)) < 0){
+                    weekLevel += "D" ;
+                }else{
+                    weekLevel += "E" ;
+                }
+
+                if(stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(90)) >= 0){
+                    weekLevel += "S" ;
+                }else if(stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(80)) >= 0 && stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(90)) < 0){
+                    weekLevel += "A" ;
+                }else if(stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(70)) >= 0 && stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(80)) < 0){
+                    weekLevel += "B" ;
+                }else if(stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(60)) >= 0 && stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(70)) < 0){
+                    weekLevel += "C" ;
+                }else if(stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(50)) >= 0 && stock_vo.getFiveWeekRise().compareTo(BigDecimal.valueOf(60)) < 0){
+                    weekLevel += "D" ;
+                }else{
+                    weekLevel += "E" ;
+                }
+                stock_vo.setWeekLevel(weekLevel);
             }
         }
         pageInfo.setRecords(list);

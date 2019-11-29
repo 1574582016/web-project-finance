@@ -141,7 +141,7 @@ function stockMonthList(idBox ,sectorType , sectorName) {
         showRefresh: false,                  //是否显示刷新按钮
         minimumCountColumns: 2,             //最少允许的列数
         clickToSelect: true,                //是否启用点击选中行
-        // height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        height: 536,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
@@ -205,6 +205,11 @@ function stockMonthList(idBox ,sectorType , sectorName) {
             },{
                 field: 'publishTime',
                 title: '上市日期',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'weekLevel',
+                title: '周级',
                 align: 'center',
                 valign: 'middle'
             },{
@@ -272,7 +277,7 @@ function stockWeekList(idBox ,staticWeek) {
         showRefresh: false,                  //是否显示刷新按钮
         minimumCountColumns: 2,             //最少允许的列数
         clickToSelect: true,                //是否启用点击选中行
-        // height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        height: 536,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
         cardView: false,                    //是否显示详细视图
@@ -345,9 +350,9 @@ function stockWeekList(idBox ,staticWeek) {
                 valign: 'middle',
                 formatter: function (value, row, index) {
                     if(row.isPool == 1){
-                        return '<a class="text_link_a" href="#" style="color: red;">'+ value +'</a>';
+                        return '<span class="label label-success">'+ value +'</span>';
                     }else{
-                        return '<a class="text_link_a" href="#" style="color: grey;">'+ value +'</a>';
+                        return value;
                     }
                 }
             },{
