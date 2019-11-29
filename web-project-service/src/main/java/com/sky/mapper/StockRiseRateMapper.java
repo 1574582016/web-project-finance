@@ -33,4 +33,11 @@ public interface StockRiseRateMapper extends BaseMapper<StockRiseRate> {
                                                     @Param("secondSector") String secondSector,
                                                     @Param("thirdSecotor") String thirdSecotor,
                                                     @Param("forthSector") String forthSector);
+
+    List<PointMonthStock_VO> getPointWeekStockList(Pagination page ,
+                                                    @Param("staticDate") String staticDate ,
+                                                    @Param("staticMonth") String staticMonth ,
+                                                    @Param("staticWeek") String staticWeek ,
+                                                    @Param("staticRate") String staticRate ,
+                                                    @Param("staticAmplitude") String staticAmplitude);
 }

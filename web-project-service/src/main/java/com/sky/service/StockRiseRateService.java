@@ -31,4 +31,11 @@ public interface StockRiseRateService extends IService<StockRiseRate> {
                                                     String secondSector,
                                                     String thirdSecotor,
                                                     String forthSector);
+
+    Page<PointMonthStock_VO> getPointWeekStockList(Integer page , Integer size ,
+                                                    String staticDate ,
+                                                    String staticMonth ,
+                                                    String staticWeek ,
+                                                    String staticRate ,
+                                                    String staticAmplitude );
 }

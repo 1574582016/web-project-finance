@@ -170,4 +170,18 @@ public class HandleSectorCycleApiController extends AbstractController {
         Page selectedPage = stockRiseRateService.getPointMonthStockList(page , size , staticDate, staticMonth, staticRate, staticAmplitude , firstSector, secondSector, thirdSecotor, forthSector );
         return PageData(selectedPage);
     }
+
+
+    @LogRecord(name = "getPointWeekStockList" ,description = "查询每周增长企业")
+    @PostMapping("/getPointWeekStockList")
+    public Object getPointWeekStockList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
+                                         @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
+                                         String staticDate,
+                                         String staticMonth,
+                                         String staticWeek,
+                                         String staticRate,
+                                         String staticAmplitude){
+        Page selectedPage = stockRiseRateService.getPointWeekStockList(page , size , staticDate, staticMonth, staticWeek , staticRate, staticAmplitude );
+        return PageData(selectedPage);
+    }
 }

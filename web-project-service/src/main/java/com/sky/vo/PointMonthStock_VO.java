@@ -103,4 +103,45 @@ public class PointMonthStock_VO extends VoModel {
     private BigDecimal commonAmplitude ;
 
     private BigDecimal commonShock ;
+
+
+    private BigDecimal pointWeekRise ;
+
+    private BigDecimal pointWeekAmplitude ;
+
+    private BigDecimal pointWeekShock ;
+
+    private String weekLevel ;
+
+    private Integer isPool ;
+
+    private BigDecimal oneWeekRise ;
+
+    private BigDecimal oneWeekAmplitude ;
+
+    private BigDecimal oneWeekShock ;
+
+    private BigDecimal towWeekRise ;
+
+    private BigDecimal towWeekAmplitude ;
+
+    private BigDecimal towWeekShock ;
+
+    private BigDecimal threeWeekRise ;
+
+    private BigDecimal threeWeekAmplitude ;
+
+    private BigDecimal threeWeekShock ;
+
+    private BigDecimal fourWeekRise ;
+
+    private BigDecimal fourWeekAmplitude ;
+
+    private BigDecimal fourWeekShock ;
+
+    private BigDecimal fiveWeekRise ;
+
+    private BigDecimal fiveWeekAmplitude ;
+
+    private BigDecimal fiveWeekShock ;
 }
