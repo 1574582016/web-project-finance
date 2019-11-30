@@ -25,6 +25,8 @@
         <result column="profit_grow_score" property="profitGrowScore"/>
         <result column="asset_grow_score" property="assetGrowScore"/>
         <result column="flow_score" property="flowScore"/>
+        <result column="build_time" property="buildTime"/>
+        <result column="publish_time" property="publishTime"/>
     </resultMap>
 
     <select id="getStockCompanySectorList" parameterType="java.lang.String" resultType="com.sky.vo.CompanySectorVO">

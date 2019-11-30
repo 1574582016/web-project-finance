@@ -6,9 +6,11 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.CommonHttpUtil;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.StockCompanySector;
+import com.sky.model.StockRiseRate;
 import com.sky.service.StockCompanyAssetService;
 import com.sky.service.StockCompanyProfitService;
 import com.sky.service.StockCompanySectorService;
+import com.sky.service.StockRiseRateService;
 import com.sky.vo.StockCompanyAssetVO;
 import com.sky.vo.StockCompanyProfitVO;
 import org.junit.Test;
@@ -35,6 +37,9 @@ public class Test06 {
 
     @Autowired
     private StockCompanyAssetService stockCompanyAssetService;
+
+    @Autowired
+    private StockRiseRateService stockRiseRateService ;
 
     @Test
     public void test01(){
@@ -313,6 +318,12 @@ public class Test06 {
         jsonObject.put("assetDebtRate" , assetDebtRate);
         jsonObject.put("assetDebtRateLevel" , assetDebtRateLevel);
         return jsonObject;
+    }
+
+
+    @Test
+    public void test009(){
+        stockRiseRateService.createWeekDealReport(12 , null);
     }
 
 /**

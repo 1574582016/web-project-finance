@@ -552,6 +552,10 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return days;
 	}
 
+	public static boolean date1CompareDate2(String date1,String date2){
+          return (parseDate(date1).getTime() >= parseDate(date2).getTime());
+	}
+
 
 	public static JSONObject getYearMonthWeekDay(String pointDay){
 		JSONObject jsonObject = new JSONObject();

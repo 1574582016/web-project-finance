@@ -38,4 +38,9 @@ public interface StockRiseRateService extends IService<StockRiseRate> {
                                                     String staticWeek ,
                                                     String staticRate ,
                                                     String staticAmplitude );
+
+
+    void createMonthDealReport(Integer staticMonth , String staticDate);
+
+    void createWeekDealReport(Integer staticMonth , String staticDate);
 }

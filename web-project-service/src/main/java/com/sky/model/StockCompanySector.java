@@ -103,4 +103,16 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
      */
     @TableField("flow_score")
     private BigDecimal flowScore ;
+
+    /**
+     *成立时间
+     */
+    @TableField("build_time")
+    private String buildTime ;
+
+    /**
+     *上市时间
+     */
+    @TableField("publish_time")
+    private String publishTime ;
 }

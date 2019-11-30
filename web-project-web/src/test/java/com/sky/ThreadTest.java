@@ -117,6 +117,9 @@ public class ThreadTest {
                             mk = "2";
                         }
                         for(int t = 1 ; t <=7 ; t++) {
+                            if(t == 2 || t == 3){
+                                continue;
+                            }
                             List<StockDealData> dataList = stockDealDataService.spiderStockDealData(t, stockCode.getStockCode(), mk);
 
                             if (null != dataList && dataList.size() > 0) {

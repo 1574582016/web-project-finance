@@ -1,18 +1,26 @@
 package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.sky.core.utils.DateUtils;
 import com.sky.mapper.StockRiseRateMapper;
+import com.sky.model.StockCompanySector;
 import com.sky.model.StockRiseRate;
+import com.sky.service.StockCompanySectorService;
 import com.sky.service.StockRiseRateService;
 import com.sky.vo.PointMonthStock_VO;
 import com.sky.vo.StaticSectorNum_VO;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ThinkPad on 2019/11/23.
@@ -20,6 +28,9 @@ import java.util.List;
 @Service
 @Transactional
 public class StockRiseRateServiceImpl extends ServiceImpl<StockRiseRateMapper,StockRiseRate> implements StockRiseRateService {
+
+    @Autowired
+    private StockCompanySectorService stockCompanySectorService ;
 
     @Override
     public List<StaticSectorNum_VO> getStaticSectorNum(String staticDate, String staticMonth, String staticRate, String staticAmplitude, String sectorType, String firstSector, String secondSector, String thirdSecotor) {
@@ -484,5 +495,136 @@ public class StockRiseRateServiceImpl extends ServiceImpl<StockRiseRateMapper,St
 
         pageInfo.setRecords(list);
         return pageInfo;
+    }
+
+
+    @Override
+    public void createMonthDealReport(Integer staticMonth , String staticDate) {
+        EntityWrapper<StockRiseRate> entityWrapper = new EntityWrapper<>();
+        switch (staticMonth){
+            case 1 : entityWrapper.where("point_month = 1 and one_rise >= 80").orderBy("one_rise desc , one_amplitude desc"); break;
+            case 2 : entityWrapper.where("point_month = 2 and tow_rise >= 80").orderBy("tow_rise desc , tow_amplitude desc"); break;
+            case 3 : entityWrapper.where("point_month = 3 and three_rise >= 80").orderBy("three_rise desc , three_amplitude desc"); break;
+            case 4 : entityWrapper.where("point_month = 4 and four_rise >= 80").orderBy("four_rise desc , four_amplitude desc"); break;
+            case 5 : entityWrapper.where("point_month = 5 and five_rise >= 80").orderBy("five_rise desc , five_amplitude desc"); break;
+            case 6 : entityWrapper.where("point_month = 6 and six_rise >= 80").orderBy("six_rise desc , six_amplitude desc"); break;
+            case 7 : entityWrapper.where("point_month = 7 and seven_rise >= 80").orderBy("seven_rise desc , seven_amplitude desc"); break;
+            case 8 : entityWrapper.where("point_month = 8 and eight_rise >= 80").orderBy("eight_rise desc , eight_amplitude desc"); break;
+            case 9 : entityWrapper.where("point_month = 9 and nine_rise >= 80").orderBy("nine_rise desc , nine_amplitude desc"); break;
+            case 10 : entityWrapper.where("point_month = 10 and ten_rise >= 80").orderBy("ten_rise desc , ten_amplitude desc"); break;
+            case 11 : entityWrapper.where("point_month = 11 and eleven_rise >= 80").orderBy("eleven_rise desc , eleven_amplitude desc"); break;
+            case 12 : entityWrapper.where("point_month = 12 and twelve_rise >= 80").orderBy("twelve_rise desc , twelve_amplitude desc"); break;
+        }
+        List<StockRiseRate> list  = baseMapper.selectList(entityWrapper);
+        List<StockRiseRate> longList = new ArrayList<>();
+        List<StockRiseRate> middleList = new ArrayList<>();
+        List<StockRiseRate> shortList = new ArrayList<>();
+        for(StockRiseRate riseRate : list){
+            switch (staticMonth){
+                case 12 :
+                    int just = 1 ;
+                    if(riseRate.getOneRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                        just += 1;
+                    }
+                    if(riseRate.getTowRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                        just += 1;
+                    }
+                    if(just == 3){
+                        StockCompanySector companySector = stockCompanySectorService.selectOne(new EntityWrapper<StockCompanySector>().where("stock_code = {0}" , riseRate.getStockCode()));
+                        if(DateUtils.date1CompareDate2(riseRate.getStartTime() , companySector.getPublishTime())){
+                            longList.add(riseRate);
+                        }else{
+                            shortList.add(riseRate);
+                        }
+                    }
+
+                    if(just == 2){
+                        StockCompanySector companySector = stockCompanySectorService.selectOne(new EntityWrapper<StockCompanySector>().where("stock_code = {0}" , riseRate.getStockCode()));
+                        if(DateUtils.date1CompareDate2(riseRate.getStartTime() , companySector.getPublishTime())){
+                            middleList.add(riseRate);
+                        }else {
+                            shortList.add(riseRate);
+                        }
+                    }
+
+                    if(just == 1){
+                        shortList.add(riseRate);
+                    }
+            }
+        }
+        System.out.println(longList.size());
+        System.out.println(middleList.size());
+        System.out.println(shortList.size());
+    }
+
+    @Override
+    public void createWeekDealReport(Integer staticMonth, String staticDate) {
+        List<StockRiseRate> list  = baseMapper.selectList(new EntityWrapper<StockRiseRate>().where("point_month = {0} AND deal_period = 2 AND ((one_rise >= 80 AND one_amplitude >=1) OR (tow_rise >= 80 AND tow_amplitude >= 1) OR (three_rise >= 80 AND three_amplitude >= 1) OR (four_rise >= 80 AND four_amplitude >= 1) OR (five_rise >= 80 AND five_amplitude >= 1))" , staticMonth ));
+        List<StockRiseRate> longList = new ArrayList<>();
+        List<StockRiseRate> middleList = new ArrayList<>();
+        List<StockRiseRate> shortList = new ArrayList<>();
+        for(StockRiseRate riseRate : list){
+            int just = 0 ;
+            if(riseRate.getOneRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                just += 1 ;
+            }
+            if(riseRate.getTowRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                just += 1 ;
+            }
+            if(riseRate.getThreeRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                just += 1 ;
+            }
+            if(riseRate.getFourRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                just += 1 ;
+            }
+            if(riseRate.getFiveRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                just += 1 ;
+            }
+            if(just >= 3){
+                longList.add(riseRate);
+            }
+            if(just == 2){
+                middleList.add(riseRate);
+            }
+            if(just == 1){
+                shortList.add(riseRate);
+            }
+        }
+        System.out.println(longList.size());
+        System.out.println(middleList.size());
+        System.out.println(shortList.size());
+        System.out.println(splitWeekData(shortList).toString());
+    }
+
+    private Map<String ,List<StockRiseRate>> splitWeekData(List<StockRiseRate> list){
+        List<StockRiseRate> oneList = new ArrayList<>();
+        List<StockRiseRate> towList = new ArrayList<>();
+        List<StockRiseRate> threeList = new ArrayList<>();
+        List<StockRiseRate> fourList = new ArrayList<>();
+        List<StockRiseRate> fiveList = new ArrayList<>();
+        for(StockRiseRate riseRate : list){
+            if(riseRate.getOneRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                oneList.add(riseRate);
+            }
+            if(riseRate.getTowRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                towList.add(riseRate);
+            }
+            if(riseRate.getThreeRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                threeList.add(riseRate);
+            }
+            if(riseRate.getFourRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                fourList.add(riseRate);
+            }
+            if(riseRate.getFiveRise().compareTo(BigDecimal.valueOf(80)) >= 0){
+                fiveList.add(riseRate);
+            }
+        }
+        Map<String ,List<StockRiseRate>> map = new HashMap<>();
+        map.put("oneWeek" , oneList);
+        map.put("towWeek" , towList);
+        map.put("threeWeek" , threeList);
+        map.put("fourWeek" , fourList);
+        map.put("fiveWeek" , fiveList);
+        return map;
     }
 }

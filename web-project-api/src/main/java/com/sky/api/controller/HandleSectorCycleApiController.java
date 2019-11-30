@@ -2,10 +2,12 @@ package com.sky.api.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.model.SectorRiseRate;
+import com.sky.model.StockRiseRate;
 import com.sky.vo.PointMonthStock_VO;
 import com.sky.vo.StaticSectorNum_VO;
 import com.sky.vo.StockIndexMonthData_VO;
@@ -183,5 +185,147 @@ public class HandleSectorCycleApiController extends AbstractController {
                                          String staticAmplitude){
         Page selectedPage = stockRiseRateService.getPointWeekStockList(page , size , staticDate, staticMonth, staticWeek , staticRate, staticAmplitude );
         return PageData(selectedPage);
+    }
+
+    @LogRecord(name = "getPointStockMonthList" ,description = "查询企业月增长分布")
+    @PostMapping("/getPointStockMonthList")
+    public Object getPointStockMonthList(String stockCode , String staticDate){
+        StockRiseRate riseRate = stockRiseRateService.selectOne(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and start_time = {1} and deal_period = 3" , stockCode ,staticDate));
+        Map<String ,JSONArray> map = new HashMap<>();
+        JSONArray rateArr = new JSONArray();
+        JSONArray upperArr = new JSONArray();
+        JSONArray shockArr = new JSONArray();
+        rateArr.add(riseRate.getOneRise());
+        rateArr.add(riseRate.getTowRise());
+        rateArr.add(riseRate.getThreeRise());
+        rateArr.add(riseRate.getFourRise());
+        rateArr.add(riseRate.getFiveRise());
+        rateArr.add(riseRate.getSixRise());
+        rateArr.add(riseRate.getSevenRise());
+        rateArr.add(riseRate.getEightRise());
+        rateArr.add(riseRate.getNineRise());
+        rateArr.add(riseRate.getTenRise());
+        rateArr.add(riseRate.getElevenRise());
+        rateArr.add(riseRate.getTwelveRise());
+
+        upperArr.add(riseRate.getOneAmplitude());
+        upperArr.add(riseRate.getTowAmplitude());
+        upperArr.add(riseRate.getThreeAmplitude());
+        upperArr.add(riseRate.getFourAmplitude());
+        upperArr.add(riseRate.getFiveAmplitude());
+        upperArr.add(riseRate.getSixAmplitude());
+        upperArr.add(riseRate.getSevenAmplitude());
+        upperArr.add(riseRate.getEightAmplitude());
+        upperArr.add(riseRate.getNineAmplitude());
+        upperArr.add(riseRate.getTenAmplitude());
+        upperArr.add(riseRate.getElevenAmplitude());
+        upperArr.add(riseRate.getTwelveAmplitude());
+
+        shockArr.add(riseRate.getOneShock());
+        shockArr.add(riseRate.getTowShock());
+        shockArr.add(riseRate.getThreeShock());
+        shockArr.add(riseRate.getFourShock());
+        shockArr.add(riseRate.getFiveShock());
+        shockArr.add(riseRate.getSixShock());
+        shockArr.add(riseRate.getSevenShock());
+        shockArr.add(riseRate.getEightShock());
+        shockArr.add(riseRate.getNineShock());
+        shockArr.add(riseRate.getTenShock());
+        shockArr.add(riseRate.getElevenShock());
+        shockArr.add(riseRate.getTwelveShock());
+        map.put("rateArr" , rateArr);
+        map.put("upperArr" , upperArr);
+        map.put("shockArr" , shockArr);
+        return ResponseEntity.ok(MapSuccess("查询成功",map));
+    }
+
+
+    @LogRecord(name = "getPointStockWeekList" ,description = "查询企业周增长分布")
+    @PostMapping("/getPointStockWeekList")
+    public Object getPointStockWeekList(String stockCode , String staticDate){
+        List<StockRiseRate> list = stockRiseRateService.selectList(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and start_time = {1} and deal_period = 2" , stockCode ,staticDate));
+        Map<String ,JSONArray> map = new HashMap<>();
+        JSONArray titleArr = new JSONArray();
+        JSONArray rateArr = new JSONArray();
+        JSONArray upperArr = new JSONArray();
+        JSONArray shockArr = new JSONArray();
+        for(StockRiseRate riseRate : list){
+            titleArr.add("第1周/" + riseRate.getPointMonth() + "月");
+            titleArr.add("第2周/" + riseRate.getPointMonth() + "月");
+            titleArr.add("第3周/" + riseRate.getPointMonth() + "月");
+            titleArr.add("第4周/" + riseRate.getPointMonth() + "月");
+            titleArr.add("第5周/" + riseRate.getPointMonth() + "月");
+
+            rateArr.add(riseRate.getOneRise());
+            rateArr.add(riseRate.getTowRise());
+            rateArr.add(riseRate.getThreeRise());
+            rateArr.add(riseRate.getFourRise());
+            rateArr.add(riseRate.getFiveRise());
+
+            upperArr.add(riseRate.getOneAmplitude());
+            upperArr.add(riseRate.getTowAmplitude());
+            upperArr.add(riseRate.getThreeAmplitude());
+            upperArr.add(riseRate.getFourAmplitude());
+            upperArr.add(riseRate.getFiveAmplitude());
+
+            shockArr.add(riseRate.getOneShock());
+            shockArr.add(riseRate.getTowShock());
+            shockArr.add(riseRate.getThreeShock());
+            shockArr.add(riseRate.getFourShock());
+            shockArr.add(riseRate.getFiveShock());
+        }
+        map.put("titleArr" , titleArr);
+        map.put("rateArr" , rateArr);
+        map.put("upperArr" , upperArr);
+        map.put("shockArr" , shockArr);
+        return ResponseEntity.ok(MapSuccess("查询成功",map));
+    }
+
+    @LogRecord(name = "getPointStockDayList" ,description = "查询企业天增长分布")
+    @PostMapping("/getPointStockDayList")
+    public Object getPointStockDayList(String stockCode , String staticDate){
+        List<StockRiseRate> list = stockRiseRateService.selectList(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and start_time = {1} and deal_period = 1" , stockCode ,staticDate));
+        Map<String ,JSONArray> map = new HashMap<>();
+        JSONArray titleArr = new JSONArray();
+        JSONArray rateArr = new JSONArray();
+        JSONArray upperArr = new JSONArray();
+        JSONArray shockArr = new JSONArray();
+        for(StockRiseRate riseRate : list){
+            titleArr.add("第1天/第" + riseRate.getPointWeek() + "周/"  + riseRate.getPointMonth() + "月");
+            titleArr.add("第2天/第" + riseRate.getPointWeek() + "周/" + riseRate.getPointMonth() + "月");
+            titleArr.add("第3天/第" + riseRate.getPointWeek() + "周/" + riseRate.getPointMonth() + "月");
+            titleArr.add("第4天/第" + riseRate.getPointWeek() + "周/" + riseRate.getPointMonth() + "月");
+            titleArr.add("第5天/第" + riseRate.getPointWeek() + "周/" + riseRate.getPointMonth() + "月");
+
+            rateArr.add(riseRate.getOneRise());
+            rateArr.add(riseRate.getTowRise());
+            rateArr.add(riseRate.getThreeRise());
+            rateArr.add(riseRate.getFourRise());
+            rateArr.add(riseRate.getFiveRise());
+
+            upperArr.add(riseRate.getOneAmplitude());
+            upperArr.add(riseRate.getTowAmplitude());
+            upperArr.add(riseRate.getThreeAmplitude());
+            upperArr.add(riseRate.getFourAmplitude());
+            upperArr.add(riseRate.getFiveAmplitude());
+
+            shockArr.add(riseRate.getOneShock());
+            shockArr.add(riseRate.getTowShock());
+            shockArr.add(riseRate.getThreeShock());
+            shockArr.add(riseRate.getFourShock());
+            shockArr.add(riseRate.getFiveShock());
+        }
+        map.put("titleArr" , titleArr);
+        map.put("rateArr" , rateArr);
+        map.put("upperArr" , upperArr);
+        map.put("shockArr" , shockArr);
+        return ResponseEntity.ok(MapSuccess("查询成功",map));
+    }
+
+    @LogRecord(name = "createMonthDealReport" ,description = "创建月度交易报告")
+    @PostMapping("/createMonthDealReport")
+    public Object createMonthDealReport(Integer staticMonth , String staticDate){
+
+        return ResponseEntity.ok(MapSuccess("查询成功"));
     }
 }
