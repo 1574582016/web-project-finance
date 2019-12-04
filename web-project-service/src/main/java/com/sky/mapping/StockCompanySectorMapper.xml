@@ -157,14 +157,13 @@
         REPLACE(c.`company_name`, '股份有限公司', '') company_name,
         c.`company_region` ,
         c.`establish_date` ,
-        c.`publish_date` ,
+        s.`publish_time` publish_date ,
         GROUP_CONCAT(i.index_name SEPARATOR '->') groupIndex ,
         s.main_business
         FROM stock_company_sector s
         LEFT JOIN stock_company_base c ON s.`stock_code` = c.`stock_a_code`
         LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
-        WHERE LEFT(s.`stock_code`,1) != 3
-        AND  LEFT(s.`stock_code`,2) != 68
+        WHERE LEFT(s.`stock_code`,2) != 68
         <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
             AND s.`first_sector` = #{firstSector}
         </if>

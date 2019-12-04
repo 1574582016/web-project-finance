@@ -71,7 +71,6 @@ public class LearnEnglishWordApiController extends AbstractController {
         if(num == 1 && body.getId() == null){//添加时
             return ResponseEntity.ok(MapError("该单词已存在！"));
         }
-        body.setType(body.getEnglish().substring(0,1).toUpperCase());
         learnEnglishWordService.insertOrUpdate(body);
         return ResponseEntity.ok(MapSuccess("保存成功！"));
     }

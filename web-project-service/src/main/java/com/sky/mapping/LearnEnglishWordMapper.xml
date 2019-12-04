@@ -4,13 +4,12 @@
     <resultMap id="BaseResultMap" type="com.sky.model.LearnEnglishWord">
         <id column="id" property="id"/>
 
+        <result column="level" property="level"/>
+        <result column="belong_root" property="belongRoot"/>
+        <result column="common_part" property="commonPart"/>
+        <result column="parent_en" property="parentEn"/>
         <result column="english" property="english"/>
         <result column="pronunciation" property="pronunciation"/>
         <result column="chinese" property="chinese"/>
-        <result column="sentence" property="sentence"/>
-        <result column="level" property="level"/>
-        <result column="master" property="master"/>
-        <result column="type" property="type"/>
-        <result column="learn_date" property="learnDate"/>
     </resultMap>
 </mapper>

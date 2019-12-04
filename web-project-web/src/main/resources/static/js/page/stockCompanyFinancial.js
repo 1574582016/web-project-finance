@@ -19,6 +19,12 @@ $(function () {
         unflowDetbComponent("unflowDetbComponent" ,"非流动负债成分比例"  ,result);
     });
 
+    companyMonthStatic();
+
+    companyWeekStatic();
+
+    companyDayStatic();
+
     $("#backButton").click(function () {
         var firstSector = $("#firstSector").val();
         var secondSector = $("#secondSector").val();
@@ -812,5 +818,299 @@ function profitGrowRate(boxId ,name ,result) {
         ]
     };
     myChart.setOption(option);
+}
+
+function companyMonthStatic() {
+    $('#companyMonth').width($('#mainProfit').width());
+    var myChart = echarts.init(document.getElementById('companyMonth'));
+    var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
+    $.APIPost("/api/handleCycle/getPointStockMonthList?stockCode=" + $("#stock_code").val()
+        + "&staticDate=" + $("#static_date").val()
+        ,function (result) {
+            var option = {
+                title : {
+                    text: $("#stock_code").val()
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['涨率','涨幅' ,'震幅']
+                },
+                toolbox: {
+                    show : false,
+                    feature : {
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'涨率',
+                        type:'bar',
+                        data:result.data.result.rateArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'涨幅',
+                        type:'bar',
+                        data:result.data.result.upperArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'震幅',
+                        type:'bar',
+                        data:result.data.result.shockArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        });
+}
+
+function companyWeekStatic() {
+    $('#companyWeek').width($('#mainProfit').width());
+    var myChart = echarts.init(document.getElementById('companyWeek'));
+    var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
+    $.APIPost("/api/handleCycle/getPointStockWeekList?stockCode=" + $("#stock_code").val()
+        + "&staticDate=" + $("#static_date").val()
+        ,function (result) {
+            var option = {
+                title : {
+                    text: $("#stock_code").val()
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['涨率','涨幅' ,'震幅']
+                },
+                toolbox: {
+                    show : false,
+                    feature : {
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true},
+                        dataZoom: {}
+                    }
+                },
+                dataZoom: [{
+                    type: 'inside'
+                }, {
+                    type: 'slider'
+                }],
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : result.data.result.titleArr
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'涨率',
+                        type:'bar',
+                        data:result.data.result.rateArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'涨幅',
+                        type:'bar',
+                        data:result.data.result.upperArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'震幅',
+                        type:'bar',
+                        data:result.data.result.shockArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        });
+}
+
+function companyDayStatic() {
+    $('#companyDay').width($('#mainProfit').width());
+    var myChart = echarts.init(document.getElementById('companyDay'));
+    var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
+    $.APIPost("/api/handleCycle/getPointStockDayList?stockCode=" + $("#stock_code").val()
+        + "&staticDate=" + $("#static_date").val()
+        ,function (result) {
+            var option = {
+                title : {
+                    text: $("#stock_code").val()
+                },
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['涨率','涨幅' ,'震幅']
+                },
+                toolbox: {
+                    show : false,
+                    feature : {
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true},
+                        dataZoom: {}
+                    }
+                },
+                dataZoom: [{
+                    type: 'inside'
+                }, {
+                    type: 'slider'
+                }],
+                calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : result.data.result.titleArr
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'涨率',
+                        type:'bar',
+                        data:result.data.result.rateArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'涨幅',
+                        type:'bar',
+                        data:result.data.result.upperArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    },
+                    {
+                        name:'震幅',
+                        type:'bar',
+                        data:result.data.result.shockArr,
+                        itemStyle : {
+                            normal : {
+                                label: {
+                                    show: true,
+                                    position: 'top',
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                }
+                            },
+                        }
+                    }
+                ]
+            };
+
+            myChart.setOption(option);
+        });
 }
 
