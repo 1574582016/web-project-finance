@@ -289,32 +289,33 @@ public class NoticTest {
     @Test
     public void test2(){
         List<StockCompanyBase> list = stockCompanyBaseService.selectList(null);
-        List<StockCompanyValueCompare> compareList = stockCompanyValueCompareSerivce.selectList(null);
+//        List<StockCompanyValueCompare> compareList = stockCompanyValueCompareSerivce.selectList(null);
         for(StockCompanyBase companyBase : list){
             String market = "SH";
             String marketNum = "1";
-            System.out.println(companyBase.getStockPlate());
-            System.out.println(companyBase.getStockPlate().indexOf("深交所"));
             if(companyBase.getStockPlate().indexOf("深交所") != -1){
                 market = "SZ";
                 marketNum = "0";
             }
             if(StringUtils.isNotBlank(companyBase.getStockACode())){
-                boolean just = false ;
-                for(StockCompanyValueCompare compare : compareList){
-                       if(companyBase.getStockACode().equals(compare.getStockCode())){
-                           just = true ;
-                           break;
-                       }
-                }
-                if(!just){
+//                boolean just = false ;
+//                for(StockCompanyValueCompare compare : compareList){
+//                       if(companyBase.getStockACode().equals(compare.getStockCode())){
+//                           just = true ;
+//                           break;
+//                       }
+//                }
+//                if(!just){
                     StockCompanyValueCompare valueCompare = stockCompanyValueCompareSerivce.spiderStockCompanyValueCompare("2019" ,market , marketNum ,companyBase.getStockACode() ,companyBase.getCompanyName());
                     System.out.println(valueCompare.toString());
                     StockCompanyValueCompare companyValueCompare = stockCompanyValueCompareSerivce.selectOne(new EntityWrapper<StockCompanyValueCompare>().where("stock_code = {0}" , valueCompare.getStockCode()));
                     if(companyValueCompare == null){
                         stockCompanyValueCompareSerivce.insert(valueCompare);
+                    }else{
+                        valueCompare.setId(companyValueCompare.getId());
+                        stockCompanyValueCompareSerivce.updateById(valueCompare);
                     }
-                }
+//                }
 
             }
 

@@ -84,11 +84,13 @@ public class ProcessCompanyInfo {
 
     @Test
     public void processStockCompanyProduct() throws InterruptedException {
-//        EntityWrapper<StockCode> entityWrapper = new EntityWrapper();
-//        entityWrapper.where("stock_sector = {0}", sector);
-        List<StockCode> codeList = stockCodeService.selectList(new EntityWrapper<StockCode>().where("create_time regexp {0}" , DateUtils.getDate()));
-        for (StockCode stockCode : codeList) {
-            stockCompanyProductService.spiderStockCompanyProduct(stockCode.getStockMarket() , stockCode.getStockCode());
+        List<StockCompanySector> sectorList = stockCompanySectorService.selectList(null);
+        for (StockCompanySector stockCode : sectorList) {
+            String market = "sz";
+            if(stockCode.getStockCode().substring(0,1).equals("6")){
+               market = "sh";
+            }
+            stockCompanyProductService.spiderStockCompanyProduct(market , stockCode.getStockCode());
             Thread.sleep(sleep);
         }
     }
