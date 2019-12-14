@@ -361,6 +361,5 @@
           a.profit_score DESC,
           a.asset_grow_score DESC,
           a.asset_score DESC
-        limit 1
     </select>
 </mapper>

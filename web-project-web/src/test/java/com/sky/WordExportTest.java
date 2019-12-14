@@ -398,20 +398,33 @@ public class WordExportTest {
             table.addCell(cell);
 
             Image img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_profit.jpg");
-            img.setAbsolutePosition(0, 0);
-            img.setAlignment(Image.LEFT);
-            img.scalePercent(42);
-            cell = new Cell(img);
-            cell.setColspan(5);
-            table.addCell(cell);
+            if(img != null){
+                img.setAbsolutePosition(0, 0);
+                img.setAlignment(Image.LEFT);
+                img.scalePercent(42);
+                cell = new Cell(img);
+                cell.setColspan(5);
+                table.addCell(cell);
+            }else{
+                cell = new Cell("");
+                cell.setColspan(5);
+                table.addCell(cell);
+            }
+
 
             img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_season_profit.jpg");
-            img.setAbsolutePosition(0, 0);
-            img.setAlignment(Image.LEFT);
-            img.scalePercent(42);
-            cell = new Cell(img);
-            cell.setColspan(5);
-            table.addCell(cell);
+            if(img != null){
+                img.setAbsolutePosition(0, 0);
+                img.setAlignment(Image.LEFT);
+                img.scalePercent(42);
+                cell = new Cell(img);
+                cell.setColspan(5);
+                table.addCell(cell);
+            }else{
+                cell = new Cell("");
+                cell.setColspan(5);
+                table.addCell(cell);
+            }
 
             /*********************第 12 行*********************/
             Paragraph companyAsset = new Paragraph("资产情况" ,font);
@@ -421,12 +434,18 @@ public class WordExportTest {
             table.addCell(cell);
 
             img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_asset.jpg");
-            img.setAbsolutePosition(0, 0);
-            img.setAlignment(Image.LEFT);
-            img.scalePercent(42);
-            cell = new Cell(img);
-            cell.setColspan(5);
-            table.addCell(cell);
+            if(img != null){
+                img.setAbsolutePosition(0, 0);
+                img.setAlignment(Image.LEFT);
+                img.scalePercent(42);
+                cell = new Cell(img);
+                cell.setColspan(5);
+                table.addCell(cell);
+            }else{
+                cell = new Cell("");
+                cell.setColspan(5);
+                table.addCell(cell);
+            }
 
             /*********************第 13 行*********************/
             Paragraph marketCycle = new Paragraph("市场周期" ,font);
@@ -436,12 +455,18 @@ public class WordExportTest {
             table.addCell(cell);
 
             img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_rate.jpg");
-            img.setAbsolutePosition(0, 0);
-            img.setAlignment(Image.LEFT);
-            img.scalePercent(42);
-            cell = new Cell(img);
-            cell.setColspan(5);
-            table.addCell(cell);
+            if(img != null){
+                img.setAbsolutePosition(0, 0);
+                img.setAlignment(Image.LEFT);
+                img.scalePercent(42);
+                cell = new Cell(img);
+                cell.setColspan(5);
+                table.addCell(cell);
+            }else{
+                cell = new Cell("");
+                cell.setColspan(5);
+                table.addCell(cell);
+            }
 
             document.add(table);
         }catch (Exception e){
@@ -455,6 +480,9 @@ public class WordExportTest {
     private void createProfitDataImg(String stockCode){
         try {
             List<StockCompanyProfitVO> list = stockCompanyProfitService.getCompanyProfitGrowList(stockCode);
+            if(list.size() == 0 ){
+                return;
+            }
             List<String> title = new ArrayList<>();
 
             List<BigDecimal> totalProfit = new ArrayList<>();
@@ -468,6 +496,9 @@ public class WordExportTest {
                 mainBusinessProfit.add(profit.getMainBusinessProfit());
                 viceBusinessProfit.add(profit.getViceBusinessProfit());
                 otherProfit.add(profit.getOtherProfit());
+            }
+            if(totalProfit.size() == 0){
+                return;
             }
             String[] categories = new String[title.size()];
             title.toArray(categories);
@@ -501,6 +532,9 @@ public class WordExportTest {
     private void createProfitSeasonDataImg(String stockCode){
         try {
             List<StockCompanyProfitVO> list = stockCompanyProfitService.getCompanyProfitGrowList(stockCode);
+            if(list.size() == 0 ){
+                return;
+            }
             List<String> title = new ArrayList<>();
 
             List<BigDecimal> firstProfitRate = new ArrayList<>();
@@ -515,6 +549,9 @@ public class WordExportTest {
                 threeProfitRate.add(profit.getThreeProfitRate());
                 forthtProfitRate.add(profit.getForthtProfitRate());
             }
+            if(firstProfitRate.size() == 0){
+                return;
+            }
             String[] categories = new String[title.size()];
             title.toArray(categories);
             Vector<Serie> series = new Vector<Serie>();
@@ -527,7 +564,7 @@ public class WordExportTest {
             DefaultCategoryDataset dataset = ChartUtils.createDefaultCategoryDataset(series, categories);
 
             // 2：创建Chart[创建不同图形]
-            JFreeChart chart = ChartFactory.createLineChart("季度占比", "", "比例（%）", dataset);
+            JFreeChart chart = ChartFactory.createLineChart("季度利润增长", "", "涨幅（亿）", dataset);
             // 3:设置抗锯齿，防止字体显示不清楚
             ChartUtils.setAntiAlias(chart);// 抗锯齿
             // 4:对柱子进行渲染[[采用不同渲染]]
@@ -547,6 +584,9 @@ public class WordExportTest {
     private void createAssetDataImg(String stockCode){
         try {
             List<StockCompanyAssetVO> list = stockCompanyAssetService.getCompanyAssetGrowList(stockCode);
+            if(list.size() == 0 ){
+                return;
+            }
             List<String> title = new ArrayList<>();
 
             List<BigDecimal> totalAsset = new ArrayList<>();
@@ -558,6 +598,9 @@ public class WordExportTest {
                 totalAsset.add(asset.getTotalAsset());
                 totalDebt.add(asset.getTotalDebt());
                 pureAsset.add(asset.getPureAsset());
+            }
+            if(totalAsset.size() == 0){
+                return;
             }
             String[] categories = new String[title.size()];
             title.toArray(categories);
@@ -590,48 +633,51 @@ public class WordExportTest {
     private void createCycleDataImg(String stockCode){
         try {
             StockRiseRate riseRate = stockRiseRateService.selectOne(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and start_time = '2015-01-01' and deal_period = 3" , stockCode ));
+            if(riseRate == null){
+                return;
+            }
             Map<String ,JSONArray> map = new HashMap<>();
             List<BigDecimal> rateArr = new ArrayList<>();
             List<BigDecimal> upperArr = new ArrayList<>();
             List<BigDecimal> shockArr = new ArrayList<>();
-            rateArr.add(riseRate.getOneRise());
-            rateArr.add(riseRate.getTowRise());
-            rateArr.add(riseRate.getThreeRise());
-            rateArr.add(riseRate.getFourRise());
-            rateArr.add(riseRate.getFiveRise());
-            rateArr.add(riseRate.getSixRise());
-            rateArr.add(riseRate.getSevenRise());
-            rateArr.add(riseRate.getEightRise());
-            rateArr.add(riseRate.getNineRise());
-            rateArr.add(riseRate.getTenRise());
-            rateArr.add(riseRate.getElevenRise());
-            rateArr.add(riseRate.getTwelveRise());
+            rateArr.add(riseRate.getOneRise() == null ? BigDecimal.ZERO : riseRate.getOneRise());
+            rateArr.add(riseRate.getTowRise() == null ? BigDecimal.ZERO : riseRate.getTowRise());
+            rateArr.add(riseRate.getThreeRise() == null ? BigDecimal.ZERO : riseRate.getThreeRise());
+            rateArr.add(riseRate.getFourRise() == null ? BigDecimal.ZERO : riseRate.getFourRise());
+            rateArr.add(riseRate.getFiveRise() == null ? BigDecimal.ZERO : riseRate.getFiveRise());
+            rateArr.add(riseRate.getSixRise() == null ? BigDecimal.ZERO : riseRate.getSixRise());
+            rateArr.add(riseRate.getSevenRise() == null ? BigDecimal.ZERO : riseRate.getSevenRise());
+            rateArr.add(riseRate.getEightRise() == null ? BigDecimal.ZERO : riseRate.getEightRise());
+            rateArr.add(riseRate.getNineRise() == null ? BigDecimal.ZERO : riseRate.getNineRise());
+            rateArr.add(riseRate.getTenRise() == null ? BigDecimal.ZERO : riseRate.getTenRise());
+            rateArr.add(riseRate.getElevenRise() == null ? BigDecimal.ZERO : riseRate.getElevenRise());
+            rateArr.add(riseRate.getTwelveRise() == null ? BigDecimal.ZERO : riseRate.getTwelveRise());
 
-            upperArr.add(riseRate.getOneAmplitude());
-            upperArr.add(riseRate.getTowAmplitude());
-            upperArr.add(riseRate.getThreeAmplitude());
-            upperArr.add(riseRate.getFourAmplitude());
-            upperArr.add(riseRate.getFiveAmplitude());
-            upperArr.add(riseRate.getSixAmplitude());
-            upperArr.add(riseRate.getSevenAmplitude());
-            upperArr.add(riseRate.getEightAmplitude());
-            upperArr.add(riseRate.getNineAmplitude());
-            upperArr.add(riseRate.getTenAmplitude());
-            upperArr.add(riseRate.getElevenAmplitude());
-            upperArr.add(riseRate.getTwelveAmplitude());
+            upperArr.add(riseRate.getOneAmplitude() == null ? BigDecimal.ZERO : riseRate.getOneAmplitude());
+            upperArr.add(riseRate.getTowAmplitude() == null ? BigDecimal.ZERO : riseRate.getTowAmplitude());
+            upperArr.add(riseRate.getThreeAmplitude() == null ? BigDecimal.ZERO : riseRate.getThreeAmplitude());
+            upperArr.add(riseRate.getFourAmplitude() == null ? BigDecimal.ZERO : riseRate.getFourAmplitude());
+            upperArr.add(riseRate.getFiveAmplitude() == null ? BigDecimal.ZERO : riseRate.getFiveAmplitude());
+            upperArr.add(riseRate.getSixAmplitude() == null ? BigDecimal.ZERO : riseRate.getSixAmplitude());
+            upperArr.add(riseRate.getSevenAmplitude() == null ? BigDecimal.ZERO : riseRate.getSevenAmplitude());
+            upperArr.add(riseRate.getEightAmplitude() == null ? BigDecimal.ZERO : riseRate.getEightAmplitude());
+            upperArr.add(riseRate.getNineAmplitude() == null ? BigDecimal.ZERO : riseRate.getNineAmplitude());
+            upperArr.add(riseRate.getTenAmplitude() == null ? BigDecimal.ZERO : riseRate.getTenAmplitude());
+            upperArr.add(riseRate.getElevenAmplitude() == null ? BigDecimal.ZERO : riseRate.getElevenAmplitude());
+            upperArr.add(riseRate.getTwelveAmplitude() == null ? BigDecimal.ZERO : riseRate.getTwelveAmplitude());
 
-            shockArr.add(riseRate.getOneShock());
-            shockArr.add(riseRate.getTowShock());
-            shockArr.add(riseRate.getThreeShock());
-            shockArr.add(riseRate.getFourShock());
-            shockArr.add(riseRate.getFiveShock());
-            shockArr.add(riseRate.getSixShock());
-            shockArr.add(riseRate.getSevenShock());
-            shockArr.add(riseRate.getEightShock());
-            shockArr.add(riseRate.getNineShock());
-            shockArr.add(riseRate.getTenShock());
-            shockArr.add(riseRate.getElevenShock());
-            shockArr.add(riseRate.getTwelveShock());
+            shockArr.add(riseRate.getOneShock() == null ? BigDecimal.ZERO : riseRate.getOneShock());
+            shockArr.add(riseRate.getTowShock() == null ? BigDecimal.ZERO : riseRate.getTowShock());
+            shockArr.add(riseRate.getThreeShock() == null ? BigDecimal.ZERO : riseRate.getThreeShock());
+            shockArr.add(riseRate.getFourShock() == null ? BigDecimal.ZERO : riseRate.getFourShock());
+            shockArr.add(riseRate.getFiveShock() == null ? BigDecimal.ZERO : riseRate.getFiveShock());
+            shockArr.add(riseRate.getSixShock() == null ? BigDecimal.ZERO : riseRate.getSixShock());
+            shockArr.add(riseRate.getSevenShock() == null ? BigDecimal.ZERO : riseRate.getSevenShock());
+            shockArr.add(riseRate.getEightShock() == null ? BigDecimal.ZERO : riseRate.getEightShock());
+            shockArr.add(riseRate.getNineShock() == null ? BigDecimal.ZERO : riseRate.getNineShock());
+            shockArr.add(riseRate.getTenShock() == null ? BigDecimal.ZERO : riseRate.getTenShock());
+            shockArr.add(riseRate.getElevenShock() == null ? BigDecimal.ZERO : riseRate.getElevenShock());
+            shockArr.add(riseRate.getTwelveShock() == null ? BigDecimal.ZERO : riseRate.getTwelveShock());
 
             String[] categories = {"1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"};
             Vector<Serie> series = new Vector<Serie>();

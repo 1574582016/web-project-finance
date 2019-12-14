@@ -64,23 +64,19 @@
         ROUND(SUM(IFNULL(p.final_profit,0)) /100000000,2) finalProfit,
         ROUND(SUM(ROUND(p.`total_cost`,2) - ROUND(p.`business_cost`,2)) /100000000 ,2) operateProfit ,
         ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '3' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2) /
-        ROUND(SUM(ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2))/100000000,2) * 100
+        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '3' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
         ,2)
         AS firstProfitRate,
         ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '6' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2) /
-        ROUND(SUM(ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2))/100000000,2) * 100
+        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '6' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
         ,2)
         AS secondProfitRate,
         ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '9' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2) /
-        ROUND(SUM(ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2))/100000000,2) * 100
+        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '9' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
         ,2)
         AS threeProfitRate,
         ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '12' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2) /
-        ROUND(SUM(ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2))/100000000,2) * 100
+        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '12' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
         ,2)
         AS forthtProfitRate,
 
