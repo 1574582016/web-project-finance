@@ -3,6 +3,7 @@ package com.sky.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.StockCompanySector;
 import com.sky.vo.CompanySectorVO;
+import com.sky.vo.CreateCompanyWorld_VO;
 
 import java.util.List;
 
@@ -21,4 +22,10 @@ public interface StockCompanySectorService extends IService<StockCompanySector> 
                                                     String secondHot ,
                                                     String thirdHot ,
                                                     String forthHot );
+
+    List<CreateCompanyWorld_VO> getCreateCompanyWorldList(String stockCode ,
+                                                          String firstSector ,
+                                                          String secondSector ,
+                                                          String thirdSecotor ,
+                                                          String forthSector);
 }

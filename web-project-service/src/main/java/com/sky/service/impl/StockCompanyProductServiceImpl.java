@@ -116,4 +116,9 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
             insertBatch(productList);
         }
     }
+
+    @Override
+    public List<StockCompanyProduct> getNewCompanyProductList(String productType, String stockCode) {
+        return baseMapper.getNewCompanyProductList(productType,stockCode);
+    }
 }

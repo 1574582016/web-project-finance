@@ -38,6 +38,11 @@
     <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-core:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.11.3" level="project" />
+    <orderEntry type="library" name="Maven: com.lowagie:itext:2.1.7" level="project" />
+    <orderEntry type="library" name="Maven: com.lowagie:itext-rtf:2.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.jfree:jfreechart:1.0.19" level="project" />
+    <orderEntry type="library" name="Maven: org.jfree:jcommon:1.0.24" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.jacob-project:jacob:1.14.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.0.5.RELEASE" level="project" />
@@ -167,5 +172,10 @@
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-config-core:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-config-ogdl:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-event:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: bouncycastle:bcmail-jdk14:138" level="project" />
+    <orderEntry type="library" name="Maven: bouncycastle:bcprov-jdk14:138" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bctsp-jdk14:1.38" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk14:1.38" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcmail-jdk14:1.38" level="project" />
   </component>
 </module>

@@ -233,4 +233,134 @@
         </choose>
 
     </select>
+
+
+    <select id="getCreateCompanyWorldList" parameterType="java.lang.String" resultType="com.sky.vo.CreateCompanyWorld_VO">
+        SELECT
+          a.forth_sector forthSector,
+          a.stock_code stockCode,
+          a.companyName ,
+          a.companyClass ,
+          a.establishDay ,
+          a.publishDay ,
+          a.spaceYear ,
+          a.publishCount ,
+          a.flowCount ,
+          a.flowRate ,
+          a.marketOrder ,
+          a.sectorOrder ,
+          a.companyType ,
+          REPLACE(CONCAT(IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路' THEN h.hot_name END SEPARATOR '->'),'') ,'(' ,a.companyRegion ,')'),'()','')  companyRegion ,
+          a.companyStrength ,
+          a.companyChance ,
+          a.marketClass ,
+          IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '标普|富时|股通|MSCI|AB|AH|B' THEN h.hot_name END SEPARATOR '->'),'') internalOrganize ,
+          IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '证金|社保|机构|基金|QFII' THEN h.hot_name END SEPARATOR '->'),'') focusOrganize ,
+          CONCAT(IFNULL(GROUP_CONCAT(h.`hot_name` SEPARATOR '->'),'') , '(' , IFNULL(a.groupIndex,'') ,')')  groupHot
+        FROM (
+        SELECT
+        s.`first_sector`,
+        s.`second_sector`,
+        s.`third_secotor`,
+        s.`forth_sector`,
+        s.`stock_code`,
+        CONCAT(c.company_region ,REPLACE(REPLACE(c.`company_name`,'股份有限公司',''),c.company_region,'')) companyName ,
+        c.`establish_date`establishDay,
+        s.`publish_time` publishDay,
+        CONCAT(TIMESTAMPDIFF(YEAR, c.`establish_date` , s.`publish_time` ),'年') spaceYear ,
+        FORMAT(ROUND(v.`publish_count` / 10000 ,2),2) publishCount ,
+        FORMAT(ROUND(v.`flow_count` / 10000 ,2),2) flowCount ,
+        CONCAT(ROUND(v.`flow_count` /v.`publish_count` * 100 ,2 ),'%') flowRate ,
+        CASE WHEN GROUP_CONCAT(CASE WHEN i.index_name REGEXP '国企|央企|地企' THEN '国企' WHEN i.index_name REGEXP '民企' THEN '民企' END ) REGEXP '国企' THEN '国企'
+             WHEN GROUP_CONCAT(CASE WHEN i.index_name REGEXP '国企|央企|地企' THEN '国企' WHEN i.index_name REGEXP '民企' THEN '民企' END ) REGEXP '民企' THEN '民企'
+             ELSE ''
+        END companyClass ,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '龙头|基石' THEN i.index_name END  SEPARATOR '->'),'') marketOrder ,
+        LEFT(IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '上游|中游|下游' THEN i.index_name END  SEPARATOR '->'),''),4) sectorOrder ,
+        LEFT(IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '新兴|传统' THEN i.index_name END  SEPARATOR '->'),''),2) companyType ,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路' THEN i.index_name END SEPARATOR '->'),'') companyRegion,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '周|驱动' AND i.index_name NOT REGEXP '0' THEN i.index_name END SEPARATOR '->'),'') companyStrength,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '成长|价值' AND i.index_name NOT REGEXP '全' THEN i.index_name END SEPARATOR '->'),'') companyChance,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '中证|上证|深成' AND i.index_name REGEXP '0|超大' THEN i.index_name END  SEPARATOR '->'),'') marketClass ,
+        GROUP_CONCAT(i.index_name SEPARATOR '->') groupIndex,
+        MAX(s.`profit_score`) profit_score,
+        MAX(s.`profit_grow_score`) profit_grow_score,
+        MAX(s.`asset_score`) asset_score,
+        MAX(s.`asset_grow_score`) asset_grow_score,
+        MAX(s.`flow_score`) flow_score,
+        MAX(
+        CASE WHEN i.index_name = '中证超大' THEN '6'
+             WHEN i.index_name = '中证100' THEN '5'
+             WHEN i.index_name = '中证200' THEN '4'
+             WHEN i.index_name = '中证500' THEN '3'
+             WHEN i.index_name = '中证1000' THEN '2'
+             WHEN i.index_name NOT REGEXP '中证超大|中证100|中证200|中证500|中证1000' THEN '1'
+             END
+        ) AS ZHONG,
+        MAX(
+        CASE WHEN i.index_name = '上证50' THEN '6'
+             WHEN i.index_name = '上证180' AND i.index_name != '上证50' THEN '5'
+             WHEN i.index_name = '上证100' THEN '4'
+             WHEN i.index_name = '上证380' AND i.index_name != '上证100' THEN '3'
+             WHEN i.index_name = '上证150' THEN '2'
+             WHEN i.index_name NOT REGEXP '上证50|上证180|上证100|上证380|上证150' THEN '1'
+             END
+        ) AS SHANG,
+        MAX(
+        CASE WHEN i.index_name = 'CX基石' THEN '6'
+             WHEN i.index_name = '中证龙头' THEN '5'
+             WHEN i.index_name REGEXP '价值' THEN '4'
+             WHEN i.index_name REGEXP '成长' THEN '3'
+             WHEN i.index_name NOT REGEXP 'CX基石|中证龙头|价值|成长' THEN '1'
+             END
+        ) AS ZHONG_i,
+        MAX(
+        CASE
+             WHEN i.index_name = '超大盘' THEN '6'
+             WHEN i.index_name = '上证龙头' THEN '5'
+             WHEN i.index_name = '上证中盘' THEN '4'
+             WHEN i.index_name = '上证小盘' THEN '3'
+             WHEN i.index_name NOT REGEXP '超大盘|上证龙头|上证中盘|上证小盘' THEN '1'
+             END
+        ) AS SHANG_i
+        FROM stock_company_sector s
+        LEFT JOIN stock_company_base c ON s.`stock_code` = c.`stock_a_code`
+        LEFT JOIN stock_index_constituent i ON s.`stock_code` = i.`stock_code`
+        LEFT JOIN stock_company_value_compare v ON s.`stock_code` = v.`stock_code`
+        WHERE LEFT(s.`stock_code`, 2) != 68
+        <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
+            AND s.`first_sector` = #{firstSector}
+        </if>
+        <if test="secondSector != null and secondSector != '' and secondSector != 'undefined'">
+            AND s.`second_sector` = #{secondSector}
+        </if>
+        <if test="thirdSecotor != null and thirdSecotor != '' and thirdSecotor != 'undefined'">
+            AND s.`third_secotor` = #{thirdSecotor}
+        </if>
+        <if test="forthSector != null and forthSector != '' and forthSector != 'undefined'">
+            AND s.`forth_sector` = #{forthSector}
+        </if>
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND s.`stock_code` REGEXP #{stockCode}
+        </if>
+        GROUP BY s.`stock_code`
+        ORDER BY s.`first_sector`,
+        s.`second_sector`,
+        s.`third_secotor`,
+        s.`forth_sector`
+            ) a
+          LEFT JOIN stock_hot_class h ON a.`stock_code` = h.`stock_code`
+          LEFT JOIN stock_market_class c ON h.`hot_code` = c.`class_code`
+        GROUP BY a.stock_code
+        ORDER BY a.`first_sector`,
+          a.`second_sector`,
+          a.`third_secotor`,
+          a.`forth_sector`,
+          a.ZHONG DESC,
+          a.profit_grow_score DESC,
+          a.profit_score DESC,
+          a.asset_grow_score DESC,
+          a.asset_score DESC
+        limit 1
+    </select>
 </mapper>

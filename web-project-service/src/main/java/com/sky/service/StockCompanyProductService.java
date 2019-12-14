@@ -13,4 +13,6 @@ public interface StockCompanyProductService extends IService<StockCompanyProduct
     List<StockCompanyProduct> getStockCompanyConstruct(String stockCode);
 
     void spiderStockCompanyProduct(String market ,String skuCode);
+
+    List<StockCompanyProduct> getNewCompanyProductList( String productType , String stockCode);
 }

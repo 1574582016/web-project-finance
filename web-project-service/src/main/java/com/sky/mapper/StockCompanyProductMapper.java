@@ -12,4 +12,6 @@ import java.util.List;
 public interface StockCompanyProductMapper extends BaseMapper<StockCompanyProduct> {
 
     List<StockCompanyProduct> getStockCompanyConstruct(@Param("stockCode") String stockCode);
+
+    List<StockCompanyProduct> getNewCompanyProductList(@Param("productType") String productType , @Param("stockCode") String stockCode);
 }
