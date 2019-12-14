@@ -3,10 +3,15 @@ package com.sky.core.utils;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import eu.bitwalker.useragentutils.UserAgent;
 
+import javax.imageio.ImageIO;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URLEncoder;
 import java.nio.file.*;
@@ -142,4 +147,36 @@ public class FileUtils extends cn.hutool.core.io.FileUtil {
         }
         return null;
     }
+
+
+    public static boolean deleteSamilarFile(String path ,String fimeName){
+        boolean b=false;
+        File file = new File(path);
+        File[] tempFile = file.listFiles();
+        for(int i = 0; i < tempFile.length; i++){
+            if(tempFile[i].getName().startsWith(fimeName)||tempFile[i].getName().endsWith(fimeName)){
+                System.out.println("将被删除的文件名:"+tempFile[i].getName());
+                boolean del=deleteFile(path+tempFile[i].getName());
+            if(del){
+                System.out.println("文件"+tempFile[i].getName()+"删除成功");
+                b=true;
+             }else{
+                System.out.println("文件"+tempFile[i].getName()+"删除失败");
+            }
+        }
+    }
+     return b;
+    }
+
+    private static boolean deleteFile(String path){
+        System.out.println(path);
+        boolean del=false;
+        File file=new File(path);
+        if(file.isFile()){
+           file.delete();
+           del=true;
+         }
+     return del;
+     }
+
 }

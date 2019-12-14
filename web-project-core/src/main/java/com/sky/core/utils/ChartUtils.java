@@ -490,9 +490,9 @@ public class ChartUtils {
         }
         out = new FileOutputStream(outputPath);
         // 保存为PNG
-        ChartUtilities.writeChartAsPNG(out, chart, weight, height);
+//        ChartUtilities.writeChartAsPNG(out, chart, weight, height);
         // 保存为JPEG
-        // ChartUtilities.writeChartAsJPEG(out, chart, weight, height);
+         ChartUtilities.writeChartAsJPEG(out, chart, weight, height);
         out.flush();
         if (out != null) {
             try {

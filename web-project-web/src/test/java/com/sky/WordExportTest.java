@@ -1,5 +1,6 @@
 package com.sky;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,6 +14,8 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.rtf.RtfWriter2;
 import com.sky.core.utils.ChartUtils;
+import com.sky.core.utils.FileUtils;
+import com.sky.core.utils.ImgUtils;
 import com.sky.core.utils.Serie;
 import com.sky.model.StockCompanyAsset;
 import com.sky.model.StockCompanyProduct;
@@ -26,6 +29,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.block.BlockBorder;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.ui.RectangleInsets;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +65,7 @@ public class WordExportTest {
         try {
 
             List<CreateCompanyWorld_VO> list = stockCompanySectorService.getCreateCompanyWorldList(null , null , null , null ,"互联网信息服务");
-            RtfWriter2.getInstance(document,new FileOutputStream("E:/word.doc"));
+            RtfWriter2.getInstance(document,new FileOutputStream("E:/互联网信息服务.doc"));
 
             document.open();
 
@@ -79,6 +83,7 @@ public class WordExportTest {
                 createCycleDataImg( body.getStockCode());
 
                 document = getTableList(document , body, productList , regionList);
+                FileUtils.deleteSamilarFile("E:/dataImg/" , body.getStockCode());
             }
 
             document.close();
@@ -387,11 +392,20 @@ public class WordExportTest {
             /*********************第 11 行*********************/
             Paragraph companyProfit = new Paragraph("盈利情况" ,font);
             cell = new Cell(companyProfit);
+            cell.setRowspan(2);
             cell.setHorizontalAlignment(1);
             cell.setVerticalAlignment(1);
             table.addCell(cell);
 
-            Image img = Image.getInstance("E:\\"+ body.getStockCode() +"_profit.png");
+            Image img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_profit.jpg");
+            img.setAbsolutePosition(0, 0);
+            img.setAlignment(Image.LEFT);
+            img.scalePercent(42);
+            cell = new Cell(img);
+            cell.setColspan(5);
+            table.addCell(cell);
+
+            img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_season_profit.jpg");
             img.setAbsolutePosition(0, 0);
             img.setAlignment(Image.LEFT);
             img.scalePercent(42);
@@ -406,7 +420,7 @@ public class WordExportTest {
             cell.setVerticalAlignment(1);
             table.addCell(cell);
 
-            img = Image.getInstance("E:\\"+ body.getStockCode() +"_asset.png");
+            img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_asset.jpg");
             img.setAbsolutePosition(0, 0);
             img.setAlignment(Image.LEFT);
             img.scalePercent(42);
@@ -421,7 +435,7 @@ public class WordExportTest {
             cell.setVerticalAlignment(1);
             table.addCell(cell);
 
-            img = Image.getInstance("E:\\"+ body.getStockCode() +"_rate.png");
+            img = Image.getInstance("E:\\dataImg\\"+ body.getStockCode() +"_rate.jpg");
             img.setAbsolutePosition(0, 0);
             img.setAlignment(Image.LEFT);
             img.scalePercent(42);
@@ -478,7 +492,7 @@ public class WordExportTest {
             // 设置标注无边框
             chart.getLegend().setFrame(new BlockBorder(Color.WHITE));
 
-            ChartUtils.saveAsFile(chart , "E:/"+ stockCode +"_profit.png" , 1024 , 420);
+            ChartUtils.saveAsFile(chart , "E:/dataImg/"+ stockCode +"_profit.jpg" , 1024 , 420);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -524,7 +538,7 @@ public class WordExportTest {
             // 设置标注无边框
             chart.getLegend().setFrame(new BlockBorder(Color.WHITE));
 
-            ChartUtils.saveAsFile(chart , "E:/"+ stockCode +"_season_profit.png" , 1024 , 420);
+            ChartUtils.saveAsFile(chart , "E:/dataImg/"+ stockCode +"_season_profit.jpg" , 1024 , 420);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -567,7 +581,7 @@ public class WordExportTest {
             // 设置标注无边框
             chart.getLegend().setFrame(new BlockBorder(Color.WHITE));
 
-            ChartUtils.saveAsFile(chart , "E:/"+ stockCode +"_asset.png" , 1024 , 420);
+            ChartUtils.saveAsFile(chart , "E:/dataImg/"+ stockCode +"_asset.jpg" , 1024 , 420);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -575,7 +589,7 @@ public class WordExportTest {
 
     private void createCycleDataImg(String stockCode){
         try {
-            StockRiseRate riseRate = stockRiseRateService.selectOne(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and start_time = '2015' and deal_period = 3" , stockCode ));
+            StockRiseRate riseRate = stockRiseRateService.selectOne(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and start_time = '2015-01-01' and deal_period = 3" , stockCode ));
             Map<String ,JSONArray> map = new HashMap<>();
             List<BigDecimal> rateArr = new ArrayList<>();
             List<BigDecimal> upperArr = new ArrayList<>();
@@ -633,14 +647,14 @@ public class WordExportTest {
             // 3:设置抗锯齿，防止字体显示不清楚
             ChartUtils.setAntiAlias(chart);// 抗锯齿
             // 4:对柱子进行渲染[[采用不同渲染]]
-            ChartUtils.setLineRender(chart.getCategoryPlot(), false,true);//
+//            ChartUtils.setLineRender(chart.getCategoryPlot(), true,true);
             // 5:对其他部分进行渲染
             ChartUtils.setXAixs(chart.getCategoryPlot());// X坐标轴渲染
             ChartUtils.setYAixs(chart.getCategoryPlot());// Y坐标轴渲染
             // 设置标注无边框
             chart.getLegend().setFrame(new BlockBorder(Color.WHITE));
 
-            ChartUtils.saveAsFile(chart , "E:/"+ stockCode +"_rate.png" , 1024 , 420);
+            ChartUtils.saveAsFile(chart , "E:/dataImg/"+ stockCode +"_rate.jpg" , 1024 , 420);
         }catch (Exception e){
             e.printStackTrace();
         }
