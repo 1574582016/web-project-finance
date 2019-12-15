@@ -155,10 +155,8 @@ public class FileUtils extends cn.hutool.core.io.FileUtil {
         File[] tempFile = file.listFiles();
         for(int i = 0; i < tempFile.length; i++){
             if(tempFile[i].getName().startsWith(fimeName)||tempFile[i].getName().endsWith(fimeName)){
-                System.out.println("将被删除的文件名:"+tempFile[i].getName());
                 boolean del=deleteFile(path+tempFile[i].getName());
             if(del){
-                System.out.println("文件"+tempFile[i].getName()+"删除成功");
                 b=true;
              }else{
                 System.out.println("文件"+tempFile[i].getName()+"删除失败");

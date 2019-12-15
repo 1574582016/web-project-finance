@@ -44,6 +44,6 @@
         AND stock_code = #{stockCode}
         AND product_name NOT REGEXP '其他|其中'
         AND publish_date = (SELECT MAX(publish_date) FROM stock_company_product WHERE pruduct_type = #{productType} AND stock_code = #{stockCode})
-        ORDER BY REPLACE(product_revenue_rate , '%' , '') DESC
+        ORDER BY CONVERT(REPLACE(product_revenue_rate , '%' , '') ,DECIMAL(10,2)) DESC
     </select>
 </mapper>

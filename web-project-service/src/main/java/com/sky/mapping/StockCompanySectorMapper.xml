@@ -251,12 +251,14 @@
           a.sectorOrder ,
           a.companyType ,
           REPLACE(CONCAT(IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路' THEN h.hot_name END SEPARATOR '->'),'') ,'(' ,a.companyRegion ,')'),'()','')  companyRegion ,
-          a.companyStrength ,
+          CONCAT(a.companyStrength , '->' , IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '转债|预亏|预盈|独角|纾困|分拆|举牌|债转股|壳资源|送转' THEN h.hot_name END SEPARATOR '->'),'')) companyStrength ,
           a.companyChance ,
           a.marketClass ,
           IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '标普|富时|股通|MSCI|AB|AH|B' THEN h.hot_name END SEPARATOR '->'),'') internalOrganize ,
           IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '证金|社保|机构|基金|QFII' THEN h.hot_name END SEPARATOR '->'),'') focusOrganize ,
-          CONCAT(IFNULL(GROUP_CONCAT(h.`hot_name` SEPARATOR '->'),'') , '(' , IFNULL(a.groupIndex,'') ,')')  groupHot
+        CONCAT(IFNULL(GROUP_CONCAT(
+        CASE WHEN h.`hot_name` NOT REGEXP '标普|富时|股通|MSCI|AB|AH|B|证金|社保|机构|基金|QFII|自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路|0|创业|股权|三板|融资|转债|预亏|预盈|独角|ST|创投|纾困|昨日|分拆|举牌|改革|债转股|壳资源|送转' THEN h.`hot_name` END
+        SEPARATOR '->'),'') , '(' , IFNULL(a.groupIndex,'') ,')')  groupHot
         FROM (
         SELECT
         s.`first_sector`,
@@ -275,14 +277,16 @@
              WHEN GROUP_CONCAT(CASE WHEN i.index_name REGEXP '国企|央企|地企' THEN '国企' WHEN i.index_name REGEXP '民企' THEN '民企' END ) REGEXP '民企' THEN '民企'
              ELSE ''
         END companyClass ,
-        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '龙头|基石' THEN i.index_name END  SEPARATOR '->'),'') marketOrder ,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '龙头|基石|百强' THEN i.index_name END  SEPARATOR '->'),'') marketOrder ,
         LEFT(IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '上游|中游|下游' THEN i.index_name END  SEPARATOR '->'),''),4) sectorOrder ,
-        LEFT(IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '新兴|传统' THEN i.index_name END  SEPARATOR '->'),''),2) companyType ,
-        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路' THEN i.index_name END SEPARATOR '->'),'') companyRegion,
-        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '周|驱动' AND i.index_name NOT REGEXP '0' THEN i.index_name END SEPARATOR '->'),'') companyStrength,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '新兴|传统' THEN i.index_name END  SEPARATOR '->'),'') companyType ,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路|安徽|中部|西部|杭州湾区|环渤海' THEN i.index_name END SEPARATOR '->'),'') companyRegion,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '周|驱动|优势|中盘|小盘|领先|融资' AND i.index_name NOT REGEXP '0' THEN i.index_name END SEPARATOR '->'),'') companyStrength,
         IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '成长|价值' AND i.index_name NOT REGEXP '全' THEN i.index_name END SEPARATOR '->'),'') companyChance,
-        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '中证|上证|深成' AND i.index_name REGEXP '0|超大' THEN i.index_name END  SEPARATOR '->'),'') marketClass ,
-        GROUP_CONCAT(i.index_name SEPARATOR '->') groupIndex,
+        IFNULL(GROUP_CONCAT(CASE WHEN i.index_name REGEXP '中证|上证|深成' AND i.index_name REGEXP '0|超' THEN i.index_name END  SEPARATOR '->'),'') marketClass ,
+        GROUP_CONCAT(
+        CASE WHEN i.index_name NOT REGEXP '国企|央企|地企|龙头|基石|上游|中游|下游|自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路|0|民企|中小|国造|股通|TMT|轻资产|全|周|驱动|优势|新兴|传统|超大|领先|创始|融资|服务|中盘|小盘|创业|百强|综合|安徽|中部|高新|综指|平台|浙江|股权|上海|商业|西藏|工业指数|西部|杭州湾区|东北指数|深圳|TI|并购|重组|环渤海|互联+|民参军|PPP|四川|资产|结构|东北|改革|沪' THEN i.index_name END
+        SEPARATOR '->') groupIndex,
         MAX(s.`profit_score`) profit_score,
         MAX(s.`profit_grow_score`) profit_grow_score,
         MAX(s.`asset_score`) asset_score,
