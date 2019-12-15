@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.EnglishRootAffixMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.EnglishRootAffix">
+        <id column="id" property="id"/>
+        <result column="same_root" property="sameRoot"/>
+        <result column="root_affix" property="rootAffix"/>
+        <result column="root_type" property="rootType"/>
+        <result column="root_mean" property="rootMean"/>
+        <result column="root_resource" property="rootResource"/>
+    </resultMap>
+</mapper>
