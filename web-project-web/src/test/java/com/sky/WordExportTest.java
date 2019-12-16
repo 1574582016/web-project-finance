@@ -64,8 +64,8 @@ public class WordExportTest {
         Document document = new Document(PageSize.A4);
         try {
 
-            List<CreateCompanyWorld_VO> list = stockCompanySectorService.getCreateCompanyWorldList(null , null , null , null ,"软件开发");
-            RtfWriter2.getInstance(document,new FileOutputStream("E:/软件开发.doc"));
+            List<CreateCompanyWorld_VO> list = stockCompanySectorService.getCreateCompanyWorldList(null , null , null , null ,"珠宝与奢侈品");
+            RtfWriter2.getInstance(document,new FileOutputStream("E:/dataImg/珠宝与奢侈品.doc"));
 
             document.open();
 
@@ -123,7 +123,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph stockCodeContent = new Paragraph(body.getStockCode() ,fontContent);
-            table.addCell(stockCodeContent);
+            cell = new Cell(stockCodeContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph compayName = new Paragraph("企业名称" ,font);
             cell = new Cell(compayName);
@@ -132,7 +134,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph compayNameContent = new Paragraph(body.getCompanyName() ,fontContent);
-            table.addCell(compayNameContent);
+            cell = new Cell(compayNameContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph compayIdentity = new Paragraph("企业性质" ,font);
             cell = new Cell(compayIdentity);
@@ -141,7 +145,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph compayIdentityContent = new Paragraph(body.getCompanyClass() ,fontContent);
-            table.addCell(compayIdentityContent);
+            cell = new Cell(compayIdentityContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             /*********************第 2 行*********************/
             Paragraph buildTime = new Paragraph("成立时间" ,font);
@@ -151,7 +157,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph buildTimeContent = new Paragraph(body.getEstablishDay() ,fontContent);
-            table.addCell(buildTimeContent);
+            cell = new Cell(buildTimeContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph publishTime = new Paragraph("上市时间" ,font);
             cell = new Cell(publishTime);
@@ -160,7 +168,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph publishTimeContent = new Paragraph(body.getPublishDay() ,fontContent);
-            table.addCell(publishTimeContent);
+            cell = new Cell(publishTimeContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph spaceYear = new Paragraph("历经时间" ,font);
             cell = new Cell(spaceYear);
@@ -169,7 +179,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph spaceYearContent = new Paragraph(body.getSpaceYear() ,fontContent);
-            table.addCell(spaceYearContent);
+            cell = new Cell(spaceYearContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             /*********************第 3 行*********************/
             Paragraph publishAmount = new Paragraph("发行股本" ,font);
@@ -179,7 +191,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph publishAmountContent = new Paragraph(body.getPublishCount() ,fontContent);
-            table.addCell(publishAmountContent);
+            cell = new Cell(publishAmountContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph flowAmount = new Paragraph("流通股本" ,font);
             cell = new Cell(flowAmount);
@@ -188,7 +202,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph flowAmountContent = new Paragraph(body.getFlowCount() ,fontContent);
-            table.addCell(flowAmountContent);
+            cell = new Cell(flowAmountContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph flowRate = new Paragraph("流通占比" ,font);
             cell = new Cell(flowRate);
@@ -197,7 +213,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph flowRateContent = new Paragraph(body.getFlowRate() ,fontContent);
-            table.addCell(flowRateContent);
+            cell = new Cell(flowRateContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             /*********************第 4 行*********************/
             Paragraph marketOrder = new Paragraph("市场地位" ,font);
@@ -207,7 +225,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph marketOrderContent = new Paragraph(body.getMarketOrder() ,fontContent);
-            table.addCell(marketOrderContent);
+            cell = new Cell(marketOrderContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph sectorOrder = new Paragraph("产业地位" ,font);
             cell = new Cell(sectorOrder);
@@ -216,7 +236,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph sectorOrderContent = new Paragraph(body.getSectorOrder() ,fontContent);
-            table.addCell(sectorOrderContent);
+            cell = new Cell(sectorOrderContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph companyType = new Paragraph("企业类型" ,font);
             cell = new Cell(companyType);
@@ -225,7 +247,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph companyTypeContent = new Paragraph(body.getCompanyType() ,fontContent);
-            table.addCell(companyTypeContent);
+            cell = new Cell(companyTypeContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             /*********************第 5 行*********************/
             Paragraph companyRegion = new Paragraph("地理位置" ,font);
@@ -235,7 +259,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph companyRegionContent = new Paragraph(body.getCompanyRegion() ,fontContent);
-            table.addCell(companyRegionContent);
+            cell = new Cell(companyRegionContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph companyStrength = new Paragraph("企业特点" ,font);
             cell = new Cell(companyStrength);
@@ -244,7 +270,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph companyStrengthContent = new Paragraph(body.getCompanyStrength() ,fontContent);
-            table.addCell(companyStrengthContent);
+            cell = new Cell(companyStrengthContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
             Paragraph companyChance = new Paragraph("企业潜力" ,font);
             cell = new Cell(companyChance);
@@ -253,7 +281,9 @@ public class WordExportTest {
             table.addCell(cell);
 
             Paragraph companyChanceContent = new Paragraph(body.getCompanyChance() ,fontContent);
-            table.addCell(companyChanceContent);
+            cell = new Cell(companyChanceContent);
+            cell.setVerticalAlignment(1);
+            table.addCell(cell);
 
 
             /*********************第 6 行*********************/
@@ -276,10 +306,12 @@ public class WordExportTest {
                     StockCompanyProduct product = productList.get(i);
                     Paragraph mainProductContent = new Paragraph(product.getProductName() ,fontContent);
                     cell = new Cell(mainProductContent);
+                    cell.setVerticalAlignment(1);
                     table.addCell(cell);
 
                     Paragraph mainProductRate = new Paragraph(product.getProductRevenueRate() ,fontContent);
                     cell = new Cell(mainProductRate);
+                    cell.setVerticalAlignment(1);
                     table.addCell(cell);
 
 
@@ -293,20 +325,24 @@ public class WordExportTest {
                     StockCompanyProduct region = regionList.get(i);
                     Paragraph mainRegionContent = new Paragraph(region.getProductName() ,fontContent);
                     cell = new Cell(mainRegionContent);
+                    cell.setVerticalAlignment(1);
                     table.addCell(cell);
 
                     Paragraph mainRegionRate = new Paragraph(region.getProductRevenueRate() ,fontContent);
                     cell = new Cell(mainRegionRate);
+                    cell.setVerticalAlignment(1);
                     table.addCell(cell);
                 }else {
                     if(i < productList.size()){
                         StockCompanyProduct product = productList.get(i);
                         Paragraph mainProductContent = new Paragraph(product.getProductName() ,fontContent);
                         cell = new Cell(mainProductContent);
+                        cell.setVerticalAlignment(1);
                         table.addCell(cell);
 
                         Paragraph mainProductRate = new Paragraph(product.getProductRevenueRate() ,fontContent);
                         cell = new Cell(mainProductRate);
+                        cell.setVerticalAlignment(1);
                         table.addCell(cell);
                     }else{
                         table.addCell("");
@@ -317,10 +353,12 @@ public class WordExportTest {
                         StockCompanyProduct region = regionList.get(i);
                         Paragraph mainRegionContent = new Paragraph(region.getProductName() ,fontContent);
                         cell = new Cell(mainRegionContent);
+                        cell.setVerticalAlignment(1);
                         table.addCell(cell);
 
                         Paragraph mainRegionRate = new Paragraph(region.getProductRevenueRate() ,fontContent);
                         cell = new Cell(mainRegionRate);
+                        cell.setVerticalAlignment(1);
                         table.addCell(cell);
                     }else {
                         table.addCell("");
@@ -339,6 +377,7 @@ public class WordExportTest {
 
             Paragraph productTypeContent = new Paragraph("" ,font);
             cell = new Cell(productTypeContent);
+            cell.setVerticalAlignment(1);
             cell.setColspan(5);
             table.addCell(cell);
 
@@ -351,6 +390,7 @@ public class WordExportTest {
 
             Paragraph marketClassContent = new Paragraph(body.getMarketClass() ,fontContent);
             cell = new Cell(marketClassContent);
+            cell.setVerticalAlignment(1);
             cell.setColspan(2);
             table.addCell(cell);
 
@@ -362,6 +402,7 @@ public class WordExportTest {
 
             Paragraph internalAgreeContent = new Paragraph(body.getInternalOrganize() ,fontContent);
             cell = new Cell(internalAgreeContent);
+            cell.setVerticalAlignment(1);
             cell.setColspan(2);
             table.addCell(cell);
 
@@ -374,6 +415,7 @@ public class WordExportTest {
 
             Paragraph focusOrganizeContent = new Paragraph(body.getFocusOrganize() ,fontContent);
             cell = new Cell(focusOrganizeContent);
+            cell.setVerticalAlignment(1);
             cell.setColspan(5);
             table.addCell(cell);
 
@@ -386,6 +428,7 @@ public class WordExportTest {
 
             Paragraph productHotContent = new Paragraph(body.getGroupHot() ,fontContent);
             cell = new Cell(productHotContent);
+            cell.setVerticalAlignment(1);
             cell.setColspan(5);
             table.addCell(cell);
 

@@ -19,8 +19,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2019/12/15/015.
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class EnglishRootTest {
 
     @Autowired
@@ -29,8 +29,9 @@ public class EnglishRootTest {
     @Test
     public void test(){
         try {
-            for(int i = 1 ; i < 39 ; i ++){
-                String url="http://www.etymon.cn/yingyucigen/list_1_"+ i +".html";
+            for(int i = 1 ; i < 17 ; i ++){
+                String url="http://www.etymon.cn/yingyucizhui/list_2_"+ i +".html";
+                System.out.println(url);
                 Document document = SpiderUtils.HtmlJsoupGet(url);
                 Elements elements = document.getElementsByTag("dt");
                 List<EnglishRootAffix> affixList = new ArrayList<>();
@@ -41,7 +42,7 @@ public class EnglishRootTest {
                         Document document2 = SpiderUtils.HtmlJsoupGet(subUrl);
                         Elements elements2 = document2.getElementsByClass("highlight");
                         EnglishRootAffix affix = new EnglishRootAffix();
-                        affix.setRootType("词根");
+                        affix.setRootType("词缀");
                         for(int z = 0 ; z < elements2.size() ; z ++){
                             Element element2 = elements2.get(z);
                             String str = element2.text();
@@ -60,7 +61,7 @@ public class EnglishRootTest {
                         if(rootAffix == null){
                             rootAffixService.insert(affix);
                         }
-                        Thread.sleep(2000);
+                        Thread.sleep(3000);
                     }
                 }
 //                System.out.println(affixList.toString());
