@@ -76,7 +76,24 @@ public class EnglishRootTest {
     }
 
 
-//    public static void main(String[] args){
-//
-//    }
+    @Test
+    public void test01(){
+        List<EnglishRootAffix> list = rootAffixService.selectList(null);
+        for(EnglishRootAffix affix : list){
+            String rootAffixs = affix.getRootAffix();
+            String[] roots = rootAffixs.split(",");
+            List<EnglishRootAffix> subList = new ArrayList<>();
+            for(String root : roots){
+                EnglishRootAffix englishRootAffix = new EnglishRootAffix();
+                englishRootAffix.setSameRoot(rootAffixs);
+                englishRootAffix.setRootAffix(root);
+                englishRootAffix.setRootType(affix.getRootType());
+                englishRootAffix.setRootMean(affix.getRootMean());
+                englishRootAffix.setRootResource(affix.getRootResource());
+                subList.add(englishRootAffix);
+            }
+            rootAffixService.insertBatch(subList);
+            rootAffixService.deleteById(affix);
+        }
+    }
 }
