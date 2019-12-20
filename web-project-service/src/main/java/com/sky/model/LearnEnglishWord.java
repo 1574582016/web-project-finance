@@ -31,26 +31,21 @@ public class LearnEnglishWord extends MiddleModel<LearnEnglishWord> {
     private String chinese ;
 
     /**
-     * 父级
+     *
      */
-    @TableField("parent_en")
-    private String parentEn ;
+    @TableField("pronunciation_uk")
+    private String pronunciationUK ;
 
     /**
-     * 级别
+     *
      */
-    @TableField("level")
-    private Integer level ;
+    @TableField("pronunciation_us")
+    private Integer pronunciationUS ;
 
     /**
-     * 所属词根
+     *
      */
-    @TableField("belong_root")
-    private String belongRoot ;
+    @TableField("isvalid")
+    private Integer isvalid ;
 
-    /**
-     * 父级
-     */
-    @TableField("common_part")
-    private String commonPart ;
 }

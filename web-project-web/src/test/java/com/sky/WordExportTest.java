@@ -64,8 +64,8 @@ public class WordExportTest {
         Document document = new Document(PageSize.A4);
         try {
 
-            List<CreateCompanyWorld_VO> list = stockCompanySectorService.getCreateCompanyWorldList(null , null , null , null ,"珠宝与奢侈品");
-            RtfWriter2.getInstance(document,new FileOutputStream("E:/dataImg/珠宝与奢侈品.doc"));
+            List<CreateCompanyWorld_VO> list = stockCompanySectorService.getCreateCompanyWorldList(null , null , null , null ,"水泥");
+            RtfWriter2.getInstance(document,new FileOutputStream("E:/dataImg/水泥.doc"));
 
             document.open();
 
