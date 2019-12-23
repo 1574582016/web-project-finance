@@ -7,7 +7,9 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.core.model.TreeNode;
+import com.sky.core.utils.StringUtils;
 import com.sky.model.*;
+import com.sky.vo.CompanyChance_VO;
 import com.sky.vo.CreateCompanyWorld_VO;
 import com.sky.vo.StockCompanyAssetVO;
 import com.sky.vo.StockCompanyProfitVO;
@@ -121,8 +123,91 @@ public class StockPoolApiController extends AbstractController {
 
             List<StockCompanyProduct> regionList = stockCompanyProductService.getNewCompanyProductList("地域分类" , stockCode);
 
+            int num = productList.size();
+            if(regionList.size() > productList.size()){
+                num = regionList.size();
+            }
+            world_vo.setRowSpan(num);
+
             world_vo.setProductList(productList);
             world_vo.setRegionList(regionList);
+
+            String marketOrder = world_vo.getMarketOrder();
+            if(StringUtils.isNotBlank(marketOrder)){
+                String[] strs = marketOrder.split("->");
+                Set<String> set = new HashSet<String>();
+                for(String str : strs){
+                    set.add(str);
+                }
+                StringBuilder builder = new StringBuilder();
+                int i = 0 ;
+                for(String str : set){
+                    if(i < set.size() - 1){
+                        builder.append(str);
+                        builder.append("->");
+                    }else{
+                        builder.append(str);
+                    }
+                    i += 1;
+                }
+                world_vo.setMarketOrder(builder.toString());
+            }
+
+            String companyChance = world_vo.getCompanyChance();
+            List<CompanyChance_VO> changeList = new ArrayList<>();
+            List<CompanyChance_VO> changeRList = new ArrayList<>();
+            if(StringUtils.isNotBlank(companyChance)){
+                String[] strs = companyChance.split("->");
+                for(String str : strs){
+                    CompanyChance_VO chance_vo = new CompanyChance_VO();
+                    if(str.indexOf("R") != -1){
+                       String[] indexs = str.split("R");
+                        chance_vo.setIndex(indexs[0]);
+                        chance_vo.setIndentity("R");
+                        chance_vo.setChance(indexs[1]);
+                        changeRList.add(chance_vo);
+                    }else {
+                        chance_vo.setIndex(str.substring(0,str.length() - 2));
+                        chance_vo.setIndentity("");
+                        chance_vo.setChance(str.substring(str.length() - 2,str.length()));
+                        changeList.add(chance_vo);
+                    }
+                }
+                System.out.println(changeRList.toString());
+                System.out.println(changeList.toString());
+
+                List<CompanyChance_VO> changeNewList = new ArrayList<>();
+                for(CompanyChance_VO chance_vo1 : changeRList){
+                    boolean just = false ;
+                    for(CompanyChance_VO chance_vo2 : changeList){
+                        if(chance_vo1.getIndex().equals(chance_vo2.getIndex()) && chance_vo1.getChance().equals(chance_vo2.getChance())){
+                            just = true ;
+                        }
+                    }
+                    if(!just){
+                        changeNewList.add(chance_vo1);
+                    }
+                }
+
+                changeNewList.addAll(changeList);
+                StringBuilder builder = new StringBuilder();
+                int i = 0 ;
+                for(CompanyChance_VO chance_vo : changeNewList){
+                    if(i < changeNewList.size() - 1){
+                        builder.append(chance_vo.getIndex());
+                        builder.append(chance_vo.getIndentity());
+                        builder.append(chance_vo.getChance());
+                        builder.append("->");
+                    }else{
+                        builder.append(chance_vo.getIndex());
+                        builder.append(chance_vo.getIndentity());
+                        builder.append(chance_vo.getChance());
+                    }
+                    i += 1;
+                }
+                world_vo.setCompanyChance(builder.toString());
+            }
+
 
 
             List<StockCompanyProfitVO> profitList = stockCompanyProfitService.getCompanyProfitGrowList(stockCode);

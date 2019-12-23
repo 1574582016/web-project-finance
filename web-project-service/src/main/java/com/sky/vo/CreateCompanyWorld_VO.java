@@ -73,4 +73,6 @@ public class CreateCompanyWorld_VO extends VoModel {
     private Map<String,Object> assetMap ;
 
     private Map<String,JSONArray> cycleMap ;
+
+    private Integer rowSpan ;
 }
