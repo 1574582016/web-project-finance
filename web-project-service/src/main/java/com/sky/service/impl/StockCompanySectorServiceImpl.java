@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.mapper.StockCompanySectorMapper;
 import com.sky.model.StockCompanySector;
@@ -27,5 +28,13 @@ public class StockCompanySectorServiceImpl extends ServiceImpl<StockCompanySecto
     @Override
     public List<CreateCompanyWorld_VO> getCreateCompanyWorldList(String stockCode, String firstSector, String secondSector, String thirdSecotor, String forthSector) {
         return baseMapper.getCreateCompanyWorldList(stockCode, firstSector, secondSector, thirdSecotor, forthSector);
+    }
+
+    @Override
+    public Page<CreateCompanyWorld_VO> getStockCompanyPoolList(Integer page, Integer size, String stockCode, String firstSector, String secondSector, String thirdSecotor, String forthSector, String companyLevel) {
+        Page<CreateCompanyWorld_VO> pageInfo = new Page<CreateCompanyWorld_VO>(page, size);
+        List<CreateCompanyWorld_VO> list = baseMapper.getStockCompanyPoolList( pageInfo, stockCode, firstSector, secondSector, thirdSecotor, forthSector, companyLevel);
+        pageInfo.setRecords(list);
+        return pageInfo;
     }
 }

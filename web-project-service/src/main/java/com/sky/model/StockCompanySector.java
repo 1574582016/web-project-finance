@@ -115,4 +115,34 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
      */
     @TableField("publish_time")
     private String publishTime ;
+
+    /**
+     *排序
+     */
+    @TableField("five_order")
+    private Integer fiveOrder ;
+
+    /**
+     *企业级别
+     */
+    @TableField("company_level")
+    private Integer companyLevel ;
+
+    /**
+     *归属一级行业
+     */
+    @TableField("belong_first_secotr")
+    private String belongFirstSecotr ;
+
+    /**
+     *归属二级行业
+     */
+    @TableField("belong_second_sector")
+    private String belongSecondSector ;
+
+    /**
+     *归属三级行业
+     */
+    @TableField("belong_third_sector")
+    private String belongThirdSector ;
 }

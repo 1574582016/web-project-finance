@@ -1,6 +1,8 @@
 package com.sky.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.sky.model.StockCompanySector;
 import com.sky.vo.CompanySectorVO;
 import com.sky.vo.CreateCompanyWorld_VO;
@@ -30,4 +32,12 @@ public interface StockCompanySectorMapper extends BaseMapper<StockCompanySector>
                                                           @Param("secondSector") String secondSector ,
                                                           @Param("thirdSecotor") String thirdSecotor ,
                                                           @Param("forthSector") String forthSector );
+
+    List<CreateCompanyWorld_VO> getStockCompanyPoolList(Pagination page ,
+                                                        @Param("stockCode") String stockCode ,
+                                                        @Param("firstSector") String firstSector ,
+                                                        @Param("secondSector") String secondSector ,
+                                                        @Param("thirdSecotor") String thirdSecotor ,
+                                                        @Param("forthSector") String forthSector ,
+                                                        @Param("companyLevel") String companyLevel);
 }

@@ -317,17 +317,31 @@ $(function () {
 
     $("#submitDataButton").click(function () {
         var stockCode = $("#stockCode").val();
+        var companyLevel = $("#companyLevel").val();
         var fiveSector = $("#fiveSector").val();
+        var fiveOrder = $("#fiveOrder").val();
         var mainBusiness = $("#mainBusiness").val();
-        $.APIPost("/api/stock/editStockCompanySector?stockCode=" + stockCode + "&fiveSector=" + fiveSector + "&mainBusiness=" + mainBusiness,function (data) {
-            if(data.success){
-                    hideModal("myModal");
-                window.parent.showSuccessAlert(data.message,function () {
-                    $('#tableList').bootstrapTable('refresh');
-                });
-            }else{
-                window.parent.showFailedAlert(data.message);
-            }
+        var belongFirstSecotr = $("#belongFirstSecotr").val();
+        var belongSecondSector = $("#belongSecondSector").val();
+        var belongThirdSector = $("#belongThirdSector").val();
+        $.APIPost("/api/stock/editStockCompanySector",JSON.stringify({
+                stockCode : stockCode ,
+                companyLevel : companyLevel ,
+                fiveSector : fiveSector ,
+                fiveOrder : fiveOrder ,
+                belongFirstSecotr : belongFirstSecotr ,
+                belongSecondSector : belongSecondSector,
+                belongThirdSector : belongThirdSector ,
+                mainBusiness : mainBusiness
+        }) ,function (data) {
+                if(data.success){
+                        hideModal("myModal");
+                    window.parent.showSuccessAlert(data.message,function () {
+                        $('#tableList').bootstrapTable('refresh');
+                    });
+                }else{
+                    window.parent.showFailedAlert(data.message);
+                }
         })
     });
 
@@ -377,7 +391,13 @@ function edit(stockCode) {
             $("#forthSector").val(data.data.result.forthSector);
             $("#fiveSector").val(data.data.result.fiveSector);
             $("#mainBusiness").val(data.data.result.mainBusiness);
-            $("#companyDscr").html(data.data.result.companyIntr + data.data.result.companyProduct);
+            // $("#companyDscr").html(data.data.result.companyIntr + data.data.result.companyProduct);
+
+            $("#companyLevel").val(data.data.result.companyLevel);
+            $("#fiveOrder").val(data.data.result.fiveOrder);
+            $("#belongFirstSecotr").val(data.data.result.belongFirstSecotr);
+            $("#belongSecondSector").val(data.data.result.belongSecondSector);
+            $("#belongThirdSector").val(data.data.result.belongThirdSector);
         });
     });
 }

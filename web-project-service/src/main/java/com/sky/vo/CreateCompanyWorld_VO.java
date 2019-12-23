@@ -1,7 +1,12 @@
 package com.sky.vo;
 
+import com.alibaba.fastjson.JSONArray;
 import com.sky.core.model.VoModel;
+import com.sky.model.StockCompanyProduct;
 import lombok.Data;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ThinkPad on 2019/12/14.
@@ -10,6 +15,8 @@ import lombok.Data;
 public class CreateCompanyWorld_VO extends VoModel {
 
     private String forthSector ;
+
+    private String fiveSector ;
 
     private String stockCode ;
 
@@ -48,4 +55,22 @@ public class CreateCompanyWorld_VO extends VoModel {
     private String focusOrganize ;
 
     private String groupHot ;
+
+    private String companyLevel ;
+
+    private String financialLevel ;
+
+    private String companyWebsite ;
+
+    private String mainBusiness ;
+
+    private List<StockCompanyProduct> productList ;
+
+    private List<StockCompanyProduct> regionList ;
+
+    private Map<String,Object> profitMap ;
+
+    private Map<String,Object> assetMap ;
+
+    private Map<String,JSONArray> cycleMap ;
 }

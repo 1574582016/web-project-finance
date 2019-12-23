@@ -191,12 +191,17 @@ public class StockCompanyApiController extends AbstractController {
 
     @LogRecord(name = "editStockCompanySector" ,description = "查询企业行业数据")
     @PostMapping("/editStockCompanySector")
-    public Object editStockCompanySector(String stockCode ,String fiveSector ,String mainBusiness){
+    public Object editStockCompanySector(@RequestBody StockCompanySector body){
         EntityWrapper<StockCompanySector> entityWrapper = new EntityWrapper();
-        entityWrapper.where("stock_code = {0}" , stockCode);
+        entityWrapper.where("stock_code = {0}" , body.getStockCode());
         StockCompanySector stockCompanySector = stockCompanySectorService.selectOne(entityWrapper);
-        stockCompanySector.setFiveSector(fiveSector);
-        stockCompanySector.setMainBusiness(mainBusiness);
+        stockCompanySector.setCompanyLevel(body.getCompanyLevel());
+        stockCompanySector.setFiveSector(body.getFiveSector());
+        stockCompanySector.setFiveOrder(body.getFiveOrder());
+        stockCompanySector.setMainBusiness(body.getMainBusiness());
+        stockCompanySector.setBelongFirstSecotr(body.getBelongFirstSecotr());
+        stockCompanySector.setBelongSecondSector(body.getBelongSecondSector());
+        stockCompanySector.setBelongThirdSector(body.getBelongThirdSector());
         return ResponseEntity.ok(stockCompanySectorService.updateById(stockCompanySector) ? MapSuccess("操作成功") : MapError("操作失败"));
     }
 

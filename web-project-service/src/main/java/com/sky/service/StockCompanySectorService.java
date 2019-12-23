@@ -1,5 +1,6 @@
 package com.sky.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.StockCompanySector;
 import com.sky.vo.CompanySectorVO;
@@ -28,4 +29,13 @@ public interface StockCompanySectorService extends IService<StockCompanySector> 
                                                           String secondSector ,
                                                           String thirdSecotor ,
                                                           String forthSector);
+
+
+    Page<CreateCompanyWorld_VO> getStockCompanyPoolList(Integer page, Integer size,
+                                                        String stockCode ,
+                                                        String firstSector ,
+                                                        String secondSector ,
+                                                        String thirdSecotor ,
+                                                        String forthSector ,
+                                                        String companyLevel);
 }

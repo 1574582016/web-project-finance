@@ -4,12 +4,28 @@
     <resultMap id="BaseResultMap" type="com.sky.model.LearnEnglishWord">
         <id column="id" property="id"/>
 
-        <result column="level" property="level"/>
-        <result column="belong_root" property="belongRoot"/>
-        <result column="common_part" property="commonPart"/>
-        <result column="parent_en" property="parentEn"/>
         <result column="english" property="english"/>
         <result column="pronunciation" property="pronunciation"/>
+        <result column="pronunciation_uk" property="pronunciationUK"/>
+        <result column="pronunciation_us" property="pronunciationUS"/>
         <result column="chinese" property="chinese"/>
+        <result column="isvalid" property="isvalid"/>
     </resultMap>
+    
+    <select id="getCommonRootEnglishList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        SUBSTR(english , 1 , LOCATE('struct', english) -1) affix ,
+        english ,
+        pronunciation_uk ,
+        chinese
+        FROM learn_english_word
+        WHERE isvalid = 1
+        AND english REGEXP #{root}
+        AND RIGHT(english,3) != 'ing'
+        AND RIGHT(english,2) != 'ed'
+        AND SUBSTR(english , 1 , LOCATE(#{root}, english) -1) IN(
+        SELECT root_affix FROM english_root_affix WHERE root_type REGEXP '缀'
+        )
+        GROUP BY SUBSTR(english , 1 , LOCATE('struct', english) -1)
+    </select>
 </mapper>
