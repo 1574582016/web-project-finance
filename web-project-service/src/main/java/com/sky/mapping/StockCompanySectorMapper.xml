@@ -29,6 +29,8 @@
         <result column="flow_score" property="flowScore"/>
         <result column="build_time" property="buildTime"/>
         <result column="publish_time" property="publishTime"/>
+        <result column="company_website" property="companyWebsite"/>
+        <result column="company_quality" property="companyQuality"/>
     </resultMap>
 
     <select id="getStockCompanySectorList" parameterType="java.lang.String" resultType="com.sky.vo.CompanySectorVO">

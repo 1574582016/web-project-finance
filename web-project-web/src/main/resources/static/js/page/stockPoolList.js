@@ -265,6 +265,12 @@ $(function () {
         var belongFirstSecotr = $("#belongFirstSecotr").val();
         var belongSecondSector = $("#belongSecondSector").val();
         var belongThirdSector = $("#belongThirdSector").val();
+
+        var qualityArr = new Array();
+        $('input[name="companyQuality"]:checked').each(function(){
+            qualityArr.push($(this).val());
+        });
+
         $.APIPost("/api/stock/editStockCompanySector",JSON.stringify({
             stockCode : stockCode ,
             companyLevel : companyLevel ,
@@ -273,7 +279,8 @@ $(function () {
             belongFirstSecotr : belongFirstSecotr ,
             belongSecondSector : belongSecondSector,
             belongThirdSector : belongThirdSector ,
-            mainBusiness : mainBusiness
+            mainBusiness : mainBusiness ,
+            companyQuality : qualityArr.join(',')
         }) ,function (data) {
             if(data.success){
                 hideModal("myModal");
@@ -317,6 +324,28 @@ function edit(stockCode) {
             $("#belongFirstSecotr").val(data.data.result.belongFirstSecotr);
             $("#belongSecondSector").val(data.data.result.belongSecondSector);
             $("#belongThirdSector").val(data.data.result.belongThirdSector);
+
+            var companyQuality = data.data.result.companyQuality;
+            if(!isEmpty(companyQuality)){
+                var str = companyQuality.split(',');
+                $('input[name="companyQuality"]').each(function(){
+                    console.log($(this).val());
+                    var just = false ;
+                    for(var i = 0 ; i < str.length ; i++){
+                        var value = str[i];
+                        if($(this).val() == value){
+                            just = true;
+                        }
+                    }
+                    if(just){
+                        $(this).prop("checked",true);
+                    }
+                });
+            }else{
+                $('input[name="companyQuality"]').each(function(){
+                    $(this).prop("checked",false);
+                });
+            }
         });
     });
 }

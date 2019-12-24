@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
 import com.sky.core.utils.DateUtils;
+import com.sky.core.utils.StringUtils;
 import com.sky.model.*;
 import com.sky.vo.CompanySectorVO;
 import com.sky.vo.StockCompanyAssetVO;
@@ -202,6 +203,7 @@ public class StockCompanyApiController extends AbstractController {
         stockCompanySector.setBelongFirstSecotr(body.getBelongFirstSecotr());
         stockCompanySector.setBelongSecondSector(body.getBelongSecondSector());
         stockCompanySector.setBelongThirdSector(body.getBelongThirdSector());
+        stockCompanySector.setCompanyQuality(StringUtils.isBlank(body.getCompanyQuality()) ? " " : body.getCompanyQuality());
         return ResponseEntity.ok(stockCompanySectorService.updateById(stockCompanySector) ? MapSuccess("操作成功") : MapError("操作失败"));
     }
 

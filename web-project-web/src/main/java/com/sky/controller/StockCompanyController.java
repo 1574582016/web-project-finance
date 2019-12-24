@@ -3,7 +3,10 @@ package com.sky.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.StockMarketClass;
+import com.sky.model.SystemParam;
 import com.sky.service.StockMarketClassService;
+import com.sky.service.SystemParamService;
+import com.sky.vo.SystemParam_VO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,9 @@ public class StockCompanyController {
 
     @Autowired
     private StockMarketClassService stockMarketClassService;
+
+    @Autowired
+    private SystemParamService systemParamService ;
 
     @RequestMapping("/stockCompanyList")
     public String companyInformationList(){
@@ -48,6 +54,8 @@ public class StockCompanyController {
                                 String secondSector ,
                                 String thirdSecotor ,
                                 String forthSector){
+        List<SystemParam_VO> list = systemParamService.getParamListByIdentity("companyQuality");
+        model.addAttribute("qualityList" , list);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);
         model.addAttribute("firstSector" , firstSector);
@@ -66,6 +74,8 @@ public class StockCompanyController {
                                   String secondSector ,
                                   String thirdSecotor ,
                                   String forthSector){
+        List<SystemParam_VO> list = systemParamService.getParamListByIdentity("companyQuality");
+        model.addAttribute("qualityList" , list);
         model.addAttribute("stock_code" , stock_code);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);
@@ -101,6 +111,8 @@ public class StockCompanyController {
                                          String secondHot ,
                                          String thirdHot ,
                                          String forthHot ){
+        List<SystemParam_VO> list = systemParamService.getParamListByIdentity("companyQuality");
+        model.addAttribute("qualityList" , list);
         model.addAttribute("firstHot" , firstHot);
         model.addAttribute("secondHot" , secondHot);
         model.addAttribute("thirdHot" , thirdHot);
