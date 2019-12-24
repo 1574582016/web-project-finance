@@ -1,7 +1,9 @@
 package com.sky.api.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.sky.annotation.LogRecord;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by ThinkPad on 2019/8/31.
@@ -123,6 +126,7 @@ public class StockPoolApiController extends AbstractController {
 
             List<StockCompanyProduct> regionList = stockCompanyProductService.getNewCompanyProductList("地域分类" , stockCode);
 
+
             int num = productList.size();
             if(regionList.size() > productList.size()){
                 num = regionList.size();
@@ -207,6 +211,65 @@ public class StockPoolApiController extends AbstractController {
                 }
                 world_vo.setCompanyChance(builder.toString());
             }
+
+            String groupHot = world_vo.getGroupHot();
+            if(StringUtils.isNotBlank(groupHot) && groupHot.indexOf("(") != -1){
+                String hot = groupHot.substring(0 , groupHot.indexOf("("));
+                String index = groupHot.substring(groupHot.indexOf("(") + 1, groupHot.indexOf(")"));
+                String[] strs = index.split("->");
+                List<CompanyChance_VO> hotList = new ArrayList<>();
+                for(String str : strs){
+                    CompanyChance_VO companyChance_vo = new CompanyChance_VO();
+                    if(str.indexOf("产业") != -1){
+                        companyChance_vo.setOrder(1);
+                        companyChance_vo.setIndex("");
+                        companyChance_vo.setIndentity(str.substring(0,2));
+                        companyChance_vo.setChance(str.substring(2,str.length()));
+                        hotList.add(companyChance_vo);
+                    }
+                    if(str.indexOf("中证") != -1){
+                        companyChance_vo.setOrder(2);
+                        companyChance_vo.setIndex(str.substring(0,2));
+                        companyChance_vo.setIndentity(str.substring(2,str.length()));
+                        companyChance_vo.setChance("");
+                        hotList.add(companyChance_vo);
+                    }
+                    if(str.indexOf("上证") != -1){
+                        companyChance_vo.setOrder(3);
+                        companyChance_vo.setIndex(str.substring(0,2));
+                        companyChance_vo.setIndentity(str.substring(2,str.length()));
+                        companyChance_vo.setChance("");
+                        hotList.add(companyChance_vo);
+                    }
+                }
+//                System.out.println(hotList.toString());
+                Map<String, List<CompanyChance_VO>> resultMap = hotList.stream().collect(Collectors.groupingBy(CompanyChance_VO::getIndentity));
+                Iterator<Map.Entry<String, List<CompanyChance_VO>>> iterator = resultMap.entrySet().iterator();
+
+                List<CompanyChance_VO> newVoList = new ArrayList<>();
+                while(iterator.hasNext()){
+                    Map.Entry<String, List<CompanyChance_VO>> entry = iterator.next();
+                    List<CompanyChance_VO> voList = entry.getValue();
+                    Collections.sort(voList, (a,b) -> a.getOrder().compareTo(b.getOrder()));
+                    newVoList.add(voList.get(0));
+                }
+                Collections.sort(newVoList, (a,b) -> a.getIndex().compareTo(b.getIndex()));
+                StringBuilder builder = new StringBuilder();
+                for(int i = 0 ; i < newVoList.size() ; i ++){
+                    if(i < newVoList.size() - 1){
+                        builder.append(newVoList.get(i).getIndex());
+                        builder.append(newVoList.get(i).getIndentity());
+                        builder.append(newVoList.get(i).getChance());
+                        builder.append("->");
+                    }else{
+                        builder.append(newVoList.get(i).getIndex());
+                        builder.append(newVoList.get(i).getIndentity());
+                        builder.append(newVoList.get(i).getChance());
+                    }
+                }
+                world_vo.setGroupHot(hot + "(" + builder.toString() + ")");
+            }
+
 
 
 

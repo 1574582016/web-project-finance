@@ -10,6 +10,8 @@ import lombok.ToString;
 @ToString
 public class CompanyChance_VO {
 
+    private Integer order ;
+
     private String index ;
 
     private String indentity ;

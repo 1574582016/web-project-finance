@@ -60,37 +60,62 @@ function drawMainTable(response) {
             var product = response.data.result.productList[i];
             var region = response.data.result.regionList[i];
             str += '<tr>';
-            str += '<td class="my_table_title" rowspan="'+ num +'" style="border-top:0;border-left: 0; ;width: 9.95%">主营产品</td>';
-            str += '<td style="border-top:0; border-bottom: 0;">'+ product.productName +'</td>';
-            str += '<td style="border-top:0; border-bottom: 0;width: 10%;">'+ product.productRevenueRate +'</td>';
-            str += '<td class="my_table_title" rowspan="'+ num +'" style="border:0; width: 9.95%">业务区域</td>';
-            str += '<td style="border-top:0; border-right: 0; border-bottom: 0;">'+ region.productName +'</td>';
-            str += '<td style="border-top:0; border-right: 0; border-bottom: 0;width: 10%;">'+ region.productRevenueRate +'</td>';
+            str += '<td class="my_table_title" rowspan="'+ num +'" style="border: 0 ;width: 9.9%">主营产品</td>';
+            str += '<td style="border-top: 0 ;width: 30.1%;">'+ product.productName +'</td>';
+            str += '<td style="border-top: 0 ;width: 10%;">'+ product.productRevenueRate +'</td>';
+            str += '<td class="my_table_title" rowspan="'+ num +'" style="border: 0 ;width: 9.9%">业务区域</td>';
+            str += '<td style="border-top: 0 ;border-right: 0;width: 30.1%;">'+ region.productName +'</td>';
+            str += '<td style="border-top: 0 ;border-right: 0;width: 10%;">'+ region.productRevenueRate +'</td>';
             str += '</tr>';
         }else{
             if(i < response.data.result.productList.length){
                 var product = response.data.result.productList[i];
-                str += '<tr>';
-                str += '<td style="border-top:0; ">'+ product.productName +'</td>';
-                str += '<td style="border-top:0; width: 10%;">'+ product.productRevenueRate +'</td>';
+                if(i < num - 1){
+                    str += '<tr>';
+                    str += '<td style="width: 30.1%;">'+ product.productName +'</td>';
+                    str += '<td style="width: 10%;">'+ product.productRevenueRate +'</td>';
+                }else{
+                    str += '<tr>';
+                    str += '<td style="border-bottom: 0;width: 30.1%;">'+ product.productName +'</td>';
+                    str += '<td style="border-bottom: 0;width: 10%;">'+ product.productRevenueRate +'</td>';
+                }
+
             }else {
-                str += '<tr>';
-                str += '<td style="border-top:0;"></td>';
-                str += '<td style="border-top:0; width: 10%;"></td>';
+                if(i < num - 1){
+                    str += '<tr>';
+                    str += '<td style="width: 30.1%;"></td>';
+                    str += '<td style="width: 10%;"></td>';
+                }else{
+                    str += '<tr>';
+                    str += '<td style="border-bottom: 0;width: 30.1%;"></td>';
+                    str += '<td style="border-bottom: 0;width: 10%;"></td>';
+                }
             }
             if(i < response.data.result.regionList.length){
                 var region = response.data.result.regionList[i];
-                str += '<td style="border-top:0; border-right: 0; border-bottom: 0;">'+ region.productName +'</td>';
-                str += '<td style="border-top:0; border-right: 0; border-bottom: 0;width: 10%;">'+ region.productRevenueRate +'</td>';
-                str += '</tr>';
+                if(i < num - 1){
+                    str += '<td style="width: 30.1%;">'+ region.productName +'</td>';
+                    str += '<td style="width: 10%;">'+ region.productRevenueRate +'</td>';
+                    str += '</tr>';
+                }else{
+                    str += '<td style="border-bottom: 0;width: 30.1%;">'+ region.productName +'</td>';
+                    str += '<td style="border-bottom: 0;width: 10%;">'+ region.productRevenueRate +'</td>';
+                    str += '</tr>';
+                }
             }else{
-                str += '<td style="border-top:0; border-right: 0; border-bottom: 0;"></td>';
-                str += '<td style="border-top:0; border-right: 0; border-bottom: 0;width: 10%;"></td>';
-                str += '</tr>';
+
+                if(i < num - 1){
+                    str += '<td style="width: 30.1%;"></td>';
+                    str += '<td style="width: 10%;"></td>';
+                    str += '</tr>';
+                }else{
+                    str += '<td style="border-bottom: 0;width: 30.1%;"></td>';
+                    str += '<td style="border-bottom: 0;width: 10%;"></td>';
+                    str += '</tr>';
+                }
             }
         }
     }
-    console.log(str);
     $("#productBox").html(str);
 }
 

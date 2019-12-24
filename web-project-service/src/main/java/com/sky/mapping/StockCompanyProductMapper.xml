@@ -37,13 +37,14 @@
     <select id="getNewCompanyProductList" parameterType="java.lang.String" resultMap="BaseResultMap">
         SELECT
         publish_date ,
-        product_name ,
+        REPLACE(REPLACE(REPLACE(product_name,'地区',''),'收入',''),'﻿' ,'') product_name ,
         product_revenue_rate
         FROM stock_company_product
         WHERE pruduct_type = #{productType}
         AND stock_code = #{stockCode}
-        AND product_name NOT REGEXP '其他|其中'
+        AND product_name NOT REGEXP '其他|其中|平衡'
         AND publish_date = (SELECT MAX(publish_date) FROM stock_company_product WHERE pruduct_type = #{productType} AND stock_code = #{stockCode})
+        GROUP BY REPLACE(product_name ,'﻿' ,'')
         ORDER BY CONVERT(REPLACE(product_revenue_rate , '%' , '') ,DECIMAL(10,2)) DESC
     </select>
 </mapper>
