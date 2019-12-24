@@ -226,7 +226,10 @@ $(function () {
                 field: 'stockCode',
                 title: '编码',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: function (value, row, index) {
+                    return '<a class="text_link_a" href="https://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
+                }
             }, {
                 field: 'stockName',
                 title: '名称',

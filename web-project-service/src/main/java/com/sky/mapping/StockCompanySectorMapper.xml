@@ -111,6 +111,7 @@
         ELSE 'F'
         END
         ) financialLevel,
+        a.companyWebsite ,
         a.company_name companyName,
         a.company_region companyRegion,
         a.establish_date establishDate,
@@ -162,6 +163,7 @@
         c.`company_region` ,
         c.`establish_date` ,
         s.`publish_time` publish_date ,
+        s.company_website companyWebsite ,
         GROUP_CONCAT(i.index_name SEPARATOR '->') groupIndex ,
         s.main_business
         FROM stock_company_sector s

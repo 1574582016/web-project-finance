@@ -41,7 +41,7 @@ html,body{
 	height: 58px;
 	border-radius: 29px;
 	padding: 0;
-	background:url('head.png') no-repeat left top;
+	background:url('../img/head.png') no-repeat left top;
 	background-size:100% 100%;
 }
 .sy-navbar .message-alert{

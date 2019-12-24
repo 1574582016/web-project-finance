@@ -1,0 +1,48 @@
+html,body{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    /*background: #3f4347;*/
+    background: url('../img/background.jpg');
+    background-size:cover;
+}
+.login-box{
+    width: 500px;
+    height: 290px;
+    /*background: #e9ecef;*/
+    /*background: #FFFFFF;*/
+    position: absolute;
+    top: calc(50% - 180px);
+    left: calc(50% - 255px);
+    border-radius: 10px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.5);
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+
+    /*filter:alpha(Opacity=100);-moz-opacity:0.6;opacity: 0.6;*/
+    background-color:rgba(0,0,0,0.6);
+}
+.login-box .form-horizontal{
+    padding: 15px;
+    /*padding-top: 50px;*/
+}
+.login-box .login-button{
+    text-align: center;
+}
+.login-title{
+    font-size: 24px;
+    text-align: center;
+    border-bottom: 1px solid #afa3a3;
+    padding-bottom: 10px;
+    color: #FFFFFF;
+    font-family:STXingkai;
+}
+.login-box .input-group-addon{
+    background: #fff;
+}
+
+.control-label{
+    color: #FFFFFF;
+    font-family:STXingkai;
+}

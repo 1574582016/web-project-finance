@@ -10,6 +10,7 @@
         <result column="update_time" property="updateTime"/>
         <result column="update_user" property="updateUser"/>
 
+        <result column="investor_code" property="investorCode"/>
         <result column="stock_code" property="stockCode"/>
         <result column="stock_name" property="stockName"/>
         <result column="invest_count" property="investCount"/>

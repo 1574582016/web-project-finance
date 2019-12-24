@@ -101,7 +101,8 @@ $(function () {
 });
 
 function drawMainTable(response) {
-    $("#t_stockCode").html(response.data.result.stockCode);
+    var stockCodeStr = '<a class="text_link_a" href="https://'+ response.data.result.companyWebsite +'" target="view_window">'+ response.data.result.stockCode +'</a>';
+    $("#t_stockCode").html(stockCodeStr);
     $("#t_companyName").html(response.data.result.companyName);
     $("#t_companyClass").html(response.data.result.companyClass);
 

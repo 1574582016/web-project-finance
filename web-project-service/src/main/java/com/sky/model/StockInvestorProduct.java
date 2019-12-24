@@ -13,6 +13,12 @@ import lombok.Data;
 public class StockInvestorProduct extends BaseModel<StockInvestorProduct> {
 
     /**
+     *投资人编码
+     */
+    @TableField("investor_code")
+    private String investorCode ;
+
+    /**
      *股票编码
      */
     @TableField("stock_code")
