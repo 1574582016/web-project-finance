@@ -45,7 +45,8 @@ public class CompetitorTest {
     @Test
     public void test(){
         try {
-            List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code not in (SELECT stock_code FROM stock_investor_product)"));
+//            List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code not in (SELECT stock_code FROM stock_investor_product)"));
+            List<StockCompanySector> list = stockCompanySectorService.selectList(null);
             for(StockCompanySector sector : list) {
                 String stockCode = sector.getStockCode();
                 String marketNum = "1";
@@ -109,7 +110,7 @@ public class CompetitorTest {
                         investorProduct.setTotalCount(totalCount);
                         investorProduct.setFlowCount(flowCount);
 
-                        StockInvestorProduct product = stockInvestorProductService.selectOne(new EntityWrapper<StockInvestorProduct>().where("investor_code = {0} and stock_code = {1}" , SHCode ,sector.getStockCode()));
+                        StockInvestorProduct product = stockInvestorProductService.selectOne(new EntityWrapper<StockInvestorProduct>().where("investor_code = {0} and stock_code = {1} and static_time = {2}" , SHCode ,sector.getStockCode() , investorProduct.getStaticTime()));
                         if(product == null){
                             productList.add(investorProduct);
                         }
