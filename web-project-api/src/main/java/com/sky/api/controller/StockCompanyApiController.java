@@ -203,6 +203,7 @@ public class StockCompanyApiController extends AbstractController {
         stockCompanySector.setBelongFirstSecotr(body.getBelongFirstSecotr());
         stockCompanySector.setBelongSecondSector(body.getBelongSecondSector());
         stockCompanySector.setBelongThirdSector(body.getBelongThirdSector());
+        stockCompanySector.setBelongForthSector(body.getBelongForthSector());
         stockCompanySector.setCompanyQuality(StringUtils.isBlank(body.getCompanyQuality()) ? " " : body.getCompanyQuality());
         return ResponseEntity.ok(stockCompanySectorService.updateById(stockCompanySector) ? MapSuccess("操作成功") : MapError("操作失败"));
     }

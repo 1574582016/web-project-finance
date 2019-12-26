@@ -31,6 +31,11 @@
         <result column="publish_time" property="publishTime"/>
         <result column="company_website" property="companyWebsite"/>
         <result column="company_quality" property="companyQuality"/>
+
+        <result column="belong_first_secotr" property="belongFirstSecotr"/>
+        <result column="belong_second_sector" property="belongSecondSector"/>
+        <result column="belong_third_sector" property="belongThirdSector"/>
+        <result column="belong_forth_sector" property="belongForthSector"/>
     </resultMap>
 
     <select id="getStockCompanySectorList" parameterType="java.lang.String" resultType="com.sky.vo.CompanySectorVO">

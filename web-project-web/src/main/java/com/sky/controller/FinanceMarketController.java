@@ -14,4 +14,9 @@ public class FinanceMarketController {
     public String financeMarketList(){
         return "page/financeMarketList";
     }
+
+    @RequestMapping("/platformSectorList")
+    public String platformSectorList(){
+        return "page/platformSectorList";
+    }
 }

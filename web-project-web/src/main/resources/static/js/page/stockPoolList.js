@@ -1,5 +1,14 @@
-
+var arrayData = new Array();
 $(function () {
+
+    $.APIPost("/api/finance/getPlatformSectorTree",function (data) {
+        var firstOption = "";
+        $.each(data.data.result ,function (index ,value) {
+            arrayData.push(value);
+            firstOption += '<option value="' + value.text + '">' + value.text + "</option>";
+        });
+        $("#belongFirstSecotr").html(firstOption);
+    });
 
     var first_1_Sector = $("#first_1_Sector").val();
     var second_1_Sector = $("#second_1_Sector").val();
@@ -91,7 +100,8 @@ $(function () {
     flashTableS('tableList_A' , 5);
     flashTableS('tableList_B' , 4);
     flashTableS('tableList_C' , 3);
-    flashTableS('tableList_D' , 2,1);
+    flashTableS('tableList_D' , 2);
+    flashTableS('tableList_E' , 1);
     flashTableS('tableList_G' , 9);
 
     $("[data-toggle='tooltip']").tooltip();
@@ -101,7 +111,8 @@ $(function () {
         flashTableS('tableList_A' , 5);
         flashTableS('tableList_B' , 4);
         flashTableS('tableList_C' , 3);
-        flashTableS('tableList_D' , 2,1);
+        flashTableS('tableList_D' , 2);
+        flashTableS('tableList_E' , 1);
         flashTableS('tableList_G' , 9);
     });
 
@@ -162,7 +173,7 @@ $(function () {
                     align: 'center',
                     valign: 'middle',
                     formatter: function (value, row, index) {
-                        return '<a class="text_link_a" href="https://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
+                        return '<a class="text_link_a" href="http://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
                     }
                 }, {
                     field: 'companyName',
@@ -265,6 +276,7 @@ $(function () {
         var belongFirstSecotr = $("#belongFirstSecotr").val();
         var belongSecondSector = $("#belongSecondSector").val();
         var belongThirdSector = $("#belongThirdSector").val();
+        var belongForthSector = $("#belongForthSector").val();
 
         var qualityArr = new Array();
         $('input[name="companyQuality"]:checked').each(function(){
@@ -279,6 +291,7 @@ $(function () {
             belongFirstSecotr : belongFirstSecotr ,
             belongSecondSector : belongSecondSector,
             belongThirdSector : belongThirdSector ,
+            belongForthSector : belongForthSector ,
             mainBusiness : mainBusiness ,
             companyQuality : qualityArr.join(',')
         }) ,function (data) {
@@ -319,17 +332,42 @@ function edit(stockCode) {
             $("#mainBusiness").val(data.data.result.mainBusiness);
             // $("#companyDscr").html(data.data.result.companyIntr + data.data.result.companyProduct);
 
+            var secondOption = "";
+            var thirdOption = "";
+            var forthOption = "";
+            $.each(arrayData ,function (index ,value) {
+                if(value.text == data.data.result.belongFirstSecotr){
+                    $.each(value.nodes ,function (index2 ,value2) {
+                        secondOption += '<option value="' + value2.text + '">' + value2.text + "</option>";
+                        if(value2.text == data.data.result.belongSecondSector){
+                            $.each(value2.nodes ,function (index3 ,value3) {
+                                thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                                if(value3.text == data.data.result.belongThirdSector){
+                                    $.each(value3.nodes ,function (index4 ,value4) {
+                                        forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+            $("#belongSecondSector").html(secondOption);
+            $("#belongThirdSector").html(thirdOption);
+            $("#belongForthSector").html(forthOption);
+
+
             $("#companyLevel").val(data.data.result.companyLevel);
             $("#fiveOrder").val(data.data.result.fiveOrder);
             $("#belongFirstSecotr").val(data.data.result.belongFirstSecotr);
             $("#belongSecondSector").val(data.data.result.belongSecondSector);
             $("#belongThirdSector").val(data.data.result.belongThirdSector);
+            $("#belongForthSector").val(data.data.result.belongForthSector);
 
             var companyQuality = data.data.result.companyQuality;
             if(!isEmpty(companyQuality)){
                 var str = companyQuality.split(',');
                 $('input[name="companyQuality"]').each(function(){
-                    console.log($(this).val());
                     var just = false ;
                     for(var i = 0 ; i < str.length ; i++){
                         var value = str[i];
@@ -364,4 +402,62 @@ function view(stock_code) {
         + "&secondSector=" + secondSector
         + "&thirdSecotor=" + thirdSecotor
         + "&forthSector=" + forthSector;
+}
+
+
+function changeSecondBelongSector(obj) {
+    var thisObj=$(obj);
+
+    var secondOption = "";
+    $.each(arrayData ,function (index ,value) {
+        if(value.text == thisObj.val()){
+            $.each(value.nodes ,function (index2 ,value2) {
+                secondOption += '<option value="' + value2.text + '">' + value2.text + "</option>";
+            });
+        }
+    });
+    $("#belongSecondSector").html(secondOption);
+}
+
+function changeThirdBelongSector(obj) {
+    var thisObj=$(obj);
+    var belongFirstSecotr = $("#belongFirstSecotr").val();
+
+    var thirdOption = "";
+    $.each(arrayData ,function (index ,value) {
+        if(value.text == belongFirstSecotr){
+            $.each(value.nodes ,function (index2 ,value2) {
+                if(value2.text == thisObj.val()){
+                    $.each(value2.nodes ,function (index3 ,value3) {
+                        thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                    });
+                }
+            });
+        }
+    });
+    $("#belongThirdSector").html(thirdOption);
+}
+
+function changeForthBelongSector(obj) {
+    var thisObj=$(obj);
+    var belongFirstSecotr = $("#belongFirstSecotr").val();
+    var belongSecondSector = $("#belongSecondSector").val();
+
+    var forthOption = "";
+    $.each(arrayData ,function (index ,value) {
+        if(value.text == belongFirstSecotr){
+            $.each(value.nodes ,function (index2 ,value2) {
+                if(value2.text == belongSecondSector){
+                    $.each(value2.nodes ,function (index3 ,value3) {
+                        if(value3.text == thisObj.val()){
+                            $.each(value3.nodes ,function (index4 ,value4) {
+                                forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+    $("#belongForthSector").html(forthOption);
 }

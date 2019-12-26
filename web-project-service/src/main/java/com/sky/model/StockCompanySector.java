@@ -147,6 +147,12 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
     private String belongThirdSector ;
 
     /**
+     *归属四级行业
+     */
+    @TableField("belong_forth_sector")
+    private String belongForthSector ;
+
+    /**
      *企业网址
      */
     @TableField("company_website")

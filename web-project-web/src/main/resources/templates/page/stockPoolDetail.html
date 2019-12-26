@@ -34,7 +34,7 @@
             基本信息
         </a>
     </li>
-    <li><a href="#profit" data-toggle="tab">待定</a></li>
+    <li><a href="#investor" data-toggle="tab">持仓机构</a></li>
     <button type="button" class="btn btn-primary" id="backButton" style="float: right;">返回</button>
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" style="float: right;margin-right: 20px;">编辑</button>
 </ul>
@@ -131,21 +131,11 @@
             </tr>
         </table>
     </div>
-    <div class="tab-pane fade" id="profit">
+    <div class="tab-pane fade" id="investor">
 
         <div id="profitBelongMain" style="width:100%;height:400px;"></div>
         <div id="profitOperateRelation" style="width:100%;height:400px;"></div>
         <div id="profitGrowRate" style="width:100%;height:400px;"></div>
-    </div>
-    <div class="tab-pane fade" id="asset">
-        <div id="assetDebtRate" style="width:100%;height:400px;"></div>
-        <div id="flowAssetRate" style="width:100%;height:400px;"></div>
-
-        <div id="flowAssetComponent" style="width:100%;height:400px;"></div>
-        <div id="unflowAssetComponent" style="width:100%;height:400px;"></div>
-
-        <div id="flowDetbComponent" style="width:100%;height:400px;"></div>
-        <div id="unflowDetbComponent" style="width:100%;height:400px;"></div>
     </div>
 </div>
 
@@ -195,7 +185,18 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">行业排序：</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="f_fiveOrder" placeholder="行业排序">
+                            <select class="form-control" id="f_fiveOrder">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -205,21 +206,35 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">归属一级行业：</label>
+                        <label class="col-sm-3 control-label">服务一级行业：</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="f_belongFirstSecotr" placeholder="归属一级行业">
+                            <select class="form-control" id="f_belongFirstSecotr" onchange="changeSecondBelongSector(this)">
+
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">归属二级行业：</label>
+                        <label class="col-sm-3 control-label">服务二级行业：</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="f_belongSecondSector" placeholder="归属二级行业">
+                            <select class="form-control" id="f_belongSecondSector" onchange="changeThirdBelongSector(this)">
+
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">归属三级行业：</label>
+                        <label class="col-sm-3 control-label">服务三级行业：</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="f_belongThirdSector" placeholder="归属三级行业">
+                            <select class="form-control" id="f_belongThirdSector" onchange="changeForthBelongSector(this)">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">服务四级行业：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="f_belongForthSector">
+
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

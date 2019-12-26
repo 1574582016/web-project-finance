@@ -1,4 +1,15 @@
+var arrayData = new Array();
 $(function () {
+
+    $.APIPost("/api/finance/getPlatformSectorTree",function (data) {
+        var firstOption = "";
+        $.each(data.data.result ,function (index ,value) {
+            arrayData.push(value);
+            firstOption += '<option value="' + value.text + '">' + value.text + "</option>";
+        });
+        $("#f_belongFirstSecotr").html(firstOption);
+    });
+
     $.APIPost("/api/stockPool/stockPoolDetail?stockCode=" + $("#stock_code").val() ,function (response) {
         drawMainTable(response);
         profitGrowMain("profitGrowMain" ,"利润增长"  ,response.data.result.profitMap);
@@ -33,11 +44,36 @@ $(function () {
             $("#f_mainBusiness").val(data.data.result.mainBusiness);
             // $("#companyDscr").html(data.data.result.companyIntr + data.data.result.companyProduct);
 
+            var secondOption = "";
+            var thirdOption = "";
+            var forthOption = "";
+            $.each(arrayData ,function (index ,value) {
+                if(value.text == data.data.result.belongFirstSecotr){
+                    $.each(value.nodes ,function (index2 ,value2) {
+                        secondOption += '<option value="' + value2.text + '">' + value2.text + "</option>";
+                        if(value2.text == data.data.result.belongSecondSector){
+                            $.each(value2.nodes ,function (index3 ,value3) {
+                                thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                                if(value3.text == data.data.result.belongThirdSector){
+                                    $.each(value3.nodes ,function (index4 ,value4) {
+                                        forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+            $("#f_belongSecondSector").html(secondOption);
+            $("#f_belongThirdSector").html(thirdOption);
+            $("#f_belongForthSector").html(forthOption);
+
             $("#f_companyLevel").val(data.data.result.companyLevel);
             $("#f_fiveOrder").val(data.data.result.fiveOrder);
             $("#f_belongFirstSecotr").val(data.data.result.belongFirstSecotr);
             $("#f_belongSecondSector").val(data.data.result.belongSecondSector);
             $("#f_belongThirdSector").val(data.data.result.belongThirdSector);
+            $("#f_belongForthSector").val(data.data.result.belongForthSector);
 
             var companyQuality = data.data.result.companyQuality;
             if(!isEmpty(companyQuality)){
@@ -72,6 +108,7 @@ $(function () {
         var belongFirstSecotr = $("#f_belongFirstSecotr").val();
         var belongSecondSector = $("#f_belongSecondSector").val();
         var belongThirdSector = $("#f_belongThirdSector").val();
+        var belongForthSector = $("#f_belongForthSector").val();
 
         var qualityArr = new Array();
         $('input[name="f_companyQuality"]:checked').each(function(){
@@ -86,6 +123,7 @@ $(function () {
             belongFirstSecotr : belongFirstSecotr ,
             belongSecondSector : belongSecondSector,
             belongThirdSector : belongThirdSector ,
+            belongForthSector : belongForthSector ,
             mainBusiness : mainBusiness ,
             companyQuality : qualityArr.join(',')
         }) ,function (data) {
@@ -101,7 +139,7 @@ $(function () {
 });
 
 function drawMainTable(response) {
-    var stockCodeStr = '<a class="text_link_a" href="https://'+ response.data.result.companyWebsite +'" target="view_window">'+ response.data.result.stockCode +'</a>';
+    var stockCodeStr = '<a class="text_link_a" href="http://'+ response.data.result.companyWebsite +'" target="view_window">'+ response.data.result.stockCode +'</a>';
     $("#t_stockCode").html(stockCodeStr);
     $("#t_companyName").html(response.data.result.companyName);
     $("#t_companyClass").html(response.data.result.companyClass);
@@ -441,6 +479,64 @@ function companyMonthStatic(result) {
         ]
     };
     myChart.setOption(option);
+}
+
+
+function changeSecondBelongSector(obj) {
+    var thisObj=$(obj);
+
+    var secondOption = "";
+    $.each(arrayData ,function (index ,value) {
+        if(value.text == thisObj.val()){
+            $.each(value.nodes ,function (index2 ,value2) {
+                secondOption += '<option value="' + value2.text + '">' + value2.text + "</option>";
+            });
+        }
+    });
+    $("#f_belongSecondSector").html(secondOption);
+}
+
+function changeThirdBelongSector(obj) {
+    var thisObj=$(obj);
+    var belongFirstSecotr = $("#f_belongFirstSecotr").val();
+
+    var thirdOption = "";
+    $.each(arrayData ,function (index ,value) {
+        if(value.text == belongFirstSecotr){
+            $.each(value.nodes ,function (index2 ,value2) {
+                if(value2.text == thisObj.val()){
+                    $.each(value2.nodes ,function (index3 ,value3) {
+                        thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                    });
+                }
+            });
+        }
+    });
+    $("#f_belongThirdSector").html(thirdOption);
+}
+
+function changeForthBelongSector(obj) {
+    var thisObj=$(obj);
+    var belongFirstSecotr = $("#f_belongFirstSecotr").val();
+    var belongSecondSector = $("#f_belongSecondSector").val();
+
+    var forthOption = "";
+    $.each(arrayData ,function (index ,value) {
+        if(value.text == belongFirstSecotr){
+            $.each(value.nodes ,function (index2 ,value2) {
+                if(value2.text == belongSecondSector){
+                    $.each(value2.nodes ,function (index3 ,value3) {
+                        if(value3.text == thisObj.val()){
+                            $.each(value3.nodes ,function (index4 ,value4) {
+                                forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+    $("#f_belongForthSector").html(forthOption);
 }
 
 

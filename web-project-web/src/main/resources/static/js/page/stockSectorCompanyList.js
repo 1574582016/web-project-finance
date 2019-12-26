@@ -228,7 +228,7 @@ $(function () {
                 align: 'center',
                 valign: 'middle',
                 formatter: function (value, row, index) {
-                    return '<a class="text_link_a" href="https://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
+                    return '<a class="text_link_a" href="http://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
                 }
             }, {
                 field: 'stockName',
