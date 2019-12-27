@@ -1,4 +1,4 @@
-package com.sky;
+package com.sky.test;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;

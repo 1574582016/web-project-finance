@@ -1,4 +1,4 @@
-package com.sky;
+package com.sky.test;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.sky;
+package com.sky.test;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
@@ -8,6 +8,7 @@ import com.sky.model.StockDealData;
 import com.sky.scheduler.StockCompanyNoticeScheduler;
 import com.sky.service.MessagePriceStaticService;
 import com.sky.service.StockCompanyNoticeService;
+import com.sky.service.StockCompanyProfitService;
 import com.sky.service.StockDealDataService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,9 @@ public class CaculateTest {
 
     @Autowired
     private MessagePriceStaticService messagePriceStaticService ;
+
+    @Autowired
+    private StockCompanyProfitService stockCompanyProfitService ;
 
 
     @Test
@@ -249,5 +253,11 @@ public class CaculateTest {
         }
 
         return priceStatic ;
+    }
+
+    @Test
+    public void test003(){
+        BigDecimal result = stockCompanyProfitService.calculateCompanyProfitIncreaseRate("000333" , "2012" , "2018");
+        System.out.println(result);
     }
 }

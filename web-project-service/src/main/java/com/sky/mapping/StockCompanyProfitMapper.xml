@@ -153,4 +153,33 @@
         )b ON a.publishYear = (b.publishYear + 1)
         ORDER BY a.publishYear
     </select>
+
+    <select id="getRecentCompanyProfitList" parameterType="java.lang.String" resultType="com.sky.vo.CompanyProfit_VO">
+        SELECT
+        stock_code stockCode,
+        DATE_FORMAT(publish_day ,'%Y') publishYear,
+        SUM(CONVERT(total_profit,DECIMAL(20,2))) totalProfit
+        FROM stock_company_profit
+        WHERE stock_code = #{stockCode}
+        AND DATE_FORMAT(publish_day ,'%Y') BETWEEN #{startYear} AND #{endYear}
+        GROUP BY stock_code,DATE_FORMAT(publish_day ,'%Y')
+        ORDER BY DATE_FORMAT(publish_day ,'%Y')
+    </select>
+
+    <select id="getMaxAndMinCompanyProfit" parameterType="java.lang.String" resultType="com.sky.vo.CompanyProfit_VO">
+        SELECT
+        a.stock_code stockCode,
+        MAX(a.totalProfit) maxProfit ,
+        MIN(a.totalProfit) minProfit
+        FROM(
+            SELECT
+            stock_code ,
+            DATE_FORMAT(publish_day ,'%Y') publishYear,
+            SUM(CONVERT(total_profit,DECIMAL(20,2))) totalProfit
+            FROM stock_company_profit
+            WHERE stock_code = #{stockCode}
+            AND DATE_FORMAT(publish_day ,'%Y') BETWEEN #{startYear} AND #{endYear}
+            GROUP BY stock_code,DATE_FORMAT(publish_day ,'%Y')
+        ) a
+    </select>
 </mapper>

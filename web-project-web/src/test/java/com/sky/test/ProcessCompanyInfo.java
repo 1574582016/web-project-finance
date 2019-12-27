@@ -1,4 +1,4 @@
-package com.sky;
+package com.sky.test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -65,35 +65,7 @@ public class ProcessCompanyInfo {
         }
     }
 
-    @Test
-    public void processStockCompanyBace() throws InterruptedException {
-        List<StockCompanySector> codeList = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code NOT IN (SELECT stock_a_code FROM stock_company_base WHERE stock_a_code IS NOT NULL)"));
-        for (StockCompanySector sector : codeList) {
-            String stockCode = sector.getStockCode() ;
-            String str = stockCode.substring(0,1);
-            System.out.println(stockCode + "=======================" + str);
-            String market = "sh";
-            if(str.equals("0") || str.equals("3")){
-                market = "sz";
-            }
-            stockCompanyBaseService.spiderStockCompanyBase(market+stockCode);
-            Thread.sleep(sleep);
-        }
 
-    }
-
-    @Test
-    public void processStockCompanyProduct() throws InterruptedException {
-        List<StockCompanySector> sectorList = stockCompanySectorService.selectList(null);
-        for (StockCompanySector stockCode : sectorList) {
-            String market = "sz";
-            if(stockCode.getStockCode().substring(0,1).equals("6")){
-               market = "sh";
-            }
-            stockCompanyProductService.spiderStockCompanyProduct(market , stockCode.getStockCode());
-            Thread.sleep(sleep);
-        }
-    }
 
     @Test
     public void processStockCompanyProduct2() throws InterruptedException {

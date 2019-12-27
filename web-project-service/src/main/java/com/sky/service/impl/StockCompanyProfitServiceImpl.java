@@ -10,11 +10,13 @@ import com.sky.core.utils.DateUtils;
 import com.sky.mapper.StockCompanyProfitMapper;
 import com.sky.model.StockCompanyProfit;
 import com.sky.service.StockCompanyProfitService;
+import com.sky.vo.CompanyProfit_VO;
 import com.sky.vo.StockCompanyProfitVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -85,5 +87,37 @@ public class StockCompanyProfitServiceImpl extends ServiceImpl<StockCompanyProfi
     @Override
     public List<StockCompanyProfitVO> getCompanyProfitGrowList(String stockCode) {
         return baseMapper.getCompanyProfitGrowList(stockCode);
+    }
+
+    @Override
+    public List<CompanyProfit_VO> getRecentCompanyProfitList(String stockCode, String startYear, String endYear) {
+        return baseMapper.getRecentCompanyProfitList(stockCode, startYear, endYear);
+    }
+
+    @Override
+    public CompanyProfit_VO getMaxAndMinCompanyProfit(String stockCode, String startYear, String endYear) {
+        return baseMapper.getMaxAndMinCompanyProfit(stockCode, startYear, endYear);
+    }
+
+    @Override
+    public BigDecimal calculateCompanyProfitIncreaseRate(String stockCode, String startYear, String endYear) {
+        List<CompanyProfit_VO> list = baseMapper.getRecentCompanyProfitList(stockCode, startYear, endYear);
+        CompanyProfit_VO maxAndMin = baseMapper.getMaxAndMinCompanyProfit(stockCode, startYear, endYear);
+        List<CompanyProfit_VO> newList = new ArrayList<>();
+        for (CompanyProfit_VO profit : list){
+             if(profit.getTotalProfit().compareTo(maxAndMin.getMaxProfit()) != 0 && profit.getTotalProfit().compareTo(maxAndMin.getMinProfit()) != 0){
+                 newList.add(profit);
+             }
+        }
+        System.out.println(newList.toString());
+        BigDecimal totalRate = BigDecimal.ZERO;
+        for(int i = newList.size() - 1 ; i > 0 ; i --){
+            CompanyProfit_VO profit_vo1 = newList.get(i);
+            CompanyProfit_VO profit_vo2 = newList.get(i-1);
+            BigDecimal singleRate = (profit_vo1.getTotalProfit().subtract(profit_vo2.getTotalProfit())).multiply(BigDecimal.valueOf(100)).divide(profit_vo2.getTotalProfit() ,2 ,BigDecimal.ROUND_HALF_UP);
+            totalRate = totalRate.add(singleRate);
+        }
+        BigDecimal averageRate = totalRate.divide(BigDecimal.valueOf(newList.size()-1), 2 ,BigDecimal.ROUND_HALF_UP);
+        return averageRate;
     }
 }

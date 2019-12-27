@@ -1,4 +1,4 @@
-package com.sky;
+package com.sky.test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -89,50 +89,9 @@ public class Test02 {
         System.out.println(list.toString());
     }
 
-    @Test
-    public void test02() throws InterruptedException {
-        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
-        for(StockCompanySector sector : list){
-            for(int x = 0 ; x < 50 ; x ++){
-                boolean just = stockCompanyProfitService.spiderStockCompanyProfit(sector.getStockCode() , x);
-                if(just){
-                    Thread.sleep(300);
-                }else{
-                    break;
-                }
-            }
-        }
-    }
 
-    @Test
-    public void test0202() throws InterruptedException {
-        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
-        for(StockCompanySector sector : list){
-            for(int x = 0 ; x < 50 ; x ++){
-                boolean just = stockCompanyAssetService.spiderStockCompanyAsset(sector.getStockCode() , x);
-                if(just){
-                    Thread.sleep(300);
-                }else{
-                    break;
-                }
-            }
-        }
-    }
 
-    @Test
-    public void test0203() throws InterruptedException {
-//        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
-//        for(StockCompanySector sector : list){
-            for(int x = 0 ; x < 50 ; x ++){
-                boolean just = stockCompanyCashFlowService.spiderStockCompanyCashFlow("000333" , x);
-                if(just){
-                    Thread.sleep(300);
-                }else{
-                    break;
-                }
-            }
-//        }
-    }
+
 
     @Autowired
     private ContryMacroEconomyIndexService contryMacroEconomyIndexService;

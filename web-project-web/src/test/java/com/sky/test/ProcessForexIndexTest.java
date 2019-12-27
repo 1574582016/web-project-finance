@@ -1,4 +1,4 @@
-package com.sky;
+package com.sky.test;
 
 import com.sky.core.consts.SpiderUrlConst;
 import com.sky.core.utils.DateUtils;
