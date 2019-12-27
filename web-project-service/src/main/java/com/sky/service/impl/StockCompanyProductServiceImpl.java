@@ -55,7 +55,7 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
                 stockCompanyProduct.setStockCode(skuCode);
                 stockCompanyProduct.setPublishDate(date);
                 stockCompanyProduct.setPruductType("行业分类");
-                stockCompanyProduct.setProductName(sectorObject.getString("zygc"));
+                stockCompanyProduct.setProductName(sectorObject.getString("zygc").replace("﻿" ,""));
                 stockCompanyProduct.setProductRevenue(sectorObject.getString("zysr"));
                 stockCompanyProduct.setProductRevenueRate(sectorObject.getString("srbl"));
                 stockCompanyProduct.setProductCost(sectorObject.getString("zycb"));
@@ -76,7 +76,7 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
                 stockCompanyProduct.setStockCode(skuCode);
                 stockCompanyProduct.setPublishDate(date);
                 stockCompanyProduct.setPruductType("产品分类");
-                stockCompanyProduct.setProductName(saleObject.getString("zygc"));
+                stockCompanyProduct.setProductName(saleObject.getString("zygc").replace("﻿" ,""));
                 stockCompanyProduct.setProductRevenue(saleObject.getString("zysr"));
                 stockCompanyProduct.setProductRevenueRate(saleObject.getString("srbl"));
                 stockCompanyProduct.setProductCost(saleObject.getString("zycb"));
@@ -97,7 +97,7 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
                 stockCompanyProduct.setStockCode(skuCode);
                 stockCompanyProduct.setPublishDate(date);
                 stockCompanyProduct.setPruductType("地域分类");
-                stockCompanyProduct.setProductName(regionObject.getString("zygc"));
+                stockCompanyProduct.setProductName(regionObject.getString("zygc").replace("﻿" ,""));
                 stockCompanyProduct.setProductRevenue(regionObject.getString("zysr"));
                 stockCompanyProduct.setProductRevenueRate(regionObject.getString("srbl"));
                 stockCompanyProduct.setProductCost(regionObject.getString("zycb"));
