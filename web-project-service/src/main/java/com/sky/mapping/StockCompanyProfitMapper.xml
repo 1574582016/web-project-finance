@@ -91,4 +91,76 @@
             GROUP BY stock_code,DATE_FORMAT(publish_day ,'%Y')
         ) a
     </select>
+
+    <select id="caculateProfitIncreaseRate" parameterType="java.lang.String" resultType="java.math.BigDecimal">
+        SELECT
+        ROUND(SUM(c.increaseRate) / SUM(c.num),2) increaseRate
+        FROM(
+        SELECT
+        a.stockCode ,
+        a.publishYear ,
+        CASE WHEN a.increaseRate = b.maxIncreaseRate OR a.increaseRate = b.minIncreaseRate THEN 0 ELSE a.increaseRate END AS increaseRate ,
+        CASE WHEN a.increaseRate = b.maxIncreaseRate OR a.increaseRate = b.minIncreaseRate THEN 0 ELSE 1 END AS num
+        FROM(
+        SELECT
+        a.stockCode ,
+        a.publishYear ,
+        ROUND((a.totalProfit - b.totalProfit) / b.totalProfit * 100 ,2) increaseRate
+        FROM(
+        SELECT
+        stock_code stockCode,
+        DATE_FORMAT(publish_day ,'%Y') publishYear,
+        SUM(CONVERT(total_profit,DECIMAL(20,2))) totalProfit
+        FROM stock_company_profit
+        WHERE stock_code = #{stockCode}
+        AND DATE_FORMAT(publish_day ,'%Y') BETWEEN (#{pointYear} - #{spaceYear}) AND #{pointYear}
+        GROUP BY stock_code,DATE_FORMAT(publish_day ,'%Y')
+        ORDER BY DATE_FORMAT(publish_day ,'%Y')
+        )a
+        LEFT JOIN(
+        SELECT
+        stock_code stockCode,
+        DATE_FORMAT(publish_day ,'%Y') publishYear,
+        SUM(CONVERT(total_profit,DECIMAL(20,2))) totalProfit
+        FROM stock_company_profit
+        WHERE stock_code = #{stockCode}
+        AND DATE_FORMAT(publish_day ,'%Y') BETWEEN (#{pointYear} - #{spaceYear}) AND #{pointYear}
+        GROUP BY stock_code,DATE_FORMAT(publish_day ,'%Y')
+        ORDER BY DATE_FORMAT(publish_day ,'%Y')
+        )b ON a.publishYear = (b.publishYear + 1)
+        WHERE b.stockCode IS NOT NULL
+        ) a
+        LEFT JOIN (
+        SELECT
+        a.stockCode ,
+        a.publishYear ,
+        MAX(ROUND((a.totalProfit - b.totalProfit) / b.totalProfit * 100 ,2)) maxIncreaseRate ,
+        MIN(ROUND((a.totalProfit - b.totalProfit) / b.totalProfit * 100 ,2)) minIncreaseRate
+        FROM(
+        SELECT
+        stock_code stockCode,
+        DATE_FORMAT(publish_day ,'%Y') publishYear,
+        SUM(CONVERT(total_profit,DECIMAL(20,2))) totalProfit
+        FROM stock_company_profit
+        WHERE stock_code = #{stockCode}
+        AND DATE_FORMAT(publish_day ,'%Y') BETWEEN (#{pointYear} - #{spaceYear}) AND #{pointYear}
+        GROUP BY stock_code,DATE_FORMAT(publish_day ,'%Y')
+        ORDER BY DATE_FORMAT(publish_day ,'%Y')
+        )a
+        LEFT JOIN(
+        SELECT
+        stock_code stockCode,
+        DATE_FORMAT(publish_day ,'%Y') publishYear,
+        SUM(CONVERT(total_profit,DECIMAL(20,2))) totalProfit
+        FROM stock_company_profit
+        WHERE stock_code = #{stockCode}
+        AND DATE_FORMAT(publish_day ,'%Y') BETWEEN (#{pointYear} - #{spaceYear}) AND #{pointYear}
+        GROUP BY stock_code,DATE_FORMAT(publish_day ,'%Y')
+        ORDER BY DATE_FORMAT(publish_day ,'%Y')
+        )b ON a.publishYear = (b.publishYear + 1)
+        WHERE b.stockCode IS NOT NULL
+        ) b ON a.stockCode = b.stockCode
+        ) c
+        GROUP BY c.stockCode
+    </select>
 </mapper>

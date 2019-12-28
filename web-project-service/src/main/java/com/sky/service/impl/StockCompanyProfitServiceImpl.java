@@ -120,4 +120,9 @@ public class StockCompanyProfitServiceImpl extends ServiceImpl<StockCompanyProfi
         BigDecimal averageRate = totalRate.divide(BigDecimal.valueOf(newList.size()-1), 2 ,BigDecimal.ROUND_HALF_UP);
         return averageRate;
     }
+
+    @Override
+    public BigDecimal caculateProfitIncreaseRate(String stockCode, String spaceYear, String pointYear) {
+        return baseMapper.caculateProfitIncreaseRate( stockCode, spaceYear, pointYear);
+    }
 }

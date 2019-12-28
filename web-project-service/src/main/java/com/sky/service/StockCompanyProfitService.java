@@ -22,4 +22,6 @@ public interface StockCompanyProfitService extends IService<StockCompanyProfit> 
     CompanyProfit_VO getMaxAndMinCompanyProfit( String stockCode , String startYear , String endYear);
 
     BigDecimal calculateCompanyProfitIncreaseRate(String stockCode , String startYear , String endYear);
+
+    BigDecimal caculateProfitIncreaseRate(String stockCode ,String spaceYear ,String pointYear);
 }

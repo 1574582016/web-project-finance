@@ -20,4 +20,6 @@ public class CompanyProfit_VO extends VoModel {
     private BigDecimal maxProfit ;
 
     private BigDecimal minProfit ;
+
+    private BigDecimal increaseRate ;
 }

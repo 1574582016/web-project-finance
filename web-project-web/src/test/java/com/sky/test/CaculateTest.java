@@ -10,6 +10,7 @@ import com.sky.service.MessagePriceStaticService;
 import com.sky.service.StockCompanyNoticeService;
 import com.sky.service.StockCompanyProfitService;
 import com.sky.service.StockDealDataService;
+import com.sky.vo.CompanyProfit_VO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -257,7 +258,13 @@ public class CaculateTest {
 
     @Test
     public void test003(){
-        BigDecimal result = stockCompanyProfitService.calculateCompanyProfitIncreaseRate("000333" , "2012" , "2018");
+        BigDecimal result = stockCompanyProfitService.calculateCompanyProfitIncreaseRate("000001" , "2013" , "2018");
+        System.out.println(result);
+    }
+
+    @Test
+    public void test004(){
+        BigDecimal result = stockCompanyProfitService.caculateProfitIncreaseRate("000016" , "5" , "2018");
         System.out.println(result);
     }
 }
