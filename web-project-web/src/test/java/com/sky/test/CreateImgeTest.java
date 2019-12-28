@@ -49,25 +49,19 @@ public class CreateImgeTest {
         List<String> title = new ArrayList<>();
 
         List<BigDecimal> totalProfit = new ArrayList<>();
-        List<BigDecimal> mainBusinessProfit = new ArrayList<>();
-        List<BigDecimal> viceBusinessProfit = new ArrayList<>();
-        List<BigDecimal> otherProfit = new ArrayList<>();
+        List<BigDecimal> belongProfit = new ArrayList<>();
 
         for(StockCompanyProfitVO profit : list){
             title.add(profit.getPublishYear());
             totalProfit.add(profit.getTotalProfit());
-            mainBusinessProfit.add(profit.getMainBusinessProfit());
-            viceBusinessProfit.add(profit.getViceBusinessProfit());
-            otherProfit.add(profit.getOtherProfit());
+            belongProfit.add(profit.getBelongProfit());
         }
         String[] categories = new String[title.size()];
         title.toArray(categories);
         Vector<Serie> series = new Vector<Serie>();
         // 柱子名称：柱子所有的值集合
         series.add(new Serie("总利润", totalProfit));
-        series.add(new Serie("主营利润", mainBusinessProfit));
-        series.add(new Serie("辅营利润", viceBusinessProfit));
-        series.add(new Serie("其他利润", otherProfit));
+        series.add(new Serie("归属利润", belongProfit));
         // 1：创建数据集合
         DefaultCategoryDataset dataset = ChartUtils.createDefaultCategoryDataset(series, categories);
         return dataset;

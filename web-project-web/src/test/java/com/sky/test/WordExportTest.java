@@ -529,16 +529,12 @@ public class WordExportTest {
             List<String> title = new ArrayList<>();
 
             List<BigDecimal> totalProfit = new ArrayList<>();
-            List<BigDecimal> mainBusinessProfit = new ArrayList<>();
-            List<BigDecimal> viceBusinessProfit = new ArrayList<>();
-            List<BigDecimal> otherProfit = new ArrayList<>();
+            List<BigDecimal> belongProfit = new ArrayList<>();
 
             for(StockCompanyProfitVO profit : list){
                 title.add(profit.getPublishYear());
                 totalProfit.add(profit.getTotalProfit());
-                mainBusinessProfit.add(profit.getMainBusinessProfit());
-                viceBusinessProfit.add(profit.getViceBusinessProfit());
-                otherProfit.add(profit.getOtherProfit());
+                belongProfit.add(profit.getBelongProfit());
             }
             if(totalProfit.size() == 0){
                 return;
@@ -548,9 +544,7 @@ public class WordExportTest {
             Vector<Serie> series = new Vector<Serie>();
             // 柱子名称：柱子所有的值集合
             series.add(new Serie("总利润", totalProfit));
-            series.add(new Serie("主营利润", mainBusinessProfit));
-            series.add(new Serie("辅营利润", viceBusinessProfit));
-            series.add(new Serie("其他利润", otherProfit));
+            series.add(new Serie("归属利润", belongProfit));
             // 1：创建数据集合
             DefaultCategoryDataset dataset = ChartUtils.createDefaultCategoryDataset(series, categories);
 
@@ -580,29 +574,29 @@ public class WordExportTest {
             }
             List<String> title = new ArrayList<>();
 
-            List<BigDecimal> firstProfitRate = new ArrayList<>();
-            List<BigDecimal> secondProfitRate = new ArrayList<>();
-            List<BigDecimal> threeProfitRate = new ArrayList<>();
-            List<BigDecimal> forthtProfitRate = new ArrayList<>();
+            List<BigDecimal> firstSeasonProfit = new ArrayList<>();
+            List<BigDecimal> secondSeasonProfit = new ArrayList<>();
+            List<BigDecimal> threeSeasonProfit = new ArrayList<>();
+            List<BigDecimal> forthtSeasonProfit = new ArrayList<>();
 
             for(StockCompanyProfitVO profit : list){
                 title.add(profit.getPublishYear());
-                firstProfitRate.add(profit.getFirstProfitRate());
-                secondProfitRate.add(profit.getSecondProfitRate());
-                threeProfitRate.add(profit.getThreeProfitRate());
-                forthtProfitRate.add(profit.getForthtProfitRate());
+                firstSeasonProfit.add(profit.getFirstSeasonProfit());
+                secondSeasonProfit.add(profit.getSecondSeasonProfit());
+                threeSeasonProfit.add(profit.getThirdSeasonProfit());
+                forthtSeasonProfit.add(profit.getForthSeasonProfit());
             }
-            if(firstProfitRate.size() == 0){
+            if(firstSeasonProfit.size() == 0){
                 return;
             }
             String[] categories = new String[title.size()];
             title.toArray(categories);
             Vector<Serie> series = new Vector<Serie>();
             // 柱子名称：柱子所有的值集合
-            series.add(new Serie("第一季度", firstProfitRate));
-            series.add(new Serie("第二季度", secondProfitRate));
-            series.add(new Serie("第三季度", threeProfitRate));
-            series.add(new Serie("第四季度", forthtProfitRate));
+            series.add(new Serie("第一季度", firstSeasonProfit));
+            series.add(new Serie("第二季度", secondSeasonProfit));
+            series.add(new Serie("第三季度", threeSeasonProfit));
+            series.add(new Serie("第四季度", forthtSeasonProfit));
             // 1：创建数据集合
             DefaultCategoryDataset dataset = ChartUtils.createDefaultCategoryDataset(series, categories);
 

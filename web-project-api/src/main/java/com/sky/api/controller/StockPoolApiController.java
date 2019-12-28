@@ -277,39 +277,33 @@ public class StockPoolApiController extends AbstractController {
             List<String> profitTitle = new ArrayList<>();
 
             List<BigDecimal> totalProfit = new ArrayList<>();
-            List<BigDecimal> mainBusinessProfit = new ArrayList<>();
-            List<BigDecimal> viceBusinessProfit = new ArrayList<>();
             List<BigDecimal> belongProfit = new ArrayList<>();
 
-            List<BigDecimal> firstProfitRate = new ArrayList<>();
-            List<BigDecimal> secondProfitRate = new ArrayList<>();
-            List<BigDecimal> threeProfitRate = new ArrayList<>();
-            List<BigDecimal> forthtProfitRate = new ArrayList<>();
+            List<BigDecimal> firstSeasonProfit = new ArrayList<>();
+            List<BigDecimal> secondSeasonProfit = new ArrayList<>();
+            List<BigDecimal> threeSeasonProfit = new ArrayList<>();
+            List<BigDecimal> forthtSeasonProfit = new ArrayList<>();
 
             for(StockCompanyProfitVO profit : profitList){
                 profitTitle.add(profit.getPublishYear());
                 totalProfit.add(profit.getTotalProfit());
-                mainBusinessProfit.add(profit.getMainBusinessProfit());
-                viceBusinessProfit.add(profit.getViceBusinessProfit());
                 belongProfit.add(profit.getBelongProfit());
 
-                firstProfitRate.add(profit.getFirstProfitRate());
-                secondProfitRate.add(profit.getSecondProfitRate());
-                threeProfitRate.add(profit.getThreeProfitRate());
-                forthtProfitRate.add(profit.getForthtProfitRate());
+                firstSeasonProfit.add(profit.getFirstSeasonProfit());
+                secondSeasonProfit.add(profit.getSecondSeasonProfit());
+                threeSeasonProfit.add(profit.getThirdSeasonProfit());
+                forthtSeasonProfit.add(profit.getForthSeasonProfit());
             }
 
             Map<String,Object> profitMap = new HashedMap();
             profitMap.put("profitTitle",profitTitle);
             profitMap.put("totalProfit",totalProfit);
-            profitMap.put("mainBusinessProfit",mainBusinessProfit);
-            profitMap.put("viceBusinessProfit",viceBusinessProfit);
             profitMap.put("belongProfit",belongProfit);
 
-            profitMap.put("firstProfitRate",firstProfitRate);
-            profitMap.put("secondProfitRate",secondProfitRate);
-            profitMap.put("threeProfitRate",threeProfitRate);
-            profitMap.put("forthtProfitRate",forthtProfitRate);
+            profitMap.put("firstProfitRate",firstSeasonProfit);
+            profitMap.put("secondProfitRate",secondSeasonProfit);
+            profitMap.put("threeProfitRate",threeSeasonProfit);
+            profitMap.put("forthtProfitRate",forthtSeasonProfit);
 
             world_vo.setProfitMap(profitMap);
 

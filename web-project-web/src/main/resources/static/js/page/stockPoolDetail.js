@@ -12,7 +12,7 @@ $(function () {
 
     $.APIPost("/api/stockPool/stockPoolDetail?stockCode=" + $("#stock_code").val() ,function (response) {
         drawMainTable(response);
-        profitGrowMain("profitGrowMain" ,"利润增长"  ,response.data.result.profitMap);
+        profitGrowMain("profitGrowMain" ,"总利润"  ,response.data.result.profitMap);
         profitSeasonMain("profitSeasonMain" ,"季度利润" ,response.data.result.profitMap);
 
         assetGrowMain("assetGrowMain" ,"资产增长"  ,response.data.result.assetMap);
@@ -295,7 +295,7 @@ function profitGrowMain(boxId ,name ,result) {
             trigger: 'axis'
         },
         legend: {
-            data:['总利润','主营利润','辅营利润','归属利润']
+            data:['总利润','归属利润']
         },
         grid: {
             left: '3%',
@@ -318,19 +318,9 @@ function profitGrowMain(boxId ,name ,result) {
                 stack: '总量0',
                 data:result.totalProfit
             },{
-                name:'主营利润',
-                type:'line',
-                stack: '总量1',
-                data:result.mainBusinessProfit
-            },{
-                name:'辅营利润',
-                type:'line',
-                stack: '总量2',
-                data:result.viceBusinessProfit
-            },{
                 name:'归属利润',
                 type:'line',
-                stack: '总量3',
+                stack: '总量1',
                 data:result.belongProfit
             }
         ]

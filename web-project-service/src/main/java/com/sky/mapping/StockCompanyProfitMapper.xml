@@ -25,133 +25,42 @@
 
     <select id="getCompanyProfitGrowList" parameterType="java.lang.String" resultType="com.sky.vo.StockCompanyProfitVO">
         SELECT
-        a.* ,
-        ROUND((a.totalProfit - IFNULL(b.totalProfit,a.totalProfit))/a.totalProfit * 100,2) totalProfitGrowRate ,
-        ROUND((a.mainBusinessProfit - IFNULL(b.mainBusinessProfit,a.mainBusinessProfit))/a.mainBusinessProfit * 100,2) mainBusinessProfitRate ,
-        CASE WHEN a.totalProfit - IFNULL(b.totalProfit,a.totalProfit) > 0 THEN 1
-              WHEN a.totalProfit - IFNULL(b.totalProfit,a.totalProfit) = 0 THEN 0
-              WHEN a.totalProfit - IFNULL(b.totalProfit,a.totalProfit) &lt; 0 THEN -1
-              ELSE 0
-              END AS isGrow,
-        CASE WHEN a.finalProfit - IFNULL(b.finalProfit,a.finalProfit) > 0 THEN 1
-              WHEN a.finalProfit - IFNULL(b.finalProfit,a.finalProfit) = 0 THEN 0
-              WHEN a.finalProfit - IFNULL(b.finalProfit,a.finalProfit) &lt; 0 THEN -1
-              ELSE 0
-              END AS isBelong ,
-        CASE WHEN (a.totalProfit - a.operateProfit - a.finalProfit) - (IFNULL(b.totalProfit,a.totalProfit) - IFNULL(b.operateProfit,a.operateProfit) -IFNULL(b.finalProfit,a.finalProfit)) &lt; 0 THEN 1
-              WHEN (a.totalProfit - a.operateProfit - a.finalProfit) - (IFNULL(b.totalProfit,a.totalProfit) - IFNULL(b.operateProfit,a.operateProfit) -IFNULL(b.finalProfit,a.finalProfit)) = 0 THEN 0
-              WHEN (a.totalProfit - a.operateProfit - a.finalProfit) - (IFNULL(b.totalProfit,a.totalProfit) - IFNULL(b.operateProfit,a.operateProfit) -IFNULL(b.finalProfit,a.finalProfit)) > 0 THEN -1
-              ELSE 0
-              END AS belongOther
+        a.stock_code stockCode,
+        a.publish_year publishYear,
+        ROUND(SUM(a.total_profit) / 100000000 ,2) totalProfit ,
+        ROUND(SUM(a.belong_profit) / 100000000 ,2) belongProfit ,
+        IFNULL(ROUND((SUM(a.total_profit) - b.total_profit) / b.total_profit * 100 ,2),0) totalProfitRate ,
+        IFNULL(ROUND((SUM(a.belong_profit) - b.belong_profit) / b.belong_profit * 100 ,2),0) belongProfitRate ,
+        ROUND(SUM(CASE WHEN a.publish_month = '03' THEN a.total_profit ELSE 0 END) / 100000000 ,2) AS firstSeasonProfit ,
+        ROUND(SUM(CASE WHEN a.publish_month = '06' THEN a.total_profit ELSE 0 END) / 100000000 ,2) AS secondSeasonProfit ,
+        ROUND(SUM(CASE WHEN a.publish_month = '09' THEN a.total_profit ELSE 0 END) / 100000000 ,2) AS thirdSeasonProfit ,
+        ROUND(SUM(CASE WHEN a.publish_month = '12' THEN a.total_profit ELSE 0 END) / 100000000 ,2) AS forthSeasonProfit ,
+        CASE WHEN SUM(a.total_profit) - b.total_profit > 0 THEN 1 ELSE 0 END AS isGrow ,
+        CASE WHEN SUM(a.belong_profit) - b.belong_profit > 0 THEN 1 ELSE 0 END AS isBelong ,
+        CASE WHEN SUM(a.total_profit) - SUM(a.belong_profit) &lt; b.total_profit - b.belong_profit THEN 1 ELSE 0 END AS belongOther
         FROM(
         SELECT
-        LEFT(p.publish_day,4) publishYear ,
-        ROUND(
-        SUM(
-        ROUND(p.`business_income`,2) -
-        ROUND(p.`business_cost`,2) +
-        ROUND(p.business_total_profit,2) -
-        ROUND(p.`total_income`,2) +
-        ROUND(p.`total_cost`,2) +
-        ROUND(p.total_profit,2) -
-        ROUND(p.business_total_profit)
-        ) / 100000000,2) totalProfit,
-        ROUND(SUM(ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2))/100000000,2) mainBusinessProfit,
-        ROUND((SUM(ROUND(p.business_total_profit,2)) - (SUM(ROUND(p.`total_income`,2) - ROUND(p.`total_cost`,2)))) / 100000000,2) viceBusinessProfit,
-        ROUND(SUM(ROUND(p.total_profit,2) - ROUND(p.business_total_profit)) /100000000,2) otherProfit ,
-        ROUND(SUM(ROUND(p.`total_cost`,2) - ROUND(p.`business_cost`,2)) /100000000,2) operateCost ,
-        ROUND(SUM(IFNULL(p.belong_profit,0)) /100000000,2) belongProfit ,
-        ROUND(SUM(IFNULL(p.final_profit,0)) /100000000,2) finalProfit,
-        ROUND(SUM(ROUND(p.`total_cost`,2) - ROUND(p.`business_cost`,2)) /100000000 ,2) operateProfit ,
-        ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '3' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
-        ,2)
-        AS firstProfitRate,
-        ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '6' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
-        ,2)
-        AS secondProfitRate,
-        ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '9' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
-        ,2)
-        AS threeProfitRate,
-        ROUND(
-        ROUND(SUM(CASE WHEN REPLACE(SUBSTR(p.publish_day,6,2),'/','') = '12' THEN ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2) ELSE 0 END)/100000000,2)
-        ,2)
-        AS forthtProfitRate,
-
-        ROUND(SUM(ROUND(p.`total_cost`,2) - ROUND(p.`business_cost`,2)) /
-        SUM(
-        ROUND(p.`business_income`,2) -
-        ROUND(p.`business_cost`,2) +
-        ROUND(p.business_total_profit,2) -
-        ROUND(p.`total_income`,2) +
-        ROUND(p.`total_cost`,2) +
-        ROUND(p.total_profit,2) -
-        ROUND(p.business_total_profit)
-        )
-         * 100,2) operateProfitRate,
-        ROUND(SUM(IFNULL(p.belong_profit,0)) /
-        SUM(
-        ROUND(p.`business_income`,2) -
-        ROUND(p.`business_cost`,2) +
-        ROUND(p.business_total_profit,2) -
-        ROUND(p.`total_income`,2) +
-        ROUND(p.`total_cost`,2) +
-        ROUND(p.total_profit,2) -
-        ROUND(p.business_total_profit)
-        )
-        * 100,2) belongProfitRate,
-        ROUND(SUM(IFNULL(p.final_profit,0)) /
-        SUM(
-        ROUND(p.`business_income`,2) -
-        ROUND(p.`business_cost`,2) +
-        ROUND(p.business_total_profit,2) -
-        ROUND(p.`total_income`,2) +
-        ROUND(p.`total_cost`,2) +
-        ROUND(p.total_profit,2) -
-        ROUND(p.business_total_profit)
-        )
-        * 100,2) finalProfitRate
-
+        p.`stock_code` ,
+        DATE_FORMAT(p.publish_day ,'%Y') publish_year ,
+        DATE_FORMAT(p.publish_day ,'%m') publish_month ,
+        CONVERT(p.`total_profit`,DECIMAL(20,2)) total_profit,
+        CONVERT(p.`belong_profit`,DECIMAL(20,2)) belong_profit
         FROM stock_company_profit p
-        WHERE p.stock_code = #{stockCode}
-        AND IFNULL(p.`total_income`,0) > 0
-        AND IFNULL(p.`business_income`,0) > 0
-        AND IFNULL(p.`total_cost`,0) > 0
-        AND IFNULL(p.`business_cost`,0) > 0
-        GROUP BY LEFT(p.publish_day,4)
+        WHERE p.`stock_code` = #{stockCode}
         ) a
-        LEFT JOIN
-        (
+        LEFT JOIN (
         SELECT
-        LEFT(p.publish_day,4) publishYear ,
-        ROUND(
-        SUM(
-        ROUND(p.`business_income`,2) -
-        ROUND(p.`business_cost`,2) +
-        ROUND(p.business_total_profit,2) -
-        ROUND(p.`total_income`,2) +
-        ROUND(p.`total_cost`,2) +
-        ROUND(p.total_profit,2) -
-        ROUND(p.business_total_profit)
-        ) / 100000000,2) totalProfit,
-        ROUND(SUM(ROUND(p.`business_income`,2) - ROUND(p.`business_cost`,2))/100000000,2) mainBusinessProfit,
-        ROUND((SUM(ROUND(p.business_total_profit,2)) - (SUM(ROUND(p.`total_income`,2) - ROUND(p.`total_cost`,2)))) / 100000000,2) viceBusinessProfit,
-        ROUND(SUM(ROUND(p.total_profit,2) - ROUND(p.business_total_profit)) /100000000,2) otherProfit ,
-        ROUND(SUM(ROUND(p.`total_cost`,2) - ROUND(p.`business_cost`,2)) /100000000,2) operateCost ,
-        ROUND(SUM(IFNULL(p.belong_profit,0)) /100000000,2) belongProfit ,
-        ROUND(SUM(IFNULL(p.final_profit,0)) /100000000,2) finalProfit,
-        ROUND(SUM(ROUND(p.`total_cost`,2) - ROUND(p.`business_cost`,2)) /100000000 ,2) operateProfit
+        p.`stock_code` ,
+        DATE_FORMAT(p.publish_day ,'%Y-%m-%d'),
+        DATE_FORMAT(ADDDATE(DATE_FORMAT(p.publish_day ,'%Y-%m-%d'),INTERVAL 1 YEAR),'%Y') publish_year ,
+        SUM(CONVERT(p.`total_profit`,DECIMAL(20,2))) total_profit,
+        SUM(CONVERT(p.`belong_profit`,DECIMAL(20,2))) belong_profit
         FROM stock_company_profit p
-        WHERE p.stock_code = #{stockCode}
-        AND IFNULL(p.`total_income`,0) > 0
-        AND IFNULL(p.`business_income`,0) > 0
-        AND IFNULL(p.`total_cost`,0) > 0
-        AND IFNULL(p.`business_cost`,0) > 0
-        GROUP BY LEFT(p.publish_day,4)
-        )b ON a.publishYear = (b.publishYear + 1)
-        ORDER BY a.publishYear
+        WHERE p.`stock_code` = #{stockCode}
+        GROUP BY p.`stock_code` ,DATE_FORMAT(p.publish_day ,'%Y')
+        ) b ON a.stock_code = b.stock_code AND a.publish_year = b.publish_year
+        GROUP BY a.stock_code ,a.publish_year
+        ORDER BY a.publish_year ASC
     </select>
 
     <select id="getRecentCompanyProfitList" parameterType="java.lang.String" resultType="com.sky.vo.CompanyProfit_VO">

@@ -1,10 +1,8 @@
 $(function () {
     $.APIPost("/api/stock/getCompanyProfitGrowList?stockCode=" + $("#stock_code").val() ,function (result) {
         mainProfit(result);
-        profitGrowMain("profitGrowMain" ,"利润增长"  ,result);
-        profitSeasonMain("profitSeasonMain" ,"季度占比" ,result);
-        profitBelongMain("profitBelongMain" ,"利润归属" ,result);
-        profitOperateRelation("profitOperateRelation" ,"运营成本&利润关系" ,result);
+        profitGrowMain("profitGrowMain" ,"总利润增长"  ,result);
+        profitSeasonMain("profitSeasonMain" ,"季度利润增长" ,result);
         profitGrowRate("profitGrowRate" ,"利润增长率" ,result);
     });
 
@@ -517,7 +515,7 @@ function mainProfit(result) {
             trigger: 'axis'
         },
         legend: {
-            data:['总利润','归属利润','最终利润','对外利润']
+            data:['总利润','归属利润']
         },
         grid: {
             left: '3%',
@@ -543,17 +541,7 @@ function mainProfit(result) {
                 name:'归属利润',
                 type:'line',
                 stack: '总量1',
-                data:result.data.belongProfitRate
-            },{
-                name:'最终利润',
-                type:'line',
-                stack: '总量2',
-                data:result.data.finalProfitRate
-            },{
-                name:'对外利润',
-                type:'line',
-                stack: '总量3',
-                data:result.data.otherCompanyProfitRate
+                data:result.data.belongProfit
             }
         ]
     };
@@ -573,7 +561,7 @@ function profitGrowMain(boxId ,name ,result) {
             trigger: 'axis'
         },
         legend: {
-            data:['总利润','主营利润','辅营利润','其他利润']
+            data:['总利润','归属利润']
         },
         grid: {
             left: '3%',
@@ -596,20 +584,10 @@ function profitGrowMain(boxId ,name ,result) {
                 stack: '总量0',
                 data:result.data.totalProfit
             },{
-                name:'主营利润',
+                name:'归属利润',
                 type:'line',
                 stack: '总量1',
-                data:result.data.mainBusinessProfit
-            },{
-                name:'辅营利润',
-                type:'line',
-                stack: '总量2',
-                data:result.data.viceBusinessProfit
-            },{
-                name:'其他利润',
-                type:'line',
-                stack: '总量3',
-                data:result.data.otherProfit
+                data:result.data.belongProfit
             }
         ]
     };
@@ -672,108 +650,6 @@ function profitSeasonMain(boxId ,name ,result) {
     myChart.setOption(option);
 }
 
-function profitBelongMain(boxId ,name ,result) {
-    $('#'+ boxId).width($('#mainProfit').width());
-    var myChart = echarts.init(document.getElementById(boxId));
-    var colors = ['#d3ff24','#e80b3e','#34bd37'];
-    var option = {
-        color: colors,
-        title: {
-            text: name
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data:['归属利润','最终利润','对外利润']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: result.data.title
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [
-            {
-                name:'归属利润',
-                type:'line',
-                stack: '总量1',
-                data:result.data.belongProfitRate
-            },{
-                name:'最终利润',
-                type:'line',
-                stack: '总量2',
-                data:result.data.finalProfitRate
-            },{
-                name:'对外利润',
-                type:'line',
-                stack: '总量3',
-                data:result.data.otherCompanyProfitRate
-            }
-        ]
-    };
-    myChart.setOption(option);
-}
-
-function profitOperateRelation(boxId ,name ,result) {
-    $('#'+ boxId).width($('#mainProfit').width());
-    var myChart = echarts.init(document.getElementById(boxId));
-    var colors = ['#3a9ff5', '#d3ff24', '#e80b3e'];
-    var option = {
-        color: colors,
-        title: {
-            text: name
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data:['总利润','经营成本','归属利润']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: result.data.title
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [
-            {
-                name:'总利润',
-                type:'line',
-                stack: '总量0',
-                data:result.data.totalProfit
-            },{
-                name:'经营成本',
-                type:'line',
-                stack: '总量1',
-                data:result.data.operateCost
-            },{
-                name:'归属利润',
-                type:'line',
-                stack: '总量2',
-                data:result.data.belongProfit
-            }
-        ]
-    };
-    myChart.setOption(option);
-}
-
 function profitGrowRate(boxId ,name ,result) {
     $('#'+ boxId).width($('#mainProfit').width());
     var myChart = echarts.init(document.getElementById(boxId));
@@ -787,7 +663,7 @@ function profitGrowRate(boxId ,name ,result) {
             trigger: 'axis'
         },
         legend: {
-            data:['总利润增长率','主营利润增长率']
+            data:['总利润增长率','归属利润增长率']
         },
         grid: {
             left: '3%',
@@ -808,12 +684,12 @@ function profitGrowRate(boxId ,name ,result) {
                 name:'总利润增长率',
                 type:'line',
                 stack: '总量0',
-                data:result.data.totalProfitGrowRate
+                data:result.data.totalProfitRate
             },{
-                name:'主营利润增长率',
+                name:'归属利润增长率',
                 type:'line',
                 stack: '总量1',
-                data:result.data.mainBusinessProfitRate
+                data:result.data.belongProfitRate
             }
         ]
     };

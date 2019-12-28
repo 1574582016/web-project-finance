@@ -215,47 +215,29 @@ public class StockCompanyApiController extends AbstractController {
         List<String> title = new ArrayList<>();
 
         List<BigDecimal> totalProfit = new ArrayList<>();
-        List<BigDecimal> operateCost = new ArrayList<>();
         List<BigDecimal> belongProfit = new ArrayList<>();
-        List<BigDecimal> mainBusinessProfit = new ArrayList<>();
-        List<BigDecimal> viceBusinessProfit = new ArrayList<>();
-        List<BigDecimal> otherProfit = new ArrayList<>();
 
-        List<BigDecimal> firstProfitRate = new ArrayList<>();
-        List<BigDecimal> secondProfitRate = new ArrayList<>();
-        List<BigDecimal> threeProfitRate = new ArrayList<>();
-        List<BigDecimal> forthtProfitRate = new ArrayList<>();
+        List<BigDecimal> firstSeasonProfit = new ArrayList<>();
+        List<BigDecimal> secondSeasonProfit = new ArrayList<>();
+        List<BigDecimal> threeSeasonProfit = new ArrayList<>();
+        List<BigDecimal> forthtSeasonProfit = new ArrayList<>();
 
-        List<BigDecimal> operateProfitRate = new ArrayList<>();
+        List<BigDecimal> totalProfitRate = new ArrayList<>();
         List<BigDecimal> belongProfitRate = new ArrayList<>();
-        List<BigDecimal> finalProfitRate = new ArrayList<>();
-        List<BigDecimal> otherCompanyProfitRate = new ArrayList<>();
-
-        List<BigDecimal> totalProfitGrowRate = new ArrayList<>();
-        List<BigDecimal> mainBusinessProfitRate = new ArrayList<>();
 
         for(StockCompanyProfitVO profit : list){
             title.add(profit.getPublishYear());
             totalProfit.add(profit.getTotalProfit());
-            mainBusinessProfit.add(profit.getMainBusinessProfit());
-            viceBusinessProfit.add(profit.getViceBusinessProfit());
-            otherProfit.add(profit.getOtherProfit());
-
-            operateCost.add(profit.getOperateCost());
             belongProfit.add(profit.getBelongProfit());
 
-            firstProfitRate.add(profit.getFirstProfitRate());
-            secondProfitRate.add(profit.getSecondProfitRate());
-            threeProfitRate.add(profit.getThreeProfitRate());
-            forthtProfitRate.add(profit.getForthtProfitRate());
+            firstSeasonProfit.add(profit.getFirstSeasonProfit());
+            secondSeasonProfit.add(profit.getSecondSeasonProfit());
+            threeSeasonProfit.add(profit.getThirdSeasonProfit());
+            forthtSeasonProfit.add(profit.getForthSeasonProfit());
 
-            operateProfitRate.add(profit.getOperateProfitRate());
+            totalProfitRate.add(profit.getTotalProfitRate());
             belongProfitRate.add(profit.getBelongProfitRate());
-            finalProfitRate.add(profit.getFinalProfitRate());
-            otherCompanyProfitRate.add(BigDecimal.valueOf(100).subtract(profit.getOperateProfitRate()).subtract(profit.getFinalProfitRate()).setScale(2,BigDecimal.ROUND_HALF_UP));
 
-            totalProfitGrowRate.add(profit.getTotalProfitGrowRate());
-            mainBusinessProfitRate.add(profit.getMainBusinessProfitRate());
         }
 
         JSONObject jsonObject = stockCompanyProfitLevel(list);
@@ -263,25 +245,16 @@ public class StockCompanyApiController extends AbstractController {
         Map<String,Object> resultMap = new HashedMap();
         resultMap.put("title",title);
         resultMap.put("totalProfit",totalProfit);
-        resultMap.put("mainBusinessProfit",mainBusinessProfit);
-        resultMap.put("viceBusinessProfit",viceBusinessProfit);
-        resultMap.put("otherProfit",otherProfit);
-
-        resultMap.put("operateCost",operateCost);
         resultMap.put("belongProfit",belongProfit);
 
-        resultMap.put("firstProfitRate",firstProfitRate);
-        resultMap.put("secondProfitRate",secondProfitRate);
-        resultMap.put("threeProfitRate",threeProfitRate);
-        resultMap.put("forthtProfitRate",forthtProfitRate);
+        resultMap.put("firstProfitRate",firstSeasonProfit);
+        resultMap.put("secondProfitRate",secondSeasonProfit);
+        resultMap.put("threeProfitRate",threeSeasonProfit);
+        resultMap.put("forthtProfitRate",forthtSeasonProfit);
 
-        resultMap.put("operateProfitRate",operateProfitRate);
+        resultMap.put("totalProfitRate",totalProfitRate);
         resultMap.put("belongProfitRate",belongProfitRate);
-        resultMap.put("finalProfitRate",finalProfitRate);
-        resultMap.put("otherCompanyProfitRate",otherCompanyProfitRate);
 
-        resultMap.put("totalProfitGrowRate",totalProfitGrowRate);
-        resultMap.put("mainBusinessProfitRate",mainBusinessProfitRate);
         resultMap.put("profitLevel",jsonObject);
         return ResponseEntity.ok(MapSuccess("操作成功",resultMap));
     }

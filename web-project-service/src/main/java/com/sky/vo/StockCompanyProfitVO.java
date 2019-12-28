@@ -15,25 +15,17 @@ public class StockCompanyProfitVO extends VoModel {
 
     private BigDecimal totalProfit ;
 
-    private BigDecimal operateCost ;
-
     private BigDecimal belongProfit;
 
-    private BigDecimal mainBusinessProfit ;
+    private BigDecimal firstSeasonProfit ;
 
-    private BigDecimal viceBusinessProfit ;
+    private BigDecimal secondSeasonProfit ;
 
-    private BigDecimal otherProfit ;
+    private BigDecimal thirdSeasonProfit ;
 
-    private BigDecimal firstProfitRate ;
+    private BigDecimal forthSeasonProfit ;
 
-    private BigDecimal secondProfitRate ;
-
-    private BigDecimal threeProfitRate ;
-
-    private BigDecimal forthtProfitRate ;
-
-    private BigDecimal operateProfitRate ;
+    private BigDecimal totalProfitRate ;
 
     private BigDecimal belongProfitRate ;
 
