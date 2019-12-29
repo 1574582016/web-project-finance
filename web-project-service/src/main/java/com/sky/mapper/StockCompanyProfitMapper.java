@@ -21,4 +21,8 @@ public interface StockCompanyProfitMapper extends BaseMapper<StockCompanyProfit>
     CompanyProfit_VO getMaxAndMinCompanyProfit(@Param("stockCode") String stockCode ,@Param("startYear") String startYear ,@Param("endYear") String endYear);
 
     BigDecimal caculateProfitIncreaseRate(@Param("stockCode") String stockCode , @Param("spaceYear") String spaceYear , @Param("pointYear") String pointYear);
+
+    CompanyProfit_VO getStockProfitSeasonIncreaseRate(@Param("stockCode") String stockCode ,@Param("pointYear") String pointYear);
+
+    CompanyProfit_VO getStockProfitSpaceYear(@Param("stockCode") String stockCode);
 }

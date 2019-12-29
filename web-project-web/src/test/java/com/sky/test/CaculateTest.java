@@ -4,12 +4,10 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.MessagePriceStatic;
 import com.sky.model.StockCompanyNotice;
+import com.sky.model.StockCompanySector;
 import com.sky.model.StockDealData;
 import com.sky.scheduler.StockCompanyNoticeScheduler;
-import com.sky.service.MessagePriceStaticService;
-import com.sky.service.StockCompanyNoticeService;
-import com.sky.service.StockCompanyProfitService;
-import com.sky.service.StockDealDataService;
+import com.sky.service.*;
 import com.sky.vo.CompanyProfit_VO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -264,7 +262,21 @@ public class CaculateTest {
 
     @Test
     public void test004(){
-        BigDecimal result = stockCompanyProfitService.caculateProfitIncreaseRate("000016" , "5" , "2018");
+        BigDecimal result = stockCompanyProfitService.caculateProfitIncreaseRate("000001" , "5" , "2010");
         System.out.println(result);
+    }
+
+    @Autowired
+    private StockProfitIncreaseRateService stockProfitIncreaseRateService ;
+
+    @Autowired
+    private StockCompanySectorService stockCompanySectorService ;
+
+    @Test
+    public void test005(){
+        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
+        for(StockCompanySector sector : list){
+            stockProfitIncreaseRateService.caculateStockProfitIncreaseRate(sector.getStockCode());
+        }
     }
 }

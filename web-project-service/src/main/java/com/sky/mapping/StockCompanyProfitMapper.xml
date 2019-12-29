@@ -163,4 +163,44 @@
         ) c
         GROUP BY c.stockCode
     </select>
+
+    <select id="getStockProfitSeasonIncreaseRate" parameterType="java.lang.String" resultType="com.sky.vo.CompanyProfit_VO">
+        SELECT
+        a.stock_code stockCode,
+        SUM(a.total_profit) totalProfit ,
+        ROUND((SUM(a.total_profit) - SUM(b.total_profit)) / SUM(b.total_profit) * 100 , 2) totalProfitIncreaseRate ,
+        SUM(CASE WHEN a.publish_month = '03' THEN ROUND((a.total_profit - b.total_profit) / b.total_profit * 100 ,2) ELSE 0 END) firstSeasonIncreaseRate ,
+        SUM(CASE WHEN a.publish_month = '06' THEN ROUND((a.total_profit - b.total_profit) / b.total_profit * 100 ,2) ELSE 0 END) secondSeasonIncreaseRate ,
+        SUM(CASE WHEN a.publish_month = '09' THEN ROUND((a.total_profit - b.total_profit) / b.total_profit * 100 ,2) ELSE 0 END) thirdSeasonIncreaseRate ,
+        SUM(CASE WHEN a.publish_month = '12' THEN ROUND((a.total_profit - b.total_profit) / b.total_profit * 100 ,2) ELSE 0 END) forthSeasonIncreaseRate
+        FROM(
+        SELECT
+        stock_code ,
+        DATE_FORMAT(publish_day ,'%m') publish_month ,
+        CONVERT(total_profit,DECIMAL(20,2)) total_profit
+        FROM stock_company_profit
+        WHERE DATE_FORMAT(publish_day ,'%Y') = #{pointYear}
+        AND stock_code = #{stockCode}
+        )a
+        LEFT JOIN(
+        SELECT
+        stock_code ,
+        DATE_FORMAT(publish_day ,'%m') publish_month ,
+        CONVERT(total_profit,DECIMAL(20,2)) total_profit
+        FROM stock_company_profit
+        WHERE DATE_FORMAT(publish_day ,'%Y') = (${pointYear} - 1)
+        AND stock_code = #{stockCode}
+        ) b ON a.stock_code = b.stock_code AND a.publish_month = b.publish_month
+        GROUP BY a.stock_code
+    </select>
+
+    <select id="getStockProfitSpaceYear" parameterType="java.lang.String" resultType="com.sky.vo.CompanyProfit_VO">
+        SELECT
+        MIN(DATE_FORMAT(publish_day ,'%Y')) + 1 minYear ,
+        MAX(DATE_FORMAT(publish_day ,'%Y')) maxYear ,
+        MAX(DATE_FORMAT(publish_day ,'%Y')) - MIN(DATE_FORMAT(publish_day ,'%Y')) spaceYear
+        FROM stock_company_profit
+        WHERE stock_code = #{stockCode}
+        AND DATE_FORMAT(publish_day ,'%Y') >= 2000
+    </select>
 </mapper>

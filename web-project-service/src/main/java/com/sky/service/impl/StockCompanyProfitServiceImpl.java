@@ -125,4 +125,9 @@ public class StockCompanyProfitServiceImpl extends ServiceImpl<StockCompanyProfi
     public BigDecimal caculateProfitIncreaseRate(String stockCode, String spaceYear, String pointYear) {
         return baseMapper.caculateProfitIncreaseRate( stockCode, spaceYear, pointYear);
     }
+
+    @Override
+    public CompanyProfit_VO getStockProfitSeasonIncreaseRate(String stockCode, String pointYear) {
+        return baseMapper.getStockProfitSeasonIncreaseRate(stockCode , pointYear);
+    }
 }
