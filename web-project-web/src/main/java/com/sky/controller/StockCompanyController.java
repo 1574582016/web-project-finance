@@ -65,6 +65,11 @@ public class StockCompanyController {
         return  "page/stockPoolList";
     }
 
+    @RequestMapping("/stockProfitIncreaseList")
+    public String stockProfitIncreaseList(){
+        return  "page/stockProfitIncreaseList";
+    }
+
     @RequestMapping("/stockPoolDetail")
     public String stockPoolDetail(Model model ,
                                   String stock_code ,
