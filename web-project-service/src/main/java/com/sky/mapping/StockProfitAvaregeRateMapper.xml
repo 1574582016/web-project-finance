@@ -17,4 +17,43 @@
         <result column="average_grow_rate" property="averageGrowRate"/>
         <result column="average_grow_profit" property="averageGrowProfit"/>
     </resultMap>
+
+    <select id="getStockProfitAvaregeRateList" parameterType="java.lang.String" resultType="com.sky.vo.StockProfitAvaregeRate_VO">
+        SELECT
+        s.`forth_sector` forthSector,
+        av.`stock_code` stockCode,
+        s.`stock_name` stockName,
+        av.`publish_time` publishTime,
+        av.space_year spaceYear,
+        av.average_grow_rate averageGrowRate,
+        SUM(1) investor ,
+        av.average_grow_profit averageGrowProfit,
+        ir.`average_increase_rate` averageIncreaseRate,
+        ir2.`total_increase_rate` totalIncreaseRate,
+        ir2.`first_increase_rate` firstIncreaseRate,
+        ir2.`second_increase_rate` secondIncreaseRate,
+        ir2.`third_increase_rate` thirdIncreaseRate ,
+        ir2.forth_increase_rate forthIncreaseRate
+        FROM stock_profit_avarege_rate av
+        LEFT JOIN stock_company_sector s ON av.`stock_code` = s.`stock_code`
+        LEFT JOIN stock_profit_increase_rate ir  ON av.`stock_code` = ir.`stock_code`  AND ir.static_year = (DATE_FORMAT(NOW() ,'%Y') - 1)
+        LEFT JOIN stock_profit_increase_rate ir2 ON av.`stock_code` = ir2.`stock_code` AND ir2.static_year = DATE_FORMAT(NOW() ,'%Y')
+        LEFT JOIN stock_investor_product ip ON av.`stock_code` = ip.`stock_code` AND ip.`static_time` = (SELECT MIN(static_time) FROM stock_investor_product)
+        WHERE av.average_grow_rate > 70
+        AND ir.`average_increase_rate` > 1
+        AND av.average_grow_profit > 1
+        AND (ir2.`first_increase_rate` + ir2.`second_increase_rate` + ir2.`third_increase_rate` + ir2.`forth_increase_rate`) > 0
+        <if test="yearType == '1'.toString()">
+            AND av.space_year >= 10
+        </if>
+        <if test="yearType == '2'.toString()">
+            AND av.space_year >= 5 AND av.space_year &lt; 10
+        </if>
+        <if test="yearType == '3'.toString()">
+            AND av.space_year >= 3 AND av.space_year &lt; 5
+        </if>
+        GROUP BY av.`stock_code`
+        ORDER BY ROUND(av.average_grow_rate,0) DESC ,
+        ROUND(ir.`average_increase_rate`,0) DESC
+    </select>
 </mapper>

@@ -11,10 +11,7 @@ import com.sky.api.AbstractController;
 import com.sky.core.model.TreeNode;
 import com.sky.core.utils.StringUtils;
 import com.sky.model.*;
-import com.sky.vo.CompanyChance_VO;
-import com.sky.vo.CreateCompanyWorld_VO;
-import com.sky.vo.StockCompanyAssetVO;
-import com.sky.vo.StockCompanyProfitVO;
+import com.sky.vo.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -112,6 +109,16 @@ public class StockPoolApiController extends AbstractController {
                                             String companyLevel){
         Page selectedPage = stockCompanySectorService.getStockCompanyPoolList(page ,size , stockCode, firstSector, secondSector, thirdSecotor, forthSector, companyLevel);
         return PageData(selectedPage);
+    }
+
+    @LogRecord(name = "getStockProfitIncreaseList" ,description = "查询股票池列表")
+    @PostMapping("/getStockProfitIncreaseList")
+    public Object getStockProfitIncreaseList(String yearType){
+        List<StockProfitAvaregeRate_VO> list = stockProfitAvaregeRateService.getStockProfitAvaregeRateList(yearType);
+        Map<String ,Object> map = new HashMap<String ,Object>();
+        map.put("total",list.size());
+        map.put("rows",list);
+        return map;
     }
 
     @LogRecord(name = "stockPoolDetail" ,description = "查询股票池二级树状图")

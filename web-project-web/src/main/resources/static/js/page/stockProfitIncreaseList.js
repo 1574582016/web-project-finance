@@ -1,7 +1,7 @@
 $(function () {
-    flashTable('tableList_S' , 6);
-    flashTable('tableList_A' , 5);
-    flashTable('tableList_B' , 4);
+    flashTable('tableList_10' , 1);
+    flashTable('tableList_5_10' , 2);
+    flashTable('tableList_3_5' , 3);
 
 
     $("[data-toggle='tooltip']").tooltip();
@@ -9,9 +9,9 @@ $(function () {
 
 
 });
-function flashTable(boxId , level) {
+function flashTable(boxId , yearType) {
     $('#' + boxId ).bootstrapTable('destroy').bootstrapTable({
-        url: '/api/stockPool/getStockCompanyPoolList' ,
+        url: '/api/stockPool/getStockProfitIncreaseList' ,
         method: 'post',
         contentType: "application/x-www-form-urlencoded",
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -24,13 +24,7 @@ function flashTable(boxId , level) {
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 size: params.limit,   //页面大小
                 page: params.offset/params.limit + 1,  //页码
-                firstSector: $("#first_sector").val(),
-                secondSector: $("#second_sector").val(),
-                thirdSecotor: $("#third_secotor").val(),
-                forthSector: $("#forth_sector").val(),
-                stockCode: $("#stock_code").val(),
-                stockName: $("#stock_name").val(),
-                companyLevel : level
+                yearType: yearType
             };
             return temp;
         },
@@ -56,104 +50,70 @@ function flashTable(boxId , level) {
                 align: 'center',
                 valign: 'middle'
             }, {
-                field: 'fiveSector',
-                title: '细业',
-                align: 'center',
-                valign: 'middle'
-            }, {
                 field: 'stockCode',
                 title: '编码',
                 align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    return '<a class="text_link_a" href="http://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
-                }
+                valign: 'middle'
             }, {
-                field: 'companyName',
+                field: 'stockName',
                 title: '名称',
                 align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    return '<a class="text_link_a" href="#" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupHot +'">'+ value +'</a>';
-                }
-            },{
-                field: 'companyClass',
-                title: '性质',
-                align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'companyLevel',
-                title: '市值排行',
-                align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    var lev = value;
-                    if(lev == 'S' || lev == 'A' || lev == 'B'){
-                        return '<a class="text_link_a" href="#" style="color: red;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
-                    }else
-                    if(lev == 'C'){
-                        return '<a class="text_link_a" href="#" style="color: #b804ff;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
-                    }else
-                    if(lev == 'D'){
-                        return '<a class="text_link_a" href="#" style="color: #ffc000;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
-                    }else{
-                        return '<a class="text_link_a" href="#" style="color: grey;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
-                    }
-                }
-            },{
-                field: 'financialLevel',
-                title: '盈&资',
-                align: 'center',
-                valign: 'middle',
-                formatter: function (value, row, index) {
-                    var lev = value.substr(0,1);
-                    if(lev == 'S' || lev == 'A' ){
-                        return '<a class="text_link_a" href="#" style="color: red;">'+ value +'</a>';
-                    }else{
-                        return '<a class="text_link_a" href="#" style="color: grey;">'+ value +'</a>';
-                    }
-                }
-            },{
-                field: 'establishDay',
-                title: '成立日期',
-                align: 'center',
                 valign: 'middle'
             },{
-                field: 'publishDay',
-                title: '上市日期',
-                align: 'center',
-                valign: 'middle'
-            },{
-                field: 'spaceYear',
+                field: 'publishTime',
                 title: '上市时间',
                 align: 'center',
                 valign: 'middle'
             },{
-                field: 'publishCount',
-                title: '发行股本',
+                field: 'spaceYear',
+                title: '上市年限',
                 align: 'center',
                 valign: 'middle'
             },{
-                field: 'flowCount',
-                title: '流通股本',
+                field: 'averageGrowRate',
+                title: '业绩增加率',
                 align: 'center',
                 valign: 'middle'
             },{
-                field: 'flowRate',
-                title: '流通比例',
+                field: 'investor',
+                title: '投资个数',
                 align: 'center',
                 valign: 'middle'
             },{
-                title: "操作",
+                field: 'averageGrowProfit',
+                title: '业绩增加幅度',
                 align: 'center',
-                valign: 'middle',
-                width: 20, // 定义列的宽度，单位为像素px
-                formatter: function (value, row, index) {
-                    var btn = "";
-                    btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="edit(\'' + row.stockCode + '\')">修改</button>';
-                    btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.stockCode + '\')">查看</button>';
-                    return btn
-                }
+                valign: 'middle'
+            },{
+                field: 'averageIncreaseRate',
+                title: '5年增幅均值',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'totalIncreaseRate',
+                title: '今年增率',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'firstIncreaseRate',
+                title: '一季度增率',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'secondIncreaseRate',
+                title: '二季度增率',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'thirdIncreaseRate',
+                title: '三季度增率',
+                align: 'center',
+                valign: 'middle'
+            },{
+                field: 'forthIncreaseRate',
+                title: '四季度增率',
+                align: 'center',
+                valign: 'middle'
             }
         ]
     });
