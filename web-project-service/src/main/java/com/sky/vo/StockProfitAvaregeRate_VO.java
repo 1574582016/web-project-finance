@@ -36,4 +36,6 @@ public class StockProfitAvaregeRate_VO extends VoModel {
     private String thirdIncreaseRate ;
 
     private String forthIncreaseRate ;
+
+    private String companyWebsite ;
 }

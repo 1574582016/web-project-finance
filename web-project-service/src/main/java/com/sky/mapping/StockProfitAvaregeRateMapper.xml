@@ -27,6 +27,7 @@
         av.space_year spaceYear,
         av.average_grow_rate averageGrowRate,
         SUM(1) investor ,
+        s.`company_website` companyWebsite ,
         av.average_grow_profit averageGrowProfit,
         ir.`average_increase_rate` averageIncreaseRate,
         ir2.`total_increase_rate` totalIncreaseRate,
@@ -43,6 +44,7 @@
         AND ir.`average_increase_rate` > 1
         AND av.average_grow_profit > 1
         AND (ir2.`first_increase_rate` + ir2.`second_increase_rate` + ir2.`third_increase_rate` + ir2.`forth_increase_rate`) > 0
+        AND LEFT(s.`stock_code`, 2) != 68
         <if test="yearType == '1'.toString()">
             AND av.space_year >= 10
         </if>
@@ -52,6 +54,25 @@
         <if test="yearType == '3'.toString()">
             AND av.space_year >= 3 AND av.space_year &lt; 5
         </if>
+        <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
+            AND s.`first_sector` = #{firstSector}
+        </if>
+        <if test="secondSector != null and secondSector != '' and secondSector != 'undefined'">
+            AND s.`second_sector` = #{secondSector}
+        </if>
+        <if test="thirdSecotor != null and thirdSecotor != '' and thirdSecotor != 'undefined'">
+            AND s.`third_secotor` = #{thirdSecotor}
+        </if>
+        <if test="forthSector != null and forthSector != '' and forthSector != 'undefined'">
+            AND s.`forth_sector` = #{forthSector}
+        </if>
+        <if test="stockCode != null and stockCode != '' and stockCode != 'undefined'">
+            AND s.`stock_code` REGEXP #{stockCode}
+        </if>
+        <if test="stockName != null and stockName != '' and stockName != 'undefined'">
+            AND s.`stock_name` REGEXP #{stockName}
+        </if>
+--         AND ABS(ir.`average_increase_rate` - ir2.`total_increase_rate`) &lt; 10
         GROUP BY av.`stock_code`
         ORDER BY ROUND(av.average_grow_rate,0) DESC ,
         ROUND(ir.`average_increase_rate`,0) DESC

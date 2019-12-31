@@ -66,7 +66,19 @@ public class StockCompanyController {
     }
 
     @RequestMapping("/stockProfitIncreaseList")
-    public String stockProfitIncreaseList(){
+    public String stockProfitIncreaseList(Model model ,
+                                          String stockCode ,
+                                          String stockName ,
+                                          String firstSector ,
+                                          String secondSector ,
+                                          String thirdSecotor ,
+                                          String forthSector){
+        model.addAttribute("stockCode" , stockCode);
+        model.addAttribute("stockName" , stockName);
+        model.addAttribute("firstSector" , firstSector);
+        model.addAttribute("secondSector" , secondSector);
+        model.addAttribute("thirdSecotor" , thirdSecotor);
+        model.addAttribute("forthSector" , forthSector);
         return  "page/stockProfitIncreaseList";
     }
 
@@ -78,7 +90,8 @@ public class StockCompanyController {
                                   String firstSector ,
                                   String secondSector ,
                                   String thirdSecotor ,
-                                  String forthSector){
+                                  String forthSector ,
+                                  String type){
         List<SystemParam_VO> list = systemParamService.getParamListByIdentity("companyQuality");
         model.addAttribute("qualityList" , list);
         model.addAttribute("stock_code" , stock_code);
@@ -88,6 +101,7 @@ public class StockCompanyController {
         model.addAttribute("secondSector" , secondSector);
         model.addAttribute("thirdSecotor" , thirdSecotor);
         model.addAttribute("forthSector" , forthSector);
+        model.addAttribute("type" , type);
         return  "page/stockPoolDetail";
     }
 

@@ -401,7 +401,8 @@ function view(stock_code) {
         + "&firstSector=" + firstSector
         + "&secondSector=" + secondSector
         + "&thirdSecotor=" + thirdSecotor
-        + "&forthSector=" + forthSector;
+        + "&forthSector=" + forthSector
+        + "&type=1";
 }
 
 

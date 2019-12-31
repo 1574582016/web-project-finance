@@ -1,5 +1,6 @@
 package com.sky.service.impl;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.mapper.StockProfitAvaregeRateMapper;
 import com.sky.model.StockProfitAvaregeRate;
@@ -18,7 +19,17 @@ import java.util.List;
 public class StockProfitAvaregeRateServiceImpl extends ServiceImpl<StockProfitAvaregeRateMapper,StockProfitAvaregeRate> implements StockProfitAvaregeRateService {
 
     @Override
-    public List<StockProfitAvaregeRate_VO> getStockProfitAvaregeRateList(String yearType) {
-        return baseMapper.getStockProfitAvaregeRateList(yearType);
+    public Page<StockProfitAvaregeRate_VO> getStockProfitAvaregeRateList(Integer page, Integer size,
+                                                                         String stockCode ,
+                                                                         String stockName ,
+                                                                         String firstSector ,
+                                                                         String secondSector ,
+                                                                         String thirdSecotor ,
+                                                                         String forthSector ,
+                                                                         String yearType) {
+        Page<StockProfitAvaregeRate_VO> pageInfo = new Page<StockProfitAvaregeRate_VO>(page, size);
+        List<StockProfitAvaregeRate_VO> list = baseMapper.getStockProfitAvaregeRateList( pageInfo, stockCode, stockName , firstSector, secondSector, thirdSecotor, forthSector, yearType);
+        pageInfo.setRecords(list);
+        return pageInfo;
     }
 }

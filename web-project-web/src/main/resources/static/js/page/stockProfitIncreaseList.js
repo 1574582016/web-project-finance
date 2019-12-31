@@ -1,4 +1,87 @@
 $(function () {
+    var first_1_Sector = $("#first_1_Sector").val();
+    var second_1_Sector = $("#second_1_Sector").val();
+    var third_1_Secotor = $("#third_1_Secotor").val();
+    var forth_1_Sector = $("#forth_1_Sector").val();
+    var firstCode = 0;
+    var secondCode = 0;
+    var thirdCode = 0;
+    if(isEmpty(first_1_Sector)){
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=0",function (data) {
+            var str ='<option value="">请选择</option>' ;
+            $.each(data.data.result ,function (index ,value) {
+                str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
+            });
+            $("#first_sector").html(str);
+
+        });
+    }else{
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=0",function (data) {
+            var str = '<option value="">请选择</option>' ;
+            $.each(data.data.result ,function (index ,value) {
+                if(first_1_Sector == value.sectorName){
+                    firstCode = value.sectorCode;
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'" selected="selected">' + value.sectorName + '</option>'
+                }else{
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
+                }
+
+            });
+            $("#first_sector").html(str2);
+        });
+    }
+
+    if(!isEmpty(second_1_Sector)){
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=" + firstCode,function (data) {
+            var str = ""
+            $.each(data.data.result ,function (index ,value) {
+                if(second_1_Sector == value.sectorName){
+                    secondCode = value.sectorCode;
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'" selected="selected">' + value.sectorName + '</option>'
+                }else{
+                    str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
+                }
+
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#second_sector").html(str2);
+        });
+    }
+
+    if(!isEmpty(third_1_Secotor)) {
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=" + secondCode, function (data) {
+            var str = ""
+            $.each(data.data.result, function (index, value) {
+                if (third_1_Secotor == value.sectorName) {
+                    thirdCode = value.sectorCode;
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '" selected="selected">' + value.sectorName + '</option>'
+                } else {
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '">' + value.sectorName + '</option>'
+                }
+
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#third_secotor").html(str2);
+        });
+    }
+
+    if(!isEmpty(forth_1_Sector)) {
+        $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=" + thirdCode, function (data) {
+            var str = ""
+            $.each(data.data.result, function (index, value) {
+                if (forth_1_Sector == value.sectorName) {
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '" selected="selected">' + value.sectorName + '</option>'
+                } else {
+                    str += '<option value="' + value.sectorName + '" code="' + value.sectorCode + '">' + value.sectorName + '</option>'
+                }
+
+            });
+            var str2 = '<option value="">请选择</option>' + str;
+            $("#forth_sector").html(str2);
+        });
+    }
+
+
     flashTable('tableList_10' , 1);
     flashTable('tableList_5_10' , 2);
     flashTable('tableList_3_5' , 3);
@@ -6,7 +89,11 @@ $(function () {
 
     $("[data-toggle='tooltip']").tooltip();
 
-
+    $("#searchDataButton").click(function () {
+        flashTable('tableList_10' , 1);
+        flashTable('tableList_5_10' , 2);
+        flashTable('tableList_3_5' , 3);
+    });
 
 });
 function flashTable(boxId , yearType) {
@@ -24,7 +111,13 @@ function flashTable(boxId , yearType) {
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 size: params.limit,   //页面大小
                 page: params.offset/params.limit + 1,  //页码
-                yearType: yearType
+                yearType: yearType ,
+                firstSector: $("#first_sector").val(),
+                secondSector: $("#second_sector").val(),
+                thirdSecotor: $("#third_secotor").val(),
+                forthSector: $("#forth_sector").val(),
+                stockCode: $("#stock_code").val(),
+                stockName: $("#stock_name").val(),
             };
             return temp;
         },
@@ -53,7 +146,10 @@ function flashTable(boxId , yearType) {
                 field: 'stockCode',
                 title: '编码',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: function (value, row, index) {
+                    return '<a class="text_link_a" href="http://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
+                }
             }, {
                 field: 'stockName',
                 title: '名称',
@@ -114,7 +210,36 @@ function flashTable(boxId , yearType) {
                 title: '四季度增率',
                 align: 'center',
                 valign: 'middle'
+            },{
+                title: "操作",
+                align: 'center',
+                valign: 'middle',
+                width: 20, // 定义列的宽度，单位为像素px
+                formatter: function (value, row, index) {
+                    var btn = "";
+                    btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.stockCode + '\')">查看</button>';
+                    return btn
+                }
             }
         ]
     });
+}
+
+
+function getSelectOption(boxId , obj) {
+    var thisObj=$(obj);
+    var parentCode = thisObj.find("option:selected").attr("code");
+    $.APIPost("/api/stockSector/getStockSectorClassList?parentCode=" + parentCode,function (data) {
+        var str = ""
+        $.each(data.data.result ,function (index ,value) {
+            str +='<option value="'+ value.sectorName +'" code="'+ value.sectorCode +'">' + value.sectorName + '</option>'
+        });
+        var str2 = '<option value="">请选择</option>' + str;
+        $("#" + boxId).html(str2);
+
+    });
+}
+
+function view(stock_code) {
+    location.href="/stock/stockPoolDetail?stock_code=" + stock_code + "&type=2";
 }

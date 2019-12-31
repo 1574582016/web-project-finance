@@ -27,12 +27,23 @@ $(function () {
         var forthSector = $("#forthSector").val();
         var stockCode = $("#stockCode").val();
         var stockName = $("#stockName").val();
-        location.href="/stock/stockPoolList?stockCode=" + stockCode
-            + "&stockName=" + stockName
-            + "&firstSector=" + firstSector
-            + "&secondSector=" + secondSector
-            + "&thirdSecotor=" + thirdSecotor
-            + "&forthSector=" + forthSector;
+        var type = $("#type").val();
+        if(type == 1){
+            location.href="/stock/stockPoolList?stockCode=" + stockCode
+                + "&stockName=" + stockName
+                + "&firstSector=" + firstSector
+                + "&secondSector=" + secondSector
+                + "&thirdSecotor=" + thirdSecotor
+                + "&forthSector=" + forthSector;
+        }else{
+            location.href="/stock/stockProfitIncreaseList?stockCode=" + stockCode
+                + "&stockName=" + stockName
+                + "&firstSector=" + firstSector
+                + "&secondSector=" + secondSector
+                + "&thirdSecotor=" + thirdSecotor
+                + "&forthSector=" + forthSector;
+        }
+
     });
 
     $('#myModal').on('show.bs.modal',function() {

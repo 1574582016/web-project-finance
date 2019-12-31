@@ -113,12 +113,17 @@ public class StockPoolApiController extends AbstractController {
 
     @LogRecord(name = "getStockProfitIncreaseList" ,description = "查询股票池列表")
     @PostMapping("/getStockProfitIncreaseList")
-    public Object getStockProfitIncreaseList(String yearType){
-        List<StockProfitAvaregeRate_VO> list = stockProfitAvaregeRateService.getStockProfitAvaregeRateList(yearType);
-        Map<String ,Object> map = new HashMap<String ,Object>();
-        map.put("total",list.size());
-        map.put("rows",list);
-        return map;
+    public Object getStockProfitIncreaseList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
+                                             @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
+                                             String stockCode ,
+                                             String stockName ,
+                                             String firstSector ,
+                                             String secondSector ,
+                                             String thirdSecotor ,
+                                             String forthSector ,
+                                             String yearType){
+        Page<StockProfitAvaregeRate_VO> list = stockProfitAvaregeRateService.getStockProfitAvaregeRateList(page ,size , stockCode, stockName , firstSector, secondSector, thirdSecotor, forthSector, yearType);
+        return PageData(list);
     }
 
     @LogRecord(name = "stockPoolDetail" ,description = "查询股票池二级树状图")
