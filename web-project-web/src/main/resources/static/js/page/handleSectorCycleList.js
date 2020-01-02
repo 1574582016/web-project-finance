@@ -957,7 +957,7 @@ function companyMonthStatic(stockCode , forthSector ,stockName) {
         + "&startDay=" + $("#s_start").val()
         + "&endDay=" + $("#s_end").val()
         ,function (result) {
-            console.log(result);
+
             var option = {
                 title : {
                     text: stockCode +"/" +stockName

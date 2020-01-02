@@ -40,7 +40,6 @@ function getPointIndexList(obj ,parentCode) {
 
 function getPointIndexTree() {
     $.APIPost("/api/stockChose/getStockChoseClassTree",function (data) {
-        console.log(data.data.result);
         var myChart = echarts.init(document.getElementById('main'));
         option = {
             title : {

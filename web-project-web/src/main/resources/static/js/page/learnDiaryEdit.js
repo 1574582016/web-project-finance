@@ -4,7 +4,7 @@ $(function () {
     var id = $("#id").val();
     if(id !='' && id != null){
         $.APIPost("/api/diary/getLearnDiaryInfo?id="+id ,function (data) {
-            // console.log(data);
+
             $("#id").val(data.data.result.id);
             $("#type").val(data.data.result.type);
             $("#diaryCode").val(data.data.result.diaryCode);

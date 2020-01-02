@@ -20,6 +20,11 @@ $(function () {
         companyMonthStatic(response.data.result.cycleMap);
     });
 
+    $.APIPost("/api/stockPool/stockPoolInvestor?stockCode=" + $("#stock_code").val() ,function (response) {
+        drawInvestorPie("investorStaticPie" ,"投资者统计"  ,response.data);
+        drawInvestorLine("investorStaticCount" ,"投资量统计"  ,response.data);
+    });
+
     $("#backButton").click(function () {
         var firstSector = $("#firstSector").val();
         var secondSector = $("#secondSector").val();
@@ -90,7 +95,6 @@ $(function () {
             if(!isEmpty(companyQuality)){
                 var str = companyQuality.split(',');
                 $('input[name="f_companyQuality"]').each(function(){
-                    console.log($(this).val());
                     var just = false ;
                     for(var i = 0 ; i < str.length ; i++){
                         var value = str[i];
@@ -540,4 +544,90 @@ function changeForthBelongSector(obj) {
     $("#f_belongForthSector").html(forthOption);
 }
 
+
+function drawInvestorPie(boxId ,name ,result) {
+    $('#'+ boxId).width($('#tableBox').width());
+    var myChart = echarts.init(document.getElementById(boxId));
+    var option = {
+        title : {
+            text: name,
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x : 'center',
+            y : 'bottom',
+            data:result.investorTitle
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series : [
+            {
+                name:'投资分类',
+                type:'pie',
+                radius : [20, 150],
+                center : ['25%', '50%'],
+                roseType : 'area',
+                data:result.investorArr
+            },
+            {
+                name:'投资份额',
+                type:'pie',
+                radius : [20, 150],
+                center : ['75%', '50%'],
+                roseType : 'area',
+                data:result.investorCount
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+}
+
+function drawInvestorLine(boxId ,name ,result) {
+    $('#'+ boxId).width($('#tableBox').width());
+    var myChart = echarts.init(document.getElementById(boxId));
+    var option = {
+        title: {
+            text: name
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:result.investorTitle
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: result.investTime
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: result.lineList
+    };
+    myChart.setOption(option);
+}
 

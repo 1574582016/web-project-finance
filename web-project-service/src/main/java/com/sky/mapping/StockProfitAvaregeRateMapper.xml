@@ -37,8 +37,8 @@
         ir2.forth_increase_rate forthIncreaseRate
         FROM stock_profit_avarege_rate av
         LEFT JOIN stock_company_sector s ON av.`stock_code` = s.`stock_code`
-        LEFT JOIN stock_profit_increase_rate ir  ON av.`stock_code` = ir.`stock_code`  AND ir.static_year = (DATE_FORMAT(NOW() ,'%Y') - 1)
-        LEFT JOIN stock_profit_increase_rate ir2 ON av.`stock_code` = ir2.`stock_code` AND ir2.static_year = DATE_FORMAT(NOW() ,'%Y')
+        LEFT JOIN stock_profit_increase_rate ir  ON av.`stock_code` = ir.`stock_code`  AND ir.static_year = (DATE_FORMAT('2019-01-01' ,'%Y') - 1)
+        LEFT JOIN stock_profit_increase_rate ir2 ON av.`stock_code` = ir2.`stock_code` AND ir2.static_year = DATE_FORMAT('2019-01-01' ,'%Y')
         LEFT JOIN stock_investor_product ip ON av.`stock_code` = ip.`stock_code` AND ip.`static_time` = (SELECT MIN(static_time) FROM stock_investor_product)
         WHERE av.average_grow_rate > 70
         AND ir.`average_increase_rate` > 1
@@ -53,6 +53,9 @@
         </if>
         <if test="yearType == '3'.toString()">
             AND av.space_year >= 3 AND av.space_year &lt; 5
+        </if>
+        <if test="yearType == '4'.toString()">
+            AND av.space_year >= 2 AND av.space_year &lt; 3
         </if>
         <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
             AND s.`first_sector` = #{firstSector}
@@ -72,6 +75,12 @@
         <if test="stockName != null and stockName != '' and stockName != 'undefined'">
             AND s.`stock_name` REGEXP #{stockName}
         </if>
+        AND (
+        (CASE WHEN ir2.`first_increase_rate` > 0 THEN 1 ELSE 0 END ) +
+        (CASE WHEN ir2.`second_increase_rate` > 0 THEN 1 ELSE 0 END ) +
+        (CASE WHEN ir2.`third_increase_rate` > 0 THEN 1 ELSE 0 END ) +
+        (CASE WHEN ir2.`forth_increase_rate` > 0 THEN 1 ELSE 0 END )
+        ) > 1
 --         AND ABS(ir.`average_increase_rate` - ir2.`total_increase_rate`) &lt; 10
         GROUP BY av.`stock_code`
         ORDER BY ROUND(av.average_grow_rate,0) DESC ,

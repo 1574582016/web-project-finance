@@ -111,7 +111,7 @@ public class StockPoolApiController extends AbstractController {
         return PageData(selectedPage);
     }
 
-    @LogRecord(name = "getStockProfitIncreaseList" ,description = "查询股票池列表")
+    @LogRecord(name = "getStockProfitIncreaseList" ,description = "查询股票增长率列表")
     @PostMapping("/getStockProfitIncreaseList")
     public Object getStockProfitIncreaseList(@RequestParam(required = false, defaultValue = PAGE_NUM) Integer page,
                                              @RequestParam(required = false, defaultValue = PAGE_SIZE) Integer size,
@@ -126,7 +126,7 @@ public class StockPoolApiController extends AbstractController {
         return PageData(list);
     }
 
-    @LogRecord(name = "stockPoolDetail" ,description = "查询股票池二级树状图")
+    @LogRecord(name = "stockPoolDetail" ,description = "查询股票基本信息")
     @PostMapping("/stockPoolDetail")
     public Object stockPoolDetail(String stockCode){
         Page<CreateCompanyWorld_VO> page = stockCompanySectorService.getStockCompanyPoolList(1 ,1 , stockCode, null, null, null, null, null);
@@ -390,5 +390,74 @@ public class StockPoolApiController extends AbstractController {
             world_vo.setCycleMap(map);
         }
         return ResponseEntity.ok(MapSuccess("查询成功", world_vo));
+    }
+
+    @LogRecord(name = "stockPoolInvestor" ,description = "查询股票投资者信息")
+    @PostMapping("/stockPoolInvestor")
+    public Object stockPoolInvestor(String stockCode){
+            Map<String,Object> profitMap = new HashedMap();
+
+            List<StockInvestor_VO> investorList = stockInvestorProductService.getStockInvestorStaticList(stockCode);
+
+            List<String> investTitle = new ArrayList<>();
+            List<JSONObject> investNum = new ArrayList<>();
+            List<JSONObject> investCount = new ArrayList<>();
+
+            for(StockInvestor_VO invest : investorList){
+                investTitle.add(invest.getTypeName());
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("name" , invest.getTypeName());
+                jsonObject.put("value" , invest.getInvestorNum());
+                investNum.add(jsonObject);
+                JSONObject jsonObject2 = new JSONObject();
+                jsonObject2.put("name" , invest.getTypeName());
+                jsonObject2.put("value" , invest.getInvestCount());
+                investCount.add(jsonObject2);
+            }
+
+            profitMap.put("investorTitle",investTitle);
+            profitMap.put("investorArr",investNum);
+            profitMap.put("investorCount",investCount);
+
+            Map<String , List<StockInvestor_VO>> listMap = new HashMap<>();
+            List<StockInvestor_VO> investDayList = stockInvestorProductService.getStockInvestorList(stockCode);
+            for(StockInvestor_VO investor_vo : investDayList){
+                List<StockInvestor_VO> investList = listMap.get(investor_vo.getTypeCode());
+                if(investList == null || investList.size() == 0){
+                    List<StockInvestor_VO> list = new ArrayList<>();
+                    list.add(investor_vo);
+                    listMap.put(investor_vo.getTypeCode(),list);
+                }else{
+                    investList.add(investor_vo);
+                    listMap.put(investor_vo.getTypeCode(),investList);
+                }
+            }
+        List<String> investTime = new ArrayList<>();
+        List<JSONObject> lineList = new ArrayList<>();
+        for (List<StockInvestor_VO> list : listMap.values()) {
+            list.sort((a, b) -> a.getStaticTime().compareTo(b.getStaticTime()));
+
+            JSONObject jsonObject = new JSONObject();
+            JSONArray jsonArray = new JSONArray();
+            for(int i = 0 ; i < list.size() ; i++){
+                StockInvestor_VO investor_vo = list.get(i);
+                jsonArray.add(investor_vo.getInvestCount());
+                if(investTime.size() < list.size()){
+                    investTime.add(investor_vo.getStaticTime());
+                }
+                if(i == 0){
+                    jsonObject.put("name" , investor_vo.getTypeName());
+                    jsonObject.put("type" , "line");
+                    jsonObject.put("stack" , "总量" + investor_vo.getTypeCode());
+                }
+            }
+            jsonObject.put("data" , jsonArray);
+            lineList.add(jsonObject);
+        }
+        profitMap.put("investTime",investTime);
+        profitMap.put("lineList",lineList);
+
+
+        return ResponseEntity.ok(MapSuccess("查询成功", profitMap));
     }
 }

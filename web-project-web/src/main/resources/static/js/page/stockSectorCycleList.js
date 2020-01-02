@@ -388,7 +388,6 @@ function differentSectorStatic() {
         + "&startDay=" + $("#s_start").val()
         + "&endDay=" + $("#s_end").val()
         ,function (result) {
-            console.log(result);
             var option = {
                 title : {
                     text: $("#index_name").val()
@@ -537,7 +536,6 @@ function commonSubSectorMonthStatic(idBox ,forthSector) {
         + "&startDay=" + $("#s_start").val()
         + "&endDay=" + $("#s_end").val()
         ,function (result) {
-            console.log(result);
             var option = {
                 title : {
                     text: forthSector
@@ -733,7 +731,6 @@ function sectorMonthStatic(forthSector) {
         + "&startDay=" + $("#s_start").val()
         + "&endDay=" + $("#s_end").val()
         ,function (result) {
-            console.log(result);
             var option = {
                 title : {
                     text: forthSector
@@ -1122,7 +1119,6 @@ function companyMonthStatic(stockCode , forthSector ,stockName) {
         + "&startDay=" + $("#s_start").val()
         + "&endDay=" + $("#s_end").val()
         ,function (result) {
-            console.log(result);
             var option = {
                 title : {
                     text: stockCode +"/" +stockName

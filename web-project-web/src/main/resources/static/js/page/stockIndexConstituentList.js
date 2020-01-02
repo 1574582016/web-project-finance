@@ -79,7 +79,6 @@ $(function () {
     myChart.setOption(option);
 
     myChart.on('click', function (params) {
-        console.log(params.name);
         indexConstituent(params.name);
     });
 

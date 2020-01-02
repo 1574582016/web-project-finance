@@ -159,7 +159,6 @@ $(function () {
         for(var i = 0 ; i < subParamIdentity.length ; i ++){
             subParam += subParamId[i] + "=" + subParamIdentity[i] + "=" + subParamName[i] + "=" +isvalid[i] + ",";
         }
-        // console.log(subParam);
         $.APIPost("/api/param/editSystemParam",JSON.stringify({id : id ,paramCode:paramCode ,paramIdentity :paramIdentity , paramName: paramName, subParamString: subParam }),function (data) {
             if(data.success) {
                 hideModal("myModal");

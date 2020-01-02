@@ -9,7 +9,7 @@ $(function () {
 
 function messagePriceData() {
     $.APIPost("/api/statistics/getMessagePriceStaticData?messageType=" + $("#messageType").val() + "&timeType=" + $("#timeType").val() + "&directType=" + $("#directType").val() ,function (result) {
-        console.log(result);
+
         var myChart = echarts.init(document.getElementById('main'));
         option = {
             title : {
@@ -72,7 +72,7 @@ function messagePriceData() {
 
 function messagePriceCount() {
     $.APIPost("/api/statistics/getMessageStaticCount?messageType=" + $("#messageType").val(),function (result) {
-        console.log(result);
+
         var myChart = echarts.init(document.getElementById('top'));
         option = {
             tooltip : {

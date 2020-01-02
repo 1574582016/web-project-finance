@@ -4,7 +4,7 @@ $(function () {
     var id = $("#id").val();
     if(!isEmpty(id)){
         $.APIPost("/api/invest/getInvestForexReplay?id="+id ,function (response) {
-            console.log(response);
+
             $("#replayTime").html(response.data.result.replayTime);
             $("#investStrategy").html(response.data.result.investStrategy);
             $("#currencyPairs").html(response.data.result.currencyPairs);

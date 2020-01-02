@@ -18,7 +18,7 @@ $(function () {
     var id = $("#id").val();
     if(!isEmpty(id)){
         $.APIPost("/api/company/getCompanyBaseInformationById?id="+id ,function (response) {
-            console.log(response);
+
             $("#companyName").val(response.data.result.companyName);
             $("#companyRegion").val(response.data.result.companyRegion);
             $("#establishTime").val(response.data.result.establishTime);

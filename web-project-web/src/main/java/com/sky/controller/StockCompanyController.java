@@ -73,6 +73,8 @@ public class StockCompanyController {
                                           String secondSector ,
                                           String thirdSecotor ,
                                           String forthSector){
+        List<SystemParam_VO> list = systemParamService.getParamListByIdentity("companyQuality");
+        model.addAttribute("qualityList" , list);
         model.addAttribute("stockCode" , stockCode);
         model.addAttribute("stockName" , stockName);
         model.addAttribute("firstSector" , firstSector);

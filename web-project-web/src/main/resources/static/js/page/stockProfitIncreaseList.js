@@ -85,6 +85,7 @@ $(function () {
     flashTable('tableList_10' , 1);
     flashTable('tableList_5_10' , 2);
     flashTable('tableList_3_5' , 3);
+    flashTable('tableList_2' , 4);
 
 
     $("[data-toggle='tooltip']").tooltip();
@@ -93,8 +94,48 @@ $(function () {
         flashTable('tableList_10' , 1);
         flashTable('tableList_5_10' , 2);
         flashTable('tableList_3_5' , 3);
+        flashTable('tableList_2' , 4);
     });
 
+
+    $("#submitDataButton").click(function () {
+        var stockCode = $("#stockCode").val();
+        var companyLevel = $("#companyLevel").val();
+        var fiveSector = $("#fiveSector").val();
+        var fiveOrder = $("#fiveOrder").val();
+        var mainBusiness = $("#mainBusiness").val();
+        var belongFirstSecotr = $("#belongFirstSecotr").val();
+        var belongSecondSector = $("#belongSecondSector").val();
+        var belongThirdSector = $("#belongThirdSector").val();
+        var belongForthSector = $("#belongForthSector").val();
+
+        var qualityArr = new Array();
+        $('input[name="companyQuality"]:checked').each(function(){
+            qualityArr.push($(this).val());
+        });
+
+        $.APIPost("/api/stock/editStockCompanySector",JSON.stringify({
+            stockCode : stockCode ,
+            companyLevel : companyLevel ,
+            fiveSector : fiveSector ,
+            fiveOrder : fiveOrder ,
+            belongFirstSecotr : belongFirstSecotr ,
+            belongSecondSector : belongSecondSector,
+            belongThirdSector : belongThirdSector ,
+            belongForthSector : belongForthSector ,
+            mainBusiness : mainBusiness ,
+            companyQuality : qualityArr.join(',')
+        }) ,function (data) {
+            if(data.success){
+                hideModal("myModal");
+                window.parent.showSuccessAlert(data.message,function () {
+                    $('#tableList').bootstrapTable('refresh');
+                });
+            }else{
+                window.parent.showFailedAlert(data.message);
+            }
+        })
+    });
 });
 function flashTable(boxId , yearType) {
     $('#' + boxId ).bootstrapTable('destroy').bootstrapTable({
@@ -217,6 +258,7 @@ function flashTable(boxId , yearType) {
                 width: 20, // 定义列的宽度，单位为像素px
                 formatter: function (value, row, index) {
                     var btn = "";
+                    btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="edit(\'' + row.stockCode + '\')">修改</button>';
                     btn += '<button class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal" onclick="view(\'' + row.stockCode + '\')">查看</button>';
                     return btn
                 }
@@ -242,4 +284,70 @@ function getSelectOption(boxId , obj) {
 
 function view(stock_code) {
     location.href="/stock/stockPoolDetail?stock_code=" + stock_code + "&type=2";
+}
+
+function edit(stockCode) {
+    $('#myModal').on('show.bs.modal',function() {
+        $.APIPost("/api/stock/getStockCompanySector?stockCode="+stockCode ,function (data) {
+            $("#stockCode").val(data.data.result.stockCode);
+            $("#stockName").val(data.data.result.stockName);
+            $("#forthSector").val(data.data.result.forthSector);
+            $("#fiveSector").val(data.data.result.fiveSector);
+            $("#mainBusiness").val(data.data.result.mainBusiness);
+            // $("#companyDscr").html(data.data.result.companyIntr + data.data.result.companyProduct);
+
+            var secondOption = "";
+            var thirdOption = "";
+            var forthOption = "";
+            $.each(arrayData ,function (index ,value) {
+                if(value.text == data.data.result.belongFirstSecotr){
+                    $.each(value.nodes ,function (index2 ,value2) {
+                        secondOption += '<option value="' + value2.text + '">' + value2.text + "</option>";
+                        if(value2.text == data.data.result.belongSecondSector){
+                            $.each(value2.nodes ,function (index3 ,value3) {
+                                thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                                if(value3.text == data.data.result.belongThirdSector){
+                                    $.each(value3.nodes ,function (index4 ,value4) {
+                                        forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+            $("#belongSecondSector").html(secondOption);
+            $("#belongThirdSector").html(thirdOption);
+            $("#belongForthSector").html(forthOption);
+
+
+            $("#companyLevel").val(data.data.result.companyLevel);
+            $("#fiveOrder").val(data.data.result.fiveOrder);
+            $("#belongFirstSecotr").val(data.data.result.belongFirstSecotr);
+            $("#belongSecondSector").val(data.data.result.belongSecondSector);
+            $("#belongThirdSector").val(data.data.result.belongThirdSector);
+            $("#belongForthSector").val(data.data.result.belongForthSector);
+
+            var companyQuality = data.data.result.companyQuality;
+            if(!isEmpty(companyQuality)){
+                var str = companyQuality.split(',');
+                $('input[name="companyQuality"]').each(function(){
+                    var just = false ;
+                    for(var i = 0 ; i < str.length ; i++){
+                        var value = str[i];
+                        if($(this).val() == value){
+                            just = true;
+                        }
+                    }
+                    if(just){
+                        $(this).prop("checked",true);
+                    }
+                });
+            }else{
+                $('input[name="companyQuality"]').each(function(){
+                    $(this).prop("checked",false);
+                });
+            }
+        });
+    });
 }

@@ -5,7 +5,6 @@ $(function () {
 
     if(!isEmpty(id)){
         $.APIPost("/api/economy/getEconomyNewsStatisticsById?id="+id ,function (response) {
-            console.log(response.data.result.newsTitle);
             $("#newsTitle").html(response.data.result.newsTitle);
             $("#newsContry").html(response.data.result.newsContry);
             $("#newsTime").html(response.data.result.newsTime.substr(0,10));

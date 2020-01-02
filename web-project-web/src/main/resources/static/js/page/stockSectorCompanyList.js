@@ -413,7 +413,6 @@ function edit(stockCode) {
             if(!isEmpty(companyQuality)){
                 var str = companyQuality.split(',');
                 $('input[name="companyQuality"]').each(function(){
-                    console.log($(this).val());
                     var just = false ;
                     for(var i = 0 ; i < str.length ; i++){
                         var value = str[i];

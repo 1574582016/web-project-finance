@@ -18,6 +18,30 @@
         <result column="flow_count" property="flowCount"/>
         <result column="static_time" property="staticTime"/>
         <result column="start_time" property="startTime"/>
-
     </resultMap>
+
+    <select id="getStockInvestorStaticList" parameterType="java.lang.String" resultType="com.sky.vo.StockInvestor_VO">
+        SELECT
+        i.`type_name` typeName ,
+        SUM(1) investorNum ,
+        SUM(p.`invest_count`) investCount
+        FROM stock_investor_product p
+        LEFT JOIN stock_investor_info i ON p.`investor_code` = i.`investor_code`
+        WHERE p.`stock_code` = #{stockCode}
+        AND p.`static_time` = (SELECT MIN(static_time) FROM stock_investor_product)
+        GROUP BY i.`type_code`
+    </select>
+
+    <select id="getStockInvestorList" parameterType="java.lang.String" resultType="com.sky.vo.StockInvestor_VO">
+        SELECT
+        i.`type_code` typeCode ,
+        i.`type_name` typeName ,
+        p.`static_time` staticTime ,
+        SUM(p.`invest_count`) investCount
+        FROM stock_investor_product p
+        LEFT JOIN stock_investor_info i ON p.`investor_code` = i.`investor_code`
+        WHERE p.`stock_code` = #{stockCode}
+        GROUP BY i.`type_code`,p.`static_time`
+        ORDER BY i.`type_code`,p.`static_time`
+    </select>
 </mapper>

@@ -11,7 +11,7 @@ $(function(){
 
     $("#cancelButton").click(function () {
         var attr = $("#editDataButton").attr("disabled");
-        // console.log(attr);
+
         if(attr == 'disabled'){
             $("#editMenuForm").find("input").removeAttr("disabled");
             $("#editMenuForm").find("select").removeAttr("disabled");
@@ -79,7 +79,7 @@ $(function(){
 
     function getMenuInfo(menuId) {
         $.APIPost("/api/menu/getMenuInfo?menuCode=" + menuId ,function (data) {
-            // console.log(data);
+
             $("#p_menuCode").val(data.data.result.menuCode)
             $("#p_parentCode").val(data.data.result.parentCode);
             $("#p_menuName").val(data.data.result.menuName);

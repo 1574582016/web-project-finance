@@ -157,7 +157,6 @@ function flashCycleStatic() {
         });
 
     myChart.on('click', function (params) {
-        console.log(params.dataIndex);
         falshWeekBar(params.dataIndex);
     });
 }
@@ -293,7 +292,6 @@ function falshWeekBar(dataIndex) {
             myChart.setOption(option);
 
             myChart.on('click', function (params) {
-                console.log(params.dataIndex);
                 falshDayBar(params.dataIndex);
             });
         });
