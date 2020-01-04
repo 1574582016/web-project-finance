@@ -28,4 +28,17 @@
         )
         GROUP BY SUBSTR(english , 1 , LOCATE('struct', english) -1)
     </select>
+
+    <select id="getEnglishWorldByRoot" parameterType="java.lang.String" resultType="com.sky.vo.EnglishWorld_VO">
+        SELECT
+        LENGTH(SUBSTR(english , 1 , LOCATE(#{root},english) - 1)) AS affixNum ,
+        english ,
+        pronunciation_uk pronunciation ,
+        chinese
+        FROM learn_english_word
+        WHERE english REGEXP #{root}
+        AND isvalid = 1
+        AND chinese NOT REGEXP '现在分词|过去分词|ing形式|ed形式'
+        ORDER BY LENGTH(SUBSTR(english , 1 , LOCATE(#{root},english) - 1)) ,english ,LENGTH(english)
+    </select>
 </mapper>

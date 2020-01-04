@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.mapper.LearnEnglishWordMapper;
 import com.sky.model.LearnEnglishWord;
 import com.sky.service.LearnEnglishWordService;
+import com.sky.vo.EnglishWorld_VO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,5 +20,10 @@ public class LearnEnglishWordServiceImpl extends ServiceImpl<LearnEnglishWordMap
     @Override
     public List<LearnEnglishWord> getCommonRootEnglishList(String root) {
         return baseMapper.getCommonRootEnglishList(root);
+    }
+
+    @Override
+    public List<EnglishWorld_VO> getEnglishWorldByRoot(String root) {
+        return baseMapper.getEnglishWorldByRoot(root);
     }
 }

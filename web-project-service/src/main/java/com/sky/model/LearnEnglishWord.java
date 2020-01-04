@@ -40,7 +40,7 @@ public class LearnEnglishWord extends MiddleModel<LearnEnglishWord> {
      *
      */
     @TableField("pronunciation_us")
-    private Integer pronunciationUS ;
+    private String pronunciationUS ;
 
     /**
      *
