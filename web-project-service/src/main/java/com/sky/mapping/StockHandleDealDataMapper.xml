@@ -62,8 +62,6 @@
         FROM stock_deal_data d
         WHERE d.deal_period = 1
         AND d.stock_code = #{stockCode}
-        AND d.point_year = 2019
-        AND d.point_month >= 11
         GROUP BY d.stock_code,
         d.point_year,
         <if test="dealPeriod == '2'.toString()">

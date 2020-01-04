@@ -100,7 +100,6 @@ public class SplitTimeTest {
     public void test04(){
         List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("LEFT(stock_code,2) != 68"));
         for(StockCompanySector sector : list){
-            System.out.println("====================" + sector.getStockCode());
 //           for(int i = 2 ; i <= 3 ; i++){
 //               List<StockHandleDealData> dataList = stockHandleDealDataService.getGroupDealDataList(sector.getStockCode() , i+"");
 //               if(dataList.size()>0){
