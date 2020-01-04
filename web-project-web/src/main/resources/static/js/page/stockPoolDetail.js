@@ -17,7 +17,9 @@ $(function () {
 
         assetGrowMain("assetGrowMain" ,"资产增长"  ,response.data.result.assetMap);
 
-        companyMonthStatic(response.data.result.cycleMap);
+        companyMonthStatic("companyMonth" ,"5年，周期"  ,response.data.result.cycleMap);
+
+        companyMonthStatic("companyMonthTen" ,"10年，周期"  ,response.data.result.cycleTenMap);
     });
 
     $.APIPost("/api/stockPool/stockPoolInvestor?stockCode=" + $("#stock_code").val() ,function (response) {
@@ -398,12 +400,12 @@ function profitSeasonMain(boxId ,name ,result) {
     myChart.setOption(option);
 }
 
-function companyMonthStatic(result) {
-    var myChart = echarts.init(document.getElementById('companyMonth'));
+function companyMonthStatic(boxId ,name ,result) {
+    var myChart = echarts.init(document.getElementById(boxId));
     var colors = ['#34bd37', '#e80b3e', '#3a9ff5','#d3ff24'];
     var option = {
         title : {
-            text: "月度周期"
+            text: name
         },
         tooltip : {
             trigger: 'axis'

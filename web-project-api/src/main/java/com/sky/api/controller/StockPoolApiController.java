@@ -340,7 +340,7 @@ public class StockPoolApiController extends AbstractController {
 
             world_vo.setAssetMap(assetMap);
 
-            StockRiseRate riseRate = stockRiseRateService.selectOne(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and deal_period = 3" , stockCode));
+            StockRiseRate riseRate = stockRiseRateService.selectOne(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and deal_period = 3 and start_time = '2015-01-01'" , stockCode));
             Map<String ,JSONArray> map = new HashMap<>();
             JSONArray rateArr = new JSONArray();
             JSONArray upperArr = new JSONArray();
@@ -388,6 +388,55 @@ public class StockPoolApiController extends AbstractController {
             map.put("shockArr" , shockArr);
 
             world_vo.setCycleMap(map);
+
+            StockRiseRate riseRate2 = stockRiseRateService.selectOne(new EntityWrapper<StockRiseRate>().where("stock_code = {0} and deal_period = 3 and start_time = '2010-01-01'" , stockCode));
+            Map<String ,JSONArray> map2 = new HashMap<>();
+            JSONArray rateArr2 = new JSONArray();
+            JSONArray upperArr2 = new JSONArray();
+            JSONArray shockArr2 = new JSONArray();
+            rateArr2.add(riseRate2.getOneRise());
+            rateArr2.add(riseRate2.getTowRise());
+            rateArr2.add(riseRate2.getThreeRise());
+            rateArr2.add(riseRate2.getFourRise());
+            rateArr2.add(riseRate2.getFiveRise());
+            rateArr2.add(riseRate2.getSixRise());
+            rateArr2.add(riseRate2.getSevenRise());
+            rateArr2.add(riseRate2.getEightRise());
+            rateArr2.add(riseRate2.getNineRise());
+            rateArr2.add(riseRate2.getTenRise());
+            rateArr2.add(riseRate2.getElevenRise());
+            rateArr2.add(riseRate2.getTwelveRise());
+
+            upperArr2.add(riseRate2.getOneAmplitude());
+            upperArr2.add(riseRate2.getTowAmplitude());
+            upperArr2.add(riseRate2.getThreeAmplitude());
+            upperArr2.add(riseRate2.getFourAmplitude());
+            upperArr2.add(riseRate2.getFiveAmplitude());
+            upperArr2.add(riseRate2.getSixAmplitude());
+            upperArr2.add(riseRate2.getSevenAmplitude());
+            upperArr2.add(riseRate2.getEightAmplitude());
+            upperArr2.add(riseRate2.getNineAmplitude());
+            upperArr2.add(riseRate2.getTenAmplitude());
+            upperArr2.add(riseRate2.getElevenAmplitude());
+            upperArr2.add(riseRate2.getTwelveAmplitude());
+
+            shockArr2.add(riseRate2.getOneShock());
+            shockArr2.add(riseRate2.getTowShock());
+            shockArr2.add(riseRate2.getThreeShock());
+            shockArr2.add(riseRate2.getFourShock());
+            shockArr2.add(riseRate2.getFiveShock());
+            shockArr2.add(riseRate2.getSixShock());
+            shockArr2.add(riseRate2.getSevenShock());
+            shockArr2.add(riseRate2.getEightShock());
+            shockArr2.add(riseRate2.getNineShock());
+            shockArr2.add(riseRate2.getTenShock());
+            shockArr2.add(riseRate2.getElevenShock());
+            shockArr2.add(riseRate2.getTwelveShock());
+            map2.put("rateArr" , rateArr2);
+            map2.put("upperArr" , upperArr2);
+            map2.put("shockArr" , shockArr2);
+
+            world_vo.setCycleTenMap(map2);
         }
         return ResponseEntity.ok(MapSuccess("查询成功", world_vo));
     }

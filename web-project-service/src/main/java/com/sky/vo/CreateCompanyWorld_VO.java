@@ -74,5 +74,7 @@ public class CreateCompanyWorld_VO extends VoModel {
 
     private Map<String,JSONArray> cycleMap ;
 
+    private Map<String,JSONArray> cycleTenMap ;
+
     private Integer rowSpan ;
 }
