@@ -1,6 +1,7 @@
 package com.sky.api;
 
 import com.sky.core.controller.BaseController;
+import com.sky.model.EnglishRootAffix;
 import com.sky.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -163,4 +164,7 @@ public class AbstractController extends BaseController {
 
     @Autowired
     protected StockInvestorProductService stockInvestorProductService ;
+
+    @Autowired
+    protected EnglishRootAffixService englishRootAffixService ;
 }

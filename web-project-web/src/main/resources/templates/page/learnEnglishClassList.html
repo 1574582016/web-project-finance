@@ -26,9 +26,11 @@
         <div class="panel-body">
             <form id="formSearch" class="form-horizontal">
                 <div class="form-group" style="margin-top:15px">
-                    <label class="control-label col-sm-1">片段：</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="s_fragment" name="fragment">
+                    <label class="control-label col-sm-1">词根：</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="s_root">
+                            <option th:each="item,itemStat:${rootList}" th:value="${item.sameRoot}" th:text="${item.sameRoot}"></option>
+                        </select>
                     </div>
                     <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
                 </div>
@@ -39,10 +41,11 @@
 
 <table class="english-word-talbe">
     <thead>
-      <th style="text-align: center;color:#3e505e;">片段</th>
-      <th style="text-align: center;color:#3e505e;">英文</th>
-      <th style="text-align: center;color:#3e505e;">音标</th>
-      <th style="text-align: center;color:#3e505e;">中文</th>
+      <th style="text-align: center;color:#3e505e;width: 8%;">词根</th>
+      <th style="text-align: center;color:#3e505e;width: 23%;">动词</th>
+      <th style="text-align: center;color:#3e505e;width: 23%;">形容词</th>
+      <th style="text-align: center;color:#3e505e;width: 23%;">副词</th>
+      <th style="text-align: center;color:#3e505e;width: 23%;">名词</th>
     </thead>
     <tbody id="englishClassBody">
 

@@ -1,17 +1,23 @@
 package com.sky.api.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
 import com.sky.annotation.LogRecord;
 import com.sky.api.AbstractController;
+import com.sky.model.EnglishRootAffix;
 import com.sky.model.LearnEnglishClass;
 import com.sky.model.LearnEnglishWord;
+import com.sky.service.EnglishRootAffixService;
+import com.sky.vo.EnglishWorldResult_VO;
+import com.sky.vo.EnglishWorld_VO;
+import com.sky.vo.LearnEnglishRoot_VO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -84,5 +90,130 @@ public class LearnEnglishWordApiController extends AbstractController {
         }
         List<LearnEnglishClass> list = learnEnglishClassService.selectList(wrapper);
         return ResponseEntity.ok(MapSuccess("查询成功！",list));
+    }
+
+    @LogRecord(name = "getEnglishRootClassList" ,description = "查询英语单词分类列表")
+    @PostMapping("/getEnglishRootClassList")
+    public Object getEnglishRootClassList(String comonRoot){
+        List<EnglishRootAffix> rootsList = englishRootAffixService.selectList(new EntityWrapper<EnglishRootAffix>().where("root_type = '词根' and same_root = {0}" , comonRoot).groupBy("same_root"));
+        List<JSONObject> sameList = new ArrayList<>();
+        for(EnglishRootAffix affix : rootsList){
+            String sameRoot = affix.getSameRoot();
+            sameRoot = getDifferentRoot(sameRoot);
+            System.out.println(sameRoot);
+            String[] roots = sameRoot.split(",");
+            List<LearnEnglishRoot_VO> rootList = new ArrayList<>();
+            for(String root : roots){
+                List<EnglishWorldResult_VO> voList = new ArrayList<>();
+                List<EnglishWorld_VO> list = learnEnglishWordService.getEnglishWorldByRoot(root);
+                List<Integer> numList = caculateDiffrent(list);
+                int colrow = 0;
+                for(int num : numList){
+                    EnglishWorldResult_VO result_vo = new EnglishWorldResult_VO();
+                    List<JSONObject> noneList = new ArrayList<>();
+                    List<JSONObject> verbList = new ArrayList<>();
+                    List<JSONObject> adjList = new ArrayList<>();
+                    List<JSONObject> advList = new ArrayList<>();
+                    for(EnglishWorld_VO word : list){
+                        if(num == word.getAffixNum().intValue()){
+                            JSONObject jsonObject = new JSONObject();
+                            String chinese = word.getChinese();
+                            if(chinese.indexOf("vt.") != -1 || chinese.indexOf("vi.") != -1){
+                                jsonObject.put("english",word.getEnglish());
+                                jsonObject.put("pronunciation",word.getPronunciation());
+                                jsonObject.put("chinese",word.getChinese());
+                                verbList.add(jsonObject);
+                                continue;
+                            }
+                            if(chinese.indexOf("n.") != -1){
+                                jsonObject.put("english",word.getEnglish());
+                                jsonObject.put("pronunciation",word.getPronunciation());
+                                jsonObject.put("chinese",word.getChinese());
+                                noneList.add(jsonObject);
+                                continue;
+                            }
+                            if(chinese.indexOf("adj.") != -1){
+                                jsonObject.put("english",word.getEnglish());
+                                jsonObject.put("pronunciation",word.getPronunciation());
+                                jsonObject.put("chinese",word.getChinese());
+                                adjList.add(jsonObject);
+                                continue;
+                            }
+                            if(chinese.indexOf("adv.") != -1){
+                                jsonObject.put("english",word.getEnglish());
+                                jsonObject.put("pronunciation",word.getPronunciation());
+                                jsonObject.put("chinese",word.getChinese());
+                                advList.add(jsonObject);
+                                continue;
+                            }
+                        }
+                    }
+                    result_vo.setNoneList(noneList);
+                    result_vo.setVerbList(verbList);
+                    result_vo.setAdjList(adjList);
+                    result_vo.setAdvList(advList);
+
+                    voList.add(result_vo);
+                }
+                colrow = colrow + voList.size() ;
+                LearnEnglishRoot_VO root_vo = new LearnEnglishRoot_VO();
+                root_vo.setRoot(root);
+                root_vo.setList(voList);
+                root_vo.setColRow(colrow);
+                rootList.add(root_vo);
+            }
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("sameRoot" , affix.getSameRoot() + "<br>" + affix.getRootMean());
+            jsonObject.put("rootList", rootList);
+            sameList.add(jsonObject);
+        }
+        return ResponseEntity.ok(MapSuccess("查询成功！",sameList));
+    }
+
+    private List<Integer> caculateDiffrent(List<EnglishWorld_VO> list){
+        List<Integer> numList = new ArrayList<>();
+        int just = -1;
+        for(EnglishWorld_VO world_vo : list){
+            if(just != world_vo.getAffixNum().intValue()){
+                just = world_vo.getAffixNum().intValue();
+                numList.add(world_vo.getAffixNum());
+            }
+//            String chinese = world_vo.getChinese();
+//            String[] strs = chinese.split(" ");
+//            String chStr = "";
+//            for(String str : strs){
+//                chStr += str + "<br>";
+//            }
+//            world_vo.setChinese(chStr);
+        }
+        return numList;
+    }
+
+    private String getDifferentRoot(String sameRoot){
+        Set<String> list = new HashSet<>();
+        String[] roots = sameRoot.split(",");
+        for(String root: roots){
+            boolean just = false ;
+            for(String roote : roots){
+                if(!root.equals(roote) && ( root.indexOf(roote) != -1 || roote.indexOf(root) !=  -1 )){
+                    just = true ;
+                    if(root.indexOf(roote) != 0){
+                        list.add(root);
+                    }
+                    if(roote.indexOf(root) != 0){
+                        list.add(roote);
+                    }
+                }
+            }
+            if(!just){
+                list.add(root);
+            }
+        }
+        String str = "";
+        for (String root : list) {
+            str += root + ",";
+        }
+
+        return str;
     }
 }
