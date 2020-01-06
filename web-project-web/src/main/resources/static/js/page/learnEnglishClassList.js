@@ -22,7 +22,8 @@ function drawTable(response) {
                     if(value2.verbList.length > 0){
                         str += '<td>';
                         $.each(value2.verbList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{
@@ -32,7 +33,8 @@ function drawTable(response) {
                     if(value2.adjList.length > 0){
                         str += '<td>';
                         $.each(value2.adjList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{
@@ -42,7 +44,8 @@ function drawTable(response) {
                     if(value2.advList.length > 0){
                         str += '<td>';
                         $.each(value2.advList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{
@@ -52,7 +55,8 @@ function drawTable(response) {
                     if(value2.noneList.length > 0){
                         str += '<td>';
                         $.each(value2.noneList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{
@@ -66,7 +70,8 @@ function drawTable(response) {
                     if(value2.verbList.length > 0){
                         str += '<td>';
                         $.each(value2.verbList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{
@@ -76,7 +81,8 @@ function drawTable(response) {
                     if(value2.adjList.length > 0){
                         str += '<td>';
                         $.each(value2.adjList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{
@@ -86,7 +92,8 @@ function drawTable(response) {
                     if(value2.advList.length > 0){
                         str += '<td>';
                         $.each(value2.advList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{
@@ -96,7 +103,8 @@ function drawTable(response) {
                     if(value2.noneList.length > 0){
                         str += '<td>';
                         $.each(value2.noneList ,function (index3 ,value3) {
-                            str += value3.english + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
+                            str += '<a class="text_link_a" href="http://dict.youdao.com/example/blng/eng/'+ value3.english +'/#keyfrom=dict.main.moreblng" target="view_window">'+ value3.english +'</a>'
+                                + '&nbsp;&nbsp;' + value3.pronunciation + '</br>' + value3.chinese + '</br>'
                         });
                         str += '</td>';
                     }else{

@@ -27,7 +27,7 @@ $(function () {
                 }
 
             });
-            $("#first_sector").html(str2);
+            $("#first_sector").html(str);
         });
     }
 
@@ -283,7 +283,20 @@ function getSelectOption(boxId , obj) {
 }
 
 function view(stock_code) {
-    location.href="/stock/stockPoolDetail?stock_code=" + stock_code + "&type=2";
+    var firstSector = $("#first_sector").val();
+    var secondSector = $("#second_sector").val();
+    var thirdSecotor = $("#third_secotor").val();
+    var forthSector = $("#forth_sector").val();
+    var stockCode = $("#stock_code").val();
+    var stockName = $("#stock_name").val();
+    location.href="/stock/stockPoolDetail?stock_code=" + stock_code
+                                        + "&stockCode=" + stockCode
+                                        + "&stockName=" + stockName
+                                        + "&firstSector=" + firstSector
+                                        + "&secondSector=" + secondSector
+                                        + "&thirdSecotor=" + thirdSecotor
+                                        + "&forthSector=" + forthSector
+                                        + "&type=2";
 }
 
 function edit(stockCode) {

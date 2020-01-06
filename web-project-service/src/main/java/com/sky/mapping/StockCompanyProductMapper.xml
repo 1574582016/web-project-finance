@@ -42,7 +42,9 @@
         FROM stock_company_product
         WHERE pruduct_type = #{productType}
         AND stock_code = #{stockCode}
-        AND product_name NOT REGEXP '其他|其中|平衡|抵销'
+        AND product_name NOT REGEXP '其他|其中|平衡|抵销|抵消'
+        AND product_revenue_rate != '--'
+        AND CONVERT(REPLACE(product_revenue_rate , '%' , '') ,DECIMAL(10,2)) > 1
         AND publish_date = (SELECT MAX(publish_date) FROM stock_company_product WHERE pruduct_type = #{productType} AND stock_code = #{stockCode})
         GROUP BY REPLACE(product_name ,'﻿' ,'')
         ORDER BY CONVERT(REPLACE(product_revenue_rate , '%' , '') ,DECIMAL(10,2)) DESC

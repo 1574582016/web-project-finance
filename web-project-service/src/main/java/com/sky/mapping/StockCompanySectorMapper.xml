@@ -441,7 +441,7 @@
         s.five_sector ,
         s.`stock_code`,
         s.five_order ,
-        CONCAT('[' , c.company_region , ']' ,REPLACE(REPLACE(REPLACE(c.`company_name`,'股份有限公司',''),c.company_region,''),'()','')) companyName ,
+        CONCAT('[' , c.company_region , ']' ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.`company_name`,'股份有限公司',''),c.company_region,''),'()',''),'(集团)',''),'中国','')) companyName ,
         c.`establish_date`establishDay,
         s.`publish_time` publishDay,
         s.company_website companyWebsite ,
