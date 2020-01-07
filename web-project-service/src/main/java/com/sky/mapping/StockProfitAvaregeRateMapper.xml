@@ -83,7 +83,7 @@
         ) > 1
 --         AND ABS(ir.`average_increase_rate` - ir2.`total_increase_rate`) &lt; 10
         GROUP BY av.`stock_code`
-        ORDER BY ROUND(av.average_grow_rate,0) DESC ,
-        ROUND(ir.`average_increase_rate`,0) DESC
+        ORDER BY ROUND(av.average_grow_rate / 10,0) DESC ,
+        ROUND(av.average_grow_profit * ir.`average_increase_rate` ,0) DESC
     </select>
 </mapper>
