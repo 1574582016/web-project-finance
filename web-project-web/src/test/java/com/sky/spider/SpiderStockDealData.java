@@ -53,7 +53,7 @@ public class SpiderStockDealData {
 
         // 开始时间
         long start = System.currentTimeMillis();
-        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code = '000333'"));
+        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
         // 每500条数据开启一条线程
         int threadSize = 500;
         // 总数据条数
