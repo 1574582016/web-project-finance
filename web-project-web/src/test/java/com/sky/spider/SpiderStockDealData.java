@@ -1,10 +1,8 @@
 package com.sky.spider;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.sky.model.IndexDealData;
-import com.sky.model.StockCompanySector;
-import com.sky.model.StockDealData;
-import com.sky.model.StockIndexClass;
+import com.sky.model.*;
 import com.sky.service.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -36,12 +35,25 @@ public class SpiderStockDealData {
     @Autowired
     private IndexDealDataService indexDealDataService ;
 
+
+    @Autowired
+    private StockDealDataFiveMinuteService stockDealDataFiveMinuteService ;
+
+    @Autowired
+    private StockDealDataFifteenMinuteService stockDealDataFifteenMinuteService ;
+
+    @Autowired
+    private StockDealDataThirtyMinuteService stockDealDataThirtyMinuteService ;
+
+    @Autowired
+    private StockDealDataSixtyMinuteService stockDealDataSixtyMinuteService ;
+
     @Test
     public void spiderStockDealData() throws InterruptedException, ExecutionException {
 
         // 开始时间
         long start = System.currentTimeMillis();
-        List<StockCompanySector> list = stockCompanySectorService.selectList(null);
+        List<StockCompanySector> list = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code = '000333'"));
         // 每500条数据开启一条线程
         int threadSize = 500;
         // 总数据条数
@@ -79,7 +91,7 @@ public class SpiderStockDealData {
                         if(!stockCode.getStockCode().substring(0,1).equals("6")){
                             mk = "2";
                         }
-                        for(int t = 1 ; t <=1 ; t++) {
+                        for(int t = 1 ; t <=7 ; t++) {
                             if(t == 2 || t == 3){
                                 continue;
                             }
@@ -94,15 +106,16 @@ public class SpiderStockDealData {
                                     System.out.println("共有 ： " + size + "条，！" + " 分为 ：" + part + "批");
                                     for (int i = 0; i < part; i++) {
                                         List<StockDealData> listPage = dataList.subList(0, pointsDataLimit);
-                                        stockDealDataService.insertBatch(listPage);
+                                        saveStockDealData(t , listPage);
+
                                         //剔除
                                         dataList.subList(0, pointsDataLimit).clear();
                                     }
                                     if (!dataList.isEmpty()) {
-                                        stockDealDataService.insertBatch(dataList);
+                                        saveStockDealData(t , dataList);
                                     }
                                 } else {
-                                    stockDealDataService.insertBatch(dataList);
+                                    saveStockDealData(t , dataList);
                                 }
                             } else {
                                 System.out.println("没有数据!!!");
@@ -128,6 +141,106 @@ public class SpiderStockDealData {
         exec.shutdown();
         System.out.println("线程任务执行结束");
         System.err.println("执行任务消耗了 ：" + (System.currentTimeMillis() - start) + "毫秒");
+    }
+
+    private void saveStockDealData(int periodType , List<StockDealData> dataList ){
+        switch (periodType){
+            case 1 :
+                stockDealDataService.insertBatch(dataList);
+                break;
+            case 4 :
+                List<StockDealDataFiveMinute> fiveMinuteList = new ArrayList<>();
+                for(StockDealData dealData : dataList){
+                    StockDealDataFiveMinute dealDataMinute = new StockDealDataFiveMinute();
+                    dealDataMinute.setDealPeriod(dealData.getDealPeriod());
+                    dealDataMinute.setPointYear(dealData.getPointYear());
+                    dealDataMinute.setPointMonth(dealData.getPointMonth());
+                    dealDataMinute.setPointWeek(dealData.getPointWeek());
+                    dealDataMinute.setPointDay(dealData.getPointDay());
+                    dealDataMinute.setDealTime(dealData.getDealTime());
+                    dealDataMinute.setStockCode(dealData.getStockCode());
+                    dealDataMinute.setOpenPrice(dealData.getOpenPrice());
+                    dealDataMinute.setClosePrice(dealData.getClosePrice());
+                    dealDataMinute.setHighPrice(dealData.getHighPrice());
+                    dealDataMinute.setLowPrice(dealData.getLowPrice());
+                    dealDataMinute.setDealCount(dealData.getDealCount());
+                    dealDataMinute.setDealMoney(dealData.getDealMoney());
+                    dealDataMinute.setAmplitude(dealData.getAmplitude());
+                    dealDataMinute.setHandRate(dealData.getHandRate());
+                    fiveMinuteList.add(dealDataMinute);
+                }
+                stockDealDataFiveMinuteService.insertBatch(fiveMinuteList);
+                break;
+            case 5 :
+                List<StockDealDataFifteenMinute> fifteenMinuteList = new ArrayList<>();
+                for(StockDealData dealData : dataList){
+                    StockDealDataFifteenMinute dealDataMinute = new StockDealDataFifteenMinute();
+                    dealDataMinute.setDealPeriod(dealData.getDealPeriod());
+                    dealDataMinute.setPointYear(dealData.getPointYear());
+                    dealDataMinute.setPointMonth(dealData.getPointMonth());
+                    dealDataMinute.setPointWeek(dealData.getPointWeek());
+                    dealDataMinute.setPointDay(dealData.getPointDay());
+                    dealDataMinute.setDealTime(dealData.getDealTime());
+                    dealDataMinute.setStockCode(dealData.getStockCode());
+                    dealDataMinute.setOpenPrice(dealData.getOpenPrice());
+                    dealDataMinute.setClosePrice(dealData.getClosePrice());
+                    dealDataMinute.setHighPrice(dealData.getHighPrice());
+                    dealDataMinute.setLowPrice(dealData.getLowPrice());
+                    dealDataMinute.setDealCount(dealData.getDealCount());
+                    dealDataMinute.setDealMoney(dealData.getDealMoney());
+                    dealDataMinute.setAmplitude(dealData.getAmplitude());
+                    dealDataMinute.setHandRate(dealData.getHandRate());
+                    fifteenMinuteList.add(dealDataMinute);
+                }
+                stockDealDataFifteenMinuteService.insertBatch(fifteenMinuteList);
+                break;
+            case 6 :
+                List<StockDealDataThirtyMinute> thirtyMinuteList = new ArrayList<>();
+                for(StockDealData dealData : dataList){
+                    StockDealDataThirtyMinute dealDataMinute = new StockDealDataThirtyMinute();
+                    dealDataMinute.setDealPeriod(dealData.getDealPeriod());
+                    dealDataMinute.setPointYear(dealData.getPointYear());
+                    dealDataMinute.setPointMonth(dealData.getPointMonth());
+                    dealDataMinute.setPointWeek(dealData.getPointWeek());
+                    dealDataMinute.setPointDay(dealData.getPointDay());
+                    dealDataMinute.setDealTime(dealData.getDealTime());
+                    dealDataMinute.setStockCode(dealData.getStockCode());
+                    dealDataMinute.setOpenPrice(dealData.getOpenPrice());
+                    dealDataMinute.setClosePrice(dealData.getClosePrice());
+                    dealDataMinute.setHighPrice(dealData.getHighPrice());
+                    dealDataMinute.setLowPrice(dealData.getLowPrice());
+                    dealDataMinute.setDealCount(dealData.getDealCount());
+                    dealDataMinute.setDealMoney(dealData.getDealMoney());
+                    dealDataMinute.setAmplitude(dealData.getAmplitude());
+                    dealDataMinute.setHandRate(dealData.getHandRate());
+                    thirtyMinuteList.add(dealDataMinute);
+                }
+                stockDealDataThirtyMinuteService.insertBatch(thirtyMinuteList);
+                break;
+            case 7 :
+                List<StockDealDataSixtyMinute> sixtyMinuteList = new ArrayList<>();
+                for(StockDealData dealData : dataList){
+                    StockDealDataSixtyMinute dealDataMinute = new StockDealDataSixtyMinute();
+                    dealDataMinute.setDealPeriod(dealData.getDealPeriod());
+                    dealDataMinute.setPointYear(dealData.getPointYear());
+                    dealDataMinute.setPointMonth(dealData.getPointMonth());
+                    dealDataMinute.setPointWeek(dealData.getPointWeek());
+                    dealDataMinute.setPointDay(dealData.getPointDay());
+                    dealDataMinute.setDealTime(dealData.getDealTime());
+                    dealDataMinute.setStockCode(dealData.getStockCode());
+                    dealDataMinute.setOpenPrice(dealData.getOpenPrice());
+                    dealDataMinute.setClosePrice(dealData.getClosePrice());
+                    dealDataMinute.setHighPrice(dealData.getHighPrice());
+                    dealDataMinute.setLowPrice(dealData.getLowPrice());
+                    dealDataMinute.setDealCount(dealData.getDealCount());
+                    dealDataMinute.setDealMoney(dealData.getDealMoney());
+                    dealDataMinute.setAmplitude(dealData.getAmplitude());
+                    dealDataMinute.setHandRate(dealData.getHandRate());
+                    sixtyMinuteList.add(dealDataMinute);
+                }
+                stockDealDataSixtyMinuteService.insertBatch(sixtyMinuteList);
+                break;
+        }
     }
 
 

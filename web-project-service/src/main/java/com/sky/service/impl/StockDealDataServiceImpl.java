@@ -8,15 +8,15 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.MathUtil;
 import com.sky.core.utils.SpiderUtils;
+import com.sky.mapper.StockDealDataFiveMinuteMapper;
 import com.sky.mapper.StockDealDataMapper;
-import com.sky.model.SectorDealData;
-import com.sky.model.StockDealData;
-import com.sky.model.StockRiseRate;
-import com.sky.service.StockDealDataService;
+import com.sky.model.*;
+import com.sky.service.*;
 import com.sky.vo.FestivalStatic_VO;
 import com.sky.vo.StockDealDateRank_VO;
 import com.sky.vo.StockOrderStatic_VO;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +30,18 @@ import java.util.List;
 @Service
 @Transactional
 public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,StockDealData> implements StockDealDataService {
+
+    @Autowired
+    private StockDealDataFiveMinuteService stockDealDataFiveMinuteService ;
+
+    @Autowired
+    private StockDealDataFifteenMinuteService stockDealDataFifteenMinuteService ;
+
+    @Autowired
+    private StockDealDataThirtyMinuteService stockDealDataThirtyMinuteService ;
+
+    @Autowired
+    private StockDealDataSixtyMinuteService stockDealDataSixtyMinuteService ;
 
     private static String type2 = "2" ;
 
@@ -87,20 +99,84 @@ public class StockDealDataServiceImpl extends ServiceImpl<StockDealDataMapper,St
                 }
                 list.add(dealData);
             }
-
-            List<StockDealData> dataList = selectList(new EntityWrapper<StockDealData>().where("stock_code = {0} and deal_period = {1}" ,skuCode ,periodType ));
-            for(StockDealData dealData : list){
-                boolean just = false;
-                for(StockDealData existData : dataList){
-                    if(dealData.getDealTime().equals(existData.getDealTime())){
-                        just = true ;
-                        continue;
+            switch (periodType){
+                case 1 :
+                    List<StockDealData> dataList = selectList(new EntityWrapper<StockDealData>().where("stock_code = {0} and deal_period = {1}" ,skuCode ,periodType ));
+                    for(StockDealData dealData : list){
+                        boolean just = false;
+                        for(StockDealData existData : dataList){
+                            if(dealData.getDealTime().equals(existData.getDealTime())){
+                                just = true ;
+                                continue;
+                            }
+                        }
+                        if(!just){
+                            newList.add(dealData);
+                        }
                     }
-                }
-                if(!just){
-                    newList.add(dealData);
-                }
+                    break;
+                case 4 :
+                    List<StockDealDataFiveMinute> dataList4 = stockDealDataFiveMinuteService.selectList(new EntityWrapper<StockDealDataFiveMinute>().where("stock_code = {0} and deal_period = {1}" ,skuCode ,periodType ));
+                    for(StockDealData dealData : list){
+                        boolean just = false;
+                        for(StockDealDataFiveMinute existData : dataList4){
+                            if(dealData.getDealTime().equals(existData.getDealTime())){
+                                just = true ;
+                                continue;
+                            }
+                        }
+                        if(!just){
+                            newList.add(dealData);
+                        }
+                    }
+                    break;
+                case 5 :
+                    List<StockDealDataFifteenMinute> dataList5 = stockDealDataFifteenMinuteService.selectList(new EntityWrapper<StockDealDataFifteenMinute>().where("stock_code = {0} and deal_period = {1}" ,skuCode ,periodType ));
+                    for(StockDealData dealData : list){
+                        boolean just = false;
+                        for(StockDealDataFifteenMinute existData : dataList5){
+                            if(dealData.getDealTime().equals(existData.getDealTime())){
+                                just = true ;
+                                continue;
+                            }
+                        }
+                        if(!just){
+                            newList.add(dealData);
+                        }
+                    }
+                    break;
+                case 6 :
+                    List<StockDealDataThirtyMinute> dataList6 = stockDealDataThirtyMinuteService.selectList(new EntityWrapper<StockDealDataThirtyMinute>().where("stock_code = {0} and deal_period = {1}" ,skuCode ,periodType ));
+                    for(StockDealData dealData : list){
+                        boolean just = false;
+                        for(StockDealDataThirtyMinute existData : dataList6){
+                            if(dealData.getDealTime().equals(existData.getDealTime())){
+                                just = true ;
+                                continue;
+                            }
+                        }
+                        if(!just){
+                            newList.add(dealData);
+                        }
+                    }
+                    break;
+                case 7 :
+                    List<StockDealDataSixtyMinute> dataList7 = stockDealDataSixtyMinuteService.selectList(new EntityWrapper<StockDealDataSixtyMinute>().where("stock_code = {0} and deal_period = {1}" ,skuCode ,periodType ));
+                    for(StockDealData dealData : list){
+                        boolean just = false;
+                        for(StockDealDataSixtyMinute existData : dataList7){
+                            if(dealData.getDealTime().equals(existData.getDealTime())){
+                                just = true ;
+                                continue;
+                            }
+                        }
+                        if(!just){
+                            newList.add(dealData);
+                        }
+                    }
+                    break;
             }
+
 
         }catch (Exception e){
             e.printStackTrace();
