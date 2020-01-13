@@ -6,11 +6,9 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.CommonHttpUtil;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.StockCompanySector;
+import com.sky.model.StockMoneyFlow;
 import com.sky.model.StockRiseRate;
-import com.sky.service.StockCompanyAssetService;
-import com.sky.service.StockCompanyProfitService;
-import com.sky.service.StockCompanySectorService;
-import com.sky.service.StockRiseRateService;
+import com.sky.service.*;
 import com.sky.vo.StockCompanyAssetVO;
 import com.sky.vo.StockCompanyProfitVO;
 import org.junit.Test;
@@ -40,6 +38,9 @@ public class Test06 {
 
     @Autowired
     private StockRiseRateService stockRiseRateService ;
+
+    @Autowired
+    private StockMoneyFlowService stockMoneyFlowService ;
 
     @Test
     public void test01(){
@@ -323,7 +324,8 @@ public class Test06 {
 
     @Test
     public void test009(){
-        stockRiseRateService.createWeekDealReport(12 , null);
+//        stockRiseRateService.createWeekDealReport(12 , null);
+        stockMoneyFlowService.spiderStockMoneyFlow("000333");
     }
 
 /**
