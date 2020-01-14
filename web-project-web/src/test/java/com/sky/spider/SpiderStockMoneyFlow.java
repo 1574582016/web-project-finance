@@ -67,8 +67,13 @@ public class SpiderStockMoneyFlow {
                 @Override
                 public Integer call() throws Exception {
                     for(StockCompanySector stockCode : listStr){
-                        stockMoneyFlowService.spiderStockMoneyFlow(stockCode.getStockCode());
-                        Thread.sleep(1000);
+                        try{
+                            stockMoneyFlowService.spiderStockMoneyFlow(stockCode.getStockCode());
+                            Thread.sleep(1000);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
                     }
                     return 1;
                 }
