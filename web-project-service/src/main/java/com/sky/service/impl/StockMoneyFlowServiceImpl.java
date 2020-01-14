@@ -62,6 +62,9 @@ public class StockMoneyFlowServiceImpl extends ServiceImpl<StockMoneyFlowMapper,
                     case 2 :
                         flow.setSmallMoney(list.get(j));
                         break;
+                    case 11 :
+                        flow.setDayPrice(list.get(j));
+                        break;
                 }
             }
             boolean just = false ;

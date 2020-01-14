@@ -12,6 +12,7 @@
 
         <result column="deal_time" property="dealTime"/>
         <result column="stock_code" property="stockCode"/>
+        <result column="day_price" property="dayPrice"/>
         <result column="magor_money" property="magorMoney"/>
         <result column="super_money" property="superMoney"/>
         <result column="big_money" property="bigMoney"/>

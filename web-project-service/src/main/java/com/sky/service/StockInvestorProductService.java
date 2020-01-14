@@ -14,4 +14,7 @@ public interface StockInvestorProductService extends IService<StockInvestorProdu
     List<StockInvestor_VO> getStockInvestorStaticList(String stockCode);
 
     List<StockInvestor_VO> getStockInvestorList(String stockCode);
+
+
+    void spiderStockInvestorProduct(String stockCode ,String stockName);
 }

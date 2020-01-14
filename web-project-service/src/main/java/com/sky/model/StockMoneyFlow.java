@@ -25,6 +25,12 @@ public class StockMoneyFlow extends BaseModel<StockMoneyFlow> {
     private String stockCode ;
 
     /**
+     *当日价格
+     */
+    @TableField("day_price")
+    private String dayPrice ;
+
+    /**
      *主力资金净流入
      */
     @TableField("magor_money")

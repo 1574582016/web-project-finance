@@ -61,6 +61,9 @@ public class JustTestMain {
                     case 2 :
                         flow.setSmallMoney(list.get(j));
                         break;
+                    case 11 :
+                        flow.setDayPrice(list.get(j));
+                        break;
                 }
             }
             System.out.println(flow.toString());
