@@ -3,8 +3,11 @@ package com.sky.test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.FileUtils;
 import com.sky.core.utils.SpiderUtils;
+import com.sky.model.ForexDealData;
+import com.sky.model.ForexDealDataOneMinute;
 import com.sky.model.StockMoneyFlow;
 
 import java.io.BufferedReader;
@@ -20,13 +23,17 @@ import java.util.*;
 public class JustTestMain {
 
     public static void main(String[] args){
-        String text = FileUtils.readFileContent("E://XAUUSD.txt");
-        String[] strs = text.split("-");
-        for(String str : strs){
-            System.out.println(str);
-        }
+        System.out.println(DateUtils.parseDate("2001-01-02 23:09:00"));
 
 
+    }
+
+    private static String caculateDay(String dayString){
+        return dayString.substring(0,4) + "-" + dayString.substring(4,6) + "-" + dayString.substring(6,8);
+    }
+
+    private static String caculateTime(String timeString){
+        return timeString.substring(0,2) + ":" + timeString.substring(2,4) + ":" + timeString.substring(4,6);
     }
 
     public static String getDifferentRoot(String sameRoot){
