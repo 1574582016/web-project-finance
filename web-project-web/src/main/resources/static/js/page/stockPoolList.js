@@ -95,25 +95,28 @@ $(function () {
     }
 
     // $("#mark_hot").select2();
-
-    flashTableS('tableList_S' , 6);
-    flashTableS('tableList_A' , 5);
-    flashTableS('tableList_B' , 4);
-    flashTableS('tableList_C' , 3);
-    flashTableS('tableList_D' , 2);
-    flashTableS('tableList_E' , 1);
-    flashTableS('tableList_G' , 9);
+    flashTableS('tableList_S' , "");
+    // flashTableS('tableList_S' , 6);
+    // flashTableS('tableList_A' , 5);
+    // flashTableS('tableList_B' , 4);
+    // flashTableS('tableList_C' , 3);
+    // flashTableS('tableList_D' , 2);
+    // flashTableS('tableList_E' , 1);
+    // flashTableS('tableList_G' , 9);
 
     $("[data-toggle='tooltip']").tooltip();
 
     $("#searchDataButton").click(function () {
-        flashTableS('tableList_S' , 6);
-        flashTableS('tableList_A' , 5);
-        flashTableS('tableList_B' , 4);
-        flashTableS('tableList_C' , 3);
-        flashTableS('tableList_D' , 2);
-        flashTableS('tableList_E' , 1);
-        flashTableS('tableList_G' , 9);
+
+        flashTableS('tableList_S' , "");
+
+        // flashTableS('tableList_S' , 6);
+        // flashTableS('tableList_A' , 5);
+        // flashTableS('tableList_B' , 4);
+        // flashTableS('tableList_C' , 3);
+        // flashTableS('tableList_D' , 2);
+        // flashTableS('tableList_E' , 1);
+        // flashTableS('tableList_G' , 9);
     });
 
     function flashTableS(boxId , level) {
@@ -144,7 +147,7 @@ $(function () {
             sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             pageNumber:1,                       //初始化加载第一页，默认第一页
             pageSize: 10,                       //每页的记录行数（*）
-            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+            pageList: [10, 25, 50, 100, 500, 1000],        //可供选择的每页的行数（*）
             search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             strictSearch: false,
             showColumns: false,                  //是否显示所有的列
@@ -174,6 +177,14 @@ $(function () {
                     valign: 'middle',
                     formatter: function (value, row, index) {
                         return '<a class="text_link_a" href="http://'+ row.companyWebsite +'" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.companyWebsite +'">'+ value +'</a>';
+                    }
+                }, {
+                    field: 'stockName',
+                    title: '简称',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function (value, row, index) {
+                        return '<a class="text_link_a" href="#" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.mainBusiness +'">'+ value +'</a>';
                     }
                 }, {
                     field: 'companyName',
@@ -410,36 +421,59 @@ function changeSecondBelongSector(obj) {
     var thisObj=$(obj);
 
     var secondOption = "";
+    var nextText = "";
     $.each(arrayData ,function (index ,value) {
         if(value.text == thisObj.val()){
             $.each(value.nodes ,function (index2 ,value2) {
                 secondOption += '<option value="' + value2.text + '">' + value2.text + "</option>";
-            });
-        }
-    });
-    $("#belongSecondSector").html(secondOption);
-}
-
-function changeThirdBelongSector(obj) {
-    var thisObj=$(obj);
-    var belongFirstSecotr = $("#belongFirstSecotr").val();
-
-    var thirdOption = "";
-    $.each(arrayData ,function (index ,value) {
-        if(value.text == belongFirstSecotr){
-            $.each(value.nodes ,function (index2 ,value2) {
-                if(value2.text == thisObj.val()){
-                    $.each(value2.nodes ,function (index3 ,value3) {
-                        thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
-                    });
+                if(index2 == 0){
+                    nextText = value2.text ;
                 }
             });
         }
     });
-    $("#belongThirdSector").html(thirdOption);
+    $("#belongSecondSector").html(secondOption);
+
+    changeThirdBelongSector(obj , nextText);
 }
 
-function changeForthBelongSector(obj) {
+function changeThirdBelongSector(obj , nextText) {
+    var thisObj=$(obj);
+    var belongFirstSecotr = $("#belongFirstSecotr").val();
+    var thirdOption = "";
+    var nextText3 = "";
+    $.each(arrayData ,function (index ,value) {
+        if(value.text == belongFirstSecotr){
+            $.each(value.nodes ,function (index2 ,value2) {
+                if(isEmpty(nextText)){
+                    if(value2.text == thisObj.val()){
+                        $.each(value2.nodes ,function (index3 ,value3) {
+                            thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                            if(index3 == 0){
+                                nextText3 = value3.text ;
+                            }
+                        });
+                    }
+                }else {
+                    if(value2.text == nextText){
+                        $.each(value2.nodes ,function (index3 ,value3) {
+                            thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                            if(index3 == 0){
+                                nextText3 = value3.text ;
+                            }
+                        });
+                    }
+                }
+
+            });
+        }
+    });
+    $("#belongThirdSector").html(thirdOption);
+
+    changeForthBelongSector(obj , nextText3);
+}
+
+function changeForthBelongSector(obj , nextText) {
     var thisObj=$(obj);
     var belongFirstSecotr = $("#belongFirstSecotr").val();
     var belongSecondSector = $("#belongSecondSector").val();
@@ -450,10 +484,18 @@ function changeForthBelongSector(obj) {
             $.each(value.nodes ,function (index2 ,value2) {
                 if(value2.text == belongSecondSector){
                     $.each(value2.nodes ,function (index3 ,value3) {
-                        if(value3.text == thisObj.val()){
-                            $.each(value3.nodes ,function (index4 ,value4) {
-                                forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
-                            });
+                        if(isEmpty(nextText)){
+                            if(value3.text == thisObj.val()){
+                                $.each(value3.nodes ,function (index4 ,value4) {
+                                    forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                                });
+                            }
+                        }else {
+                            if(value3.text == nextText){
+                                $.each(value3.nodes ,function (index4 ,value4) {
+                                    forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                                });
+                            }
                         }
                     });
                 }

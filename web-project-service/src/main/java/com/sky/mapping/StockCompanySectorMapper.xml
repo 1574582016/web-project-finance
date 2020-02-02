@@ -235,6 +235,7 @@
                 a.`second_sector` ,
                 a.`third_secotor` ,
                 a.`forth_sector` ,
+                a.five_sector ,
                 a.ZHONG DESC,
                 a.profit_grow_score DESC,
                 a.profit_score DESC,
@@ -384,6 +385,8 @@
         a.forth_sector forthSector,
         a.five_sector fiveSector ,
         a.stock_code stockCode,
+        CASE WHEN LEFT(a.stock_code , 1) = '6' THEN 'sh' ELSE 'sz' END AS marketType ,
+        a.stock_name stockName ,
         a.companyName ,
         CASE WHEN a.ZHONG = 6 THEN 'S'
               WHEN a.ZHONG = 5 THEN 'A'
@@ -429,7 +432,7 @@
         IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '标普|富时|股通|MSCI|AB|AH|B' THEN h.hot_name END SEPARATOR '->'),'') internalOrganize ,
         IFNULL(GROUP_CONCAT(CASE WHEN h.hot_name REGEXP '证金|社保|机构|基金|QFII' THEN h.hot_name END SEPARATOR '->'),'') focusOrganize ,
         REPLACE(CONCAT(IFNULL(GROUP_CONCAT(
-        CASE WHEN h.`hot_name` NOT REGEXP '标普|富时|股通|MSCI|AB|AH|B|证金|社保|机构|基金|QFII|自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路|0|创业|股权|三板|融资|转债|预亏|预盈|独角|ST|创投|纾困|昨日|分拆|举牌|改革|债转股|壳资源|送转' THEN h.`hot_name` END
+        CASE WHEN h.`hot_name` NOT REGEXP '国产软件|次新股|标普|富时|股通|MSCI|AB|AH|B|证金|社保|机构|基金|QFII|自贸|特区|三角|区域|长株潭|京津冀|新区|振兴|一带一路|0|创业|股权|三板|融资|转债|预亏|预盈|独角|ST|创投|纾困|昨日|分拆|举牌|改革|债转股|壳资源|送转' THEN h.`hot_name` END
         SEPARATOR '->'),'') , '(' , IFNULL(a.groupIndex,'') ,')'),'()','')  groupHot ,
         a.mainBusiness
         FROM (
@@ -440,8 +443,10 @@
         s.`forth_sector`,
         s.five_sector ,
         s.`stock_code`,
+        s.stock_name ,
         s.five_order ,
-        CONCAT('[' , c.company_region , ']' ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.`company_name`,'股份有限公司',''),c.company_region,''),'()',''),'(集团)',''),'中国','')) companyName ,
+        c.company_region ,
+        CONCAT('[' , c.company_region , ']' ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(c.`company_name`,'股份有限公司',''),'股份公司',''),c.company_region,''),'()',''),'(集团)',''),'中国',''),'深圳市',''),'杭州',''),'广州',''),'贵阳',''),'深圳',''),'厦门',''),'成都',''),'南京',''),'芜湖',''),'无锡',''),'厦门',''),'大连',''),'厦门市',''),'珠海','')) companyName ,
         c.`establish_date`establishDay,
         s.`publish_time` publishDay,
         s.company_website companyWebsite ,
@@ -505,9 +510,6 @@
         GROUP BY a.stock_code
         ORDER BY a.`first_sector`,
         a.`second_sector`,
-        a.`third_secotor`,
-        a.`forth_sector`,
-        a.five_order ASC,
         a.ZHONG DESC,
         a.profit_grow_score DESC,
         a.asset_grow_score DESC

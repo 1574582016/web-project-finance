@@ -143,6 +143,24 @@ public class StockPoolApiController extends AbstractController {
             if(regionList.size() > productList.size()){
                 num = regionList.size();
             }
+
+            if(productList.size() == 0){
+                for(StockCompanyProduct region : regionList){
+                    StockCompanyProduct empity = new StockCompanyProduct();
+                    empity.setProductName("  ");
+                    empity.setProductRevenueRate("   ");
+                    productList.add(empity);
+                }
+            }
+            if(regionList.size() == 0){
+                for(StockCompanyProduct product : productList){
+                    StockCompanyProduct empity = new StockCompanyProduct();
+                    empity.setProductName("  ");
+                    empity.setProductRevenueRate("   ");
+                    regionList.add(empity);
+                }
+            }
+
             world_vo.setRowSpan(num);
 
             world_vo.setProductList(productList);

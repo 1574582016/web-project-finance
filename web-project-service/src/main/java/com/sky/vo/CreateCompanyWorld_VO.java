@@ -20,6 +20,8 @@ public class CreateCompanyWorld_VO extends VoModel {
 
     private String stockCode ;
 
+    private String stockName ;
+
     private String companyName ;
 
     private String companyClass ;
@@ -63,6 +65,8 @@ public class CreateCompanyWorld_VO extends VoModel {
     private String companyWebsite ;
 
     private String mainBusiness ;
+
+    private String marketType ;
 
     private List<StockCompanyProduct> productList ;
 

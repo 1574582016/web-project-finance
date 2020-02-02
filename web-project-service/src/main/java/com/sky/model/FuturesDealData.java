@@ -21,6 +21,30 @@ public class FuturesDealData extends BaseModel<FuturesDealData> {
     private Integer dealPeriod ;
 
     /**
+     * 年
+     */
+    @TableField("point_year")
+    private Integer pointYear ;
+
+    /**
+     * 月
+     */
+    @TableField("point_month")
+    private Integer pointMonth ;
+
+    /**
+     * 周
+     */
+    @TableField("point_week")
+    private Integer pointWeek ;
+
+    /**
+     * 日
+     */
+    @TableField("point_day")
+    private Integer pointDay ;
+
+    /**
      * 时间
      */
     @TableField("deal_time")

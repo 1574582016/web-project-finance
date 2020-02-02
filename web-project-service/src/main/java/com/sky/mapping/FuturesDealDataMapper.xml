@@ -11,6 +11,10 @@
         <result column="update_user" property="updateUser"/>
 
         <result column="deal_period" property="dealPeriod"/>
+        <result column="point_year" property="pointYear"/>
+        <result column="point_month" property="pointMonth"/>
+        <result column="point_week" property="pointWeek"/>
+        <result column="point_day" property="pointDay"/>
         <result column="deal_time" property="dealTime"/>
         <result column="futures_code" property="futuresCode"/>
         <result column="open_price" property="openPrice"/>

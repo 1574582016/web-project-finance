@@ -155,10 +155,25 @@ $(function () {
     });
 });
 
+function searchStock() {
+    $.APIPost("/api/stockPool/stockPoolDetail?stockCode=" + $("#s_stockCode").val() ,function (response) {
+        drawMainTable(response);
+        profitGrowMain("profitGrowMain" ,"总利润"  ,response.data.result.profitMap);
+        profitSeasonMain("profitSeasonMain" ,"季度利润" ,response.data.result.profitMap);
+
+        assetGrowMain("assetGrowMain" ,"资产增长"  ,response.data.result.assetMap);
+
+        companyMonthStatic("companyMonth" ,"5年，周期"  ,response.data.result.cycleMap);
+
+        companyMonthStatic("companyMonthTen" ,"10年，周期"  ,response.data.result.cycleTenMap);
+    });
+}
+
 function drawMainTable(response) {
     var stockCodeStr = '<a class="text_link_a" href="http://'+ response.data.result.companyWebsite +'" target="view_window">'+ response.data.result.stockCode +'</a>';
+    var stockNameStr = '<a class="text_link_a" href="http://quote.eastmoney.com/'+ response.data.result.marketType + response.data.result.stockCode +'.html" target="view_window">'+ response.data.result.companyName +'</a>';
     $("#t_stockCode").html(stockCodeStr);
-    $("#t_companyName").html(response.data.result.companyName);
+    $("#t_companyName").html(stockNameStr);
     $("#t_companyClass").html(response.data.result.companyClass);
 
     $("#t_establishDay").html(response.data.result.establishDay);
@@ -491,38 +506,58 @@ function companyMonthStatic(boxId ,name ,result) {
 
 function changeSecondBelongSector(obj) {
     var thisObj=$(obj);
-
+    var nextText = "";
     var secondOption = "";
     $.each(arrayData ,function (index ,value) {
         if(value.text == thisObj.val()){
             $.each(value.nodes ,function (index2 ,value2) {
                 secondOption += '<option value="' + value2.text + '">' + value2.text + "</option>";
+                if(index2 == 0){
+                    nextText = value2.text ;
+                }
             });
         }
     });
     $("#f_belongSecondSector").html(secondOption);
+
+    changeThirdBelongSector(obj , nextText)
 }
 
-function changeThirdBelongSector(obj) {
+function changeThirdBelongSector(obj , nextText) {
     var thisObj=$(obj);
     var belongFirstSecotr = $("#f_belongFirstSecotr").val();
-
+    var nextText3 = "";
     var thirdOption = "";
     $.each(arrayData ,function (index ,value) {
         if(value.text == belongFirstSecotr){
             $.each(value.nodes ,function (index2 ,value2) {
-                if(value2.text == thisObj.val()){
-                    $.each(value2.nodes ,function (index3 ,value3) {
-                        thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
-                    });
+                if(isEmpty(nextText)){
+                    if(value2.text == thisObj.val()){
+                        $.each(value2.nodes ,function (index3 ,value3) {
+                            thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                            if(index3 == 0){
+                                nextText3 = value3.text ;
+                            }
+                        });
+                    }
+                }else {
+                    if(value2.text == nextText){
+                        $.each(value2.nodes ,function (index3 ,value3) {
+                            thirdOption += '<option value="' + value3.text + '">' + value3.text + "</option>";
+                            if(index3 == 0){
+                                nextText3 = value3.text ;
+                            }
+                        });
+                    }
                 }
             });
         }
     });
     $("#f_belongThirdSector").html(thirdOption);
+    changeForthBelongSector(obj , nextText3)
 }
 
-function changeForthBelongSector(obj) {
+function changeForthBelongSector(obj , nextText) {
     var thisObj=$(obj);
     var belongFirstSecotr = $("#f_belongFirstSecotr").val();
     var belongSecondSector = $("#f_belongSecondSector").val();
@@ -533,10 +568,18 @@ function changeForthBelongSector(obj) {
             $.each(value.nodes ,function (index2 ,value2) {
                 if(value2.text == belongSecondSector){
                     $.each(value2.nodes ,function (index3 ,value3) {
-                        if(value3.text == thisObj.val()){
-                            $.each(value3.nodes ,function (index4 ,value4) {
-                                forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
-                            });
+                        if(isEmpty(nextText)){
+                            if(value3.text == thisObj.val()){
+                                $.each(value3.nodes ,function (index4 ,value4) {
+                                    forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                                });
+                            }
+                        }else {
+                            if(value3.text == nextText){
+                                $.each(value3.nodes ,function (index4 ,value4) {
+                                    forthOption += '<option value="' + value4.text + '">' + value4.text + "</option>";
+                                });
+                            }
                         }
                     });
                 }
