@@ -24,4 +24,10 @@ public class FinanceMarket extends BaseModel<FinanceMarket>{
     @TableField(value = "describe")
     private String describe ;
 
+    @TableField(value = "order_num")
+    private Integer orderNum ;
+
+    @TableField(value = "market_type")
+    private Integer marketType ;
+
 }

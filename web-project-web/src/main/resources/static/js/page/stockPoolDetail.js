@@ -170,8 +170,8 @@ function searchStock() {
 }
 
 function drawMainTable(response) {
-    var stockCodeStr = '<a class="text_link_a" href="http://'+ response.data.result.companyWebsite +'" target="view_window">'+ response.data.result.stockCode +'</a>';
-    var stockNameStr = '<a class="text_link_a" href="http://quote.eastmoney.com/'+ response.data.result.marketType + response.data.result.stockCode +'.html" target="view_window">'+ response.data.result.companyName +'</a>';
+    var stockNameStr = '<a class="text_link_a" href="http://'+ response.data.result.companyWebsite +'" target="view_window">'+ response.data.result.companyName +'</a>';
+    var stockCodeStr = '<a class="text_link_a" href="http://quote.eastmoney.com/'+ response.data.result.marketType + response.data.result.stockCode +'.html" target="view_window">'+ response.data.result.stockCode +'</a>';
     $("#t_stockCode").html(stockCodeStr);
     $("#t_companyName").html(stockNameStr);
     $("#t_companyClass").html(response.data.result.companyClass);

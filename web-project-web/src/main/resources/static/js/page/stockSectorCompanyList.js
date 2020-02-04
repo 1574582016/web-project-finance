@@ -244,17 +244,21 @@ $(function () {
                 align: 'center',
                 valign: 'middle',
                 formatter: function (value, row, index) {
-                    var lev = value.substr(0,1);
-                    if(lev == 'S' || lev == 'A' || lev == 'B'){
-                        return '<a class="text_link_a" href="#" style="color: red;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
-                    }else
-                    if(lev == 'C'){
-                        return '<a class="text_link_a" href="#" style="color: #b804ff;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
-                    }else
-                    if(lev == 'D'){
-                        return '<a class="text_link_a" href="#" style="color: #ffc000;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                    if(isEmpty(value)){
+                        return value ;
                     }else{
+                        var lev = value.substr(0,1);
+                        if(lev == 'S' || lev == 'A' || lev == 'B'){
+                            return '<a class="text_link_a" href="#" style="color: red;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                        }else
+                        if(lev == 'C'){
+                            return '<a class="text_link_a" href="#" style="color: #b804ff;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                        }else
+                        if(lev == 'D'){
+                            return '<a class="text_link_a" href="#" style="color: #ffc000;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                        }else{
                             return '<a class="text_link_a" href="#" style="color: grey;" target="view_window" data-toggle="tooltip" data-placement="top" title="'+ row.groupIndex +'">'+ value +'</a>';
+                        }
                     }
                 }
             },{

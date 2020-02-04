@@ -1,20 +1,25 @@
+var resultData ;
+
 $(function(){
 
-    var resultData = drawMenuTree();
+    resultData = drawMenuTree();
 
-    var option = '<option value="1048460137181315074">根目录</option>';
+    var option = '<option value="market">根目录</option>';
     $.each(resultData,function (index ,value) {
         option += '<option value="'+ value.href +'">'+ value.text +'</option>';
     });
-    $("#p_parentCode").html(option);
-    $("#d_parentCode").html(option);
+    $("#p_firstCode").html(option);
+    $("#d_firstCode").html(option);
+    $("#d_secondCode").html('<option value="">请选择</option>');
+    $("#d_thirdCode").html('<option value="">请选择</option>');
+    $("#d_forthCode").html('<option value="">请选择</option>');
 
     $("#cancelButton").click(function () {
         var attr = $("#editDataButton").attr("disabled");
-
         if(attr == 'disabled'){
             $("#editMenuForm").find("input").removeAttr("disabled");
             $("#editMenuForm").find("select").removeAttr("disabled");
+            $("#editMenuForm").find("textarea").removeAttr("disabled");
             $("#editMenuForm").find("#editDataButton").removeAttr("disabled");
             $("#cancelButton").html("取消");
         }else{
@@ -25,73 +30,75 @@ $(function(){
 
 
     $("#addDataButton").click(function () {
-        var parentCode = $("#d_parentCode").val();
-        var menuName = $("#d_menuName").val();
-        var menuIcon = $("#d_menuIcon").val();
-        var menuUrl = $("#d_menuUrl").val();
+        var parentCode = "";
+        if(!isEmpty($("#d_thirdCode").val())){
+            parentCode = $("#d_thirdCode").val();
+        }else{
+            if(!isEmpty($("#d_secondCode").val())){
+                parentCode = $("#d_secondCode").val();
+            }else{
+                parentCode = $("#d_firstCode").val();
+            }
+        }
+        var marketName = $("#d_sectorName").val();
         var orderNum =  $("#d_orderNum").val();
-
-        var id_array=new Array();
-        $('input[name="d_role"]:checked').each(function(){
-            id_array.push($(this).val());
-        });
-        var roleId=id_array.join(',');
-        editMenuInfo(null , parentCode, menuName , menuIcon, menuUrl, orderNum, roleId , null);
+        var describe =  $("#p_describe").text();
+        editMenuInfo(null , parentCode, marketName , orderNum, describe , 1);
     });
 
     $("#editDataButton").click(function () {
-        var menuCode = $("#p_menuCode").val();
-        var parentCode = $("#p_parentCode").val();
-        var menuName = $("#p_menuName").val();
-        var menuIcon = $("#p_menuIcon").val();
-        var menuUrl = $("#p_menuUrl").val();
+        var parentCode = "";
+        if(!isEmpty($("#d_thirdCode").val())){
+            parentCode = $("#d_thirdCode").val();
+        }else{
+            if(!isEmpty($("#d_secondCode").val())){
+                parentCode = $("#d_secondCode").val();
+            }else{
+                parentCode = $("#d_firstCode").val();
+            }
+        }
+        var marketCode = $("#p_marketCode").val();
+        var marketName = $("#p_menuName").val();
         var orderNum =  $("#p_orderNum").val();
+        var describe =  $("#p_describe").text();
         var isvalid =  $('input[name="p_isvalid"]:checked').val();
-
-        var id_array=new Array();
-        $('input[name="p_role"]:checked').each(function(){
-            id_array.push($(this).val());
-        });
-        var roleId=id_array.join(',');
-        editMenuInfo(menuCode , parentCode, menuName , menuIcon, menuUrl, orderNum, roleId , isvalid);
+        editMenuInfo(marketCode , parentCode, marketName , orderNum , describe , isvalid);
     });
 
-    function editMenuInfo(menuCode , parentCode, menuName , menuIcon, menuUrl, orderNum, roleId , isvalid) {
-        $.APIPost("/api/menu/checkMenuName?menuName=" + menuName + "&parentCode="+ parentCode +"&menuCode=" + menuCode,function (data) {
-            if(data.data.result){
-                alert("菜单已存在");
-            }else{
-                $.APIPost("/api/menu/editMenu?roleId="+roleId,JSON.stringify({menuCode:menuCode , parentCode:parentCode , menuName:menuName ,menuIcon:menuIcon ,menuUrl:menuUrl ,orderNum:orderNum ,isvalid:isvalid}),function (data) {
-                    if(data.success){
-                        hideModal("myModal");
-                        window.parent.showSuccessAlert(data.message,function () {
-                            drawMenuTree();
-                            // changeFormState();
-                            getMenuInfo(menuCode);
-                        });
-                    }else{
-                        window.parent.showFailedAlert("保存失败");
-                    }
+    $("#addButton").click(function () {
+        $("#p_marketCode").val("");
+        $("#p_parentCode").val("market");
+        $("#p_sectorName").val("");
+        $("#p_orderNum").val("");
+        $("#p_describe").text("");
+        $("input[name='p_isvalid']").removeAttr("checked");
+        $("input[name='p_isvalid'][value='"+ data.data.result.isvalid +"']").attr("checked", true);
+    });
+
+    function editMenuInfo(marketCode , parentCode, marketName , orderNum , describe , isvalid) {
+        $.APIPost("/api/finance/editFinanceMarket",JSON.stringify({marketCode:marketCode , parentCode:parentCode , marketName:marketName ,orderNum:orderNum ,describe: describe ,isvalid:isvalid , marketType: 3}),function (data) {
+            if(data.success){
+                hideModal("myModal");
+                window.parent.showSuccessAlert(data.message,function () {
+                    drawMenuTree();
+                    changeFormState();
+                    getMenuInfo(marketCode);
                 });
+            }else{
+                window.parent.showFailedAlert(data.message);
             }
         });
     }
 
-    function getMenuInfo(menuId) {
-        $.APIPost("/api/menu/getMenuInfo?menuCode=" + menuId ,function (data) {
-
-            $("#p_menuCode").val(data.data.result.menuCode)
-            $("#p_parentCode").val(data.data.result.parentCode);
-            $("#p_menuName").val(data.data.result.menuName);
-            $("#p_menuIcon").val(data.data.result.menuIcon);
-            $("#p_menuUrl").val(data.data.result.menuUrl);
+    function getMenuInfo(marketCode) {
+        $.APIPost("/api/finance/getFinanceMarket?marketCode=" + marketCode ,function (data) {
+            $("#p_firstCode").val(data.data.result.marketCode);
+            $("#p_marketCode").val(data.data.result.marketCode);
+            $("#p_sectorName").val(data.data.result.marketName);
             $("#p_orderNum").val(data.data.result.orderNum);
+            $("#p_describe").text(data.data.result.describe);
             $("input[name='p_isvalid']").removeAttr("checked");
             $("input[name='p_isvalid'][value='"+ data.data.result.isvalid +"']").attr("checked", true);
-            $("input[name='p_role']").removeAttr("checked");
-            $.each(data.data.role, function (index, value) {
-                $("input[name='p_role'][value='"+ value.roleCode +"']").attr("checked", true);
-            });
         });
         changeFormState();
     }
@@ -99,6 +106,7 @@ $(function(){
     function changeFormState() {
         $("#editMenuForm").find("input").attr("disabled",true);
         $("#editMenuForm").find("select").attr("disabled",true);
+        $("#editMenuForm").find("textarea").attr("disabled",true);
         $("#editMenuForm").find("#editDataButton").attr("disabled",true);
         $("#cancelButton").html("修改");
     }
@@ -117,61 +125,10 @@ $(function(){
                 emptyIcon: "",
                 onNodeSelected: function (event, data) {
                     getMenuInfo(data.href);
-                },
-                onNodeChecked : function(event, node) {
-                    getNodeChecked("tree" , node);
-                },
-                onNodeUnchecked : function(event, node){
-                    getNodeUnchecked("tree" , node);
                 }
             });
         });
         return arrayData;
-    }
-
-    function getNodeChecked(id , node){
-
-        var selectNodes= getChildNodeIdArr(node);//获取所有节点
-        if(selectNodes){//如果子节点不为空，即存在子节点，则选中所有子节点
-            //选择指定的节点，接收节点或节点ID
-            $('#' + id).treeview('checkNode',[selectNodes,{silent:true}]);
-        }
-        //返回给定节点ID的单一节点对象
-        var parentNodes = getParentNodeIdArr( id , node).reverse();
-        $('#' + id).treeview('checkNode',[parentNodes,{silent:true}]);
-    }
-
-    function getNodeUnchecked(id , node) {
-        var selectNodes=getChildNodeIdArr(node);
-        if(selectNodes){//子节点不为空，则取消选中所有子节点
-            $('#' + id).treeview("uncheckNode",[selectNodes,{silent:true}]);
-        }
-        var parentNodes = getParentNodeIdArr( id , node);
-        var listNodes = parentNodes;
-        var nums = parentNodes.length;
-        for(var i=0 ; i<nums ; i++){
-            var nodeId = listNodes[i];
-            if(typeof nodeId === "undefined") {
-                nodeId = 0;
-            }
-            var num = checkChildNodeState(id ,nodeId);
-            if(num > 0){
-                var index = parentNodes.indexOf(nodeId);
-                if (index > -1) {
-                    parentNodes.splice(index, 1);
-                }
-                if(parentNodes){
-                    $('#' + id).treeview("checkNode",[nodeId,{silent:true}]);
-                }
-
-            }else{
-                $('#' + id).treeview("uncheckNode",[parentNodes,{silent:true}]);
-            }
-        }
-        if(parentNodes){
-            $('#' + id).treeview("uncheckNode",[parentNodes,{silent:true}]);
-        }
-
     }
 
     //递归所有子节点，找到所有层级节点
@@ -205,18 +162,76 @@ $(function(){
         return ts;
     }
 
-    function checkChildNodeState( id ,nodeId) {
-        var parentNode = $("#" + id).treeview("getNode", nodeId);
-        var checkedCount = 0;
-        if(parentNode.nodes) {
-            for(x in parentNode.nodes) {
-                if(parentNode.nodes[x].state.checked) {
-                    checkedCount++;
-                }
-            }
-
-        }
-        return checkedCount;
-    }
-
 });
+
+function changeSecondSector(obj) {
+    var $obj = $(obj);
+    var code = $obj.val();
+    var secondOption = '<option value="">请选择</option>';
+    $.each(resultData,function (index ,value) {
+        if(value.href == code){
+            $.each(value.nodes ,function (index2 ,value2) {
+                secondOption += '<option value="'+ value2.href +'">'+ value2.text +'</option>';
+            });
+        }
+    });
+    $("#d_secondCode").html(secondOption);
+    $("#d_thirdCode").html('<option value="">请选择</option>');
+    $("#d_forthCode").html('<option value="">请选择</option>');
+}
+
+function changeThirdSector(obj) {
+    var firstCode = $("#d_firstCode").val();
+    var $obj = $(obj);
+    var code = $obj.val();
+    var thirdOption = '<option value="">请选择</option>';
+    $.each(resultData,function (index ,value) {
+        if(value.href == firstCode){
+            $.each(value.nodes ,function (index2 ,value2) {
+                if(value2.href == code){
+                    $.each(value2.nodes ,function (index3 ,value3) {
+                        thirdOption += '<option value="'+ value3.href +'">'+ value3.text +'</option>';
+                    });
+                }
+            });
+        }
+    });
+    $("#d_thirdCode").html(thirdOption);
+    $("#d_forthCode").html('<option value="">请选择</option>');
+}
+
+function changeSecondSector2(obj) {
+    var $obj = $(obj);
+    var code = $obj.val();
+    var secondOption = '<option value="">请选择</option>';
+    $.each(resultData,function (index ,value) {
+        if(value.href == code){
+            $.each(value.nodes ,function (index2 ,value2) {
+                secondOption += '<option value="'+ value2.href +'">'+ value2.text +'</option>';
+            });
+        }
+    });
+    $("#f_secondCode").html(secondOption);
+    $("#f_thirdCode").html('<option value="">请选择</option>');
+    $("#f_forthCode").html('<option value="">请选择</option>');
+}
+
+function changeThirdSector2(obj) {
+    var firstCode = $("#f_firstCode").val();
+    var $obj = $(obj);
+    var code = $obj.val();
+    var thirdOption = '<option value="">请选择</option>';
+    $.each(resultData,function (index ,value) {
+        if(value.href == firstCode){
+            $.each(value.nodes ,function (index2 ,value2) {
+                if(value2.href == code){
+                    $.each(value2.nodes ,function (index3 ,value3) {
+                        thirdOption += '<option value="'+ value3.href +'">'+ value3.text +'</option>';
+                    });
+                }
+            });
+        }
+    });
+    $("#f_thirdCode").html(thirdOption);
+    $("#f_forthCode").html('<option value="">请选择</option>');
+}

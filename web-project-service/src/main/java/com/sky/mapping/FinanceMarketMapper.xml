@@ -14,5 +14,6 @@
         <result column="market_name" property="marketName"/>
         <result column="parent_code" property="parentCode"/>
         <result column="describe" property="describe"/>
+        <result column="order_num" property="orderNum"/>
     </resultMap>
 </mapper>
