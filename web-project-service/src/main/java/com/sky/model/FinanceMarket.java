@@ -21,11 +21,11 @@ public class FinanceMarket extends BaseModel<FinanceMarket>{
     @TableField(value = "parent_code")
     private String parentCode ;
 
-    @TableField(value = "describe")
-    private String describe ;
+    @TableField(value = "market_describe")
+    private String marketDescribe ;
 
-    @TableField(value = "order_num")
-    private Integer orderNum ;
+//    @TableField(value = "order_num")
+//    private Integer orderNum ;
 
     @TableField(value = "market_type")
     private Integer marketType ;
