@@ -69,7 +69,25 @@ public class Test09 {
                     }
                     list2.add(marketStock);
                 }
-                financeMarketStockService.insertBatch(list2);
+
+                List<FinanceMarketStock> list3 = financeMarketStockService.selectList(new EntityWrapper<FinanceMarketStock>().where("market_code = {0}" , market.getMarketCode()));
+
+                List<FinanceMarketStock> list4 = new ArrayList<>();
+                for(FinanceMarketStock marketStock : list2){
+                    boolean just = false ;
+                    for(FinanceMarketStock stock : list3){
+                        if(stock.getStockCode().equals(marketStock.getStockCode())){
+                            just = true;
+                            continue;
+                        }
+                    }
+                    if(!just){
+                        list4.add(marketStock);
+                    }
+                }
+                if(list4.size() > 0){
+                    financeMarketStockService.insertBatch(list4);
+                }
             }
 
         }
