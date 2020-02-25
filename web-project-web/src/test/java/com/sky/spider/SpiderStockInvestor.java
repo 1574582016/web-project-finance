@@ -28,7 +28,7 @@ public class SpiderStockInvestor {
     private StockInvestorProductService stockInvestorProductService ;
 
     @Test
-    public void spiderStockMoneyFlow() throws InterruptedException, ExecutionException {
+    public void spiderStockInvestor() throws InterruptedException, ExecutionException {
 
         // 开始时间
         long start = System.currentTimeMillis();
