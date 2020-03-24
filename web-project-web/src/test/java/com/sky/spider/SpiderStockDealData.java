@@ -91,7 +91,7 @@ public class SpiderStockDealData {
                         if(!stockCode.getStockCode().substring(0,1).equals("6")){
                             mk = "2";
                         }
-                        for(int t = 1 ; t <=7 ; t++) {
+                        for(int t = 1 ; t <=1 ; t++) {
                             if(t == 2 || t == 3){
                                 continue;
                             }

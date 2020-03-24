@@ -163,4 +163,34 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
      */
     @TableField("company_quality")
     private String companyQuality ;
+
+    /**
+     *
+     */
+    @TableField("main_business_profit")
+    private String mainBusinessProfit ;
+
+    /**
+     *
+     */
+    @TableField("pure_business_profit")
+    private String pureBusinessProfit ;
+
+    /**
+     *
+     */
+    @TableField("per_stock_profit")
+    private String perStockProfit ;
+
+    /**
+     *
+     */
+    @TableField("flow_stock_count")
+    private String flowStockCount ;
+
+    /**
+     *
+     */
+    @TableField("total_stock_count")
+    private String totalStockCount ;
 }

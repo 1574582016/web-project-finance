@@ -36,6 +36,12 @@
         <result column="belong_second_sector" property="belongSecondSector"/>
         <result column="belong_third_sector" property="belongThirdSector"/>
         <result column="belong_forth_sector" property="belongForthSector"/>
+
+        <result column="main_business_profit" property="mainBusinessProfit"/>
+        <result column="pure_business_profit" property="pureBusinessProfit"/>
+        <result column="per_stock_profit" property="perStockProfit"/>
+        <result column="flow_stock_count" property="flowStockCount"/>
+        <result column="total_stock_count" property="totalStockCount"/>
     </resultMap>
 
     <select id="getStockCompanySectorList" parameterType="java.lang.String" resultType="com.sky.vo.CompanySectorVO">
