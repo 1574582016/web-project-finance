@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.service.IService;
 import com.sky.model.StockCompanySector;
 import com.sky.vo.CompanySectorVO;
 import com.sky.vo.CreateCompanyWorld_VO;
+import com.sky.vo.MyStockCompanySector_VO;
 
 import java.util.List;
 
@@ -38,4 +39,8 @@ public interface StockCompanySectorService extends IService<StockCompanySector> 
                                                         String thirdSecotor ,
                                                         String forthSector ,
                                                         String companyLevel);
+
+
+    List<MyStockCompanySector_VO> getMyStockCompanySectorList(String firstSector ,
+                                                              String sectorTypes);
 }

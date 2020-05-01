@@ -10,11 +10,13 @@ import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.StringUtils;
 import com.sky.model.*;
 import com.sky.vo.CompanySectorVO;
+import com.sky.vo.MyStockCompanySector_VO;
 import com.sky.vo.StockCompanyAssetVO;
 import com.sky.vo.StockCompanyProfitVO;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.expression.Maps;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -622,4 +624,28 @@ public class StockCompanyApiController extends AbstractController {
         jsonObject.put("assetDebtRateLevel" , assetDebtRateLevel);
         return jsonObject;
     }
+
+
+    @LogRecord(name = "getMyStockCompanySectorList" ,description = "查询自主公司分类列表")
+    @PostMapping("/getMyStockCompanySectorList")
+    public Object getMyStockCompanySectorList(String firstSector ,String sectorTypes){
+        List<MyStockCompanySector_VO> list = stockCompanySectorService.getMyStockCompanySectorList(firstSector , sectorTypes);
+        Map<String ,List<MyStockCompanySector_VO>> resultMap = new HashMap<String ,List<MyStockCompanySector_VO>>();
+        for(MyStockCompanySector_VO companySectorVo : list){
+            List<MyStockCompanySector_VO> list1 = resultMap.get(companySectorVo.getSecondSector());
+            if(list1 == null || list1.size() == 0){
+                list1 = new ArrayList<MyStockCompanySector_VO>();
+                list1.add(companySectorVo);
+            }else{
+                list1.add(companySectorVo);
+            }
+            resultMap.put(companySectorVo.getSecondSector() , list1);
+        }
+        Map<String ,List<MyStockCompanySector_VO>> result = new LinkedHashMap<>();
+
+        resultMap.entrySet().stream().sorted(Map.Entry.<String ,List<MyStockCompanySector_VO>>comparingByKey()).forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+
+        return result;
+    }
+
 }

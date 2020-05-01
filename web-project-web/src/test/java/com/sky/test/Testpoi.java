@@ -17,7 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Testpoi {
 
     public static void main(String[] args) {
-        String excelPath = "D:\\test.xlsx";
+        String excelPath = "D:\\1房产.xls";
         try {
             //String encoding = "GBK";
             File excel = new File(excelPath);
@@ -53,12 +53,14 @@ public class Testpoi {
                         Row rowColume = sheet.getRow(0);
                         Row rowValue = sheet.getRow(i);
                         if (rowValue != null) {
+                            System.out.println("====================" + rowValue.toString());
                             int firstCellIndex = rowValue.getFirstCellNum();
                             int lastCellIndex = rowValue.getLastCellNum();
                             for (int j = firstCellIndex; j < lastCellIndex; j++) {   //遍历列
                                 Cell cellColume = rowColume.getCell(j);
                                 Cell cellValue = rowValue.getCell(j);
                                 if (cellValue != null) {
+                                    System.out.println(cellColume.toString() + "=======================" + cellValue.toString());
                                     map.put(cellColume.toString() , cellValue.toString());
                                 }
                             }
@@ -166,7 +168,7 @@ public class Testpoi {
         String tableName = sheet.getSheetName() ;
 
         //开始解析
-        Sheet sheet2 = wb.getSheetAt(1);     //读取sheet 0
+        Sheet sheet2 = wb.getSheetAt(1);     //读取sheet 1
 
         String sql2 = "SELECT " ;
         Row row2 = sheet2.getRow(0);

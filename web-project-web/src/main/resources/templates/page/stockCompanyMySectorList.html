@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
+    <!--<link rel="stylesheet" href="/css/index.css">-->
+    <style>
+        .checkbox-inline{
+            font-size: 18px;
+            padding-left: 50px;
+        }
+        .checkbox-inline input{
+            height: 18px;
+            width: 18px;
+            margin: 2px 0px 0px;
+        }
+    </style>
+</head>
+<body style="padding: 20px;">
+<div class="panel panel-default search-list-panel">
+    <div id="collapseBox" class="panel-collapse collapse in">
+        <div class="panel-body" style="padding-top: 0;padding-bottom: 0;">
+            <form id="formSearch" class="form-horizontal">
+                <div class="form-group" style="margin-top:15px">
+                    <div class="col-sm-11">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="sectorType" value="6"> 巨头
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="sectorType" value="5"> 龙头
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="sectorType" value="4"> 绩优
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="sectorType" value="3"> 超微
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="sectorType" value="2"> 待选
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="sectorType" value="1"> 较差
+                        </label>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" id="searchDataButton" class="btn btn-primary search-button">筛选</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#01_Level" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> 房屋环境</a></li>
+    <li><a href="#02_Level" data-toggle="tab"><span class="glyphicon glyphicon-flash"></span> 水电气暖</a></li>
+    <li><a href="#03_Level" data-toggle="tab"><span class="glyphicon glyphicon-cutlery"></span> 食品饮料</a></li>
+    <li><a href="#04_Level" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> 日常用品</a></li>
+    <li><a href="#05_Level" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> 高新科技</a></li>
+    <li><a href="#06_Level" data-toggle="tab"><span class="glyphicon glyphicon-plane"></span> 交通运输</a></li>
+    <li><a href="#07_Level" data-toggle="tab"><span class="glyphicon glyphicon-plus"></span> 医疗卫生</a></li>
+    <li><a href="#08_Level" data-toggle="tab"><span class="glyphicon glyphicon-film"></span> 服务娱乐</a></li>
+    <li><a href="#09_GLevel" data-toggle="tab"><span class="glyphicon glyphicon-usd"></span> 金融理财</a></li>
+    <li><a href="#10_Level" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> 基础工业</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="01_Level">
+        <div class="panel-group" id="01_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="02_Level">
+        <div class="panel-group" id="02_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="03_Level">
+        <div class="panel-group" id="03_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="04_Level">
+        <div class="panel-group" id="04_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="05_Level">
+        <div class="panel-group" id="05_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="06_Level">
+        <div class="panel-group" id="06_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="07_Level">
+        <div class="panel-group" id="07_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="08_Level">
+        <div class="panel-group" id="08_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="09_GLevel">
+        <div class="panel-group" id="09_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="10_Level">
+        <div class="panel-group" id="10_accordion">
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2 class="modal-title" id="myModalLabel">编辑信息</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <input type="hidden" class="form-control" id="stockCode" >
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">名称：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="stockName" placeholder="名称" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">行业：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="forthSector" placeholder="行业" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">企业级别：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="companyLevel">
+                                <option value="6">S 级</option>
+                                <option value="5">A 级</option>
+                                <option value="4">B 级</option>
+                                <option value="3">C 级</option>
+                                <option value="2">D 级</option>
+                                <option value="1">E 级</option>
+                                <option value="9">成长级</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">五级行业：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fiveSector" placeholder="五级行业">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">行业排序：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="fiveOrder">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">主营业务：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="mainBusiness" placeholder="主营业务">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">服务一级行业：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="belongFirstSecotr" onchange="changeSecondBelongSector(this)">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">服务二级行业：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="belongSecondSector" onchange="changeThirdBelongSector(this)">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">服务三级行业：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="belongThirdSector" onchange="changeForthBelongSector(this)">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">服务四级行业：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="belongForthSector">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">企业特色：</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline" th:each="item,itemStat:${qualityList}" style="padding-left: 0;">
+                                <input type="checkbox" name="companyQuality" th:value="${item.paramIdentity}" th:text="${item.paramName}">
+                            </label>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">-->
+                    <!--<label class="col-sm-3 control-label">企业简介：</label>-->
+                    <!--<div class="col-sm-8" id="companyDscr">-->
+
+                    <!--</div>-->
+                    <!--</div>-->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submitDataButton">提交</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table.js"></script>
+<script type="text/javascript" src="/libs/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="/js/common-model.js"></script>
+<script type="text/javascript" src="/js/sky.ajax.js"></script>
+<script type="text/javascript" src = "/js/page/stockCompanyMySectorList.js"></script>
+</html>

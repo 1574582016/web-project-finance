@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.sky.model.StockCompanySector;
 import com.sky.vo.CompanySectorVO;
 import com.sky.vo.CreateCompanyWorld_VO;
+import com.sky.vo.MyStockCompanySector_VO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -40,4 +41,8 @@ public interface StockCompanySectorMapper extends BaseMapper<StockCompanySector>
                                                         @Param("thirdSecotor") String thirdSecotor ,
                                                         @Param("forthSector") String forthSector ,
                                                         @Param("companyLevel") String companyLevel);
+
+
+    List<MyStockCompanySector_VO> getMyStockCompanySectorList(@Param("firstSector") String firstSector ,
+                                                              @Param("sectorTypes") String sectorTypes);
 }

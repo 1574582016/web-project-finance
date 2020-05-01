@@ -7,6 +7,7 @@ import com.sky.model.StockCompanySector;
 import com.sky.service.StockCompanySectorService;
 import com.sky.vo.CompanySectorVO;
 import com.sky.vo.CreateCompanyWorld_VO;
+import com.sky.vo.MyStockCompanySector_VO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,5 +37,10 @@ public class StockCompanySectorServiceImpl extends ServiceImpl<StockCompanySecto
         List<CreateCompanyWorld_VO> list = baseMapper.getStockCompanyPoolList( pageInfo, stockCode, firstSector, secondSector, thirdSecotor, forthSector, companyLevel);
         pageInfo.setRecords(list);
         return pageInfo;
+    }
+
+    @Override
+    public List<MyStockCompanySector_VO> getMyStockCompanySectorList(String firstSector, String sectorTypes) {
+        return baseMapper.getMyStockCompanySectorList(firstSector , sectorTypes);
     }
 }

@@ -520,4 +520,42 @@
         a.profit_grow_score DESC,
         a.asset_grow_score DESC
     </select>
+
+
+    <select id="getMyStockCompanySectorList" parameterType="java.lang.String" resultType="com.sky.vo.MyStockCompanySector_VO">
+        SELECT
+        l.`sector_type` sectorType,
+        l.`type_order` typeOrder,
+        l.`second_sector` secondSector,
+        l.`third_sector` thirdSector,
+        l.`forth_sector` forthSector,
+        CONCAT(l.`five_sector` , '/' , l.`six_sector` , '/' ,l.`seven_sector`) fiveSector ,
+        c.`stock_code` stockCode,
+        c.`stock_name` stockName,
+        c.`publish_time` publishTime ,
+        CONCAT(c.`first_sector` , '->' , c.`second_sector` , '->' , c.`third_secotor` , '->' , c.`forth_sector`) defaultSector ,
+        c.`main_business_profit` mainBusinessProfit,
+        c.`pure_business_profit` pureBusinessProfit,
+        ROUND(c.`pure_business_profit` / c.`main_business_profit` * 100 , 2) profitRate ,
+        c.`per_stock_profit` perStockProfit,
+        c.`flow_stock_count` flowStockCount,
+        c.`total_stock_count` totalStockCount,
+        GROUP_CONCAT(p.`product_name` , '->' , p.product_revenue_rate , '%') productRevenueRate
+        FROM stock_sector_level l
+        LEFT JOIN stock_company_sector c ON l.`stock_code` = c.`stock_code`
+        LEFT JOIN stock_company_product p ON c.`stock_code` = p.`stock_code` AND CAST(p.product_revenue_rate AS DECIMAL(20,2)) > 15
+        WHERE l.`first_sector` REGEXP #{firstSector}
+        <if test="sectorTypes != null and sectorTypes != '' and sectorTypes != 'undefined'">
+            AND l.`sector_type` in (${sectorTypes})
+        </if>
+        GROUP BY c.`stock_code`
+        ORDER BY l.`second_sector` ,
+        l.`third_sector` ,
+        <if test="firstSector != '03_'.toString()">
+            l.`forth_sector` ,
+        </if>
+        l.`sector_type` DESC,
+        l.`type_order` ASC,
+        CAST(c.`main_business_profit` AS DECIMAL(20,2)) DESC
+    </select>
 </mapper>

@@ -33,6 +33,11 @@ public class StockCompanyController {
         return "page/stockCompanyList";
     }
 
+    @RequestMapping("/stockCompanyMySectorList")
+    public String stockCompanyMySectorList(){
+        return "page/stockCompanyMySectorList";
+    }
+
     @RequestMapping("/companyInformationEdit")
     public String companyInformationEdit(Integer id , Model model){
         model.addAttribute("id",id);
