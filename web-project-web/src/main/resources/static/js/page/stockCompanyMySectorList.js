@@ -1,14 +1,14 @@
 $(function () {
-    loanSearchData('01_' , '');
-    loanSearchData('02_' , '');
+    // loanSearchData('01_' , '');
+    // loanSearchData('02_' , '');
     loanSearchData('03_' , '');
-    loanSearchData('04_' , '');
-    loanSearchData('05_' , '');
-    loanSearchData('06_' , '');
-    loanSearchData('07_' , '');
-    loanSearchData('08_' , '');
-    loanSearchData('09_' , '');
-    loanSearchData('10_' , '');
+    // loanSearchData('04_' , '');
+    // loanSearchData('05_' , '');
+    // loanSearchData('06_' , '');
+    // loanSearchData('07_' , '');
+    // loanSearchData('08_' , '');
+    // loanSearchData('09_' , '');
+    // loanSearchData('10_' , '');
 
     $("#searchDataButton").click(function () {
         var sectorTypes = '';
@@ -18,16 +18,16 @@ $(function () {
             }
         });
         sectorTypes = sectorTypes.substr(0,sectorTypes.length - 1);
-        loanSearchData('01_' ,sectorTypes);
-        loanSearchData('02_' , sectorTypes);
+        // loanSearchData('01_' ,sectorTypes);
+        // loanSearchData('02_' , sectorTypes);
         loanSearchData('03_' , sectorTypes);
-        loanSearchData('04_' ,sectorTypes);
-        loanSearchData('05_' , sectorTypes);
-        loanSearchData('06_' , sectorTypes);
-        loanSearchData('07_' , sectorTypes);
-        loanSearchData('08_' , sectorTypes);
-        loanSearchData('09_' , sectorTypes);
-        loanSearchData('10_' , sectorTypes);
+        // loanSearchData('04_' ,sectorTypes);
+        // loanSearchData('05_' , sectorTypes);
+        // loanSearchData('06_' , sectorTypes);
+        // loanSearchData('07_' , sectorTypes);
+        // loanSearchData('08_' , sectorTypes);
+        // loanSearchData('09_' , sectorTypes);
+        // loanSearchData('10_' , sectorTypes);
     });
 })
 
