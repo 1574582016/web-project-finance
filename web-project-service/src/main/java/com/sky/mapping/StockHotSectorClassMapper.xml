@@ -68,9 +68,23 @@
         LEFT JOIN finance_market_stock ms ON ms.`stock_code` = cs.`stock_code`
         LEFT JOIN stock_hot_sector_class sc ON ms.`market_code` = sc.`hot_code`
         LEFT JOIN finance_market fm ON fm.`market_code` = sc.`hot_code` AND fm.`market_type` = 4
-        #LEFT JOIN stock_company_product p ON cs.`stock_code` = p.`stock_code` AND CAST(p.product_revenue_rate AS DECIMAL(20,2)) > 15
         LEFT JOIN stock_deal_data_1 d ON cs.`stock_code` = d.stock_code
-        WHERE sc.forth_sector = '01_猪肉'
+        WHERE sl.isvalid = 1
+        <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
+            AND sc.`first_sector` = #{firstSector}
+        </if>
+        <if test="secondSector != null and secondSector != '' and secondSector != 'undefined'">
+            AND sc.`second_sector` = #{secondSector}
+        </if>
+        <if test="thirdSector != null and thirdSector != '' and thirdSector != 'undefined'">
+            AND sc.`third_sector` = #{thirdSector}
+        </if>
+        <if test="forthSector != null and forthSector != '' and forthSector != 'undefined'">
+            AND sc.`forth_sector` = #{forthSector}
+        </if>
+        <if test="fiveSector != null and fiveSector != '' and fiveSector != 'undefined'">
+            AND sc.`hot_code` =  #{fiveSector}
+        </if>
         GROUP BY cs.`stock_code`
         ) a
         LEFT JOIN stock_company_product p ON a.`stockCode` = p.`stock_code` AND CAST(p.product_revenue_rate AS DECIMAL(20,2)) > 15
@@ -78,9 +92,6 @@
         ORDER BY
          a.marketName DESC,
         a.firstSector ASC ,
-        #a.secondSector asc,
-        #a.thirdSector asc,
-        #a.forthSector asc ,
         a.sectorType DESC ,
         a.typeOrder ASC
 

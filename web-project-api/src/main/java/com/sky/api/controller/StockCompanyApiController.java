@@ -183,6 +183,12 @@ public class StockCompanyApiController extends AbstractController {
         return map;
     }
 
+    @LogRecord(name = "getStockHotSectorClassList" ,description = "查询热点企业信息")
+    @PostMapping("/getStockHotSectorClassList")
+    public Object getStockHotSectorClassList(String firstSector, String secondSector, String thirdSector, String forthSector, String fiveSector){
+        return stockHotSectorClassService.getStockHotSectorClassList(firstSector , secondSector , thirdSector , forthSector , fiveSector);
+    }
+
     @LogRecord(name = "getStockCompanySector" ,description = "查询企业行业数据")
     @PostMapping("/getStockCompanySector")
     public Object getStockCompanySector(String stockCode){

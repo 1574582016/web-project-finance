@@ -168,4 +168,6 @@ public class AbstractController extends BaseController {
     @Autowired
     protected EnglishRootAffixService englishRootAffixService ;
 
+    @Autowired
+    protected StockHotSectorClassService stockHotSectorClassService ;
 }

@@ -139,4 +139,15 @@ $(function () {
 
         $("#five_sector").html(fiveSectorOption);
     });
+
+
+    $("#searchDataButton").click(function () {
+        $.APIPost("/api/stock/getStockHotSectorClassList?firstSector=" + $("#first_sector").val()
+                                                    + "&secondSector=" + $("#second_sector").val()
+                                                    + "&thirdSector=" + $("#third_sector").val()
+                                                    + "&forthSector=" + $("#forth_sector").val()
+                                                    + "&fiveSector=" + $("#five_sector").val()  ,function (res) {
+            console.log(res);
+        })
+    });
 });
