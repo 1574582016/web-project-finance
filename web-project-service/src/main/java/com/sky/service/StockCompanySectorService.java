@@ -42,5 +42,6 @@ public interface StockCompanySectorService extends IService<StockCompanySector> 
 
 
     List<MyStockCompanySector_VO> getMyStockCompanySectorList(String firstSector ,
-                                                              String sectorTypes);
+                                                              String sectorTypes ,
+                                                              String sectorFocus);
 }

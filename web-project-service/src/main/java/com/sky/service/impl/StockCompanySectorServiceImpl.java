@@ -40,7 +40,7 @@ public class StockCompanySectorServiceImpl extends ServiceImpl<StockCompanySecto
     }
 
     @Override
-    public List<MyStockCompanySector_VO> getMyStockCompanySectorList(String firstSector, String sectorTypes) {
-        return baseMapper.getMyStockCompanySectorList(firstSector , sectorTypes);
+    public List<MyStockCompanySector_VO> getMyStockCompanySectorList(String firstSector, String sectorTypes , String sectorFocus) {
+        return baseMapper.getMyStockCompanySectorList(firstSector , sectorTypes , sectorFocus);
     }
 }

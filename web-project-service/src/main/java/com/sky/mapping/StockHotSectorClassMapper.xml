@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.StockHotSectorClassMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.StockHotSectorClass">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="hot_code" property="hotCode"/>
+        <result column="hot_name" property="hotName"/>
+        <result column="first_sector" property="firstSector"/>
+        <result column="second_sector" property="secondSector"/>
+        <result column="third_sector" property="secondSector"/>
+        <result column="forth_sector" property="forthSector"/>
+    </resultMap>
+
+
+    <select id="getStockHotSectorClassList" parameterType="java.lang.String" resultType="com.sky.vo.StockHotSectorClass_VO">
+        SELECT
+        a.marketName ,
+        a.sectorType ,
+        a.typeOrder ,
+        a.firstSector ,
+        a.secondSector ,
+        a.thirdSector ,
+        a.forthSector ,
+        a.fiveSector ,
+        a.stockCode ,
+        a.stockName ,
+        a.publishTime ,
+        a.defaultSector ,
+        a.mainBusinessProfit ,
+        a.pureBusinessProfit ,
+        a.profitRate ,
+        a.perStockProfit ,
+        a.flowStockCount ,
+        a.totalStockCount ,
+        a.closePrice ,
+        GROUP_CONCAT(p.`product_name` , '->' , p.product_revenue_rate , '%') productRevenueRate
+        FROM(
+        SELECT
+        GROUP_CONCAT(fm.`market_name`) marketName,
+        sl.`sector_type` sectorType,
+        sl.`type_order` typeOrder,
+        sl.first_sector firstSector ,
+        sl.`second_sector` secondSector,
+        sl.`third_sector` thirdSector,
+        sl.`forth_sector` forthSector,
+        CONCAT(sl.`five_sector` , '/' , sl.`six_sector` , '/' ,sl.`seven_sector`) fiveSector ,
+        cs.`stock_code` stockCode,
+        cs.`stock_name` stockName,
+        cs.`publish_time` publishTime ,
+        CONCAT(cs.`first_sector` , '->' , cs.`second_sector` , '->' , cs.`third_secotor` , '->' , cs.`forth_sector`) defaultSector ,
+        cs.`main_business_profit` mainBusinessProfit,
+        cs.`pure_business_profit` pureBusinessProfit,
+        IFNULL(ROUND(cs.`pure_business_profit` / cs.`main_business_profit` * 100 , 2),0) profitRate ,
+        cs.`per_stock_profit` perStockProfit,
+        cs.`flow_stock_count` flowStockCount,
+        cs.`total_stock_count` totalStockCount ,
+        d.close_price closePrice
+        #GROUP_CONCAT(p.`product_name` , '->' , p.product_revenue_rate , '%') productRevenueRate
+        FROM stock_sector_level sl
+        LEFT JOIN stock_company_sector cs ON sl.`stock_code` = cs.`stock_code`
+        LEFT JOIN finance_market_stock ms ON ms.`stock_code` = cs.`stock_code`
+        LEFT JOIN stock_hot_sector_class sc ON ms.`market_code` = sc.`hot_code`
+        LEFT JOIN finance_market fm ON fm.`market_code` = sc.`hot_code` AND fm.`market_type` = 4
+        #LEFT JOIN stock_company_product p ON cs.`stock_code` = p.`stock_code` AND CAST(p.product_revenue_rate AS DECIMAL(20,2)) > 15
+        LEFT JOIN stock_deal_data_1 d ON cs.`stock_code` = d.stock_code
+        WHERE sc.forth_sector = '01_猪肉'
+        GROUP BY cs.`stock_code`
+        ) a
+        LEFT JOIN stock_company_product p ON a.`stockCode` = p.`stock_code` AND CAST(p.product_revenue_rate AS DECIMAL(20,2)) > 15
+        GROUP BY a.`stockCode`
+        ORDER BY
+         a.marketName DESC,
+        a.firstSector ASC ,
+        #a.secondSector asc,
+        #a.thirdSector asc,
+        #a.forthSector asc ,
+        a.sectorType DESC ,
+        a.typeOrder ASC
+
+    </select>
+</mapper>

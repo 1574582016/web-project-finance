@@ -2,8 +2,10 @@ package com.sky.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
+import com.sky.model.StockHotSectorClass;
 import com.sky.model.StockMarketClass;
 import com.sky.model.SystemParam;
+import com.sky.service.StockHotSectorClassService;
 import com.sky.service.StockMarketClassService;
 import com.sky.service.SystemParamService;
 import com.sky.vo.SystemParam_VO;
@@ -177,6 +179,17 @@ public class StockCompanyController {
         model.addAttribute("thirdSecotor" , thirdSecotor);
         model.addAttribute("forthSector" , forthSector);
         return "page/stockCompanyFinancial";
+    }
+
+
+    @Autowired
+    private StockHotSectorClassService stockHotSectorClassService ;
+
+    @RequestMapping("/stockHotSectorClassList")
+    public String stockHotSectorClassList(Model model){
+        List<StockHotSectorClass> list = stockHotSectorClassService.selectList(new EntityWrapper<StockHotSectorClass>().orderBy("first_sector,second_sector,third_sector,forth_sector,hot_code"));
+        model.addAttribute("classList" , list);
+        return "page/stockHotSectorClassList";
     }
 
 }

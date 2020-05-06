@@ -3,14 +3,18 @@ package com.sky.vo;
 import lombok.Data;
 
 /**
- * Created by ThinkPad on 2020/5/1.
+ * Created by ThinkPad on 2020/5/6.
  */
 @Data
-public class MyStockCompanySector_VO {
+public class StockHotSectorClass_VO {
 
-    private Integer sectorType ;
+    private String marketName ;
 
-    private Integer typeOrder ;
+    private String sectorType ;
+
+    private String typeOrder ;
+
+    private String firstSector ;
 
     private String secondSector ;
 
@@ -40,9 +44,7 @@ public class MyStockCompanySector_VO {
 
     private String totalStockCount ;
 
-    private String productRevenueRate ;
-
     private String closePrice ;
 
-
+    private String productRevenueRate ;
 }

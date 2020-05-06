@@ -536,24 +536,27 @@
         CONCAT(c.`first_sector` , '->' , c.`second_sector` , '->' , c.`third_secotor` , '->' , c.`forth_sector`) defaultSector ,
         c.`main_business_profit` mainBusinessProfit,
         c.`pure_business_profit` pureBusinessProfit,
-        ROUND(c.`pure_business_profit` / c.`main_business_profit` * 100 , 2) profitRate ,
+        IFNULL(ROUND(c.`pure_business_profit` / c.`main_business_profit` * 100 , 2),0) profitRate ,
         c.`per_stock_profit` perStockProfit,
         c.`flow_stock_count` flowStockCount,
         c.`total_stock_count` totalStockCount,
+        d.close_price closePrice ,
         GROUP_CONCAT(p.`product_name` , '->' , p.product_revenue_rate , '%') productRevenueRate
         FROM stock_sector_level l
         LEFT JOIN stock_company_sector c ON l.`stock_code` = c.`stock_code`
         LEFT JOIN stock_company_product p ON c.`stock_code` = p.`stock_code` AND CAST(p.product_revenue_rate AS DECIMAL(20,2)) > 15
+        LEFT JOIN stock_deal_data_1 d ON c.`stock_code` = d.stock_code
         WHERE l.`first_sector` REGEXP #{firstSector}
         <if test="sectorTypes != null and sectorTypes != '' and sectorTypes != 'undefined'">
             AND l.`sector_type` in (${sectorTypes})
         </if>
+        <if test="sectorFocus != null and sectorFocus != '' and sectorFocus != 'undefined'">
+            AND l.`sector_focus` = #{sectorFocus}
+        </if>
         GROUP BY c.`stock_code`
         ORDER BY l.`second_sector` ,
         l.`third_sector` ,
-        <if test="firstSector != '03_'.toString()">
-            l.`forth_sector` ,
-        </if>
+        l.`forth_sector` ,
         l.`sector_type` DESC,
         l.`type_order` ASC,
         CAST(c.`main_business_profit` AS DECIMAL(20,2)) DESC

@@ -44,5 +44,6 @@ public interface StockCompanySectorMapper extends BaseMapper<StockCompanySector>
 
 
     List<MyStockCompanySector_VO> getMyStockCompanySectorList(@Param("firstSector") String firstSector ,
-                                                              @Param("sectorTypes") String sectorTypes);
+                                                              @Param("sectorTypes") String sectorTypes ,
+                                                              @Param("sectorFocus") String sectorFocus);
 }
