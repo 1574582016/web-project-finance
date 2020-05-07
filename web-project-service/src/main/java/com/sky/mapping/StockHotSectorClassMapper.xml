@@ -45,7 +45,7 @@
         FROM(
             SELECT
             c.* ,
-            GROUP_CONCAT(fm.`market_name` ORDER BY fm.`market_name`) stockMarketName
+            IFNULL(GROUP_CONCAT(fm.`market_name` ORDER BY fm.`market_name`),'') stockMarketName
             FROM(
                 SELECT
                 GROUP_CONCAT(fm.`market_name` ORDER BY fm.`market_name`) marketName,

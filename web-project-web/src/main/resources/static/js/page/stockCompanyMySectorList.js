@@ -47,8 +47,9 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
             str += '<div class="panel panel-default"><div class="panel-heading"  data-toggle="collapse" data-parent="#'+ firstSector +'accordion" href="#'+ key +'" style="cursor:pointer;"><h4 class="panel-title">'+ key +'</h4></div><div id="'+ key +'" class="panel-collapse collapse"><div class="panel-body" style="padding: 0;">';
             str += '<table class="table table-bordered" style="margin: 0;">';
             str += '<thead><tr>';
-            str += '<th style="text-align: center;width: 8%;">行业1</th>';
-            str += '<th style="text-align: center;width: 8%;">行业2</th>';
+            str += '<th style="text-align: center;width: 7%;">行业1</th>';
+            str += '<th style="text-align: center;width: 7%;">行业2</th>';
+            str += '<th style="text-align: center;width: 10%;">热点</th>';
             str += '<th style="text-align: center;width: 4%;">类型</th>';
             str += '<th style="text-align: center;width: 4%;">序列</th>';
             str += '<th style="text-align: center;width: 5%;">编码</th>';
@@ -109,6 +110,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         if(just == 0){
                             str += '<td rowspan="'+ values3.length  +'" style="vertical-align: middle;">'+ key3 +'</td>';
                         }
+                        str += '<td>' + data.stockMarketName +'</td>';
                         str += colorTd + sectorType +'</td>';
                         str += colorTd + 'NO.'+ data.typeOrder +'</td>';
                         str += colorTd + data.stockCode +'</td>';
@@ -116,7 +118,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         str += colorTd + data.publishTime +'</td>';
                         str += colorTd + data.mainBusinessProfit +'</td>';
                         str += colorTd + data.pureBusinessProfit +'</td>';
-                        str += colorTd + data.profitRate +'</td>';
+                        str += colorTd + data.profitRate +'%</td>';
                         str += colorTd + data.perStockProfit +'</td>';
                         str += colorTd + data.flowStockCount +'</td>';
                         str += colorTd + data.totalStockCount +'</td>';

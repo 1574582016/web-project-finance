@@ -44,5 +44,7 @@ public class MyStockCompanySector_VO {
 
     private String closePrice ;
 
+    private String stockMarketName ;
+
 
 }

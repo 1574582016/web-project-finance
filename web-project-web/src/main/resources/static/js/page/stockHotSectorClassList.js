@@ -156,46 +156,113 @@ $(function () {
                                                     + "&fiveSector=" + $("#five_sector").val()
                                                     + "&sectorTypes=" + sectorTypes
             ,function (res) {
-                $.each(res,function(key0,values0){
+                    var ulStr = '';
                     var str = '';
+                    var count = 0 ;
+                $.each(res,function(key0,values0){
                     var idAppix = '';
                     if(key0.indexOf('01_') > -1){
                         idAppix = '01';
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#01_Level" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> 房屋环境</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#01_Level" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> 房屋环境</a></li>';
+                        }
                     }
                     if(key0.indexOf('02_') > -1){
                         idAppix = '02';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#02_Level" data-toggle="tab"><span class="glyphicon glyphicon-flash"></span> 水电气暖</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#02_Level" data-toggle="tab"><span class="glyphicon glyphicon-flash"></span> 水电气暖</a></li>';
+                        }
                     }
                     if(key0.indexOf('03_') > -1){
                         idAppix = '03';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#03_Level" data-toggle="tab"><span class="glyphicon glyphicon-cutlery"></span> 食品饮料</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#03_Level" data-toggle="tab"><span class="glyphicon glyphicon-cutlery"></span> 食品饮料</a></li>';
+                        }
                     }
                     if(key0.indexOf('04_') > -1){
                         idAppix = '04';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#04_Level" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> 日常用品</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#04_Level" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> 日常用品</a></li>';
+                        }
                     }
                     if(key0.indexOf('05_') > -1){
                         idAppix = '05';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#05_Level" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> 高新科技</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#05_Level" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> 高新科技</a></li>';
+                        }
                     }
                     if(key0.indexOf('06_') > -1){
                         idAppix = '06';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#06_Level" data-toggle="tab"><span class="glyphicon glyphicon-plane"></span> 交通运输</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#06_Level" data-toggle="tab"><span class="glyphicon glyphicon-plane"></span> 交通运输</a></li>';
+                        }
                     }
                     if(key0.indexOf('07_') > -1){
                         idAppix = '07';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#07_Level" data-toggle="tab"><span class="glyphicon glyphicon-plus"></span> 医疗卫生</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#07_Level" data-toggle="tab"><span class="glyphicon glyphicon-plus"></span> 医疗卫生</a></li>';
+                        }
                     }
                     if(key0.indexOf('08_') > -1){
                         idAppix = '08';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#08_Level" data-toggle="tab"><span class="glyphicon glyphicon-film"></span> 服务娱乐</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#08_Level" data-toggle="tab"><span class="glyphicon glyphicon-film"></span> 服务娱乐</a></li>';
+                        }
                     }
                     if(key0.indexOf('09_') > -1){
                         idAppix = '09';
+
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#09_Level" data-toggle="tab"><span class="glyphicon glyphicon-usd"></span> 金融理财</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#09_Level" data-toggle="tab"><span class="glyphicon glyphicon-usd"></span> 金融理财</a></li>';
+                        }
                     }
                     if(key0.indexOf('10_') > -1){
                         idAppix = '10';
-                    }
 
+                        if(count == 0){
+                            ulStr += '<li class="active"><a href="#10_Level" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> 基础工业</a></li>';
+                        }else{
+                            ulStr += '<li><a href="#10_Level" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> 基础工业</a></li>';
+                        }
+                    }
+                        if(count == 0){
+                            str += '<div class="tab-pane fade in active" id="'+ idAppix +'_Level"><div class="panel-group" id="'+ idAppix +'_accordion">';
+                        }else{
+                            str += '<div class="tab-pane fade" id="'+ idAppix +'_Level"><div class="panel-group" id="'+ idAppix +'_accordion">';
+                        }
+                        count += 1;
                     $.each(values0,function(key,values){
                         str += '<div class="panel panel-default"><div class="panel-heading"  data-toggle="collapse" data-parent="#'+ idAppix +'_accordion" href="#'+ key +'" style="cursor:pointer;"><h4 class="panel-title">'+ key +'</h4></div><div id="'+ key +'" class="panel-collapse collapse"><div class="panel-body" style="padding: 0;">';
                         str += '<table class="table table-bordered" style="margin: 0;">';
                         str += '<thead><tr>';
-                        str += '<th style="text-align: center;width: 8%;">行业1</th>';
-                        str += '<th style="text-align: center;width: 8%;">行业2</th>';
+                        str += '<th style="text-align: center;width: 7%;">行业1</th>';
+                        str += '<th style="text-align: center;width: 7%;">行业2</th>';
+                        str += '<th style="text-align: center;width: 10%;">热点</th>';
                         str += '<th style="text-align: center;width: 4%;">类型</th>';
                         str += '<th style="text-align: center;width: 4%;">序列</th>';
                         str += '<th style="text-align: center;width: 5%;">编码</th>';
@@ -256,6 +323,7 @@ $(function () {
                                     if(just == 0){
                                         str += '<td rowspan="'+ values3.length  +'" style="vertical-align: middle;">'+ key3 +'</td>';
                                     }
+                                    str += '<td>' + data.stockMarketName +'</td>';
                                     str += colorTd + sectorType +'</td>';
                                     str += colorTd + 'NO.'+ data.typeOrder +'</td>';
                                     str += colorTd + data.stockCode +'</td>';
@@ -263,7 +331,7 @@ $(function () {
                                     str += colorTd + data.publishTime +'</td>';
                                     str += colorTd + data.mainBusinessProfit +'</td>';
                                     str += colorTd + data.pureBusinessProfit +'</td>';
-                                    str += colorTd + data.profitRate +'</td>';
+                                    str += colorTd + data.profitRate +'%</td>';
                                     str += colorTd + data.perStockProfit +'</td>';
                                     str += colorTd + data.flowStockCount +'</td>';
                                     str += colorTd + data.totalStockCount +'</td>';
@@ -281,13 +349,12 @@ $(function () {
 
                         str += '</tbody></table>';
                         str += '</div></div></div>';
-
-                        $('#' + idAppix + '_accordion').html(str);
                     });
+                    str += '</div></div>';
                 });
-
-
-            // $("#dataBox").html(str);
+                // $('#' + idAppix + '_accordion').html(str);
+            $("#myTab").html(ulStr);
+            $("#myTabContent").html(str);
         })
     });
 });

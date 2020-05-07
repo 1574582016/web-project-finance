@@ -269,7 +269,9 @@ public class StockCompanyApiController extends AbstractController {
             resultFirstMap.put(key2 , result);
 
         }
-        return resultFirstMap;
+        Map<String , Map<String , Map<String , Map<String ,List<StockHotSectorClass_VO>>>>> result = new LinkedHashMap<>();
+        resultFirstMap.entrySet().stream().sorted(Map.Entry.<String , Map<String , Map<String , Map<String ,List<StockHotSectorClass_VO>>>>>comparingByKey()).forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+        return result;
     }
 
     @LogRecord(name = "getStockCompanySector" ,description = "查询企业行业数据")
