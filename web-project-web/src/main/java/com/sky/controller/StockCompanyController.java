@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.sky.core.utils.DateUtils;
 import com.sky.model.StockHotSectorClass;
 import com.sky.model.StockMarketClass;
+import com.sky.model.StockSectorLevel;
 import com.sky.model.SystemParam;
 import com.sky.service.StockHotSectorClassService;
 import com.sky.service.StockMarketClassService;
+import com.sky.service.StockSectorLevelService;
 import com.sky.service.SystemParamService;
 import com.sky.vo.SystemParam_VO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ import java.util.List;
 public class StockCompanyController {
 
     @Autowired
-    private StockMarketClassService stockMarketClassService;
+    private StockSectorLevelService stockSectorLevelService;
 
     @Autowired
     private SystemParamService systemParamService ;
@@ -36,7 +38,9 @@ public class StockCompanyController {
     }
 
     @RequestMapping("/stockCompanyMySectorList")
-    public String stockCompanyMySectorList(){
+    public String stockCompanyMySectorList(Model model){
+        List<StockSectorLevel> list = stockSectorLevelService.selectList(new EntityWrapper<StockSectorLevel>().groupBy("first_sector,second_sector,third_sector,forth_sector").orderBy("first_sector,second_sector,third_sector,forth_sector"));
+        model.addAttribute("classList" , list);
         return "page/stockCompanyMySectorList";
     }
 

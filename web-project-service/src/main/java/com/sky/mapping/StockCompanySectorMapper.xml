@@ -528,6 +528,7 @@
         IFNULL(GROUP_CONCAT(fm.`market_name` ORDER BY fm.`market_name`),'') stockMarketName
         FROM(
         SELECT
+        l.`id` levelId ,
         l.`sector_type` sectorType,
         l.`type_order` typeOrder,
         l.`second_sector` secondSector,

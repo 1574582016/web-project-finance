@@ -789,4 +789,17 @@ public class StockCompanyApiController extends AbstractController {
         return result;
     }
 
+
+    @LogRecord(name = "getStockSectorLevelList" ,description = "查询企业行业级别信息")
+    @PostMapping("/getStockSectorLevelList")
+    public Object getStockSectorLevelList(Integer levelId){
+        StockSectorLevel level = stockSectorLevelService.selectById(levelId);
+        return ResponseEntity.ok(MapSuccess("查询成功",level));
+    }
+
+    @LogRecord(name = "editStockSectorLevel" ,description = "查询企业行业级别信息")
+    @PostMapping("/editStockSectorLevel")
+    public Object editStockSectorLevel(@RequestBody StockSectorLevel body){
+        return ResponseEntity.ok(stockSectorLevelService.updateById(body) ? MapSuccess("操作成功") : MapError("操作失败"));
+    }
 }

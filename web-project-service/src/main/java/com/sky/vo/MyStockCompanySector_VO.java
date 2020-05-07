@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 public class MyStockCompanySector_VO {
 
+    private Integer levelId ;
+
     private Integer sectorType ;
 
     private Integer typeOrder ;
