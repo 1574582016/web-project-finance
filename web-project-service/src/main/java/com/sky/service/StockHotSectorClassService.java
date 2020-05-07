@@ -15,5 +15,6 @@ public interface StockHotSectorClassService extends IService<StockHotSectorClass
                                                             String secondSector,
                                                             String thirdSector,
                                                             String forthSector,
-                                                            String fiveSector);
+                                                            String fiveSector ,
+                                                            String sectorTypes);
 }

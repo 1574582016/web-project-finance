@@ -17,5 +17,6 @@ public interface StockHotSectorClassMapper extends BaseMapper<StockHotSectorClas
                                                             @Param("secondSector") String secondSector,
                                                             @Param("thirdSector") String thirdSector,
                                                             @Param("forthSector") String forthSector,
-                                                            @Param("fiveSector") String fiveSector);
+                                                            @Param("fiveSector") String fiveSector ,
+                                                            @Param("sectorTypes") String sectorTypes);
 }

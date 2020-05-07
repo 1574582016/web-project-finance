@@ -18,7 +18,7 @@ import java.util.List;
 public class StockHotSectorClassServiceImpl extends ServiceImpl<StockHotSectorClassMapper,StockHotSectorClass> implements StockHotSectorClassService {
 
     @Override
-    public List<StockHotSectorClass_VO> getStockHotSectorClassList(String firstSector, String secondSector, String thirdSector, String forthSector, String fiveSector) {
-        return baseMapper.getStockHotSectorClassList(firstSector , secondSector , thirdSector , forthSector , fiveSector);
+    public List<StockHotSectorClass_VO> getStockHotSectorClassList(String firstSector, String secondSector, String thirdSector, String forthSector, String fiveSector ,String sectorTypes) {
+        return baseMapper.getStockHotSectorClassList(firstSector , secondSector , thirdSector , forthSector , fiveSector , sectorTypes);
     }
 }

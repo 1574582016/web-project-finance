@@ -9,10 +9,7 @@ import com.sky.api.AbstractController;
 import com.sky.core.utils.DateUtils;
 import com.sky.core.utils.StringUtils;
 import com.sky.model.*;
-import com.sky.vo.CompanySectorVO;
-import com.sky.vo.MyStockCompanySector_VO;
-import com.sky.vo.StockCompanyAssetVO;
-import com.sky.vo.StockCompanyProfitVO;
+import com.sky.vo.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -185,8 +182,94 @@ public class StockCompanyApiController extends AbstractController {
 
     @LogRecord(name = "getStockHotSectorClassList" ,description = "查询热点企业信息")
     @PostMapping("/getStockHotSectorClassList")
-    public Object getStockHotSectorClassList(String firstSector, String secondSector, String thirdSector, String forthSector, String fiveSector){
-        return stockHotSectorClassService.getStockHotSectorClassList(firstSector , secondSector , thirdSector , forthSector , fiveSector);
+    public Object getStockHotSectorClassList(String firstSector, String secondSector, String thirdSector, String forthSector, String fiveSector ,String sectorTypes){
+        List<StockHotSectorClass_VO> searchList = stockHotSectorClassService.getStockHotSectorClassList(firstSector , secondSector , thirdSector , forthSector , fiveSector ,sectorTypes);
+        Map<String ,List<StockHotSectorClass_VO>> firstMap = new HashMap<String ,List<StockHotSectorClass_VO>>();
+        for(StockHotSectorClass_VO companySectorVo : searchList){
+            List<StockHotSectorClass_VO> list1 = firstMap.get(companySectorVo.getFirstSector());
+            if(list1 == null || list1.size() == 0){
+                list1 = new ArrayList<StockHotSectorClass_VO>();
+                list1.add(companySectorVo);
+            }else{
+                list1.add(companySectorVo);
+            }
+            firstMap.put(companySectorVo.getFirstSector() , list1);
+        }
+
+        /*************************************第 2 次*****************************************/
+        Map<String , Map<String , Map<String , Map<String ,List<StockHotSectorClass_VO>>>>>  resultFirstMap = new HashMap<>();
+        for (Map.Entry<String, List<StockHotSectorClass_VO>> entry : firstMap.entrySet()) {
+            String key2 = entry.getKey() ;
+            List<StockHotSectorClass_VO> list2 = entry.getValue();
+
+            Map<String ,List<StockHotSectorClass_VO>> secondMap = new HashMap<String ,List<StockHotSectorClass_VO>>();
+            for(StockHotSectorClass_VO companySectorVo : list2){
+                List<StockHotSectorClass_VO> list21 = secondMap.get(companySectorVo.getSecondSector());
+                if(list21 == null || list21.size() == 0){
+                    list21 = new ArrayList<StockHotSectorClass_VO>();
+                    list21.add(companySectorVo);
+                }else{
+                    list21.add(companySectorVo);
+                }
+                secondMap.put(companySectorVo.getSecondSector() , list21);
+            }
+
+            /*************************************第 3 次*****************************************/
+            Map<String , Map<String , Map<String ,List<StockHotSectorClass_VO>>>>  resultSecondMap = new HashMap<>();
+            for (Map.Entry<String, List<StockHotSectorClass_VO>> entry2 : secondMap.entrySet()) {
+                String key3 = entry2.getKey();
+                List<StockHotSectorClass_VO> list3 = entry2.getValue();
+
+                Map<String ,List<StockHotSectorClass_VO>> thirdMap = new HashMap<String ,List<StockHotSectorClass_VO>>();
+                for(StockHotSectorClass_VO companySectorVo : list3){
+                    List<StockHotSectorClass_VO> list31 = thirdMap.get(companySectorVo.getThirdSector());
+                    if(list31 == null || list31.size() == 0){
+                        list31 = new ArrayList<StockHotSectorClass_VO>();
+                        list31.add(companySectorVo);
+                    }else{
+                        list31.add(companySectorVo);
+                    }
+                    thirdMap.put(companySectorVo.getThirdSector() , list31);
+                }
+
+
+                /*************************************第 4 次*****************************************/
+                Map<String , Map<String ,List<StockHotSectorClass_VO>>>  resultThirdMap = new HashMap<>();
+                for (Map.Entry<String, List<StockHotSectorClass_VO>> entry3 : thirdMap.entrySet()) {
+                    String key4 = entry3.getKey();
+                    List<StockHotSectorClass_VO> list4 = entry3.getValue();
+
+                    Map<String ,List<StockHotSectorClass_VO>> forthMap = new HashMap<String ,List<StockHotSectorClass_VO>>();
+                    for(StockHotSectorClass_VO companySectorVo : list4){
+                        List<StockHotSectorClass_VO> list41 = forthMap.get(companySectorVo.getForthSector());
+                        if(list41 == null || list41.size() == 0){
+                            list41 = new ArrayList<StockHotSectorClass_VO>();
+                            list41.add(companySectorVo);
+                        }else{
+                            list41.add(companySectorVo);
+                        }
+                        forthMap.put(companySectorVo.getForthSector() , list41);
+                    }
+
+
+
+                    Map<String ,List<StockHotSectorClass_VO>> result = new LinkedHashMap<>();
+                    forthMap.entrySet().stream().sorted(Map.Entry.<String ,List<StockHotSectorClass_VO>>comparingByKey()).forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+                    resultThirdMap.put(key4 + "_" + list4.size() , result);
+                }
+
+                Map<String , Map<String ,List<StockHotSectorClass_VO>>> result = new LinkedHashMap<>();
+                resultThirdMap.entrySet().stream().sorted(Map.Entry.<String , Map<String ,List<StockHotSectorClass_VO>>>comparingByKey()).forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+                resultSecondMap.put(key3 , result);
+
+            }
+
+            Map<String , Map<String , Map<String ,List<StockHotSectorClass_VO>>>> result = new LinkedHashMap<>();
+            resultSecondMap.entrySet().stream().sorted(Map.Entry.<String , Map<String , Map<String ,List<StockHotSectorClass_VO>>>>comparingByKey()).forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
+            resultFirstMap.put(key2 , result);
+
+        }
+        return resultFirstMap;
     }
 
     @LogRecord(name = "getStockCompanySector" ,description = "查询企业行业数据")

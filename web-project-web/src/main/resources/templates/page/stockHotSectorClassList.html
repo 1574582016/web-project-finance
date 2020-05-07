@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="/libs/bootstrap-3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/libs/bootstrap-table/css/bootstrap-table.css">
-    <link rel="stylesheet" href="/css/index.css">
-
+    <!--<link rel="stylesheet" href="/css/index.css">-->
+    <style>
+        .checkbox-inline{
+            font-size: 18px;
+            padding-left: 50px;
+        }
+        .checkbox-inline input{
+            height: 18px;
+            width: 18px;
+            margin: 2px 0px 0px;
+        }
+    </style>
     <script type="text/javascript" th:inline="javascript">
         var classList = [[${classList}]];
     </script>
@@ -57,6 +67,26 @@
 
                         </select>
                     </div>
+                    <div class="col-sm-8">
+                        <label class="checkbox-inline" style="color: #A000AF;">
+                            <input type="checkbox" name="sectorType" value="6"> 巨头
+                        </label>
+                        <label class="checkbox-inline" style="color: #ED0000;">
+                            <input type="checkbox" name="sectorType" value="5"> 龙头
+                        </label>
+                        <label class="checkbox-inline" style="color: #F0F000;">
+                            <input type="checkbox" name="sectorType" value="4"> 绩优
+                        </label>
+                        <label class="checkbox-inline" style="color: #178BFF;">
+                            <input type="checkbox" name="sectorType" value="3"> 超微
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="sectorType" value="2"> 待选
+                        </label>
+                        <label class="checkbox-inline" style="color: #929292;">
+                            <input type="checkbox" name="sectorType" value="1"> 较差
+                        </label>
+                    </div>
                     <button type="button" id="searchDataButton" class="btn btn-primary search-button">查询</button>
                 </div>
             </form>
@@ -64,12 +94,70 @@
     </div>
 </div>
 
-<div id="toolbar" class="btn-group">
-    <button type="button" class="btn btn-default"  id="addDataButton" data-toggle="modal" data-target="#myModal">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-    </button>
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#01_Level" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> 房屋环境</a></li>
+    <li><a href="#02_Level" data-toggle="tab"><span class="glyphicon glyphicon-flash"></span> 水电气暖</a></li>
+    <li><a href="#03_Level" data-toggle="tab"><span class="glyphicon glyphicon-cutlery"></span> 食品饮料</a></li>
+    <li><a href="#04_Level" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> 日常用品</a></li>
+    <li><a href="#05_Level" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> 高新科技</a></li>
+    <li><a href="#06_Level" data-toggle="tab"><span class="glyphicon glyphicon-plane"></span> 交通运输</a></li>
+    <li><a href="#07_Level" data-toggle="tab"><span class="glyphicon glyphicon-plus"></span> 医疗卫生</a></li>
+    <li><a href="#08_Level" data-toggle="tab"><span class="glyphicon glyphicon-film"></span> 服务娱乐</a></li>
+    <li><a href="#09_GLevel" data-toggle="tab"><span class="glyphicon glyphicon-usd"></span> 金融理财</a></li>
+    <li><a href="#10_Level" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> 基础工业</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="01_Level">
+        <div class="panel-group" id="01_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="02_Level">
+        <div class="panel-group" id="02_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="03_Level">
+        <div class="panel-group" id="03_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="04_Level">
+        <div class="panel-group" id="04_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="05_Level">
+        <div class="panel-group" id="05_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="06_Level">
+        <div class="panel-group" id="06_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="07_Level">
+        <div class="panel-group" id="07_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="08_Level">
+        <div class="panel-group" id="08_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="09_GLevel">
+        <div class="panel-group" id="09_accordion">
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="10_Level">
+        <div class="panel-group" id="10_accordion">
+
+        </div>
+    </div>
 </div>
-<table id="tableList"></table>
 
 
 <!-- 模态框（Modal） -->

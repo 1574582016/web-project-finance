@@ -44,7 +44,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
     $.APIPost("/api/stock/getMyStockCompanySectorList?firstSector="+ firstSector +"&sectorTypes=" + sectorTypes + "&sectorFocus=" + sectorFocus,function (res) {
         var str = '';
         $.each(res,function(key,values){
-            str += '<div class="panel panel-default"><div class="panel-heading"  data-toggle="collapse" data-parent="#01_accordion" href="#'+ key +'" style="cursor:pointer;"><h4 class="panel-title">'+ key +'</h4></div><div id="'+ key +'" class="panel-collapse collapse"><div class="panel-body" style="padding: 0;">';
+            str += '<div class="panel panel-default"><div class="panel-heading"  data-toggle="collapse" data-parent="#'+ firstSector +'accordion" href="#'+ key +'" style="cursor:pointer;"><h4 class="panel-title">'+ key +'</h4></div><div id="'+ key +'" class="panel-collapse collapse"><div class="panel-body" style="padding: 0;">';
             str += '<table class="table table-bordered" style="margin: 0;">';
             str += '<thead><tr>';
             str += '<th style="text-align: center;width: 8%;">行业1</th>';

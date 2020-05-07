@@ -10,9 +10,11 @@ public class StockHotSectorClass_VO {
 
     private String marketName ;
 
-    private String sectorType ;
+    private String stockMarketName ;
 
-    private String typeOrder ;
+    private Integer sectorType ;
+
+    private Integer typeOrder ;
 
     private String firstSector ;
 
