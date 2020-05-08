@@ -106,6 +106,7 @@
         a.secondSector ASC ,
         a.thirdSector ASC ,
         a.sectorType DESC ,
-        a.typeOrder ASC
+        a.typeOrder ASC ,
+        CAST(a.mainBusinessProfit AS DECIMAL (20, 2)) DESC
     </select>
 </mapper>

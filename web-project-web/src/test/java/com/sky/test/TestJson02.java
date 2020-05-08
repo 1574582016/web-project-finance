@@ -125,15 +125,15 @@ public class TestJson02 {
     @Test
     public void test3(){
 
-        String stockCode = "300659";
+        String stockCode = "603986";
         String mk = "1";
         if(!stockCode.substring(0,1).equals("6")){
             mk = "2";
         }
-        String day = "2020-05-06";
+        String day = "2020-05-08";
 
         for(int page = 0 ; page < 33 ; page ++){
-            String url = "http://push2ex.eastmoney.com/getStockFenShi?pagesize=144&ut=7eea3edcaed734bea9cbfc24409ed989&dpt=wzfscj&cb=jQuery112308016765534968187_1585036699321&pageindex="+ page +"&id="+ stockCode + mk +"&sort=1&ft=1&code="+ stockCode +"&market="+ mk +"&_=1588810344031";
+            String url = "http://push2ex.eastmoney.com/getStockFenShi?pagesize=144&ut=7eea3edcaed734bea9cbfc24409ed989&dpt=wzfscj&cb=jQuery112308016765534968187_1585036699321&pageindex="+ page +"&id="+ stockCode + mk +"&sort=1&ft=1&code="+ stockCode +"&market="+ mk +"&_=1585036699360";
             String jsStr = CommonHttpUtil.sendGet(url);
             jsStr = jsStr.substring(jsStr.indexOf("(") + 1 , jsStr.indexOf(")"));
             JSONObject jsonObject = JSON.parseObject(jsStr);
@@ -166,9 +166,7 @@ public class TestJson02 {
                 list.add(dataVol);
             }
 //            System.out.println(list.toString());
-            if(list.size()>0){
-                stockDealDataVolService.insertBatch(list);
-            }
+            stockDealDataVolService.insertBatch(list);
         }
 
     }
