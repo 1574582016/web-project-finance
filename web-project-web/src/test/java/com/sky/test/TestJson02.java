@@ -42,7 +42,7 @@ public class TestJson02 {
 
     @Test
     public void test1(){
-        List<StockCompanySector> sectorList = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code not in ( select stock_code from stock_company_product)"));
+        List<StockCompanySector> sectorList = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("stock_code NOT IN (SELECT stock_code FROM stock_sector_level) AND LEFT(stock_code,2) != '68'"));
         for(StockCompanySector sector : sectorList){
             System.out.println("=================================" + sector.getStockCode());
             String market = "SH";
@@ -97,7 +97,7 @@ public class TestJson02 {
 
     @Test
     public void test2(){
-        List<StockCompanySector> sectorList = stockCompanySectorService.selectList(null);
+        List<StockCompanySector> sectorList = stockCompanySectorService.selectList(new EntityWrapper<StockCompanySector>().where("publish_time is null"));
         for(StockCompanySector sector : sectorList) {
             System.out.println("=================================" + sector.getStockCode());
             String market = "SH";

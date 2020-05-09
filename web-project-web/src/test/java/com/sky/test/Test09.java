@@ -16,7 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by ThinkPad on 2020/2/17.
@@ -73,11 +75,13 @@ public class Test09 {
                 List<FinanceMarketStock> list3 = financeMarketStockService.selectList(new EntityWrapper<FinanceMarketStock>().where("market_code = {0}" , market.getMarketCode()));
 
                 List<FinanceMarketStock> list4 = new ArrayList<>();
+                Set<FinanceMarketStock> list5 = new HashSet<>();
                 for(FinanceMarketStock marketStock : list2){
                     boolean just = false ;
                     for(FinanceMarketStock stock : list3){
                         if(stock.getStockCode().equals(marketStock.getStockCode())){
                             just = true;
+                            list5.add(stock);
                             continue;
                         }
                     }
@@ -87,6 +91,15 @@ public class Test09 {
                 }
                 if(list4.size() > 0){
                     financeMarketStockService.insertBatch(list4);
+                }
+
+                List<FinanceMarketStock> list6 = new ArrayList();
+                for(FinanceMarketStock marketStock : list5){
+                    list6.add(marketStock);
+                }
+
+                if(list6.size() > 0){
+                    financeMarketStockService.updateBatchById(list6);
                 }
             }
 

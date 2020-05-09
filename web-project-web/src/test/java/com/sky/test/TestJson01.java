@@ -24,8 +24,9 @@ public class TestJson01 {
 
 
     public static void main(String[] args){
-        String url = "http://webf10.gw.com.cn/BK/B4/SH994247_B4.html";
+        String url = "http://webf10.gw.com.cn/BK/B5/SH991024_B5.html";
         Document document = SpiderUtils.HtmlJsoupGet(url);
+        System.out.println(document);
         Elements table = document.getElementsByClass("f10tabel_new");
         List<JSONObject> list2 = new ArrayList<>();
         if(table.size() > 0) {
