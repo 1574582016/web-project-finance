@@ -41,6 +41,10 @@ public class StockCompanyBusinessProfitServiceImpl extends ServiceImpl<StockComp
                 for(int i = 0 ; i < jsonArray.size() ; i ++){
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     String REPORTDATE = jsonObject.getString("REPORTDATE").replace("/" , "-").replace(" 0:00:00","").replace(" ","");//发布时间
+                    String[] times = REPORTDATE.split("-");
+                    if(Integer.parseInt(times[1]) < 10){
+                        REPORTDATE = times[0] + "-0" + times[1] + "-" + times[2];
+                    }
                     String OPERATEREVE = jsonObject.getString("OPERATEREVE").replace(" ","");//营业总收入
                     String TOTALOPERATEEXP = jsonObject.getString("TOTALOPERATEEXP").replace(" ","");//营业总成本
                     String OPERATEPROFIT = jsonObject.getString("OPERATEPROFIT").replace(" ","");//营业利润
