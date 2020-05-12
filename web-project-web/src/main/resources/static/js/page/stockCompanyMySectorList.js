@@ -161,6 +161,7 @@ $(function () {
         var sector_type = $("#sector_type").val();
         var type_order = $("#type_order").val();
         var sector_focus = $("#sector_focus").val();
+        var focus_level = $("#focus_level").val();
 
         if(isEmpty(third_sector)){
             window.parent.showWarningAlert("三级行业不能为空！");
@@ -184,7 +185,8 @@ $(function () {
             fiveSector : five_sector,
             sectorType : sector_type ,
             typeOrder : type_order ,
-            sectorFocus : sector_focus
+            sectorFocus : sector_focus ,
+            focusLevel : focus_level
         }) ,function (data) {
             if(data.success){
                 hideModal("myModal");
@@ -202,101 +204,102 @@ $(function () {
                             sectorFocus = $(this).val()
                         }
                     });
-                    sectorTypes = sectorTypes.substr(0,sectorTypes.length - 1);
-                    if(parent_sector == first_sector){
-                        if(parent_sector.indexOf('01_') > -1){
-                            loanSearchData('01_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('02_') > -1){
-                            loanSearchData('02_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('03_') > -1){
-                            loanSearchData('03_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('04_') > -1){
-                            loanSearchData('04_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('05_') > -1){
-                            loanSearchData('05_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('06_') > -1){
-                            loanSearchData('06_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('07_') > -1){
-                            loanSearchData('07_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('08_') > -1){
-                            loanSearchData('08_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('09_') > -1){
-                            loanSearchData('09_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('10_') > -1){
-                            loanSearchData('10_' , sectorTypes , sectorFocus);
-                        }
-                    }else{
-                        if(parent_sector.indexOf('01_') > -1){
-                            loanSearchData('01_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('02_') > -1){
-                            loanSearchData('02_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('03_') > -1){
-                            loanSearchData('03_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('04_') > -1){
-                            loanSearchData('04_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('05_') > -1){
-                            loanSearchData('05_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('06_') > -1){
-                            loanSearchData('06_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('07_') > -1){
-                            loanSearchData('07_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('08_') > -1){
-                            loanSearchData('08_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('09_') > -1){
-                            loanSearchData('09_' , sectorTypes , sectorFocus);
-                        }
-                        if(parent_sector.indexOf('10_') > -1){
-                            loanSearchData('10_' , sectorTypes , sectorFocus);
-                        }
 
-                        if(first_sector.indexOf('01_') > -1){
-                            loanSearchData('01_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('02_') > -1){
-                            loanSearchData('02_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('03_') > -1){
-                            loanSearchData('03_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('04_') > -1){
-                            loanSearchData('04_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('05_') > -1){
-                            loanSearchData('05_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('06_') > -1){
-                            loanSearchData('06_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('07_') > -1){
-                            loanSearchData('07_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('08_') > -1){
-                            loanSearchData('08_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('09_') > -1){
-                            loanSearchData('09_' , sectorTypes , sectorFocus);
-                        }
-                        if(first_sector.indexOf('10_') > -1){
-                            loanSearchData('10_' , sectorTypes , sectorFocus);
-                        }
-                    }
+                    sectorTypes = sectorTypes.substr(0,sectorTypes.length - 1);
+                    // if(parent_sector == first_sector){
+                    //     if(parent_sector.indexOf('01_') > -1){
+                    //         loanSearchData('01_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('02_') > -1){
+                    //         loanSearchData('02_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('03_') > -1){
+                    //         loanSearchData('03_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('04_') > -1){
+                    //         loanSearchData('04_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('05_') > -1){
+                    //         loanSearchData('05_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('06_') > -1){
+                    //         loanSearchData('06_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('07_') > -1){
+                    //         loanSearchData('07_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('08_') > -1){
+                    //         loanSearchData('08_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('09_') > -1){
+                    //         loanSearchData('09_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('10_') > -1){
+                    //         loanSearchData('10_' , sectorTypes , sectorFocus);
+                    //     }
+                    // }else{
+                    //     if(parent_sector.indexOf('01_') > -1){
+                    //         loanSearchData('01_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('02_') > -1){
+                    //         loanSearchData('02_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('03_') > -1){
+                    //         loanSearchData('03_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('04_') > -1){
+                    //         loanSearchData('04_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('05_') > -1){
+                    //         loanSearchData('05_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('06_') > -1){
+                    //         loanSearchData('06_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('07_') > -1){
+                    //         loanSearchData('07_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('08_') > -1){
+                    //         loanSearchData('08_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('09_') > -1){
+                    //         loanSearchData('09_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(parent_sector.indexOf('10_') > -1){
+                    //         loanSearchData('10_' , sectorTypes , sectorFocus);
+                    //     }
+                    //
+                    //     if(first_sector.indexOf('01_') > -1){
+                    //         loanSearchData('01_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('02_') > -1){
+                    //         loanSearchData('02_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('03_') > -1){
+                    //         loanSearchData('03_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('04_') > -1){
+                    //         loanSearchData('04_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('05_') > -1){
+                    //         loanSearchData('05_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('06_') > -1){
+                    //         loanSearchData('06_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('07_') > -1){
+                    //         loanSearchData('07_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('08_') > -1){
+                    //         loanSearchData('08_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('09_') > -1){
+                    //         loanSearchData('09_' , sectorTypes , sectorFocus);
+                    //     }
+                    //     if(first_sector.indexOf('10_') > -1){
+                    //         loanSearchData('10_' , sectorTypes , sectorFocus);
+                    //     }
+                    // }
                 });
             }else{
                 window.parent.showFailedAlert(data.message);
@@ -316,6 +319,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
             str += '<th style="text-align: center;width: 7%;">行业1</th>';
             str += '<th style="text-align: center;width: 7%;">行业2</th>';
             str += '<th style="text-align: center;width: 10%;">热点</th>';
+            str += '<th style="text-align: center;width: 5%;">关注度</th>';
             str += '<th style="text-align: center;width: 4%;">类型</th>';
             str += '<th style="text-align: center;width: 4%;">序列</th>';
             str += '<th style="text-align: center;width: 5%;">编码</th>';
@@ -379,11 +383,20 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                                 break;
                         }
 
+                        var focusLevel = '';
+                        for(var i = 0 ; i < data.focusLevel ; i ++){
+                            focusLevel += '<span class="glyphicon glyphicon-star" style="color: gold;"></span>';
+                        }
+
+                        if(isEmpty(focusLevel)){
+                            focusLevel = '<span class="glyphicon glyphicon-star-empty"></span>';
+                        }
 
                         if(just == 0){
                             str += '<td rowspan="'+ values3.length  +'" style="vertical-align: middle;">'+ key3 +'</td>';
                         }
                         str += '<td>' + data.stockMarketName +'</td>';
+                        str += '<td style="text-align: center">' + focusLevel +'</td>';
                         str += colorTd + sectorType +'</td>';
                         str += colorTd + 'NO.'+ data.typeOrder +'</td>';
                         str += colorTd + data.stockCode +'</td>';
@@ -506,6 +519,7 @@ function edit(levelId) {
                 $("#sector_type").val(res.data.result.sectorType);
                 $("#type_order").val(res.data.result.typeOrder);
                 $("#sector_focus").val(res.data.result.sectorFocus);
+                $("#focus_level").val(res.data.result.focusLevel);
             }
     });
 }

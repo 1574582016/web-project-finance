@@ -73,6 +73,12 @@ public class StockSectorLevel extends BaseModel<StockSectorLevel> {
     private String sectorFocus ;
 
     /**
+     *关注度
+     */
+    @TableField("focus_level")
+    private Integer focusLevel;
+
+    /**
      *股票编码
      */
     @TableField("stock_code")

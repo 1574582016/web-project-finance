@@ -21,6 +21,7 @@
         <result column="six_sector" property="sixSector"/>
         <result column="seven_sector" property="sevenSector"/>
         <result column="sector_focus" property="sectorFocus"/>
+        <result column="focus_level" property="focusLevel"/>
         <result column="stock_code" property="stockCode"/>
     </resultMap>
 </mapper>

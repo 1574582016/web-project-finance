@@ -535,6 +535,7 @@
         l.`third_sector` thirdSector,
         l.`forth_sector` forthSector,
         CONCAT(l.`five_sector` , '/' , l.`six_sector` , '/' ,l.`seven_sector`) fiveSector ,
+        l.focus_level focusLevel ,
         c.`stock_code` stockCode,
         c.`stock_name` stockName,
         c.`publish_time` publishTime ,

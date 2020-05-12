@@ -20,6 +20,8 @@ public class MyStockCompanySector_VO {
 
     private String forthSector ;
 
+    private Integer focusLevel ;
+
     private String fiveSector ;
 
     private String stockCode ;

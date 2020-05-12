@@ -1,10 +1,8 @@
 package com.sky.spider;
 
+import com.sky.model.StockCompanyBusinessProfit;
 import com.sky.model.StockCompanySector;
-import com.sky.service.StockCompanyAssetService;
-import com.sky.service.StockCompanyCashFlowService;
-import com.sky.service.StockCompanyProfitService;
-import com.sky.service.StockCompanySectorService;
+import com.sky.service.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +31,9 @@ public class SpiderCompanyProfitAsset {
 
     @Autowired
     private StockCompanyCashFlowService stockCompanyCashFlowService;
+
+    @Autowired
+    private StockCompanyBusinessProfitService stockCompanyBusinessProfitService ;
 
     @Test
     public void spiderStockCompanyProfit() throws InterruptedException {
@@ -89,14 +90,11 @@ public class SpiderCompanyProfitAsset {
                 public Integer call() throws Exception {
                     for(StockCompanySector marketClass : listStr){
                         System.out.println("================stockCode=========================" + marketClass.getStockCode());
-                        String stockCode = marketClass.getStockCode();
-                        for(int x = 0 ; x < 50 ; x ++){
-                            boolean just = stockCompanyProfitService.spiderStockCompanyProfit(stockCode , x);
-                            if(just){
-                                Thread.sleep(300);
-                            }else{
-                                break;
-                            }
+                        boolean just = stockCompanyBusinessProfitService.spiderStockCompanyBusinessProfit(marketClass.getStockCode());
+                        if(just){
+                            Thread.sleep(300);
+                        }else{
+                            break;
                         }
                     }
                     return 1;
