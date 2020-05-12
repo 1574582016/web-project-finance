@@ -18,4 +18,15 @@
         <result column="total_profit" property="totalProfit"/>
         <result column="pure_profit" property="pureProfit"/>
     </resultMap>
+
+    <select id="getStockCompaneyProfitList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        LEFT(publish_day,4) publish_day,
+        ROUND(SUM(CAST(business_income AS DECIMAL(20,2)))/100000000,2) business_income ,
+        ROUND(SUM(CAST(pure_profit AS DECIMAL(20,2)))/100000000,2) pure_profit
+        FROM stock_company_business_profit
+        WHERE stock_code = #{stockCode}
+        GROUP BY LEFT(publish_day,4)
+        ORDER BY LEFT(publish_day,4) ASC
+    </select>
 </mapper>

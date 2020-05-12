@@ -74,4 +74,9 @@ public class StockCompanyBusinessProfitServiceImpl extends ServiceImpl<StockComp
         }
         return result;
     }
+
+    @Override
+    public List<StockCompanyBusinessProfit> getStockCompaneyProfitList(String stockCode) {
+        return baseMapper.getStockCompaneyProfitList(stockCode);
+    }
 }

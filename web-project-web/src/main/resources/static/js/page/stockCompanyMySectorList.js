@@ -347,36 +347,43 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         var sectorType = '';
                         var colorTd = '';
                         var colorA = '';
+                        var colorB = '';
                         switch (data.sectorType){
                             case 6 :
                                 sectorType = '巨头';
                                 colorTd = '<td style="background: #A000AF;color: #F2F2F2;">';
                                 colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 5 :
                                 sectorType = '龙头';
                                 colorTd = '<td style="background: #ED0000;color: #F2F2F2;">';
                                 colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 4 :
                                 sectorType = '绩优';
                                 colorTd = '<td style="background:#F0F000;">';
                                 colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 3 :
                                 sectorType = '超微';
                                 colorTd = '<td style="background:#00B3FF;color: #F2F2F2;">';
                                 colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 2 :
                                 sectorType = '待选';
                                 colorTd = '<td>';
                                 colorA = '<a href="#" style="cursor: pointer;color:rgb(51, 51, 51); " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:rgb(51, 51, 51); " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 1 :
                                 sectorType = '极差';
                                 colorTd = '<td style="background:#929292">';
                                 colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             default :
                                 colorTd = '<td>';
@@ -399,7 +406,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         str += '<td style="text-align: center">' + focusLevel +'</td>';
                         str += colorTd + sectorType +'</td>';
                         str += colorTd + 'NO.'+ data.typeOrder +'</td>';
-                        str += colorTd + data.stockCode +'</td>';
+                        str += colorTd + colorB + data.stockCode +'</td>';
                         str += colorTd + colorA +  data.stockName +'</a></td>';
                         str += colorTd + data.publishTime +'</td>';
                         str += colorTd + data.mainBusinessProfit +'</td>';
@@ -521,5 +528,55 @@ function edit(levelId) {
                 $("#sector_focus").val(res.data.result.sectorFocus);
                 $("#focus_level").val(res.data.result.focusLevel);
             }
+    });
+}
+
+function viewProfit(stockCode ,stockName) {
+    $("#myModalLabel2").html(stockName);
+    $.APIPost("/api/stock/getStockCompaneyProfitList?stockCode="+ stockCode ,function (res) {
+        if(res.success){
+            var myChart = echarts.init(document.getElementById("profitGrowMain"));
+            var colors = ['#3a9ff5', '#e80b3e','#34bd37', '#d3ff24'];
+            var option = {
+                color: colors,
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['总利润','净利润']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: res.data.yearList
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        name:'总利润',
+                        type:'line',
+                        stack: '总量0',
+                        data:res.data.totalProfitList
+                    },{
+                        name:'净利润',
+                        type:'line',
+                        stack: '总量1',
+                        data:res.data.pureProfitList
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
     });
 }

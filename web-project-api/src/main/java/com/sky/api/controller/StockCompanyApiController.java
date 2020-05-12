@@ -802,4 +802,26 @@ public class StockCompanyApiController extends AbstractController {
     public Object editStockSectorLevel(@RequestBody StockSectorLevel body){
         return ResponseEntity.ok(stockSectorLevelService.updateById(body) ? MapSuccess("操作成功") : MapError("操作失败"));
     }
+
+
+    @LogRecord(name = "getStockCompaneyProfitList" ,description = "查询企业各年利润")
+    @PostMapping("/getStockCompaneyProfitList")
+    public Object getStockCompaneyProfitList(String stockCode){
+        List<StockCompanyBusinessProfit> list = stockCompanyBusinessProfitService.getStockCompaneyProfitList(stockCode);
+        List<String> yearList = new ArrayList<>();
+        List<String> totalProfitList = new ArrayList<>();
+        List<String> pureProfitList = new ArrayList<>();
+        for(StockCompanyBusinessProfit profit : list){
+            yearList.add(profit.getPublishDay());
+            totalProfitList.add(profit.getBusinessIncome());
+            pureProfitList.add(profit.getPureProfit());
+        }
+
+        Map<String,Object> profitMap = new HashedMap();
+        profitMap.put("yearList",yearList);
+        profitMap.put("totalProfitList",totalProfitList);
+        profitMap.put("pureProfitList",pureProfitList);
+
+        return ResponseEntity.ok(MapSuccess("查询成功",profitMap));
+    }
 }
