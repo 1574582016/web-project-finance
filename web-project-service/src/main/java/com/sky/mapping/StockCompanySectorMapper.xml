@@ -562,7 +562,7 @@
         GROUP BY c.`stock_code`
         ) a
         LEFT JOIN finance_market_stock ms ON ms.`stock_code` = a.`stockCode`
-        LEFT JOIN finance_market fm ON fm.`market_code` = ms.`market_code` AND fm.`market_type` = 4
+        LEFT JOIN finance_market fm ON fm.`market_code` = ms.`market_code` AND fm.`market_type` = 4 and fm.market_name != '融资融券'
         GROUP BY a.`stockCode`
         ORDER BY a.secondSector ,
         a.thirdSector ,
