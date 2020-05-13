@@ -542,10 +542,10 @@
         CONCAT(c.`first_sector` , '->' , c.`second_sector` , '->' , c.`third_secotor` , '->' , c.`forth_sector`) defaultSector ,
         c.`main_business_profit` mainBusinessProfit,
         c.`pure_business_profit` pureBusinessProfit,
-        IFNULL(ROUND(c.`pure_business_profit` / c.`main_business_profit` * 100 , 2),0) profitRate ,
+        IFNULL(ROUND(CAST(c.`pure_business_profit`  AS DECIMAL(20,2)) / CAST(c.`main_business_profit`  AS DECIMAL(20,2)) * 100 , 2),0) profitRate ,
         c.`per_stock_profit` perStockProfit,
-        c.`flow_stock_count` flowStockCount,
-        c.`total_stock_count` totalStockCount,
+        ROUND(CAST(c.`flow_stock_count`  AS DECIMAL(20,2)) / 1000 ,2)  flowStockCount,
+        ROUND((CAST(c.`total_stock_count`  AS DECIMAL(20,2)) - CAST(c.`flow_stock_count_b`  AS DECIMAL(20,2)) - CAST(c.`flow_stock_count_jy`  AS DECIMAL(20,2))) / 1000 ,2) totalStockCount,
         d.close_price closePrice ,
         GROUP_CONCAT(p.`product_name` , '->' , p.product_revenue_rate , '%') productRevenueRate
         FROM stock_sector_level l
@@ -567,8 +567,10 @@
         ORDER BY a.secondSector ,
         a.thirdSector ,
         a.forthSector,
-        a.sectorType DESC,
-        a.typeOrder ASC ,
+        <if test="sectorTypes != null and sectorTypes != '' and sectorTypes != 'undefined'">
+            a.sectorType DESC,
+            a.typeOrder ASC ,
+        </if>
         CAST(a.`mainBusinessProfit` AS DECIMAL(20,2)) DESC
     </select>
 </mapper>

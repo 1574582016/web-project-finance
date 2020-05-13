@@ -30,13 +30,14 @@ public class JustTestMain {
             String content = HttpUtil.getHtmlContentByGet(url);
             System.out.println(content);
             JSONObject jsonObject = JSONObject.parseObject(content).getJSONObject("CapitalStockStructureDetail");
-            String ltgfhf = jsonObject.getString("jsonObject");//总股本
-            String yssltag = jsonObject.getString("yssltag");//A股流通股份
-            String yssltbg = jsonObject.getString("yssltbg");//B股流通股股份
-            String jwssltg = jsonObject.getString("jwssltg");//境外流通股份
-            String ltsxgf = jsonObject.getString("ltsxgf");//流通受限股份
-            String wltgf = jsonObject.getString("wltgf");//未流通股份
+            String ltgfhf = jsonObject.getString("ltgfhf").replace("," , "");//总股本
+            String yssltag = jsonObject.getString("yssltag").replace("," , "");//A股流通股份
+            String yssltbg = jsonObject.getString("yssltbg").replace("," , "");//B股流通股股份
+            String jwssltg = jsonObject.getString("jwssltg").replace("," , "");//境外流通股份
+            String ltsxgf = jsonObject.getString("ltsxgf").replace("," , "");//流通受限股份
+            String wltgf = jsonObject.getString("wltgf").replace("," , "");//未流通股份
 
+        System.out.println(ltgfhf + "==============" + yssltag + "==============" + yssltbg + "==============" + jwssltg + "==============" + ltsxgf + "==============" + wltgf);
 
     }
 

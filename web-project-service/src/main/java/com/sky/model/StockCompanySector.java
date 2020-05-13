@@ -177,20 +177,44 @@ public class StockCompanySector extends BaseModel<StockCompanySector> {
     private String pureBusinessProfit ;
 
     /**
-     *
+     *每股收益
      */
     @TableField("per_stock_profit")
     private String perStockProfit ;
 
     /**
-     *
+     *流通股(亿股)
      */
     @TableField("flow_stock_count")
     private String flowStockCount ;
 
     /**
-     *
+     *总股本(亿股)
      */
     @TableField("total_stock_count")
     private String totalStockCount ;
+
+    /**
+     *B股流通
+     */
+    @TableField("flow_stock_count_b")
+    private String flowStockCountB ;
+
+    /**
+     *境外流通
+     */
+    @TableField("flow_stock_count_jy")
+    private String flowStockCountJY ;
+
+    /**
+     *限制流通
+     */
+    @TableField("limit_stock_count")
+    private String limitStockCount ;
+
+    /**
+     *未流通股
+     */
+    @TableField("unflow_stock_count")
+    private String unflowStockCount ;
 }
