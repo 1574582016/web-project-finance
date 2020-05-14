@@ -770,6 +770,20 @@ public class StockCompanyApiController extends AbstractController {
                     thirdMap.put(companySectorVo.getForthSector() , list31);
                 }
 
+                for (Map.Entry<String, List<MyStockCompanySector_VO>> entry3 : thirdMap.entrySet()) {
+                    String key3 = entry3.getKey() ;
+                    List<MyStockCompanySector_VO> list4 = entry3.getValue();
+
+                    BigDecimal sectorTotalProfit = BigDecimal.ZERO ;
+                    for(MyStockCompanySector_VO sectorVo : list4){
+                        sectorTotalProfit = sectorTotalProfit.add(new BigDecimal(sectorVo.getMainBusinessProfit()));
+                    }
+
+                    for(MyStockCompanySector_VO sectorVo : list4){
+                        sectorVo.setSectorProfitRate(new BigDecimal(sectorVo.getMainBusinessProfit()).multiply(BigDecimal.valueOf(100)).divide(sectorTotalProfit,2,BigDecimal.ROUND_HALF_UP).toString());
+                    }
+                }
+
                 Map<String ,List<MyStockCompanySector_VO>> result = new LinkedHashMap<>();
                 thirdMap.entrySet().stream().sorted(Map.Entry.<String ,List<MyStockCompanySector_VO>>comparingByKey()).forEachOrdered(e -> result.put(e.getKey(), e.getValue()));
                 resultSecondMap.put(key2 + "_" + list3.size() , result);

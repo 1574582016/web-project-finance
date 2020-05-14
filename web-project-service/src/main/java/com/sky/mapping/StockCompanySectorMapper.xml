@@ -544,8 +544,8 @@
         c.`pure_business_profit` pureBusinessProfit,
         IFNULL(ROUND(CAST(c.`pure_business_profit`  AS DECIMAL(20,2)) / CAST(c.`main_business_profit`  AS DECIMAL(20,2)) * 100 , 2),0) profitRate ,
         c.`per_stock_profit` perStockProfit,
-        ROUND(CAST(c.`flow_stock_count`  AS DECIMAL(20,2)) / 1000 ,2)  flowStockCount,
-        ROUND((CAST(c.`total_stock_count`  AS DECIMAL(20,2)) - CAST(c.`flow_stock_count_b`  AS DECIMAL(20,2)) - CAST(c.`flow_stock_count_jy`  AS DECIMAL(20,2))) / 1000 ,2) totalStockCount,
+        ROUND(CAST(c.`flow_stock_count`  AS DECIMAL(20,2)) / 10000 ,2)  flowStockCount,
+        ROUND((CAST(c.`total_stock_count`  AS DECIMAL(20,2)) - CAST(c.`flow_stock_count_b`  AS DECIMAL(20,2)) - CAST(c.`flow_stock_count_jy`  AS DECIMAL(20,2))) / 10000 ,2) totalStockCount,
         d.close_price closePrice ,
         GROUP_CONCAT(p.`product_name` , '->' , p.product_revenue_rate , '%') productRevenueRate
         FROM stock_sector_level l
@@ -557,7 +557,7 @@
             AND l.`sector_type` in (${sectorTypes})
         </if>
         <if test="sectorFocus != null and sectorFocus != '' and sectorFocus != 'undefined'">
-            AND l.`sector_focus` = #{sectorFocus}
+            AND l.`focus_level` in (${sectorFocus})
         </if>
         GROUP BY c.`stock_code`
         ) a
@@ -567,10 +567,6 @@
         ORDER BY a.secondSector ,
         a.thirdSector ,
         a.forthSector,
-        <if test="sectorTypes != null and sectorTypes != '' and sectorTypes != 'undefined'">
-            a.sectorType DESC,
-            a.typeOrder ASC ,
-        </if>
         CAST(a.`mainBusinessProfit` AS DECIMAL(20,2)) DESC
     </select>
 </mapper>

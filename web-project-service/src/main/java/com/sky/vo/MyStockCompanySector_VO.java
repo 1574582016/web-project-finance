@@ -50,5 +50,7 @@ public class MyStockCompanySector_VO {
 
     private String stockMarketName ;
 
+    private String sectorProfitRate ;
+
 
 }

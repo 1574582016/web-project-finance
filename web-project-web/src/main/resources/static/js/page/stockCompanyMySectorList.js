@@ -132,11 +132,12 @@ $(function () {
         var sectorFocus = '';
         $("input[name='sectorFocus']:checked").each(function (index, item) {
             if(this.checked){
-                sectorFocus = $(this).val()
+                sectorFocus += $(this).val() + ','
             }
         });
 
         sectorTypes = sectorTypes.substr(0,sectorTypes.length - 1);
+        sectorFocus = sectorFocus.substr(0,sectorFocus.length - 1);
         loanSearchData('01_' , sectorTypes , sectorFocus);
         loanSearchData('02_' , sectorTypes , sectorFocus);
         loanSearchData('03_' , sectorTypes , sectorFocus);
@@ -316,15 +317,16 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
             str += '<div class="panel panel-default"><div class="panel-heading"  data-toggle="collapse" data-parent="#'+ firstSector +'accordion" href="#'+ key +'" style="cursor:pointer;"><h4 class="panel-title">'+ key +'</h4></div><div id="'+ key +'" class="panel-collapse collapse"><div class="panel-body" style="padding: 0;">';
             str += '<table class="table table-bordered" style="margin: 0;">';
             str += '<thead><tr>';
-            str += '<th style="text-align: center;width: 7%;">行业1</th>';
-            str += '<th style="text-align: center;width: 7%;">行业2</th>';
+            str += '<th style="text-align: center;width: 5%;">行业1</th>';
+            str += '<th style="text-align: center;width: 5%;">行业2</th>';
             str += '<th style="text-align: center;width: 10%;">热点</th>';
             str += '<th style="text-align: center;width: 5%;">关注度</th>';
-            str += '<th style="text-align: center;width: 4%;">类型</th>';
+            str += '<th style="text-align: center;width: 4%;">梯度</th>';
             str += '<th style="text-align: center;width: 4%;">序列</th>';
             str += '<th style="text-align: center;width: 5%;">编码</th>';
             str += '<th style="text-align: center;width: 6%;">名称</th>';
             str += '<th style="text-align: center;width: 7%;">上市时间</th>';
+            str += '<th style="text-align: center;width: 5%;">市场占比</th>';
             str += '<th style="text-align: center;width: 5%;">总利润</th>';
             str += '<th style="text-align: center;width: 5%;">净利润</th>';
             str += '<th style="text-align: center;width: 5%;">利润率</th>';
@@ -344,43 +346,56 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                 $.each(values2,function(key3,values3){
                     var just = 0 ;
                     $(values3).each(function(index,data){
-                        var sectorType = '';
                         var colorTd = '';
                         var colorA = '';
                         var colorB = '';
                         switch (data.sectorType){
-                            case 6 :
-                                sectorType = '巨头';
-                                colorTd = '<td style="background: #A000AF;color: #F2F2F2;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
-                                break;
-                            case 5 :
-                                sectorType = '龙头';
+                            case 1 :
                                 colorTd = '<td style="background: #ED0000;color: #F2F2F2;">';
                                 colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
                                 colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
-                            case 4 :
-                                sectorType = '绩优';
+                            case 2 :
                                 colorTd = '<td style="background:#F0F000;">';
                                 colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
                                 colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 3 :
-                                sectorType = '超微';
-                                colorTd = '<td style="background:#00B3FF;color: #F2F2F2;">';
+                                colorTd = '<td style="background:#00b3ff;color: #F2F2F2;">';
                                 colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
                                 colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
-                            case 2 :
-                                sectorType = '待选';
-                                colorTd = '<td>';
-                                colorA = '<a href="#" style="cursor: pointer;color:rgb(51, 51, 51); " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:rgb(51, 51, 51); " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                            case 4 :
+                                colorTd = '<td style="background: #ed0096;color: #F2F2F2;">';
+                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
-                            case 1 :
-                                sectorType = '极差';
+                            case 5 :
+                                colorTd = '<td style="background:#f0ac00;">';
+                                colorA = '<a href="#" style="cursor: pointer;color:#333;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#333;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                break;
+                            case 6 :
+                                colorTd = '<td style="background:#00ffff;color: #333;">';
+                                colorA = '<a href="#" style="cursor: pointer;color:#333; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#333; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                break;
+                            case 7 :
+                                colorTd = '<td style="background: #9a00ed;color: #F2F2F2;">';
+                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                break;
+                            case 8 :
+                                colorTd = '<td style="background:#f05400;color: #333;">';
+                                colorA = '<a href="#" style="cursor: pointer;color: #333;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color: #333;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                break;
+                            case 9 :
+                                colorTd = '<td style="background:#0099ff;color: #F2F2F2;">';
+                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                break;
+                            case 10 :
                                 colorTd = '<td style="background:#929292">';
                                 colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
                                 colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
@@ -404,11 +419,12 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         }
                         str += '<td>' + data.stockMarketName +'</td>';
                         str += '<td style="text-align: center">' + focusLevel +'</td>';
-                        str += colorTd + sectorType +'</td>';
+                        str += colorTd + 'GT.' + data.sectorType +'</td>';
                         str += colorTd + 'NO.'+ data.typeOrder +'</td>';
                         str += colorTd + colorB + data.stockCode +'</td>';
                         str += colorTd + colorA +  data.stockName +'</a></td>';
                         str += colorTd + data.publishTime +'</td>';
+                        str += colorTd + data.sectorProfitRate +' %</td>';
                         str += colorTd + data.mainBusinessProfit +'</td>';
                         str += colorTd + data.pureBusinessProfit +'</td>';
                         str += colorTd + data.profitRate +'%</td>';
