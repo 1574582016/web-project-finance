@@ -161,7 +161,6 @@ $(function () {
         var five_sector = $("#five_sector").val();
         var sector_type = $("#sector_type").val();
         var type_order = $("#type_order").val();
-        var sector_focus = $("#sector_focus").val();
         var focus_level = $("#focus_level").val();
 
         if(isEmpty(third_sector)){
@@ -186,7 +185,6 @@ $(function () {
             fiveSector : five_sector,
             sectorType : sector_type ,
             typeOrder : type_order ,
-            sectorFocus : sector_focus ,
             focusLevel : focus_level
         }) ,function (data) {
             if(data.success){
@@ -541,7 +539,6 @@ function edit(levelId) {
 
                 $("#sector_type").val(res.data.result.sectorType);
                 $("#type_order").val(res.data.result.typeOrder);
-                $("#sector_focus").val(res.data.result.sectorFocus);
                 $("#focus_level").val(res.data.result.focusLevel);
             }
     });

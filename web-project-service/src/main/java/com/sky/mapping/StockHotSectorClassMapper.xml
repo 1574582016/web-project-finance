@@ -30,6 +30,7 @@
         a.thirdSector ,
         a.forthSector ,
         a.fiveSector ,
+        a.focusLevel ,
         a.stockCode ,
         a.stockName ,
         a.publishTime ,
@@ -56,6 +57,7 @@
                 sl.`second_sector` secondSector,
                 sl.`third_sector` thirdSector,
                 sl.`forth_sector` forthSector,
+                sl.focus_level focusLevel ,
                 CONCAT(sl.`five_sector` , '/' , sl.`six_sector` , '/' ,sl.`seven_sector`) fiveSector ,
                 cs.`stock_code` stockCode,
                 cs.`stock_name` stockName,
@@ -65,14 +67,14 @@
                 cs.`pure_business_profit` pureBusinessProfit,
                 IFNULL(ROUND(CAST(cs.`pure_business_profit`  AS DECIMAL(20,2)) / CAST(cs.`main_business_profit`  AS DECIMAL(20,2)) * 100 , 2),0) profitRate ,
                 cs.`per_stock_profit` perStockProfit,
-                ROUND(CAST(cs.`flow_stock_count`  AS DECIMAL(20,2)) / 1000 ,2)  flowStockCount,
-                ROUND((CAST(cs.`total_stock_count`  AS DECIMAL(20,2)) - CAST(cs.`flow_stock_count_b`  AS DECIMAL(20,2)) - CAST(cs.`flow_stock_count_jy`  AS DECIMAL(20,2))) / 1000 ,2) totalStockCount,
+                ROUND(CAST(cs.`flow_stock_count`  AS DECIMAL(20,2)) / 10000 ,2)  flowStockCount,
+                ROUND((CAST(cs.`total_stock_count`  AS DECIMAL(20,2)) - CAST(cs.`flow_stock_count_b`  AS DECIMAL(20,2)) - CAST(cs.`flow_stock_count_jy`  AS DECIMAL(20,2))) / 10000 ,2) totalStockCount,
                 d.close_price closePrice
                 FROM stock_sector_level sl
                 LEFT JOIN stock_company_sector cs ON sl.`stock_code` = cs.`stock_code`
                 LEFT JOIN finance_market_stock ms ON ms.`stock_code` = cs.`stock_code`
                 LEFT JOIN stock_hot_sector_class sc ON ms.`market_code` = sc.`hot_code`
-                LEFT JOIN finance_market fm ON fm.`market_code` = sc.`hot_code` AND fm.`market_type` = 4
+                LEFT JOIN finance_market fm ON fm.`market_code` = sc.`hot_code` AND fm.`market_type` = 4 and fm.market_name != '融资融券'
                 LEFT JOIN stock_deal_data_1 d ON cs.`stock_code` = d.stock_code
                 WHERE sl.isvalid = 1
                 <if test="firstSector != null and firstSector != '' and firstSector != 'undefined'">
@@ -96,7 +98,7 @@
                 GROUP BY cs.`stock_code`
             ) c
             LEFT JOIN finance_market_stock ms ON ms.`stock_code` = c.`stockCode`
-            LEFT JOIN finance_market fm ON fm.`market_code` = ms.`market_code` AND fm.`market_type` = 4
+            LEFT JOIN finance_market fm ON fm.`market_code` = ms.`market_code` AND fm.`market_type` = 4  and fm.market_name != '融资融券'
             GROUP BY c.`stockCode`
         ) a
         LEFT JOIN stock_company_product p ON a.`stockCode` = p.`stock_code` AND CAST(p.product_revenue_rate AS DECIMAL(20,2)) > 15

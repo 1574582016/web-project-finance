@@ -49,4 +49,6 @@ public class StockHotSectorClass_VO {
     private String closePrice ;
 
     private String productRevenueRate ;
+
+    private Integer focusLevel ;
 }

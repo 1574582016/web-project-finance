@@ -130,7 +130,7 @@ public class TestJson02 {
         if(!stockCode.substring(0,1).equals("6")){
             mk = "2";
         }
-        String day = "2020-05-12";
+        String day = "2020-05-13";
 
         for(int page = 0 ; page < 33 ; page ++){
             String url = "http://push2ex.eastmoney.com/getStockFenShi?pagesize=144&ut=7eea3edcaed734bea9cbfc24409ed989&dpt=wzfscj&cb=jQuery112308016765534968187_1585036699321&pageindex="+ page +"&id="+ stockCode + mk +"&sort=1&ft=1&code="+ stockCode +"&market="+ mk +"&_=1585036699360";
