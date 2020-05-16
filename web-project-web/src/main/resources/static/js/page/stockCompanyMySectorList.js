@@ -320,7 +320,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
             str += '<th style="text-align: center;width: 10%;">热点</th>';
             str += '<th style="text-align: center;width: 5%;">关注度</th>';
             str += '<th style="text-align: center;width: 4%;">梯度</th>';
-            str += '<th style="text-align: center;width: 4%;">序列</th>';
+            // str += '<th style="text-align: center;width: 4%;">序列</th>';
             str += '<th style="text-align: center;width: 5%;">编码</th>';
             str += '<th style="text-align: center;width: 6%;">名称</th>';
             str += '<th style="text-align: center;width: 7%;">上市时间</th>';
@@ -328,7 +328,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
             str += '<th style="text-align: center;width: 5%;">总利润</th>';
             str += '<th style="text-align: center;width: 5%;">净利润</th>';
             str += '<th style="text-align: center;width: 5%;">利润率</th>';
-            str += '<th style="text-align: center;width: 6%;">每股收益</th>';
+            // str += '<th style="text-align: center;width: 6%;">每股收益</th>';
             str += '<th style="text-align: center;width: 6%;">流通股本</th>';
             str += '<th style="text-align: center;width: 5%;">总股本</th>';
             str += '<th style="text-align: center;width: 5%;">价格</th>';
@@ -350,8 +350,8 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         switch (data.sectorType){
                             case 1 :
                                 colorTd = '<td style="background: #ED0000;color: #F2F2F2;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 2 :
                                 colorTd = '<td style="background:#F0F000;">';
@@ -360,43 +360,43 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                                 break;
                             case 3 :
                                 colorTd = '<td style="background:#00b3ff;color: #F2F2F2;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 4 :
                                 colorTd = '<td style="background: #ed0096;color: #F2F2F2;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 5 :
                                 colorTd = '<td style="background:#f0ac00;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#333;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#333;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 6 :
                                 colorTd = '<td style="background:#00ffff;color: #333;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#333; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#333; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 7 :
                                 colorTd = '<td style="background: #9a00ed;color: #F2F2F2;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 8 :
                                 colorTd = '<td style="background:#f05400;color: #333;">';
-                                colorA = '<a href="#" style="cursor: pointer;color: #333;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color: #333;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 9 :
                                 colorTd = '<td style="background:#0099ff;color: #F2F2F2;">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             case 10 :
                                 colorTd = '<td style="background:#929292">';
-                                colorA = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
-                                colorB = '<a href="#" style="cursor: pointer;color:#F2F2F2; " data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
+                                colorA = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" onclick="edit(\'' + data.levelId + '\')">';
+                                colorB = '<a href="#" style="cursor: pointer;" data-toggle="modal" data-target="#myModal2" onclick="viewProfit(\'' + data.stockCode + '\',\'' + data.stockName + '\')">';
                                 break;
                             default :
                                 colorTd = '<td>';
@@ -418,19 +418,19 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         str += '<td>' + data.stockMarketName +'</td>';
                         str += '<td style="text-align: center">' + focusLevel +'</td>';
                         str += colorTd + 'GT.' + data.sectorType +'</td>';
-                        str += colorTd + 'NO.'+ data.typeOrder +'</td>';
-                        str += colorTd + colorB + data.stockCode +'</td>';
-                        str += colorTd + colorA +  data.stockName +'</a></td>';
-                        str += colorTd + data.publishTime +'</td>';
-                        str += colorTd + data.sectorProfitRate +' %</td>';
-                        str += colorTd + data.mainBusinessProfit +'</td>';
-                        str += colorTd + data.pureBusinessProfit +'</td>';
-                        str += colorTd + data.profitRate +'%</td>';
-                        str += colorTd + data.perStockProfit +'</td>';
-                        str += colorTd + data.flowStockCount +'</td>';
-                        str += colorTd + data.totalStockCount +'</td>';
-                        str += colorTd + data.closePrice +'</td>';
-                        str += colorTd + data.productRevenueRate +'</td>';
+                        // str += '<td>' + 'NO.'+ data.typeOrder +'</td>';
+                        str += '<td>' + colorB + data.stockCode +'</td>';
+                        str += '<td>' + colorA +  data.stockName +'</a></td>';
+                        str += '<td>' + data.publishTime +'</td>';
+                        str += '<td>' + data.sectorProfitRate +' %</td>';
+                        str += '<td>' + data.mainBusinessProfit +'</td>';
+                        str += '<td>' + data.pureBusinessProfit +'</td>';
+                        str += '<td>' + data.profitRate +'%</td>';
+                        // str += '<td>' + data.perStockProfit +'</td>';
+                        str += '<td>' + data.flowStockCount +'</td>';
+                        str += '<td>' + data.totalStockCount +'</td>';
+                        str += '<td>' + data.closePrice +'</td>';
+                        str += '<td>' + data.productRevenueRate +'</td>';
                         str += '</tr>';
 
                         just += 1 ;

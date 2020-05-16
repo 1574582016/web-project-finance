@@ -26,6 +26,7 @@
         ROUND(SUM(CAST(pure_profit AS DECIMAL(20,2)))/100000000,2) pure_profit
         FROM stock_company_business_profit
         WHERE stock_code = #{stockCode}
+        AND LEFT(publish_day,4) != YEAR(NOW())
         GROUP BY LEFT(publish_day,4)
         ORDER BY LEFT(publish_day,4) ASC
     </select>
