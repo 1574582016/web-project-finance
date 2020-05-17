@@ -49,26 +49,26 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
             JSONArray sectorArray = detailObject.getJSONArray("hy");
             JSONArray regionArray = detailObject.getJSONArray("qy");
             JSONArray saleArray = detailObject.getJSONArray("cp");
-            for(int x = 0 ;x < sectorArray.size() ; x++){
-                JSONObject sectorObject = sectorArray.getJSONObject(x);
-                StockCompanyProduct stockCompanyProduct = new StockCompanyProduct();
-                stockCompanyProduct.setStockCode(skuCode);
-                stockCompanyProduct.setPublishDate(date);
-                stockCompanyProduct.setPruductType("行业分类");
-                stockCompanyProduct.setProductName(sectorObject.getString("zygc").replace("﻿" ,""));
-                stockCompanyProduct.setProductRevenue(sectorObject.getString("zysr"));
-                stockCompanyProduct.setProductRevenueRate(sectorObject.getString("srbl"));
-                stockCompanyProduct.setProductCost(sectorObject.getString("zycb"));
-                stockCompanyProduct.setProductCostRate(sectorObject.getString("cbbl"));
-                stockCompanyProduct.setProductProfit(sectorObject.getString("zylr"));
-                stockCompanyProduct.setProductProfitRate(sectorObject.getString("lrbl"));
-                stockCompanyProduct.setProductGrossRate(sectorObject.getString("mll"));
-
-                StockCompanyProduct sectorProduct = selectOne(new EntityWrapper<StockCompanyProduct>().where("stock_code = {0} and publish_date = {1} and pruduct_type = {2} and product_name = {3}" ,stockCompanyProduct.getStockCode() , stockCompanyProduct.getPublishDate() , stockCompanyProduct.getPruductType() , stockCompanyProduct.getProductName()));
-                if(sectorProduct == null){
-                    productList.add(stockCompanyProduct);
-                }
-            }
+//            for(int x = 0 ;x < sectorArray.size() ; x++){
+//                JSONObject sectorObject = sectorArray.getJSONObject(x);
+//                StockCompanyProduct stockCompanyProduct = new StockCompanyProduct();
+//                stockCompanyProduct.setStockCode(skuCode);
+//                stockCompanyProduct.setPublishDate(date);
+//                stockCompanyProduct.setPruductType("行业分类");
+//                stockCompanyProduct.setProductName(sectorObject.getString("zygc").replace("﻿" ,""));
+//                stockCompanyProduct.setProductRevenue(sectorObject.getString("zysr"));
+//                stockCompanyProduct.setProductRevenueRate(sectorObject.getString("srbl"));
+//                stockCompanyProduct.setProductCost(sectorObject.getString("zycb"));
+//                stockCompanyProduct.setProductCostRate(sectorObject.getString("cbbl"));
+//                stockCompanyProduct.setProductProfit(sectorObject.getString("zylr"));
+//                stockCompanyProduct.setProductProfitRate(sectorObject.getString("lrbl"));
+//                stockCompanyProduct.setProductGrossRate(sectorObject.getString("mll"));
+//
+//                StockCompanyProduct sectorProduct = selectOne(new EntityWrapper<StockCompanyProduct>().where("stock_code = {0} and publish_date = {1} and pruduct_type = {2} and product_name = {3}" ,stockCompanyProduct.getStockCode() , stockCompanyProduct.getPublishDate() , stockCompanyProduct.getPruductType() , stockCompanyProduct.getProductName()));
+//                if(sectorProduct == null){
+//                    productList.add(stockCompanyProduct);
+//                }
+//            }
 
             for(int y = 0 ;y < saleArray.size() ; y++){
                 JSONObject saleObject = saleArray.getJSONObject(y);
@@ -91,26 +91,26 @@ public class StockCompanyProductServiceImpl extends ServiceImpl<StockCompanyProd
                 }
             }
 
-            for(int z = 0 ;z < regionArray.size() ; z++){
-                JSONObject regionObject = regionArray.getJSONObject(z);
-                StockCompanyProduct stockCompanyProduct = new StockCompanyProduct();
-                stockCompanyProduct.setStockCode(skuCode);
-                stockCompanyProduct.setPublishDate(date);
-                stockCompanyProduct.setPruductType("地域分类");
-                stockCompanyProduct.setProductName(regionObject.getString("zygc").replace("﻿" ,""));
-                stockCompanyProduct.setProductRevenue(regionObject.getString("zysr"));
-                stockCompanyProduct.setProductRevenueRate(regionObject.getString("srbl"));
-                stockCompanyProduct.setProductCost(regionObject.getString("zycb"));
-                stockCompanyProduct.setProductCostRate(regionObject.getString("cbbl"));
-                stockCompanyProduct.setProductProfit(regionObject.getString("zylr"));
-                stockCompanyProduct.setProductProfitRate(regionObject.getString("lrbl"));
-                stockCompanyProduct.setProductGrossRate(regionObject.getString("mll"));
-
-                StockCompanyProduct sectorProduct = selectOne(new EntityWrapper<StockCompanyProduct>().where("stock_code = {0} and publish_date = {1} and pruduct_type = {2} and product_name = {3}" ,stockCompanyProduct.getStockCode() , stockCompanyProduct.getPublishDate() , stockCompanyProduct.getPruductType() , stockCompanyProduct.getProductName()));
-                if(sectorProduct == null){
-                    productList.add(stockCompanyProduct);
-                }
-            }
+//            for(int z = 0 ;z < regionArray.size() ; z++){
+//                JSONObject regionObject = regionArray.getJSONObject(z);
+//                StockCompanyProduct stockCompanyProduct = new StockCompanyProduct();
+//                stockCompanyProduct.setStockCode(skuCode);
+//                stockCompanyProduct.setPublishDate(date);
+//                stockCompanyProduct.setPruductType("地域分类");
+//                stockCompanyProduct.setProductName(regionObject.getString("zygc").replace("﻿" ,""));
+//                stockCompanyProduct.setProductRevenue(regionObject.getString("zysr"));
+//                stockCompanyProduct.setProductRevenueRate(regionObject.getString("srbl"));
+//                stockCompanyProduct.setProductCost(regionObject.getString("zycb"));
+//                stockCompanyProduct.setProductCostRate(regionObject.getString("cbbl"));
+//                stockCompanyProduct.setProductProfit(regionObject.getString("zylr"));
+//                stockCompanyProduct.setProductProfitRate(regionObject.getString("lrbl"));
+//                stockCompanyProduct.setProductGrossRate(regionObject.getString("mll"));
+//
+//                StockCompanyProduct sectorProduct = selectOne(new EntityWrapper<StockCompanyProduct>().where("stock_code = {0} and publish_date = {1} and pruduct_type = {2} and product_name = {3}" ,stockCompanyProduct.getStockCode() , stockCompanyProduct.getPublishDate() , stockCompanyProduct.getPruductType() , stockCompanyProduct.getProductName()));
+//                if(sectorProduct == null){
+//                    productList.add(stockCompanyProduct);
+//                }
+//            }
         }
         if(productList.size() > 0 ){
             insertBatch(productList);

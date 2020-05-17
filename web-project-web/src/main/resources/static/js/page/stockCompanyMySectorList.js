@@ -324,6 +324,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
             str += '<th style="text-align: center;width: 5%;">编码</th>';
             str += '<th style="text-align: center;width: 6%;">名称</th>';
             str += '<th style="text-align: center;width: 7%;">上市时间</th>';
+            str += '<th style="text-align: center;width: 7%;">产品</th>';
             str += '<th style="text-align: center;width: 5%;">市场占比</th>';
             str += '<th style="text-align: center;width: 5%;">总利润</th>';
             str += '<th style="text-align: center;width: 5%;">净利润</th>';
@@ -422,6 +423,7 @@ function loanSearchData(firstSector , sectorTypes , sectorFocus) {
                         str += '<td>' + colorB + data.stockCode +'</td>';
                         str += '<td>' + colorA +  data.stockName +'</a></td>';
                         str += '<td>' + data.publishTime +'</td>';
+                        str += '<td>' + data.fiveSector +'</td>';
                         str += '<td>' + data.sectorProfitRate +' %</td>';
                         str += '<td>' + data.mainBusinessProfit +'</td>';
                         str += '<td>' + data.pureBusinessProfit +'</td>';
