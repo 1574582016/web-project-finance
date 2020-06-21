@@ -26,19 +26,10 @@ import java.util.*;
 public class JustTestMain {
 
     public static void main(String[] args){
-            String url = "http://emweb.securities.eastmoney.com/CapitalStockStructure/CapitalStockStructureAjax?code=SH600585";
-            String content = HttpUtil.getHtmlContentByGet(url);
-            System.out.println(content);
-            JSONObject jsonObject = JSONObject.parseObject(content).getJSONObject("CapitalStockStructureDetail");
-            String ltgfhf = jsonObject.getString("ltgfhf").replace("," , "");//总股本
-            String yssltag = jsonObject.getString("yssltag").replace("," , "");//A股流通股份
-            String yssltbg = jsonObject.getString("yssltbg").replace("," , "");//B股流通股股份
-            String jwssltg = jsonObject.getString("jwssltg").replace("," , "");//境外流通股份
-            String ltsxgf = jsonObject.getString("ltsxgf").replace("," , "");//流通受限股份
-            String wltgf = jsonObject.getString("wltgf").replace("," , "");//未流通股份
-
-        System.out.println(ltgfhf + "==============" + yssltag + "==============" + yssltbg + "==============" + jwssltg + "==============" + ltsxgf + "==============" + wltgf);
-
+        long max=100000000000000l,min=1;
+        long randomNum = System.currentTimeMillis();
+        long ran3 = (long) (randomNum%(max-min)+min);
+        System.out.println(ran3);
     }
 
     private static String caculateDay(String dayString){

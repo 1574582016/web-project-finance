@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.BankCardMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.BankCard">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="bank_name" property="bankName"/>
+        <result column="bank_type" property="bankType"/>
+        <result column="credit_money" property="creditMoney"/>
+        <result column="year_money" property="yearMoney"/>
+        <result column="start_day" property="startDay"/>
+        <result column="end_day" property="endDay"/>
+    </resultMap>
+
+    <select id="getBankCardList" resultMap="BaseResultMap" resultType="java.lang.String">
+        SELECT
+        b.id ,
+        b.bank_name ,
+        b.`bank_type` ,
+        b.`credit_money` ,
+        b.`year_money` ,
+        b.`start_day` ,
+        b.`end_day`
+        FROM bank_card b
+        WHERE b.`isvalid` = 1
+        <if test="bankName !='' and bankName != null">
+            AND b.`bank_name`  REGEXP #{bankName}
+        </if>
+        <if test="bankType !='' and bankType != null">
+            AND b.`bank_type` = #{bankType}
+        </if>
+        ORDER BY b.`bank_type` ASC ,b.`credit_money` DESC
+    </select>
+</mapper>

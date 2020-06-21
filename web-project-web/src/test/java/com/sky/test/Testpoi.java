@@ -17,7 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Testpoi {
 
     public static void main(String[] args) {
-        String excelPath = "E:\\yyyyyyy.xlsx";
+        String excelPath = "E:\\ttt.xls";
         try {
             //String encoding = "GBK";
             File excel = new File(excelPath);

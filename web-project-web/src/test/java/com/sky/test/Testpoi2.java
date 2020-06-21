@@ -21,7 +21,7 @@ import java.util.Map;
 public class Testpoi2 {
 
     public static void main(String[] args) {
-        String excelPath = "D:\\test.xlsx";
+        String excelPath = "E:\\ttt.xls";
         try {
             //String encoding = "GBK";
             File excel = new File(excelPath);

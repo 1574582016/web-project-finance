@@ -130,10 +130,10 @@ public class TestJson02 {
         if(!stockCode.substring(0,1).equals("6")){
             mk = "2";
         }
-        String day = "2020-05-13";
+        String day = "2020-05-19";
 
         for(int page = 0 ; page < 33 ; page ++){
-            String url = "http://push2ex.eastmoney.com/getStockFenShi?pagesize=144&ut=7eea3edcaed734bea9cbfc24409ed989&dpt=wzfscj&cb=jQuery112308016765534968187_1585036699321&pageindex="+ page +"&id="+ stockCode + mk +"&sort=1&ft=1&code="+ stockCode +"&market="+ mk +"&_=1585036699360";
+            String url = "http://push2ex.eastmoney.com/getStockFenShi?pagesize=144&ut=7eea3edcaed734bea9cbfc24409ed989&dpt=wzfscj&cb=jQuery1123004134199993740406_1589900699195&pageindex=0&id=0004232&sort=1&ft=1&code=000423&market=2&_=1589900699198";
             String jsStr = CommonHttpUtil.sendGet(url);
             jsStr = jsStr.substring(jsStr.indexOf("(") + 1 , jsStr.indexOf(")"));
             JSONObject jsonObject = JSON.parseObject(jsStr);

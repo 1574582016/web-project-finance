@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.BankLoadRecordMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.BankLoadRecord">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="bank_id" property="BankId"/>
+        <result column="cash_out_day" property="CashOutDay"/>
+        <result column="cash_out_money" property="CashOutMoney"/>
+        <result column="cash_out_receive" property="CashOutReceive"/>
+        <result column="out_bill_day" property="OutBillDay"/>
+        <result column="out_bill_money" property="OutBillMoney"/>
+        <result column="pay_back_day" property="PayBackDay"/>
+        <result column="pay_back_money" property="PayBackMoney"/>
+
+        <result column="bank_name" property="bankName"/>
+        <result column="bank_type" property="bankType"/>
+    </resultMap>
+
+    <select id="getBankLoadRecordList" resultMap="BaseResultMap" resultType="java.lang.String">
+        SELECT
+        c.`bank_name` ,
+        c.`bank_type` ,
+        r.`cash_out_day` ,
+        r.`cash_out_money` ,
+        r.`cash_out_receive` ,
+        r.`out_bill_day` ,
+        r.`out_bill_money` ,
+        r.`pay_back_day` ,
+        r.`pay_back_money`
+        FROM bank_load_record r
+        LEFT JOIN bank_card c ON r.`bank_id` = c.`id`
+        WHERE r.`isvalid` = 1
+        <if test="bankName !='' and bankName != null">
+            AND c.`bank_name` REGEXP #{bankName}
+        </if>
+        <if test="bankType !='' and bankType != null">
+            AND c.`bank_type` = #{bankType}
+        </if>
+        <if test="startDay !='' and startDay != null">
+            AND r.`cash_out_day` >= #{startDay}
+        </if>
+        <if test="endDay !='' and endDay != null">
+            AND r.`cash_out_day` &lt;= #{endDay}
+        </if>
+    </select>
+</mapper>
