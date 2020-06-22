@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.mapper.DailyExpensesRecordMapper">
+    <resultMap id="BaseResultMap" type="com.sky.model.DailyExpensesRecord">
+        <id column="id" property="id"/>
+        <result column="version" property="version"/>
+        <result column="isvalid" property="isvalid"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_user" property="updateUser"/>
+
+        <result column="first_type" property="firstType"/>
+        <result column="second_type" property="secondType"/>
+        <result column="expenses_day" property="expensesDay"/>
+        <result column="expenses_money" property="expensesMoney"/>
+    </resultMap>
+
+    <select id="getDailyExpensesRecordList" resultType="com.sky.vo.ExpensesRecord_VO" parameterType="java.lang.String">
+        SELECT
+        r.id ,
+        fc.`class_name` firstName ,
+        sc.`class_name` secondName ,
+        r.`expenses_day` expensesDay ,
+        r.`expenses_money` expensesMoney
+        FROM daily_expenses_record r
+        LEFT JOIN daily_expenses_class fc ON r.`first_type` = fc.`id`
+        LEFT JOIN daily_expenses_class sc ON r.`second_type` = sc.`id`
+        WHERE r.`isvalid` = 1
+        <if test="firstType !='' and firstType != null">
+            AND r.`first_type` = #{firstType}
+        </if>
+        <if test="secondType !='' and secondType != null">
+            AND r.`second_type` = #{secondType}
+        </if>
+        <if test="startDay !='' and startDay != null">
+            AND r.`expenses_day` >= #{startDay}
+        </if>
+        <if test="endDay !='' and endDay != null">
+            AND r.`expenses_day` &lt;= #{endDay}
+        </if>
+        ORDER BY r.`expenses_day` DESC
+    </select>
+</mapper>

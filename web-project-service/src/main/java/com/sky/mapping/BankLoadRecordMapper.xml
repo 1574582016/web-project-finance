@@ -25,6 +25,7 @@
 
     <select id="getBankLoadRecordList" resultMap="BaseResultMap" resultType="java.lang.String">
         SELECT
+        r.id ,
         c.`bank_name` ,
         c.`bank_type` ,
         r.`cash_out_day` ,
