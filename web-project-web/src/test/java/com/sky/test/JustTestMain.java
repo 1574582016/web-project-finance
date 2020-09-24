@@ -26,10 +26,7 @@ import java.util.*;
 public class JustTestMain {
 
     public static void main(String[] args){
-        long max=100000000000000l,min=1;
-        long randomNum = System.currentTimeMillis();
-        long ran3 = (long) (randomNum%(max-min)+min);
-        System.out.println(ran3);
+        System.out.println(DateUtils.parseDate("2019-05-019").getTime());
     }
 
     private static String caculateDay(String dayString){

@@ -147,12 +147,13 @@ public class Testpoi {
                             }
                         }
                     }
+                    if(StringUtils.isNotBlank(sql0)){
+                        sql = "insert into " + tableName + sql1 + sql0;
+                        MyDBUtils.update(sql);
+                    }
                 }
 
-                if(StringUtils.isNotBlank(sql0)){
-                    sql = "insert into " + tableName + sql1 + sql0;
-                    MyDBUtils.update(sql);
-                }
+
                 System.out.println(sql);
             } else {
                 System.out.println("找不到指定的文件");

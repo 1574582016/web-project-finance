@@ -56,7 +56,6 @@ public class SpiderStockDealData {
 
     @Test
     public void spiderStockDealData() throws InterruptedException, ExecutionException {
-
         // 开始时间
         long start = System.currentTimeMillis();
         List<StockCompanySector> list = stockCompanySectorService.selectList(null);
